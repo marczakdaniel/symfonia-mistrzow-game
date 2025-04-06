@@ -32,7 +32,7 @@ public class BoardController
         }
     }
 
-    public void SetCardAt(CardModel cardModel, int level, int position)
+    /*public void SetCardAt(CardModel cardModel, int level, int position)
     {
         var cardsRowModel = Model.GetCardsRowModelForLevel(level);
         cardsRowModel.TryAddCardAt(cardModel, position);
@@ -43,7 +43,7 @@ public class BoardController
         var cardsRowModel = Model.GetCardsRowModelForLevel(level);
         cardsRowModel.TryRemoveCardAt(position);
         _cardsRowControllers[level].RemoveCardAt(position);
-    }
+    }*/
 
     public void RemoveCard(CardModel cardModel)
     {

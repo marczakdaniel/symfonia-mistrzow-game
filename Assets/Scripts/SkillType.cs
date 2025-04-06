@@ -6,3 +6,13 @@ public enum SkillType
     Yellow,
     Magenta,
 }
+
+public enum TokenType
+{
+    Blue,
+    Green,
+    Red,
+    Yellow,
+    Magenta,
+    All,
+}

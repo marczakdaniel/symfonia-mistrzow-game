@@ -37,7 +37,8 @@ public class CardsRowController
         {
             return;
         }
-        cardControllers[index].UpdateModel(cardModel);
+
+        if (cardControllers[index] != null) cardControllers[index]?.UpdateModel(cardModel);
     }
 
     public void RemoveCardAt(int index)
