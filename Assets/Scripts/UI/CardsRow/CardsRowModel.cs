@@ -1,38 +1,42 @@
-using System.Collections.Generic;
+using System;
 
 public class CardsRowModel
 {
+    public Action ModelUpdated;
+    
     public int Level { get; private set; }
-    public int SlotCount => _slots.Length;
-    private CardModel[] _slots;
+    public int SlotCount => Slots.Length;
+    public CardModel[] Slots;
+    public bool ActionEnable;
 
-    public CardsRowModel(int level, List<CardModel> cardModels)
+    public CardsRowModel(int level)
     {
         Level = level;
-        _slots = new CardModel[4];
-        
-        for (var index = 0; index < _slots.Length; index++)
+        Slots = new CardModel[4];
+
+        for (int i = 0; i < 4; i++)
         {
-            _slots[index] = cardModels[index];
+            Slots[i] = new CardModel();
         }
     }
     
+    public void SetActionEnable(bool value)
+    {
+        ActionEnable = true;
+        foreach (var card in Slots)
+        {
+            card.SetActionEnable(value);
+        }
+    }
 
-    public bool TryAddCardAt(CardModel cardModel, int index)
+    public bool TrySetCardAt(CardData cardData, int index)
     {
         if (index < 0 || index >= SlotCount)
         {
             return false;
         }
-
-        if (_slots[index] != null)
-        {
-            
-            return false;
-        }
-
-        _slots[index] = cardModel;
-        return true;
+        
+        return Slots[index].TrySetCardModel(cardData);
     }
 
     public bool TryRemoveCardAt(int index)
@@ -41,81 +45,16 @@ public class CardsRowModel
         {
             return false;
         }
-
-        if (_slots[index] == null)
-        {
-            return false;
-        }
-
-        _slots[index] = null;
-        return true;
+        return Slots[index].TryRemoveCardModel();
     }
-
-    /*public bool TryRemoveCard(CardModel cardModel)
-    {
-        for (var index = 0; index < _slots.Length; index++)
-        {
-            if (_slots[index].Id != cardModel.Id)
-            {
-                continue;
-            }
-            
-            _slots[index] = null;
-            return true;
-        }
-
-        return false;
-    }
-
-    public bool TryAddCard(CardModel cardModel)
-    {
-        for (var index = 0; index < _slots.Length; index++)
-        {
-            if (_slots[index] != null)
-            {
-                continue;
-            }
-
-            _slots[index] = cardModel;
-            return true;
-        }
-
-        return false;
-    }*/
 
     public CardModel GetCardModelAt(int index)
     {
-        if (index < 0 || index > _slots.Length)
+        if (index < 0 || index > Slots.Length)
         {
             return null;
         }
 
-        return _slots[index];
-    }
-
-    public int GetIndexForCardModel(CardModel cardModel)
-    {
-        for (var index = 0; index < _slots.Length; index++)
-        {
-            if (_slots[index] != null && _slots[index].Id == cardModel.Id)
-            {
-                return index;
-            }
-        }
-
-        return -1;
-    }
-
-    public int GetFreeSpaceIndex()
-    {
-        for (var index = 0; index < _slots.Length; index++)
-        {
-            if (_slots[index] == null)
-            {
-                return index;
-            }
-        }
-
-        return -1;
+        return Slots[index];
     }
 }

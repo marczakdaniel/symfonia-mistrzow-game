@@ -3,28 +3,39 @@ using UnityEngine;
 
 public class CardController
 {
-    public CardModel Model { get; private set; }
-    public CardView View { get; private set; }
+    public Action<CardData> OnCardClicked;
 
-    public Action<CardModel> OnCardClicked;
-
+    private CardModel Model;
+    private CardView View;
+    
     public CardController(CardModel model, CardView view)
     {
         Model = model;
         View = view;
         
-        View.Setup(Model);
+        Model.OnCardSet += HandleOnCardSet;
+        Model.OnCardRemove += HandleOnCardRemove;
+        
         View.OnCardClicked += HandleClick;
+        
+        View.Setup(Model.CurrentCard);
+    }
+
+    private void HandleOnCardSet()
+    {
+        // TODO
+        View.Setup(Model.CurrentCard);
     }
     
-    public void UpdateModel(CardModel model)
+    private void HandleOnCardRemove()
     {
-        Model = model;
-        View.Setup(Model);
+        // TODO 
+        View.Setup(Model.CurrentCard);
     }
 
     private void HandleClick()
     {
-        OnCardClicked.Invoke(Model);
+        OnCardClicked.Invoke(Model.CurrentCard);
+        Model.ActionElementEnabled = !Model.ActionElementEnabled;
     }
 }

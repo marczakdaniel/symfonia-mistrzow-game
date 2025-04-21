@@ -11,19 +11,19 @@ public class CardView : MonoBehaviour, IPointerClickHandler
     [SerializeField] private Image skillImage;
 
     public Action OnCardClicked;
-    
-    public void Setup(CardModel model)
+
+    public void Setup(CardData data)
     {
-        if (model == null)
+        if (data == null)
         {
             gameObject.SetActive(false);
             return;
         }
 
         gameObject.SetActive(true);
-        costElement.Setup(model.Cost);
-        pointsText.text = model.Points.ToString();
-        SetupSkillImage(model.Skill);
+        costElement.Setup(data.Cost);
+        pointsText.text = data.Points.ToString();
+        SetupSkillImage(data.Skill);
     }
     
     private void SetupSkillImage(SkillType modelSkill)

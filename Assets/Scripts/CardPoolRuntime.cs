@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class CardPoolRuntime
 {
-    private Dictionary<int, List<CardModel>> modelsPerLevel = new();
+    private Dictionary<int, List<CardData>> modelsPerLevel = new();
 
     public CardPoolRuntime(CardPool cardPool)
     {
@@ -14,7 +14,7 @@ public class CardPoolRuntime
         modelsPerLevel.Add(3, cardPool.GetCardModels(3));
     }
 
-    public CardModel GetRandomCard(int level)
+    public CardData GetRandomCard(int level)
     {
         if (level < 0 || level > 3 || modelsPerLevel[level].Count == 0)
         {

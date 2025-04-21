@@ -10,7 +10,7 @@ public class BoardController
 
     private CardsRowController[] _cardsRowControllers = new CardsRowController[CARDS_ROW_NUMBER];
 
-    public Action<CardModel> OnCardClicked;
+    public Action<CardData> OnCardClicked;
 
     public BoardController(BoardModel model, BoardView view)
     {
@@ -32,37 +32,8 @@ public class BoardController
         }
     }
 
-    /*public void SetCardAt(CardModel cardModel, int level, int position)
+    private void HandleClicked(CardData cardData)
     {
-        var cardsRowModel = Model.GetCardsRowModelForLevel(level);
-        cardsRowModel.TryAddCardAt(cardModel, position);
-    }
-
-    public void RemoveCardAt(int level, int position)
-    {
-        var cardsRowModel = Model.GetCardsRowModelForLevel(level);
-        cardsRowModel.TryRemoveCardAt(position);
-        _cardsRowControllers[level].RemoveCardAt(position);
-    }*/
-
-    public void RemoveCard(CardModel cardModel)
-    {
-        var cardsRowModel = Model.GetCardsRowModelForLevel(cardModel.Level);
-        _cardsRowControllers[cardsRowModel.Level - 1].RemoveCard(cardModel);
-    }
-
-    public void SetCard(CardModel cardModel)
-    {
-        if (cardModel == null)
-        {
-            return;
-        }
-        var cardsRowModel = Model.GetCardsRowModelForLevel(cardModel.Level);
-        _cardsRowControllers[cardsRowModel.Level - 1].AddCard(cardModel);
-    }
-    
-    private void HandleClicked(CardModel cardModel)
-    {
-        OnCardClicked.Invoke(cardModel);
+        OnCardClicked.Invoke(cardData);
     }
 }

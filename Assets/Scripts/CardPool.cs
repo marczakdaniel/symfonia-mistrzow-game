@@ -5,11 +5,11 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "NewCardPool", menuName = "Create/CardPool")]
 public class CardPool : ScriptableObject
 {
-    [SerializeField] private CardData[] level1Cards;
-    [SerializeField] private CardData[] level2Cards;
-    [SerializeField] private CardData[] level3Cards;
+    [SerializeField] private CardDataSO[] level1Cards;
+    [SerializeField] private CardDataSO[] level2Cards;
+    [SerializeField] private CardDataSO[] level3Cards;
 
-    public List<CardModel> GetCardModels(int level)
+    public List<CardData> GetCardModels(int level)
     {
         var levelCards = level switch
         {
@@ -19,6 +19,6 @@ public class CardPool : ScriptableObject
             _ => null,
         };
 
-        return levelCards?.Select(c => new CardModel(c)).ToList();
+        return levelCards?.Select(c => new CardData(c)).ToList();
     }
 }

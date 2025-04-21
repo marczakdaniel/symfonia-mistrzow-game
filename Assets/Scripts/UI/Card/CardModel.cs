@@ -1,17 +1,46 @@
+using System;
+
 public class CardModel
 {
-    public string Id { get; private set; }
-    public int Level { get; private set; }
-    public int Points { get; private set; }
-    public SkillType Skill { get; private set; }
-    public SkillCostMap Cost { get; private set; }
+    public event Action OnCardSet;
+    public event Action OnCardRemove;
     
-    public CardModel(CardData cardData)
+    public CardData CurrentCard;
+    public bool ActionEnable;
+
+    public bool ActionElementEnabled;
+
+    public CardModel()
     {
-        Id = cardData.id;
-        Level = cardData.level;
-        Points = cardData.points;
-        Skill = cardData.skill;
-        Cost = cardData.cost;
+        
+    }
+
+    public void SetActionEnable(bool value)
+    {
+        ActionEnable = value;
+        
+    }
+
+    public bool TrySetCardModel(CardData cardData)
+    {
+        if (CurrentCard != null)
+        {
+            return false;
+        }
+        
+        CurrentCard = cardData;
+        OnCardSet?.Invoke();
+        return true;
+    }
+
+    public bool TryRemoveCardModel()
+    {
+        if (CurrentCard == null)
+        {
+            return false;
+        }
+        CurrentCard = null;
+        OnCardRemove?.Invoke();
+        return true;
     }
 }

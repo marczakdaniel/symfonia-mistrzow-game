@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using DefaultNamespace;
+using DefaultNamespace.Data;
+using DefaultNamespace.Managers;
 using NUnit.Framework;
 using UnityEngine;
 
@@ -10,50 +12,37 @@ public class BoardTestManager : MonoBehaviour
 
     [SerializeField] private CardPool testCardDatas;
     
-    private BoardModel boardModel;
+    private BoardData boardData;
 
-    private BoardController boardController;
-
+    private BoardManager boardManager;
+    
     private CardPoolRuntime testCardModelsPool;
 
-    private Dictionary<int, List<CardModel>> cardsModels;
-    
+    [SerializeField] private OverlayManager OverlayManager;
 
     void Start()
     {
-        CreateTestCardModels();
-        InitializeGame();
+        CreateCardData();
+        CreateBoardManager();
     }
 
-    private void CreateTestCardModels()
+    private void CreateBoardManager()
+    {
+        boardManager = new BoardManager(OverlayManager);
+        boardManager.InitializeBoardMVC(boardView, boardData);
+    }
+
+    private void CreateCardData()
     {
         testCardModelsPool = new CardPoolRuntime(testCardDatas);
-        cardsModels = new Dictionary<int, List<CardModel>>(3);
+        boardData = new BoardData();
 
-        for (var index = 1; index <= 3; index++)
+        for (var i = 0;  i < 3; i++)
         {
-            var cardModels = new List<CardModel>(4);
-            for (int j = 1; j <= 4; j++)
+            for (int j = 0; j < 4; j++)
             {
-                cardModels.Add(testCardModelsPool.GetRandomCard(index));
+                boardData.Board[i, j] = testCardModelsPool.GetRandomCard(i + 1);
             }
-
-            cardsModels.Add(index, cardModels);
         }
-    }
-
-    private void InitializeGame()
-    {
-        boardModel = new BoardModel(cardsModels[1], cardsModels[2], cardsModels[3]);
-
-        boardController = new BoardController(boardModel, boardView);
-        boardController.OnCardClicked += HandleClicked;
-    }
-
-    private void HandleClicked(CardModel cardModel)
-    {
-        boardController.RemoveCard(cardModel);
-        var newCardModel = testCardModelsPool.GetRandomCard(cardModel.Level);
-        boardController.SetCard(newCardModel);
     }
 }

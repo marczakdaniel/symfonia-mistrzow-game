@@ -7,7 +7,7 @@ public class CardsRowController
 
     private CardController[] cardControllers = new CardController[4];
 
-    public Action<CardModel> OnCardClicked;
+    public Action<CardData> OnCardClicked;
 
     public CardsRowController(CardsRowModel model, CardsRowView view)
     {
@@ -19,48 +19,18 @@ public class CardsRowController
 
     private void InitializeController()
     {
-        for (var index = 0; index < cardControllers.Length; index++)
+        for (var index = 0; index < Model.SlotCount; index++)
         {
             var cardModel = Model.GetCardModelAt(index); 
-            if (cardModel == null) return;
             var cardView = View.GetCardViewAt(index);
-            if (cardView == null) return;
             
             cardControllers[index] = new CardController(cardModel, cardView);
             cardControllers[index].OnCardClicked += HandleClicked;
         }
     }
 
-    public void SetCardAt(CardModel cardModel, int index)
+    private void HandleClicked(CardData cardData)
     {
-        if (!Model.TryAddCardAt(cardModel, index))
-        {
-            return;
-        }
-
-        if (cardControllers[index] != null) cardControllers[index]?.UpdateModel(cardModel);
-    }
-
-    public void RemoveCardAt(int index)
-    {
-        Model.TryRemoveCardAt(index);
-        cardControllers[index].UpdateModel(null);
-    }
-
-    public void RemoveCard(CardModel cardModel)
-    {
-        var index = Model.GetIndexForCardModel(cardModel);
-        RemoveCardAt(index);
-    }
-
-    public void AddCard(CardModel cardModel)
-    {
-        var index = Model.GetFreeSpaceIndex();
-        SetCardAt(cardModel, index);
-    }
-
-    private void HandleClicked(CardModel cardModel)
-    {
-        OnCardClicked.Invoke(cardModel);
+        OnCardClicked.Invoke(cardData);
     }
 }
