@@ -23,10 +23,17 @@ namespace DefaultNamespace.Managers
             
         }
 
-        public void OpenCardActionOverlay(CardData cardData)
+        public void OpenCardActionOverlay(CardActionOverlayData data)
         {
-            var model = new CardActionOverlayModel(cardData);
+            var model = new CardActionOverlayModel(data.CardData);
             var controller = new CardActionOverlayController(model, cardActionOverlayView);
+            controller.OnCardBuy += data.OnCardBuy;
+            controller.OnCardReserve += data.OnCardReserve;
+            controller.OnOverlayClose += () =>
+            {
+                controller.OnCardBuy -= data.OnCardBuy;
+                controller.OnCardReserve -= data.OnCardReserve;
+            };
         }
     }
 }

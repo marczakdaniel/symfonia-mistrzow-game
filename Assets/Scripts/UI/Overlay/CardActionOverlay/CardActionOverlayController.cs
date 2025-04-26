@@ -11,6 +11,8 @@ namespace DefaultNamespace.UI.CardActionOverlay
         public Action<CardData> OnCardBuy;
         public Action<CardData> OnCardReserve;
 
+        public Action OnOverlayClose;
+
         public CardActionOverlayController(CardActionOverlayModel model, CardActionOverlayView view)
         {
             Model = model;
@@ -31,6 +33,10 @@ namespace DefaultNamespace.UI.CardActionOverlay
         private void HandleBlendClicked()
         {
             View.gameObject.SetActive(false);
+            OnOverlayClose.Invoke();
+            View.OnCardBuy -= HandleCardBuy;
+            View.OnCardReserved -= HandleCardReserved;
+            View.OnBlendClicked -= HandleBlendClicked;
         }
 
         private void HandleCardBuy()

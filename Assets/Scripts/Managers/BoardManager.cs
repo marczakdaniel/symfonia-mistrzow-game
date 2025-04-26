@@ -1,6 +1,7 @@
 using DefaultNamespace;
 using DefaultNamespace.Data;
 using DefaultNamespace.Managers;
+using DefaultNamespace.UI.CardActionOverlay;
 using UnityEngine;
 
 /*
@@ -66,8 +67,9 @@ public class BoardManager
     private void HandleCardClicked(CardData cardData)
     {
         Debug.LogError($"Card Click Action {cardData.Id}");
-        OverlayManager.OpenCardActionOverlay(cardData);
-        
+
+        var overlayData = new CardActionOverlayData(cardData, HandleCardBuy, HandleCardReserve);
+        OverlayManager.OpenCardActionOverlay(overlayData);
     }
     
     // Expose necessary methods to change board
