@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8897a6d602424209866c2363a3cc2bb5, type: 3}
+  m_Name: RedTokenImages
+  m_EditorClassIdentifier: 
+  tokenType: 2
+  stackImage1: {fileID: -7659476658989566728, guid: dbcaf8b4f85d65543b440b734df2a4c1, type: 3}

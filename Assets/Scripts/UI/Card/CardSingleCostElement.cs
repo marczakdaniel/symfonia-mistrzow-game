@@ -1,3 +1,4 @@
+using DefaultNamespace.ScriptableObjects;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,8 +7,9 @@ public class CardSingleCostElement : MonoBehaviour
 {
     [SerializeField] private Image image;
     [SerializeField] private TextMeshProUGUI costText;
+    [SerializeField] private TokensImagesSO tokenImages;
 
-    public void Setup(SkillType skill, int cost)
+    public void Setup(TokenType tokenType, int cost)
     {
         if (cost == 0)
         {
@@ -16,25 +18,17 @@ public class CardSingleCostElement : MonoBehaviour
         }
 
         gameObject.SetActive(true);
-        SetupImage(skill);
+        SetupImage(tokenType);
         SetupCostText(cost);
     }
 
-    private void SetupCostText(int cost)
+    private void SetupCostText(int tokenType)
     {
-        costText.text = cost.ToString();
+        costText.text = tokenType.ToString();
     }
 
-    private void SetupImage(SkillType skill)
+    private void SetupImage(TokenType tokenType)
     {
-        image.color = skill switch
-        {
-            SkillType.Blue => Color.blue,
-            SkillType.Red => Color.red,
-            SkillType.Yellow => Color.yellow,
-            SkillType.Green => Color.green,
-            SkillType.Magenta => Color.magenta,
-            _ => image.color
-        };
+        image.sprite = tokenImages.GetTokenImages(tokenType).stackImage1;
     }
 }

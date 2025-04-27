@@ -3,8 +3,8 @@ public enum SkillType
     Blue,
     Green,
     Red,
-    Yellow,
-    Magenta,
+    Brown,
+    Purple,
 }
 
 public enum TokenType
@@ -12,7 +12,7 @@ public enum TokenType
     Blue,
     Green,
     Red,
-    Yellow,
-    Magenta,
+    Brown,
+    Purple,
     All,
 }

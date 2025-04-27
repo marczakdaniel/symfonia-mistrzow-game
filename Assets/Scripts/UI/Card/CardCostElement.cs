@@ -4,16 +4,16 @@ public class CardCostElement : MonoBehaviour
 {
     [SerializeField] private CardSingleCostElement blueCostElement;
     [SerializeField] private CardSingleCostElement redCostElement;
-    [SerializeField] private CardSingleCostElement yellowCostElement;
+    [SerializeField] private CardSingleCostElement brownCostElement;
     [SerializeField] private CardSingleCostElement greenCostElement;
-    [SerializeField] private CardSingleCostElement magentaCostElement;
+    [SerializeField] private CardSingleCostElement purpleCostElement;
     
     public void Setup(SkillCostMap costMap)
     {
-        blueCostElement.Setup(SkillType.Blue, costMap.blue);
-        redCostElement.Setup(SkillType.Red, costMap.red);
-        yellowCostElement.Setup(SkillType.Yellow, costMap.yellow);
-        greenCostElement.Setup(SkillType.Green, costMap.green);
-        magentaCostElement.Setup(SkillType.Magenta, costMap.magenta);
+        blueCostElement.Setup(TokenType.Blue, costMap.blue);
+        redCostElement.Setup(TokenType.Red, costMap.red);
+        brownCostElement.Setup(TokenType.Brown, costMap.brown);
+        greenCostElement.Setup(TokenType.Green, costMap.green);
+        purpleCostElement.Setup(TokenType.Purple, costMap.purple);
     }
 }

@@ -9,7 +9,7 @@ TextureImporter:
   serializedVersion: 13
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 0
+    enableMipMap: 1
     sRGBTexture: 1
     linearTexture: 0
     fadeOut: 0
@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      u7955542541_an_open_magical_musical_score_on_a_conductors_sta_b268b35b-dcfd-4b2b-a66c-8cff8c837cf1_1_0: 8331205241879288053
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

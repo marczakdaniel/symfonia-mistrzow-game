@@ -1,3 +1,5 @@
+using UnityEngine.Serialization;
+
 [System.Serializable]
 public class CardCost
 {
@@ -11,6 +13,6 @@ public class SkillCostMap
     public int blue;
     public int green;
     public int red;
-    public int yellow;
-    public int magenta;
+    public int brown;
+    public int purple;
 }

@@ -36,9 +36,9 @@ public class TokenView : MonoBehaviour, IPointerClickHandler
         {
             TokenType.Blue => Color.blue,
             TokenType.Red => Color.red,
-            TokenType.Yellow => Color.yellow,
+            TokenType.Brown => Color.yellow,
             TokenType.Green => Color.green,
-            TokenType.Magenta => Color.magenta,
+            TokenType.Purple => Color.magenta,
             TokenType.All => Color.cyan,
             _ => tokenImage.color
         };

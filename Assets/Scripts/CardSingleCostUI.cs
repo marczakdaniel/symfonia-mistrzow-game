@@ -31,9 +31,9 @@ public class CardSingleCostUI : MonoBehaviour
         {
             SkillType.Blue => Color.blue,
             SkillType.Red => Color.red,
-            SkillType.Yellow => Color.yellow,
+            SkillType.Brown => Color.yellow,
             SkillType.Green => Color.green,
-            SkillType.Magenta => Color.magenta,
+            SkillType.Purple => Color.magenta,
             _ => image.color
         };
     }

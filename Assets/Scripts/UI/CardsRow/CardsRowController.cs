@@ -15,6 +15,23 @@ public class CardsRowController
         View = view;
 
         InitializeController();
+        SetupLevelText();
+    }
+
+    private void SetupLevelText()
+    {
+        View.Setup(GetLevelText());
+    }
+
+    private string GetLevelText()
+    {
+        return Model.Level switch
+        {
+            1 => "I",
+            2 => "II",
+            3 => "III",
+            _ => "X",
+        };
     }
 
     private void InitializeController()
