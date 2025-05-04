@@ -19,6 +19,6 @@ public class TokenPanelModel
 
     public TokenModel GetTokenModel(TokenType tokenType) => _tokenModels[tokenType];
 
-    public TokenType[] AllTokenTypes => _tokenModels.Keys.ToArray();
+    public TokenType[] AllTokenTypes => Enum.GetValues(typeof(TokenType)).Cast<TokenType>().ToArray();
 
 }

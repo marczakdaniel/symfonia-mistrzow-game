@@ -22,13 +22,13 @@ public class CardSingleCostElement : MonoBehaviour
         SetupCostText(cost);
     }
 
-    private void SetupCostText(int tokenType)
+    private void SetupCostText(int cost)
     {
-        costText.text = tokenType.ToString();
+        costText.text = cost.ToString();
     }
 
     private void SetupImage(TokenType tokenType)
     {
-        image.sprite = tokenImages.GetTokenImages(tokenType).stackImage1;
+        image.sprite = tokenImages.GetTokenCardImage(tokenType);
     }
 }

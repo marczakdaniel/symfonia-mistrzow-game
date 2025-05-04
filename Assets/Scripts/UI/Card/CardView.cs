@@ -32,11 +32,11 @@ public class CardView : MonoBehaviour, IPointerClickHandler
     {
         skillImage.sprite = modelSkill switch
         {
-            SkillType.Blue => tokenImages.GetTokenImages(TokenType.Blue).stackImage1,
-            SkillType.Red => tokenImages.GetTokenImages(TokenType.Red).stackImage1,
-            SkillType.Brown => tokenImages.GetTokenImages(TokenType.Brown).stackImage1,
-            SkillType.Green => tokenImages.GetTokenImages(TokenType.Green).stackImage1,
-            SkillType.Purple => tokenImages.GetTokenImages(TokenType.Purple).stackImage1,
+            SkillType.Blue => tokenImages.GetTokenCardImage(TokenType.Blue),
+            SkillType.Red => tokenImages.GetTokenCardImage(TokenType.Red),
+            SkillType.Brown => tokenImages.GetTokenCardImage(TokenType.Brown),
+            SkillType.Green => tokenImages.GetTokenCardImage(TokenType.Green),
+            SkillType.Purple => tokenImages.GetTokenCardImage(TokenType.Purple),
             _ => null,
         };
     }

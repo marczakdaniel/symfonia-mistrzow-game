@@ -3,14 +3,13 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using DefaultNamespace.ScriptableObjects;
 
 public class TokenView : MonoBehaviour, IPointerClickHandler
 {
-    public TokenType TokenType => tokenType;
-    
-    [SerializeField] private TokenType tokenType;
     [SerializeField] private Image tokenImage;
     [SerializeField] private TextMeshProUGUI numberOfTokensText;
+    [SerializeField] private TokensImagesSO tokenImages;
 
     public Action OnTokenClicked;
 

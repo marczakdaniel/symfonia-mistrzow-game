@@ -21,13 +21,15 @@ public class TokenPanelController
     private void InitializeController()
     {
         _tokenControllers = new Dictionary<TokenType, TokenController>();
+        var index = 0;
         foreach (var tokenType in Model.AllTokenTypes)
         {
             var tokenModel = Model.GetTokenModel(tokenType);
-            var tokenView = View.GetTokenView(tokenType);
+            var tokenView = View.GetTokenView(index);
 
             _tokenControllers[tokenType] = new TokenController(tokenModel, tokenView);
             _tokenControllers[tokenType].OnTokenClicked += HandleClick;
+            index++;
         }
     }
 

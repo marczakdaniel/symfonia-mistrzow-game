@@ -4,16 +4,14 @@ public class TokenPanelView : MonoBehaviour
 {
     [SerializeField] private TokenView[] tokenViews;
 
-    public TokenView GetTokenView(TokenType tokenType)
+    public TokenView GetTokenView(int index)
     {
-        foreach (var tokenView in tokenViews)
+        if (index < 0 || index >= tokenViews.Length)
         {
-            if (tokenView.TokenType == tokenType)
-            {
-                return tokenView;
-            }
+            Debug.LogError($"[TokenPanelView] Nieprawidłowy index tokenu: {index}");
+            return null;
         }
 
-        return null;
+        return tokenViews[index];
     }
 }
