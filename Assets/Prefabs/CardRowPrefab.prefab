@@ -36,7 +36,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1218.42, y: 360}
+  m_SizeDelta: {x: 1175.79, y: 360}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &7847419438675171589
 MonoBehaviour:
@@ -727,7 +727,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2694209034035455789, guid: d51a644c33da2bf40849a586d7e45467, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -756.5
+      value: -742.3
       objectReference: {fileID: 0}
     - target: {fileID: 2694209034035455789, guid: d51a644c33da2bf40849a586d7e45467, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -745,6 +745,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6153498007168399870, guid: d51a644c33da2bf40849a586d7e45467, type: 3}
+      propertyPath: endPosition
+      value: 
+      objectReference: {fileID: 5339689299236761912}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
