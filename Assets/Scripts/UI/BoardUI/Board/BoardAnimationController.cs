@@ -47,6 +47,12 @@ public class BoardAnimationController : MonoBehaviour
              controller.ResetAllCardsShowdownAnimation();
         }
     }
+
+    public void ResetSingleCardShowdownAnimation(int row, int position)
+    {
+        cardsRowAnimationControllers[row].ResetSingleCardShowdownAnimation(position);
+    }
+
     public async UniTask PlayAllFlipAnimation()
     {
         var tasks = new List<UniTask>(cardsRowAnimationControllers.Length);
@@ -58,13 +64,13 @@ public class BoardAnimationController : MonoBehaviour
         await UniTask.WhenAll(tasks);
     }
 
-    public async UniTask PlayShowdownAnimation()
+    public async UniTask PlaySingleCardShowdownAnimation(int row, int position)
     {
-        
+        await cardsRowAnimationControllers[row].PlaySingleCardShowdownAnimation(position);
     }
 
-    public async UniTask PlayFlipAnimation()
+    public async UniTask PlaySingleCardFlipAnimation(int row, int position)
     {
-
+        await cardsRowAnimationControllers[row].PlaySingleCardFlipAnimation(position);
     }
 }

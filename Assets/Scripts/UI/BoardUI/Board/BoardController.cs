@@ -25,6 +25,8 @@ public class BoardController
     private void ConnectModelEvents()
     {
         Model.OnBoardInitialized += HandleModelBoardInitialized;
+        Model.OnCardAdded += HandleModelCardAdded;
+        Model.OnCardRemoved += HandleModelCardRemoved;
     }
 
     private void HandleModelBoardInitialized()
@@ -32,12 +34,35 @@ public class BoardController
         InitializeBoard().Forget();
     }
 
+    private void HandleModelCardAdded(CardData cardData, int position)
+    {
+        PutCardOnBoard(cardData.Level - 1, position).Forget();
+    }
+
+    private void HandleModelCardRemoved(CardData cardData, int position)
+    {
+        RemoveCardFromBoard(cardData.Level - 1, position).Forget();
+    }
+    
     private async UniTask InitializeBoard()
     {
         await View.PlayAllShowdownAnimation();
         Model.ShowAllCards();
         View.ResetAllCardsShowdownAnimation();
         await View.PlayAllFlipAnimation();
+    }
+
+    private async UniTask PutCardOnBoard(int row, int position)
+    {
+        await View.PlaySingleCardShowdownAnimation(row, position);
+        Model.ShowCardAt(row, position);
+        View.ResetSingleCardShowdownAnimation(row, position);
+        await View.PlaySingleCardFlipAnimation(row, position);
+    }
+
+    private async UniTask RemoveCardFromBoard(int row, int position)
+    {
+        
     }
 
     private void InitializeController()

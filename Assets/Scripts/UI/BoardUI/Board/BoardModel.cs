@@ -7,6 +7,8 @@ public class BoardModel
 {
     public CardsRowModel[] CardsRowModels;
     public Action OnBoardInitialized;
+    public Action<CardData, int> OnCardAdded;
+    public Action<CardData, int> OnCardRemoved;
 
     public BoardModel()
     {
@@ -42,6 +44,16 @@ public class BoardModel
         {
             cardsRowModel.ShowAllCards();
         }
+    }
+
+    public void ShowCardAt(int row, int position)
+    {
+        GetCardsRowModelForLevel(row).ShowCardAt(position);
+    }
+
+    public void HideCardAt(int row, int position)
+    {
+        GetCardsRowModelForLevel(row).HideCardAt(position);
     }
 
     public bool TrySetCardAt(CardData cardData, int index)

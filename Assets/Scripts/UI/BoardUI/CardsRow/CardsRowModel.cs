@@ -46,6 +46,26 @@ public class CardsRowModel
         }
     }
 
+    public void ShowCardAt(int index)
+    {
+        if (index < 0 || index >= SlotCount)
+        {
+            return;
+        }
+
+        Slots[index].SetCardVisible(true);
+    }
+
+    public void HideCardAt(int index)
+    {
+        if (index < 0 || index >= SlotCount)
+        {
+            return;
+        }
+
+        Slots[index].SetCardVisible(false);
+    }
+
     public bool TrySetCardAt(CardData cardData, int index)
     {
         if (index < 0 || index >= SlotCount)

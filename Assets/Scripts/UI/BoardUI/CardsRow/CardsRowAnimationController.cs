@@ -39,6 +39,15 @@ public class CardsRowAnimationController : MonoBehaviour
         }
     }
 
+    public void ResetSingleCardShowdownAnimation(int position)
+    {
+        if (position < 0 || position >= singleCardShowdownAnimations.Length)
+        {
+            throw new ArgumentOutOfRangeException(nameof(position), "Position is out of range");
+        }
+        singleCardShowdownAnimations[position].ResetAnimation();
+    }
+    
     public async UniTask PlaySingleCardShowdownAnimation(int position)
     {  
         if (position < 0 || position >= singleCardShowdownAnimations.Length)
