@@ -7,7 +7,6 @@ public class CardsRowModel
     public int Level { get; private set; }
     public int SlotCount => Slots.Length;
     public CardModel[] Slots;
-    public bool ActionEnable;
 
     public CardsRowModel(int level)
     {
@@ -19,13 +18,31 @@ public class CardsRowModel
             Slots[i] = new CardModel();
         }
     }
-    
-    public void SetActionEnable(bool value)
+
+
+    public void InitializeRow(CardData[] cardDatas)
     {
-        ActionEnable = true;
-        foreach (var card in Slots)
+        for (int i = 0; i < cardDatas.Length; i++)
         {
-            card.SetActionEnable(value);
+            TrySetCardAt(cardDatas[i], i);
+        }
+    }
+
+    public void AddCard(CardData cardData, int index)
+    {
+        
+    }
+
+    public void RemoveCard(int index)
+    {
+        
+    }
+
+    public void ShowAllCards()
+    {
+        foreach (var slot in Slots)
+        {
+            slot.SetCardVisible(true);
         }
     }
 

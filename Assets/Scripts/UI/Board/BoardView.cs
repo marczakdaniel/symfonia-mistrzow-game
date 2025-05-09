@@ -1,10 +1,11 @@
 using System;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 public class BoardView : MonoBehaviour
 {
     [SerializeField] private CardsRowView[] rowViews;
-    //[SerializeField] private CardActionElement actionElement;
+    [SerializeField] private BoardAnimationController boardAnimationController;
     
     public Action OnCardBuy;
     public Action OnCardReserved;
@@ -45,4 +46,20 @@ public class BoardView : MonoBehaviour
 
         return rowViews[index];
     }
+
+    public async UniTask PlayAllShowdownAnimation()
+    {
+        await boardAnimationController.PlayAllShowdownAnimation();
+    }
+    
+    public void ResetAllCardsShowdownAnimation()
+    {
+         boardAnimationController.ResetAllCardsShowdownAnimation();
+    }
+
+    public async UniTask PlayAllFlipAnimation() 
+    {
+        await boardAnimationController.PlayAllFlipAnimation();
+    }
+    
 }

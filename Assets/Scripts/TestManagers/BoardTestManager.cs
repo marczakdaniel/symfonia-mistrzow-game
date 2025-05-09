@@ -20,6 +20,14 @@ public class BoardTestManager : MonoBehaviour
 
     [SerializeField] private OverlayManager OverlayManager;
 
+    public void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            boardManager.InitializeBoard(boardData);
+        }
+    }
+
     void Start()
     {
         CreateCardData();
@@ -29,7 +37,7 @@ public class BoardTestManager : MonoBehaviour
     private void CreateBoardManager()
     {
         boardManager = new BoardManager(OverlayManager);
-        boardManager.InitializeBoardMVC(boardView, boardData);
+        boardManager.InitializeBoardMVC(boardView);
     }
 
     private void CreateCardData()
@@ -39,9 +47,10 @@ public class BoardTestManager : MonoBehaviour
 
         for (var i = 0;  i < 3; i++)
         {
+            boardData.Board[i] = new CardData[4];
             for (int j = 0; j < 4; j++)
             {
-                boardData.Board[i, j] = testCardModelsPool.GetRandomCard(i + 1);
+                boardData.Board[i][j] = testCardModelsPool.GetRandomCard(i + 1);
             }
         }
     }

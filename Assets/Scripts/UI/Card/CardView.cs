@@ -12,20 +12,35 @@ public class CardView : MonoBehaviour, IPointerClickHandler
     [SerializeField] private Image skillImage;
     [SerializeField] private TokensImagesSO tokenImages;
 
+    [SerializeField] private GameObject frontSide;
+    [SerializeField] private GameObject backSide;   
+
+    [SerializeField] private GameObject container;
+
     public Action OnCardClicked;
+
+    public void Initialize()
+    {
+        SetVisible(false);
+    }
 
     public void Setup(CardData data)
     {
-        if (data == null)
-        {
-            gameObject.SetActive(false);
-            return;
-        }
-
-        gameObject.SetActive(true);
+        InitialCardState();
         costElement.Setup(data.Cost);
         pointsText.text = data.Points.ToString();
         SetupSkillImage(data.Skill);
+    }
+
+    public void SetVisible(bool value)
+    {
+        container.SetActive(value);
+    }
+
+    public void InitialCardState()
+    {
+        frontSide.SetActive(false);
+        backSide.SetActive(true);
     }
     
     private void SetupSkillImage(SkillType modelSkill)

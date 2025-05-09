@@ -293,6 +293,9 @@ MonoBehaviour:
   pointsText: {fileID: 4515048570056477245}
   skillImage: {fileID: 2180007092918314667}
   tokenImages: {fileID: 11400000, guid: 0c9f174900726f94e94adc2d5df588b4, type: 2}
+  frontSide: {fileID: 1732298385187056497}
+  backSide: {fileID: 3580311385808300587}
+  container: {fileID: 8286239109893897689}
 --- !u!1 &1080086808751979315
 GameObject:
   m_ObjectHideFlags: 0

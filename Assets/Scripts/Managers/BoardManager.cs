@@ -24,26 +24,21 @@ public class BoardManager
         OverlayManager = overlayManager;
     }
 
-    public void InitializeBoardMVC(BoardView view, BoardData data)
+    public void InitializeBoardMVC(BoardView view)
     {
-        InitializeBoardModel(data);
+        InitializeBoardModel();
         InitializeBoardView(view);
         InitializeBoardController();
     }
 
-    private void InitializeBoardModel(BoardData data)
+    private void InitializeBoardModel()
     {
-        _boardModel = new BoardModel(data);
+        _boardModel = new BoardModel();
     }
 
     private void InitializeBoardView(BoardView view)
     {
         _boardView = view;
-    }
-
-    private void InitializeBoardModel()
-    {
-        
     }
 
     private void InitializeBoardController()
@@ -74,13 +69,20 @@ public class BoardManager
     
     // Expose necessary methods to change board
 
-    public void RemoveCard(int level, int index)
+    public void InitializeBoard(BoardData boardData)
     {
-        _boardModel.GetCardsRowModelForLevel(level).TryRemoveCardAt(index);
+        _boardModel.InitializeBoard(boardData);
     }
 
     public void AddCard(CardData cardData, int index)
     {
         _boardModel.GetCardsRowModelForLevel(cardData.Level).TrySetCardAt(cardData, index);
     }
+
+    public void RemoveCard(int level, int index)
+    {
+        _boardModel.GetCardsRowModelForLevel(level).TryRemoveCardAt(index);
+    }
+
+    // 
 }

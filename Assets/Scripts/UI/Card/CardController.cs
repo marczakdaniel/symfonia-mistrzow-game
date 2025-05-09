@@ -15,10 +15,15 @@ public class CardController
         
         Model.OnCardSet += HandleOnCardSet;
         Model.OnCardRemove += HandleOnCardRemove;
-        
+        Model.OnCardVisibleChanged += HandleOnCardVisibleChanged;
         View.OnCardClicked += HandleClick;
         
-        View.Setup(Model.CurrentCard);
+        View.Initialize();
+    }
+
+    private void HandleOnCardVisibleChanged()
+    {
+        View.SetVisible(Model.IsCardVisible);
     }
 
     private void HandleOnCardSet()

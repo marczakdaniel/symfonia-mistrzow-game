@@ -6,36 +6,41 @@ using DefaultNamespace.Data;
 public class BoardModel
 {
     public CardsRowModel[] CardsRowModels;
-    public bool ActionEnable;
+    public Action OnBoardInitialized;
 
-    public BoardModel(BoardData boardData)
+    public BoardModel()
     {
         CardsRowModels = new CardsRowModel[3];
         
         CardsRowModels[0] = new CardsRowModel(1);
         CardsRowModels[1] = new CardsRowModel(2);
         CardsRowModels[2] = new CardsRowModel(3);
-
-        InitializeWithData(boardData);
     }
 
-    private void InitializeWithData(BoardData boardData)
+    public void InitializeBoard(BoardData boardData)
     {
         for (int i = 0; i < 3; i++)
         {
-            for (int j = 0; j < 4; j++)
-            {
-                CardsRowModels[i].TrySetCardAt(boardData.Board[i, j], j);
-            }
+            CardsRowModels[i].InitializeRow(boardData.Board[i]);
         }
+        OnBoardInitialized?.Invoke();
     }
 
-    public void SetActionEnable(bool value)
+    public void AddCard(CardData cardData, int index)
     {
-        ActionEnable = true;
-        foreach (var row in CardsRowModels)
+
+    }
+
+    public void RemoveCard(int index)
+    {
+
+    }
+
+    public void ShowAllCards()
+    {
+        foreach (var cardsRowModel in CardsRowModels)
         {
-            row.SetActionEnable(value);
+            cardsRowModel.ShowAllCards();
         }
     }
 

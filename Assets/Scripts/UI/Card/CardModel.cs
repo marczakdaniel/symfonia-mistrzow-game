@@ -4,9 +4,10 @@ public class CardModel
 {
     public event Action OnCardSet;
     public event Action OnCardRemove;
+    public event Action OnCardVisibleChanged;
     
     public CardData CurrentCard;
-    public bool ActionEnable;
+    public bool IsCardVisible;
 
     public bool ActionElementEnabled;
 
@@ -15,10 +16,10 @@ public class CardModel
         
     }
 
-    public void SetActionEnable(bool value)
+    public void SetCardVisible(bool value)
     {
-        ActionEnable = value;
-        
+        IsCardVisible = value;
+        OnCardVisibleChanged?.Invoke();
     }
 
     public bool TrySetCardModel(CardData cardData)

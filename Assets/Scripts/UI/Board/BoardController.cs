@@ -1,4 +1,5 @@
 using System;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 public class BoardController
@@ -17,7 +18,26 @@ public class BoardController
         Model = model;
         View = view;
 
+        ConnectModelEvents();
         InitializeController();
+    }
+
+    private void ConnectModelEvents()
+    {
+        Model.OnBoardInitialized += HandleModelBoardInitialized;
+    }
+
+    private void HandleModelBoardInitialized()
+    {
+        InitializeBoard().Forget();
+    }
+
+    private async UniTask InitializeBoard()
+    {
+        await View.PlayAllShowdownAnimation();
+        Model.ShowAllCards();
+        View.ResetAllCardsShowdownAnimation();
+        await View.PlayAllFlipAnimation();
     }
 
     private void InitializeController()
