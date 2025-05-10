@@ -30,7 +30,7 @@ public class BoardModel
 
     public void AddCard(CardData cardData, int index)
     {
-
+        GetCardsRowModelForLevel(cardData.Level).AddCard(cardData, index);
     }
 
     public void RemoveCard(int index)
@@ -56,15 +56,6 @@ public class BoardModel
         GetCardsRowModelForLevel(row).HideCardAt(position);
     }
 
-    public bool TrySetCardAt(CardData cardData, int index)
-    {
-        return GetCardsRowModelForLevel(cardData.Level).TrySetCardAt(cardData, index);
-    }
-
-    public bool TryRemoveCardAt(int level, int index)
-    {
-        return GetCardsRowModelForLevel(level).TryRemoveCardAt(index);
-    }
     
     public CardsRowModel GetCardsRowModelForLevel(int level)
     {

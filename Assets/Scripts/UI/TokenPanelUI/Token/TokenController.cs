@@ -12,21 +12,31 @@ public class TokenController
     {
         Model = model;
         View = view;
+
+        ConnectModelEvents();
         
         View.Setup(model);
         View.OnTokenClicked += HandleClick;
     }
 
+    private void ConnectModelEvents()
+    {
+        Model.OnNumberOfTokensChanged += HandleModelNumberOfTokensChanged;
+    }
+
+    private void HandleModelNumberOfTokensChanged()
+    {
+        View.UpdateView(Model);
+    }
+
     public void RemoveToken(int value = 1)
     {
         Model.RemoveToken(value);
-        View.UpdateView(Model);
     }
 
     public void AddToken(int value = 1)
     {
         Model.AddToken(value);
-        View.UpdateView(Model);
     }
 
     private void HandleClick()

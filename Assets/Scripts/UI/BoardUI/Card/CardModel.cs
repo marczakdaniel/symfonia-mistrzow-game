@@ -1,4 +1,5 @@
 using System;
+using UnityEngine;
 
 public class CardModel
 {
@@ -22,26 +23,27 @@ public class CardModel
         OnCardVisibleChanged?.Invoke();
     }
 
-    public bool TrySetCardModel(CardData cardData)
+    public void SetCard(CardData cardData)
     {
         if (CurrentCard != null)
         {
-            return false;
+            Debug.LogError("Card already set");
+            return;
         }
-        
+
         CurrentCard = cardData;
         OnCardSet?.Invoke();
-        return true;
     }
 
-    public bool TryRemoveCardModel()
+    public void RemoveCard()
     {
         if (CurrentCard == null)
         {
-            return false;
+            Debug.LogError("Card not set");
+            return;
         }
+
         CurrentCard = null;
         OnCardRemove?.Invoke();
-        return true;
     }
 }

@@ -15,32 +15,24 @@ public class TokenView : MonoBehaviour, IPointerClickHandler
 
     public void Setup(TokenModel model)
     {
-        SetupTokenImage(model.TokenType);
+        SetupTokenImage(model.TokenType, model.NumberOfTokens);
         SetupNumberOfTokens(model.NumberOfTokens);
     }
 
     public void UpdateView(TokenModel model)
     {
+        SetupTokenImage(model.TokenType, model.NumberOfTokens);
         SetupNumberOfTokens(model.NumberOfTokens);
     }
 
     private void SetupNumberOfTokens(int modelNumberOfTokens)
     {
-        numberOfTokensText.text = modelNumberOfTokens.ToString();
+        numberOfTokensText.text = "x" + modelNumberOfTokens.ToString();
     }
 
-    private void SetupTokenImage(TokenType modelTokenType)
+    private void SetupTokenImage(TokenType modelTokenType, int modelNumberOfTokens)
     {
-        tokenImage.color = modelTokenType switch
-        {
-            TokenType.Blue => Color.blue,
-            TokenType.Red => Color.red,
-            TokenType.Brown => Color.yellow,
-            TokenType.Green => Color.green,
-            TokenType.Purple => Color.magenta,
-            TokenType.All => Color.cyan,
-            _ => tokenImage.color
-        };
+        tokenImage.sprite = tokenImages.GetStackImage(modelTokenType, modelNumberOfTokens);
     }
 
     public void OnPointerClick(PointerEventData eventData)

@@ -44,6 +44,12 @@ public class BoardManager
     private void InitializeBoardController()
     {
         _boardController = new BoardController(_boardModel, _boardView);
+
+        HandleBoardEvents();
+    }
+
+    private void HandleBoardEvents()
+    {
         _boardController.OnCardClicked += HandleCardClicked;
     }
     
@@ -63,8 +69,7 @@ public class BoardManager
     {
         Debug.LogError($"Card Click Action {cardData.Id}");
 
-        var overlayData = new CardActionOverlayData(cardData, HandleCardBuy, HandleCardReserve);
-        OverlayManager.OpenCardActionOverlay(overlayData);
+        
     }
     
     // Expose necessary methods to change board
@@ -74,15 +79,14 @@ public class BoardManager
         _boardModel.InitializeBoard(boardData);
     }
 
-    public void AddCard(CardData cardData, int index)
+    public void PutCardOnBoard(CardData cardData, int index)
     {
-        _boardModel.GetCardsRowModelForLevel(cardData.Level).TrySetCardAt(cardData, index);
+        _boardModel.AddCard(cardData, index);
     }
 
-    public void RemoveCard(int level, int index)
+    public void ShowCardInfo(CardData cardData)
     {
-        _boardModel.GetCardsRowModelForLevel(level).TryRemoveCardAt(index);
+        
     }
-
     // 
 }

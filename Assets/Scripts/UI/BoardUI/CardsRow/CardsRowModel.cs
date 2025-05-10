@@ -1,4 +1,5 @@
 using System;
+using UnityEngine;
 
 public class CardsRowModel
 {
@@ -24,13 +25,19 @@ public class CardsRowModel
     {
         for (int i = 0; i < cardDatas.Length; i++)
         {
-            TrySetCardAt(cardDatas[i], i);
+            AddCard(cardDatas[i], i);
         }
     }
 
     public void AddCard(CardData cardData, int index)
     {
-        
+        if (index < 0 || index >= SlotCount)
+        {
+            Debug.LogError("Invalid index");
+            return;
+        }
+
+        Slots[index].SetCard(cardData);
     }
 
     public void RemoveCard(int index)
@@ -66,24 +73,6 @@ public class CardsRowModel
         Slots[index].SetCardVisible(false);
     }
 
-    public bool TrySetCardAt(CardData cardData, int index)
-    {
-        if (index < 0 || index >= SlotCount)
-        {
-            return false;
-        }
-        
-        return Slots[index].TrySetCardModel(cardData);
-    }
-
-    public bool TryRemoveCardAt(int index)
-    {
-        if (index < 0 || index >= SlotCount)
-        {
-            return false;
-        }
-        return Slots[index].TryRemoveCardModel();
-    }
 
     public CardModel GetCardModelAt(int index)
     {

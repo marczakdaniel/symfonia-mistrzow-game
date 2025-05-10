@@ -39,7 +39,8 @@ namespace DefaultNamespace.Managers
                 tokens += 1;
             }
 
-            tokenPanelModel = new TokenPanelModel(initialValues);
+            tokenPanelModel = new TokenPanelModel();
+            tokenPanelModel.InitializeTokenPanel(initialValues);
         }
         
         
