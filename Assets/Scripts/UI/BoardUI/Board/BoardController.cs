@@ -19,7 +19,9 @@ public class BoardController
         View = view;
 
         ConnectModelEvents();
-        InitializeController();
+        ConnectViewEvents();
+        InitializeChildControllers();
+        ConnectChildControllersEvents();
     }
 
     private void ConnectModelEvents()
@@ -27,6 +29,10 @@ public class BoardController
         Model.OnBoardInitialized += HandleModelBoardInitialized;
         Model.OnCardAdded += HandleModelCardAdded;
         Model.OnCardRemoved += HandleModelCardRemoved;
+    }
+
+    private void ConnectViewEvents()
+    {
     }
 
     private void HandleModelBoardInitialized()
@@ -65,7 +71,7 @@ public class BoardController
         
     }
 
-    private void InitializeController()
+    private void InitializeChildControllers()
     {
         for (var index = 0; index < 3; index++)
         {
@@ -73,7 +79,14 @@ public class BoardController
             var cardsRowView = View.GetCardsRowView(index);
 
             _cardsRowControllers[index] = new CardsRowController(cardsRowModel, cardsRowView);
-            _cardsRowControllers[index].OnCardClicked += HandleClicked;
+        }
+    }
+
+    private void ConnectChildControllersEvents()
+    {
+        foreach (var cardsRowController in _cardsRowControllers)
+        {
+            cardsRowController.OnCardClicked += HandleClicked;
         }
     }
 

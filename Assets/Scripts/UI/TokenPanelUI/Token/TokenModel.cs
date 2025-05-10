@@ -5,6 +5,7 @@ public class TokenModel
 {
     public Action<int> OnTokenAdded;
     public Action<int> OnTokenRemoved;
+    public Action OnTokenInitialized;
     public TokenType TokenType { get; set; }
     public int NumberOfTokens { get; set; }
 
@@ -13,9 +14,10 @@ public class TokenModel
         TokenType = tokenType;
     }
 
-    public void InitalizeToken(int initialNumberOfTokens)
+    public void InitializeToken(int initialNumberOfTokens)
     {
         NumberOfTokens = initialNumberOfTokens;
+        OnTokenInitialized?.Invoke();
     }
 
     public void AddToken(int value = 1)

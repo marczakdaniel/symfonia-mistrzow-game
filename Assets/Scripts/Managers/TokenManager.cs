@@ -1,10 +1,11 @@
 using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 
 public class TokenManager
 {
     private TokenPanelModel _tokenPanelModel;
     private TokenPanelView _tokenPanelView;
-    private TokenPanelPresenter _tokenPanelController;
+    private TokenPanelPresenter _tokenPanelPresenter;
 
     public TokenManager()
     {
@@ -15,7 +16,8 @@ public class TokenManager
     {
         InitializeTokenPanelModel();
         InitializeTokenPanelView(tokenPanelView);
-        InitializeTokenPanelController();
+        InitializeTokenPanelPresenter();
+        ConnectTokenPanelEvents();
     }
 
     private void InitializeTokenPanelModel()
@@ -28,39 +30,37 @@ public class TokenManager
         _tokenPanelView = tokenPanelView;
     }   
 
-    private void InitializeTokenPanelController()
+    private void InitializeTokenPanelPresenter()
     {
-        _tokenPanelController = new TokenPanelPresenter(_tokenPanelModel, _tokenPanelView);
-        HandleTokenPanelEvents();
+        _tokenPanelPresenter = new TokenPanelPresenter(_tokenPanelModel, _tokenPanelView);
+    }
+
+    private void ConnectTokenPanelEvents()
+    {
+        _tokenPanelPresenter.OnTokenClicked += HandleTokenClicked;
     }
 
     // Handle Token Panel Events
-
-    private void HandleTokenPanelEvents()
-    {
-        _tokenPanelController.OnTokenClicked += HandleTokenClicked;
-    }
-
     private void HandleTokenClicked(TokenModel tokenModel)
     {
-        // TODO: Handle token clicked
+        _tokenPanelPresenter.AddToken(tokenModel.TokenType, 1);
     }   
 
     // Expose necessary methods to change board
 
     public void InitializeTokenPanel(Dictionary<TokenType, int> initialTokensValues)
     {
-        _tokenPanelModel.InitializeTokenPanel(initialTokensValues);
+        _tokenPanelPresenter.InitializeTokenPanel(initialTokensValues).Forget();
     }
 
     public void AddToken(TokenType tokenType, int value)
     {
-        _tokenPanelModel.AddToken(tokenType, value);
+        _tokenPanelPresenter.AddToken(tokenType, value);
     }
 
     public void RemoveToken(TokenType tokenType, int value)
     {
-        _tokenPanelModel.RemoveToken(tokenType, value);
+        _tokenPanelPresenter.RemoveToken(tokenType, value);
     }
     
 }

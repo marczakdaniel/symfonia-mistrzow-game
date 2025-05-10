@@ -1,8 +1,10 @@
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 public class TokenPanelView : MonoBehaviour
 {
     [SerializeField] private TokenView[] tokenViews;
+    [SerializeField] private TokenPanelInitializeAnimation tokenPanelInitializeAnimation;
 
     public TokenView GetTokenView(int index)
     {
@@ -13,5 +15,10 @@ public class TokenPanelView : MonoBehaviour
         }
 
         return tokenViews[index];
+    }
+
+    public async UniTask InitializeTokenPanel()
+    {
+        await tokenPanelInitializeAnimation.InitializeTokenPanel();
     }
 }

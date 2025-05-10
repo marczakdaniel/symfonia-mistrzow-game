@@ -1,12 +1,13 @@
 using System;
 using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 
 public class TokenPanelPresenter
 {
     private TokenPanelModel Model;
     private TokenPanelView View;
 
-    private Dictionary<TokenType, TokenPresenter> _tokenControllers;
+    private Dictionary<TokenType, TokenPresenter> _tokenPresenter;
 
     public Action<TokenModel> OnTokenClicked;
 
@@ -23,7 +24,7 @@ public class TokenPanelPresenter
 
     private void InitializeController()
     {
-        _tokenControllers = new Dictionary<TokenType, TokenPresenter>();
+        _tokenPresenter = new Dictionary<TokenType, TokenPresenter>();
     }
 
     private void InitializeChildControllers()
@@ -31,10 +32,10 @@ public class TokenPanelPresenter
         var index = 0;
         foreach (var tokenType in Model.AllTokenTypes)
         {
-            var tokenModel = Model.GetTokenModel(tokenType);
+            var tokenModel = new TokenModel(tokenType);
             var tokenView = View.GetTokenView(index);
 
-            _tokenControllers[tokenType] = new TokenPresenter(tokenModel, tokenView);
+            _tokenPresenter[tokenType] = new TokenPresenter(tokenModel, tokenView);
             index++;
         }
     }
@@ -43,9 +44,9 @@ public class TokenPanelPresenter
 
     private void ConnectChildControllersEvents()
     {
-        foreach (var tokenController in _tokenControllers)
+        foreach (var tokenPresenter in _tokenPresenter)
         {
-            tokenController.Value.OnTokenClicked += HandleClick;
+            tokenPresenter.Value.OnTokenClicked += HandleClick;
         }
     }
 
@@ -63,14 +64,24 @@ public class TokenPanelPresenter
 
     // Father -> Child Presenter
 
+    public async UniTask InitializeTokenPanel(Dictionary<TokenType, int> initialTokensValues)
+    {
+        foreach (var token in (TokenType[]) Enum.GetValues(typeof(TokenType)))
+        {
+            initialTokensValues.TryGetValue(token, out var initialTokensValue);
+            _tokenPresenter[token].InitializeToken(initialTokensValue);
+        }
+        await View.InitializeTokenPanel();
+    }
+
     public void AddToken(TokenType tokenType, int value = 1)
     {
-        _tokenControllers[tokenType].AddToken(value);
+        _tokenPresenter[tokenType].AddToken(value);
     }
 
     public void RemoveToken(TokenType tokenType, int value = 1)
     {
-        _tokenControllers[tokenType].RemoveToken(value);
+        _tokenPresenter[tokenType].RemoveToken(value);
     }
     
 

@@ -21,16 +21,21 @@ public class TokenView : MonoBehaviour, IPointerClickHandler
         SetupNumberOfTokens(model.NumberOfTokens);
     }
 
+    public void InitializeToken(int numberOfTokens)
+    {
+        SetupNumberOfTokens(numberOfTokens);
+    }
+
     public async UniTask AddToken(int numberOfTokens, int difference)
     {
         SetupNumberOfTokens(numberOfTokens);
-        await valueChangeAnimation.PlayValueChangeAnimation(numberOfTokens, true);
+        await valueChangeAnimation.PlayValueChangeAnimation(difference, true);
     }
 
     public async UniTask RemoveToken(int numberOfTokens, int difference)
     {
         SetupNumberOfTokens(numberOfTokens);
-        await valueChangeAnimation.PlayValueChangeAnimation(numberOfTokens, false);
+        await valueChangeAnimation.PlayValueChangeAnimation(difference, false);
     }
 
     public void UpdateView(TokenModel model)
@@ -46,6 +51,7 @@ public class TokenView : MonoBehaviour, IPointerClickHandler
 
     private void SetupTokenImage(TokenType modelTokenType, int modelNumberOfTokens)
     {
+        return;
         tokenImage.sprite = tokenImages.GetStackImage(modelTokenType, modelNumberOfTokens);
     }
 

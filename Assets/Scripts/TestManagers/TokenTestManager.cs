@@ -9,24 +9,25 @@ namespace DefaultNamespace.Managers
     {
         [SerializeField] private TokenPanelView tokenPanelView;
 
-        private TokenPanelModel tokenPanelModel;
-        private TokenPanelPresenter tokenPanelController;
+        private TokenManager tokenManager;
+
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.T))
+            {
+                CreateTestModel();
+            }
+        }
 
         private void Start()
         {
-            CreateTestModel();
             InitializeGame();
         }
 
         private void InitializeGame()
         {
-            tokenPanelController = new TokenPanelPresenter(tokenPanelModel, tokenPanelView);
-            tokenPanelController.OnTokenClicked += HandleClick;
-        }
-
-        private void HandleClick(TokenModel tokenModel)
-        {
-            tokenPanelController.RemoveToken(tokenModel.TokenType);
+            tokenManager = new TokenManager();
+            tokenManager.InitializeTokenPanelMVC(tokenPanelView);
         }
 
         private void CreateTestModel()
@@ -39,8 +40,7 @@ namespace DefaultNamespace.Managers
                 tokens += 1;
             }
 
-            tokenPanelModel = new TokenPanelModel();
-            tokenPanelModel.InitializeTokenPanel(initialValues);
+            tokenManager.InitializeTokenPanel(initialValues);
         }
         
         

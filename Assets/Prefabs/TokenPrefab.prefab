@@ -384,7 +384,7 @@ MonoBehaviour:
   tokenImage: {fileID: 8617434199198592409}
   numberOfTokensText: {fileID: 3513165200362185108}
   tokenImages: {fileID: 0}
-  valueChangeAnimation: {fileID: 0}
+  valueChangeAnimation: {fileID: 1679317143888623620}
 --- !u!1 &8484523435053765580
 GameObject:
   m_ObjectHideFlags: 0

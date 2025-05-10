@@ -36,6 +36,7 @@ public class TokenPresenter
     {
         Model.OnTokenAdded += ShowAddToken;
         Model.OnTokenRemoved += ShowRemoveToken;
+        Model.OnTokenInitialized += ShowInitializeToken;
     }
 
     private void HandleModelNumberOfTokensChanged()
@@ -43,9 +44,10 @@ public class TokenPresenter
         View.UpdateView(Model);
     }
 
-    private void ShowInitializeToken(TokenModel model)
+    private void ShowInitializeToken()
     {
-
+        View.Setup(Model);
+        View.InitializeToken(Model.NumberOfTokens);
     }
 
     private void ShowAddToken(int difference)
@@ -60,9 +62,9 @@ public class TokenPresenter
 
     // Father Presenter -> Presenter -> Model
 
-    public void InitializeToken(TokenModel model)
+    public void InitializeToken(int initialValue)
     {
-
+        Model.InitializeToken(initialValue);
     }
 
     public void AddToken(int value)
