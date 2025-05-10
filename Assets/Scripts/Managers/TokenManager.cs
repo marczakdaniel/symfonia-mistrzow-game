@@ -4,7 +4,7 @@ public class TokenManager
 {
     private TokenPanelModel _tokenPanelModel;
     private TokenPanelView _tokenPanelView;
-    private TokenPanelController _tokenPanelController;
+    private TokenPanelPresenter _tokenPanelController;
 
     public TokenManager()
     {
@@ -30,7 +30,7 @@ public class TokenManager
 
     private void InitializeTokenPanelController()
     {
-        _tokenPanelController = new TokenPanelController(_tokenPanelModel, _tokenPanelView);
+        _tokenPanelController = new TokenPanelPresenter(_tokenPanelModel, _tokenPanelView);
         HandleTokenPanelEvents();
     }
 

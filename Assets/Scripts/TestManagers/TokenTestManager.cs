@@ -10,7 +10,7 @@ namespace DefaultNamespace.Managers
         [SerializeField] private TokenPanelView tokenPanelView;
 
         private TokenPanelModel tokenPanelModel;
-        private TokenPanelController tokenPanelController;
+        private TokenPanelPresenter tokenPanelController;
 
         private void Start()
         {
@@ -20,7 +20,7 @@ namespace DefaultNamespace.Managers
 
         private void InitializeGame()
         {
-            tokenPanelController = new TokenPanelController(tokenPanelModel, tokenPanelView);
+            tokenPanelController = new TokenPanelPresenter(tokenPanelModel, tokenPanelView);
             tokenPanelController.OnTokenClicked += HandleClick;
         }
 

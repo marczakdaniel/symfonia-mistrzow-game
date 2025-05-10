@@ -4,6 +4,8 @@ using System.Linq;
 
 public class TokenPanelModel
 {
+
+
     private Dictionary<TokenType, TokenModel> _tokenModels; 
     
     public TokenPanelModel()
@@ -27,7 +29,7 @@ public class TokenPanelModel
 
     public void AddToken(TokenType tokenType, int value)
     {
-        _tokenModels[tokenType].AddToken(value);
+        
     }
     
     public void RemoveToken(TokenType tokenType, int value)

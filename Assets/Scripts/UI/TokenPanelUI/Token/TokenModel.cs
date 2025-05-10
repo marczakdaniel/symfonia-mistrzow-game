@@ -3,7 +3,8 @@ using System;
 
 public class TokenModel
 {
-    public Action OnNumberOfTokensChanged;
+    public Action<int> OnTokenAdded;
+    public Action<int> OnTokenRemoved;
     public TokenType TokenType { get; set; }
     public int NumberOfTokens { get; set; }
 
@@ -20,12 +21,12 @@ public class TokenModel
     public void AddToken(int value = 1)
     {
         NumberOfTokens += value;
-        OnNumberOfTokensChanged?.Invoke();
+        OnTokenAdded?.Invoke(value);
     }
 
     public void RemoveToken(int value = 1)
     {
         NumberOfTokens = Math.Max(0, NumberOfTokens - value);
-        OnNumberOfTokensChanged?.Invoke();
+        OnTokenRemoved?.Invoke(value);
     }
 }

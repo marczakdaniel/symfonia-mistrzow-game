@@ -4,12 +4,14 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using DefaultNamespace.ScriptableObjects;
+using Cysharp.Threading.Tasks;
 
 public class TokenView : MonoBehaviour, IPointerClickHandler
 {
     [SerializeField] private Image tokenImage;
     [SerializeField] private TextMeshProUGUI numberOfTokensText;
     [SerializeField] private TokensImagesSO tokenImages;
+    [SerializeField] private TokenValueChangeAnimation valueChangeAnimation;
 
     public Action OnTokenClicked;
 
@@ -17,6 +19,18 @@ public class TokenView : MonoBehaviour, IPointerClickHandler
     {
         SetupTokenImage(model.TokenType, model.NumberOfTokens);
         SetupNumberOfTokens(model.NumberOfTokens);
+    }
+
+    public async UniTask AddToken(int numberOfTokens, int difference)
+    {
+        SetupNumberOfTokens(numberOfTokens);
+        await valueChangeAnimation.PlayValueChangeAnimation(numberOfTokens, true);
+    }
+
+    public async UniTask RemoveToken(int numberOfTokens, int difference)
+    {
+        SetupNumberOfTokens(numberOfTokens);
+        await valueChangeAnimation.PlayValueChangeAnimation(numberOfTokens, false);
     }
 
     public void UpdateView(TokenModel model)
