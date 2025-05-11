@@ -1,25 +1,37 @@
 using System;
 using UnityEngine;
 
-public class CardController
+public class CardPresenter
 {
     public Action<CardData> OnCardClicked;
 
     private CardModel Model;
     private CardView View;
     
-    public CardController(CardModel model, CardView view)
+    public CardPresenter(CardModel model, CardView view)
     {
         Model = model;
         View = view;
-        
-        Model.OnCardSet += HandleOnCardSet;
-        Model.OnCardRemove += HandleOnCardRemove;
-        Model.OnCardVisibleChanged += HandleOnCardVisibleChanged;
-        View.OnCardClicked += HandleClick;
+
+        ConnectModelEvents();
+        ConnectViewEvents();
         
         View.Initialize();
     }
+
+    private void ConnectModelEvents()
+    {
+        Model.OnCardSet += HandleOnCardSet;
+        Model.OnCardRemove += HandleOnCardRemove;
+        Model.OnCardVisibleChanged += HandleOnCardVisibleChanged;
+    }
+
+    private void ConnectViewEvents()
+    {
+        View.OnCardClicked += HandleClick;
+    }
+
+    // Model -> Presenter -> View
 
     private void HandleOnCardVisibleChanged()
     {
@@ -38,9 +50,27 @@ public class CardController
         View.Setup(Model.CurrentCard);
     }
 
+    // Presenter -> Father Presenter
+
     private void HandleClick()
     {
         OnCardClicked.Invoke(Model.CurrentCard);
-        Model.ActionElementEnabled = !Model.ActionElementEnabled;
     }
+
+    //  Father Presenter -> Presenter -> Model
+    public void SetCard(CardData cardData)
+    {
+        Model.SetCard(cardData);
+    }
+
+    public void RemoveCard()
+    {
+        Model.RemoveCard();
+    }
+
+    public void SetCardVisible(bool visible)
+    {
+        Model.SetCardVisible(visible);
+    }
+    
 }

@@ -1,21 +1,23 @@
+using System;
+using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using UnityEngine;
 
 public class TokenPanelInitializeAnimation : MonoBehaviour
 {
-    [SerializeField] private RectTransform tokenPanel;
+    [SerializeField] private TokenInitializeAnimation[] tokenInitializeAnimations;
 
     public async UniTask InitializeTokenPanel()
     {
-        var isFinished = false;
-        var seq = DOTween.Sequence();
-        seq.Append(tokenPanel.DOLocalMoveY(0f, 1.5f).SetEase(Ease.OutBack));
-        seq.OnComplete(() =>
-        {
-            isFinished = true;
-        });
+        var tasks = new List<UniTask>();
 
-        await UniTask.WaitUntil(() => isFinished);
+        foreach (var tokenInitializeAnimation in tokenInitializeAnimations)
+        {
+            tasks.Add(tokenInitializeAnimation.Play(1.2f));
+            await UniTask.Delay(TimeSpan.FromSeconds(0.4f));
+        }
+
+        await UniTask.WhenAll(tasks);
     }
 }

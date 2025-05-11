@@ -9,6 +9,7 @@ using UnityEngine;
 public class BoardTestManager : MonoBehaviour
 {
     [SerializeField] private BoardView boardView;
+    [SerializeField] private CardInfoView cardInfoView;
 
     [SerializeField] private CardPool testCardDatas;
     
@@ -39,6 +40,7 @@ public class BoardTestManager : MonoBehaviour
     {
         boardManager = new BoardManager(OverlayManager);
         boardManager.InitializeBoardMVC(boardView);
+        boardManager.InitializeCardInfoPresenter(cardInfoView);
     }
 
     private void CreateCardData()

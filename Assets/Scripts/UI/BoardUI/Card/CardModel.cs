@@ -9,12 +9,11 @@ public class CardModel
     
     public CardData CurrentCard;
     public bool IsCardVisible;
+    public int Position;
 
-    public bool ActionElementEnabled;
-
-    public CardModel()
+    public CardModel(int position)
     {
-        
+        Position = position;
     }
 
     public void SetCardVisible(bool value)

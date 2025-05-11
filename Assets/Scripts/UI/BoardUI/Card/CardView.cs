@@ -42,6 +42,12 @@ public class CardView : MonoBehaviour, IPointerClickHandler
         frontSide.SetActive(false);
         backSide.SetActive(true);
     }
+
+    public void ShowFrontSide()
+    {
+        frontSide.SetActive(true);
+        backSide.SetActive(false);
+    }
     
     private void SetupSkillImage(SkillType modelSkill)
     {
