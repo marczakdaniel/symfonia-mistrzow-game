@@ -198,6 +198,7 @@ MonoBehaviour:
   costView: {fileID: 1682409477140091055}
   cardImage: {fileID: 1210797106179651962}
   pointsText: {fileID: 4515048570056477245}
+  resourceProvidedImage: {fileID: 2180007092918314667}
 --- !u!1 &1080086808751979315
 GameObject:
   m_ObjectHideFlags: 0
@@ -687,6 +688,7 @@ MonoBehaviour:
   costView: {fileID: 1682409477140091055}
   cardImage: {fileID: 1210797106179651962}
   pointsText: {fileID: 4515048570056477245}
+  resourceProvidedImage: {fileID: 0}
 --- !u!1 &8880611985354385637
 GameObject:
   m_ObjectHideFlags: 0
