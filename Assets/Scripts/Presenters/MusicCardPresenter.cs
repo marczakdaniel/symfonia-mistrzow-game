@@ -1,19 +1,21 @@
 using DefaultNamespace.Models;
 using DefaultNamespace.Views;
 using R3;
+using System;
 using UnityEngine;
 
 namespace DefaultNamespace.Presenters
 {
-    public class MusicCardPresenter
+    public class MusicCardPresenter : IDisposable
     {
         private readonly MusicCardView view;
         private readonly MusicCardModel model;
+        private readonly CompositeDisposable subscriptions = new CompositeDisposable();
 
         public MusicCardPresenter(MusicCardView view, MusicCardModel model)
         {
-            this.view = view;
-            this.model = model;
+            this.view = view ?? throw new ArgumentNullException(nameof(view));
+            this.model = model ?? throw new ArgumentNullException(nameof(model));
 
             InitializeMVP();
         }
@@ -26,7 +28,7 @@ namespace DefaultNamespace.Presenters
 
         private void ConnectModel()
         {
-            model.State.Subscribe(HandleStateChange);
+            model.State.Subscribe(HandleStateChange).AddTo(subscriptions);
         }
 
         private void ConnectView()
@@ -41,7 +43,12 @@ namespace DefaultNamespace.Presenters
 
         private void HandleStateChange(MusicCardState state)
         {
-            Debug.Log("State changed to: " + state);
+            Debug.Log($"State changed to: {state}");
+        }
+
+        public void Dispose()
+        {
+            subscriptions?.Dispose();
         }
     }
 }
