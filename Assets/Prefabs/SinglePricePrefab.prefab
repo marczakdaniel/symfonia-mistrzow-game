@@ -237,7 +237,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6256665194132920228}
   - component: {fileID: 3134928227978500395}
-  - component: {fileID: 6282481260758646877}
+  - component: {fileID: 7317351311961268707}
   m_Layer: 5
   m_Name: SinglePricePrefab
   m_TagString: Untagged
@@ -274,7 +274,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9090270044129412538}
   m_CullTransparentMesh: 1
---- !u!114 &6282481260758646877
+--- !u!114 &7317351311961268707
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -283,9 +283,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 9090270044129412538}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5107c3156f0a4dbda25f0b093530b9e3, type: 3}
+  m_Script: {fileID: 11500000, guid: d23f00df973d8a14c9072ee64c5c3612, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  image: {fileID: 6394337993688443049}
+  costImage: {fileID: 6394337993688443049}
   costText: {fileID: 5434247049639127350}
-  tokenImages: {fileID: 11400000, guid: 0c9f174900726f94e94adc2d5df588b4, type: 2}
