@@ -33,7 +33,7 @@ namespace DefaultNamespace.Presenters
 
         private void ConnectView()
         {
-            view.OnCardClicked.Subscribe(HandleCardClick);
+            view.OnCardClicked.Subscribe(HandleCardClick).AddTo(subscriptions);
         }
 
         private void HandleCardClick(Unit unit)
