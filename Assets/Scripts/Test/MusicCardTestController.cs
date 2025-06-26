@@ -119,7 +119,7 @@ namespace DefaultNamespace.Test
             if (musicCardPrefab != null && cardContainer != null)
             {
                 var cardObject = Instantiate(musicCardPrefab, cardContainer);
-                var cardView = cardObject.GetComponent<MusicCardView>();
+                var cardView = cardObject.GetComponent<BoardMusicCardView>();
                 
                 if (cardView != null)
                 {

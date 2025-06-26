@@ -9,7 +9,7 @@ using System;
 
 namespace DefaultNamespace.Views
 {
-    public class MusicCardView : MonoBehaviour, IPointerClickHandler
+    public class BoardMusicCardView : MonoBehaviour, IPointerClickHandler
     {
         public Subject<Unit> OnCardClicked { get; private set; } = new Subject<Unit>();
 

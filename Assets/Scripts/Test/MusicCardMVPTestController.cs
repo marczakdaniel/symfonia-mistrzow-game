@@ -38,11 +38,11 @@ namespace DefaultNamespace.Test
         private class MVPTestCard
         {
             public MusicCardModel Model { get; }
-            public MusicCardView View { get; }
-            public MusicCardPresenter Presenter { get; }
+            public BoardMusicCardView View { get; }
+            public BoardMusicCardPresenter Presenter { get; }
             public GameObject GameObject { get; }
             
-            public MVPTestCard(MusicCardModel model, MusicCardView view, MusicCardPresenter presenter, GameObject gameObject)
+            public MVPTestCard(MusicCardModel model, BoardMusicCardView view, BoardMusicCardPresenter presenter, GameObject gameObject)
             {
                 Model = model;
                 View = view;
@@ -135,7 +135,7 @@ namespace DefaultNamespace.Test
             {
                 // Utwórz GameObject karty
                 var cardObject = Instantiate(musicCardPrefab, cardContainer);
-                var cardView = cardObject.GetComponent<MusicCardView>();
+                var cardView = cardObject.GetComponent<BoardMusicCardView>();
                 
                 if (cardView == null)
                 {
@@ -148,7 +148,7 @@ namespace DefaultNamespace.Test
                 var cardModel = new MusicCardModel(cardData);
                 
                 // Utwórz Presenter (łączy Model i View)
-                var cardPresenter = new MusicCardPresenter(cardView, cardModel);
+                var cardPresenter = new BoardMusicCardPresenter(cardView, cardModel);
                 
                 // Skonfiguruj View z danymi
                 cardView.Setup(cardData);
@@ -166,7 +166,7 @@ namespace DefaultNamespace.Test
                     Debug.Log($"Card '{cardData.cardName}' state changed to: {state}");
                     UpdateModelStateText();
                 });
-                
+
                 
                 cardModel.OwnerId.Subscribe(ownerId => 
                 {

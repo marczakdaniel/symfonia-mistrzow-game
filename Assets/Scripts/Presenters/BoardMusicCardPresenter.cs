@@ -6,13 +6,13 @@ using UnityEngine;
 
 namespace DefaultNamespace.Presenters
 {
-    public class MusicCardPresenter : IDisposable
+    public class BoardMusicCardPresenter : IDisposable
     {
-        private readonly MusicCardView view;
+        private readonly BoardMusicCardView view;
         private readonly MusicCardModel model;
         private readonly CompositeDisposable subscriptions = new CompositeDisposable();
 
-        public MusicCardPresenter(MusicCardView view, MusicCardModel model)
+        public BoardMusicCardPresenter(BoardMusicCardView view, MusicCardModel model)
         {
             this.view = view ?? throw new ArgumentNullException(nameof(view));
             this.model = model ?? throw new ArgumentNullException(nameof(model));

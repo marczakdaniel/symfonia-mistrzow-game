@@ -5,9 +5,9 @@ namespace DefaultNamespace.Views
 {
     public class BoardView : MonoBehaviour
     {
-        [SerializeField] private MusicCardView[] level1Cards = new MusicCardView[4];
-        [SerializeField] private MusicCardView[] level2Cards = new MusicCardView[4];
-        [SerializeField] private MusicCardView[] level3Cards = new MusicCardView[4];
+        [SerializeField] private BoardMusicCardView[] level1Cards = new BoardMusicCardView[4];
+        [SerializeField] private BoardMusicCardView[] level2Cards = new BoardMusicCardView[4];
+        [SerializeField] private BoardMusicCardView[] level3Cards = new BoardMusicCardView[4];
 
         public void InitializeBoard()
         {
