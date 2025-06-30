@@ -24,6 +24,9 @@ namespace DefaultNamespace.Models
         public ReadOnlyReactiveProperty<MusicCardState> State => state;
         public ReadOnlyReactiveProperty<string> OwnerId => ownerId;
         public ReadOnlyReactiveProperty<int> BoardPosition => boardPosition;
+
+        // Data properties
+        public string Id => data.id;
         public MusicCardData Data => data;
 
         public MusicCardModel(MusicCardData data)

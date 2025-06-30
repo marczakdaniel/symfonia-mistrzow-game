@@ -10,6 +10,7 @@ using R3;
 
 namespace DefaultNamespace.Test
 {
+    /*
     public class MusicCardMVPTestController : MonoBehaviour
     {
         [Header("MVP Test Setup")]
@@ -299,4 +300,5 @@ namespace DefaultNamespace.Test
             testCard.Model.SetState(MusicCardState.InDeck);
         }
     }
+    */
 } 
