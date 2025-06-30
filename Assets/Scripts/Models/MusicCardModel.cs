@@ -27,6 +27,9 @@ namespace DefaultNamespace.Models
 
         // Data properties
         public string Id => data.id;
+        public int Level => data.level;
+        public string CardName => data.cardName;
+        public string CardDescription => data.cardDescription;
         public MusicCardData Data => data;
 
         public MusicCardModel(MusicCardData data)

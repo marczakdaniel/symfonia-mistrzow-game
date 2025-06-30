@@ -36,8 +36,8 @@ namespace DefaultNamespace.MusicCardDetailsPanel {
             OnReserveButtonClick.OnNext(unit);
         }
         public void SetCardDetails(MusicCardModel musicCardModel) {
-            cardName.text = musicCardModel.Data.cardName;
-            cardDescription.text = musicCardModel.Data.cardDescription;
+            cardName.text = musicCardModel.CardName ;
+            cardDescription.text = musicCardModel.CardDescription;
             detailsMusicCardView.Setup(musicCardModel.Data);
         }
 
