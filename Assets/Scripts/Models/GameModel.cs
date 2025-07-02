@@ -1,12 +1,20 @@
-using System.Collections.Generic;
+namespace Models
+{
+    public interface IGameModelReader
+    {
 
-namespace DefaultNamespace.Models {
-    public class GameModel {
-        private List<PlayerModel> players = new List<PlayerModel>();
-        private List<MusicCardModel> cards = new List<MusicCardModel>();
+    }
 
-        public GameModel() {
-            
-        }
+    public interface IGameModelWriter
+    {
+
+    }
+    
+    public class GameModel
+    {
+        public string GameId { get; private set; }
+        public string GameName { get; private set; }
+        public int PlayerCount { get; private set; }
+        
     }
 }
