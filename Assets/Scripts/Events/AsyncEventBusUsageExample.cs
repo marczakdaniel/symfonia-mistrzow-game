@@ -1,6 +1,7 @@
 using Cysharp.Threading.Tasks;
 using Models;
 using UnityEngine;
+using Events;
 
 namespace Command
 {
@@ -16,7 +17,7 @@ namespace Command
         {
             public async UniTask HandleAsync(GameStartedEvent gameEvent)
             {
-                Debug.Log($"[ExamplePresenter] Gra rozpoczęta: {gameEvent.GameModel.GameId}");
+                Debug.Log($"[ExamplePresenter] Gra rozpoczęta:");
                 
                 // Symuluj pracę UI (np. animacje)
                 await UniTask.Delay(500);
@@ -57,7 +58,7 @@ namespace Command
                 Debug.Log("[ExampleCommand] Wykonuję logikę biznesową...");
                 
                 // Publikuj event i czekaj na zakończenie wszystkich UI updates
-                var gameStartedEvent = new GameStartedEvent(GameModel.Instance);
+                var gameStartedEvent = new GameStartedEvent();
                 await AsyncEventBus.Instance.PublishAndWaitAsync(gameStartedEvent);
                 
                 Debug.Log("[ExampleCommand] Wszystkie UI updates zakończone!");

@@ -3,6 +3,7 @@ using Command;
 using UI.MusicCardDetailsPanel;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
+using Events;
 
 namespace UI.GameWindow
 {

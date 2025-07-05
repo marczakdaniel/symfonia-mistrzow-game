@@ -3,6 +3,7 @@ using UI.Board.BoardMusicCardPanel;
 using Models;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
+using Events;
 
 namespace UI.Board
 {

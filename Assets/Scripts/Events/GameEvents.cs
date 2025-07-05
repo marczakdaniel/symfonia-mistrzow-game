@@ -5,12 +5,9 @@ namespace Events
 {
     // Game State Events
     public class GameStartedEvent : GameEvent
-    {
-        public GameModel GameModel { get; }
-        
-        public GameStartedEvent(GameModel gameModel)
+    {        
+        public GameStartedEvent()
         {
-            GameModel = gameModel;
         }
     }
 
