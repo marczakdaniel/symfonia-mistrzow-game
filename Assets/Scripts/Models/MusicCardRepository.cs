@@ -46,7 +46,19 @@ namespace Models
 
         public MusicCardData GetCard(string cardId)
         {
-            return allCards.TryGetValue(cardId, out var card) ? card : null;
+            if (string.IsNullOrEmpty(cardId))
+            {
+                Debug.LogWarning($"[CardRepository] Cannot get card with id {cardId} because it is null or empty.");
+                return null;
+            }
+
+            if (!HasCard(cardId))
+            {
+                Debug.LogWarning($"[CardRepository] Cannot get card with id {cardId} because it does not exist.");
+                return null;
+            }
+
+            return allCards[cardId];
         }
 
         public bool HasCard(string cardId)

@@ -40,19 +40,30 @@ namespace Models
 
         public bool CanReserveMore() => ReservedCards.Count < 3;
 
-        public bool PurchaseCard(string cardId, BoardModel board)
+        public ResourceCollectionModel CalculateRealCost(ResourceCollectionModel cost)
+        {
+
+            return cost;
+        }
+
+        public bool AddCardToReserved(string cardId)
+        {
+            return ReservedCards.AddCard(cardId);
+        }
+
+        public bool AddCardToPurchased(string cardId)
+        {
+            return PurchasedCards.AddCard(cardId);
+        }
+
+        public bool RemoveTokens()
         {
             return true;
         }
 
-        public bool ReserveCard(string cardId, BoardModel board)
+        public bool AddTokens(string cardId)
         {
-            if (!CanReserveMore()) return false;
-
-            return false;
+            return true;
         }
-
-
-
     }
 }

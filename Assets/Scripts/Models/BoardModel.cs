@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using DefaultNamespace.Data;
@@ -86,6 +87,18 @@ namespace Models
             }
 
             Deck = new MusicCardCollectionModel();
+        }
+
+        public bool RemoveCard(string cardId)
+        {
+            var slot = FindSlotWithCard(cardId);
+            if (slot == null || slot.IsEmpty)
+            {
+                Debug.LogWarning($"[BoardLevel] Cannot remove card {cardId} from level: {Level} because it is not on the board.");
+                return false;
+            }
+
+            return slot.RemoveCard() == cardId;
         }
 
         public BoardSlot GetSlot(int position)
@@ -190,6 +203,27 @@ namespace Models
 
             return Levels[level - 1];
         }
+
+        public bool RemoveCardFromBoard(string cardId)
+        {
+            var cardModel = MusicCardRepository.Instance.GetCard(cardId);
+            if (cardModel == null)
+            {
+                return false;
+            }
+
+            var level = GetLevel(cardModel.level);
+            if (level == null)
+            {
+                return false;
+            }
+
+            return level.RemoveCard(cardId);
+        }
+        
+        // Card Management
+
+
 
         public string PurchaseCard(int level, int position)
         {

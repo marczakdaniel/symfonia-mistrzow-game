@@ -30,16 +30,12 @@ namespace Command
         public override string CommandType => "BuyMusicCard";
         public string MusicCardId { get; private set; }
 
-        private readonly IMusicCardService musicCardService;
-        private readonly IPlayerService playerService;
-
         private readonly GameModel gameModel;
 
-        public BuyMusicCardCommand(string playerId, string musicCardId, IMusicCardService musicCardService, IPlayerService playerService) : base(playerId)
+        public BuyMusicCardCommand(string playerId, string musicCardId, GameModel gameModel) : base(playerId)
         {
             this.MusicCardId = musicCardId;
-            this.musicCardService = musicCardService;
-            this.playerService = playerService;
+            this.gameModel = gameModel;
         }
 
         public override bool Validate()
@@ -50,7 +46,7 @@ namespace Command
             // - Player is current player
             // - Player has enough tokens
             // - Music card is on board
-            return playerService.IsPlayerTurn(PlayerId) && musicCardService.CanBuyMusicCard(PlayerId, MusicCardId);
+            return true;
         }
 
         public override bool Execute()
@@ -62,16 +58,17 @@ namespace Command
             // - Add new card to board
             // - Change current player
 
-            var playerModel = gameModel.GetPlayer(PlayerId);
-            //gameModel.Board.PurchaseCard(MusicCardId);
-            
+            // Change model
+            //var result = gameModel.PurchaseCard(PlayerId, MusicCardId);
 
-            //var musicCardModel = musicCardService.GetMusicCard(MusicCardId);
+            //if (!result)
+            //{
+            //    return false;
+            //}
 
-            
+            // TODO: Inform UI by EventBus
 
-
-            return musicCardService.BuyMusicCard(PlayerId, MusicCardId);
+            return true;
         }
     }
 
@@ -79,10 +76,12 @@ namespace Command
     {
         public override string CommandType => "ReserveMusicCard";
         public string MusicCardId { get; private set; }
+        private readonly GameModel gameModel;
 
-        public ReserveMusicCardCommand(string playerId, string musicCardId) : base(playerId)
+        public ReserveMusicCardCommand(string playerId, string musicCardId, GameModel gameModel) : base(playerId)
         {
             MusicCardId = musicCardId;
+            this.gameModel = gameModel;
         }
 
         public override bool Validate()
@@ -92,6 +91,14 @@ namespace Command
 
         public override bool Execute()
         {
+            var result = gameModel.ReserveCard(PlayerId, MusicCardId);
+
+            if (!result)
+            {
+                return false;
+            }
+
+            // TODO: Inform UI by EventBus
             return true;
         }
     }
