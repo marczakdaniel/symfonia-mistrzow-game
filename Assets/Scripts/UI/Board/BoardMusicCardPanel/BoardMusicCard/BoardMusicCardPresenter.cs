@@ -2,6 +2,7 @@ using Command;
 using Cysharp.Threading.Tasks;
 using DefaultNamespace.Data;
 using Manager;
+using Models;
 using R3;
 using System;
 using UnityEngine;
@@ -11,15 +12,18 @@ namespace UI.Board.BoardMusicCardPanel.BoardMusicCard
     public class BoardMusicCardPresenter : IDisposable
     {
         private readonly BoardMusicCardView view;
-        private readonly BoardMusicCardViewModel viewModel = new BoardMusicCardViewModel();
+        private readonly BoardMusicCardViewModel viewModel;
         private readonly CommandFactory commandFactory;
+        private readonly IGameModelReader gameModelReader;
         private readonly CompositeDisposable subscriptions = new CompositeDisposable();
 
-        public BoardMusicCardPresenter(BoardMusicCardView view, CommandFactory commandFactory)
+        public BoardMusicCardPresenter(BoardMusicCardView view, int level, int position, CommandFactory commandFactory, IGameModelReader gameModelReader)
         {
             this.view = view ?? throw new ArgumentNullException(nameof(view));
             this.commandFactory = commandFactory ?? throw new ArgumentNullException(nameof(commandFactory));
-
+            this.gameModelReader = gameModelReader ?? throw new ArgumentNullException(nameof(gameModelReader));
+            this.viewModel = new BoardMusicCardViewModel(level, position);
+            
             InitializeMVP();
         }
 
@@ -82,9 +86,11 @@ namespace UI.Board.BoardMusicCardPanel.BoardMusicCard
         
         // Public methods
 
-        public async UniTask PutCardOnBoard(string musicCardId, IMusicCardDataReader musicCardData)
+        public async UniTask PutCardOnBoard()
         {
-            if (!viewModel.PutCardOnBoard(musicCardId, musicCardData)) {
+            var musicCardSlot = gameModelReader.GetBoardSlot(viewModel.Level, viewModel.Position);
+
+            if (!viewModel.PutCardOnBoard(musicCardSlot.CardId, musicCardSlot.GetMusicCardData())) {
                 return;
             }
 

@@ -17,6 +17,7 @@ namespace Models
     public interface IGameModelReader
     {
         IMusicCardDataReader[,] GetCurrentBoardCards();
+        IBoardSlotReader GetBoardSlot(int level, int position);
     }
 
     public class GameModel : IGameModelReader
@@ -341,6 +342,11 @@ namespace Models
             }
             
             return readOnlyBoardCards;
+        }
+
+        public IBoardSlotReader GetBoardSlot(int level, int position)
+        {
+            return board.GetLevel(level).GetSlot(position);
         }
     }
 }

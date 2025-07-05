@@ -16,8 +16,12 @@ namespace UI.Board.BoardMusicCardPanel.BoardMusicCard
         public ReactiveProperty<BoardMusicCardState> State { get; private set; } = new ReactiveProperty<BoardMusicCardState>(BoardMusicCardState.Disabled);
         public ReactiveProperty<IMusicCardDataReader> MusicCardData { get; private set; } = new ReactiveProperty<IMusicCardDataReader>();
         public string MusicCardId { get; private set; }
+        public int Level { get; private set; }
+        public int Position { get; private set; }
 
-        public BoardMusicCardViewModel() {
+        public BoardMusicCardViewModel(int level, int position) {
+            Level = level;
+            Position = position;
         }
 
         public bool PutCardOnBoard(string musicCardId, IMusicCardDataReader musicCardData) {

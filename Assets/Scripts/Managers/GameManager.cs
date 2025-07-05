@@ -3,6 +3,8 @@ using Models;
 using UnityEngine;
 using UI.GameWindow;
 using Command;
+using System.Threading.Tasks;
+using Cysharp.Threading.Tasks;
 
 namespace Managers
 {
@@ -27,9 +29,10 @@ namespace Managers
             gameWindowPresenter = new GameWindowPresenter(gameWindowView, commandFactory);
         }
 
-        public void StartGame()
+        public async UniTask StartGame()
         {
-            gameWindowPresenter.StartGame();
+            var startGameCommand = new StartGameCommand(GameModel.Instance);
+            await startGameCommand.Execute();
         }
     }
 }

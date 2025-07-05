@@ -7,7 +7,17 @@ using UnityEngine;
 
 namespace Models
 {
-    public class BoardSlot
+
+    public interface IBoardSlotReader
+    {
+        int Position { get; }
+        int Level { get; }
+        string CardId { get; }
+        bool IsEmpty { get; }
+        bool IsOccupied { get; }
+        IMusicCardDataReader GetMusicCardData();
+    }
+    public class BoardSlot : IBoardSlotReader
     {
         public int Position { get; private set; }
         public int Level { get; private set; }
@@ -63,6 +73,11 @@ namespace Models
         public override string ToString()
         {
             return $"BoardSlot(Position: {Position}, Level: {Level}, CardId: {CardId}, IsEmpty: {IsEmpty})";
+        }
+
+        public IMusicCardDataReader GetMusicCardData()
+        {
+            return IsEmpty ? null : MusicCardRepository.Instance.GetCard(CardId);
         }
     }
 
