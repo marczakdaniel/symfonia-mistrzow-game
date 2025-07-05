@@ -1,5 +1,7 @@
 using Models;
 using Services;
+using Cysharp.Threading.Tasks;
+using Events;
 
 namespace Command
 {
@@ -7,11 +9,9 @@ namespace Command
     {
         public override string CommandType => "BoardMusicCardClicked";
 
-        private readonly IMusicCardService musicCardService;
-
-        public BoardMusicCardClickedCommand(string playerId, IMusicCardService musicCardService) : base(playerId)
+        public BoardMusicCardClickedCommand() : base()
         {
-            this.musicCardService = musicCardService;
+            
         }
 
         public override bool Validate()
@@ -19,13 +19,14 @@ namespace Command
             return true;
         }
 
-        public override bool Execute()
+        public override async UniTask<bool> Execute()
         {
+            await UniTask.Delay(1000);
             return true;
         }
     }
 
-    public class BuyMusicCardCommand : BaseCommand
+    public class BuyMusicCardCommand : BasePlayerActionCommand
     {
         public override string CommandType => "BuyMusicCard";
         public string MusicCardId { get; private set; }
@@ -49,7 +50,7 @@ namespace Command
             return true;
         }
 
-        public override bool Execute()
+        public override async UniTask<bool> Execute()
         {
             // TODO: Execute:
             // - Remove tokens from player
@@ -72,7 +73,7 @@ namespace Command
         }
     }
 
-    public class ReserveMusicCardCommand : BaseCommand
+    public class ReserveMusicCardCommand : BasePlayerActionCommand
     {
         public override string CommandType => "ReserveMusicCard";
         public string MusicCardId { get; private set; }
@@ -89,7 +90,7 @@ namespace Command
             return true;
         }
 
-        public override bool Execute()
+        public override async UniTask<bool> Execute()
         {
             var result = gameModel.ReserveCard(PlayerId, MusicCardId);
 
@@ -99,6 +100,30 @@ namespace Command
             }
 
             // TODO: Inform UI by EventBus
+            return true;
+        }
+    }
+
+    public class StartGameCommand : BaseGameFlowCommand
+    {
+        public override string CommandType => "StartGame";
+
+        private readonly GameModel gameModel;
+
+        public StartGameCommand(GameModel gameModel) : base()
+        {
+            this.gameModel = gameModel;
+        }
+
+        public override bool Validate()
+        {
+            return true;
+        }
+
+        public override async UniTask<bool> Execute()
+        {
+            var startGameEvent = new StartGameEvent();
+            await AsyncGameEventPublisher.PublishAsync(startGameEvent);
             return true;
         }
     }

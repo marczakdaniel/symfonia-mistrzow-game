@@ -5,22 +5,20 @@ using R3;
 using System;
 using UnityEngine;
 
-namespace UI.BoardMusicCard
+namespace UI.Board.BoardMusicCardPanel.BoardMusicCard
 {
     public class BoardMusicCardPresenter : IDisposable
     {
         private readonly BoardMusicCardView view;
-        private readonly BoardMusicCardViewModel model;
-        private readonly ICommandManager commandManager;
+        private readonly BoardMusicCardViewModel viewModel = new BoardMusicCardViewModel();
         private readonly CommandFactory commandFactory;
         private readonly CompositeDisposable subscriptions = new CompositeDisposable();
 
-        public BoardMusicCardPresenter(BoardMusicCardView view, BoardMusicCardViewModel model, ICommandManager commandManager, CommandFactory commandFactory)
+        public BoardMusicCardPresenter(BoardMusicCardView view, CommandFactory commandFactory)
         {
             this.view = view ?? throw new ArgumentNullException(nameof(view));
-            this.model = model ?? throw new ArgumentNullException(nameof(model));
-            this.commandManager = commandManager ?? throw new ArgumentNullException(nameof(commandManager));
             this.commandFactory = commandFactory ?? throw new ArgumentNullException(nameof(commandFactory));
+
             InitializeMVP();
         }
 
@@ -32,8 +30,8 @@ namespace UI.BoardMusicCard
 
         private void ConnectModel()
         {
-            model.State.Subscribe(state => HandleStateChange(state).Forget()).AddTo(subscriptions);
-            model.MusicCardData.Subscribe(data => view.Setup(data)).AddTo(subscriptions);
+            viewModel.State.Subscribe(state => HandleStateChange(state).Forget()).AddTo(subscriptions);
+            viewModel.MusicCardData.Subscribe(data => view.Setup(data)).AddTo(subscriptions);
         }
 
         private void ConnectView()
@@ -48,15 +46,15 @@ namespace UI.BoardMusicCard
 
             if (state == BoardMusicCardState.DuringPutOnBoardAnimation) {
                 await view.PlayPutOnBoardAnimation();
-                model.CompletePutOnBoardAnimation();
+                viewModel.CompletePutOnBoardAnimation();
             }
             else if (state == BoardMusicCardState.DuringRevealAnimation) {
                 await view.PlayRevealAnimation();
-                model.CompleteRevealAnimation();
+                viewModel.CompleteRevealAnimation();
             }
             else if (state == BoardMusicCardState.DuringMovingToPlayerResources) {
                 await view.PlayMovingToPlayerResourcesAnimation();
-                model.CompleteMovingToPlayerResources();
+                viewModel.CompleteMovingToPlayerResources();
             }
             else if (state == BoardMusicCardState.Hidden) {
             }

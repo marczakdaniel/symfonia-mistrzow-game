@@ -3,7 +3,7 @@ using DefaultNamespace.Data;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-namespace UI.BoardMusicCard
+namespace UI.Board.BoardMusicCardPanel.BoardMusicCard
 {
     public class MusicCardSingleCostView : MonoBehaviour
     {

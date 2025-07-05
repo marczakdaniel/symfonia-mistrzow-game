@@ -24,5 +24,10 @@ namespace Command
         {
             return new ReserveMusicCardCommand(playerId, musicCardId, gameModel);
         }
+
+        public StartGameCommand CreateStartGameCommand()
+        {
+            return new StartGameCommand(gameModel);
+        }
     }
 }

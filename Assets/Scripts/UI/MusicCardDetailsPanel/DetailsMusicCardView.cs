@@ -1,6 +1,6 @@
 using DefaultNamespace.Data;
-using UI.BoardMusicCard;
 using TMPro;
+using UI.Board.BoardMusicCardPanel.BoardMusicCard;
 using UnityEngine;
 using UnityEngine.UI;
 

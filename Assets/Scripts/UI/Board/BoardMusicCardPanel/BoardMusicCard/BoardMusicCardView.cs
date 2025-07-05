@@ -7,7 +7,7 @@ using TMPro;
 using DefaultNamespace.Data;
 using Cysharp.Threading.Tasks;
 
-namespace UI.BoardMusicCard
+namespace UI.Board.BoardMusicCardPanel.BoardMusicCard
 {
     public class BoardMusicCardView : MonoBehaviour, IPointerClickHandler
     {

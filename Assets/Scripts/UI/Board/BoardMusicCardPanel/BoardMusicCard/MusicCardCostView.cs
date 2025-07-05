@@ -1,7 +1,7 @@
 using DefaultNamespace.Data;
 using UnityEngine;
 
-namespace UI.BoardMusicCard
+namespace UI.Board.BoardMusicCardPanel.BoardMusicCard
 {
     public class MusicCardCostView : MonoBehaviour
     {

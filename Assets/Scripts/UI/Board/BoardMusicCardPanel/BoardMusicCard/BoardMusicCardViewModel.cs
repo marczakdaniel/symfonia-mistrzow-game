@@ -1,8 +1,8 @@
 using DefaultNamespace.Data;
 using R3;
 using UnityEngine;
-namespace UI.BoardMusicCard {
-
+namespace UI.Board.BoardMusicCardPanel.BoardMusicCard 
+{
     public enum BoardMusicCardState {
         Disabled,
         DuringPutOnBoardAnimation,

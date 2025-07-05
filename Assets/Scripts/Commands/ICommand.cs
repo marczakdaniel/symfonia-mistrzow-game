@@ -11,34 +11,59 @@ namespace Command
     public interface ICommand
     {
         string CommandType { get; }
-        string PlayerId { get; }
         DateTime Timestamp { get; }
         string CommandId { get; }
 
         bool Validate();
-        bool Execute();
+        UniTask<bool> Execute();
         //string Serialize();
         //string GetDescription();
+    }
+
+    public interface IGameFlowCommand : ICommand
+    {
+
+    }
+
+    public interface IPlayerActionCommand : ICommand
+    {
+        string PlayerId { get; }
     }
 
     public abstract class BaseCommand : ICommand
     {
         public abstract string CommandType { get; }
-        public string PlayerId { get; }
         public DateTime Timestamp { get; set; }
         public string CommandId { get; set; }
 
-        public BaseCommand(string playerId)
+        public BaseCommand()
         {
-            PlayerId = playerId;
             Timestamp = DateTime.UtcNow;
             CommandId = Guid.NewGuid().ToString();
         }
 
         public abstract bool Validate();
-        public abstract bool Execute();
+        public abstract UniTask<bool> Execute();
         //public abstract string Serialize();
         //public abstract string GetDescription();
+    }
+
+    public abstract class BaseGameFlowCommand : BaseCommand, IGameFlowCommand
+    {
+        public BaseGameFlowCommand() : base()
+        {
+
+        }
+    }
+
+    public abstract class BasePlayerActionCommand : BaseCommand, IPlayerActionCommand
+    {
+        public string PlayerId { get; }
+
+        public BasePlayerActionCommand(string playerId) : base()
+        {
+            PlayerId = playerId;
+        }
     }
 
     public class CommandValidationResult

@@ -1,10 +1,17 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Managers;
 using UnityEngine;
 
 namespace Models
 {   
+    public class GameConfig
+    {
+        public GameConfig()
+        {
+        }
+    }
     public class GameModel
     {
         private static GameModel _instance;
@@ -38,7 +45,7 @@ namespace Models
             players = new List<PlayerModel>();
         }
 
-        public static void Initialize(string gameId, string gameName)
+        public static void Initialize(GameConfig gameConfig)
         {
             _instance = new GameModel("default", "default");
         }

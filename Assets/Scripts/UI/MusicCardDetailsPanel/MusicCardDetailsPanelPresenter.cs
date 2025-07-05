@@ -7,16 +7,15 @@ using UnityEngine;
 namespace UI.MusicCardDetailsPanel {
     public class MusicCardDetailsPanelPresenter {
         private readonly MusicCardDetailsPanelView view;
-        private readonly MusicCardDetailsPanelViewModel model;
+        private readonly MusicCardDetailsPanelViewModel viewModel = new MusicCardDetailsPanelViewModel();
         private readonly ICommandManager commandManager;
         private readonly CommandFactory commandFactory;
         private readonly CompositeDisposable subscriptions = new CompositeDisposable();
 
-        public MusicCardDetailsPanelPresenter(MusicCardDetailsPanelView view, MusicCardDetailsPanelViewModel model, ICommandManager commandManager, CommandFactory commandFactory) {
+        public MusicCardDetailsPanelPresenter(MusicCardDetailsPanelView view, CommandFactory commandFactory) {
             this.view = view;
-            this.model = model;
-            this.commandManager = commandManager;
             this.commandFactory = commandFactory;
+
             InitializeMVP();
         }
 
@@ -26,8 +25,8 @@ namespace UI.MusicCardDetailsPanel {
         }
 
         private void ConnectModel() {
-            model.State.Subscribe(state => HandleStateChange(state).Forget()).AddTo(subscriptions);
-            model.MusicCardData.Subscribe(data => view.SetCardDetails(data)).AddTo(subscriptions);
+            viewModel.State.Subscribe(state => HandleStateChange(state).Forget()).AddTo(subscriptions);
+            viewModel.MusicCardData.Subscribe(data => view.SetCardDetails(data)).AddTo(subscriptions);
         }
 
         private void ConnectView() {
@@ -39,19 +38,19 @@ namespace UI.MusicCardDetailsPanel {
         private async UniTask HandleStateChange(MusicCardDetailsPanelState state) {
             if (state == MusicCardDetailsPanelState.DuringOpenAnimation) {
                 await view.PlayOpenAnimation();
-                model.CompleteOpenAnimation();
+                viewModel.CompleteOpenAnimation();
             }
             else if (state == MusicCardDetailsPanelState.DuringCloseAnimation) {
                 await view.PlayCloseAnimation();
-                model.CompleteCloseAnimation();
+                viewModel.CompleteCloseAnimation();
             }
             else if (state == MusicCardDetailsPanelState.DuringBuyAnimation) {
                 await view.PlayBuyAnimation();
-                model.CompleteBuyAnimation();
+                viewModel.CompleteBuyAnimation();
             }
             else if (state == MusicCardDetailsPanelState.DuringReserveAnimation) {
                 await view.PlayReserveAnimation();
-                model.CompleteReserveAnimation();
+                viewModel.CompleteReserveAnimation();
             }
             else if (state == MusicCardDetailsPanelState.Opened) {
             }
@@ -70,12 +69,12 @@ namespace UI.MusicCardDetailsPanel {
 
         private void HandleBuyButtonClick(Unit unit) 
         {
-            var command = commandFactory.CreateBuyMusicCardCommand(model.PlayerId, model.MusicCardId);
+            var command = commandFactory.CreateBuyMusicCardCommand(viewModel.PlayerId, viewModel.MusicCardId);
             commandManager.ExecuteCommand(command);
         }
 
         private void HandleReserveButtonClick(Unit unit) {
-            var command = commandFactory.CreateReserveMusicCardCommand(model.PlayerId, model.MusicCardId);
+            var command = commandFactory.CreateReserveMusicCardCommand(viewModel.PlayerId, viewModel.MusicCardId);
             commandManager.ExecuteCommand(command);
         }
     }
