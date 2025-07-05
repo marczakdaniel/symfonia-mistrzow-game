@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 using Models;
 using Services;
 using Unity.VisualScripting;
@@ -7,37 +8,37 @@ using UnityEngine.InputSystem.LowLevel;
 
 namespace Command
 {
-    /*public interface ICommand
+    public interface ICommand
     {
         string CommandType { get; }
-        int PlayerId { get; }
+        string PlayerId { get; }
         DateTime Timestamp { get; }
         string CommandId { get; }
 
-        CommandValidationResult Validate(IGameModelReader gameModel);
-        CommandExecutionResult Execute(IGameService gameService);
-        string Serialize();
-        string GetDescription();
+        bool Validate();
+        bool Execute();
+        //string Serialize();
+        //string GetDescription();
     }
 
     public abstract class BaseCommand : ICommand
     {
         public abstract string CommandType { get; }
-        public int PlayerId { get; set; }
+        public string PlayerId { get; }
         public DateTime Timestamp { get; set; }
         public string CommandId { get; set; }
 
-        public BaseCommand(int playerId)
+        public BaseCommand(string playerId)
         {
-            PlayerId = playerId; Guid.NewGuid().ToString();
+            PlayerId = playerId;
             Timestamp = DateTime.UtcNow;
             CommandId = Guid.NewGuid().ToString();
         }
 
-        public abstract CommandValidationResult Validate(GameState gameState);
-        public abstract CommandExecutionResult Execute(GameState gameState);
-        public abstract string Serialize();
-        public abstract string GetDescription();
+        public abstract bool Validate();
+        public abstract bool Execute();
+        //public abstract string Serialize();
+        //public abstract string GetDescription();
     }
 
     public class CommandValidationResult
@@ -67,6 +68,10 @@ namespace Command
             IsSuccess = isSuccess;
             ErrorMessage = errorMessage;
         }
-        
-    }*/
+
+        internal static UniTask<CommandExecutionResult> Failure(string errorMessage)
+        {
+            throw new NotImplementedException();
+        }
+    }
 }

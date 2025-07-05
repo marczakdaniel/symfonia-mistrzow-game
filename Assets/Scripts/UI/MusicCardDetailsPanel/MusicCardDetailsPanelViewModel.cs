@@ -12,15 +12,21 @@ namespace UI.MusicCardDetailsPanel {
             DuringReserveAnimation,
     }
 
-    public class MusicCardDetailsPanelModel {
+    public class MusicCardDetailsPanelViewModel {
         public ReactiveProperty<MusicCardDetailsPanelState> State { get; private set; } = new ReactiveProperty<MusicCardDetailsPanelState>(MusicCardDetailsPanelState.Closed);
         public ReactiveProperty<MusicCardData> MusicCardData { get; private set; } = new ReactiveProperty<MusicCardData>(null);
+        public string MusicCardId { get; private set; }
+        public string PlayerId { get; private set; }
 
-        public MusicCardDetailsPanelModel() {
+        public MusicCardDetailsPanelViewModel() {
             
         }
 
-        public bool OpenCardDetailsPanel(MusicCardData musicCardData) { 
+        public void SetPlayerId(string playerId) {
+            PlayerId = playerId;
+        }
+
+        public bool OpenCardDetailsPanel(string musicCardId, MusicCardData musicCardData) { 
             if (musicCardData == null) {
                 Debug.LogError("[DetailsPanel] Cannot open panel with null music card data");
                 return false;
@@ -31,7 +37,7 @@ namespace UI.MusicCardDetailsPanel {
                 return false;
             }
 
-            SetMusicCardData(musicCardData);
+            SetMusicCardData(musicCardId, musicCardData);
             SetState(MusicCardDetailsPanelState.DuringOpenAnimation);
             return true;
         }
@@ -80,7 +86,7 @@ namespace UI.MusicCardDetailsPanel {
                 return;
             }
             SetState(MusicCardDetailsPanelState.Closed);
-            SetMusicCardData(null);
+            ClearMusicCardData();
         }   
 
         public void CompleteBuyAnimation() {
@@ -89,7 +95,7 @@ namespace UI.MusicCardDetailsPanel {
                 return;
             }
             SetState(MusicCardDetailsPanelState.Closed);
-            SetMusicCardData(null);
+            ClearMusicCardData();
         }
 
         public void CompleteReserveAnimation() {
@@ -98,7 +104,7 @@ namespace UI.MusicCardDetailsPanel {
                 return;
             }
             SetState(MusicCardDetailsPanelState.Closed);
-            SetMusicCardData(null);
+            ClearMusicCardData();
         }
 
         private bool CanOpen() {
@@ -113,8 +119,13 @@ namespace UI.MusicCardDetailsPanel {
             return State.Value == MusicCardDetailsPanelState.Opened;
         }
 
-        private void SetMusicCardData(MusicCardData musicCardData) {
+        private void SetMusicCardData(string musicCardId, MusicCardData musicCardData) {
             MusicCardData.Value = musicCardData;
+            MusicCardId = musicCardId;
+        }
+
+        public void ClearMusicCardData() {
+            SetMusicCardData("", null);
         }
 
         private void SetState(MusicCardDetailsPanelState state) {

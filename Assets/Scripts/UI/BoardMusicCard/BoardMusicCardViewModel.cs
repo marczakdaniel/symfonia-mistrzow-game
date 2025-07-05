@@ -1,5 +1,4 @@
 using DefaultNamespace.Data;
-using DefaultNamespace.MusicCardDetailsPanel;
 using R3;
 using UnityEngine;
 namespace UI.BoardMusicCard {
@@ -13,14 +12,15 @@ namespace UI.BoardMusicCard {
         DuringMovingToPlayerResources,
     }
 
-    public class BoardMusicCardModel {
+    public class BoardMusicCardViewModel {
         public ReactiveProperty<BoardMusicCardState> State { get; private set; } = new ReactiveProperty<BoardMusicCardState>(BoardMusicCardState.Disabled);
         public ReactiveProperty<MusicCardData> MusicCardData { get; private set; } = new ReactiveProperty<MusicCardData>();
+        public string MusicCardId { get; private set; }
 
-        public BoardMusicCardModel() {
+        public BoardMusicCardViewModel() {
         }
 
-        public bool PutCardOnBoard(MusicCardData musicCardData) {
+        public bool PutCardOnBoard(string musicCardId, MusicCardData musicCardData) {
             if (musicCardData == null) {
                 Debug.LogError($"[BoardMusicCard] Cannot put card on board with null music card data");
                 return false;
@@ -31,7 +31,7 @@ namespace UI.BoardMusicCard {
                 return false;
             }
 
-            SetMusicCardData(musicCardData);
+            SetMusicCardData(musicCardId, musicCardData);
             SetState(BoardMusicCardState.DuringPutOnBoardAnimation);
             return true;
         }
@@ -78,7 +78,7 @@ namespace UI.BoardMusicCard {
                 return;
             }
             SetState(BoardMusicCardState.Disabled);
-            SetMusicCardData(null);
+            ClearMusicCardData();
         }
 
         private bool CanPutCardOnBoard() {
@@ -93,8 +93,13 @@ namespace UI.BoardMusicCard {
             return State.Value == BoardMusicCardState.Visible;
         }
 
-        private void SetMusicCardData(MusicCardData musicCardData) {
+        private void SetMusicCardData(string musicCardId, MusicCardData musicCardData) {
             MusicCardData.Value = musicCardData;
+            MusicCardId = musicCardId;
+        }
+
+        public void ClearMusicCardData() {
+            SetMusicCardData("", null);
         }
 
         private void SetState(BoardMusicCardState state) {

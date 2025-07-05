@@ -1,4 +1,6 @@
+using Command;
 using Cysharp.Threading.Tasks;
+using Manager;
 using R3;
 using System;
 using UnityEngine;
@@ -8,14 +10,17 @@ namespace UI.BoardMusicCard
     public class BoardMusicCardPresenter : IDisposable
     {
         private readonly BoardMusicCardView view;
-        private readonly BoardMusicCardModel model;
+        private readonly BoardMusicCardViewModel model;
+        private readonly ICommandManager commandManager;
+        private readonly CommandFactory commandFactory;
         private readonly CompositeDisposable subscriptions = new CompositeDisposable();
 
-        public BoardMusicCardPresenter(BoardMusicCardView view, BoardMusicCardModel model)
+        public BoardMusicCardPresenter(BoardMusicCardView view, BoardMusicCardViewModel model, ICommandManager commandManager, CommandFactory commandFactory)
         {
             this.view = view ?? throw new ArgumentNullException(nameof(view));
             this.model = model ?? throw new ArgumentNullException(nameof(model));
-
+            this.commandManager = commandManager ?? throw new ArgumentNullException(nameof(commandManager));
+            this.commandFactory = commandFactory ?? throw new ArgumentNullException(nameof(commandFactory));
             InitializeMVP();
         }
 
@@ -70,7 +75,7 @@ namespace UI.BoardMusicCard
         // Input -> Command
         private void HandleCardClick(Unit unit)
         {
-            // TODO : Open card details with animation by sending Command
+            
             Debug.Log("Card clicked");
         }
 

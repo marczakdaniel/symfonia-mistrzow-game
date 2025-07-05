@@ -1,3 +1,4 @@
+using System;
 using DefaultNamespace.Data;
 using UnityEngine;
 
@@ -5,6 +6,7 @@ namespace Models
 {
     public class MusicCardModel
     {
+        public string MusicCardId { get; private set; }
         public string CardId => data.id;
         public string CardName => data.cardName;
         public string CardDescription => data.cardDescription;
@@ -16,6 +18,7 @@ namespace Models
 
         public MusicCardModel(MusicCardData data)
         {
+            MusicCardId = Guid.NewGuid().ToString();
             this.data = data;
         }
         // Business Logic

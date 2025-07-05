@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using DefaultNamespace.Data;
 
 namespace Models
@@ -7,6 +8,7 @@ namespace Models
     public class ResourceCollectionModel
     {
         private Dictionary<ResourceType, int> resources;
+        public int TotalCount { get; private set; }
 
         public ResourceCollectionModel()
         {
@@ -15,6 +17,7 @@ namespace Models
             {
                 resources[resourceType] = 0;
             }
+            TotalCount = 0;
         }
 
         public int GetCount(ResourceType resourceType) => resources.GetValueOrDefault(resourceType, 0);
@@ -23,6 +26,97 @@ namespace Models
 
         // Buiness logic
         
+        public void SetResourceCount(ResourceType resourceType, int count)
+        {
+            resources[resourceType] = Math.Max(0, count);
+            UpdateTotalCount();
+        }
 
+        public void AddResource(ResourceType resourceType, int amount)
+        {
+            if (amount <= 0) return;
+            resources[resourceType] += amount;
+            UpdateTotalCount();
+        }
+
+        public void RemoveResource(ResourceType resourceType, int amount)
+        {
+            if (amount <= 0) return;
+            if (resources[resourceType] < amount) return;
+            resources[resourceType] -= amount;
+            UpdateTotalCount();
+        }
+
+        public void Clear()
+        {
+            foreach (var key in resources.Keys.ToList())
+            {
+                resources[key] = 0;
+            }
+            UpdateTotalCount();
+        }
+
+        public int GetTotalResourcese()
+        {
+            return resources.Values.Sum();
+        }
+
+        public ResourceCollectionModel Clone()
+        {
+            var clone = new ResourceCollectionModel();
+            foreach (var key in resources.Keys.ToList())
+            {
+                clone.SetResourceCount(key, resources[key]);
+            }
+            return clone;
+        }
+
+        public void CopyFrom(ResourceCollectionModel other)
+        {
+            foreach (var key in resources.Keys.ToList())
+            {
+                SetResourceCount(key, other.GetCount(key));
+            }
+        }
+
+        private void UpdateTotalCount()
+        {
+            TotalCount = GetTotalResourcese();
+        }
+
+        public Dictionary<ResourceType, int> GetAllResources()
+        {
+            return new Dictionary<ResourceType, int>(resources);
+        }
+
+        public List<ResourceType> GetNonZeroResourcesTypes()
+        {
+            return resources.Where(r => r.Value > 0).Select(r => r.Key).ToList();
+        }
+
+        public bool HasAll(ResourceCollectionModel other)
+        {
+            foreach(var r in other.resources)
+            {
+                if (resources[r.Key] < r.Value) return false;
+            }
+            return true;
+        }
+
+        public void Add(ResourceCollectionModel other)
+        {
+            foreach (var r in other.resources)
+            {
+                AddResource(r.Key, r.Value);
+            }
+        }
+
+        public void Subtract(ResourceCollectionModel other)
+        {
+            foreach (var r in other.resources)
+            {
+                RemoveResource(r.Key, r.Value);
+            }
+        }
     }
 }

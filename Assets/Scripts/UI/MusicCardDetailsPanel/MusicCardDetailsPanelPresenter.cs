@@ -1,17 +1,22 @@
+using Command;
 using Cysharp.Threading.Tasks;
+using Manager;
 using R3;
 using UnityEngine;
 
 namespace UI.MusicCardDetailsPanel {
     public class MusicCardDetailsPanelPresenter {
         private readonly MusicCardDetailsPanelView view;
-        private readonly MusicCardDetailsPanelModel model;
+        private readonly MusicCardDetailsPanelViewModel model;
+        private readonly ICommandManager commandManager;
+        private readonly CommandFactory commandFactory;
         private readonly CompositeDisposable subscriptions = new CompositeDisposable();
 
-        public MusicCardDetailsPanelPresenter(MusicCardDetailsPanelView view, MusicCardDetailsPanelModel model) {
+        public MusicCardDetailsPanelPresenter(MusicCardDetailsPanelView view, MusicCardDetailsPanelViewModel model, ICommandManager commandManager, CommandFactory commandFactory) {
             this.view = view;
             this.model = model;
-
+            this.commandManager = commandManager;
+            this.commandFactory = commandFactory;
             InitializeMVP();
         }
 
@@ -63,12 +68,15 @@ namespace UI.MusicCardDetailsPanel {
             
         }
 
-        private void HandleBuyButtonClick(Unit unit) {
-            
+        private void HandleBuyButtonClick(Unit unit) 
+        {
+            var command = commandFactory.CreateBuyMusicCardCommand(model.PlayerId, model.MusicCardId);
+            commandManager.ExecuteCommand(command);
         }
 
         private void HandleReserveButtonClick(Unit unit) {
-
+            var command = commandFactory.CreateReserveMusicCardCommand(model.PlayerId, model.MusicCardId);
+            commandManager.ExecuteCommand(command);
         }
     }
 }
