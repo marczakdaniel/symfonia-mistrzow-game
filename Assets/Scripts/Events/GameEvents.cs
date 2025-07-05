@@ -1,166 +1,199 @@
-using System;
-using System.Collections.Generic;
 using DefaultNamespace.Data;
+using Models;
 
 namespace Events
 {
-    /// <summary>
-    /// Event fired when a player buys a music card
-    /// </summary>
-    public class MusicCardBoughtEvent : GameEvent
+    // Game State Events
+    public class GameStartedEvent : GameEvent
     {
-        public string PlayerId { get; }
-        public string MusicCardId { get; }
-        public Dictionary<string, int> CostPaid { get; }
-
-        public MusicCardBoughtEvent(string playerId, string musicCardId, Dictionary<string, int> costPaid)
+        public GameModel GameModel { get; }
+        
+        public GameStartedEvent(GameModel gameModel)
         {
-            PlayerId = playerId;
-            MusicCardId = musicCardId;
-            CostPaid = costPaid ?? new Dictionary<string, int>();
+            GameModel = gameModel;
         }
     }
 
-    /// <summary>
-    /// Event fired when a player reserves a music card
-    /// </summary>
-    public class MusicCardReservedEvent : GameEvent
+    public class GameEndedEvent : GameEvent
     {
-        public string PlayerId { get; }
-        public string MusicCardId { get; }
-        public bool ReceivedToken { get; }
-
-        public MusicCardReservedEvent(string playerId, string musicCardId, bool receivedToken)
+        public string WinnerPlayerId { get; }
+        
+        public GameEndedEvent(string winnerPlayerId)
         {
-            PlayerId = playerId;
-            MusicCardId = musicCardId;
-            ReceivedToken = receivedToken;
+            WinnerPlayerId = winnerPlayerId;
         }
     }
 
-    /// <summary>
-    /// Event fired when a new music card is added to the board
-    /// </summary>
-    public class MusicCardAddedToBoardEvent : GameEvent
+    public class PlayerTurnStartedEvent : GameEvent
     {
-        public string MusicCardId { get; }
-        public int Position { get; }
+        public string PlayerId { get; }
+        
+        public PlayerTurnStartedEvent(string playerId)
+        {
+            PlayerId = playerId;
+        }
+    }
+
+    public class PlayerTurnEndedEvent : GameEvent
+    {
+        public string PlayerId { get; }
+        
+        public PlayerTurnEndedEvent(string playerId)
+        {
+            PlayerId = playerId;
+        }
+    }
+
+    // Card Events
+    public class CardPurchasedEvent : GameEvent
+    {
+        public string PlayerId { get; }
+        public string CardId { get; }
+        public ResourceCollectionModel TokensUsed { get; }
+        
+        public CardPurchasedEvent(string playerId, string cardId, ResourceCollectionModel tokensUsed)
+        {
+            PlayerId = playerId;
+            CardId = cardId;
+            TokensUsed = tokensUsed;
+        }
+    }
+
+    public class CardReservedEvent : GameEvent
+    {
+        public string PlayerId { get; }
+        public string CardId { get; }
+        public int FromLevel { get; }
+        public bool FromDeck { get; }
+        
+        public CardReservedEvent(string playerId, string cardId, int fromLevel, bool fromDeck = false)
+        {
+            PlayerId = playerId;
+            CardId = cardId;
+            FromLevel = fromLevel;
+            FromDeck = fromDeck;
+        }
+    }
+
+    public class CardAddedToBoardEvent : GameEvent
+    {
+        public string CardId { get; }
         public int Level { get; }
-
-        public MusicCardAddedToBoardEvent(string musicCardId, int position, int level)
+        public int Position { get; }
+        
+        public CardAddedToBoardEvent(string cardId, int level, int position)
         {
-            MusicCardId = musicCardId;
-            Position = position;
+            CardId = cardId;
             Level = level;
+            Position = position;
         }
     }
 
-    /// <summary>
-    /// Event fired when the current player changes
-    /// </summary>
-    public class PlayerTurnChangedEvent : GameEvent
+    public class CardRemovedFromBoardEvent : GameEvent
     {
-        public string NewCurrentPlayerId { get; }
-        public string PreviousPlayerId { get; }
-        public int TurnNumber { get; }
-
-        public PlayerTurnChangedEvent(string newCurrentPlayerId, string previousPlayerId, int turnNumber)
+        public string CardId { get; }
+        public int Level { get; }
+        public int Position { get; }
+        
+        public CardRemovedFromBoardEvent(string cardId, int level, int position)
         {
-            NewCurrentPlayerId = newCurrentPlayerId;
-            PreviousPlayerId = previousPlayerId;
-            TurnNumber = turnNumber;
+            CardId = cardId;
+            Level = level;
+            Position = position;
         }
     }
 
-    /// <summary>
-    /// Event fired when game state changes
-    /// </summary>
-    public class GameStateChangedEvent : GameEvent
+    // Token Events
+    public class TokensTakenEvent : GameEvent
     {
-        public string NewState { get; }
-        public string PreviousState { get; }
-
-        public GameStateChangedEvent(string newState, string previousState)
+        public string PlayerId { get; }
+        public ResourceCollectionModel TokensTaken { get; }
+        
+        public TokensTakenEvent(string playerId, ResourceCollectionModel tokensTaken)
         {
-            NewState = newState;
-            PreviousState = previousState;
+            PlayerId = playerId;
+            TokensTaken = tokensTaken;
         }
     }
 
-    /// <summary>
-    /// Event fired when a player resources change
-    /// </summary>
+    public class TokensReturnedEvent : GameEvent
+    {
+        public string PlayerId { get; }
+        public ResourceCollectionModel TokensReturned { get; }
+        
+        public TokensReturnedEvent(string playerId, ResourceCollectionModel tokensReturned)
+        {
+            PlayerId = playerId;
+            TokensReturned = tokensReturned;
+        }
+    }
+
+    // Board Events
+    public class BoardInitializedEvent : GameEvent
+    {
+        public BoardModel Board { get; }
+        
+        public BoardInitializedEvent(BoardModel board)
+        {
+            Board = board;
+        }
+    }
+
+    public class BoardUpdatedEvent : GameEvent
+    {
+        public BoardModel Board { get; }
+        
+        public BoardUpdatedEvent(BoardModel board)
+        {
+            Board = board;
+        }
+    }
+
+    // Player Events
+    public class PlayerAddedEvent : GameEvent
+    {
+        public PlayerModel Player { get; }
+        
+        public PlayerAddedEvent(PlayerModel player)
+        {
+            Player = player;
+        }
+    }
+
     public class PlayerResourcesChangedEvent : GameEvent
     {
         public string PlayerId { get; }
-        public Dictionary<string, int> ResourceChanges { get; }
-        public Dictionary<string, int> NewResourceAmounts { get; }
-
-        public PlayerResourcesChangedEvent(string playerId, Dictionary<string, int> resourceChanges, Dictionary<string, int> newResourceAmounts)
+        public ResourceCollectionModel NewResources { get; }
+        
+        public PlayerResourcesChangedEvent(string playerId, ResourceCollectionModel newResources)
         {
             PlayerId = playerId;
-            ResourceChanges = resourceChanges ?? new Dictionary<string, int>();
-            NewResourceAmounts = newResourceAmounts ?? new Dictionary<string, int>();
+            NewResources = newResources;
         }
     }
 
-    /// <summary>
-    /// Event fired when game ends
-    /// </summary>
-    public class GameEndedEvent : GameEvent
+    public class PlayerScoreChangedEvent : GameEvent
     {
-        public string WinnerId { get; }
-        public List<string> PlayerRanking { get; }
-        public Dictionary<string, int> FinalScores { get; }
-
-        public GameEndedEvent(string winnerId, List<string> playerRanking, Dictionary<string, int> finalScores)
+        public string PlayerId { get; }
+        public int NewScore { get; }
+        
+        public PlayerScoreChangedEvent(string playerId, int newScore)
         {
-            WinnerId = winnerId;
-            PlayerRanking = playerRanking ?? new List<string>();
-            FinalScores = finalScores ?? new Dictionary<string, int>();
+            PlayerId = playerId;
+            NewScore = newScore;
         }
     }
 
-    /// <summary>
-    /// Event fired when an animation should be played
-    /// </summary>
-    public class AnimationRequestEvent : GameEvent
+    // UI Events
+    public class UIUpdateCompletedEvent : GameEvent
     {
-        public string AnimationType { get; }
-        public string TargetId { get; }
-        public Dictionary<string, object> Parameters { get; }
-
-        public AnimationRequestEvent(string animationType, string targetId, Dictionary<string, object> parameters = null)
+        public string OriginalEventId { get; }
+        public string ComponentName { get; }
+        
+        public UIUpdateCompletedEvent(string originalEventId, string componentName)
         {
-            AnimationType = animationType;
-            TargetId = targetId;
-            Parameters = parameters ?? new Dictionary<string, object>();
-        }
-    }
-
-    /// <summary>
-    /// Event fired when UI should be updated
-    /// </summary>
-    public class UIUpdateRequestEvent : GameEvent
-    {
-        public string UIElementId { get; }
-        public string UpdateType { get; }
-        public Dictionary<string, object> Data { get; }
-
-        public UIUpdateRequestEvent(string uiElementId, string updateType, Dictionary<string, object> data = null)
-        {
-            UIElementId = uiElementId;
-            UpdateType = updateType;
-            Data = data ?? new Dictionary<string, object>();
-        }
-    }
-
-    public class StartGameEvent : GameEvent
-    {
-        // Light event - no data payload, just notification
-        // Board data will be read from GameModel when needed
-        public StartGameEvent()
-        {
+            OriginalEventId = originalEventId;
+            ComponentName = componentName;
         }
     }
 } 

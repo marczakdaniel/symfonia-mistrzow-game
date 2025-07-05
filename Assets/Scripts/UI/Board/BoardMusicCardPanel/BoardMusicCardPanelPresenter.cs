@@ -4,7 +4,6 @@ using UI.Board.BoardMusicCardPanel.BoardCardDeck;
 using UI.Board.BoardMusicCardPanel.BoardMusicCard;
 using Models;
 using DefaultNamespace.Data;
-using Events;
 
 namespace UI.Board.BoardMusicCardPanel
 {
@@ -77,7 +76,6 @@ namespace UI.Board.BoardMusicCardPanel
         public void SubscribeToEvents()
         {
             // Hybrid approach: Light events as notifications + model reading
-            AsyncEventBus.Instance.Subscribe<StartGameEvent>(InitializeBoard);
 
             // Example of other events that would trigger board updates
             // AsyncEventBus.Instance.Subscribe<CardRemovedFromBoardEvent>(async (eventData) =>
@@ -92,7 +90,7 @@ namespace UI.Board.BoardMusicCardPanel
             
         }
 
-        public async UniTask InitializeBoard(StartGameEvent eventData)
+        public async UniTask InitializeBoard()
         {
             // Get current board cards state
 

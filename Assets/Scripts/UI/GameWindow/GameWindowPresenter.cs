@@ -2,10 +2,11 @@ using UI.Board;
 using Command;
 using UI.MusicCardDetailsPanel;
 using Cysharp.Threading.Tasks;
+using UnityEngine;
 
 namespace UI.GameWindow
 {
-    public class GameWindowPresenter
+    public class GameWindowPresenter : IAsyncEventHandler<GameStartedEvent>
     {
         private readonly GameWindowView view;
         private readonly GameWindowViewModel viewModel = new GameWindowViewModel();
@@ -44,10 +45,30 @@ namespace UI.GameWindow
 
         }
 
+        private void SubscribeToEvents()
+        {
+            AsyncEventBus.Instance.Subscribe<GameStartedEvent>(this);
+        }
+
         public async UniTask StartGame()
         {
+            SubscribeToEvents();
             var command = commandFactory.CreateStartGameCommand();
             await command.Execute();
+        }
+
+        // Event Handlers
+        public async UniTask HandleAsync(GameStartedEvent gameEvent)
+        {
+            Debug.Log($"[GameWindowPresenter] Handling GameStartedEvent: {gameEvent.EventId}");
+            
+            // Start child presenters
+            boardPresenter.StartGame();
+            
+            // Simulate UI update time
+            await UniTask.Delay(100);
+            
+            Debug.Log($"[GameWindowPresenter] Completed handling GameStartedEvent: {gameEvent.EventId}");
         }
     }
 }

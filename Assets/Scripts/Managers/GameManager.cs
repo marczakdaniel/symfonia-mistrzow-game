@@ -1,10 +1,10 @@
-using Events;
 using Models;
 using UnityEngine;
 using UI.GameWindow;
 using Command;
 using System.Threading.Tasks;
 using Cysharp.Threading.Tasks;
+using Services;
 
 namespace Managers
 {
@@ -18,7 +18,12 @@ namespace Managers
         public bool InitalizeGame(GameConfig gameConfig)
         {
             GameModel.Initialize(gameConfig);
-            EventBus.Initialize();
+            
+            // Initialize services
+            var musicCardService = new MusicCardService();
+            
+            // Initialize CommandFactory
+            commandFactory = new CommandFactory(musicCardService, GameModel.Instance);
 
             CreateGameWindow();
             return true;
@@ -33,6 +38,12 @@ namespace Managers
         {
             var startGameCommand = new StartGameCommand(GameModel.Instance);
             await startGameCommand.Execute();
+        }
+
+        private void OnDestroy()
+        {
+            // Clean up event bus when game manager is destroyed
+            AsyncEventBus.Instance.Clear();
         }
     }
 }
