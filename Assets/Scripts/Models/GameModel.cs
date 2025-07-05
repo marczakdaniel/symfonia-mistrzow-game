@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using DefaultNamespace.Data;
 using Managers;
 using UnityEngine;
 
@@ -12,7 +13,13 @@ namespace Models
         {
         }
     }
-    public class GameModel
+
+    public interface IGameModelReader
+    {
+        IMusicCardDataReader[,] GetCurrentBoardCards();
+    }
+
+    public class GameModel : IGameModelReader
     {
         private static GameModel _instance;
         public static GameModel Instance
@@ -310,6 +317,30 @@ namespace Models
         private bool ExecuteEndTurn(string playerId)
         {
             return true;
+        }
+
+        // Query
+
+        public MusicCardData[,] GetBoard()
+        {
+            return board.GetCurrentBoardCards();
+        }
+
+        // IGameModelReader implementation - returns read-only interfaces
+        public IMusicCardDataReader[,] GetCurrentBoardCards()
+        {
+            var boardCards = GetBoard();
+            var readOnlyBoardCards = new IMusicCardDataReader[boardCards.GetLength(0), boardCards.GetLength(1)];
+            
+            for (int i = 0; i < boardCards.GetLength(0); i++)
+            {
+                for (int j = 0; j < boardCards.GetLength(1); j++)
+                {
+                    readOnlyBoardCards[i, j] = boardCards[i, j]; // Implicit conversion to IMusicCardDataReader
+                }
+            }
+            
+            return readOnlyBoardCards;
         }
     }
 }

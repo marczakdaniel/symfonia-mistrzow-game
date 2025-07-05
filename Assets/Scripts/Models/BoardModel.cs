@@ -253,6 +253,22 @@ namespace Models
             LoadCardToDecks();
         }
 
+        public MusicCardData[,] GetCurrentBoardCards()
+        {
+            var boardCards = new MusicCardData[numberOfLevels, 4];
+            
+            for (int level = 0; level < numberOfLevels; level++)
+            {
+                for (int position = 0; position < 4; position++)
+                {
+                    var slot = Levels[level].GetSlot(position);
+                    boardCards[level, position] = slot?.GetMusicCard();
+                }
+            }
+            
+            return boardCards;
+        }
+
         private void LoadCardToDecks()
         {
             var allCards = MusicCardRepository.Instance.GetAllCards();

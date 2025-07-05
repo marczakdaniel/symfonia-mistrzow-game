@@ -11,7 +11,7 @@ namespace UI.Board.BoardMusicCardPanel.BoardMusicCard
         [SerializeField] private MusicCardSingleCostView instrumentationSingleCostView;
         [SerializeField] private MusicCardSingleCostView dynamicsSingleCostView;
 
-        public void Setup(ResourceCost cost)
+        public void Setup(IResourceCostReader cost)
         {
             melodySingleCostView.Setup(ResourceType.Melody, cost.Melody);
             harmonySingleCostView.Setup(ResourceType.Harmony, cost.Harmony);

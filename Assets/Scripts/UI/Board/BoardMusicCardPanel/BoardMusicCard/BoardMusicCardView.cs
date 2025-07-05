@@ -18,16 +18,18 @@ namespace UI.Board.BoardMusicCardPanel.BoardMusicCard
         [SerializeField] private TextMeshProUGUI pointsText;
         [SerializeField] private Image resourceProvidedImage;
 
-        public async UniTask PlayPutOnBoardAnimation()
+        [SerializeField] private BoardMusicCardAnimationController animationController;
+
+        public UniTask PlayPutOnBoardAnimation()
         {
-            // TODO : Play put on board animation
-            await UniTask.Delay(1000);
+            return animationController.PlayPutOnBoardAnimation();
         }
 
         public async UniTask PlayRevealAnimation()
         {
             // TODO : Play reveal animation
-            await UniTask.Delay(1000);
+            await animationController.ResetPutOnBoardAnimation();
+            await UniTask.Delay(1);
         }
 
         public async UniTask PlayMovingToPlayerResourcesAnimation()
@@ -36,12 +38,12 @@ namespace UI.Board.BoardMusicCardPanel.BoardMusicCard
             await UniTask.Delay(1000);
         }
 
-        public void Setup(MusicCardData card)
+        public void Setup(IMusicCardDataReader card)
         {
-            costView.Setup(card.cost);
-            cardImage.sprite = card.cardImage;
-            pointsText.text = card.points.ToString();
-            resourceProvidedImage.sprite = card.resourceProvided.GetSingleResourceTypeImages().StackImage1;
+            costView.Setup(card.Cost);
+            cardImage.sprite = card.CardImage;
+            pointsText.text = card.Points.ToString();
+            resourceProvidedImage.sprite = card.ResourceProvided.GetSingleResourceTypeImages().StackImage1;
         }
 
         public void OnPointerClick(PointerEventData eventData)

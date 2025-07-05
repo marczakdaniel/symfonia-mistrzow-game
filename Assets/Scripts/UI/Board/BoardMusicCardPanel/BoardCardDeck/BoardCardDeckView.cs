@@ -5,6 +5,5 @@ namespace UI.Board.BoardMusicCardPanel.BoardCardDeck
 {
     public class BoardCardDeckView : MonoBehaviour
     {
-        
     }
 }

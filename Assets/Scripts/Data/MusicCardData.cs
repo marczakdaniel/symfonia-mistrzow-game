@@ -2,7 +2,20 @@ using UnityEngine;
 
 namespace DefaultNamespace.Data
 {
-    public class MusicCardData : ScriptableObject
+    // Read-only interface for UI layer
+    public interface IMusicCardDataReader
+    {
+        string Id { get; }
+        int Level { get; }
+        int Points { get; }
+        ResourceType ResourceProvided { get; }
+        IResourceCostReader Cost { get; }
+        Sprite CardImage { get; }
+        string CardName { get; }
+        string CardDescription { get; }
+    }
+
+    public class MusicCardData : ScriptableObject, IMusicCardDataReader
     {
         [Header("Card Identity")]
         public string id;
@@ -21,5 +34,15 @@ namespace DefaultNamespace.Data
         [Header("Card Info")]
         public string cardName;
         public string cardDescription;
+
+        // Read-only interface implementation
+        public string Id => id;
+        public int Level => level;
+        public int Points => points;
+        public ResourceType ResourceProvided => resourceProvided;
+        public IResourceCostReader Cost => cost;
+        public Sprite CardImage => cardImage;
+        public string CardName => cardName;
+        public string CardDescription => cardDescription;
     }
 }

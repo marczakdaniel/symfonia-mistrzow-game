@@ -3,8 +3,20 @@ using UnityEngine;
 
 namespace DefaultNamespace.Data
 {
+    // Read-only interface for UI layer
+    public interface IResourceCostReader
+    {
+        int Melody { get; }
+        int Harmony { get; }
+        int Rhythm { get; }
+        int Instrumentation { get; }
+        int Dynamics { get; }
+        int GetCost(ResourceType resourceType);
+        int TotalCost();
+    }
+
     [Serializable]
-    public class ResourceCost
+    public class ResourceCost : IResourceCostReader
     {
         [SerializeField] private int melody;
         [SerializeField] private int harmony;
@@ -12,11 +24,19 @@ namespace DefaultNamespace.Data
         [SerializeField] private int instrumentation;
         [SerializeField] private int dynamics;
 
-        public int Melody {get => melody; set => melody = value;}
-        public int Harmony {get => harmony; set => harmony = value;}
-        public int Rhythm {get => rhythm; set => rhythm = value;}
-        public int Instrumentation {get => instrumentation; set => instrumentation = value;}
-        public int Dynamics {get => dynamics; set => dynamics = value;}
+        // Read-only interface implementation
+        public int Melody => melody;
+        public int Harmony => harmony;
+        public int Rhythm => rhythm;
+        public int Instrumentation => instrumentation;
+        public int Dynamics => dynamics;
+
+        // Setters only for business logic layer
+        internal int MelodyInternal {get => melody; set => melody = value;}
+        internal int HarmonyInternal {get => harmony; set => harmony = value;}
+        internal int RhythmInternal {get => rhythm; set => rhythm = value;}
+        internal int InstrumentationInternal {get => instrumentation; set => instrumentation = value;}
+        internal int DynamicsInternal {get => dynamics; set => dynamics = value;}
 
         public ResourceCost(int melody, int harmony, int rhythm, int instrumentation, int dynamics)
         {
@@ -40,7 +60,7 @@ namespace DefaultNamespace.Data
             };
         }
 
-        public void SetCost(ResourceType resourceType, int cost)
+        internal void SetCost(ResourceType resourceType, int cost)
         {
             switch (resourceType)
             {

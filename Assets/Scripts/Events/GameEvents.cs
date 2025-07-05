@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using DefaultNamespace.Data;
 
 namespace Events
 {
@@ -156,9 +157,10 @@ namespace Events
 
     public class StartGameEvent : GameEvent
     {
+        // Light event - no data payload, just notification
+        // Board data will be read from GameModel when needed
         public StartGameEvent()
         {
-            
         }
     }
 } 

@@ -1,5 +1,6 @@
 using Command;
 using Cysharp.Threading.Tasks;
+using DefaultNamespace.Data;
 using Manager;
 using R3;
 using System;
@@ -79,6 +80,25 @@ namespace UI.Board.BoardMusicCardPanel.BoardMusicCard
 
         // Event Bus
         
+        // Public methods
+
+        public async UniTask PutCardOnBoard(string musicCardId, IMusicCardDataReader musicCardData)
+        {
+            if (!viewModel.PutCardOnBoard(musicCardId, musicCardData)) {
+                return;
+            }
+
+            await UniTask.WaitUntil(() => viewModel.State.Value == BoardMusicCardState.Hidden);
+        }
+
+        public async UniTask RevealCard()
+        {
+            if (!viewModel.RevealCard()) {
+                return;
+            }
+
+            await UniTask.WaitUntil(() => viewModel.State.Value == BoardMusicCardState.Visible);
+        }
 
         public void Dispose()
         {

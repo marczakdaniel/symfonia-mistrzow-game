@@ -14,13 +14,13 @@ namespace UI.Board.BoardMusicCardPanel.BoardMusicCard
 
     public class BoardMusicCardViewModel {
         public ReactiveProperty<BoardMusicCardState> State { get; private set; } = new ReactiveProperty<BoardMusicCardState>(BoardMusicCardState.Disabled);
-        public ReactiveProperty<MusicCardData> MusicCardData { get; private set; } = new ReactiveProperty<MusicCardData>();
+        public ReactiveProperty<IMusicCardDataReader> MusicCardData { get; private set; } = new ReactiveProperty<IMusicCardDataReader>();
         public string MusicCardId { get; private set; }
 
         public BoardMusicCardViewModel() {
         }
 
-        public bool PutCardOnBoard(string musicCardId, MusicCardData musicCardData) {
+        public bool PutCardOnBoard(string musicCardId, IMusicCardDataReader musicCardData) {
             if (musicCardData == null) {
                 Debug.LogError($"[BoardMusicCard] Cannot put card on board with null music card data");
                 return false;
@@ -93,7 +93,7 @@ namespace UI.Board.BoardMusicCardPanel.BoardMusicCard
             return State.Value == BoardMusicCardState.Visible;
         }
 
-        private void SetMusicCardData(string musicCardId, MusicCardData musicCardData) {
+        private void SetMusicCardData(string musicCardId, IMusicCardDataReader musicCardData) {
             MusicCardData.Value = musicCardData;
             MusicCardId = musicCardId;
         }
