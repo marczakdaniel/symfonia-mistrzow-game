@@ -127,7 +127,8 @@ namespace Command
 
         public override bool Validate()
         {
-            return true;
+            // TODO: Check if game can be started
+            return gameModel.CanStartGame();
         }
 
         public override async UniTask<bool> Execute()
@@ -135,12 +136,10 @@ namespace Command
             // model update
             // business logic
             // event publish
-
-
-            // Initialize the game
-            gameModel.InitializeBoard();
+            // 1. Model update - preparation
+            gameModel.StartGame();
             
-            // Publish game started event and wait for UI to complete
+            // 2. Event publish and wait for UI to complete
             var gameStartedEvent = new GameStartedEvent();
             await AsyncEventBus.Instance.PublishAndWaitAsync(gameStartedEvent);
 

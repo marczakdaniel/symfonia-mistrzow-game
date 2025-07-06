@@ -25,7 +25,7 @@ namespace Command
         private void InitializeCommandSystem()
         {
             // Create command factory
-            commandFactory = new CommandFactory(GameModel.Instance);
+            commandFactory = new CommandFactory(new GameModel());
             
             // Create command executor
             commandExecutor = new CommandExecutor();

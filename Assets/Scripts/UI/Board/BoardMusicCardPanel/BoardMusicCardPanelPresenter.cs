@@ -23,11 +23,11 @@ namespace UI.Board.BoardMusicCardPanel
 
         public BoardMusicCardPanelPresenter(BoardMusicCardPanelView view, 
                                           CommandFactory commandFactory,
-                                          IGameModelReader gameModelReader = null)
+                                          IGameModelReader gameModelReader)
         {
             this.view = view;
             this.commandFactory = commandFactory;
-            this.gameModelReader = gameModelReader ?? GameModel.Instance;
+            this.gameModelReader = gameModelReader;
 
             InitializeChildMCP();
             InitializeMVP();
@@ -83,7 +83,7 @@ namespace UI.Board.BoardMusicCardPanel
         {
             await InitializeBoard();
         }
-        
+
         public async UniTask InitializeBoard()
         {
             // Get current board cards state

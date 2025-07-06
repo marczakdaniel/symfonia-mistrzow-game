@@ -1,3 +1,4 @@
+using Models;
 using UnityEngine;
 
 namespace Command
@@ -151,7 +152,7 @@ namespace Command
             }
 
             // Próba automatycznej inicjalizacji dla debugowania
-            var gameModel = Models.GameModel.Instance;
+            var gameModel = new GameModel();
             var commandFactory = new CommandFactory(gameModel);
             CommandService.Instance.Initialize(commandFactory);
             

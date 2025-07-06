@@ -9,8 +9,11 @@ namespace Models
 {   
     public class GameConfig
     {
-        public GameConfig()
+        public MusicCardData[] musicCardDatas;
+
+        public GameConfig(MusicCardData[] musicCardDatas)
         {
+            this.musicCardDatas = musicCardDatas;
         }
     }
 
@@ -22,19 +25,6 @@ namespace Models
 
     public class GameModel : IGameModelReader
     {
-        private static GameModel _instance;
-        public static GameModel Instance
-        {
-            get
-            {
-                if (_instance == null)
-                {
-                    _instance = new GameModel("default", "default");
-                }
-                return _instance;
-            }
-        }
-
         public string GameId { get; private set; }
         public string GameName { get; private set; }
         public int PlayerCount { get; private set; }
@@ -45,17 +35,20 @@ namespace Models
         public string CurrentPlayerId { get; private set; }
         public BoardModel board { get; private set; }
 
-        private GameModel(string gameId, string gameName)
+        public GameModel()
         {
-            GameId = Guid.NewGuid().ToString();
-            GameName = gameName;
+            //GameId = Guid.NewGuid().ToString();
+            //GameName = gameName;
             board = new BoardModel();
             players = new List<PlayerModel>();
         }
 
-        public static void Initialize(GameConfig gameConfig)
+        private bool isInitialized = false;
+
+        public void Initialize(GameConfig gameConfig)
         {
-            _instance = new GameModel("default", "default");
+
+            isInitialized = true;
         }
 
         public void AddPlayer(PlayerModel player)
@@ -84,9 +77,26 @@ namespace Models
             return players.Any(p => p.PlayerId == playerId);
         }
 
+        // Game Flow Management
+
+        // Start Game Command
+        public bool CanStartGame()
+        {
+            return isInitialized;
+        }
+
+        public bool StartGame()
+        {
+            // 1. Initialize Board
+            InitializeBoard();
+            return true;
+        }
+
         // Board Management
         public bool InitializeBoard()
         {
+            board.Initialize();
+
             return true;
         }
 

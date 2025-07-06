@@ -1,10 +1,10 @@
 using Models;
 using UnityEngine;
 using UI.GameWindow;
-using Command;
 using System.Threading.Tasks;
 using Cysharp.Threading.Tasks;
 using Events;
+using Command;
 
 namespace Managers
 {
@@ -14,13 +14,20 @@ namespace Managers
 
         private GameWindowPresenter gameWindowPresenter;    
         private CommandFactory commandFactory;
+        private GameModel gameModel;
 
         public bool InitalizeGame(GameConfig gameConfig)
         {
-            GameModel.Initialize(gameConfig);
+            // Initialize MusicCardRepository
+            MusicCardRepository.Instance.Initialize(gameConfig.musicCardDatas);
+            // Initialize and create GameModel
+            gameModel = new GameModel();
+            gameModel.Initialize(gameConfig);
+
             
             // Initialize CommandFactory
-            commandFactory = new CommandFactory(GameModel.Instance);
+            commandFactory = new CommandFactory(gameModel);
+            CommandService.Instance.Initialize(commandFactory);
 
             CreateGameWindow();
             return true;
@@ -28,13 +35,16 @@ namespace Managers
 
         private void CreateGameWindow()
         {
-            gameWindowPresenter = new GameWindowPresenter(gameWindowView, commandFactory);
+            gameWindowPresenter = new GameWindowPresenter(gameWindowView, commandFactory, gameModel);
         }
 
         public async UniTask StartGame()
         {
+            // TODO: Proper command execution
             var startGameCommand = commandFactory.CreateStartGameCommand();
-            await startGameCommand.Execute();
+            await CommandService.Instance.ExecuteCommandAsync(startGameCommand);
+
+            // TODO: Start turn for first player
         }
 
         private void OnDestroy()

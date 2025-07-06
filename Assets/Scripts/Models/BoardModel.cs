@@ -263,9 +263,10 @@ namespace Models
             return (-1, -1);
         }
 
-        public virtual void Initialize()
+        public void Initialize()
         {
             LoadCardToDecks();
+            RefillAllSlots();
         }
 
         public MusicCardData[,] GetCurrentBoardCards()
@@ -282,6 +283,14 @@ namespace Models
             }
             
             return boardCards;
+        }
+
+        private void RefillAllSlots()
+        {
+            foreach (var level in Levels)
+            {
+                level.RefillAllSlots();
+            }
         }
 
         private void LoadCardToDecks()

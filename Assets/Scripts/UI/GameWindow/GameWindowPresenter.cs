@@ -4,6 +4,7 @@ using UI.MusicCardDetailsPanel;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using Events;
+using Models;
 
 namespace UI.GameWindow
 {
@@ -14,12 +15,12 @@ namespace UI.GameWindow
         private BoardPresenter boardPresenter;
         private MusicCardDetailsPanelPresenter musicCardDetailsPanelPresenter;
         private CommandFactory commandFactory;
-
-        public GameWindowPresenter(GameWindowView view, CommandFactory commandFactory)
+        private IGameModelReader gameModelReader;
+        public GameWindowPresenter(GameWindowView view, CommandFactory commandFactory, IGameModelReader gameModelReader)
         {
             this.view = view;
             this.commandFactory = commandFactory;
-
+            this.gameModelReader = gameModelReader;
             InitializeChildMVP();
             InitializeMVP();
             SubscribeToEvents();
@@ -27,7 +28,7 @@ namespace UI.GameWindow
 
         private void InitializeChildMVP()
         {
-            boardPresenter = new BoardPresenter(view.BoardView, commandFactory);
+            boardPresenter = new BoardPresenter(view.BoardView, commandFactory, gameModelReader);
             musicCardDetailsPanelPresenter = new MusicCardDetailsPanelPresenter(view.MusicCardDetailsPanelView, commandFactory);
         }
 
