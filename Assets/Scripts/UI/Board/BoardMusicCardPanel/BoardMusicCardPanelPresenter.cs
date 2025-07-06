@@ -4,10 +4,11 @@ using UI.Board.BoardMusicCardPanel.BoardCardDeck;
 using UI.Board.BoardMusicCardPanel.BoardMusicCard;
 using Models;
 using DefaultNamespace.Data;
+using Events;
 
 namespace UI.Board.BoardMusicCardPanel
 {
-    public class BoardMusicCardPanelPresenter
+    public class BoardMusicCardPanelPresenter : IAsyncEventHandler<GameStartedEvent>
     {
         private readonly BoardMusicCardPanelView view;
         private readonly BoardMusicCardPanelViewModel viewModel = new BoardMusicCardPanelViewModel();
@@ -75,21 +76,14 @@ namespace UI.Board.BoardMusicCardPanel
 
         public void SubscribeToEvents()
         {
-            // Hybrid approach: Light events as notifications + model reading
-
-            // Example of other events that would trigger board updates
-            // AsyncEventBus.Instance.Subscribe<CardRemovedFromBoardEvent>(async (eventData) =>
-            // {
-            //     var boardCards = gameModelReader.GetCurrentBoardCards();
-            //     await UpdateBoard(boardCards);
-            // });
+            AsyncEventBus.Instance.Subscribe<GameStartedEvent>(this);
         }
 
-        public void StartGame()
+        public async UniTask HandleAsync(GameStartedEvent gameEvent)
         {
-            
+            await InitializeBoard();
         }
-
+        
         public async UniTask InitializeBoard()
         {
             // Get current board cards state
@@ -126,5 +120,7 @@ namespace UI.Board.BoardMusicCardPanel
                 await UniTask.Delay(delayBetweenCards);
             }
         }
+
+        
     }
 }

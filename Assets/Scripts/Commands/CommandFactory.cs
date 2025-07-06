@@ -1,19 +1,24 @@
 using Models;
-using Services;
 
 namespace Command
 {
     public class CommandFactory
     {
-        private readonly IMusicCardService musicCardService;
-        private readonly IPlayerService playerService;
         private readonly GameModel gameModel;
 
-        public CommandFactory(MusicCardService musicCardService, GameModel gameModel)
+        public CommandFactory(GameModel gameModel)
         {
-            this.musicCardService = musicCardService;
             this.gameModel = gameModel;
         }
+
+        // Game Flow Commands
+
+        public StartGameCommand CreateStartGameCommand()
+        {
+            return new StartGameCommand(gameModel);
+        }
+
+        // Player Actions Commands
         
         public BuyMusicCardCommand CreateBuyMusicCardCommand(string playerId, string musicCardId)
         {
@@ -23,11 +28,6 @@ namespace Command
         public ReserveMusicCardCommand CreateReserveMusicCardCommand(string playerId, string musicCardId)
         {
             return new ReserveMusicCardCommand(playerId, musicCardId, gameModel);
-        }
-
-        public StartGameCommand CreateStartGameCommand()
-        {
-            return new StartGameCommand(gameModel);
         }
     }
 }

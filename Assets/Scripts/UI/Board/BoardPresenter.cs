@@ -22,6 +22,7 @@ namespace UI.Board
             this.gameModelReader = gameModelReader ?? GameModel.Instance;
             InitializeChildMCP();
             InitializeMVP();
+            SubscribeToEvents();
         }
 
         private void InitializeChildMCP()
@@ -51,12 +52,6 @@ namespace UI.Board
             AsyncEventBus.Instance.Subscribe<BoardUpdatedEvent>(this);
             AsyncEventBus.Instance.Subscribe<CardPurchasedEvent>(this);
             AsyncEventBus.Instance.Subscribe<CardReservedEvent>(this);
-        }
-
-        public void StartGame()
-        {
-            SubscribeToEvents();
-            boardMusicCardPanelPresenter.StartGame();
         }
 
         // Event Handlers

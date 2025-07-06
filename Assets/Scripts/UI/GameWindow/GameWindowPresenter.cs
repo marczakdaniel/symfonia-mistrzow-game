@@ -22,6 +22,7 @@ namespace UI.GameWindow
 
             InitializeChildMVP();
             InitializeMVP();
+            SubscribeToEvents();
         }
 
         private void InitializeChildMVP()
@@ -53,7 +54,6 @@ namespace UI.GameWindow
 
         public async UniTask StartGame()
         {
-            SubscribeToEvents();
             var command = commandFactory.CreateStartGameCommand();
             await command.Execute();
         }
@@ -64,7 +64,7 @@ namespace UI.GameWindow
             Debug.Log($"[GameWindowPresenter] Handling GameStartedEvent: {gameEvent.EventId}");
             
             // Start child presenters
-            boardPresenter.StartGame();
+            //boardPresenter.StartGame();
             
             // Simulate UI update time
             await UniTask.Delay(100);

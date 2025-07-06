@@ -4,7 +4,6 @@ using UI.GameWindow;
 using Command;
 using System.Threading.Tasks;
 using Cysharp.Threading.Tasks;
-using Services;
 using Events;
 
 namespace Managers
@@ -20,11 +19,8 @@ namespace Managers
         {
             GameModel.Initialize(gameConfig);
             
-            // Initialize services
-            var musicCardService = new MusicCardService();
-            
             // Initialize CommandFactory
-            commandFactory = new CommandFactory(musicCardService, GameModel.Instance);
+            commandFactory = new CommandFactory(GameModel.Instance);
 
             CreateGameWindow();
             return true;
@@ -37,7 +33,7 @@ namespace Managers
 
         public async UniTask StartGame()
         {
-            var startGameCommand = new StartGameCommand(GameModel.Instance);
+            var startGameCommand = commandFactory.CreateStartGameCommand();
             await startGameCommand.Execute();
         }
 

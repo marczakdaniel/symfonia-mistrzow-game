@@ -1,6 +1,5 @@
 using Command;
 using Cysharp.Threading.Tasks;
-using Manager;
 using R3;
 using UnityEngine;
 
@@ -8,7 +7,6 @@ namespace UI.MusicCardDetailsPanel {
     public class MusicCardDetailsPanelPresenter {
         private readonly MusicCardDetailsPanelView view;
         private readonly MusicCardDetailsPanelViewModel viewModel = new MusicCardDetailsPanelViewModel();
-        private readonly ICommandManager commandManager;
         private readonly CommandFactory commandFactory;
         private readonly CompositeDisposable subscriptions = new CompositeDisposable();
 
@@ -70,12 +68,10 @@ namespace UI.MusicCardDetailsPanel {
         private void HandleBuyButtonClick(Unit unit) 
         {
             var command = commandFactory.CreateBuyMusicCardCommand(viewModel.PlayerId, viewModel.MusicCardId);
-            commandManager.ExecuteCommand(command);
         }
 
         private void HandleReserveButtonClick(Unit unit) {
             var command = commandFactory.CreateReserveMusicCardCommand(viewModel.PlayerId, viewModel.MusicCardId);
-            commandManager.ExecuteCommand(command);
         }
     }
 }
