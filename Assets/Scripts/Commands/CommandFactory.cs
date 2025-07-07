@@ -1,3 +1,4 @@
+using System;
 using Models;
 
 namespace Command
@@ -30,14 +31,19 @@ namespace Command
             return new ReserveMusicCardCommand(playerId, musicCardId, gameModel);
         }
         
-        public OpenMusicCardDetailsPanelCommand CreateOpenMusicCardDetailsPanelCommand(string musicCardId)
+        public OpenMusicCardDetailsPanelCommand CreateOpenMusicCardDetailsPanelCommand(string musicCardId, int level, int position)
         {
-            return new OpenMusicCardDetailsPanelCommand(musicCardId, gameModel);
+            return new OpenMusicCardDetailsPanelCommand(musicCardId, level, position, gameModel);
         }
 
-        public CloseMusicCardDetailsPanelCommand CreateCloseMusicCardDetailsPanelCommand()
+        public CloseMusicCardDetailsPanelCommand CreateCloseMusicCardDetailsPanelCommand(string musicCardId)
         {
-            return new CloseMusicCardDetailsPanelCommand(gameModel);
+            return new CloseMusicCardDetailsPanelCommand(musicCardId, gameModel);
+        }
+
+        public CloseMusicCardDetailsPanelAnimationFinishedCommand CreateCloseMusicCardDetailsPanelAnimationFinishedCommand(string musicCardId)
+        {
+            return new CloseMusicCardDetailsPanelAnimationFinishedCommand(musicCardId, gameModel);
         }
     }
 }

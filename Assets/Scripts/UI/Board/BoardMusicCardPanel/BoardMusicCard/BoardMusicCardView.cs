@@ -49,11 +49,6 @@ namespace UI.Board.BoardMusicCardPanel.BoardMusicCard
 
         public void Setup(IMusicCardDataReader card)
         {
-            if (card == null)
-            {
-                Debug.LogError("[BoardMusicCardView] Cannot setup card with null data");
-                return;
-            }
             costView.Setup(card.Cost);
             cardImage.sprite = card.CardImage;
             pointsText.text = card.Points.ToString();

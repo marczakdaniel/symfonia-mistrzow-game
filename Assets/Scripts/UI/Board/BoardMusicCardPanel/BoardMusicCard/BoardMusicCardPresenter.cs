@@ -1,6 +1,7 @@
 using Command;
 using Cysharp.Threading.Tasks;
 using DefaultNamespace.Data;
+using Events;
 using Models;
 using R3;
 using System;
@@ -8,7 +9,12 @@ using UnityEngine;
 
 namespace UI.Board.BoardMusicCardPanel.BoardMusicCard
 {
-    public class BoardMusicCardPresenter : IDisposable
+    public class BoardMusicCardPresenter : 
+        IDisposable, 
+        IAsyncEventHandler<MusicCardDetailsPanelOpenedEvent>, 
+        IAsyncEventHandler<MusicCardDetailsPanelAnimationFinishedEvent>,
+        IAsyncEventHandler<CardReservedEvent>, 
+        IAsyncEventHandler<CardPurchasedEvent>
     {
         private readonly BoardMusicCardView view;
         private readonly BoardMusicCardViewModel viewModel;
@@ -24,6 +30,7 @@ namespace UI.Board.BoardMusicCardPanel.BoardMusicCard
             this.viewModel = new BoardMusicCardViewModel(level, position);
             
             InitializeMVP();
+            SubscribeToEvents();
         }
 
         private void InitializeMVP()
@@ -35,12 +42,64 @@ namespace UI.Board.BoardMusicCardPanel.BoardMusicCard
         private void ConnectModel()
         {
             viewModel.State.Subscribe(state => HandleStateChange(state).Forget()).AddTo(subscriptions);
-            viewModel.MusicCardData.Subscribe(data => view.Setup(data)).AddTo(subscriptions);
+            viewModel.MusicCardData.Where(data => data != null).Subscribe(data => view.Setup(data)).AddTo(subscriptions);
         }
 
         private void ConnectView()
         {
             view.OnCardClicked.Subscribe(_ => HandleCardClick().Forget()).AddTo(subscriptions);
+        }
+
+        private void SubscribeToEvents()
+        {
+            AsyncEventBus.Instance.Subscribe<MusicCardDetailsPanelOpenedEvent>(this);
+            AsyncEventBus.Instance.Subscribe<MusicCardDetailsPanelAnimationFinishedEvent>(this);
+            AsyncEventBus.Instance.Subscribe<CardReservedEvent>(this);
+            AsyncEventBus.Instance.Subscribe<CardPurchasedEvent>(this);
+        }
+
+        public async UniTask HandleAsync(MusicCardDetailsPanelOpenedEvent musicCardDetailsPanelOpenedEvent)
+        {
+            if (musicCardDetailsPanelOpenedEvent.MusicCardId != viewModel.MusicCardData.Value.Id) {
+                return;
+            }
+
+            if (!viewModel.DisableCardWhenOpenMusicCardDetailsPanel()) {
+                return;
+            }
+
+            await UniTask.WaitUntil(() => viewModel.State.Value == BoardMusicCardState.DuringOpenMusicCardDetailsPanel);
+        }
+
+        public async UniTask HandleAsync(MusicCardDetailsPanelAnimationFinishedEvent musicCardDetailsPanelAnimationFinishedEvent)
+        {
+            if (musicCardDetailsPanelAnimationFinishedEvent.MusicCardId != viewModel.MusicCardData.Value.Id) {
+                return;
+            }
+
+            if (!viewModel.AfterCloseMusicCardDetailsPanel()) {
+                return;
+            }
+
+            await UniTask.WaitUntil(() => viewModel.State.Value == BoardMusicCardState.Visible);
+        }
+
+        public async UniTask HandleAsync(CardReservedEvent cardReservedEvent)
+        {
+            if (!viewModel.AfterReserveMusicCard()) {
+                return;
+            }
+
+            await UniTask.WaitUntil(() => viewModel.State.Value == BoardMusicCardState.Disabled);
+        }
+
+        public async UniTask HandleAsync(CardPurchasedEvent cardPurchasedEvent)
+        {
+            if (!viewModel.AfterBuyMusicCard()) {
+                return;
+            }
+
+            await UniTask.WaitUntil(() => viewModel.State.Value == BoardMusicCardState.Disabled);
         }
 
         // Model -> View
@@ -68,6 +127,9 @@ namespace UI.Board.BoardMusicCardPanel.BoardMusicCard
             else if (state == BoardMusicCardState.Disabled) {
                 view.DisableCard();
             }
+            else if (state == BoardMusicCardState.DuringOpenMusicCardDetailsPanel) {
+                view.DisableCard();
+            }
             else {
                 Debug.LogError($"Unknown state: {state}");
             }
@@ -77,7 +139,7 @@ namespace UI.Board.BoardMusicCardPanel.BoardMusicCard
         // Input -> Command
         private async UniTask HandleCardClick()
         {
-            var command = commandFactory.CreateOpenMusicCardDetailsPanelCommand(viewModel.MusicCardData.Value.Id);
+            var command = commandFactory.CreateOpenMusicCardDetailsPanelCommand(viewModel.MusicCardData.Value.Id, viewModel.Level, viewModel.Position);
             await CommandService.Instance.ExecuteCommandAsync(command);
         }
 

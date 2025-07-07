@@ -85,10 +85,6 @@ namespace Command
             var cardReservedEvent = new CardReservedEvent(PlayerId, MusicCardId, 1);
             await AsyncEventBus.Instance.PublishAndWaitAsync(cardReservedEvent);
 
-            // Publish board update event
-            var boardUpdatedEvent = new BoardUpdatedEvent(gameModel.board);
-            await AsyncEventBus.Instance.PublishAndWaitAsync(boardUpdatedEvent);
-
             return true;
         }
     }

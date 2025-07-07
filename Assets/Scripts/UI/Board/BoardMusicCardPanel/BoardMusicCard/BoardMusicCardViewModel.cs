@@ -9,6 +9,7 @@ namespace UI.Board.BoardMusicCardPanel.BoardMusicCard
         Hidden,
         DuringRevealAnimation,
         Visible,
+        DuringOpenMusicCardDetailsPanel,
         DuringMovingToPlayerResources,
     }
 
@@ -58,6 +59,66 @@ namespace UI.Board.BoardMusicCardPanel.BoardMusicCard
 
             SetState(BoardMusicCardState.DuringMovingToPlayerResources);
             return true;
+        }
+
+        public bool DisableCardWhenOpenMusicCardDetailsPanel() {
+            if (!CanDisableCardWhenOpenMusicCardDetailsPanel()) {
+                Debug.LogError($"[BoardMusicCard] Cannot disable card when open music card details panel in state: {State.Value}");
+                return false;
+            }
+            SetState(BoardMusicCardState.DuringOpenMusicCardDetailsPanel);
+            return true;
+        }
+
+        public bool CanDisableCardWhenOpenMusicCardDetailsPanel() {
+            return State.Value == BoardMusicCardState.Visible;
+        }
+
+        public bool AfterCloseMusicCardDetailsPanel() {
+            if (!CanAfterCloseMusicCardDetailsPanel()) {
+                Debug.LogError($"[BoardMusicCard] Cannot after close music card details panel in state: {State.Value}");
+                return false;
+            }
+            SetState(BoardMusicCardState.Visible);
+            return true;
+        }
+
+        public bool CanAfterCloseMusicCardDetailsPanel() {
+            return State.Value == BoardMusicCardState.DuringOpenMusicCardDetailsPanel;
+        }
+
+        public bool AfterBuyMusicCard() {
+            if (!CanAfterBuyMusicCard()) {
+                Debug.LogError($"[BoardMusicCard] Cannot after buy music card in state: {State.Value}");
+                return false;
+            }
+            SetState(BoardMusicCardState.Disabled);
+            return true;
+        }   
+
+        public bool CanAfterBuyMusicCard() {
+            return State.Value == BoardMusicCardState.DuringOpenMusicCardDetailsPanel;
+        }
+
+        public bool AfterReserveMusicCard() {
+            if (!CanAfterReserveMusicCard()) {
+                Debug.LogError($"[BoardMusicCard] Cannot after reserve music card in state: {State.Value}");
+                return false;
+            }
+            SetState(BoardMusicCardState.Disabled);
+            return true;
+        }       
+
+        public bool CanAfterReserveMusicCard() {
+            return State.Value == BoardMusicCardState.DuringOpenMusicCardDetailsPanel;
+        }
+
+        public void CompleteOpenMusicCardDetailsPanel() {
+            if (State.Value != BoardMusicCardState.DuringOpenMusicCardDetailsPanel) {
+                Debug.LogError($"[BoardMusicCard] Cannot complete open music card details panel in state: {State.Value}");
+                return;
+            }
+            SetState(BoardMusicCardState.Visible);
         }
 
         public void CompletePutOnBoardAnimation() {

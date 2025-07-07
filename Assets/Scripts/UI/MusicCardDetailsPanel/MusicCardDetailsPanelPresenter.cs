@@ -34,8 +34,8 @@ namespace UI.MusicCardDetailsPanel {
 
         private void ConnectView() {
             view.OnCloseButtonClick.Subscribe(_ => HandleCloseButtonClick().Forget()).AddTo(subscriptions);
-            view.OnBuyButtonClick.Subscribe(HandleBuyButtonClick).AddTo(subscriptions);
-            view.OnReserveButtonClick.Subscribe(HandleReserveButtonClick).AddTo(subscriptions);
+            view.OnBuyButtonClick.Subscribe(_ => HandleBuyButtonClick().Forget()).AddTo(subscriptions);
+            view.OnReserveButtonClick.Subscribe(_ => HandleReserveButtonClick().Forget()).AddTo(subscriptions);
         }
 
         private void SubscribeToEvents() {
@@ -45,11 +45,13 @@ namespace UI.MusicCardDetailsPanel {
 
         private async UniTask HandleStateChange(MusicCardDetailsPanelState state) {
             if (state == MusicCardDetailsPanelState.DuringOpenAnimation) {
-                await view.PlayOpenAnimation();
+                view.EnablePanel();
+                await view.PlayOpenAnimation(viewModel.Level - 1, viewModel.Position);
                 viewModel.CompleteOpenAnimation();
             }
             else if (state == MusicCardDetailsPanelState.DuringCloseAnimation) {
-                await view.PlayCloseAnimation();
+                await view.PlayCloseAnimation(viewModel.Level - 1, viewModel.Position);
+                await HandleCloseAnimationFinished();
                 viewModel.CompleteCloseAnimation();
             }
             else if (state == MusicCardDetailsPanelState.DuringBuyAnimation) {
@@ -61,7 +63,7 @@ namespace UI.MusicCardDetailsPanel {
                 viewModel.CompleteReserveAnimation();
             }
             else if (state == MusicCardDetailsPanelState.Opened) {
-                view.EnablePanel();
+
             }
             else if (state == MusicCardDetailsPanelState.Closed) {
                 view.DisablePanel();
@@ -74,24 +76,31 @@ namespace UI.MusicCardDetailsPanel {
         // Commands Actions
 
         private async UniTask HandleCloseButtonClick() {
-            var command = commandFactory.CreateCloseMusicCardDetailsPanelCommand();
+            var command = commandFactory.CreateCloseMusicCardDetailsPanelCommand(viewModel.MusicCardId);
             await CommandService.Instance.ExecuteCommandAsync(command);
         }
 
-        private void HandleBuyButtonClick(Unit unit) 
-        {
-            var command = commandFactory.CreateBuyMusicCardCommand(viewModel.PlayerId, viewModel.MusicCardId);
+        private async UniTask HandleCloseAnimationFinished() {
+            var command = commandFactory.CreateCloseMusicCardDetailsPanelAnimationFinishedCommand(viewModel.MusicCardId);
+            await CommandService.Instance.ExecuteCommandAsync(command);
         }
 
-        private void HandleReserveButtonClick(Unit unit) {
+        private async UniTask HandleBuyButtonClick() 
+        {
+            var command = commandFactory.CreateBuyMusicCardCommand(viewModel.PlayerId, viewModel.MusicCardId);
+            await CommandService.Instance.ExecuteCommandAsync(command);
+        }
+
+        private async UniTask HandleReserveButtonClick() {
             var command = commandFactory.CreateReserveMusicCardCommand(viewModel.PlayerId, viewModel.MusicCardId);
+            await CommandService.Instance.ExecuteCommandAsync(command);
         }
 
         // Event Bus
 
         public async UniTask HandleAsync(MusicCardDetailsPanelOpenedEvent musicCardDetailsPanelOpenedEvent) {
             var musicCardData = MusicCardRepository.Instance.GetCard(musicCardDetailsPanelOpenedEvent.MusicCardId);
-            viewModel.OpenCardDetailsPanel(musicCardDetailsPanelOpenedEvent.MusicCardId, musicCardData);
+            viewModel.OpenCardDetailsPanel(musicCardDetailsPanelOpenedEvent.MusicCardId, musicCardData, musicCardDetailsPanelOpenedEvent.Level, musicCardDetailsPanelOpenedEvent.Position);
 
             await UniTask.WaitUntil(() => viewModel.State.Value == MusicCardDetailsPanelState.Opened);
         }
@@ -99,7 +108,7 @@ namespace UI.MusicCardDetailsPanel {
         public async UniTask HandleAsync(MusicCardDetailsPanelClosedEvent musicCardDetailsPanelClosedEvent) {  
             viewModel.CloseCardDetailsPanel();
 
-            await UniTask.WaitUntil(() => viewModel.State.Value == MusicCardDetailsPanelState.Closed);
+            await UniTask.WaitUntil(() => viewModel.State.Value == MusicCardDetailsPanelState.DuringCloseAnimation);
         }
     }
 }

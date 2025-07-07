@@ -17,6 +17,8 @@ namespace UI.MusicCardDetailsPanel {
         public ReactiveProperty<MusicCardData> MusicCardData { get; private set; } = new ReactiveProperty<MusicCardData>(null);
         public string MusicCardId { get; private set; }
         public string PlayerId { get; private set; }
+        public int Level { get; private set; }
+        public int Position { get; private set; }
 
         public MusicCardDetailsPanelViewModel() {
             
@@ -26,7 +28,7 @@ namespace UI.MusicCardDetailsPanel {
             PlayerId = playerId;
         }
 
-        public bool OpenCardDetailsPanel(string musicCardId, MusicCardData musicCardData) { 
+        public bool OpenCardDetailsPanel(string musicCardId, MusicCardData musicCardData, int level, int position) { 
             if (musicCardData == null) {
                 Debug.LogError("[DetailsPanel] Cannot open panel with null music card data");
                 return false;
@@ -36,6 +38,9 @@ namespace UI.MusicCardDetailsPanel {
                 Debug.LogError($"[DetailsPanel] Cannot open panel in state: {State.Value}");
                 return false;
             }
+
+            Level = level;
+            Position = position;
 
             SetMusicCardData(musicCardId, musicCardData);
             SetState(MusicCardDetailsPanelState.DuringOpenAnimation);
