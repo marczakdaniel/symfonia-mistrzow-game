@@ -14,6 +14,7 @@ namespace UI.Board.BoardMusicCardPanel.BoardMusicCard
         {
             costImage.sprite = resourceType.GetSingleResourceTypeImages().StackImage1;
             costText.text = cost.ToString();
+            gameObject.SetActive(cost > 0);
         }
     }
 }

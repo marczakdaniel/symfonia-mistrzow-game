@@ -33,6 +33,10 @@ namespace UI.MusicCardDetailsPanel {
             OnReserveButtonClick.OnNext(unit);
         }
         public void SetCardDetails(MusicCardData musicCardData) {
+            if (musicCardData == null) {
+                Debug.LogError("[MusicCardDetailsPanelView] Cannot set card details with null data");
+                return;
+            }
             cardName.text = musicCardData.cardName;
             cardDescription.text = musicCardData.cardDescription;
             detailsMusicCardView.Setup(musicCardData);

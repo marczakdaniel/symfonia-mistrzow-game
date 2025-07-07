@@ -29,7 +29,7 @@ namespace UI.GameWindow
         private void InitializeChildMVP()
         {
             boardPresenter = new BoardPresenter(view.BoardView, commandFactory, gameModelReader);
-            musicCardDetailsPanelPresenter = new MusicCardDetailsPanelPresenter(view.MusicCardDetailsPanelView, commandFactory);
+            //musicCardDetailsPanelPresenter = new MusicCardDetailsPanelPresenter(view.MusicCardDetailsPanelView, commandFactory);
         }
 
         private void InitializeMVP()
@@ -68,7 +68,7 @@ namespace UI.GameWindow
             //boardPresenter.StartGame();
             
             // Simulate UI update time
-            await UniTask.Delay(100);
+            await UniTask.Delay(10000);
             
             Debug.Log($"[GameWindowPresenter] Completed handling GameStartedEvent: {gameEvent.EventId}");
         }

@@ -63,10 +63,10 @@ namespace UI.Board.BoardMusicCardPanel.BoardMusicCard
             else if (state == BoardMusicCardState.Hidden) {
             }
             else if (state == BoardMusicCardState.Visible) {
-                
+                view.EnableCard();
             }
             else if (state == BoardMusicCardState.Disabled) {
-                
+                view.DisableCard();
             }
             else {
                 Debug.LogError($"Unknown state: {state}");
@@ -104,6 +104,8 @@ namespace UI.Board.BoardMusicCardPanel.BoardMusicCard
 
             await UniTask.WaitUntil(() => viewModel.State.Value == BoardMusicCardState.Visible);
         }
+
+        
 
         public void Dispose()
         {

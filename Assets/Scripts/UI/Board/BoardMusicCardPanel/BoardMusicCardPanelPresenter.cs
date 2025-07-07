@@ -5,6 +5,9 @@ using UI.Board.BoardMusicCardPanel.BoardMusicCard;
 using Models;
 using DefaultNamespace.Data;
 using Events;
+using UnityEngine.Rendering.Universal;
+using UnityEngine;
+using System.Collections.Generic;
 
 namespace UI.Board.BoardMusicCardPanel
 {
@@ -31,6 +34,7 @@ namespace UI.Board.BoardMusicCardPanel
 
             InitializeChildMCP();
             InitializeMVP();
+            SubscribeToEvents();
         }
 
         private void InitializeChildMCP()
@@ -74,13 +78,14 @@ namespace UI.Board.BoardMusicCardPanel
 
         }
 
-        public void SubscribeToEvents()
+        private void SubscribeToEvents()
         {
             AsyncEventBus.Instance.Subscribe<GameStartedEvent>(this);
         }
 
         public async UniTask HandleAsync(GameStartedEvent gameEvent)
         {
+            Debug.LogError("[BoardMusicCardPanelPresenter] Game started");
             await InitializeBoard();
         }
 
@@ -92,7 +97,9 @@ namespace UI.Board.BoardMusicCardPanel
             await PutCardsOnBoardWithAnimations();
 
             // Reveal cards - for now we'll skip this step
-            // TODO: Implement card reveal animations if needed
+
+            await RevealCards();
+
         }
 
         private async UniTask PutCardsOnBoardWithAnimations()
@@ -103,24 +110,42 @@ namespace UI.Board.BoardMusicCardPanel
             for (int i = 0; i < level1CardPresenters.Length; i++)
             {
                 await level1CardPresenters[i].PutCardOnBoard();
-                await UniTask.Delay(delayBetweenCards);
             }
 
             // Level 2 cards (index 1 in boardCards)
             for (int i = 0; i < level2CardPresenters.Length; i++)
             {
                 await level2CardPresenters[i].PutCardOnBoard();
-                await UniTask.Delay(delayBetweenCards);
             }
 
             // Level 3 cards (index 2 in boardCards)
             for (int i = 0; i < level3CardPresenters.Length; i++)
             {
                 await level3CardPresenters[i].PutCardOnBoard();
-                await UniTask.Delay(delayBetweenCards);
             }
         }
 
-        
+        public async UniTask RevealCards()
+        {
+            // Level 1 cards (index 0 in boardCards)
+
+            var task = new List<UniTask>();
+            for (int i = 0; i < level1CardPresenters.Length; i++)
+            {
+                task.Add(level1CardPresenters[i].RevealCard());
+            }
+
+            for (int i = 0; i < level2CardPresenters.Length; i++)
+            {
+                task.Add(level2CardPresenters[i].RevealCard());
+            }
+
+            for (int i = 0; i < level3CardPresenters.Length; i++)
+            {
+                task.Add(level3CardPresenters[i].RevealCard());
+            }
+
+            await UniTask.WhenAll(task);
+        }
     }
 }

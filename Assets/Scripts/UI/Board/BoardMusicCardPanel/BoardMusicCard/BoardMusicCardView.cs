@@ -20,26 +20,40 @@ namespace UI.Board.BoardMusicCardPanel.BoardMusicCard
 
         [SerializeField] private BoardMusicCardAnimationController animationController;
 
+        public void DisableCard()
+        {
+            gameObject.SetActive(false);
+        }
+        
+        public void EnableCard()
+        {
+            gameObject.SetActive(true);
+        }
+
         public UniTask PlayPutOnBoardAnimation()
         {
-            return animationController.PlayPutOnBoardAnimation();
+            return UniTask.CompletedTask;
         }
 
-        public async UniTask PlayRevealAnimation()
+        public UniTask PlayRevealAnimation()
         {
             // TODO : Play reveal animation
-            await animationController.ResetPutOnBoardAnimation();
-            await UniTask.Delay(1);
+            return UniTask.CompletedTask;
         }
 
-        public async UniTask PlayMovingToPlayerResourcesAnimation()
+        public UniTask PlayMovingToPlayerResourcesAnimation()
         {
             // TODO : Play moving to player resources animation
-            await UniTask.Delay(1000);
+            return UniTask.CompletedTask;
         }
 
         public void Setup(IMusicCardDataReader card)
         {
+            if (card == null)
+            {
+                Debug.LogError("[BoardMusicCardView] Cannot setup card with null data");
+                return;
+            }
             costView.Setup(card.Cost);
             cardImage.sprite = card.CardImage;
             pointsText.text = card.Points.ToString();

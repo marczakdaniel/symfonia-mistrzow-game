@@ -15,6 +15,7 @@ namespace DefaultNamespace.Data
         string CardDescription { get; }
     }
 
+    [CreateAssetMenu(fileName = "MusicCardData", menuName = "Game/MusicCardData")]
     public class MusicCardData : ScriptableObject, IMusicCardDataReader
     {
         [Header("Card Identity")]
