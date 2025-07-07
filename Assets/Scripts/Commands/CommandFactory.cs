@@ -29,5 +29,15 @@ namespace Command
         {
             return new ReserveMusicCardCommand(playerId, musicCardId, gameModel);
         }
+        
+        public OpenMusicCardDetailsPanelCommand CreateOpenMusicCardDetailsPanelCommand(string musicCardId)
+        {
+            return new OpenMusicCardDetailsPanelCommand(musicCardId, gameModel);
+        }
+
+        public CloseMusicCardDetailsPanelCommand CreateCloseMusicCardDetailsPanelCommand()
+        {
+            return new CloseMusicCardDetailsPanelCommand(gameModel);
+        }
     }
 }

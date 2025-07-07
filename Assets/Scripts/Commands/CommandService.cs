@@ -60,10 +60,12 @@ namespace Command
         /// </summary>
         private void RegisterCommandTypes()
         {
+            _commandExecutor.RegisterCommandType<OpenMusicCardDetailsPanelCommand>();
+            _commandExecutor.RegisterCommandType<CloseMusicCardDetailsPanelCommand>();
+
             _commandExecutor.RegisterCommandType<StartGameCommand>();
             _commandExecutor.RegisterCommandType<BuyMusicCardCommand>();
             _commandExecutor.RegisterCommandType<ReserveMusicCardCommand>();
-            _commandExecutor.RegisterCommandType<BoardMusicCardClickedCommand>();
             
             Debug.Log("[CommandService] Zarejestrowano typy komend");
         }

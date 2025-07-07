@@ -43,7 +43,7 @@ namespace Command
         /*
          * PRZYKŁAD 3: Publikowanie eventów w Command
          */
-        public class ExampleCommand : BaseCommand
+        /*public class ExampleCommand : BaseCommand
         {
             public override string CommandType => "ExampleCommand";
             
@@ -65,7 +65,7 @@ namespace Command
                 
                 return true;
             }
-        }
+        }*/
 
         /*
          * PRZYKŁAD 4: Czyszczenie event bus

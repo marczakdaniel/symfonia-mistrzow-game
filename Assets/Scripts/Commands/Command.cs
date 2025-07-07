@@ -9,27 +9,6 @@ using Events;
 
 namespace Command
 {
-    public class BoardMusicCardClickedCommand : BaseCommand
-    {
-        public override string CommandType => "BoardMusicCardClicked";
-
-        public BoardMusicCardClickedCommand() : base()
-        {
-            
-        }
-
-        public override bool Validate()
-        {
-            return true;
-        }
-
-        public override async UniTask<bool> Execute()
-        {
-            await UniTask.Delay(1000);
-            return true;
-        }
-    }
-
     public class BuyMusicCardCommand : BasePlayerActionCommand
     {
         public override string CommandType => "BuyMusicCard";
@@ -37,7 +16,7 @@ namespace Command
 
         private readonly GameModel gameModel;
 
-        public BuyMusicCardCommand(string playerId, string musicCardId, GameModel gameModel) : base(playerId)
+        public BuyMusicCardCommand(string playerId, string musicCardId, GameModel gameModel) : base(playerId, gameModel)
         {
             this.MusicCardId = musicCardId;
             this.gameModel = gameModel;
@@ -82,7 +61,7 @@ namespace Command
         public string MusicCardId { get; private set; }
         private readonly GameModel gameModel;
 
-        public ReserveMusicCardCommand(string playerId, string musicCardId, GameModel gameModel) : base(playerId)
+        public ReserveMusicCardCommand(string playerId, string musicCardId, GameModel gameModel) : base(playerId, gameModel)
         {
             MusicCardId = musicCardId;
             this.gameModel = gameModel;
@@ -120,7 +99,7 @@ namespace Command
 
         private readonly GameModel gameModel;
 
-        public StartGameCommand(GameModel gameModel) : base()
+        public StartGameCommand(GameModel gameModel) : base(gameModel)
         {
             this.gameModel = gameModel;
         }

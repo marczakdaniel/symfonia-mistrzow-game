@@ -23,5 +23,5 @@ MonoBehaviour:
     instrumentation: 6
     dynamics: 0
   cardImage: {fileID: 8331205241879288053, guid: f86f0288e41646d45a4cb3c3d48921b4, type: 3}
-  cardName: 
-  cardDescription: 
+  cardName: Super nazwa karty
+  cardDescription: To jest super karta

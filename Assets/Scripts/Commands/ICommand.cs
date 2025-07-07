@@ -27,13 +27,19 @@ namespace Command
         string PlayerId { get; }
     }
 
+    public interface IUICommand : ICommand
+    {
+    }
+
     public abstract class BaseCommand : ICommand
     {
         public abstract string CommandType { get; }
         public DateTime Timestamp { get; set; }
         public string CommandId { get; set; }
 
-        public BaseCommand()
+        private readonly GameModel gameModel;
+
+        public BaseCommand(GameModel gameModel)
         {
             Timestamp = DateTime.UtcNow;
             CommandId = Guid.NewGuid().ToString();
@@ -47,7 +53,7 @@ namespace Command
 
     public abstract class BaseGameFlowCommand : BaseCommand, IGameFlowCommand
     {
-        public BaseGameFlowCommand() : base()
+        public BaseGameFlowCommand(GameModel gameModel) : base(gameModel)
         {
 
         }
@@ -57,11 +63,21 @@ namespace Command
     {
         public string PlayerId { get; }
 
-        public BasePlayerActionCommand(string playerId) : base()
+        public BasePlayerActionCommand(string playerId, GameModel gameModel) : base(gameModel)
         {
             PlayerId = playerId;
         }
     }
+
+    public abstract class BaseUICommand : BaseCommand, IUICommand
+    {
+        public BaseUICommand(GameModel gameModel) : base(gameModel)
+        {
+
+        }
+    }
+
+    /*
 
     public class CommandValidationResult
     {
@@ -95,5 +111,5 @@ namespace Command
         {
             throw new NotImplementedException();
         }
-    }
+    } */
 }

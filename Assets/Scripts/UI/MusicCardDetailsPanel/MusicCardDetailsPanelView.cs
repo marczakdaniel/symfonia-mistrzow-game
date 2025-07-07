@@ -34,7 +34,6 @@ namespace UI.MusicCardDetailsPanel {
         }
         public void SetCardDetails(MusicCardData musicCardData) {
             if (musicCardData == null) {
-                Debug.LogError("[MusicCardDetailsPanelView] Cannot set card details with null data");
                 return;
             }
             cardName.text = musicCardData.cardName;
@@ -53,6 +52,13 @@ namespace UI.MusicCardDetailsPanel {
         }
         public UniTask PlayReserveAnimation() {
             return UniTask.CompletedTask;
+        }
+
+        public void EnablePanel(){
+            gameObject.SetActive(true);
+        }
+        public void DisablePanel(){
+            gameObject.SetActive(false);
         }
     }
 }

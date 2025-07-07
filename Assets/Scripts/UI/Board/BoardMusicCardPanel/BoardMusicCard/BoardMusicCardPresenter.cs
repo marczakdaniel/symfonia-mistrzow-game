@@ -40,7 +40,7 @@ namespace UI.Board.BoardMusicCardPanel.BoardMusicCard
 
         private void ConnectView()
         {
-            view.OnCardClicked.Subscribe(HandleCardClick).AddTo(subscriptions);
+            view.OnCardClicked.Subscribe(_ => HandleCardClick().Forget()).AddTo(subscriptions);
         }
 
         // Model -> View
@@ -75,10 +75,10 @@ namespace UI.Board.BoardMusicCardPanel.BoardMusicCard
 
         
         // Input -> Command
-        private void HandleCardClick(Unit unit)
+        private async UniTask HandleCardClick()
         {
-            
-            Debug.Log("Card clicked");
+            var command = commandFactory.CreateOpenMusicCardDetailsPanelCommand(viewModel.MusicCardData.Value.Id);
+            await CommandService.Instance.ExecuteCommandAsync(command);
         }
 
         // Event Bus
@@ -105,7 +105,7 @@ namespace UI.Board.BoardMusicCardPanel.BoardMusicCard
             await UniTask.WaitUntil(() => viewModel.State.Value == BoardMusicCardState.Visible);
         }
 
-        
+
 
         public void Dispose()
         {
