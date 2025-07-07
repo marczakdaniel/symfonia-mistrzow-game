@@ -40,10 +40,5 @@ namespace Command
         {
             return new CloseMusicCardDetailsPanelCommand(musicCardId, gameModel);
         }
-
-        public CloseMusicCardDetailsPanelAnimationFinishedCommand CreateCloseMusicCardDetailsPanelAnimationFinishedCommand(string musicCardId)
-        {
-            return new CloseMusicCardDetailsPanelAnimationFinishedCommand(musicCardId, gameModel);
-        }
     }
 }

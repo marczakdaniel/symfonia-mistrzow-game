@@ -8,7 +8,8 @@ using Models;
 
 namespace UI.GameWindow
 {
-    public class GameWindowPresenter : IAsyncEventHandler<GameStartedEvent>
+    public class GameWindowPresenter : 
+        IAsyncEventHandler<GameStartedEvent>
     {
         private readonly GameWindowView view;
         private readonly GameWindowViewModel viewModel = new GameWindowViewModel();

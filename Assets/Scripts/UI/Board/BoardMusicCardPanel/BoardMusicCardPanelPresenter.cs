@@ -104,7 +104,6 @@ namespace UI.Board.BoardMusicCardPanel
 
         private async UniTask PutCardsOnBoardWithAnimations()
         {
-            const int delayBetweenCards = 200; // milliseconds
             
             // Level 1 cards (index 0 in boardCards)
             for (int i = 0; i < level1CardPresenters.Length; i++)

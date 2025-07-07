@@ -51,7 +51,6 @@ namespace UI.MusicCardDetailsPanel {
             }
             else if (state == MusicCardDetailsPanelState.DuringCloseAnimation) {
                 await view.PlayCloseAnimation(viewModel.Level - 1, viewModel.Position);
-                await HandleCloseAnimationFinished();
                 viewModel.CompleteCloseAnimation();
             }
             else if (state == MusicCardDetailsPanelState.DuringBuyAnimation) {
@@ -79,12 +78,6 @@ namespace UI.MusicCardDetailsPanel {
             var command = commandFactory.CreateCloseMusicCardDetailsPanelCommand(viewModel.MusicCardId);
             await CommandService.Instance.ExecuteCommandAsync(command);
         }
-
-        private async UniTask HandleCloseAnimationFinished() {
-            var command = commandFactory.CreateCloseMusicCardDetailsPanelAnimationFinishedCommand(viewModel.MusicCardId);
-            await CommandService.Instance.ExecuteCommandAsync(command);
-        }
-
         private async UniTask HandleBuyButtonClick() 
         {
             var command = commandFactory.CreateBuyMusicCardCommand(viewModel.PlayerId, viewModel.MusicCardId);
@@ -108,7 +101,7 @@ namespace UI.MusicCardDetailsPanel {
         public async UniTask HandleAsync(MusicCardDetailsPanelClosedEvent musicCardDetailsPanelClosedEvent) {  
             viewModel.CloseCardDetailsPanel();
 
-            await UniTask.WaitUntil(() => viewModel.State.Value == MusicCardDetailsPanelState.DuringCloseAnimation);
+            await UniTask.WaitUntil(() => viewModel.State.Value == MusicCardDetailsPanelState.Closed);
         }
     }
 }

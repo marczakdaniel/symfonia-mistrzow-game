@@ -49,31 +49,10 @@ namespace Command
         public override async UniTask<bool> Execute()
         {
             await AsyncEventBus.Instance.PublishAndWaitAsync(new MusicCardDetailsPanelClosedEvent(MusicCardId));
-            return true;
-        }
-    }
-
-    public class CloseMusicCardDetailsPanelAnimationFinishedCommand : BaseUICommand
-    {
-        public override string CommandType => "CloseMusicCardDetailsPanelAnimationFinished";
-        public string MusicCardId { get; private set; }
-
-        public CloseMusicCardDetailsPanelAnimationFinishedCommand(string musicCardId, GameModel gameModel) : base(gameModel)
-        {
-            MusicCardId = musicCardId;
-        }
-
-        public override bool Validate()
-        {
-            return true;
-        }
-
-        public override async UniTask<bool> Execute()
-        {
             await AsyncEventBus.Instance.PublishAndWaitAsync(new MusicCardDetailsPanelAnimationFinishedEvent(MusicCardId));
             return true;
         }
-    }   
+    }  
     /*
     public enum GameWindowType
     {
