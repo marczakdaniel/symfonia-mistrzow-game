@@ -3,6 +3,7 @@ using Managers;
 using Models;
 using Cysharp.Threading.Tasks;
 using DefaultNamespace.Data;
+using System;
 
 namespace Test
 {
@@ -18,7 +19,7 @@ namespace Test
 
         public void TestStartGame()
         {
-            var gameConfig = new GameConfig(musicCardDatas);
+            var gameConfig = new GameConfig(musicCardDatas, new PlayerConfig[] { new PlayerConfig(Guid.NewGuid().ToString(), "Player 1") });
             gameManager.InitalizeGame(gameConfig);
 
             gameManager.StartGame().Forget();

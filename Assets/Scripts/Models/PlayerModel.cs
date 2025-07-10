@@ -11,16 +11,15 @@ namespace Models
         public ResourceCollectionModel Tokens { get; private set; }
         public ResourceCollectionModel PermanentResources { get; private set; }
 
-        public MusicCardCollectionModel ReservedCards { get; private set; }
-        public MusicCardCollectionModel PurchasedCards { get; private set; }
+        public MusicCardCollectionModel ReservedCards { get; private set; } = new MusicCardCollectionModel();
+        public MusicCardCollectionModel PurchasedCards { get; private set; } = new MusicCardCollectionModel();
 
-        public PlayerModel(string playerId, string playerName, int score, int health)
+        public PlayerModel(PlayerConfig playerConfig)
         {
-            PlayerId = playerId;
-
-            PurchasedCards = new MusicCardCollectionModel();
-            ReservedCards = new MusicCardCollectionModel();
+            PlayerId = playerConfig.PlayerId;
+            PlayerName = playerConfig.PlayerName;
         }
+
 
         public MusicCardData FindCard(string cardId)
         {

@@ -10,10 +10,24 @@ namespace Models
     public class GameConfig
     {
         public MusicCardData[] musicCardDatas;
+        public PlayerConfig[] playerConfigs;
 
-        public GameConfig(MusicCardData[] musicCardDatas)
+        public GameConfig(MusicCardData[] musicCardDatas, PlayerConfig[] playerConfigs)
         {
             this.musicCardDatas = musicCardDatas;
+            this.playerConfigs = playerConfigs;
+        }
+    }
+
+    public class PlayerConfig
+    {
+        public string PlayerId;
+        public string PlayerName;
+
+        public PlayerConfig(string playerId, string playerName)
+        {
+            PlayerId = playerId;
+            PlayerName = playerName;
         }
     }
 
@@ -47,6 +61,11 @@ namespace Models
 
         public void Initialize(GameConfig gameConfig)
         {
+            foreach (var playerConfig in gameConfig.playerConfigs)
+            {
+                var player = new PlayerModel(playerConfig);
+                AddPlayer(player);
+            }
 
             isInitialized = true;
         }

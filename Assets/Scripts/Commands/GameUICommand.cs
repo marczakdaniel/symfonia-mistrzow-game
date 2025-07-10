@@ -26,7 +26,10 @@ namespace Command
 
         public override async UniTask<bool> Execute()
         {
-            await AsyncEventBus.Instance.PublishAndWaitAsync(new MusicCardDetailsPanelOpenedEvent(MusicCardId, Level, Position));
+            var canCardBePurchased = true;
+            var canCardBeReserved = true;
+
+            await AsyncEventBus.Instance.PublishAndWaitAsync(new MusicCardDetailsPanelOpenedEvent(MusicCardId, Level, Position, canCardBePurchased, canCardBeReserved));
             return true;
         }
     }

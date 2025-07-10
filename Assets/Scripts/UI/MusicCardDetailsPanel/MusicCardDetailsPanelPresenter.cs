@@ -7,7 +7,10 @@ using R3;
 using UnityEngine;
 
 namespace UI.MusicCardDetailsPanel {
-    public class MusicCardDetailsPanelPresenter : IAsyncEventHandler<MusicCardDetailsPanelOpenedEvent>, IAsyncEventHandler<MusicCardDetailsPanelClosedEvent> {
+    public class MusicCardDetailsPanelPresenter : 
+        IAsyncEventHandler<MusicCardDetailsPanelOpenedEvent>, 
+        IAsyncEventHandler<MusicCardDetailsPanelClosedEvent> 
+    {
         private readonly MusicCardDetailsPanelView view;
         private readonly MusicCardDetailsPanelViewModel viewModel = new MusicCardDetailsPanelViewModel();
         private readonly CommandFactory commandFactory;

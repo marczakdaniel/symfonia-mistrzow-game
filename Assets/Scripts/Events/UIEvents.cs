@@ -6,7 +6,7 @@ namespace Events
         public int Level { get; private set; }
         public int Position { get; private set; }
 
-        public MusicCardDetailsPanelOpenedEvent(string musicCardId, int level, int position)
+        public MusicCardDetailsPanelOpenedEvent(string musicCardId, int level, int position, bool canCardBePurchased, bool canCardBeReserved)
         {
             MusicCardId = musicCardId;
             Level = level;
