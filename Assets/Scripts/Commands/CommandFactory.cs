@@ -1,4 +1,5 @@
 using System;
+using DefaultNamespace.Data;
 using Models;
 
 namespace Command
@@ -39,6 +40,11 @@ namespace Command
         public CloseMusicCardDetailsPanelCommand CreateCloseMusicCardDetailsPanelCommand(string musicCardId)
         {
             return new CloseMusicCardDetailsPanelCommand(musicCardId, gameModel);
+        }
+
+        public OpenTokenDetailsPanelCommand CreateOpenTokenDetailsPanelCommand(ResourceType resourceType)
+        {
+            return new OpenTokenDetailsPanelCommand(resourceType, gameModel);
         }
     }
 }

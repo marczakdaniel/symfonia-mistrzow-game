@@ -11,7 +11,7 @@ using System.Collections.Generic;
 
 namespace UI.Board.BoardMusicCardPanel
 {
-    public class BoardMusicCardPanelPresenter : IAsyncEventHandler<GameStartedEvent>
+    public class BoardMusicCardPanelPresenter
     {
         private readonly BoardMusicCardPanelView view;
         private readonly BoardMusicCardPanelViewModel viewModel = new BoardMusicCardPanelViewModel();
@@ -80,13 +80,6 @@ namespace UI.Board.BoardMusicCardPanel
 
         private void SubscribeToEvents()
         {
-            AsyncEventBus.Instance.Subscribe<GameStartedEvent>(this);
-        }
-
-        public async UniTask HandleAsync(GameStartedEvent gameEvent)
-        {
-            Debug.LogError("[BoardMusicCardPanelPresenter] Game started");
-            await InitializeBoard();
         }
 
         public async UniTask InitializeBoard()

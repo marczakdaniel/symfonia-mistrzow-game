@@ -1,4 +1,5 @@
 using Cysharp.Threading.Tasks;
+using DefaultNamespace.Data;
 using Events;
 using Models;
 using UnityEngine;
@@ -56,6 +57,29 @@ namespace Command
             return true;
         }
     }  
+
+    public class OpenTokenDetailsPanelCommand : BaseUICommand
+    {
+        public override string CommandType => "OpenTokenDetailsPanel";
+        public ResourceType ResourceType { get; private set; }
+
+        public OpenTokenDetailsPanelCommand(ResourceType resourceType, GameModel gameModel) : base(gameModel)
+        {
+            ResourceType = resourceType;
+        }
+
+        public override bool Validate()
+        {
+            return true;
+        }
+
+        public override async UniTask<bool> Execute()
+        {
+            await AsyncEventBus.Instance.PublishAndWaitAsync(new TokenDetailsPanelOpenedEvent(ResourceType));
+            return true;
+        }
+    }
+
     /*
     public enum GameWindowType
     {

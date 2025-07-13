@@ -1,3 +1,5 @@
+using DefaultNamespace.Data;
+
 namespace Events
 {
     public class MusicCardDetailsPanelOpenedEvent : GameEvent
@@ -31,6 +33,16 @@ namespace Events
         public MusicCardDetailsPanelAnimationFinishedEvent(string musicCardId)
         {
             MusicCardId = musicCardId;
+        }
+    }
+
+    public class TokenDetailsPanelOpenedEvent : GameEvent
+    {
+        public ResourceType ResourceType { get; private set; }
+
+        public TokenDetailsPanelOpenedEvent(ResourceType resourceType)
+        {
+            ResourceType = resourceType;
         }
     }
 }
