@@ -4,6 +4,7 @@ using TMPro;
 using R3;
 using UnityEngine.EventSystems;
 using Cysharp.Threading.Tasks;
+using DefaultNamespace.Data;
 namespace UI.Board.BoardTokenPanel.BoardToken
 {
     public class BoardTokenView : MonoBehaviour, IPointerClickHandler
@@ -13,6 +14,12 @@ namespace UI.Board.BoardTokenPanel.BoardToken
         [SerializeField] private Image tokenImage;  
         [SerializeField] private TextMeshProUGUI tokenCountText;
         [SerializeField] private BoardTokenEntryAnimation entryAnimation;
+
+        public void Setup(ResourceType resourceType, int count)
+        {
+            tokenImage.sprite = resourceType.GetSingleResourceTypeImages().StackImage1;
+            tokenCountText.text = "x" +count.ToString();
+        }
 
         public void DisableElement()
         {

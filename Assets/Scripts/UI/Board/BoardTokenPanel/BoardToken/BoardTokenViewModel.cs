@@ -18,7 +18,7 @@ namespace UI.Board.BoardTokenPanel.BoardToken
     {
         public ReactiveProperty<BoardTokenState> State { get; private set; } = new ReactiveProperty<BoardTokenState>(BoardTokenState.Disabled);
         public ResourceType ResourceType { get; private set; }
-        public int TokenCount { get; private set; }
+        public ReactiveProperty<int> TokenCount { get; private set; } = new ReactiveProperty<int>(0);
 
         public BoardTokenViewModel(ResourceType resourceType)
         {
@@ -27,7 +27,7 @@ namespace UI.Board.BoardTokenPanel.BoardToken
 
         public void SetTokenCount(int tokenCount)
         {
-            TokenCount = tokenCount;
+            TokenCount.Value = tokenCount;
         }
 
         // State change
@@ -43,7 +43,7 @@ namespace UI.Board.BoardTokenPanel.BoardToken
                 return false;
             }
 
-            TokenCount = numberOfTokens;
+            SetTokenCount(numberOfTokens);
             SetState(BoardTokenState.DuringEntryAnimation);
             return true;
         }

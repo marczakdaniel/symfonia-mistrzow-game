@@ -193,12 +193,20 @@ namespace Models
         {
             return $"BoardLevel(Level: {Level}, Slots: {string.Join(", ", Slots.Select(slot => slot.ToString()))}, Deck: {Deck.Count})";
         }
+
+        public void AddCardToDeck(string cardId)
+        {
+            Deck.AddCard(cardId);
+        }
     }
     public class BoardModel
     {
         public BoardLevel[] Levels { get; private set; }
+        public ResourceCollectionModel TokenResources { get; private set; }
 
         private const int numberOfLevels = 3;
+
+        // Create BoardModel
         public BoardModel()
         {
             Levels = new BoardLevel[numberOfLevels];
@@ -206,6 +214,70 @@ namespace Models
             {
                 Levels[i] = new BoardLevel(i + 1);
             }
+            TokenResources = new ResourceCollectionModel();
+        
+        }
+
+        // Initialize BoardModel
+        public void Initialize(BoardConfig boardConfig)
+        {
+            InitializeTokenResources(boardConfig.TokenResources);
+            InitializeBoardMusicCard(boardConfig.BoardMusicCardConfig);
+        }
+
+        private void InitializeTokenResources(BoardTokenConfig boardTokenConfig)
+        {
+            TokenResources.AddResource(ResourceType.Melody, boardTokenConfig.InitialMelody);
+            TokenResources.AddResource(ResourceType.Harmony, boardTokenConfig.InitialHarmony);
+            TokenResources.AddResource(ResourceType.Rhythm, boardTokenConfig.InitialRhythm);
+            TokenResources.AddResource(ResourceType.Instrumentation, boardTokenConfig.InitialInstrumentation);
+            TokenResources.AddResource(ResourceType.Dynamics, boardTokenConfig.InitialDynamics);
+            TokenResources.AddResource(ResourceType.Inspiration, boardTokenConfig.InitialInspiration);
+        }
+
+        private void InitializeBoardMusicCard(BoardMusicCardConfig boardMusicCardConfig)
+        {
+            InitializeDeck(boardMusicCardConfig.CardInDecks);
+            InitializeSlots(1, boardMusicCardConfig.Level1SlotsCardIds);
+            InitializeSlots(2, boardMusicCardConfig.Level2SlotsCardIds);
+            InitializeSlots(3, boardMusicCardConfig.Level3SlotsCardIds);
+        }
+
+        private void InitializeDeck(List<string> cardInDecks)
+        {
+            foreach (var cardId in cardInDecks)
+            {
+                AddCardToDecks(cardId);
+            }
+        }
+
+        private void AddCardToDecks(string cardId)
+        {
+            var card = MusicCardRepository.Instance.GetCard(cardId);
+            var level = GetLevel(card.level);
+            if (level != null)
+            {
+                level.AddCardToDeck(cardId);
+            }
+        }
+
+        private void InitializeSlots(int level, string[] cardIds)
+        {
+            for (int i = 0; i < cardIds.Length; i++)
+            {
+                var slot = GetLevel(level).GetSlot(i);
+                if (slot != null)
+                {
+                    slot.PlaceCard(cardIds[i]);
+                }
+            }
+        }
+
+
+        // Start Game
+        public void StartGame()
+        {
+            RefillAllEmptySlots();
         }
 
         public BoardLevel GetLevel(int level)
@@ -263,12 +335,6 @@ namespace Models
             return (-1, -1);
         }
 
-        public void Initialize()
-        {
-            LoadCardToDecks();
-            RefillAllSlots();
-        }
-
         public MusicCardData[,] GetCurrentBoardCards()
         {
             var boardCards = new MusicCardData[numberOfLevels, 4];
@@ -285,7 +351,7 @@ namespace Models
             return boardCards;
         }
 
-        private void RefillAllSlots()
+        private void RefillAllEmptySlots()
         {
             foreach (var level in Levels)
             {
@@ -293,18 +359,9 @@ namespace Models
             }
         }
 
-        private void LoadCardToDecks()
+        public int GetTokenCount(ResourceType resourceType)
         {
-            var allCards = MusicCardRepository.Instance.GetAllCards();
-
-            foreach (var cardData in allCards)
-            {
-                var level = GetLevel(cardData.level);
-                if (level != null)
-                {
-                    level.Deck.AddCard(cardData.id);
-                }
-            }
+            return TokenResources.GetCount(resourceType);
         }
     }
 }

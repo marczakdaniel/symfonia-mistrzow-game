@@ -32,7 +32,7 @@ namespace UI.Board
         private void InitializeChildMCP()
         {
             boardMusicCardPanelPresenter = new BoardMusicCardPanelPresenter(view.BoardMusicCardPanelView, commandFactory, gameModelReader);
-            boardTokenPanelPresenter = new BoardTokenPanelPresenter(view.BoardTokenPanelView, commandFactory);
+            boardTokenPanelPresenter = new BoardTokenPanelPresenter(view.BoardTokenPanelView, commandFactory, gameModelReader);
         }
 
         private void InitializeMVP()

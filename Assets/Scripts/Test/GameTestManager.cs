@@ -4,6 +4,8 @@ using Models;
 using Cysharp.Threading.Tasks;
 using DefaultNamespace.Data;
 using System;
+using System.Linq;
+using System.Collections.Generic;
 
 namespace Test
 {
@@ -19,10 +21,18 @@ namespace Test
 
         public void TestStartGame()
         {
-            var gameConfig = new GameConfig(musicCardDatas, new PlayerConfig[] { new PlayerConfig(Guid.NewGuid().ToString(), "Player 1") });
+            var gameConfig = CreateTestGameConfig();
             gameManager.InitalizeGame(gameConfig);
 
             gameManager.StartGame().Forget();
+        }
+
+        private GameConfig CreateTestGameConfig()
+        {
+            var boardMusicCardConfig = new BoardMusicCardConfig(new string[] { }, new string[] { }, new string[] { }, musicCardDatas.Select(card => card.Id).ToList());
+            var boardConfig = new BoardConfig(new BoardTokenConfig(7, 7, 7, 7, 7, 5), boardMusicCardConfig);
+            var gameConfig = new GameConfig(musicCardDatas, new PlayerConfig[] { new PlayerConfig(Guid.NewGuid().ToString(), "Player 1") }, boardConfig);
+            return gameConfig;
         }
     }
 }

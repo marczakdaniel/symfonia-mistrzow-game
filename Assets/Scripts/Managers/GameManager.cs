@@ -48,6 +48,15 @@ namespace Managers
             // TODO: Start turn for first player
         }
 
+        public void PlayerTurn()
+        {
+            // Initialize board after changes
+            // Wait for player action
+            // Check for noble card
+            // Check if player won
+            // Next player turn
+        }
+
         private void OnDestroy()
         {
             // Clean up event bus when game manager is destroyed

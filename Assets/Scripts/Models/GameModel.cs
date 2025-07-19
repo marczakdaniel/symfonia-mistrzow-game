@@ -7,34 +7,11 @@ using UnityEngine;
 
 namespace Models
 {   
-    public class GameConfig
-    {
-        public MusicCardData[] musicCardDatas;
-        public PlayerConfig[] playerConfigs;
-
-        public GameConfig(MusicCardData[] musicCardDatas, PlayerConfig[] playerConfigs)
-        {
-            this.musicCardDatas = musicCardDatas;
-            this.playerConfigs = playerConfigs;
-        }
-    }
-
-    public class PlayerConfig
-    {
-        public string PlayerId;
-        public string PlayerName;
-
-        public PlayerConfig(string playerId, string playerName)
-        {
-            PlayerId = playerId;
-            PlayerName = playerName;
-        }
-    }
-
     public interface IGameModelReader
     {
         IMusicCardDataReader[,] GetCurrentBoardCards();
         IBoardSlotReader GetBoardSlot(int level, int position);
+        int GetBoardTokenCount(ResourceType resourceType);
     }
 
     public class GameModel : IGameModelReader
@@ -61,13 +38,24 @@ namespace Models
 
         public void Initialize(GameConfig gameConfig)
         {
-            foreach (var playerConfig in gameConfig.playerConfigs)
+            InitializePlayers(gameConfig.playerConfigs);
+            InitializeBoard(gameConfig.boardConfig);
+
+            isInitialized = true;
+        }
+
+        private void InitializePlayers(PlayerConfig[] playerConfigs)
+        {
+            foreach (var playerConfig in playerConfigs)
             {
                 var player = new PlayerModel(playerConfig);
                 AddPlayer(player);
             }
+        }
 
-            isInitialized = true;
+        private void InitializeBoard(BoardConfig boardConfig)
+        {
+            board.Initialize(boardConfig);
         }
 
         public void AddPlayer(PlayerModel player)
@@ -107,15 +95,7 @@ namespace Models
         public bool StartGame()
         {
             // 1. Initialize Board
-            InitializeBoard();
-            return true;
-        }
-
-        // Board Management
-        public bool InitializeBoard()
-        {
-            board.Initialize();
-
+            board.StartGame();
             return true;
         }
 
@@ -376,6 +356,11 @@ namespace Models
         public IBoardSlotReader GetBoardSlot(int level, int position)
         {
             return board.GetLevel(level).GetSlot(position);
+        }
+
+        public int GetBoardTokenCount(ResourceType resourceType)
+        {
+            return board.GetTokenCount(resourceType);
         }
     }
 }

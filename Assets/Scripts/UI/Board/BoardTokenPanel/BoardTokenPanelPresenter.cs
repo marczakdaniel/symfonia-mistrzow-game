@@ -4,6 +4,7 @@ using Command;
 using Cysharp.Threading.Tasks;
 using DefaultNamespace.Data;
 using Events;
+using Models;
 using R3;
 using UI.Board.BoardTokenPanel.BoardToken;
 
@@ -16,14 +17,15 @@ namespace UI.Board.BoardTokenPanel
         private readonly BoardTokenPanelViewModel viewModel;
 
         private readonly CommandFactory commandFactory;
+        private readonly IGameModelReader gameModelReader;
         private IDisposable disposables;
         private BoardTokenPresenter[] tokenPresenters;
-        public BoardTokenPanelPresenter(BoardTokenPanelView view, CommandFactory commandFactory)
+        public BoardTokenPanelPresenter(BoardTokenPanelView view, CommandFactory commandFactory, IGameModelReader gameModelReader)
         {
             this.view = view;
             this.viewModel = new BoardTokenPanelViewModel();
             this.commandFactory = commandFactory;
-
+            this.gameModelReader = gameModelReader;
             InitializeChildMVP();
             InitializeMVP();
         }
@@ -34,7 +36,7 @@ namespace UI.Board.BoardTokenPanel
 
             foreach (var resourceType in Enum.GetValues(typeof(ResourceType)))
             {
-                tokenPresenters[(int)resourceType] = new BoardTokenPresenter(view.Tokens[(int)resourceType], (ResourceType)resourceType, commandFactory);
+                tokenPresenters[(int)resourceType] = new BoardTokenPresenter(view.Tokens[(int)resourceType], (ResourceType)resourceType, commandFactory, gameModelReader);
             }
         }
 

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading;
 using Cysharp.Threading.Tasks;
+using UI.SelectTokenWindow;
 using UnityEngine;
 
 namespace Events
@@ -147,6 +148,11 @@ namespace Events
         {
             _handlers.Clear();
             _eventCompletionSources.Clear();
+        }
+
+        internal void Subscribe<T>(SelectTokenWindowPresenter selectTokenWindowPresenter)
+        {
+            throw new NotImplementedException();
         }
     }
 
