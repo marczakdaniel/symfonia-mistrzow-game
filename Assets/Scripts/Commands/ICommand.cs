@@ -11,7 +11,7 @@ namespace Command
         DateTime Timestamp { get; }
         string CommandId { get; }
 
-        bool Validate();
+        UniTask<bool> Validate();
         UniTask<bool> Execute();
         //string Serialize();
         //string GetDescription();
@@ -45,7 +45,7 @@ namespace Command
             CommandId = Guid.NewGuid().ToString();
         }
 
-        public abstract bool Validate();
+        public abstract UniTask<bool> Validate();
         public abstract UniTask<bool> Execute();
         //public abstract string Serialize();
         //public abstract string GetDescription();

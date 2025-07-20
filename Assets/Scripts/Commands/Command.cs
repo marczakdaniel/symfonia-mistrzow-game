@@ -23,7 +23,7 @@ namespace Command
             this.gameModel = gameModel;
         }
 
-        public override bool Validate()
+        public override async UniTask<bool> Validate()
         {
             // TODO: Check if 
             // - Game is active
@@ -68,7 +68,7 @@ namespace Command
             this.gameModel = gameModel;
         }
 
-        public override bool Validate()
+        public override async UniTask<bool> Validate()
         {
             return true;
         }
@@ -102,7 +102,7 @@ namespace Command
             this.gameModel = gameModel;
         }
 
-        public override bool Validate()
+        public override async UniTask<bool> Validate()
         {
             // TODO: Check if game can be started
             return gameModel.CanStartGame();
@@ -138,7 +138,7 @@ namespace Command
             this.gameModel = gameModel;
         }
 
-        public override bool Validate()
+        public override async UniTask<bool> Validate()
         {
             return true;
         }
@@ -165,7 +165,7 @@ namespace Command
             this.token = token;
         }
 
-        public override bool Validate()
+        public override async UniTask<bool> Validate()
         {
             return true;
         }

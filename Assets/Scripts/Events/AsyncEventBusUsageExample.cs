@@ -134,10 +134,10 @@ namespace Command
         {
             public override string CommandType => "ExampleCommand";
             
-            public override bool Validate()
-            {
-                return true;
-            }
+                    public override async UniTask<bool> Validate()
+        {
+            return true;
+        }
             
             public override async UniTask<bool> Execute()
             {

@@ -188,7 +188,7 @@ namespace Command
                 queuedCommand.MarkAsStarted();
                 
                 // Walidacja
-                if (!queuedCommand.Command.Validate())
+                if (!await queuedCommand.Command.Validate())
                 {
                     queuedCommand.MarkAsCompleted(false, "Validation failed");
                     Debug.LogWarning($"[CommandQueue] Walidacja nieudana: {queuedCommand.Command.CommandType}");

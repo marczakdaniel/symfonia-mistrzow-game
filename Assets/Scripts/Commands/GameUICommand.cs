@@ -20,7 +20,7 @@ namespace Command
             Position = position;
         }
 
-        public override bool Validate()
+        public override async UniTask<bool> Validate()
         {
             return true;
         }   
@@ -45,7 +45,7 @@ namespace Command
             MusicCardId = musicCardId;
         }
 
-        public override bool Validate()
+        public override async UniTask<bool> Validate()
         {
             return true;
         }
@@ -69,7 +69,7 @@ namespace Command
             this.gameModel = gameModel;
         }
 
-        public override bool Validate()
+        public override async UniTask<bool> Validate()
         {
             return true;
         }
@@ -94,7 +94,7 @@ namespace Command
             this.gameModel = gameModel;
         }
 
-        public override bool Validate()
+        public override async UniTask<bool> Validate()
         {
             return true;
         }
