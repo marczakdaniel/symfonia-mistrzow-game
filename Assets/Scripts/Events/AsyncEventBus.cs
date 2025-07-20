@@ -24,6 +24,14 @@ namespace Events
         }
     }
 
+    public enum EventPriority
+    {
+        Low = 0,
+        Normal = 1,
+        High = 2,
+        Critical = 3
+    }
+
     public class AsyncEventBus
     {
         private static AsyncEventBus _instance;
@@ -39,30 +47,63 @@ namespace Events
             }
         }
 
-        private readonly Dictionary<Type, List<IAsyncEventHandler>> _handlers = new();
+        // Pre-allocated lists for each priority to avoid allocations during publish
+        private readonly Dictionary<Type, HandlerInfo[]> _handlersByType = new();
         private readonly Dictionary<string, List<UniTaskCompletionSource>> _eventCompletionSources = new();
+        
+        // Object pool for frequently allocated task lists
+        private readonly Stack<List<UniTask>> _taskListPool = new();
 
         private AsyncEventBus() { }
 
-        public void Subscribe<T>(IAsyncEventHandler<T> handler) where T : IGameEvent
+        public void Subscribe<T>(IAsyncEventHandler<T> handler, EventPriority priority = EventPriority.Normal) where T : IGameEvent
         {
             var eventType = typeof(T);
-            if (!_handlers.ContainsKey(eventType))
+            
+            if (!_handlersByType.ContainsKey(eventType))
             {
-                _handlers[eventType] = new List<IAsyncEventHandler>();
+                _handlersByType[eventType] = new HandlerInfo[0];
             }
-            _handlers[eventType].Add(handler);
+            
+            var currentHandlers = _handlersByType[eventType];
+            var newHandlers = new HandlerInfo[currentHandlers.Length + 1];
+            
+            // Copy existing handlers
+            Array.Copy(currentHandlers, newHandlers, currentHandlers.Length);
+            
+            // Add new handler
+            newHandlers[currentHandlers.Length] = new HandlerInfo(handler, priority);
+            
+            // Sort by priority (highest first) - only when adding new handler
+            Array.Sort(newHandlers, (a, b) => b.Priority.CompareTo(a.Priority));
+            
+            _handlersByType[eventType] = newHandlers;
         }
 
         public void Unsubscribe<T>(IAsyncEventHandler<T> handler) where T : IGameEvent
         {
             var eventType = typeof(T);
-            if (_handlers.ContainsKey(eventType))
+            if (_handlersByType.ContainsKey(eventType))
             {
-                _handlers[eventType].Remove(handler);
-                if (_handlers[eventType].Count == 0)
+                var currentHandlers = _handlersByType[eventType];
+                var newHandlers = new List<HandlerInfo>();
+                
+                // Filter out the handler to remove
+                for (int i = 0; i < currentHandlers.Length; i++)
                 {
-                    _handlers.Remove(eventType);
+                    if (currentHandlers[i].Handler != handler)
+                    {
+                        newHandlers.Add(currentHandlers[i]);
+                    }
+                }
+                
+                if (newHandlers.Count == 0)
+                {
+                    _handlersByType.Remove(eventType);
+                }
+                else
+                {
+                    _handlersByType[eventType] = newHandlers.ToArray();
                 }
             }
         }
@@ -71,33 +112,89 @@ namespace Events
         {
             var eventType = typeof(T);
             
+            #if UNITY_EDITOR || DEVELOPMENT_BUILD
             Debug.Log($"[AsyncEventBus] Publishing event: {eventType.Name} (ID: {gameEvent.EventId})");
+            #endif
 
-            if (!_handlers.ContainsKey(eventType))
+            if (!_handlersByType.ContainsKey(eventType))
             {
+                #if UNITY_EDITOR || DEVELOPMENT_BUILD
                 Debug.Log($"[AsyncEventBus] No handlers registered for event: {eventType.Name}");
+                #endif
                 return;
             }
 
-            var handlers = _handlers[eventType];
-            var tasks = new List<UniTask>();
+            var handlers = _handlersByType[eventType];
+            if (handlers.Length == 0) return;
 
-            foreach (var handler in handlers)
+            // Get pooled list for tasks
+            var tasks = GetTaskList();
+            
+            try
             {
-                if (handler is IAsyncEventHandler<T> typedHandler)
+                // Execute handlers by priority groups without LINQ allocations
+                var currentPriority = handlers[0].Priority;
+                var priorityStartIndex = 0;
+                
+                for (int i = 0; i <= handlers.Length; i++)
+                {
+                    // Check if we need to execute current priority group
+                    bool shouldExecute = i == handlers.Length || 
+                                       (i < handlers.Length && handlers[i].Priority != currentPriority);
+                    
+                                         if (shouldExecute && priorityStartIndex < i)
+                     {
+                         // Execute all handlers of current priority
+                         await ExecutePriorityGroup(handlers, priorityStartIndex, i, tasks, currentPriority, gameEvent);
+                         priorityStartIndex = i;
+                     }
+                    
+                    if (i < handlers.Length)
+                    {
+                        currentPriority = handlers[i].Priority;
+                    }
+                }
+            }
+            finally
+            {
+                // Return list to pool
+                ReturnTaskList(tasks);
+            }
+
+            #if UNITY_EDITOR || DEVELOPMENT_BUILD
+            Debug.Log($"[AsyncEventBus] All handlers completed for event: {eventType.Name}");
+            #endif
+
+            // Complete any waiting operations
+            CompleteWaitingOperations(gameEvent.EventId);
+        }
+
+        private async UniTask ExecutePriorityGroup<T>(HandlerInfo[] handlers, int startIndex, int endIndex, 
+            List<UniTask> tasks, EventPriority priority, T gameEvent) where T : IGameEvent
+        {
+            #if UNITY_EDITOR || DEVELOPMENT_BUILD
+            Debug.Log($"[AsyncEventBus] Executing {endIndex - startIndex} handlers with priority: {priority}");
+            #endif
+            
+            tasks.Clear();
+            
+            // Execute all handlers of current priority
+            for (int i = startIndex; i < endIndex; i++)
+            {
+                if (handlers[i].Handler is IAsyncEventHandler<T> typedHandler)
                 {
                     tasks.Add(typedHandler.HandleAsync(gameEvent));
                 }
             }
-
+            
+            // Wait for all handlers of current priority to complete
             if (tasks.Count > 0)
             {
                 await UniTask.WhenAll(tasks);
-                Debug.Log($"[AsyncEventBus] All handlers completed for event: {eventType.Name}");
+                #if UNITY_EDITOR || DEVELOPMENT_BUILD
+                Debug.Log($"[AsyncEventBus] All handlers with priority {priority} completed");
+                #endif
             }
-
-            // Complete any waiting operations
-            CompleteWaitingOperations(gameEvent.EventId);
         }
 
         public async UniTask PublishAndWaitAsync<T>(T gameEvent, CancellationToken cancellationToken = default) where T : IGameEvent
@@ -119,22 +216,13 @@ namespace Events
 
         public void CompleteUIUpdate(string eventId)
         {
-            if (_eventCompletionSources.ContainsKey(eventId))
-            {
-                var completionSources = _eventCompletionSources[eventId];
-                foreach (var source in completionSources)
-                {
-                    source.TrySetResult();
-                }
-                _eventCompletionSources.Remove(eventId);
-            }
+            CompleteWaitingOperations(eventId);
         }
 
         private void CompleteWaitingOperations(string eventId)
         {
-            if (_eventCompletionSources.ContainsKey(eventId))
+            if (_eventCompletionSources.TryGetValue(eventId, out var completionSources))
             {
-                var completionSources = _eventCompletionSources[eventId];
                 foreach (var source in completionSources)
                 {
                     source.TrySetResult();
@@ -145,8 +233,36 @@ namespace Events
 
         public void Clear()
         {
-            _handlers.Clear();
+            _handlersByType.Clear();
             _eventCompletionSources.Clear();
+        }
+
+        // Object pooling methods
+        private List<UniTask> GetTaskList()
+        {
+            if (_taskListPool.Count > 0)
+            {
+                return _taskListPool.Pop();
+            }
+            return new List<UniTask>();
+        }
+
+        private void ReturnTaskList(List<UniTask> list)
+        {
+            list.Clear();
+            _taskListPool.Push(list);
+        }
+
+        private class HandlerInfo
+        {
+            public IAsyncEventHandler Handler { get; }
+            public EventPriority Priority { get; }
+
+            public HandlerInfo(IAsyncEventHandler handler, EventPriority priority)
+            {
+                Handler = handler;
+                Priority = priority;
+            }
         }
     }
 
