@@ -26,6 +26,8 @@ namespace Events
         }
     }
 
+    // Token Action Events
+
     public class TokenDetailsPanelOpenedEvent : GameEvent
     {
         public ResourceType ResourceType { get; private set; }
@@ -43,6 +45,34 @@ namespace Events
         public TokenDetailsPanelClosedEvent(ResourceType resourceType)
         {
             ResourceType = resourceType;
+        }
+    }
+
+    public class TokenAddedToSelectedTokensEvent : GameEvent
+    {
+        public ResourceType ResourceType { get; private set; }
+        public int CurrentTokenCount { get; private set; }
+        public ResourceType?[] CurrentSelectedTokens { get; private set; }
+
+        public TokenAddedToSelectedTokensEvent(ResourceType resourceType, int currentTokenCount, ResourceType?[] currentSelectedTokens)
+        {
+            ResourceType = resourceType;
+            CurrentTokenCount = currentTokenCount;
+            CurrentSelectedTokens = currentSelectedTokens;
+        }
+    }
+
+    public class TokenRemovedFromSelectedTokensEvent : GameEvent
+    {
+        public ResourceType ResourceType { get; private set; }
+        public int CurrentTokenCount { get; private set; }
+        public ResourceType?[] CurrentSelectedTokens { get; private set; }
+
+        public TokenRemovedFromSelectedTokensEvent(ResourceType resourceType, int currentTokenCount, ResourceType?[] currentSelectedTokens)
+        {
+            ResourceType = resourceType;
+            CurrentTokenCount = currentTokenCount;
+            CurrentSelectedTokens = currentSelectedTokens;
         }
     }
 }

@@ -21,6 +21,8 @@ namespace Command
         }
 
         // Player Actions Commands
+
+        /*
         
         public BuyMusicCardCommand CreateBuyMusicCardCommand(string playerId, string musicCardId)
         {
@@ -30,6 +32,20 @@ namespace Command
         public ReserveMusicCardCommand CreateReserveMusicCardCommand(string playerId, string musicCardId)
         {
             return new ReserveMusicCardCommand(playerId, musicCardId, gameModel);
+        }
+
+        */
+
+        // Token Action Commands
+
+        public AddTokenToSelectedTokensCommand CreateAddTokenToSelectedTokensCommand(ResourceType token)
+        {
+            return new AddTokenToSelectedTokensCommand(token, gameModel);
+        }
+
+        public RemoveTokenFromSelectedTokensCommand CreateRemoveTokenFromSelectedTokensCommand(ResourceType token)
+        {
+            return new RemoveTokenFromSelectedTokensCommand(token, gameModel);
         }
 
         // UI Commands

@@ -12,9 +12,9 @@ namespace UI.Board.BoardMusicCardPanel.BoardMusicCard
     public class BoardMusicCardPresenter : 
         IDisposable, 
         IAsyncEventHandler<MusicCardDetailsPanelOpenedEvent>, 
-        IAsyncEventHandler<MusicCardDetailsPanelClosedEvent>,
-        IAsyncEventHandler<CardReservedEvent>, 
-        IAsyncEventHandler<CardPurchasedEvent>
+        IAsyncEventHandler<MusicCardDetailsPanelClosedEvent>
+        //IAsyncEventHandler<CardReservedEvent>, 
+        //IAsyncEventHandler<CardPurchasedEvent>
     {
         private readonly BoardMusicCardView view;
         private readonly BoardMusicCardViewModel viewModel;
@@ -54,8 +54,8 @@ namespace UI.Board.BoardMusicCardPanel.BoardMusicCard
         {
             AsyncEventBus.Instance.Subscribe<MusicCardDetailsPanelOpenedEvent>(this);
             AsyncEventBus.Instance.Subscribe<MusicCardDetailsPanelClosedEvent>(this);
-            AsyncEventBus.Instance.Subscribe<CardReservedEvent>(this);
-            AsyncEventBus.Instance.Subscribe<CardPurchasedEvent>(this);
+            //AsyncEventBus.Instance.Subscribe<CardReservedEvent>(this);
+            //AsyncEventBus.Instance.Subscribe<CardPurchasedEvent>(this);
         }
 
         public async UniTask HandleAsync(MusicCardDetailsPanelOpenedEvent musicCardDetailsPanelOpenedEvent)
@@ -84,6 +84,8 @@ namespace UI.Board.BoardMusicCardPanel.BoardMusicCard
             await UniTask.WaitUntil(() => viewModel.State.Value == BoardMusicCardState.Visible);
         }
 
+        /*
+
         public async UniTask HandleAsync(CardReservedEvent cardReservedEvent)
         {
             if (!viewModel.AfterReserveMusicCard()) {
@@ -101,6 +103,8 @@ namespace UI.Board.BoardMusicCardPanel.BoardMusicCard
 
             await UniTask.WaitUntil(() => viewModel.State.Value == BoardMusicCardState.Disabled);
         }
+
+        */
 
         // Model -> View
         private async UniTask HandleStateChange(BoardMusicCardState state)

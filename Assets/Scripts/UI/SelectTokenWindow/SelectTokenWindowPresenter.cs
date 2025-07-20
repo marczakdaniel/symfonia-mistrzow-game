@@ -38,7 +38,7 @@ namespace UI.SelectTokenWindow
 
         private void InitializeChildMVP()
         {
-            selectBoardTokenPanelPresenter = new SelectBoardTokenPanelPresenter(view.SelectBoardTokenPanelView, gameModelReader);
+            selectBoardTokenPanelPresenter = new SelectBoardTokenPanelPresenter(view.SelectBoardTokenPanelView, commandFactory, gameModelReader);
         }
 
         private void InitializeMVP()

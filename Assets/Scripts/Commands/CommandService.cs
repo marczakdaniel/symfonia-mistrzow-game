@@ -66,10 +66,12 @@ namespace Command
             _commandExecutor.RegisterCommandType<CloseTokenDetailsPanelCommand>();
 
             _commandExecutor.RegisterCommandType<StartGameCommand>();
-            _commandExecutor.RegisterCommandType<BuyMusicCardCommand>();
-            _commandExecutor.RegisterCommandType<ReserveMusicCardCommand>();
+            //_commandExecutor.RegisterCommandType<BuyMusicCardCommand>();
+            //_commandExecutor.RegisterCommandType<ReserveMusicCardCommand>();
 
-            
+            _commandExecutor.RegisterCommandType<AddTokenToSelectedTokensCommand>();
+            _commandExecutor.RegisterCommandType<RemoveTokenFromSelectedTokensCommand>();
+
             Debug.Log("[CommandService] Zarejestrowano typy komend");
         }
 
@@ -123,18 +125,6 @@ namespace Command
         public async UniTask<bool> StartGameAsync()
         {
             var command = _commandFactory.CreateStartGameCommand();
-            return await ExecuteCommandAsync(command);
-        }
-
-        public async UniTask<bool> BuyMusicCardAsync(string playerId, string cardId)
-        {
-            var command = _commandFactory.CreateBuyMusicCardCommand(playerId, cardId);
-            return await ExecuteCommandAsync(command);
-        }
-
-        public async UniTask<bool> ReserveMusicCardAsync(string playerId, string cardId)
-        {
-            var command = _commandFactory.CreateReserveMusicCardCommand(playerId, cardId);
             return await ExecuteCommandAsync(command);
         }
 

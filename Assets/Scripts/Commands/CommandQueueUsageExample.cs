@@ -32,8 +32,8 @@ namespace Command
             
             // Register command types for statistics
             commandExecutor.RegisterCommandType<StartGameCommand>();
-            commandExecutor.RegisterCommandType<BuyMusicCardCommand>();
-            commandExecutor.RegisterCommandType<ReserveMusicCardCommand>();
+            //commandExecutor.RegisterCommandType<BuyMusicCardCommand>();
+            //commandExecutor.RegisterCommandType<ReserveMusicCardCommand>();
             
             Debug.Log("[Example] Command system initialized");
         }
@@ -85,9 +85,9 @@ namespace Command
             
             var commands = new List<ICommand>
             {
-                commandFactory.CreateBuyMusicCardCommand("player1", "card1"),
-                commandFactory.CreateReserveMusicCardCommand("player1", "card2"),
-                commandFactory.CreateBuyMusicCardCommand("player1", "card3")
+                //commandFactory.CreateBuyMusicCardCommand("player1", "card1"),
+                //commandFactory.CreateReserveMusicCardCommand("player1", "card2"),
+                //commandFactory.CreateBuyMusicCardCommand("player1", "card3")
             };
             
             // Execute all commands in sequence
@@ -104,13 +104,13 @@ namespace Command
             Debug.Log("[Example] === Fire and Forget Commands ===");
             
             // These commands will execute in background without waiting
-            var command1 = commandFactory.CreateBuyMusicCardCommand("player2", "card4");
-            var command2 = commandFactory.CreateBuyMusicCardCommand("player2", "card5");
+            //var command1 = commandFactory.CreateBuyMusicCardCommand("player2", "card4");
+            //var command2 = commandFactory.CreateBuyMusicCardCommand("player2", "card5");
             
-            string id1 = commandExecutor.ExecuteFireAndForget(command1);
-            string id2 = commandExecutor.ExecuteFireAndForget(command2);
+            //string id1 = commandExecutor.ExecuteFireAndForget(command1);
+            //string id2 = commandExecutor.ExecuteFireAndForget(command2);
             
-            Debug.Log($"[Example] Queued commands: {id1}, {id2}");
+            //Debug.Log($"[Example] Queued commands: {id1}, {id2}");
         }
 
         /// <summary>
@@ -157,8 +157,10 @@ namespace Command
             {
                 Debug.Log($"[Presenter] User clicked buy card: {cardId}");
                 
-                var command = commandFactory.CreateBuyMusicCardCommand("currentPlayer", cardId);
-                bool success = await commandExecutor.ExecuteAsync(command);
+                //var command = commandFactory.CreateBuyMusicCardCommand("currentPlayer", cardId);
+                //bool success = await commandExecutor.ExecuteAsync(command);
+
+                bool success = false;
                 
                 if (success)
                 {
@@ -183,7 +185,9 @@ namespace Command
                 Debug.Log($"[Presenter] User clicked reserve card: {cardId}");
                 
                 // NOWY SPOSÓB - używaj CommandService.Instance:
-                bool success = await CommandService.Instance.ReserveMusicCardAsync("currentPlayer", cardId);
+                //bool success = await CommandService.Instance.ReserveMusicCardAsync("currentPlayer", cardId);
+                
+                bool success = false;
                 
                 if (success)
                 {
@@ -198,7 +202,8 @@ namespace Command
             // Więcej przykładów z CommandService:
             public async UniTask HandleBuyCardClick(string cardId)
             {
-                bool success = await CommandService.Instance.BuyMusicCardAsync("currentPlayer", cardId);
+                //bool success = await CommandService.Instance.BuyMusicCardAsync("currentPlayer", cardId);
+                bool success = false;
                 Debug.Log($"[Presenter] Buy card result: {success}");
             }
             

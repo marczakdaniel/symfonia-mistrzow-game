@@ -5,6 +5,7 @@ using Cysharp.Threading.Tasks;
 using DefaultNamespace.Data;
 using UI.SelectTokenWindow.SelectSingleToken;
 using Models;
+using Command;
 
 namespace UI.SelectTokenWindow.SelectBoardTokenPanel
 {
@@ -16,16 +17,17 @@ namespace UI.SelectTokenWindow.SelectBoardTokenPanel
         private readonly SelectBoardTokenPanelViewModel viewModel;
 
         private readonly IGameModelReader gameModelReader;
-
+        private readonly CommandFactory commandFactory;
         private IDisposable disposables;
 
         private SelectSingleTokenPresenter[] selectSingleTokenPresenters = new SelectSingleTokenPresenter[Enum.GetValues(typeof(ResourceType)).Length - 1];
 
-        public SelectBoardTokenPanelPresenter(SelectBoardTokenPanelView view, IGameModelReader gameModelReader)
+        public SelectBoardTokenPanelPresenter(SelectBoardTokenPanelView view, CommandFactory commandFactory, IGameModelReader gameModelReader)
         {
             this.view = view;
             this.viewModel = new SelectBoardTokenPanelViewModel();
             this.gameModelReader = gameModelReader;
+            this.commandFactory = commandFactory;
 
             InitializeChildMVP();
             InitializeMVP();
@@ -47,7 +49,7 @@ namespace UI.SelectTokenWindow.SelectBoardTokenPanel
                 }
 
                 var selectSingleTokenView = view.SelectSingleTokenViews[(int)resourceType];
-                var selectSingleTokenPresenter = new SelectSingleTokenPresenter(selectSingleTokenView, (ResourceType)resourceType, gameModelReader);
+                var selectSingleTokenPresenter = new SelectSingleTokenPresenter(selectSingleTokenView, (ResourceType)resourceType, commandFactory, gameModelReader);
                 selectSingleTokenPresenters[(int)resourceType] = selectSingleTokenPresenter;
             }
         }

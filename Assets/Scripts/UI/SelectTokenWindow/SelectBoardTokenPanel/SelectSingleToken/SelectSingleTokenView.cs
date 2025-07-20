@@ -32,6 +32,33 @@ namespace UI.SelectTokenWindow.SelectSingleToken
             await UniTask.CompletedTask;
         }
 
+        public async UniTask OnAddingTokenAnimation(ResourceType resourceType, int count)
+        {
+            // TODO: Adding token animation
+            Setup(resourceType, count);
+            await UniTask.CompletedTask;
+        }
+
+        public async UniTask OnRemovingTokenAnimation(ResourceType resourceType, int count)
+        {
+            // TODO: Removing token animation
+            Setup(resourceType, count);
+            await UniTask.CompletedTask;
+        }
+
+        public async UniTask OnOpenAnimation(ResourceType resourceType, int count)
+        {
+            Setup(resourceType, count);
+            // TODO: Open animation
+            await UniTask.CompletedTask;
+        }
+        
+        public async UniTask OnCloseAnimation()
+        {
+            // TODO: Close animation
+            await UniTask.CompletedTask;
+        }
+
         public void Setup(ResourceType resourceType, int count)
         {
             tokenImage.sprite = resourceType.GetSingleResourceTypeImages().StackImage1;

@@ -9,6 +9,7 @@ using Events;
 
 namespace Command
 {
+    /*
     public class BuyMusicCardCommand : BasePlayerActionCommand
     {
         public override string CommandType => "BuyMusicCard";
@@ -88,6 +89,7 @@ namespace Command
             return true;
         }
     }
+    */
 
     public class StartGameCommand : BaseGameFlowCommand
     {
@@ -126,11 +128,13 @@ namespace Command
     public class AddTokenToSelectedTokensCommand : BasePlayerActionCommand
     {
         public override string CommandType => "AddTokenToSelectedTokens";
+        private readonly ResourceType token;
 
         private readonly GameModel gameModel;
 
         public AddTokenToSelectedTokensCommand(ResourceType token, GameModel gameModel) : base("", gameModel)
         {
+            this.token = token;
             this.gameModel = gameModel;
         }
 
@@ -141,7 +145,7 @@ namespace Command
 
         public override async UniTask<bool> Execute()
         {
-            await UniTask.CompletedTask;
+            await AsyncEventBus.Instance.PublishAndWaitAsync(new TokenAddedToSelectedTokensEvent(token, 13, new ResourceType?[] { token, null, null }));
 
             return true;
         }
@@ -151,10 +155,12 @@ namespace Command
     {
         public override string CommandType => "RemoveTokenFromSelectedTokens";
         private readonly GameModel gameModel;
+        private readonly ResourceType token;
 
-        public RemoveTokenFromSelectedTokensCommand(string playerId, GameModel gameModel) : base(playerId, gameModel)
+        public RemoveTokenFromSelectedTokensCommand(ResourceType token, GameModel gameModel) : base("", gameModel)
         {
-
+            this.gameModel = gameModel;
+            this.token = token;
         }
 
         public override bool Validate()
@@ -164,7 +170,7 @@ namespace Command
 
         public override async UniTask<bool> Execute()
         {
-            await UniTask.CompletedTask;
+            await AsyncEventBus.Instance.PublishAndWaitAsync(new TokenRemovedFromSelectedTokensEvent(token, 1, new ResourceType?[] { token, null, null }));
             return true;
         }
     }

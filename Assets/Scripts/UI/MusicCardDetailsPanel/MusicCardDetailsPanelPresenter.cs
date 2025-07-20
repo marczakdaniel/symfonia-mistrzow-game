@@ -83,13 +83,13 @@ namespace UI.MusicCardDetailsPanel {
         }
         private async UniTask HandleBuyButtonClick() 
         {
-            var command = commandFactory.CreateBuyMusicCardCommand(viewModel.PlayerId, viewModel.MusicCardId);
-            await CommandService.Instance.ExecuteCommandAsync(command);
+            //var command = commandFactory.CreateBuyMusicCardCommand(viewModel.PlayerId, viewModel.MusicCardId);
+            //await CommandService.Instance.ExecuteCommandAsync(command);
         }
 
         private async UniTask HandleReserveButtonClick() {
-            var command = commandFactory.CreateReserveMusicCardCommand(viewModel.PlayerId, viewModel.MusicCardId);
-            await CommandService.Instance.ExecuteCommandAsync(command);
+            //var command = commandFactory.CreateReserveMusicCardCommand(viewModel.PlayerId, viewModel.MusicCardId);
+            //await CommandService.Instance.ExecuteCommandAsync(command);
         }
 
         // Event Bus
