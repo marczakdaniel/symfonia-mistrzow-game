@@ -5,38 +5,34 @@ using Events;
 using R3;
 using UI.SelectTokenWindow.SelectBoardTokenPanel;
 using UnityEngine;
+using Command;
 
 namespace UI.SelectTokenWindow
 {
     public class SelectTokenWindowPresenter : 
         IDisposable, 
-        IAsyncEventHandler<TokenDetailsPanelOpenedEvent>
+        IAsyncEventHandler<TokenDetailsPanelOpenedEvent>,
+        IAsyncEventHandler<TokenDetailsPanelClosedEvent>
     {
         private readonly SelectTokenWindowView view;
         private readonly SelectTokenWindowViewModel viewModel;
+        private readonly CommandFactory commandFactory;
         private readonly IGameModelReader gameModelReader;
         private IDisposable disposables;
 
         private SelectBoardTokenPanelPresenter selectBoardTokenPanelPresenter;
 
-        public SelectTokenWindowPresenter(SelectTokenWindowView view, IGameModelReader gameModelReader)
+        public SelectTokenWindowPresenter(SelectTokenWindowView view, CommandFactory commandFactory, IGameModelReader gameModelReader)
         {
             this.view = view;
             this.viewModel = new SelectTokenWindowViewModel();
             this.gameModelReader = gameModelReader;
+            this.commandFactory = commandFactory;
 
             InitializeChildMVP();
             InitializeMVP();
             SubscribeToEvents();
         }
-
-        private async UniTask CloseWindow()
-        {
-            // TODO: Close window animation
-            await UniTask.CompletedTask;
-        }
-
-
 
         /* ---- */
 
@@ -69,8 +65,11 @@ namespace UI.SelectTokenWindow
                     break;
                 case SelectTokenWindowState.DuringOpenAnimation:
                     await OpenWindow();
-                    Debug.Log("OpenWindowFinished");
                     viewModel.OnOpenWindowFinished();
+                    break;
+                case SelectTokenWindowState.DuringCloseAnimation:
+                    await CloseWindow();
+                    viewModel.OnCloseWindowFinished();
                     break;
                 case SelectTokenWindowState.Active:
                     view.OnOpenWindow();
@@ -84,6 +83,12 @@ namespace UI.SelectTokenWindow
             await selectBoardTokenPanelPresenter.OpenWindow();
         }
 
+        private async UniTask CloseWindow()
+        {
+            // TODO: Close window animation
+            await UniTask.CompletedTask;
+        }
+
 
         private void ConnectView(DisposableBuilder d)
         {
@@ -92,20 +97,26 @@ namespace UI.SelectTokenWindow
 
         private async UniTask HandleCloseButtonClicked()
         {
-            
-            await UniTask.CompletedTask;
+            var command = commandFactory.CreateCloseTokenDetailsPanelCommand(viewModel.SelectedResourceType);
+            await CommandService.Instance.ExecuteCommandAsync(command);
         }
 
         private void SubscribeToEvents()
         {
             AsyncEventBus.Instance.Subscribe<TokenDetailsPanelOpenedEvent>(this);
+            AsyncEventBus.Instance.Subscribe<TokenDetailsPanelClosedEvent>(this, EventPriority.High);
         }
 
         public async UniTask HandleAsync(TokenDetailsPanelOpenedEvent tokenDetailsPanelOpenedEvent)
         {
-            Debug.Log("TokenDetailsPanelOpenedEvent");
-            viewModel.OpenWindow();
+            viewModel.OpenWindow(tokenDetailsPanelOpenedEvent.ResourceType);
             await UniTask.WaitUntil(() => viewModel.State.Value == SelectTokenWindowState.Active);
+        }
+
+        public async UniTask HandleAsync(TokenDetailsPanelClosedEvent tokenDetailsPanelClosedEvent)
+        {
+            viewModel.CloseWindow();
+            await CloseWindow();
         }
 
         public void Dispose()

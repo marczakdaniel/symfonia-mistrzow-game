@@ -31,6 +31,8 @@ namespace Command
         {
             return new ReserveMusicCardCommand(playerId, musicCardId, gameModel);
         }
+
+        // UI Commands
         
         public OpenMusicCardDetailsPanelCommand CreateOpenMusicCardDetailsPanelCommand(string musicCardId, int level, int position)
         {
@@ -45,6 +47,11 @@ namespace Command
         public OpenTokenDetailsPanelCommand CreateOpenTokenDetailsPanelCommand(ResourceType resourceType)
         {
             return new OpenTokenDetailsPanelCommand(resourceType, gameModel);
+        }
+
+        public CloseTokenDetailsPanelCommand CreateCloseTokenDetailsPanelCommand(ResourceType resourceType)
+        {
+            return new CloseTokenDetailsPanelCommand(resourceType, gameModel);
         }
     }
 }

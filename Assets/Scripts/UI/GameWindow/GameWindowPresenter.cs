@@ -33,7 +33,7 @@ namespace UI.GameWindow
         {
             boardPresenter = new BoardPresenter(view.BoardView, commandFactory, gameModelReader);
             musicCardDetailsPanelPresenter = new MusicCardDetailsPanelPresenter(view.MusicCardDetailsPanelView, commandFactory, gameModelReader);
-            selectTokenWindowPresenter = new SelectTokenWindowPresenter(view.SelectTokenWindowView, gameModelReader);
+            selectTokenWindowPresenter = new SelectTokenWindowPresenter(view.SelectTokenWindowView, commandFactory, gameModelReader);
         }
 
         private void InitializeMVP()
