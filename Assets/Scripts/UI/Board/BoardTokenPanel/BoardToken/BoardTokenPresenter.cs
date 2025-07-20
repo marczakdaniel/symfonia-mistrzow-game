@@ -93,6 +93,11 @@ namespace UI.Board.BoardTokenPanel.BoardToken
 
         private async UniTask HandleTokenClick()
         {
+            if (viewModel.ResourceType == ResourceType.Inspiration)
+            {
+                return;
+            }
+            
             await OpenTokenDetailsPanel();
         }
 

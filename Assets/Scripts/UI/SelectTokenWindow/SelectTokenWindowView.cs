@@ -3,6 +3,7 @@ using UnityEngine;
 using R3;
 using DefaultNamespace.Elements;
 using UI.SelectTokenWindow.SelectBoardTokenPanel;
+using UI.SelectTokenWindow.ChoosenBoardTokenPanel;
 
 namespace UI.SelectTokenWindow
 {
@@ -11,8 +12,10 @@ namespace UI.SelectTokenWindow
         public Subject<Unit> OnCloseButtonClicked { get; private set; } = new Subject<Unit>();
 
         public SelectBoardTokenPanelView SelectBoardTokenPanelView => selectBoardTokenPanelView;
+        public ChoosenBoardTokenPanelView ChoosenBoardTokenPanelView => choosenBoardTokenPanelView;
 
         [SerializeField] private SelectBoardTokenPanelView selectBoardTokenPanelView;
+        [SerializeField] private ChoosenBoardTokenPanelView choosenBoardTokenPanelView;
         [SerializeField] private ButtonElement closeButton;
 
         private void Awake()

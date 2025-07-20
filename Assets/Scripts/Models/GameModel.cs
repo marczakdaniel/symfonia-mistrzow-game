@@ -12,6 +12,7 @@ namespace Models
         IMusicCardDataReader[,] GetCurrentBoardCards();
         IBoardSlotReader GetBoardSlot(int level, int position);
         int GetBoardTokenCount(ResourceType resourceType);
+        ITurnModelReader GetTurnModelReader();
     }
 
     public class GameModel : IGameModelReader
@@ -26,12 +27,15 @@ namespace Models
         public string CurrentPlayerId { get; private set; }
         public BoardModel board { get; private set; }
 
+        public TurnModel turnModel { get; private set; }
+
         public GameModel()
         {
             //GameId = Guid.NewGuid().ToString();
             //GameName = gameName;
             board = new BoardModel();
             players = new List<PlayerModel>();
+            turnModel = new TurnModel();
         }
 
         private bool isInitialized = false;
@@ -361,6 +365,16 @@ namespace Models
         public int GetBoardTokenCount(ResourceType resourceType)
         {
             return board.GetTokenCount(resourceType);
+        }
+
+        public TurnModel GetTurnModel()
+        {
+            return turnModel;
+        }
+
+        public ITurnModelReader GetTurnModelReader()
+        {
+            return turnModel;
         }
     }
 }

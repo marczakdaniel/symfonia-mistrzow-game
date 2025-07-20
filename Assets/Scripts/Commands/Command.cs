@@ -145,7 +145,9 @@ namespace Command
 
         public override async UniTask<bool> Execute()
         {
-            await AsyncEventBus.Instance.PublishAndWaitAsync(new TokenAddedToSelectedTokensEvent(token, 13, new ResourceType?[] { token, null, null }));
+            gameModel.GetTurnModel().AddTokenToSelectedTokens(token);
+            var selectedTokens = gameModel.GetTurnModel().GetSelectedTokens();
+            await AsyncEventBus.Instance.PublishAndWaitAsync(new TokenAddedToSelectedTokensEvent(token, 13, selectedTokens));
 
             return true;
         }
@@ -170,7 +172,9 @@ namespace Command
 
         public override async UniTask<bool> Execute()
         {
-            await AsyncEventBus.Instance.PublishAndWaitAsync(new TokenRemovedFromSelectedTokensEvent(token, 1, new ResourceType?[] { token, null, null }));
+            gameModel.GetTurnModel().RemoveTokenFromSelectedTokens(token);
+            var selectedTokens = gameModel.GetTurnModel().GetSelectedTokens();
+            await AsyncEventBus.Instance.PublishAndWaitAsync(new TokenRemovedFromSelectedTokensEvent(token, 1, selectedTokens));
             return true;
         }
     }

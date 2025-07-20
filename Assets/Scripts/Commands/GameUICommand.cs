@@ -61,10 +61,12 @@ namespace Command
     {
         public override string CommandType => "OpenTokenDetailsPanel";
         public ResourceType ResourceType { get; private set; }
+        private readonly GameModel gameModel;
 
         public OpenTokenDetailsPanelCommand(ResourceType resourceType, GameModel gameModel) : base(gameModel)
         {
             ResourceType = resourceType;
+            this.gameModel = gameModel;
         }
 
         public override bool Validate()
@@ -74,6 +76,8 @@ namespace Command
 
         public override async UniTask<bool> Execute()
         {
+            gameModel.GetTurnModel().SetState(TurnState.SelectingTokens);
+            gameModel.GetTurnModel().AddTokenToSelectedTokens(ResourceType);
             await AsyncEventBus.Instance.PublishAndWaitAsync(new TokenDetailsPanelOpenedEvent(ResourceType));
             return true;
         }
@@ -83,10 +87,11 @@ namespace Command
     {
         public override string CommandType => "CloseTokenDetailsPanel";
         public ResourceType ResourceType { get; private set; }
-        
+        private readonly GameModel gameModel;
         public CloseTokenDetailsPanelCommand(ResourceType resourceType, GameModel gameModel) : base(gameModel)
         {
             ResourceType = resourceType;
+            this.gameModel = gameModel;
         }
 
         public override bool Validate()
@@ -96,6 +101,8 @@ namespace Command
 
         public override async UniTask<bool> Execute()
         {
+            gameModel.GetTurnModel().SetState(TurnState.WaitingForAction);
+            gameModel.GetTurnModel().ClearSelectedTokens();
             await AsyncEventBus.Instance.PublishAndWaitAsync(new TokenDetailsPanelClosedEvent(ResourceType));
             return true;
         }

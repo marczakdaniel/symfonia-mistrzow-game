@@ -8,8 +8,15 @@ namespace DefaultNamespace.Elements {
     {
         public Subject<Unit> OnClick = new Subject<Unit>();
 
+        private bool lockClick = false;
+
         public void OnPointerClick(PointerEventData eventData) {
-            transform.DOPunchScale(Vector3.one * 0.1f, 0.3f, 10, 1f);
+            if (lockClick)
+            {
+                return;
+            }
+            lockClick = true;
+            transform.DOPunchScale(Vector3.one * 0.1f, 0.3f, 10, 1f).OnComplete(() => lockClick = false);
             OnClick?.OnNext(Unit.Default);
         }
     }

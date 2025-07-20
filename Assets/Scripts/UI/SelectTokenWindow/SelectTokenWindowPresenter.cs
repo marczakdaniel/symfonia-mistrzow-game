@@ -6,6 +6,7 @@ using R3;
 using UI.SelectTokenWindow.SelectBoardTokenPanel;
 using UnityEngine;
 using Command;
+using UI.SelectTokenWindow.ChoosenBoardTokenPanel;
 
 namespace UI.SelectTokenWindow
 {
@@ -21,6 +22,7 @@ namespace UI.SelectTokenWindow
         private IDisposable disposables;
 
         private SelectBoardTokenPanelPresenter selectBoardTokenPanelPresenter;
+        private ChoosenBoardTokenPanelPresenter choosenBoardTokenPanelPresenter;
 
         public SelectTokenWindowPresenter(SelectTokenWindowView view, CommandFactory commandFactory, IGameModelReader gameModelReader)
         {
@@ -39,6 +41,7 @@ namespace UI.SelectTokenWindow
         private void InitializeChildMVP()
         {
             selectBoardTokenPanelPresenter = new SelectBoardTokenPanelPresenter(view.SelectBoardTokenPanelView, commandFactory, gameModelReader);
+            choosenBoardTokenPanelPresenter = new ChoosenBoardTokenPanelPresenter(view.ChoosenBoardTokenPanelView, commandFactory, gameModelReader);
         }
 
         private void InitializeMVP()
@@ -53,7 +56,7 @@ namespace UI.SelectTokenWindow
 
         private void ConnectModel(DisposableBuilder d)
         {
-            viewModel.State.Subscribe(state => HandleStateChange(state).Forget()).AddTo(ref d);
+            viewModel.State.Subscribe(state => HandleStateChange(state).ToObservable()).AddTo(ref d);
         }
 
         private async UniTask HandleStateChange(SelectTokenWindowState state)

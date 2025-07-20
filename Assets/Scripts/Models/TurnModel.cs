@@ -13,15 +13,20 @@ namespace Models
         ConfirmingAction,
     }
 
-    public class TurnModel
+    public interface ITurnModelReader
+    {
+        public ResourceType?[] GetSelectedTokens();
+    }
+
+    public class TurnModel : ITurnModelReader
     {
         public string CurrentPlayerId {get; private set; }
         public TurnState State {get; private set; }
-        public Stack<ResourceType?> SelectedTokens {get; private set; } = new Stack<ResourceType?>();
+        public List<ResourceType> SelectedTokens {get; private set; } = new List<ResourceType>();
 
         public TurnModel()
         {
-            SelectedTokens = new Stack<ResourceType?>();
+            SelectedTokens = new List<ResourceType>();
         }
 
         public void SetState(TurnState state)
@@ -31,13 +36,35 @@ namespace Models
 
         public void AddTokenToSelectedTokens(ResourceType token)
         {
-            if (State != TurnState.SelectingTokens)
-            {
-                Debug.LogError("[TurnModel] Cannot add token to selected tokens in this state");
-                return;
-            }
+            SelectedTokens.Add(token);
+        }
 
-            SelectedTokens.Push(token);
+        public void RemoveTokenFromSelectedTokens(ResourceType token)
+        {
+            SelectedTokens.Remove(token);
+        }
+
+        public void ClearSelectedTokens()
+        {
+            SelectedTokens.Clear();
+        }
+
+        public ResourceType?[] GetSelectedTokens()
+        {
+            var result = new ResourceType?[3] { null, null, null };  
+            var i = 0;
+            for (i = 0; i < result.Length; i++)
+            {
+                if (i < SelectedTokens.Count)
+                {
+                    result[i] = SelectedTokens[i];
+                }
+                else
+                {
+                    break;
+                }
+            }
+            return result;
         }
 
     }
