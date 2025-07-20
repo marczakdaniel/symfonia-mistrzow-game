@@ -121,4 +121,51 @@ namespace Command
             return true;
         }
     }
+
+    // Select token action
+    public class AddTokenToSelectedTokensCommand : BasePlayerActionCommand
+    {
+        public override string CommandType => "AddTokenToSelectedTokens";
+
+        private readonly GameModel gameModel;
+
+        public AddTokenToSelectedTokensCommand(ResourceType token, GameModel gameModel) : base("", gameModel)
+        {
+            this.gameModel = gameModel;
+        }
+
+        public override bool Validate()
+        {
+            return true;
+        }
+
+        public override async UniTask<bool> Execute()
+        {
+            await UniTask.CompletedTask;
+
+            return true;
+        }
+    }
+
+    public class RemoveTokenFromSelectedTokensCommand : BasePlayerActionCommand
+    {
+        public override string CommandType => "RemoveTokenFromSelectedTokens";
+        private readonly GameModel gameModel;
+
+        public RemoveTokenFromSelectedTokensCommand(string playerId, GameModel gameModel) : base(playerId, gameModel)
+        {
+
+        }
+
+        public override bool Validate()
+        {
+            return true;
+        }
+
+        public override async UniTask<bool> Execute()
+        {
+            await UniTask.CompletedTask;
+            return true;
+        }
+    }
 }

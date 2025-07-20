@@ -5,15 +5,18 @@ using R3;
 using UnityEngine.EventSystems;
 using DefaultNamespace.Data;
 using Cysharp.Threading.Tasks;
+using DefaultNamespace.Elements;
 
 namespace UI.SelectTokenWindow.SelectSingleToken
 {
-    public class SelectSingleTokenView : MonoBehaviour, IPointerClickHandler
+    public class SelectSingleTokenView : MonoBehaviour
     {
         public Subject<Unit> OnTokenClicked { get; private set; } = new Subject<Unit>();
 
         [SerializeField] private Image tokenImage;  
         [SerializeField] private TextMeshProUGUI tokenCountText;
+
+        [SerializeField] private ButtonElement buttonElement;
 
         public async UniTask OnDisabled()
         {
@@ -35,9 +38,9 @@ namespace UI.SelectTokenWindow.SelectSingleToken
             tokenCountText.text = "x" + count.ToString();
         }
 
-        public void OnPointerClick(PointerEventData eventData)
+        public void Awake()
         {
-            OnTokenClicked?.OnNext(Unit.Default);
+            buttonElement.OnClick.Subscribe(_ => OnTokenClicked?.OnNext(Unit.Default)).AddTo(this);
         }
     }
 }

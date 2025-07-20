@@ -61,6 +61,7 @@ namespace Command
 
     public abstract class BasePlayerActionCommand : BaseCommand, IPlayerActionCommand
     {
+        // Todo: Remove playerId from command
         public string PlayerId { get; }
 
         public BasePlayerActionCommand(string playerId, GameModel gameModel) : base(gameModel)

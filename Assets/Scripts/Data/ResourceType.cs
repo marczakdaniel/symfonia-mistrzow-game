@@ -9,4 +9,6 @@ namespace DefaultNamespace.Data
         Dynamics,
         Inspiration,
     }
+
+    
 }
