@@ -229,7 +229,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8648323861855928573}
-  - component: {fileID: 2697003628335276982}
+  - component: {fileID: 2093954866070711996}
   m_Layer: 0
   m_Name: SelectTokenPrefab
   m_TagString: Untagged
@@ -257,7 +257,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 200, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2697003628335276982
+--- !u!114 &2093954866070711996
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -266,12 +266,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 7813895439394592654}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2fa2eba39d1cdcb40927bdbe9caa846a, type: 3}
+  m_Script: {fileID: 11500000, guid: f89f52693fe091d438ca80c2546847c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   tokenImage: {fileID: 8617434199198592409}
   tokenCountText: {fileID: 3513165200362185108}
-  entryAnimation: {fileID: 0}
 --- !u!1 &8484523435053765580
 GameObject:
   m_ObjectHideFlags: 0

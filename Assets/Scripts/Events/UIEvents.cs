@@ -45,4 +45,14 @@ namespace Events
             ResourceType = resourceType;
         }
     }
+
+    public class TokenDetailsPanelClosedEvent : GameEvent
+    {
+        public ResourceType ResourceType { get; private set; }
+
+        public TokenDetailsPanelClosedEvent(ResourceType resourceType)
+        {
+            ResourceType = resourceType;
+        }
+    }
 }

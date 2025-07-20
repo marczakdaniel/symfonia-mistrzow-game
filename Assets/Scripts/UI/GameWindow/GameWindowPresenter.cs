@@ -5,6 +5,7 @@ using Cysharp.Threading.Tasks;
 using UnityEngine;
 using Events;
 using Models;
+using UI.SelectTokenWindow;
 
 namespace UI.GameWindow
 {
@@ -15,6 +16,7 @@ namespace UI.GameWindow
         private readonly GameWindowViewModel viewModel = new GameWindowViewModel();
         private BoardPresenter boardPresenter;
         private MusicCardDetailsPanelPresenter musicCardDetailsPanelPresenter;
+        private SelectTokenWindowPresenter selectTokenWindowPresenter;
         private CommandFactory commandFactory;
         private IGameModelReader gameModelReader;
         public GameWindowPresenter(GameWindowView view, CommandFactory commandFactory, IGameModelReader gameModelReader)
@@ -31,6 +33,7 @@ namespace UI.GameWindow
         {
             boardPresenter = new BoardPresenter(view.BoardView, commandFactory, gameModelReader);
             musicCardDetailsPanelPresenter = new MusicCardDetailsPanelPresenter(view.MusicCardDetailsPanelView, commandFactory, gameModelReader);
+            selectTokenWindowPresenter = new SelectTokenWindowPresenter(view.SelectTokenWindowView, gameModelReader);
         }
 
         private void InitializeMVP()

@@ -80,6 +80,28 @@ namespace Command
         }
     }
 
+    public class CloseTokenDetailsPanelCommand : BaseUICommand
+    {
+        public override string CommandType => "CloseTokenDetailsPanel";
+        public ResourceType ResourceType { get; private set; }
+        
+        public CloseTokenDetailsPanelCommand(ResourceType resourceType, GameModel gameModel) : base(gameModel)
+        {
+            ResourceType = resourceType;
+        }
+
+        public override bool Validate()
+        {
+            return true;
+        }
+
+        public override async UniTask<bool> Execute()
+        {
+            await AsyncEventBus.Instance.PublishAndWaitAsync(new TokenDetailsPanelClosedEvent(ResourceType));
+            return true;
+        }
+    }
+
     /*
     public enum GameWindowType
     {
