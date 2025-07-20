@@ -43,7 +43,7 @@ namespace UI.MusicCardDetailsPanel {
 
         private void SubscribeToEvents() {
             AsyncEventBus.Instance.Subscribe<MusicCardDetailsPanelOpenedEvent>(this);
-            AsyncEventBus.Instance.Subscribe<MusicCardDetailsPanelClosedEvent>(this);
+            AsyncEventBus.Instance.Subscribe<MusicCardDetailsPanelClosedEvent>(this, EventPriority.High);
         }
 
         private async UniTask HandleStateChange(MusicCardDetailsPanelState state) {

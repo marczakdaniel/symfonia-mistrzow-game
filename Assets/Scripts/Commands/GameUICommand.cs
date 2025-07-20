@@ -53,7 +53,6 @@ namespace Command
         public override async UniTask<bool> Execute()
         {
             await AsyncEventBus.Instance.PublishAndWaitAsync(new MusicCardDetailsPanelClosedEvent(MusicCardId));
-            await AsyncEventBus.Instance.PublishAndWaitAsync(new MusicCardDetailsPanelAnimationFinishedEvent(MusicCardId));
             return true;
         }
     }  

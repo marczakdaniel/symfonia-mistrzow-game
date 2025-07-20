@@ -12,7 +12,7 @@ namespace UI.Board.BoardMusicCardPanel.BoardMusicCard
     public class BoardMusicCardPresenter : 
         IDisposable, 
         IAsyncEventHandler<MusicCardDetailsPanelOpenedEvent>, 
-        IAsyncEventHandler<MusicCardDetailsPanelAnimationFinishedEvent>,
+        IAsyncEventHandler<MusicCardDetailsPanelClosedEvent>,
         IAsyncEventHandler<CardReservedEvent>, 
         IAsyncEventHandler<CardPurchasedEvent>
     {
@@ -53,7 +53,7 @@ namespace UI.Board.BoardMusicCardPanel.BoardMusicCard
         private void SubscribeToEvents()
         {
             AsyncEventBus.Instance.Subscribe<MusicCardDetailsPanelOpenedEvent>(this);
-            AsyncEventBus.Instance.Subscribe<MusicCardDetailsPanelAnimationFinishedEvent>(this);
+            AsyncEventBus.Instance.Subscribe<MusicCardDetailsPanelClosedEvent>(this);
             AsyncEventBus.Instance.Subscribe<CardReservedEvent>(this);
             AsyncEventBus.Instance.Subscribe<CardPurchasedEvent>(this);
         }
@@ -71,9 +71,9 @@ namespace UI.Board.BoardMusicCardPanel.BoardMusicCard
             await UniTask.WaitUntil(() => viewModel.State.Value == BoardMusicCardState.DuringOpenMusicCardDetailsPanel);
         }
 
-        public async UniTask HandleAsync(MusicCardDetailsPanelAnimationFinishedEvent musicCardDetailsPanelAnimationFinishedEvent)
+        public async UniTask HandleAsync(MusicCardDetailsPanelClosedEvent musicCardDetailsPanelClosedEvent)
         {
-            if (musicCardDetailsPanelAnimationFinishedEvent.MusicCardId != viewModel.MusicCardData.Value.Id) {
+            if (musicCardDetailsPanelClosedEvent.MusicCardId != viewModel.MusicCardData.Value.Id) {
                 return;
             }
 

@@ -26,16 +26,6 @@ namespace Events
         }
     }
 
-    public class MusicCardDetailsPanelAnimationFinishedEvent : GameEvent
-    {
-        public string MusicCardId { get; private set; }
-
-        public MusicCardDetailsPanelAnimationFinishedEvent(string musicCardId)
-        {
-            MusicCardId = musicCardId;
-        }
-    }
-
     public class TokenDetailsPanelOpenedEvent : GameEvent
     {
         public ResourceType ResourceType { get; private set; }
