@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using Models;
+using Unity.VisualScripting;
 
 namespace Command
 {
@@ -24,7 +25,6 @@ namespace Command
 
     public interface IPlayerActionCommand : ICommand
     {
-        string PlayerId { get; }
     }
 
     public interface IUICommand : ICommand
@@ -37,10 +37,11 @@ namespace Command
         public DateTime Timestamp { get; set; }
         public string CommandId { get; set; }
 
-        private readonly GameModel gameModel;
+        protected readonly GameModel gameModel;
 
         public BaseCommand(GameModel gameModel)
         {
+            this.gameModel = gameModel;
             Timestamp = DateTime.UtcNow;
             CommandId = Guid.NewGuid().ToString();
         }
@@ -61,12 +62,8 @@ namespace Command
 
     public abstract class BasePlayerActionCommand : BaseCommand, IPlayerActionCommand
     {
-        // Todo: Remove playerId from command
-        public string PlayerId { get; }
-
-        public BasePlayerActionCommand(string playerId, GameModel gameModel) : base(gameModel)
+        public BasePlayerActionCommand(GameModel gameModel) : base(gameModel)
         {
-            PlayerId = playerId;
         }
     }
 

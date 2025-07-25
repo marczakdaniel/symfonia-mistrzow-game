@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Cysharp.Threading.Tasks;
 using Events;
 using Command;
+using Services;
 
 namespace Managers
 {
@@ -15,6 +16,7 @@ namespace Managers
         private GameWindowPresenter gameWindowPresenter;    
         private CommandFactory commandFactory;
         private GameModel gameModel;
+        private TurnService turnService;
 
         public bool InitalizeGame(GameConfig gameConfig)
         {
@@ -26,7 +28,8 @@ namespace Managers
 
             
             // Initialize CommandFactory
-            commandFactory = new CommandFactory(gameModel);
+            turnService = new TurnService(gameModel);
+            commandFactory = new CommandFactory(gameModel, turnService);
             CommandService.Instance.Initialize(commandFactory);
 
             CreateGameWindow();
@@ -46,6 +49,7 @@ namespace Managers
             await CommandService.Instance.ExecuteCommandAsync(startGameCommand);
 
             // TODO: Start turn for first player
+            //await CommandService.Instance.ExecuteCommandAsync(commandFactory.CreateStartPlayerTurnCommand());
         }
 
         public void PlayerTurn()

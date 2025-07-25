@@ -6,6 +6,7 @@ using UnityEngine;
 using Events;
 using Models;
 using UI.SelectTokenWindow;
+using UI.StartTurnWindow;
 
 namespace UI.GameWindow
 {
@@ -17,6 +18,7 @@ namespace UI.GameWindow
         private BoardPresenter boardPresenter;
         private MusicCardDetailsPanelPresenter musicCardDetailsPanelPresenter;
         private SelectTokenWindowPresenter selectTokenWindowPresenter;
+        private StartTurnWindowPresenter startTurnWindowPresenter;
         private CommandFactory commandFactory;
         private IGameModelReader gameModelReader;
         public GameWindowPresenter(GameWindowView view, CommandFactory commandFactory, IGameModelReader gameModelReader)
@@ -34,6 +36,7 @@ namespace UI.GameWindow
             boardPresenter = new BoardPresenter(view.BoardView, commandFactory, gameModelReader);
             musicCardDetailsPanelPresenter = new MusicCardDetailsPanelPresenter(view.MusicCardDetailsPanelView, commandFactory, gameModelReader);
             selectTokenWindowPresenter = new SelectTokenWindowPresenter(view.SelectTokenWindowView, commandFactory, gameModelReader);
+            startTurnWindowPresenter = new StartTurnWindowPresenter(view.StartTurnWindowView, commandFactory);
         }
 
         private void InitializeMVP()

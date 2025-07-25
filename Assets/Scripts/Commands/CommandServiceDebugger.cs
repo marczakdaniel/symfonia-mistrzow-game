@@ -1,6 +1,7 @@
 using Models;
 using UnityEngine;
 
+/*
 namespace Command
 {
     /// <summary>
@@ -187,5 +188,5 @@ namespace Command
          * ALTERNATIVE: Można też używać CommandService.Instance.GetDetailedStatus() 
          * w swoich własnych debug skryptach
          */
-    }
-} 
+    //}
+//} 

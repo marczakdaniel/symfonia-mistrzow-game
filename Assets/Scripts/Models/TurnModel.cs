@@ -11,6 +11,7 @@ namespace Models
         SelectingTokens,
         SelectingMusicCard,
         ConfirmingAction,
+        ReadyToEndTurn,
     }
 
     public interface ITurnModelReader
@@ -32,6 +33,12 @@ namespace Models
         public void SetState(TurnState state)
         {
             State = state;
+        }
+
+        public void SetCurrentPlayer(string playerId)
+        {
+            CurrentPlayerId = playerId;
+
         }
 
         public void AddTokenToSelectedTokens(ResourceType token)

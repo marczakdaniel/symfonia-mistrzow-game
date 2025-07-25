@@ -3,6 +3,9 @@ using Cysharp.Threading.Tasks;
 using UnityEngine;
 using Models;
 
+
+/*
+
 namespace Command
 {
     /// <summary>
@@ -137,7 +140,6 @@ namespace Command
 
         /*
          * === JAK UŻYWAĆ W PRAWDZIWYCH PREZENTERACH ===
-         */
 
         /// <summary>
         /// Przykład użycia w Presenter - sposób 1: Bezpośrednie użycie CommandExecutor
@@ -277,6 +279,7 @@ namespace Command
          * 8. EventBus informuje wszystkie Presentery o zmianach
          * 9. Presentery aktualizują UI na podstawie nowego stanu Model
          * 10. Command kończy się, Presenter otrzymuje wynik
-         */
     }
 } 
+
+*/

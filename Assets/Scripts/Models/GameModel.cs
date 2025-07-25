@@ -13,6 +13,7 @@ namespace Models
         IBoardSlotReader GetBoardSlot(int level, int position);
         int GetBoardTokenCount(ResourceType resourceType);
         ITurnModelReader GetTurnModelReader();
+        PlayerModel[] GetPlayers();
     }
 
     public class GameModel : IGameModelReader
@@ -24,7 +25,6 @@ namespace Models
 
         
         private List<PlayerModel> players { get; }
-        public string CurrentPlayerId { get; private set; }
         public BoardModel board { get; private set; }
 
         public TurnModel turnModel { get; private set; }
@@ -78,14 +78,25 @@ namespace Models
             return players.FirstOrDefault(p => p.PlayerId == playerId);
         }
 
-        public bool IsPlayerTurn(string playerId)
+        public string GetNextPlayerId(string currentPlayerId)
         {
-            return CurrentPlayerId == playerId;
+            if (currentPlayerId == null)
+            {
+                return players[0].PlayerId;
+            }
+
+            var currentIndex = players.FindIndex(p => p.PlayerId == currentPlayerId);
+            return players[(currentIndex + 1) % players.Count].PlayerId;
         }
 
         public bool IsPlayerExists(string playerId)
         {
             return players.Any(p => p.PlayerId == playerId);
+        }
+
+        public PlayerModel[] GetPlayers()
+        {
+            return players.ToArray();
         }
 
         // Game Flow Management

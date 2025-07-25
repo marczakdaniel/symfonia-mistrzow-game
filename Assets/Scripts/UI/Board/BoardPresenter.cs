@@ -6,6 +6,8 @@ using UnityEngine;
 using Events;
 using UI.Board.BoardTokenPanel;
 using R3;
+using UI.Board.BoardEndTurnButton;
+using UI.Board.BoardPlayersPanel;
 
 namespace UI.Board
 {
@@ -17,6 +19,8 @@ namespace UI.Board
         private readonly IGameModelReader gameModelReader;
         private BoardMusicCardPanelPresenter boardMusicCardPanelPresenter;
         private BoardTokenPanelPresenter boardTokenPanelPresenter;
+        private BoardEndTurnButtonPresenter boardEndTurnButtonPresenter;
+        private BoardPlayersPanelPresenter boardPlayersPanelPresenter;  
         private CommandFactory commandFactory;
 
         public BoardPresenter(BoardView view, CommandFactory commandFactory, IGameModelReader gameModelReader)
@@ -33,6 +37,8 @@ namespace UI.Board
         {
             boardMusicCardPanelPresenter = new BoardMusicCardPanelPresenter(view.BoardMusicCardPanelView, commandFactory, gameModelReader);
             boardTokenPanelPresenter = new BoardTokenPanelPresenter(view.BoardTokenPanelView, commandFactory, gameModelReader);
+            boardEndTurnButtonPresenter = new BoardEndTurnButtonPresenter(view.BoardEndTurnButtonView, commandFactory);
+            boardPlayersPanelPresenter = new BoardPlayersPanelPresenter(view.BoardPlayersPanelView, gameModelReader);
         }
 
         private void InitializeMVP()
@@ -62,6 +68,8 @@ namespace UI.Board
         {
             await boardMusicCardPanelPresenter.InitializeBoard();
             await boardTokenPanelPresenter.PutTokensOnBoard();
+            await boardEndTurnButtonPresenter.OnGameStarted();
+            await boardPlayersPanelPresenter.OnGameStarted();
         }
 
         public async UniTask HandleAsync(GameStartedEvent gameEvent)

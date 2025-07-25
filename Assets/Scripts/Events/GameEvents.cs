@@ -21,6 +21,17 @@ namespace Events
         }
     }
 
+    // Turn Events
+    public class TurnStartedEvent : GameEvent
+    {
+        public string CurrentPlayerId { get; }
+
+        public TurnStartedEvent(string currentPlayerId)
+        {
+            CurrentPlayerId = currentPlayerId;
+        }
+    }
+
     /*
     public class PlayerTurnStartedEvent : GameEvent
     {

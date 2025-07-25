@@ -67,10 +67,14 @@ namespace Command
 
             _commandExecutor.RegisterCommandType<StartGameCommand>();
             //_commandExecutor.RegisterCommandType<BuyMusicCardCommand>();
-            //_commandExecutor.RegisterCommandType<ReserveMusicCardCommand>();
+            //_commandExecutor.RegisterCommandType<ReserveMusicCardCommand>();  
 
             _commandExecutor.RegisterCommandType<AddTokenToSelectedTokensCommand>();
             _commandExecutor.RegisterCommandType<RemoveTokenFromSelectedTokensCommand>();
+            _commandExecutor.RegisterCommandType<StartPlayerTurnCommand>();
+            _commandExecutor.RegisterCommandType<EndPlayerTurnCommand>();
+            _commandExecutor.RegisterCommandType<AcceptSelectedTokensCommand>();
+            
 
             Debug.Log("[CommandService] Zarejestrowano typy komend");
         }

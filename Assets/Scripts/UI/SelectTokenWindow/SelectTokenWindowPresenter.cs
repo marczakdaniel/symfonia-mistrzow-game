@@ -96,11 +96,18 @@ namespace UI.SelectTokenWindow
         private void ConnectView(DisposableBuilder d)
         {
             view.OnCloseButtonClicked.Subscribe(_ => HandleCloseButtonClicked().Forget()).AddTo(ref d);
+            view.OnAcceptButtonClicked.Subscribe(_ => HandleAcceptButtonClicked().Forget()).AddTo(ref d);
         }
 
         private async UniTask HandleCloseButtonClicked()
         {
             var command = commandFactory.CreateCloseTokenDetailsPanelCommand(viewModel.SelectedResourceType);
+            await CommandService.Instance.ExecuteCommandAsync(command);
+        }
+
+        private async UniTask HandleAcceptButtonClicked()
+        {
+            var command = commandFactory.CreateAcceptSelectedTokensCommand();
             await CommandService.Instance.ExecuteCommandAsync(command);
         }
 

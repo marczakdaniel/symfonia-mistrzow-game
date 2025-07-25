@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
 using Events;
+using Services;
 
 namespace Command
 {
@@ -96,10 +97,12 @@ namespace Command
         public override string CommandType => "StartGame";
 
         private readonly GameModel gameModel;
+        private readonly TurnService turnService;
 
-        public StartGameCommand(GameModel gameModel) : base(gameModel)
+        public StartGameCommand(GameModel gameModel, TurnService turnService) : base(gameModel)
         {
             this.gameModel = gameModel;
+            this.turnService = turnService;
         }
 
         public override async UniTask<bool> Validate()
@@ -120,6 +123,63 @@ namespace Command
             var gameStartedEvent = new GameStartedEvent();
             await AsyncEventBus.Instance.PublishAndWaitAsync(gameStartedEvent);
 
+            turnService.NextPlayerTurn();
+
+            var currentPlayer = gameModel.GetPlayer(gameModel.GetTurnModel().CurrentPlayerId);
+            await AsyncEventBus.Instance.PublishAndWaitAsync(new StartTurnWindowOpenedEvent(currentPlayer.PlayerId, currentPlayer.PlayerName));
+
+            return true;
+        }
+    }
+    
+    // Turn commands
+    public class StartPlayerTurnCommand : BasePlayerActionCommand
+    {
+        public override string CommandType => "StartPlayerTurn";
+        private readonly TurnService turnService;
+
+        public StartPlayerTurnCommand(GameModel gameModel, TurnService turnService) : base(gameModel)
+        {
+            this.turnService = turnService;
+        }
+
+        public override async UniTask<bool> Validate()
+        {
+            return true;
+        }
+
+        public override async UniTask<bool> Execute()
+        {
+            var turnStartedEvent = new TurnStartedEvent(gameModel.GetTurnModel().CurrentPlayerId);
+            await AsyncEventBus.Instance.PublishAndWaitAsync(turnStartedEvent);
+
+            return true;
+        }
+    }
+
+    public class EndPlayerTurnCommand : BasePlayerActionCommand
+    {
+        public override string CommandType => "EndPlayerTurn";
+        private readonly TurnService turnService;
+        
+        public EndPlayerTurnCommand(GameModel gameModel, TurnService turnService) : base(gameModel)
+        {
+            this.turnService = turnService;
+        }
+
+        public override async UniTask<bool> Validate()
+        {
+            return true;
+        }
+
+        public override async UniTask<bool> Execute()
+        {
+            turnService.EndPlayerTurn();
+            turnService.NextPlayerTurn();
+
+            var currentPlayer = gameModel.GetPlayer(gameModel.GetTurnModel().CurrentPlayerId);
+            await AsyncEventBus.Instance.PublishAndWaitAsync(new StartTurnWindowOpenedEvent(currentPlayer.PlayerId, currentPlayer.PlayerName));
+
             return true;
         }
     }
@@ -132,7 +192,7 @@ namespace Command
 
         private readonly GameModel gameModel;
 
-        public AddTokenToSelectedTokensCommand(ResourceType token, GameModel gameModel) : base("", gameModel)
+        public AddTokenToSelectedTokensCommand(ResourceType token, GameModel gameModel) : base(gameModel)
         {
             this.token = token;
             this.gameModel = gameModel;
@@ -159,7 +219,7 @@ namespace Command
         private readonly GameModel gameModel;
         private readonly ResourceType token;
 
-        public RemoveTokenFromSelectedTokensCommand(ResourceType token, GameModel gameModel) : base("", gameModel)
+        public RemoveTokenFromSelectedTokensCommand(ResourceType token, GameModel gameModel) : base(gameModel)
         {
             this.gameModel = gameModel;
             this.token = token;
@@ -175,6 +235,27 @@ namespace Command
             gameModel.GetTurnModel().RemoveTokenFromSelectedTokens(token);
             var selectedTokens = gameModel.GetTurnModel().GetSelectedTokens();
             await AsyncEventBus.Instance.PublishAndWaitAsync(new TokenRemovedFromSelectedTokensEvent(token, 1, selectedTokens));
+            return true;
+        }
+    }
+
+    public class AcceptSelectedTokensCommand : BasePlayerActionCommand
+    {
+        public override string CommandType => "AcceptSelectedTokens";
+        private readonly GameModel gameModel;
+
+        public AcceptSelectedTokensCommand(GameModel gameModel) : base(gameModel)
+        {
+            this.gameModel = gameModel;
+        }
+
+        public override async UniTask<bool> Validate()
+        {
+            return true;
+        }
+
+        public override async UniTask<bool> Execute()
+        {
             return true;
         }
     }

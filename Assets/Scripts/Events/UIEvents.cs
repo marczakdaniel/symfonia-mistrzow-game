@@ -75,4 +75,17 @@ namespace Events
             CurrentSelectedTokens = currentSelectedTokens;
         }
     }
+
+    // Start Turn Window Events
+    public class StartTurnWindowOpenedEvent : GameEvent
+    {
+        public string CurrentPlayerId { get; private set; }
+        public string CurrentPlayerName { get; private set; }
+
+        public StartTurnWindowOpenedEvent(string currentPlayerId, string currentPlayerName)
+        {
+            CurrentPlayerId = currentPlayerId;
+            CurrentPlayerName = currentPlayerName;
+        }
+    }
 }

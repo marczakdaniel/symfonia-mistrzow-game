@@ -31,7 +31,8 @@ namespace Test
         {
             var boardMusicCardConfig = new BoardMusicCardConfig(new string[] { }, new string[] { }, new string[] { }, musicCardDatas.Select(card => card.Id).ToList());
             var boardConfig = new BoardConfig(new BoardTokenConfig(7, 7, 7, 7, 7, 5), boardMusicCardConfig);
-            var gameConfig = new GameConfig(musicCardDatas, new PlayerConfig[] { new PlayerConfig(Guid.NewGuid().ToString(), "Player 1") }, boardConfig);
+            var playerConfig = new PlayerConfig[] { new PlayerConfig(Guid.NewGuid().ToString(), "Player 1"), new PlayerConfig(Guid.NewGuid().ToString(), "Player 2") };
+            var gameConfig = new GameConfig(musicCardDatas, playerConfig, boardConfig);
             return gameConfig;
         }
     }

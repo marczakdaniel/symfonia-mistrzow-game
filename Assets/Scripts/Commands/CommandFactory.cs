@@ -1,23 +1,26 @@
 using System;
 using DefaultNamespace.Data;
 using Models;
+using Services;
 
 namespace Command
 {
     public class CommandFactory
     {
         private readonly GameModel gameModel;
+        private readonly TurnService turnService;
 
-        public CommandFactory(GameModel gameModel)
+        public CommandFactory(GameModel gameModel, TurnService turnService)
         {
             this.gameModel = gameModel;
+            this.turnService = turnService;
         }
 
         // Game Flow Commands
 
         public StartGameCommand CreateStartGameCommand()
         {
-            return new StartGameCommand(gameModel);
+            return new StartGameCommand(gameModel, turnService);
         }
 
         // Player Actions Commands
@@ -68,6 +71,21 @@ namespace Command
         public CloseTokenDetailsPanelCommand CreateCloseTokenDetailsPanelCommand(ResourceType resourceType)
         {
             return new CloseTokenDetailsPanelCommand(resourceType, gameModel);
+        }
+
+        public AcceptSelectedTokensCommand CreateAcceptSelectedTokensCommand()
+        {
+            return new AcceptSelectedTokensCommand(gameModel);
+        }
+
+        public EndPlayerTurnCommand CreateEndPlayerTurnCommand()
+        {
+            return new EndPlayerTurnCommand(gameModel, turnService);
+        }
+
+        public StartPlayerTurnCommand CreateStartPlayerTurnCommand()
+        {
+            return new StartPlayerTurnCommand(gameModel, turnService);
         }
     }
 }
