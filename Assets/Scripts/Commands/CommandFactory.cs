@@ -43,7 +43,7 @@ namespace Command
 
         public AddTokenToSelectedTokensCommand CreateAddTokenToSelectedTokensCommand(ResourceType token)
         {
-            return new AddTokenToSelectedTokensCommand(token, gameModel);
+            return new AddTokenToSelectedTokensCommand(token, gameModel, turnService);
         }
 
         public RemoveTokenFromSelectedTokensCommand CreateRemoveTokenFromSelectedTokensCommand(ResourceType token)
@@ -75,7 +75,7 @@ namespace Command
 
         public AcceptSelectedTokensCommand CreateAcceptSelectedTokensCommand()
         {
-            return new AcceptSelectedTokensCommand(gameModel);
+            return new AcceptSelectedTokensCommand(gameModel, turnService);
         }
 
         public EndPlayerTurnCommand CreateEndPlayerTurnCommand()

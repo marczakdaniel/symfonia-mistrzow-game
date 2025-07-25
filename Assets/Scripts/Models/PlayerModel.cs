@@ -18,6 +18,7 @@ namespace Models
         {
             PlayerId = playerConfig.PlayerId;
             PlayerName = playerConfig.PlayerName;
+            Tokens = new ResourceCollectionModel();
         }
 
 
@@ -60,8 +61,9 @@ namespace Models
             return true;
         }
 
-        public bool AddTokens(string cardId)
+        public bool AddTokens(ResourceCollectionModel tokens)
         {
+            Tokens.Add(tokens);
             return true;
         }
     }

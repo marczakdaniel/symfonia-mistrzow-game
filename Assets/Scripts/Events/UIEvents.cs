@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using DefaultNamespace.Data;
+using Models;
 
 namespace Events
 {
@@ -32,9 +34,12 @@ namespace Events
     {
         public ResourceType ResourceType { get; private set; }
 
-        public TokenDetailsPanelOpenedEvent(ResourceType resourceType)
+        public Dictionary<ResourceType, int> CurrentTokenCounts { get; private set; }
+
+        public TokenDetailsPanelOpenedEvent(ResourceType resourceType, Dictionary<ResourceType, int> currentTokenCounts)
         {
             ResourceType = resourceType;
+            CurrentTokenCounts = currentTokenCounts;
         }
     }
 
@@ -73,6 +78,16 @@ namespace Events
             ResourceType = resourceType;
             CurrentTokenCount = currentTokenCount;
             CurrentSelectedTokens = currentSelectedTokens;
+        }
+    }
+
+    public class SelectedTokensConfirmedEvent : GameEvent
+    {
+        public Dictionary<ResourceType, int> BoardTokens { get; private set; }
+
+        public SelectedTokensConfirmedEvent(Dictionary<ResourceType, int> boardTokens)
+        {
+            BoardTokens = boardTokens;
         }
     }
 

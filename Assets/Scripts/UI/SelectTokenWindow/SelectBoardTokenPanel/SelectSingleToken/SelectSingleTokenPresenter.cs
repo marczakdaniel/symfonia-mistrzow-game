@@ -11,6 +11,7 @@ namespace UI.SelectTokenWindow.SelectSingleToken
 {
     public class SelectSingleTokenPresenter :
         IDisposable,
+        IAsyncEventHandler<TokenDetailsPanelOpenedEvent>,
         IAsyncEventHandler<TokenAddedToSelectedTokensEvent>,
         IAsyncEventHandler<TokenRemovedFromSelectedTokensEvent>
     {
@@ -28,14 +29,6 @@ namespace UI.SelectTokenWindow.SelectSingleToken
             this.commandFactory = commandFactory;
             InitializeMVP();
             SubscribeToEvents();
-        }
-
-        public async UniTask OnOpenWindow()
-        {
-            // TODO: Open window animation
-            var tokenCount = gameModelReader.GetBoardTokenCount(viewModel.ResourceType);
-            viewModel.OnOpenWindow(tokenCount);
-            await UniTask.WaitUntil(() => viewModel.State.Value == SelectSingleTokenState.Active);
         }
 
         public async UniTask OnCloseWindow()
@@ -103,8 +96,16 @@ namespace UI.SelectTokenWindow.SelectSingleToken
 
         public void SubscribeToEvents()
         {
+            AsyncEventBus.Instance.Subscribe<TokenDetailsPanelOpenedEvent>(this);
             AsyncEventBus.Instance.Subscribe<TokenAddedToSelectedTokensEvent>(this);
             AsyncEventBus.Instance.Subscribe<TokenRemovedFromSelectedTokensEvent>(this);
+        }
+
+        public async UniTask HandleAsync(TokenDetailsPanelOpenedEvent gameEvent)
+        {
+            var value = gameEvent.CurrentTokenCounts[viewModel.ResourceType] - (gameEvent.ResourceType == viewModel.ResourceType ? 1 : 0);
+            viewModel.OnOpenWindow(value);
+            await UniTask.WaitUntil(() => viewModel.State.Value == SelectSingleTokenState.Active);
         }
 
         public async UniTask HandleAsync(TokenAddedToSelectedTokensEvent gameEvent)

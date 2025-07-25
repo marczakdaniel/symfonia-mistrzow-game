@@ -10,7 +10,9 @@ using Unity.Android.Gradle.Manifest;
 namespace UI.Board.BoardTokenPanel.BoardToken
 {
     public class BoardTokenPresenter : IDisposable, 
-        IAsyncEventHandler<TokenDetailsPanelOpenedEvent>
+        IAsyncEventHandler<TokenDetailsPanelOpenedEvent>,
+        IAsyncEventHandler<SelectedTokensConfirmedEvent>,
+        IAsyncEventHandler<TokenDetailsPanelClosedEvent>
     {
         private readonly BoardTokenView view;
         private readonly BoardTokenViewModel viewModel;
@@ -54,6 +56,20 @@ namespace UI.Board.BoardTokenPanel.BoardToken
         private void SubscribeToEvents()
         {
             AsyncEventBus.Instance.Subscribe<TokenDetailsPanelOpenedEvent>(this);
+            AsyncEventBus.Instance.Subscribe<TokenDetailsPanelClosedEvent>(this);
+            AsyncEventBus.Instance.Subscribe<SelectedTokensConfirmedEvent>(this);
+        }
+
+        public async UniTask HandleAsync(SelectedTokensConfirmedEvent selectedTokensConfirmedEvent)
+        {
+            viewModel.OnConfirmSelectedTokens(selectedTokensConfirmedEvent.BoardTokens[viewModel.ResourceType]);
+            await UniTask.WaitUntil(() => viewModel.State.Value == BoardTokenState.Active);
+        }
+
+        public async UniTask HandleAsync(TokenDetailsPanelClosedEvent tokenDetailsPanelClosedEvent)
+        {
+            viewModel.CloseTokenDetailsPanel();
+            await UniTask.WaitUntil(() => viewModel.State.Value == BoardTokenState.Active);
         }
 
         // ViewModel -> Presenter -> View
@@ -104,6 +120,7 @@ namespace UI.Board.BoardTokenPanel.BoardToken
         // Event Bus -> Presenter
         public async UniTask HandleAsync(TokenDetailsPanelOpenedEvent tokenDetailsPanelOpenedEvent)
         {
+            viewModel.OpenTokenDetailsPanel();
             if (tokenDetailsPanelOpenedEvent.ResourceType != viewModel.ResourceType) {
                 return;
             }

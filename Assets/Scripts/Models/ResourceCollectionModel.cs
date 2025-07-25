@@ -20,6 +20,23 @@ namespace Models
             TotalCount = 0;
         }
 
+        public ResourceCollectionModel(ResourceType[] tokens)
+        {
+            resources = new Dictionary<ResourceType, int>();
+            foreach (var token in tokens)
+            {
+                if (resources.ContainsKey(token))
+                {
+                    resources[token]++;
+                }
+                else
+                {
+                    resources[token] = 1;
+                }
+            }
+            TotalCount = tokens.Length;
+        }
+
         public int GetCount(ResourceType resourceType) => resources.GetValueOrDefault(resourceType, 0);
         public bool HasAny(ResourceType resourceType) => GetCount(resourceType) > 0;
         public bool HasEnough(ResourceType resourceType, int count) => GetCount(resourceType) >= count;

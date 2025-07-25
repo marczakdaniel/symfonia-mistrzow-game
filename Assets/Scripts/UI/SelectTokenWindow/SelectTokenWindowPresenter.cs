@@ -13,7 +13,8 @@ namespace UI.SelectTokenWindow
     public class SelectTokenWindowPresenter : 
         IDisposable, 
         IAsyncEventHandler<TokenDetailsPanelOpenedEvent>,
-        IAsyncEventHandler<TokenDetailsPanelClosedEvent>
+        IAsyncEventHandler<TokenDetailsPanelClosedEvent>,
+        IAsyncEventHandler<SelectedTokensConfirmedEvent>
     {
         private readonly SelectTokenWindowView view;
         private readonly SelectTokenWindowViewModel viewModel;
@@ -67,29 +68,15 @@ namespace UI.SelectTokenWindow
                     view.OnCloseWindow();
                     break;
                 case SelectTokenWindowState.DuringOpenAnimation:
-                    await OpenWindow();
                     viewModel.OnOpenWindowFinished();
                     break;
                 case SelectTokenWindowState.DuringCloseAnimation:
-                    await CloseWindow();
                     viewModel.OnCloseWindowFinished();
                     break;
                 case SelectTokenWindowState.Active:
                     view.OnOpenWindow();
                     break;
             }
-        }
-
-        private async UniTask OpenWindow()
-        {
-            // TODO: Open window animation
-            await selectBoardTokenPanelPresenter.OpenWindow();
-        }
-
-        private async UniTask CloseWindow()
-        {
-            // TODO: Close window animation
-            await UniTask.CompletedTask;
         }
 
 
@@ -115,6 +102,7 @@ namespace UI.SelectTokenWindow
         {
             AsyncEventBus.Instance.Subscribe<TokenDetailsPanelOpenedEvent>(this);
             AsyncEventBus.Instance.Subscribe<TokenDetailsPanelClosedEvent>(this, EventPriority.High);
+            AsyncEventBus.Instance.Subscribe<SelectedTokensConfirmedEvent>(this);
         }
 
         public async UniTask HandleAsync(TokenDetailsPanelOpenedEvent tokenDetailsPanelOpenedEvent)
@@ -126,7 +114,13 @@ namespace UI.SelectTokenWindow
         public async UniTask HandleAsync(TokenDetailsPanelClosedEvent tokenDetailsPanelClosedEvent)
         {
             viewModel.CloseWindow();
-            await CloseWindow();
+            await UniTask.WaitUntil(() => viewModel.State.Value == SelectTokenWindowState.Closed);
+        }
+
+        public async UniTask HandleAsync(SelectedTokensConfirmedEvent selectedTokensConfirmedEvent)
+        {
+            viewModel.CloseWindow();
+            await UniTask.WaitUntil(() => viewModel.State.Value == SelectTokenWindowState.Closed);
         }
 
         public void Dispose()

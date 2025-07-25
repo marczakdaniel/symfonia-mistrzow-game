@@ -363,5 +363,11 @@ namespace Models
         {
             return TokenResources.GetCount(resourceType);
         }
+
+        public bool RemoveTokens(ResourceCollectionModel tokens)
+        {
+            TokenResources.Subtract(tokens);
+            return true;
+        }
     }
 }

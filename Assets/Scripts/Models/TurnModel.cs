@@ -25,6 +25,14 @@ namespace Models
         public TurnState State {get; private set; }
         public List<ResourceType> SelectedTokens {get; private set; } = new List<ResourceType>();
 
+        public bool CanAddTokenToSelectedTokens(ResourceType token)
+        {
+            if (SelectedTokens.Count >= 3) return false;
+            if (SelectedTokens.Contains(token) && SelectedTokens.Count >= 2) return false;
+            if (SelectedTokens.Count >= 2 && SelectedTokens[0] == SelectedTokens[1]) return false;
+            return true;
+        }
+
         public TurnModel()
         {
             SelectedTokens = new List<ResourceType>();
@@ -72,6 +80,24 @@ namespace Models
                 }
             }
             return result;
+        }
+
+        public int GetSelectedTokensCount(ResourceType token)
+        {
+            var result = 0;
+            foreach (var selectedToken in SelectedTokens)
+            {
+                if (selectedToken == token)
+                {
+                    result++;
+                }
+            }
+            return result;
+        }
+
+        public ResourceCollectionModel GetSelectedTokensCollection()
+        {
+            return new ResourceCollectionModel(SelectedTokens.ToArray());
         }
 
     }

@@ -101,6 +101,23 @@ namespace UI.Board.BoardTokenPanel.BoardToken
             return State.Value == BoardTokenState.DuringTokenDetailsPanelOpen;
         }
 
+        public bool OnConfirmSelectedTokens(int numberOfTokens)
+        {
+            if (!CanOnConfirmSelectedTokens()) {
+                Debug.LogError($"[BoardToken] Cannot confirm selected tokens in state: {State.Value}");
+                return false;
+            }
+
+            SetTokenCount(numberOfTokens);
+            SetState(BoardTokenState.Active);
+            return true;
+        }
+
+        private bool CanOnConfirmSelectedTokens()
+        {
+            return State.Value == BoardTokenState.DuringTokenDetailsPanelOpen;
+        }
+
         public bool AddTokens()
         {
             if (!CanAddTokens()) {

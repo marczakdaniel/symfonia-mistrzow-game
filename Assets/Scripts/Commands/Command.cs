@@ -189,13 +189,12 @@ namespace Command
     {
         public override string CommandType => "AddTokenToSelectedTokens";
         private readonly ResourceType token;
+        private readonly TurnService turnService;
 
-        private readonly GameModel gameModel;
-
-        public AddTokenToSelectedTokensCommand(ResourceType token, GameModel gameModel) : base(gameModel)
+        public AddTokenToSelectedTokensCommand(ResourceType token, GameModel gameModel, TurnService turnService) : base(gameModel)
         {
             this.token = token;
-            this.gameModel = gameModel;
+            this.turnService = turnService;
         }
 
         public override async UniTask<bool> Validate()
@@ -205,9 +204,16 @@ namespace Command
 
         public override async UniTask<bool> Execute()
         {
-            gameModel.GetTurnModel().AddTokenToSelectedTokens(token);
-            var selectedTokens = gameModel.GetTurnModel().GetSelectedTokens();
-            await AsyncEventBus.Instance.PublishAndWaitAsync(new TokenAddedToSelectedTokensEvent(token, 13, selectedTokens));
+            if (!turnService.CanAddTokenToSelectedTokens(token))
+            {
+                return false;
+            }
+
+            turnService.AddTokenToSelectedTokens(token);
+            var selectedTokens = turnService.GetSelectedTokens();
+
+            var selectedTokenCount = gameModel.GetBoardTokenCount(token) - turnService.GetSelectedTokensCount(token);
+            await AsyncEventBus.Instance.PublishAndWaitAsync(new TokenAddedToSelectedTokensEvent(token, selectedTokenCount, selectedTokens));
 
             return true;
         }
@@ -234,7 +240,9 @@ namespace Command
         {
             gameModel.GetTurnModel().RemoveTokenFromSelectedTokens(token);
             var selectedTokens = gameModel.GetTurnModel().GetSelectedTokens();
-            await AsyncEventBus.Instance.PublishAndWaitAsync(new TokenRemovedFromSelectedTokensEvent(token, 1, selectedTokens));
+
+            var selectedTokenCount = gameModel.GetBoardTokenCount(token) - gameModel.GetTurnModel().GetSelectedTokensCount(token);
+            await AsyncEventBus.Instance.PublishAndWaitAsync(new TokenRemovedFromSelectedTokensEvent(token, selectedTokenCount, selectedTokens));
             return true;
         }
     }
@@ -242,11 +250,11 @@ namespace Command
     public class AcceptSelectedTokensCommand : BasePlayerActionCommand
     {
         public override string CommandType => "AcceptSelectedTokens";
-        private readonly GameModel gameModel;
+        private readonly TurnService turnService;
 
-        public AcceptSelectedTokensCommand(GameModel gameModel) : base(gameModel)
+        public AcceptSelectedTokensCommand(GameModel gameModel, TurnService turnService) : base(gameModel)
         {
-            this.gameModel = gameModel;
+            this.turnService = turnService;
         }
 
         public override async UniTask<bool> Validate()
@@ -256,6 +264,10 @@ namespace Command
 
         public override async UniTask<bool> Execute()
         {
+            turnService.ConfirmSelectedTokens();
+            turnService.ClearSelectedTokens();
+            var boardTokens = gameModel.board.TokenResources.GetAllResources();
+            await AsyncEventBus.Instance.PublishAndWaitAsync(new SelectedTokensConfirmedEvent(boardTokens));
             return true;
         }
     }

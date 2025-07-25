@@ -249,6 +249,7 @@ MonoBehaviour:
   selectBoardTokenPanelView: {fileID: 8202564274012334361}
   choosenBoardTokenPanelView: {fileID: 656532528189722366}
   closeButton: {fileID: 4388177635266333661}
+  acceptButton: {fileID: 6734438902903432607}
 --- !u!1 &4406660992560087493
 GameObject:
   m_ObjectHideFlags: 0

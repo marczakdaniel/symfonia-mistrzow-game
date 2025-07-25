@@ -30,10 +30,20 @@ namespace Services
         // 3. Purchase Card from Board
         // 4. Purchase Card from Reserved
 
+        // Selected Tokens Validation
+
+
+
         // Selected Tokens Actions
         public void StartSelectingTokens()
         {
             turnModel.SetState(TurnState.SelectingTokens);
+        }
+
+        public bool CanAddTokenToSelectedTokens(ResourceType token)
+        {
+            var hasEnoughTokens = gameModel.GetBoardTokenCount(token) > turnModel.GetSelectedTokensCount(token);
+            return hasEnoughTokens && turnModel.CanAddTokenToSelectedTokens(token);
         }
 
         public void AddTokenToSelectedTokens(ResourceType token)
@@ -48,14 +58,27 @@ namespace Services
 
         public void ClearSelectedTokens()
         {
-
+            turnModel.ClearSelectedTokens();
         }
-        
+
+        public ResourceType?[] GetSelectedTokens()
+        {
+            return turnModel.GetSelectedTokens();
+        }
+
+        public int GetSelectedTokensCount(ResourceType token)
+        {
+            return turnModel.GetSelectedTokensCount(token);
+        }
+
         public void ConfirmSelectedTokens()
         {
             turnModel.SetState(TurnState.ConfirmingAction);
             var currentPlayer = gameModel.GetPlayer(turnModel.CurrentPlayerId);
-            //currentPlayer.AddTokens(turnModel.SelectedTokens);
+
+            var selectedTokens = turnModel.GetSelectedTokensCollection();
+            gameModel.board.RemoveTokens(selectedTokens);
+            currentPlayer.AddTokens(selectedTokens);
         }
     }
 }

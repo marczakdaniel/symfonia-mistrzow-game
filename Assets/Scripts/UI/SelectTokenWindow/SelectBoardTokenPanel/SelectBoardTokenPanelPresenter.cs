@@ -34,12 +34,6 @@ namespace UI.SelectTokenWindow.SelectBoardTokenPanel
             SubscribeToEvents();
         }
 
-        public async UniTask OpenWindow()
-        {
-            viewModel.OnOpenWindow();
-            await UniTask.WaitUntil(() => viewModel.State.Value == SelectBoardTokenPanelState.Active);
-        }
-
         private void InitializeChildMVP()
         {
             foreach (var resourceType in Enum.GetValues(typeof(ResourceType)))
@@ -76,22 +70,11 @@ namespace UI.SelectTokenWindow.SelectBoardTokenPanel
                 case SelectBoardTokenPanelState.Disabled:
                     break;
                 case SelectBoardTokenPanelState.DuringOpenAnimation:
-                    await OnOpenWindow();
                     viewModel.OnOpenWindowFinished();
                     break;
                 case SelectBoardTokenPanelState.Active:
                     break;
             }
-        }
-
-        private async UniTask OnOpenWindow()
-        {
-            foreach (var selectSingleTokenPresenter in selectSingleTokenPresenters)
-            {
-                selectSingleTokenPresenter.OnOpenWindow().Forget();
-            }
-
-            await UniTask.CompletedTask;
         }
 
         private void ConnectView(DisposableBuilder d)
@@ -101,12 +84,12 @@ namespace UI.SelectTokenWindow.SelectBoardTokenPanel
 
         private void SubscribeToEvents()
         {
-
+            AsyncEventBus.Instance.Subscribe<TokenDetailsPanelOpenedEvent>(this);
         }
 
-        public UniTask HandleAsync(TokenDetailsPanelOpenedEvent gameEvent)
+        public async UniTask HandleAsync(TokenDetailsPanelOpenedEvent gameEvent)
         {
-            throw new NotImplementedException();
+            
         }
 
         public void Dispose()
