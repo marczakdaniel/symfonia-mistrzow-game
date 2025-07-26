@@ -19,9 +19,9 @@ namespace UI.SelectTokenWindow.ChoosenBoardTokenPanel
         public ReactiveProperty<ChoosenBoardTokenPanelState> State { get; private set; } = new ReactiveProperty<ChoosenBoardTokenPanelState>(ChoosenBoardTokenPanelState.Disabled);
         public ResourceType?[] SelectedTokens { get; private set; } = new ResourceType?[3] { null, null, null };
 
-        public void OnOpenAnimation(ResourceType selectedToken)
+        public void OnOpenAnimation(ResourceType? selectedToken)
         {
-            SelectedTokens[0] = selectedToken;
+            SelectedTokens[0] = selectedToken.HasValue ? selectedToken.Value : null;
             SelectedTokens[1] = null;
             SelectedTokens[2] = null;
 

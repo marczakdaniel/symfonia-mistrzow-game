@@ -65,12 +65,12 @@ namespace Command
 
         public OpenTokenDetailsPanelCommand CreateOpenTokenDetailsPanelCommand(ResourceType resourceType)
         {
-            return new OpenTokenDetailsPanelCommand(resourceType, gameModel);
+            return new OpenTokenDetailsPanelCommand(resourceType, gameModel, turnService);
         }
 
-        public CloseTokenDetailsPanelCommand CreateCloseTokenDetailsPanelCommand(ResourceType resourceType)
+        public CloseTokenDetailsPanelCommand CreateCloseTokenDetailsPanelCommand()
         {
-            return new CloseTokenDetailsPanelCommand(resourceType, gameModel);
+            return new CloseTokenDetailsPanelCommand(gameModel);
         }
 
         public AcceptSelectedTokensCommand CreateAcceptSelectedTokensCommand()

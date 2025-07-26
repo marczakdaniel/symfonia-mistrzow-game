@@ -13,9 +13,14 @@ namespace Services
             this.gameModel = gameModel;
         }
 
+        // Game flow
+
+        public void StartPlayerTurn()
+        {
+        }
+
         public void EndPlayerTurn()
         {
-
         }
 
         public void NextPlayerTurn()
@@ -29,10 +34,6 @@ namespace Services
         // 2. Reserve Card
         // 3. Purchase Card from Board
         // 4. Purchase Card from Reserved
-
-        // Selected Tokens Validation
-
-
 
         // Selected Tokens Actions
         public void StartSelectingTokens()
@@ -73,7 +74,6 @@ namespace Services
 
         public void ConfirmSelectedTokens()
         {
-            turnModel.SetState(TurnState.ConfirmingAction);
             var currentPlayer = gameModel.GetPlayer(turnModel.CurrentPlayerId);
 
             var selectedTokens = turnModel.GetSelectedTokensCollection();

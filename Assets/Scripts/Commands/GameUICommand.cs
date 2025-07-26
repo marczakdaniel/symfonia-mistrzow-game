@@ -2,6 +2,7 @@ using Cysharp.Threading.Tasks;
 using DefaultNamespace.Data;
 using Events;
 using Models;
+using Services;
 using UnityEngine;
 
 namespace Command
@@ -61,10 +62,12 @@ namespace Command
     {
         public override string CommandType => "OpenTokenDetailsPanel";
         public ResourceType ResourceType { get; private set; }
+        private readonly TurnService turnService;
 
-        public OpenTokenDetailsPanelCommand(ResourceType resourceType, GameModel gameModel) : base(gameModel)
+        public OpenTokenDetailsPanelCommand(ResourceType resourceType, GameModel gameModel, TurnService turnService) : base(gameModel)
         {
             ResourceType = resourceType;
+            this.turnService = turnService;
         }
 
         public override async UniTask<bool> Validate()
@@ -74,10 +77,15 @@ namespace Command
 
         public override async UniTask<bool> Execute()
         {
-            gameModel.GetTurnModel().SetState(TurnState.SelectingTokens);
-            gameModel.GetTurnModel().AddTokenToSelectedTokens(ResourceType);
-
+            turnService.StartSelectingTokens();
             var currentTokenCounts = gameModel.board.TokenResources.GetAllResources();
+            if (!turnService.CanAddTokenToSelectedTokens(ResourceType))
+            {
+                await AsyncEventBus.Instance.PublishAndWaitAsync(new TokenDetailsPanelOpenedEvent(null, currentTokenCounts));
+                return false;
+            }
+            turnService.AddTokenToSelectedTokens(ResourceType);
+
             await AsyncEventBus.Instance.PublishAndWaitAsync(new TokenDetailsPanelOpenedEvent(ResourceType, currentTokenCounts));
             return true;
         }
@@ -86,11 +94,9 @@ namespace Command
     public class CloseTokenDetailsPanelCommand : BaseUICommand
     {
         public override string CommandType => "CloseTokenDetailsPanel";
-        public ResourceType ResourceType { get; private set; }
         private readonly GameModel gameModel;
-        public CloseTokenDetailsPanelCommand(ResourceType resourceType, GameModel gameModel) : base(gameModel)
+        public CloseTokenDetailsPanelCommand(GameModel gameModel) : base(gameModel)
         {
-            ResourceType = resourceType;
             this.gameModel = gameModel;
         }
 
@@ -103,7 +109,7 @@ namespace Command
         {
             gameModel.GetTurnModel().SetState(TurnState.WaitingForAction);
             gameModel.GetTurnModel().ClearSelectedTokens();
-            await AsyncEventBus.Instance.PublishAndWaitAsync(new TokenDetailsPanelClosedEvent(ResourceType));
+            await AsyncEventBus.Instance.PublishAndWaitAsync(new TokenDetailsPanelClosedEvent());
             return true;
         }
     }

@@ -103,7 +103,11 @@ namespace UI.SelectTokenWindow.SelectSingleToken
 
         public async UniTask HandleAsync(TokenDetailsPanelOpenedEvent gameEvent)
         {
-            var value = gameEvent.CurrentTokenCounts[viewModel.ResourceType] - (gameEvent.ResourceType == viewModel.ResourceType ? 1 : 0);
+            var value = gameEvent.CurrentTokenCounts[viewModel.ResourceType];
+            if (gameEvent.ResourceType.HasValue && gameEvent.ResourceType.Value == viewModel.ResourceType) 
+            {
+                value -= 1;
+            }
             viewModel.OnOpenWindow(value);
             await UniTask.WaitUntil(() => viewModel.State.Value == SelectSingleTokenState.Active);
         }

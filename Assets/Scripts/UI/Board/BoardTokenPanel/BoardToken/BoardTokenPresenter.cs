@@ -121,9 +121,6 @@ namespace UI.Board.BoardTokenPanel.BoardToken
         public async UniTask HandleAsync(TokenDetailsPanelOpenedEvent tokenDetailsPanelOpenedEvent)
         {
             viewModel.OpenTokenDetailsPanel();
-            if (tokenDetailsPanelOpenedEvent.ResourceType != viewModel.ResourceType) {
-                return;
-            }
         }
 
         // Element actions

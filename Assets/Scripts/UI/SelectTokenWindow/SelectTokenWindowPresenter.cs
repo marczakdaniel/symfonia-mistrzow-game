@@ -88,7 +88,7 @@ namespace UI.SelectTokenWindow
 
         private async UniTask HandleCloseButtonClicked()
         {
-            var command = commandFactory.CreateCloseTokenDetailsPanelCommand(viewModel.SelectedResourceType);
+            var command = commandFactory.CreateCloseTokenDetailsPanelCommand();
             await CommandService.Instance.ExecuteCommandAsync(command);
         }
 

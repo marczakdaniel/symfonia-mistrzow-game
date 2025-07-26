@@ -10,7 +10,6 @@ namespace Models
         WaitingForAction,
         SelectingTokens,
         SelectingMusicCard,
-        ConfirmingAction,
         ReadyToEndTurn,
     }
 

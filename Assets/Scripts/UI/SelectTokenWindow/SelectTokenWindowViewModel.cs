@@ -17,7 +17,7 @@ namespace UI.SelectTokenWindow
     public class SelectTokenWindowViewModel
     {
         public ReactiveProperty<SelectTokenWindowState> State { get; private set; } = new ReactiveProperty<SelectTokenWindowState>(SelectTokenWindowState.Closed);
-        public ResourceType SelectedResourceType { get; private set; }
+        public ResourceType? SelectedResourceType { get; private set; }
         
         public SelectTokenWindowViewModel()
         {
@@ -29,12 +29,12 @@ namespace UI.SelectTokenWindow
             State.Value = state;
         }
 
-        public void SetSelectedResourceType(ResourceType resourceType)
+        public void SetSelectedResourceType(ResourceType? resourceType)
         {
-            SelectedResourceType = resourceType;
+            SelectedResourceType = resourceType.HasValue ? resourceType.Value : null;
         }
 
-        public void OpenWindow(ResourceType resourceType)
+        public void OpenWindow(ResourceType? resourceType)
         {
             SetSelectedResourceType(resourceType);
             SetState(SelectTokenWindowState.DuringOpenAnimation);

@@ -34,7 +34,7 @@ namespace UI.SelectTokenWindow.ChoosenBoardTokenPanel
             SubscribeToEvents();
         }
 
-        public async UniTask OpenPanel(ResourceType selectedToken)
+        public async UniTask OpenPanel(ResourceType? selectedToken)
         {
             viewModel.OnOpenAnimation(selectedToken);
             await UniTask.WaitUntil(() => viewModel.State.Value == ChoosenBoardTokenPanelState.Active);

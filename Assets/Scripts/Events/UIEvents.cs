@@ -32,11 +32,11 @@ namespace Events
 
     public class TokenDetailsPanelOpenedEvent : GameEvent
     {
-        public ResourceType ResourceType { get; private set; }
+        public ResourceType? ResourceType { get; private set; }
 
         public Dictionary<ResourceType, int> CurrentTokenCounts { get; private set; }
 
-        public TokenDetailsPanelOpenedEvent(ResourceType resourceType, Dictionary<ResourceType, int> currentTokenCounts)
+        public TokenDetailsPanelOpenedEvent(ResourceType? resourceType, Dictionary<ResourceType, int> currentTokenCounts)
         {
             ResourceType = resourceType;
             CurrentTokenCounts = currentTokenCounts;
@@ -45,11 +45,8 @@ namespace Events
 
     public class TokenDetailsPanelClosedEvent : GameEvent
     {
-        public ResourceType ResourceType { get; private set; }
-
-        public TokenDetailsPanelClosedEvent(ResourceType resourceType)
+        public TokenDetailsPanelClosedEvent()
         {
-            ResourceType = resourceType;
         }
     }
 
