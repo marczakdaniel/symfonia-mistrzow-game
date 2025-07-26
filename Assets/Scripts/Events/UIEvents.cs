@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using DefaultNamespace.Data;
 using Models;
+using Unity.Collections.LowLevel.Unsafe;
 
 namespace Events
 {
@@ -83,6 +84,54 @@ namespace Events
         public Dictionary<ResourceType, int> BoardTokens { get; private set; }
 
         public SelectedTokensConfirmedEvent(Dictionary<ResourceType, int> boardTokens)
+        {
+            BoardTokens = boardTokens;
+        }
+    }
+
+    // Return token action events
+    public class ReturnTokenWindowOpenedEvent : GameEvent
+    {
+        public Dictionary<ResourceType, int> CurrentPlayerTokens { get; private set; }
+        public ReturnTokenWindowOpenedEvent(Dictionary<ResourceType, int> currentPlayerTokens)
+        {
+            CurrentPlayerTokens = currentPlayerTokens;  
+        }
+    }
+
+    public class TokenAddedToReturnTokensEvent : GameEvent
+    {
+        public ResourceType ResourceType { get; private set; }
+        public int CurrentTokenCount { get; private set; }
+        public ResourceType?[] CurrentReturnTokens { get; private set; }
+
+        public TokenAddedToReturnTokensEvent(ResourceType resourceType, int currentTokenCount, ResourceType?[] currentReturnTokens)
+        {
+            ResourceType = resourceType;
+            CurrentTokenCount = currentTokenCount;
+            CurrentReturnTokens = currentReturnTokens;
+        }
+    }
+
+    public class TokenRemovedFromReturnTokensEvent : GameEvent
+    {
+        public ResourceType ResourceType { get; private set; }
+        public int CurrentTokenCount { get; private set; }
+        public ResourceType?[] CurrentReturnTokens { get; private set; }
+
+        public TokenRemovedFromReturnTokensEvent(ResourceType resourceType, int currentTokenCount, ResourceType?[] currentReturnTokens)
+        {
+            ResourceType = resourceType;
+            CurrentTokenCount = currentTokenCount;
+            CurrentReturnTokens = currentReturnTokens;
+        }
+    }
+
+    public class ReturnTokensConfirmedEvent : GameEvent
+    {
+        public Dictionary<ResourceType, int> BoardTokens { get; private set; }
+
+        public ReturnTokensConfirmedEvent(Dictionary<ResourceType, int> boardTokens)
         {
             BoardTokens = boardTokens;
         }

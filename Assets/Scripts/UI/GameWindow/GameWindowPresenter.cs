@@ -7,6 +7,7 @@ using Events;
 using Models;
 using UI.SelectTokenWindow;
 using UI.StartTurnWindow;
+using UI.ReturnTokenWindow;
 
 namespace UI.GameWindow
 {
@@ -19,6 +20,7 @@ namespace UI.GameWindow
         private MusicCardDetailsPanelPresenter musicCardDetailsPanelPresenter;
         private SelectTokenWindowPresenter selectTokenWindowPresenter;
         private StartTurnWindowPresenter startTurnWindowPresenter;
+        private ReturnTokenWindowPresenter returnTokenWindowPresenter;
         private CommandFactory commandFactory;
         private IGameModelReader gameModelReader;
         public GameWindowPresenter(GameWindowView view, CommandFactory commandFactory, IGameModelReader gameModelReader)
@@ -37,6 +39,7 @@ namespace UI.GameWindow
             musicCardDetailsPanelPresenter = new MusicCardDetailsPanelPresenter(view.MusicCardDetailsPanelView, commandFactory, gameModelReader);
             selectTokenWindowPresenter = new SelectTokenWindowPresenter(view.SelectTokenWindowView, commandFactory, gameModelReader);
             startTurnWindowPresenter = new StartTurnWindowPresenter(view.StartTurnWindowView, commandFactory);
+            returnTokenWindowPresenter = new ReturnTokenWindowPresenter(view.ReturnTokenWindowView, commandFactory);
         }
 
         private void InitializeMVP()

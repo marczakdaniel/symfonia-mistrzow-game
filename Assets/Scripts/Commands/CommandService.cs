@@ -64,7 +64,7 @@ namespace Command
             _commandExecutor.RegisterCommandType<CloseMusicCardDetailsPanelCommand>();
             _commandExecutor.RegisterCommandType<OpenTokenDetailsPanelCommand>();
             _commandExecutor.RegisterCommandType<CloseTokenDetailsPanelCommand>();
-
+            
             _commandExecutor.RegisterCommandType<StartGameCommand>();
             //_commandExecutor.RegisterCommandType<BuyMusicCardCommand>();
             //_commandExecutor.RegisterCommandType<ReserveMusicCardCommand>();  
@@ -74,7 +74,10 @@ namespace Command
             _commandExecutor.RegisterCommandType<StartPlayerTurnCommand>();
             _commandExecutor.RegisterCommandType<EndPlayerTurnCommand>();
             _commandExecutor.RegisterCommandType<AcceptSelectedTokensCommand>();
-            
+
+            _commandExecutor.RegisterCommandType<AddTokenToReturnTokensCommand>();
+            _commandExecutor.RegisterCommandType<RemoveTokenFromReturnTokensCommand>();
+            _commandExecutor.RegisterCommandType<ConfirmReturnTokensCommand>();
 
             Debug.Log("[CommandService] Zarejestrowano typy komend");
         }

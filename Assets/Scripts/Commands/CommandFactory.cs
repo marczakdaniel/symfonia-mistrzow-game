@@ -89,5 +89,22 @@ namespace Command
         {
             return new StartPlayerTurnCommand(gameModel, turnService);
         }
+
+        // Return token action commands
+
+        public AddTokenToReturnTokensCommand CreateAddTokenToReturnTokensCommand(ResourceType token)
+        {
+            return new AddTokenToReturnTokensCommand(token, turnService);
+        }
+
+        public RemoveTokenFromReturnTokensCommand CreateRemoveTokenFromReturnTokensCommand(ResourceType token)
+        {
+            return new RemoveTokenFromReturnTokensCommand(token, turnService);
+        }
+
+        public ConfirmReturnTokensCommand CreateConfirmReturnTokensCommand()
+        {
+            return new ConfirmReturnTokensCommand(turnService);
+        }
     }
 }

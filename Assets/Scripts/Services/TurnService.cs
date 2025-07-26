@@ -27,6 +27,7 @@ namespace Services
 
         public void StartPlayerTurn()
         {
+            turnModel.SetState(TurnState.WaitingForAction);
         }
 
         public void EndPlayerTurn()
@@ -48,6 +49,10 @@ namespace Services
         // Selected Tokens Actions
         public void StartSelectingTokens()
         {
+            if (turnModel.State != TurnState.WaitingForAction)
+            {
+                return;
+            }
             turnModel.SetState(TurnState.SelectingTokens);
         }
 
@@ -82,8 +87,14 @@ namespace Services
             return turnModel.GetSelectedTokensCount(token);
         }
 
+        public bool CanConfirmSelectedTokens()
+        {
+            return turnModel.State == TurnState.SelectingTokens;
+        }
+
         public void ConfirmSelectedTokens()
         {
+            turnModel.SetState(TurnState.ReadyToEndTurn);
             var currentPlayer = gameModel.GetPlayer(turnModel.CurrentPlayerId);
 
             var selectedTokens = turnModel.GetSelectedTokensCollection();
@@ -91,10 +102,38 @@ namespace Services
             currentPlayer.AddTokens(selectedTokens);
         }
 
-        public void EndSelectingTokensWithConfirmation()
+        public void EndSelectingTokensWithNoConfirmation()
         {
             turnModel.SetState(TurnState.WaitingForAction);
             ClearSelectedTokens();
+        }
+
+        // Return Tokens Actions
+
+        public bool IsTokenReturnNeeded()
+        {
+            var currentPlayer = gameModel.GetPlayer(turnModel.CurrentPlayerId);
+            return currentPlayer.Tokens.GetTotalResourcese() > 10;
+        }
+
+        public void StartReturningTokens()
+        {
+            
+        }
+
+        public void AddTokenToReturnTokens(ResourceType token)
+        {
+            turnModel.AddTokenToReturnTokens(token);
+        }
+
+        public void RemoveTokenFromReturnTokens(ResourceType token)
+        {
+            turnModel.RemoveTokenFromReturnTokens(token);
+        }
+
+        public void ConfirmReturnTokens()
+        {
+            turnModel.SetState(TurnState.ReadyToEndTurn);
         }
     }
 }

@@ -23,7 +23,7 @@ namespace Models
         public string CurrentPlayerId {get; private set; }
         public TurnState State {get; private set; }
         public List<ResourceType> SelectedTokens {get; private set; } = new List<ResourceType>();
-
+        public List<ResourceType> ReturnTokens {get; private set; } = new List<ResourceType>();
         public bool CanAddTokenToSelectedTokens(ResourceType token)
         {
             if (SelectedTokens.Count >= 3) return false;
@@ -47,6 +47,8 @@ namespace Models
             CurrentPlayerId = playerId;
 
         }
+
+        // Selected Tokens
 
         public void AddTokenToSelectedTokens(ResourceType token)
         {
@@ -99,5 +101,28 @@ namespace Models
             return new ResourceCollectionModel(SelectedTokens.ToArray());
         }
 
+        // Return Tokens
+
+        public void AddTokenToReturnTokens(ResourceType token)
+        {
+            ReturnTokens.Add(token);
+        }
+
+        public void RemoveTokenFromReturnTokens(ResourceType token)
+        {
+            ReturnTokens.Remove(token);
+        }
+
+        public void ClearReturnTokens()
+        {
+            ReturnTokens.Clear();
+        }
+
+        public ResourceCollectionModel GetReturnTokensCollection()
+        {
+            return new ResourceCollectionModel(ReturnTokens.ToArray());
+        }
+
+        
     }
 }

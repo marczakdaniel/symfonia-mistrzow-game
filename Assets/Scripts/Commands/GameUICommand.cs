@@ -109,7 +109,7 @@ namespace Command
 
         public override async UniTask<bool> Execute()
         {
-            turnService.EndSelectingTokensWithConfirmation();
+            turnService.EndSelectingTokensWithNoConfirmation();
             await AsyncEventBus.Instance.PublishAndWaitAsync(new TokenDetailsPanelClosedEvent());
             return true;
         }

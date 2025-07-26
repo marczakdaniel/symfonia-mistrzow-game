@@ -150,6 +150,7 @@ namespace Command
 
         public override async UniTask<bool> Execute()
         {
+            turnService.StartPlayerTurn();
             var turnStartedEvent = new TurnStartedEvent(turnService.GetCurrentPlayerId());
             await AsyncEventBus.Instance.PublishAndWaitAsync(turnStartedEvent);
 
@@ -174,6 +175,12 @@ namespace Command
 
         public override async UniTask<bool> Execute()
         {
+            if (turnService.IsTokenReturnNeeded())
+            {
+                await AsyncEventBus.Instance.PublishAndWaitAsync(new ReturnTokenWindowOpenedEvent(turnService.GetCurrentPlayerModel().Tokens.GetAllResources()));
+                return true;
+            }
+
             turnService.EndPlayerTurn();
             turnService.NextPlayerTurn();
 
@@ -269,11 +276,87 @@ namespace Command
 
         public override async UniTask<bool> Execute()
         {
+            if (!turnService.CanConfirmSelectedTokens())
+            {
+                turnService.ClearSelectedTokens();
+                await AsyncEventBus.Instance.PublishAndWaitAsync(new TokenDetailsPanelClosedEvent());
+                return true;
+            }
+
             turnService.ConfirmSelectedTokens();
             turnService.ClearSelectedTokens();
             var boardTokens = boardService.GetAllBoardResources();
             await AsyncEventBus.Instance.PublishAndWaitAsync(new SelectedTokensConfirmedEvent(boardTokens));
             return true;
         }
+    }
+
+    // Return token action
+
+    public class AddTokenToReturnTokensCommand : BasePlayerActionCommand
+    {
+        public override string CommandType => "AddTokenToReturnTokens";
+        private readonly ResourceType token;
+        private readonly TurnService turnService;
+
+        public AddTokenToReturnTokensCommand(ResourceType token, TurnService turnService) : base()
+        {
+            this.token = token;
+            this.turnService = turnService;
+        }
+
+        public override async UniTask<bool> Validate()
+        {
+            return true;
+        }
+
+        public override async UniTask<bool> Execute()
+        {
+            return true;
+        }
+    }
+
+    public class RemoveTokenFromReturnTokensCommand : BasePlayerActionCommand
+    {
+        public override string CommandType => "RemoveTokenFromReturnTokens";
+        private readonly ResourceType token;
+        private readonly TurnService turnService;
+
+        public RemoveTokenFromReturnTokensCommand(ResourceType token, TurnService turnService) : base()
+        {
+            this.token = token;
+            this.turnService = turnService;
+        }
+
+        public override async UniTask<bool> Validate()
+        {
+            return true;
+        }
+
+        public override async UniTask<bool> Execute()
+        {
+            return true;
+        }   
+    }
+
+    public class ConfirmReturnTokensCommand : BasePlayerActionCommand
+    {
+        public override string CommandType => "ConfirmReturnTokens";
+        private readonly TurnService turnService;
+
+        public ConfirmReturnTokensCommand(TurnService turnService) : base()
+        {
+            this.turnService = turnService;
+        }
+
+        public override async UniTask<bool> Validate()
+        {
+            return true;
+        }
+
+        public override async UniTask<bool> Execute()
+        {
+            return true;
+        }   
     }
 }
