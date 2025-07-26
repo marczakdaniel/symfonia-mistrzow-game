@@ -37,11 +37,9 @@ namespace Command
         public DateTime Timestamp { get; set; }
         public string CommandId { get; set; }
 
-        protected readonly GameModel gameModel;
 
-        public BaseCommand(GameModel gameModel)
+        public BaseCommand()
         {
-            this.gameModel = gameModel;
             Timestamp = DateTime.UtcNow;
             CommandId = Guid.NewGuid().ToString();
         }
@@ -54,22 +52,23 @@ namespace Command
 
     public abstract class BaseGameFlowCommand : BaseCommand, IGameFlowCommand
     {
-        public BaseGameFlowCommand(GameModel gameModel) : base(gameModel)
+        protected readonly GameModel gameModel;
+        public BaseGameFlowCommand(GameModel gameModel) : base()
         {
-
+            this.gameModel = gameModel;
         }
     }
 
     public abstract class BasePlayerActionCommand : BaseCommand, IPlayerActionCommand
     {
-        public BasePlayerActionCommand(GameModel gameModel) : base(gameModel)
+        public BasePlayerActionCommand() : base()
         {
         }
     }
 
     public abstract class BaseUICommand : BaseCommand, IUICommand
     {
-        public BaseUICommand(GameModel gameModel) : base(gameModel)
+        public BaseUICommand() : base()
         {
 
         }

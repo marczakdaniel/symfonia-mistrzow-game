@@ -17,6 +17,7 @@ namespace Managers
         private CommandFactory commandFactory;
         private GameModel gameModel;
         private TurnService turnService;
+        private BoardService boardService;
 
         public bool InitalizeGame(GameConfig gameConfig)
         {
@@ -27,9 +28,11 @@ namespace Managers
             gameModel.Initialize(gameConfig);
 
             
-            // Initialize CommandFactory
+            // Initialize CommandFactory and create services
             turnService = new TurnService(gameModel);
-            commandFactory = new CommandFactory(gameModel, turnService);
+            boardService = new BoardService(gameModel);
+
+            commandFactory = new CommandFactory(gameModel, turnService, boardService);
             CommandService.Instance.Initialize(commandFactory);
 
             CreateGameWindow();

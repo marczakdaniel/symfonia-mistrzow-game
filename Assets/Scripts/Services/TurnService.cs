@@ -13,6 +13,16 @@ namespace Services
             this.gameModel = gameModel;
         }
 
+        public PlayerModel GetCurrentPlayerModel()
+        {
+            return gameModel.GetPlayer(turnModel.CurrentPlayerId);
+        }
+
+        public string GetCurrentPlayerId()
+        {
+            return turnModel.CurrentPlayerId;
+        }
+
         // Game flow
 
         public void StartPlayerTurn()
@@ -79,6 +89,12 @@ namespace Services
             var selectedTokens = turnModel.GetSelectedTokensCollection();
             gameModel.board.RemoveTokens(selectedTokens);
             currentPlayer.AddTokens(selectedTokens);
+        }
+
+        public void EndSelectingTokensWithConfirmation()
+        {
+            turnModel.SetState(TurnState.WaitingForAction);
+            ClearSelectedTokens();
         }
     }
 }

@@ -9,11 +9,13 @@ namespace Command
     {
         private readonly GameModel gameModel;
         private readonly TurnService turnService;
+        private readonly BoardService boardService;
 
-        public CommandFactory(GameModel gameModel, TurnService turnService)
+        public CommandFactory(GameModel gameModel, TurnService turnService, BoardService boardService)
         {
             this.gameModel = gameModel;
             this.turnService = turnService;
+            this.boardService = boardService;
         }
 
         // Game Flow Commands
@@ -43,39 +45,39 @@ namespace Command
 
         public AddTokenToSelectedTokensCommand CreateAddTokenToSelectedTokensCommand(ResourceType token)
         {
-            return new AddTokenToSelectedTokensCommand(token, gameModel, turnService);
+            return new AddTokenToSelectedTokensCommand(token, turnService, boardService);
         }
 
         public RemoveTokenFromSelectedTokensCommand CreateRemoveTokenFromSelectedTokensCommand(ResourceType token)
         {
-            return new RemoveTokenFromSelectedTokensCommand(token, gameModel);
+            return new RemoveTokenFromSelectedTokensCommand(token, turnService, boardService);
         }
 
         // UI Commands
         
         public OpenMusicCardDetailsPanelCommand CreateOpenMusicCardDetailsPanelCommand(string musicCardId, int level, int position)
         {
-            return new OpenMusicCardDetailsPanelCommand(musicCardId, level, position, gameModel);
+            return new OpenMusicCardDetailsPanelCommand(musicCardId, level, position);
         }
 
         public CloseMusicCardDetailsPanelCommand CreateCloseMusicCardDetailsPanelCommand(string musicCardId)
         {
-            return new CloseMusicCardDetailsPanelCommand(musicCardId, gameModel);
+            return new CloseMusicCardDetailsPanelCommand(musicCardId);
         }
 
         public OpenTokenDetailsPanelCommand CreateOpenTokenDetailsPanelCommand(ResourceType resourceType)
         {
-            return new OpenTokenDetailsPanelCommand(resourceType, gameModel, turnService);
+            return new OpenTokenDetailsPanelCommand(resourceType, turnService, boardService);
         }
 
         public CloseTokenDetailsPanelCommand CreateCloseTokenDetailsPanelCommand()
         {
-            return new CloseTokenDetailsPanelCommand(gameModel);
+            return new CloseTokenDetailsPanelCommand(turnService);
         }
 
         public AcceptSelectedTokensCommand CreateAcceptSelectedTokensCommand()
         {
-            return new AcceptSelectedTokensCommand(gameModel, turnService);
+            return new AcceptSelectedTokensCommand(turnService, boardService);
         }
 
         public EndPlayerTurnCommand CreateEndPlayerTurnCommand()

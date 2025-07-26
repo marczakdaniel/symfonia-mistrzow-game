@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using DefaultNamespace.Data;
 using Models;
 
 namespace Services
@@ -10,6 +12,16 @@ namespace Services
         public BoardService(GameModel gameModel)
         {
             this.gameModel = gameModel;
+        }
+
+        public Dictionary<ResourceType, int> GetAllBoardResources()
+        {
+            return boardModel.TokenResources.GetAllResources();
+        }
+
+        public int GetBoardTokenCount(ResourceType resourceType)
+        {
+            return boardModel.TokenResources.GetCount(resourceType);
         }
     }
 }

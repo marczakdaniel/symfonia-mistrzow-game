@@ -14,7 +14,7 @@ namespace Command
         public int Level { get; private set; }
         public int Position { get; private set; }
 
-        public OpenMusicCardDetailsPanelCommand(string musicCardId, int level, int position, GameModel gameModel) : base(gameModel)
+        public OpenMusicCardDetailsPanelCommand(string musicCardId, int level, int position) : base()
         {
             MusicCardId = musicCardId;
             Level = level;
@@ -41,7 +41,7 @@ namespace Command
         public override string CommandType => "CloseMusicCardDetailsPanel";
         public string MusicCardId { get; private set; }
 
-        public CloseMusicCardDetailsPanelCommand(string musicCardId, GameModel gameModel) : base(gameModel)
+        public CloseMusicCardDetailsPanelCommand(string musicCardId) : base()
         {
             MusicCardId = musicCardId;
         }
@@ -63,11 +63,13 @@ namespace Command
         public override string CommandType => "OpenTokenDetailsPanel";
         public ResourceType ResourceType { get; private set; }
         private readonly TurnService turnService;
+        private readonly BoardService boardService;
 
-        public OpenTokenDetailsPanelCommand(ResourceType resourceType, GameModel gameModel, TurnService turnService) : base(gameModel)
+        public OpenTokenDetailsPanelCommand(ResourceType resourceType, TurnService turnService, BoardService boardService) : base()
         {
             ResourceType = resourceType;
             this.turnService = turnService;
+            this.boardService = boardService;
         }
 
         public override async UniTask<bool> Validate()
@@ -78,7 +80,7 @@ namespace Command
         public override async UniTask<bool> Execute()
         {
             turnService.StartSelectingTokens();
-            var currentTokenCounts = gameModel.board.TokenResources.GetAllResources();
+            var currentTokenCounts = boardService.GetAllBoardResources();
             if (!turnService.CanAddTokenToSelectedTokens(ResourceType))
             {
                 await AsyncEventBus.Instance.PublishAndWaitAsync(new TokenDetailsPanelOpenedEvent(null, currentTokenCounts));
@@ -94,10 +96,10 @@ namespace Command
     public class CloseTokenDetailsPanelCommand : BaseUICommand
     {
         public override string CommandType => "CloseTokenDetailsPanel";
-        private readonly GameModel gameModel;
-        public CloseTokenDetailsPanelCommand(GameModel gameModel) : base(gameModel)
+        private readonly TurnService turnService;
+        public CloseTokenDetailsPanelCommand(TurnService turnService) : base()
         {
-            this.gameModel = gameModel;
+            this.turnService = turnService;
         }
 
         public override async UniTask<bool> Validate()
@@ -107,8 +109,7 @@ namespace Command
 
         public override async UniTask<bool> Execute()
         {
-            gameModel.GetTurnModel().SetState(TurnState.WaitingForAction);
-            gameModel.GetTurnModel().ClearSelectedTokens();
+            turnService.EndSelectingTokensWithConfirmation();
             await AsyncEventBus.Instance.PublishAndWaitAsync(new TokenDetailsPanelClosedEvent());
             return true;
         }
