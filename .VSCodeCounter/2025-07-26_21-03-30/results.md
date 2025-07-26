@@ -1,32 +1,32 @@
 # Summary
 
-Date : 2025-07-25 13:20:53
+Date : 2025-07-26 21:03:30
 
 Directory c:\\Users\\danie\\Desktop\\symfonia-mistrzow-game\\Assets\\Scripts
 
-Total : 95 files,  6201 codes, 1386 comments, 1269 blanks, all 8856 lines
+Total : 105 files,  7264 codes, 1389 comments, 1451 blanks, all 10104 lines
 
 Summary / [Details](details.md) / [Diff Summary](diff.md) / [Diff Details](diff-details.md)
 
 ## Languages
 | language | files | code | comment | blank | total |
 | :--- | ---: | ---: | ---: | ---: | ---: |
-| C# | 95 | 6,201 | 1,386 | 1,269 | 8,856 |
+| C# | 105 | 7,264 | 1,389 | 1,451 | 10,104 |
 
 ## Directories
 | path | files | code | comment | blank | total |
 | :--- | ---: | ---: | ---: | ---: | ---: |
-| . | 95 | 6,201 | 1,386 | 1,269 | 8,856 |
-| Commands | 9 | 933 | 832 | 207 | 1,972 |
+| . | 105 | 7,264 | 1,389 | 1,451 | 10,104 |
+| Commands | 9 | 1,054 | 834 | 232 | 2,120 |
 | Data | 6 | 222 | 9 | 28 | 259 |
-| Events | 4 | 407 | 276 | 87 | 770 |
-| Managers | 1 | 47 | 12 | 11 | 70 |
-| Models | 11 | 1,093 | 27 | 232 | 1,352 |
+| Events | 4 | 458 | 277 | 96 | 831 |
+| Managers | 1 | 49 | 12 | 12 | 73 |
+| Models | 11 | 1,198 | 29 | 245 | 1,472 |
 | ReactiveObject | 3 | 175 | 41 | 29 | 245 |
-| Services | 1 | 42 | 7 | 12 | 61 |
+| Services | 2 | 150 | 8 | 37 | 195 |
 | Test | 1 | 34 | 0 | 5 | 39 |
-| UI | 59 | 3,248 | 182 | 658 | 4,088 |
-| UI\\Board | 33 | 1,458 | 66 | 310 | 1,834 |
+| UI | 68 | 3,924 | 179 | 767 | 4,870 |
+| UI\\Board | 33 | 1,529 | 66 | 325 | 1,920 |
 | UI\\Board (Files) | 3 | 92 | 1 | 15 | 108 |
 | UI\\Board\\BoardEndTurnButton | 3 | 108 | 0 | 25 | 133 |
 | UI\\Board\\BoardMusicCardPanel | 13 | 606 | 48 | 129 | 783 |
@@ -36,18 +36,22 @@ Summary / [Details](details.md) / [Diff Summary](diff.md) / [Diff Details](diff-
 | UI\\Board\\BoardPlayersPanel | 6 | 215 | 0 | 42 | 257 |
 | UI\\Board\\BoardPlayersPanel (Files) | 3 | 87 | 0 | 19 | 106 |
 | UI\\Board\\BoardPlayersPanel\\BoardSinglePlayer | 3 | 128 | 0 | 23 | 151 |
-| UI\\Board\\BoardTokenPanel | 8 | 437 | 17 | 99 | 553 |
+| UI\\Board\\BoardTokenPanel | 8 | 508 | 17 | 114 | 639 |
 | UI\\Board\\BoardTokenPanel (Files) | 3 | 83 | 0 | 16 | 99 |
-| UI\\Board\\BoardTokenPanel\\BoardToken | 5 | 354 | 17 | 83 | 454 |
+| UI\\Board\\BoardTokenPanel\\BoardToken | 5 | 425 | 17 | 98 | 540 |
 | UI\\Elements | 1 | 20 | 0 | 3 | 23 |
-| UI\\GameWindow | 3 | 91 | 4 | 16 | 111 |
+| UI\\GameWindow | 3 | 97 | 4 | 16 | 117 |
 | UI\\MusicCardDetailsPanel | 6 | 676 | 101 | 149 | 926 |
-| UI\\SelectTokenWindow | 13 | 870 | 11 | 156 | 1,037 |
-| UI\\SelectTokenWindow (Files) | 3 | 193 | 3 | 38 | 234 |
+| UI\\ReturnTokenWindow | 9 | 610 | 0 | 98 | 708 |
+| UI\\ReturnTokenWindow (Files) | 3 | 140 | 0 | 20 | 160 |
+| UI\\ReturnTokenWindow\\ReturnTokenSelectedPanel | 3 | 281 | 0 | 46 | 327 |
+| UI\\ReturnTokenWindow\\ReturnTokenSinglePlayerToken | 3 | 189 | 0 | 32 | 221 |
+| UI\\SelectTokenWindow | 13 | 859 | 8 | 152 | 1,019 |
+| UI\\SelectTokenWindow (Files) | 3 | 190 | 1 | 37 | 228 |
 | UI\\SelectTokenWindow\\ChoosenBoardTokenPanel | 4 | 306 | 0 | 51 | 357 |
-| UI\\SelectTokenWindow\\SelectBoardTokenPanel | 6 | 371 | 8 | 67 | 446 |
-| UI\\SelectTokenWindow\\SelectBoardTokenPanel (Files) | 3 | 132 | 0 | 27 | 159 |
-| UI\\SelectTokenWindow\\SelectBoardTokenPanel\\SelectSingleToken | 3 | 239 | 8 | 40 | 287 |
+| UI\\SelectTokenWindow\\SelectBoardTokenPanel | 6 | 363 | 7 | 64 | 434 |
+| UI\\SelectTokenWindow\\SelectBoardTokenPanel (Files) | 3 | 118 | 0 | 24 | 142 |
+| UI\\SelectTokenWindow\\SelectBoardTokenPanel\\SelectSingleToken | 3 | 245 | 7 | 40 | 292 |
 | UI\\StartTurnWindow | 3 | 133 | 0 | 24 | 157 |
 
 Summary / [Details](details.md) / [Diff Summary](diff.md) / [Diff Details](diff-details.md)

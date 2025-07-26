@@ -60,7 +60,8 @@ namespace Services
         public bool CanAddTokenToSelectedTokens(ResourceType token)
         {
             var hasEnoughTokens = gameModel.GetBoardTokenCount(token) > turnModel.GetSelectedTokensCount(token);
-            return hasEnoughTokens && turnModel.CanAddTokenToSelectedTokens(token);
+            var hasEnoughTokenToSelectTwo = turnModel.GetSelectedTokensCount(token) >= 1 ? gameModel.GetBoardTokenCount(token) >= 4 : true;
+            return hasEnoughTokenToSelectTwo && hasEnoughTokens && turnModel.CanAddTokenToSelectedTokens(token);
         }
 
         public void AddTokenToSelectedTokens(ResourceType token)
