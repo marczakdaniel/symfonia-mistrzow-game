@@ -104,7 +104,7 @@ namespace Command
 
         public ConfirmReturnTokensCommand CreateConfirmReturnTokensCommand()
         {
-            return new ConfirmReturnTokensCommand(turnService);
+            return new ConfirmReturnTokensCommand(turnService, boardService);
         }
     }
 }

@@ -312,6 +312,15 @@ namespace Command
 
         public override async UniTask<bool> Execute()
         {
+            if (!turnService.CanAddTokenToReturnTokens(token))
+            {
+                return false;
+            }
+
+            turnService.AddTokenToReturnTokens(token);
+
+            var currentTokenCount = turnService.GetCurrentPlayerModel().Tokens.GetCount(token) - turnService.GetReturnTokensCount(token);
+            await AsyncEventBus.Instance.PublishAndWaitAsync(new TokenAddedToReturnTokensEvent(token, currentTokenCount, turnService.GetReturnTokens()));
             return true;
         }
     }
@@ -335,6 +344,10 @@ namespace Command
 
         public override async UniTask<bool> Execute()
         {
+            turnService.RemoveTokenFromReturnTokens(token);
+
+            var currentTokenCount = turnService.GetCurrentPlayerModel().Tokens.GetCount(token) - turnService.GetReturnTokensCount(token);
+            await AsyncEventBus.Instance.PublishAndWaitAsync(new TokenRemovedFromReturnTokensEvent(token, currentTokenCount, turnService.GetReturnTokens()));
             return true;
         }   
     }
@@ -343,10 +356,12 @@ namespace Command
     {
         public override string CommandType => "ConfirmReturnTokens";
         private readonly TurnService turnService;
+        private readonly BoardService boardService;
 
-        public ConfirmReturnTokensCommand(TurnService turnService) : base()
+        public ConfirmReturnTokensCommand(TurnService turnService, BoardService boardService) : base()
         {
             this.turnService = turnService;
+            this.boardService = boardService;
         }
 
         public override async UniTask<bool> Validate()
@@ -356,6 +371,11 @@ namespace Command
 
         public override async UniTask<bool> Execute()
         {
+            turnService.ConfirmReturnTokens();
+
+            var boardTokens = boardService.GetAllBoardResources();
+            await AsyncEventBus.Instance.PublishAndWaitAsync(new ReturnTokensConfirmedEvent(boardTokens));
+
             return true;
         }   
     }

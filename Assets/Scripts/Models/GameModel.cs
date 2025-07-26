@@ -265,7 +265,6 @@ namespace Models
         {
             // 1. Remove tokens from player
             var player = GetPlayer(playerId);
-            player.RemoveTokens();
 
             // 2. Remove card from board
             // 3. Move card from board to player collection

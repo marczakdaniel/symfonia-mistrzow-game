@@ -5,7 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace UI.ReturnTokenWindow.ReturnTokenPlayerTokensPanel.ReturnTokenSinglePlayerToken
+namespace UI.ReturnTokenWindow.ReturnTokenSinglePlayerToken
 {
     public class ReturnTokenSinglePlayerTokenView : MonoBehaviour
     {

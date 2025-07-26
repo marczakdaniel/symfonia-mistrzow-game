@@ -4,7 +4,8 @@ using Cysharp.Threading.Tasks;
 using DefaultNamespace.Data;
 using Events;
 using R3;
-using UI.ReturnTokenWindow.ReturnTokenPlayerTokensPanel.ReturnTokenSinglePlayerToken;
+using UI.ReturnTokenWindow.ReturnTokenSelectedPanel;
+using UI.ReturnTokenWindow.ReturnTokenSinglePlayerToken;
 
 namespace UI.ReturnTokenWindow
 {
@@ -16,6 +17,7 @@ namespace UI.ReturnTokenWindow
         private readonly ReturnTokenWindowViewModel viewModel;
         private readonly ReturnTokenWindowView view;
         private ReturnTokenSinglePlayerTokenPresenter[] returnTokenSinglePlayerTokenPresenters;
+        private ReturnTokenSelectedPanelPresenter returnTokenSelectedPanelPresenter;
         private IDisposable disposable;
         private readonly CommandFactory commandFactory;
 
@@ -39,6 +41,7 @@ namespace UI.ReturnTokenWindow
                 returnTokenSinglePlayerTokenPresenters[i] = new ReturnTokenSinglePlayerTokenPresenter((ResourceType)token, view.ReturnTokenSinglePlayerTokenPrefab[i], commandFactory);
                 i++;
             }
+            returnTokenSelectedPanelPresenter = new ReturnTokenSelectedPanelPresenter(view.ReturnTokenSelectedPanelPrefab, commandFactory);
         }
 
         private void InitializeMVP()
@@ -70,12 +73,6 @@ namespace UI.ReturnTokenWindow
         private void ConnectView(DisposableBuilder d)
         {
             view.OnAcceptClicked.Subscribe(_ => HandleAcceptClicked().ToObservable()).AddTo(ref d);
-        }
-
-        private async UniTask HandleCloseClicked()
-        {
-            var command = commandFactory.CreateConfirmReturnTokensCommand();
-            await CommandService.Instance.ExecuteCommandAsync(command);
         }
 
         private async UniTask HandleAcceptClicked()

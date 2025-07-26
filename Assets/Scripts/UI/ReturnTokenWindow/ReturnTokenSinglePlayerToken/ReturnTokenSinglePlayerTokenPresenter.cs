@@ -6,7 +6,7 @@ using Events;
 using R3;
 using System;
 
-namespace UI.ReturnTokenWindow.ReturnTokenPlayerTokensPanel.ReturnTokenSinglePlayerToken
+namespace UI.ReturnTokenWindow.ReturnTokenSinglePlayerToken
 {
     public class ReturnTokenSinglePlayerTokenPresenter : 
         IDisposable,

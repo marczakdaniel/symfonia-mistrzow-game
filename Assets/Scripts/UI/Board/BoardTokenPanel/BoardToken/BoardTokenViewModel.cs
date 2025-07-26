@@ -12,6 +12,7 @@ namespace UI.Board.BoardTokenPanel.BoardToken
         DuringAddingTokens,
         DuringRemovingTokens,
         DuringTokenDetailsPanelOpen,
+        DuringReturnTokensPanelOpen,
     }
 
     public class BoardTokenViewModel
@@ -116,6 +117,39 @@ namespace UI.Board.BoardTokenPanel.BoardToken
         private bool CanOnConfirmSelectedTokens()
         {
             return State.Value == BoardTokenState.DuringTokenDetailsPanelOpen;
+        }
+
+        public bool OpenReturnTokensPanel()
+        {
+            if (!CanOpenReturnTokensPanel()) {
+                Debug.LogError($"[BoardToken] Cannot open return tokens panel in state: {State.Value}");
+                return false;
+            }
+
+            SetState(BoardTokenState.DuringReturnTokensPanelOpen);
+            return true;
+        }
+
+        private bool CanOnReturnTokensConfirmed()
+        {
+            return State.Value == BoardTokenState.DuringReturnTokensPanelOpen;
+        }
+
+        private bool CanOpenReturnTokensPanel()
+        {
+            return State.Value == BoardTokenState.Active;
+        }
+
+        public bool OnReturnTokensConfirmed(int numberOfTokens)
+        {
+            if (!CanOnReturnTokensConfirmed()) {
+                Debug.LogError($"[BoardToken] Cannot return tokens confirmed in state: {State.Value}");
+                return false;
+            }
+
+            SetTokenCount(numberOfTokens);
+            SetState(BoardTokenState.Active);
+            return true;
         }
 
         public bool AddTokens()

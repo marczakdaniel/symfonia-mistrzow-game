@@ -1,7 +1,7 @@
 using DefaultNamespace.Data;
 using R3;
 
-namespace UI.ReturnTokenWindow.ReturnTokenPlayerTokensPanel.ReturnTokenSinglePlayerToken
+namespace UI.ReturnTokenWindow.ReturnTokenSinglePlayerToken
 {
     public enum ReturnTokenSinglePlayerTokenState
     {

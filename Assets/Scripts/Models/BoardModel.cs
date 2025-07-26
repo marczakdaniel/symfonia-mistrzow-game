@@ -364,6 +364,12 @@ namespace Models
             return TokenResources.GetCount(resourceType);
         }
 
+        public bool AddTokens(ResourceCollectionModel tokens)
+        {
+            TokenResources.Add(tokens);
+            return true;
+        }
+
         public bool RemoveTokens(ResourceCollectionModel tokens)
         {
             TokenResources.Subtract(tokens);

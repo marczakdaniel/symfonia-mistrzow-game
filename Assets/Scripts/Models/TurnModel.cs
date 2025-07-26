@@ -123,6 +123,45 @@ namespace Models
             return new ResourceCollectionModel(ReturnTokens.ToArray());
         }
 
-        
+        public ResourceType?[] GetReturnTokens()
+        {
+            var result = new ResourceType?[3] { null, null, null };  
+            var i = 0;
+            for (i = 0; i < result.Length; i++)
+            {
+                if (i < ReturnTokens.Count)
+                {
+                    result[i] = ReturnTokens[i];
+                }
+                else
+                {
+                    break;
+                }
+            }
+            return result;
+        }
+
+        public int GetReturnTokensCount(ResourceType token)
+        {
+            var result = 0;
+            foreach (var returnToken in ReturnTokens)
+            {
+                if (returnToken == token)
+                {
+                    result++;
+                }   
+            }
+            return result;
+        }
+
+        public int GetAllReturnTokensCount()
+        {
+            var count = 0;
+            foreach (var token in ReturnTokens)
+            {
+                count += 1;
+            }
+            return count;
+        }
     }
 }

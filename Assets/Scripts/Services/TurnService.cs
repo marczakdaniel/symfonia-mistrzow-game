@@ -1,5 +1,6 @@
 using DefaultNamespace.Data;
 using Models;
+using UnityEngine;
 
 namespace Services
 {
@@ -113,7 +114,13 @@ namespace Services
         public bool IsTokenReturnNeeded()
         {
             var currentPlayer = gameModel.GetPlayer(turnModel.CurrentPlayerId);
-            return currentPlayer.Tokens.GetTotalResourcese() > 10;
+            return currentPlayer.Tokens.GetTotalResourcese() > 5;
+        }
+
+        public bool CanAddTokenToReturnTokens(ResourceType token)
+        {
+            var currentPlayer = gameModel.GetPlayer(turnModel.CurrentPlayerId);
+            return currentPlayer.Tokens.GetCount(token) > 0 && currentPlayer.Tokens.GetTotalResourcese() - turnModel.GetAllReturnTokensCount() > 5;
         }
 
         public void StartReturningTokens()
@@ -134,6 +141,28 @@ namespace Services
         public void ConfirmReturnTokens()
         {
             turnModel.SetState(TurnState.ReadyToEndTurn);
+            var currentPlayer = gameModel.GetPlayer(turnModel.CurrentPlayerId);
+            var returnTokens = turnModel.GetReturnTokensCollection();
+
+            gameModel.board.AddTokens(returnTokens);
+            currentPlayer.RemoveTokens(returnTokens);
+
+            turnModel.ClearReturnTokens();
+        }
+
+        public ResourceType?[] GetReturnTokens()
+        {
+            return turnModel.GetReturnTokens();
+        }
+
+        public int GetReturnTokensCount(ResourceType token)
+        {
+            return turnModel.GetReturnTokensCount(token);
+        }
+
+        public int GetAllReturnTokensCount()
+        {
+            return turnModel.GetAllReturnTokensCount();
         }
     }
 }

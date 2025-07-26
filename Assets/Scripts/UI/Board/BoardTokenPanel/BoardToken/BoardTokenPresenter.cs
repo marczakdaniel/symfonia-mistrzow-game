@@ -12,7 +12,9 @@ namespace UI.Board.BoardTokenPanel.BoardToken
     public class BoardTokenPresenter : IDisposable, 
         IAsyncEventHandler<TokenDetailsPanelOpenedEvent>,
         IAsyncEventHandler<SelectedTokensConfirmedEvent>,
-        IAsyncEventHandler<TokenDetailsPanelClosedEvent>
+        IAsyncEventHandler<TokenDetailsPanelClosedEvent>,
+        IAsyncEventHandler<ReturnTokenWindowOpenedEvent>,
+        IAsyncEventHandler<ReturnTokensConfirmedEvent>
     {
         private readonly BoardTokenView view;
         private readonly BoardTokenViewModel viewModel;
@@ -58,6 +60,9 @@ namespace UI.Board.BoardTokenPanel.BoardToken
             AsyncEventBus.Instance.Subscribe<TokenDetailsPanelOpenedEvent>(this);
             AsyncEventBus.Instance.Subscribe<TokenDetailsPanelClosedEvent>(this);
             AsyncEventBus.Instance.Subscribe<SelectedTokensConfirmedEvent>(this);
+                        
+            AsyncEventBus.Instance.Subscribe<ReturnTokensConfirmedEvent>(this);
+            AsyncEventBus.Instance.Subscribe<ReturnTokenWindowOpenedEvent>(this);
         }
 
         public async UniTask HandleAsync(SelectedTokensConfirmedEvent selectedTokensConfirmedEvent)
@@ -71,6 +76,19 @@ namespace UI.Board.BoardTokenPanel.BoardToken
             viewModel.CloseTokenDetailsPanel();
             await UniTask.WaitUntil(() => viewModel.State.Value == BoardTokenState.Active);
         }
+
+        public async UniTask HandleAsync(ReturnTokensConfirmedEvent returnTokensConfirmedEvent)
+        {
+            viewModel.OnReturnTokensConfirmed(returnTokensConfirmedEvent.BoardTokens[viewModel.ResourceType]);
+            await UniTask.WaitUntil(() => viewModel.State.Value == BoardTokenState.Active);
+        }
+
+        public async UniTask HandleAsync(ReturnTokenWindowOpenedEvent returnTokenWindowOpenedEvent)
+        {
+            viewModel.OpenReturnTokensPanel();
+            await UniTask.WaitUntil(() => viewModel.State.Value == BoardTokenState.DuringReturnTokensPanelOpen);
+        }
+
 
         // ViewModel -> Presenter -> View
 
@@ -99,6 +117,9 @@ namespace UI.Board.BoardTokenPanel.BoardToken
                     break;
                 case BoardTokenState.Disabled:
                     view.DisableElement();
+                    break;
+                case BoardTokenState.DuringReturnTokensPanelOpen:
+                    await UniTask.CompletedTask;
                     break;
                 default:
                     break;

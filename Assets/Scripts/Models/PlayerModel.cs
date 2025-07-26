@@ -56,8 +56,9 @@ namespace Models
             return PurchasedCards.AddCard(cardId);
         }
 
-        public bool RemoveTokens()
+        public bool RemoveTokens(ResourceCollectionModel tokens)
         {
+            Tokens.Subtract(tokens);
             return true;
         }
 

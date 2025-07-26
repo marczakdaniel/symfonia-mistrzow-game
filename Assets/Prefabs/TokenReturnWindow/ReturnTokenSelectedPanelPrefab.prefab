@@ -88,9 +88,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6115400118693698634}
-  - component: {fileID: 7405472970251739677}
+  - component: {fileID: 5032154197827221419}
   m_Layer: 5
-  m_Name: ChoosenTokenPanel 1
+  m_Name: ReturnTokenSelectedPanelPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -116,7 +116,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 472.1, y: 192.4}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &7405472970251739677
+--- !u!114 &5032154197827221419
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -125,7 +125,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2021923534681317435}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc1b445a44a18a1429755d1a9828b14c, type: 3}
+  m_Script: {fileID: 11500000, guid: 04d6f5fa443ec9c4988c8d2160d619fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   choosenBoardTokenViews:
