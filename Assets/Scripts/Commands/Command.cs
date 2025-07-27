@@ -377,6 +377,61 @@ namespace Command
             await AsyncEventBus.Instance.PublishAndWaitAsync(new ReturnTokensConfirmedEvent(boardTokens));
 
             return true;
-        }   
+        }  
+    }
+
+    // Reserve card action
+    public class ReserveCardCommand : BasePlayerActionCommand
+    {
+        public override string CommandType => "ReserveCard";
+        private readonly string cardId;
+        private readonly TurnService turnService;
+        private readonly BoardService boardService;
+
+        public ReserveCardCommand(string cardId, TurnService turnService, BoardService boardService) : base()
+        {
+            this.cardId = cardId;
+            this.turnService = turnService;
+            this.boardService = boardService;
+        }
+
+        public override async UniTask<bool> Validate()
+        {
+            return true;
+        }
+
+        public override async UniTask<bool> Execute()
+        {
+            if (!turnService.CanReserveCard())
+            {
+                return false;
+            }
+
+            if (!turnService.CanConfirmReserveMusicCard())
+            {
+                return false;
+            }
+
+            var slot = boardService.GetSlotWithCard(cardId);
+
+            if (slot == null)
+            {
+                return false;
+            }
+
+            turnService.ReserveCard(cardId);
+
+
+            var inspirationTokens = boardService.GetBoardTokenCount(ResourceType.Inspiration);
+            await AsyncEventBus.Instance.PublishAndWaitAsync(new CardReservedEvent(cardId, inspirationTokens));
+
+            boardService.RefillSlot(slot.Level, slot.Position);
+
+            var musicCardData = slot.GetMusicCard();
+            var putCardOnBoardEvent = new PutCardOnBoardEvent(slot.Level, slot.Position, cardId, musicCardData);
+            await AsyncEventBus.Instance.PublishAndWaitAsync(putCardOnBoardEvent);
+
+            return true;
+        }
     }
 }

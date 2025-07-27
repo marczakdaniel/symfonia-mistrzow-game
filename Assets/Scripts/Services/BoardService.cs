@@ -23,5 +23,20 @@ namespace Services
         {
             return boardModel.TokenResources.GetCount(resourceType);
         }
+
+        public List<BoardSlot> GetEmptySlots()
+        {
+            return boardModel.GetEmptySlots();
+        }
+
+        public BoardSlot GetSlotWithCard(string cardId)
+        {
+            return boardModel.GetSlotWithCard(cardId);
+        }
+
+        public void RefillSlot(int level, int position)
+        {
+            boardModel.RefillSlot(level, position);
+        }
     }
 }

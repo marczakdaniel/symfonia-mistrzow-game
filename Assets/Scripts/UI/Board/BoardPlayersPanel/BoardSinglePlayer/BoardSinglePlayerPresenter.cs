@@ -72,7 +72,6 @@ namespace UI.Board.BoardPlayersPanel.BoardSinglePlayer
 
         public async UniTask HandleAsync(TurnStartedEvent eventData)
         {
-            UnityEngine.Debug.LogError($"TurnStartedEvent: {eventData.CurrentPlayerId} {viewModel.PlayerId}");
             if (viewModel.State.Value == BoardSinglePlayerState.CurrentPlayer && viewModel.PlayerId != eventData.CurrentPlayerId)
             {
                 viewModel.SetNotCurrentPlayer();

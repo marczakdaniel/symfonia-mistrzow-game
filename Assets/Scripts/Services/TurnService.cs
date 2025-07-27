@@ -165,5 +165,53 @@ namespace Services
         {
             return turnModel.GetAllReturnTokensCount();
         }
+
+        // Reserve Card Actions
+        public void StartSelectingMusicCard()
+        {
+            if (turnModel.State != TurnState.WaitingForAction)
+            {
+                return;
+            }
+            turnModel.SetState(TurnState.SelectingMusicCard);
+        }
+
+        public bool CanConfirmReserveMusicCard()
+        {
+            return turnModel.State == TurnState.SelectingMusicCard;
+        }
+
+        public bool CanReserveCard()
+        {
+            var currentPlayer = gameModel.GetPlayer(turnModel.CurrentPlayerId);
+            return currentPlayer.ReservedCards.Count < 3;
+        }
+
+        public bool ReserveCard(string cardId)
+        {
+            turnModel.SetState(TurnState.ReadyToEndTurn);
+            var currentPlayer = gameModel.GetPlayer(turnModel.CurrentPlayerId);
+
+            if (!gameModel.board.RemoveCardFromBoard(cardId))
+            {
+                UnityEngine.Debug.LogError($"[TurnService] Failed to remove card from board: {cardId}");
+                return false;
+            }
+
+            if (!currentPlayer.ReservedCards.AddCard(cardId))
+            {
+                UnityEngine.Debug.LogError($"[TurnService] Failed to add card to reserved cards: {cardId}");
+                return false;
+            }
+
+            if (gameModel.board.TokenResources.GetCount(ResourceType.Inspiration) > 0)
+            {
+                var inspirationTokens = new ResourceCollectionModel(new ResourceType[] { ResourceType.Inspiration });
+                gameModel.board.RemoveTokens(inspirationTokens);
+                currentPlayer.AddTokens(inspirationTokens);
+            }
+
+            return true;
+        }
     }
 }

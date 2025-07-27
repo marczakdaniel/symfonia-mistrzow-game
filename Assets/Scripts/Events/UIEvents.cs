@@ -149,4 +149,35 @@ namespace Events
             CurrentPlayerName = currentPlayerName;
         }
     }
+
+    // Reserve card action events
+    public class CardReservedEvent : GameEvent
+    {
+        public string CardId { get; private set; }
+        public int InspirationTokensOnBoard { get; private set; }
+
+        public CardReservedEvent(string cardId, int inspirationTokensOnBoard)
+        {
+            CardId = cardId;
+            InspirationTokensOnBoard = inspirationTokensOnBoard;
+        }
+    }
+
+    // Board Events
+    public class PutCardOnBoardEvent : GameEvent
+    {
+        public int Level { get; private set; }
+        public int Position { get; private set; }
+
+        public string CardId { get; private set; }
+        public MusicCardData MusicCardData { get; private set; }
+
+        public PutCardOnBoardEvent(int level, int position, string cardId, MusicCardData musicCardData)
+        {
+            Level = level;
+            Position = position;
+            CardId = cardId;
+            MusicCardData = musicCardData;
+        }
+    }
 }

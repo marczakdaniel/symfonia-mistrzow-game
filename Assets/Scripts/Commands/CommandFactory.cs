@@ -57,7 +57,7 @@ namespace Command
         
         public OpenMusicCardDetailsPanelCommand CreateOpenMusicCardDetailsPanelCommand(string musicCardId, int level, int position)
         {
-            return new OpenMusicCardDetailsPanelCommand(musicCardId, level, position);
+            return new OpenMusicCardDetailsPanelCommand(musicCardId, level, position, turnService);
         }
 
         public CloseMusicCardDetailsPanelCommand CreateCloseMusicCardDetailsPanelCommand(string musicCardId)
@@ -105,6 +105,11 @@ namespace Command
         public ConfirmReturnTokensCommand CreateConfirmReturnTokensCommand()
         {
             return new ConfirmReturnTokensCommand(turnService, boardService);
+        }
+
+        public ReserveCardCommand CreateReserveCardCommand(string cardId)
+        {
+            return new ReserveCardCommand(cardId, turnService, boardService);
         }
     }
 }

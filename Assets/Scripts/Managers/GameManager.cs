@@ -47,7 +47,6 @@ namespace Managers
         public async UniTask StartGame()
         {
             // TODO: Proper command execution
-            Debug.LogError("[GameManager] Starting game");
             var startGameCommand = commandFactory.CreateStartGameCommand();
             await CommandService.Instance.ExecuteCommandAsync(startGameCommand);
 

@@ -375,5 +375,51 @@ namespace Models
             TokenResources.Subtract(tokens);
             return true;
         }
+
+        public bool RemoveToken(ResourceType resourceType, int amount)
+        {
+            TokenResources.RemoveResource(resourceType, amount);
+            return true;
+        }
+
+        public bool AddToken(ResourceType resourceType, int amount)
+        {
+            TokenResources.AddResource(resourceType, amount);
+            return true;
+        }
+
+        public List<BoardSlot> GetEmptySlots()
+        {
+            var result = new List<BoardSlot>();
+            foreach (var level in Levels)
+            {
+                result.AddRange(level.GetEmptySlots());
+            }
+            return result;
+        }
+
+        public BoardSlot GetSlotWithCard(string cardId)
+        {
+            foreach (var level in Levels)
+            {
+                var slot = level.FindSlotWithCard(cardId);
+                if (slot != null)
+                {
+                    return slot;
+                }
+            }
+            return null;
+        }
+
+        public void RefillSlot(int level, int position)
+        {
+            var boardLevel = GetLevel(level);
+            if (boardLevel == null) return;
+
+            var slot = boardLevel.GetSlot(position);
+            if (slot == null) return;
+
+            boardLevel.RefillSlot(slot);
+        }
     }
 }

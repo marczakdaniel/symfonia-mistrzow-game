@@ -12,9 +12,9 @@ namespace UI.Board.BoardMusicCardPanel.BoardMusicCard
     public class BoardMusicCardPresenter : 
         IDisposable, 
         IAsyncEventHandler<MusicCardDetailsPanelOpenedEvent>, 
-        IAsyncEventHandler<MusicCardDetailsPanelClosedEvent>
-        //IAsyncEventHandler<CardReservedEvent>, 
-        //IAsyncEventHandler<CardPurchasedEvent>
+        IAsyncEventHandler<MusicCardDetailsPanelClosedEvent>,
+        IAsyncEventHandler<CardReservedEvent>,
+        IAsyncEventHandler<PutCardOnBoardEvent>
     {
         private readonly BoardMusicCardView view;
         private readonly BoardMusicCardViewModel viewModel;
@@ -54,8 +54,10 @@ namespace UI.Board.BoardMusicCardPanel.BoardMusicCard
         {
             AsyncEventBus.Instance.Subscribe<MusicCardDetailsPanelOpenedEvent>(this);
             AsyncEventBus.Instance.Subscribe<MusicCardDetailsPanelClosedEvent>(this);
-            //AsyncEventBus.Instance.Subscribe<CardReservedEvent>(this);
-            //AsyncEventBus.Instance.Subscribe<CardPurchasedEvent>(this);
+
+            AsyncEventBus.Instance.Subscribe<CardReservedEvent>(this);
+
+            AsyncEventBus.Instance.Subscribe<PutCardOnBoardEvent>(this);
         }
 
         public async UniTask HandleAsync(MusicCardDetailsPanelOpenedEvent musicCardDetailsPanelOpenedEvent)
@@ -82,6 +84,34 @@ namespace UI.Board.BoardMusicCardPanel.BoardMusicCard
             }
 
             await UniTask.WaitUntil(() => viewModel.State.Value == BoardMusicCardState.Visible);
+        }
+
+        public async UniTask HandleAsync(CardReservedEvent cardReservedEvent)
+        {
+            if (cardReservedEvent.CardId != viewModel.MusicCardData.Value.Id) {
+                return;
+            }
+
+            if (!viewModel.AfterReserveMusicCard()) {
+                return;
+            }
+
+            await UniTask.WaitUntil(() => viewModel.State.Value == BoardMusicCardState.Disabled);
+        }
+
+        public async UniTask HandleAsync(PutCardOnBoardEvent putCardOnBoardEvent)
+        {
+            if (putCardOnBoardEvent.Level != viewModel.Level || putCardOnBoardEvent.Position != viewModel.Position) {
+                return;
+            }
+
+            if (!viewModel.PutCardOnBoard(putCardOnBoardEvent.CardId, putCardOnBoardEvent.MusicCardData)) {
+                return;
+            }
+
+            await UniTask.WaitUntil(() => viewModel.State.Value == BoardMusicCardState.Hidden);
+
+            await RevealCard();
         }
 
         /*

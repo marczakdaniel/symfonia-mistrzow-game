@@ -14,7 +14,8 @@ namespace UI.Board.BoardTokenPanel.BoardToken
         IAsyncEventHandler<SelectedTokensConfirmedEvent>,
         IAsyncEventHandler<TokenDetailsPanelClosedEvent>,
         IAsyncEventHandler<ReturnTokenWindowOpenedEvent>,
-        IAsyncEventHandler<ReturnTokensConfirmedEvent>
+        IAsyncEventHandler<ReturnTokensConfirmedEvent>,
+        IAsyncEventHandler<CardReservedEvent>
     {
         private readonly BoardTokenView view;
         private readonly BoardTokenViewModel viewModel;
@@ -63,6 +64,7 @@ namespace UI.Board.BoardTokenPanel.BoardToken
                         
             AsyncEventBus.Instance.Subscribe<ReturnTokensConfirmedEvent>(this);
             AsyncEventBus.Instance.Subscribe<ReturnTokenWindowOpenedEvent>(this);
+            AsyncEventBus.Instance.Subscribe<CardReservedEvent>(this);
         }
 
         public async UniTask HandleAsync(SelectedTokensConfirmedEvent selectedTokensConfirmedEvent)
@@ -87,6 +89,20 @@ namespace UI.Board.BoardTokenPanel.BoardToken
         {
             viewModel.OpenReturnTokensPanel();
             await UniTask.WaitUntil(() => viewModel.State.Value == BoardTokenState.DuringReturnTokensPanelOpen);
+        }
+
+        public async UniTask HandleAsync(CardReservedEvent cardReservedEvent)
+        {
+            if (viewModel.ResourceType != ResourceType.Inspiration)
+            {
+                return;
+            }
+
+            UnityEngine.Debug.Log($"[BoardTokenPresenter] Card reserved event: {cardReservedEvent.InspirationTokensOnBoard}");
+
+            viewModel.SetTokenCount(cardReservedEvent.InspirationTokensOnBoard);
+
+            await UniTask.WaitUntil(() => viewModel.State.Value == BoardTokenState.Active);
         }
 
 
