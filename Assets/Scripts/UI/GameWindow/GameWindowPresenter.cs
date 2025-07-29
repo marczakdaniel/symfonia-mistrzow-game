@@ -8,6 +8,7 @@ using Models;
 using UI.SelectTokenWindow;
 using UI.StartTurnWindow;
 using UI.ReturnTokenWindow;
+using UI.CardPurchaseWindow;
 
 namespace UI.GameWindow
 {
@@ -21,6 +22,7 @@ namespace UI.GameWindow
         private SelectTokenWindowPresenter selectTokenWindowPresenter;
         private StartTurnWindowPresenter startTurnWindowPresenter;
         private ReturnTokenWindowPresenter returnTokenWindowPresenter;
+        private CardPurchaseWindowPresenter cardPurchaseWindowPresenter;
         private CommandFactory commandFactory;
         private IGameModelReader gameModelReader;
         public GameWindowPresenter(GameWindowView view, CommandFactory commandFactory, IGameModelReader gameModelReader)
@@ -40,6 +42,7 @@ namespace UI.GameWindow
             selectTokenWindowPresenter = new SelectTokenWindowPresenter(view.SelectTokenWindowView, commandFactory, gameModelReader);
             startTurnWindowPresenter = new StartTurnWindowPresenter(view.StartTurnWindowView, commandFactory);
             returnTokenWindowPresenter = new ReturnTokenWindowPresenter(view.ReturnTokenWindowView, commandFactory);
+            cardPurchaseWindowPresenter = new CardPurchaseWindowPresenter(view.CardPurchaseWindowView, commandFactory);
         }
 
         private void InitializeMVP()

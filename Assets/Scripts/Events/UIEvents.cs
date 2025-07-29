@@ -180,4 +180,48 @@ namespace Events
             MusicCardData = musicCardData;
         }
     }
+
+    // Card purchase action events
+    public class CardPurchaseWindowOpenedEvent : GameEvent
+    {
+        public MusicCardData MusicCardData { get; private set; }
+        public Dictionary<ResourceType, int> CurrentPlayerTokens { get; private set; }
+
+        public CardPurchaseWindowOpenedEvent(MusicCardData musicCardData, Dictionary<ResourceType, int> currentPlayerTokens)
+        {
+            MusicCardData = musicCardData;
+            CurrentPlayerTokens = currentPlayerTokens;
+        }
+    }
+
+    public class CardPurchaseWindowClosedEvent : GameEvent
+    {
+        public CardPurchaseWindowClosedEvent()
+        {
+        }
+    }
+
+    public class TokenAddedToCardPurchaseEvent : GameEvent
+    {
+        public ResourceType ResourceType { get; private set; }
+        public int CurrentTokenCount { get; private set; }
+
+        public TokenAddedToCardPurchaseEvent(ResourceType resourceType, int currentTokenCount)
+        {
+            ResourceType = resourceType;
+            CurrentTokenCount = currentTokenCount;
+        }
+    }
+
+    public class CardPurchasedEvent : GameEvent
+    {
+        public string CardId { get; private set; }
+        public Dictionary<ResourceType, int> BoardTokens { get; private set; }
+
+        public CardPurchasedEvent(string cardId, Dictionary<ResourceType, int> boardTokens)
+        {
+            CardId = cardId;
+            BoardTokens = boardTokens;
+        }
+    }
 }

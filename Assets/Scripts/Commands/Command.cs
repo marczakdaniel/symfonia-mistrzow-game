@@ -434,4 +434,73 @@ namespace Command
             return true;
         }
     }
+
+    // Card purchase action
+    public class AddTokenToCardPurchaseCommand : BasePlayerActionCommand
+    {
+        public override string CommandType => "AddTokenToCardPurchase";
+        private readonly ResourceType token;
+        private readonly TurnService turnService;
+
+        public AddTokenToCardPurchaseCommand(ResourceType token, TurnService turnService) : base()
+        {
+            this.token = token;
+            this.turnService = turnService;
+        }
+
+        public override async UniTask<bool> Validate()
+        {
+            return true;
+        }
+
+        public override async UniTask<bool> Execute()
+        {
+            if (!turnService.CanAddTokenToCardPurchase(token))
+            {
+                return false;
+            }
+
+            turnService.AddTokenToCardPurchase(token);
+            await AsyncEventBus.Instance.PublishAndWaitAsync(new TokenAddedToCardPurchaseEvent(token, turnService.GetCardPurchaseTokensCount(token)));
+            return true;
+        }
+    }
+
+    
+    public class PurchaseCardCommand : BasePlayerActionCommand
+    {
+        public override string CommandType => "PurchaseCard";
+        private readonly string cardId;
+        private readonly TurnService turnService;
+        private readonly BoardService boardService;
+
+        public PurchaseCardCommand(string cardId, TurnService turnService, BoardService boardService) : base()
+        {
+            this.cardId = cardId;
+            this.turnService = turnService;
+            this.boardService = boardService;
+        }
+
+        public override async UniTask<bool> Validate()
+        {
+            return true;
+        }
+
+        public override async UniTask<bool> Execute()
+        {
+            var selectedTokens = turnService.GetCardPurchaseTokens();
+
+            if (!turnService.CanPurchaseCardWithResources(cardId, selectedTokens))
+            {
+                UnityEngine.Debug.LogError("Cannot purchase card");
+                return false;
+            }
+
+            turnService.PurchaseCard(cardId, selectedTokens);
+            await AsyncEventBus.Instance.PublishAndWaitAsync(new CardPurchasedEvent(cardId, boardService.GetAllBoardResources()));
+
+            UnityEngine.Debug.LogError("Card purchased");
+            return true;
+        }
+    }
 }

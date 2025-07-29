@@ -62,7 +62,7 @@ namespace Command
 
         public CloseMusicCardDetailsPanelCommand CreateCloseMusicCardDetailsPanelCommand(string musicCardId)
         {
-            return new CloseMusicCardDetailsPanelCommand(musicCardId);
+            return new CloseMusicCardDetailsPanelCommand(musicCardId, turnService);
         }
 
         public OpenTokenDetailsPanelCommand CreateOpenTokenDetailsPanelCommand(ResourceType resourceType)
@@ -110,6 +110,28 @@ namespace Command
         public ReserveCardCommand CreateReserveCardCommand(string cardId)
         {
             return new ReserveCardCommand(cardId, turnService, boardService);
+        }
+
+        // Card purchase action commands
+
+        public AddTokenToCardPurchaseCommand CreateAddTokenToCardPurchaseCommand(ResourceType token)
+        {
+            return new AddTokenToCardPurchaseCommand(token, turnService);
+        }
+
+        public PurchaseCardCommand CreatePurchaseCardCommand(string cardId)
+        {
+            return new PurchaseCardCommand(cardId, turnService, boardService);
+        }
+
+        public OpenCardPurchaseWindowCommand CreateOpenCardPurchaseWindowCommand(string musicCardId)
+        {       
+            return new OpenCardPurchaseWindowCommand(musicCardId, turnService, boardService);
+        }
+
+        public CloseCardPurchaseWindowCommand CreateCloseCardPurchaseWindowCommand()
+        {
+            return new CloseCardPurchaseWindowCommand(turnService);
         }
     }
 }

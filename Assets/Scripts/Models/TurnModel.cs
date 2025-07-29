@@ -24,6 +24,8 @@ namespace Models
         public TurnState State {get; private set; }
         public List<ResourceType> SelectedTokens {get; private set; } = new List<ResourceType>();
         public List<ResourceType> ReturnTokens {get; private set; } = new List<ResourceType>();
+        public ResourceCollectionModel CardPurchaseTokens {get; private set; } = new ResourceCollectionModel();
+
         public bool CanAddTokenToSelectedTokens(ResourceType token)
         {
             if (SelectedTokens.Count >= 3) return false;

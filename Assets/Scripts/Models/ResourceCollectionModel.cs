@@ -34,7 +34,29 @@ namespace Models
                     resources[token] = 1;
                 }
             }
+
+            foreach (ResourceType resourceType in Enum.GetValues(typeof(ResourceType)))
+            {
+                if (!resources.ContainsKey(resourceType))
+                {
+                    resources[resourceType] = 0;
+                }
+            }
+
             TotalCount = tokens.Length;
+        }
+
+        public ResourceCollectionModel(int melody, int harmony, int rhythm, int instrumentation, int dynamics, int inspiration)
+        {
+            resources = new Dictionary<ResourceType, int>();
+            resources[ResourceType.Melody] = melody;
+            resources[ResourceType.Harmony] = harmony;
+            resources[ResourceType.Rhythm] = rhythm;
+            resources[ResourceType.Instrumentation] = instrumentation;
+            resources[ResourceType.Dynamics] = dynamics;
+            resources[ResourceType.Inspiration] = inspiration;
+
+            TotalCount = melody + harmony + rhythm + instrumentation + dynamics + inspiration;
         }
 
         public int GetCount(ResourceType resourceType) => resources.GetValueOrDefault(resourceType, 0);
@@ -134,6 +156,19 @@ namespace Models
             {
                 RemoveResource(r.Key, r.Value);
             }
+        }
+
+        public int HowManychNeedToAddToHaveAll(ResourceCollectionModel other)
+        {
+            var result = 0;
+            foreach (var r in other.resources)
+            {
+                if (resources[r.Key] < r.Value)
+                {
+                    result += r.Value - resources[r.Key];
+                }
+            }
+            return result;
         }
     }
 }

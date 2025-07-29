@@ -1,4 +1,5 @@
 using UI.Board;
+using UI.CardPurchaseWindow;
 using UI.MusicCardDetailsPanel;
 using UI.ReturnTokenWindow;
 using UI.SelectTokenWindow;
@@ -14,11 +15,13 @@ namespace UI.GameWindow
         public SelectTokenWindowView SelectTokenWindowView => selectTokenWindowView;
         public StartTurnWindowView StartTurnWindowView => startTurnWindowView;
         public ReturnTokenWindowView ReturnTokenWindowView => returnTokenWindowView;
+        public CardPurchaseWindowView CardPurchaseWindowView => cardPurchaseWindowView;
         
         [SerializeField] private BoardView boardView;
         [SerializeField] private MusicCardDetailsPanelView musicCardDetailsPanelView;
         [SerializeField] private SelectTokenWindowView selectTokenWindowView;
         [SerializeField] private StartTurnWindowView startTurnWindowView;
         [SerializeField] private ReturnTokenWindowView returnTokenWindowView;
+        [SerializeField] private CardPurchaseWindowView cardPurchaseWindowView;
     }
 }

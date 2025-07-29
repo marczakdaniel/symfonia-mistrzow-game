@@ -44,10 +44,12 @@ namespace Command
     {
         public override string CommandType => "CloseMusicCardDetailsPanel";
         public string MusicCardId { get; private set; }
+        private readonly TurnService turnService;
 
-        public CloseMusicCardDetailsPanelCommand(string musicCardId) : base()
+        public CloseMusicCardDetailsPanelCommand(string musicCardId, TurnService turnService) : base()
         {
             MusicCardId = musicCardId;
+            this.turnService = turnService;
         }
 
         public override async UniTask<bool> Validate()
@@ -57,6 +59,7 @@ namespace Command
 
         public override async UniTask<bool> Execute()
         {
+            turnService.StopSelectingMusicCard();
             await AsyncEventBus.Instance.PublishAndWaitAsync(new MusicCardDetailsPanelClosedEvent(MusicCardId));
             return true;
         }
@@ -120,6 +123,59 @@ namespace Command
         }
     }
 
+    public class OpenCardPurchaseWindowCommand : BaseUICommand
+    {
+        public override string CommandType => "OpenCardPurchaseWindow";
+        private readonly TurnService turnService;
+        private readonly string musicCardId;
+        private readonly BoardService boardService;
+        public OpenCardPurchaseWindowCommand(string musicCardId, TurnService turnService, BoardService boardService) : base()
+        {
+            this.turnService = turnService;
+            this.musicCardId = musicCardId;
+            this.boardService = boardService;
+        }
+
+        public override async UniTask<bool> Validate()
+        {
+            return true;
+        }
+
+        public override async UniTask<bool> Execute()
+        {
+            var currentPlayerTokens = turnService.GetCurrentPlayerModel().Tokens.GetAllResources();
+            var musicCardData = MusicCardRepository.Instance.GetCard(musicCardId);
+
+            var openEvent = new CardPurchaseWindowOpenedEvent(musicCardData, currentPlayerTokens);
+            await AsyncEventBus.Instance.PublishAndWaitAsync(openEvent);
+
+            return true;
+        }
+    }   
+
+    public class CloseCardPurchaseWindowCommand : BaseUICommand
+    {
+        public override string CommandType => "CloseCardPurchaseWindow";
+        private readonly TurnService turnService;
+        public CloseCardPurchaseWindowCommand(TurnService turnService) : base()
+        {
+            this.turnService = turnService;
+        }
+
+        public override async UniTask<bool> Validate()
+        {
+            return true;
+        }
+
+        public override async UniTask<bool> Execute()
+        {
+            turnService.ClearCardPurchaseTokens();
+            await AsyncEventBus.Instance.PublishAndWaitAsync(new CardPurchaseWindowClosedEvent());
+            return true;
+        }
+    }
+
+    
     /*
     public enum GameWindowType
     {

@@ -1,4 +1,6 @@
 using System;
+using DefaultNamespace.Elements;
+using Models;
 using UnityEngine;
 
 namespace DefaultNamespace.Data
@@ -76,6 +78,11 @@ namespace DefaultNamespace.Data
         public int TotalCost()
         {
             return melody + harmony + rhythm + instrumentation + dynamics;
+        }
+
+        public ResourceCollectionModel GetResourceCollectionModel()
+        {
+            return new ResourceCollectionModel(melody, harmony, rhythm, instrumentation, dynamics, 0);
         }
     }
 }

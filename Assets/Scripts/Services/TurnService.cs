@@ -8,6 +8,7 @@ namespace Services
     {
         private readonly GameModel gameModel;
         private TurnModel turnModel => gameModel.turnModel;
+        private MusicCardRepository musicCardRepository => MusicCardRepository.Instance;
         
         public TurnService(GameModel gameModel)
         {
@@ -212,6 +213,70 @@ namespace Services
             }
 
             return true;
+        }
+
+        public void StopSelectingMusicCard()
+        {
+            turnModel.SetState(TurnState.WaitingForAction);
+        }
+
+        // Buy card actions
+
+        public bool CanPurchaseCard(string cardId)
+        {
+            var currentPlayer = gameModel.GetPlayer(turnModel.CurrentPlayerId);
+            var card = musicCardRepository.GetCard(cardId);
+            var needToAdd = card.cost.GetResourceCollectionModel().HowManychNeedToAddToHaveAll(currentPlayer.Tokens);
+            var numberOfInspirationTokens = currentPlayer.Tokens.GetCount(ResourceType.Inspiration);
+            return needToAdd <= numberOfInspirationTokens;
+        }
+
+        public bool CanPurchaseCardWithResources(string cardId, ResourceCollectionModel tokens)
+        {
+            var currentPlayer = gameModel.GetPlayer(turnModel.CurrentPlayerId);
+            var card = musicCardRepository.GetCard(cardId);
+            var needToAdd = tokens.HowManychNeedToAddToHaveAll(card.cost.GetResourceCollectionModel());
+            var numberOfInspirationTokens = tokens.GetCount(ResourceType.Inspiration);
+            return needToAdd == numberOfInspirationTokens;
+        }
+
+        public ResourceCollectionModel GetCardPurchaseTokens()
+        {
+            return turnModel.CardPurchaseTokens;
+        }
+
+        public void PurchaseCard(string cardId, ResourceCollectionModel tokens)
+        {
+            turnModel.SetState(TurnState.ReadyToEndTurn);
+            var currentPlayer = gameModel.GetPlayer(turnModel.CurrentPlayerId);
+
+            var card = musicCardRepository.GetCard(cardId);
+            currentPlayer.AddCardToPurchased(cardId);
+            gameModel.board.RemoveCardFromBoard(cardId);
+            currentPlayer.RemoveTokens(tokens);
+            gameModel.board.AddTokens(tokens);
+        }
+
+        public bool CanAddTokenToCardPurchase(ResourceType token)
+        {
+            var currentPlayer = gameModel.GetPlayer(turnModel.CurrentPlayerId);
+            var currentTokens = turnModel.CardPurchaseTokens.GetCount(token) + 1;
+            return currentTokens <= currentPlayer.Tokens.GetCount(token);
+        }
+
+        public void AddTokenToCardPurchase(ResourceType token)
+        {
+            turnModel.CardPurchaseTokens.AddResource(token, 1);
+        }
+
+        public int GetCardPurchaseTokensCount(ResourceType token)
+        {
+            return turnModel.CardPurchaseTokens.GetCount(token);
+        }
+
+        public void ClearCardPurchaseTokens()
+        {
+            turnModel.CardPurchaseTokens.Clear();
         }
     }
 }
