@@ -5,6 +5,7 @@ using DefaultNamespace.Data;
 using Events;
 using R3;
 using System;
+using Assets.Scripts.UI.Elements;
 
 namespace UI.ReturnTokenWindow.ReturnTokenSinglePlayerToken
 {
@@ -12,14 +13,15 @@ namespace UI.ReturnTokenWindow.ReturnTokenSinglePlayerToken
         IDisposable,
         IAsyncEventHandler<TokenAddedToReturnTokensEvent>,
         IAsyncEventHandler<TokenRemovedFromReturnTokensEvent>,
-        IAsyncEventHandler<ReturnTokenWindowOpenedEvent>
+        IAsyncEventHandler<ReturnTokenWindowOpenedEvent>,
+        IAsyncEventHandler<ReturnTokensConfirmedEvent>
     {
         private readonly ReturnTokenSinglePlayerTokenViewModel viewModel;
-        private readonly ReturnTokenSinglePlayerTokenView view;
+        private readonly UniversalTokenElement view;
         private readonly CommandFactory commandFactory;
         private IDisposable disposable;
 
-        public ReturnTokenSinglePlayerTokenPresenter(ResourceType token, ReturnTokenSinglePlayerTokenView view, CommandFactory commandFactory)
+        public ReturnTokenSinglePlayerTokenPresenter(ResourceType token, UniversalTokenElement view, CommandFactory commandFactory)
         {
             this.viewModel = new ReturnTokenSinglePlayerTokenViewModel(token);
             this.commandFactory = commandFactory;
@@ -41,7 +43,6 @@ namespace UI.ReturnTokenWindow.ReturnTokenSinglePlayerToken
         private void ConnectModel(DisposableBuilder d)
         {
             viewModel.State.Subscribe(state => HandleStateChange(state).ToObservable()).AddTo(ref d);
-            viewModel.Count.Subscribe(count => view.SetToken(viewModel.Token, count)).AddTo(ref d);
         }
 
         private async UniTask HandleStateChange(ReturnTokenSinglePlayerTokenState state)
@@ -49,24 +50,16 @@ namespace UI.ReturnTokenWindow.ReturnTokenSinglePlayerToken
             switch (state)
             {
                 case ReturnTokenSinglePlayerTokenState.Disabled:
-                    view.gameObject.SetActive(false);
                     break;
                 case ReturnTokenSinglePlayerTokenState.Active:
-                    view.gameObject.SetActive(true);
                     break;
-                case ReturnTokenSinglePlayerTokenState.DuringAddingTokenAnimation:
-                    view.gameObject.SetActive(true);
-                    view.SetToken(viewModel.Token, viewModel.Count.Value);
-                    viewModel.OnAddTokenFinished();
+                case ReturnTokenSinglePlayerTokenState.DuringReturnTokenInitialization:
+                    view.Initialize(viewModel.Token, viewModel.Count);
+                    viewModel.OnReturnTokenInitializationFinished();
                     break;
-                case ReturnTokenSinglePlayerTokenState.DuringRemovingTokenAnimation:    
-                    view.gameObject.SetActive(true);
-                    view.SetToken(viewModel.Token, viewModel.Count.Value);
-                    viewModel.OnRemoveTokenFinished();
-                    break;
-                case ReturnTokenSinglePlayerTokenState.DuringAcceptingTokensAnimation:
-                    view.gameObject.SetActive(true);
-                    viewModel.OnAcceptTokensFinished();
+                case ReturnTokenSinglePlayerTokenState.DuringChangingTokenValue:
+                    await view.UpdateValue(viewModel.Count, true);
+                    viewModel.OnChangeTokenValueFinished();
                     break;
             }
         }
@@ -87,26 +80,33 @@ namespace UI.ReturnTokenWindow.ReturnTokenSinglePlayerToken
             AsyncEventBus.Instance.Subscribe<ReturnTokenWindowOpenedEvent>(this);
             AsyncEventBus.Instance.Subscribe<TokenAddedToReturnTokensEvent>(this);
             AsyncEventBus.Instance.Subscribe<TokenRemovedFromReturnTokensEvent>(this);
+            AsyncEventBus.Instance.Subscribe<ReturnTokensConfirmedEvent>(this);
         }
 
         public async UniTask HandleAsync(ReturnTokenWindowOpenedEvent gameEvent)
         {
-            viewModel.OnReturnTokenWindowOpened(gameEvent.CurrentPlayerTokens[viewModel.Token]);
+            viewModel.ReturnTokenInitialization(gameEvent.CurrentPlayerTokens[viewModel.Token]);
             await UniTask.WaitUntil(() => viewModel.State.Value == ReturnTokenSinglePlayerTokenState.Active);
         }
 
         public async UniTask HandleAsync(TokenAddedToReturnTokensEvent gameEvent)
         {
             if (viewModel.Token != gameEvent.ResourceType) return;
-            viewModel.AddToken(gameEvent.CurrentTokenCount);
+            viewModel.ChangeTokenValue(gameEvent.CurrentTokenCount);
             await UniTask.WaitUntil(() => viewModel.State.Value == ReturnTokenSinglePlayerTokenState.Active);
         }
 
         public async UniTask HandleAsync(TokenRemovedFromReturnTokensEvent gameEvent)
         {
             if (viewModel.Token != gameEvent.ResourceType) return;
-            viewModel.RemoveToken(gameEvent.CurrentTokenCount);
+            viewModel.ChangeTokenValue(gameEvent.CurrentTokenCount);
             await UniTask.WaitUntil(() => viewModel.State.Value == ReturnTokenSinglePlayerTokenState.Active);
+        }
+
+        public async UniTask HandleAsync(ReturnTokensConfirmedEvent gameEvent)
+        {
+            viewModel.OnReturnTokenWindowClosed();
+            await UniTask.WaitUntil(() => viewModel.State.Value == ReturnTokenSinglePlayerTokenState.Disabled);
         }
 
         public void Dispose()

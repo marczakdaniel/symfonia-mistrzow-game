@@ -18,14 +18,12 @@ namespace UI.SelectTokenWindow.SelectSingleToken
         private readonly SelectSingleTokenView view;
         private readonly SelectSingleTokenViewModel viewModel;
         private readonly CommandFactory commandFactory;
-        private readonly IGameModelReader gameModelReader;
         private IDisposable disposables;
 
-        public SelectSingleTokenPresenter(SelectSingleTokenView view, ResourceType resourceType, CommandFactory commandFactory, IGameModelReader gameModelReader)
+        public SelectSingleTokenPresenter(SelectSingleTokenView view, ResourceType resourceType, CommandFactory commandFactory)
         {
             this.view = view;
             this.viewModel = new SelectSingleTokenViewModel(resourceType);
-            this.gameModelReader = gameModelReader;
             this.commandFactory = commandFactory;
             InitializeMVP();
             SubscribeToEvents();

@@ -4,6 +4,10 @@ using R3;
 using DefaultNamespace.Elements;
 using UI.SelectTokenWindow.SelectBoardTokenPanel;
 using UI.SelectTokenWindow.ChoosenBoardTokenPanel;
+using Assets.Scripts.UI.Elements;
+using System.Collections.Generic;
+using DefaultNamespace.Data;
+using System;
 
 namespace UI.SelectTokenWindow
 {
@@ -19,6 +23,7 @@ namespace UI.SelectTokenWindow
         [SerializeField] private ChoosenBoardTokenPanelView choosenBoardTokenPanelView;
         [SerializeField] private ButtonElement closeButton;
         [SerializeField] private ButtonElement acceptButton;
+        [SerializeField] private UniversalTokenElement[] playerTokens = new UniversalTokenElement[6];
 
         private void Awake()
         {
@@ -34,6 +39,14 @@ namespace UI.SelectTokenWindow
         public void OnOpenWindow()
         {
             gameObject.SetActive(true);
+        }
+
+        public void InitializePlayerTokens(Dictionary<ResourceType, int> playerTokens)
+        {
+            foreach (var token in Enum.GetValues(typeof(ResourceType)))
+            {
+                this.playerTokens[(int)token].Initialize((ResourceType)token, playerTokens[(ResourceType)token]);
+            }
         }
     }
 }

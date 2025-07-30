@@ -19,17 +19,15 @@ namespace UI.SelectTokenWindow
         private readonly SelectTokenWindowView view;
         private readonly SelectTokenWindowViewModel viewModel;
         private readonly CommandFactory commandFactory;
-        private readonly IGameModelReader gameModelReader;
         private IDisposable disposables;
 
         private SelectBoardTokenPanelPresenter selectBoardTokenPanelPresenter;
         private ChoosenBoardTokenPanelPresenter choosenBoardTokenPanelPresenter;
 
-        public SelectTokenWindowPresenter(SelectTokenWindowView view, CommandFactory commandFactory, IGameModelReader gameModelReader)
+        public SelectTokenWindowPresenter(SelectTokenWindowView view, CommandFactory commandFactory)
         {
             this.view = view;
             this.viewModel = new SelectTokenWindowViewModel();
-            this.gameModelReader = gameModelReader;
             this.commandFactory = commandFactory;
 
             InitializeChildMVP();
@@ -41,8 +39,8 @@ namespace UI.SelectTokenWindow
 
         private void InitializeChildMVP()
         {
-            selectBoardTokenPanelPresenter = new SelectBoardTokenPanelPresenter(view.SelectBoardTokenPanelView, commandFactory, gameModelReader);
-            choosenBoardTokenPanelPresenter = new ChoosenBoardTokenPanelPresenter(view.ChoosenBoardTokenPanelView, commandFactory, gameModelReader);
+            selectBoardTokenPanelPresenter = new SelectBoardTokenPanelPresenter(view.SelectBoardTokenPanelView, commandFactory);
+            choosenBoardTokenPanelPresenter = new ChoosenBoardTokenPanelPresenter(view.ChoosenBoardTokenPanelView, commandFactory);
         }
 
         private void InitializeMVP()
@@ -68,6 +66,7 @@ namespace UI.SelectTokenWindow
                     view.OnCloseWindow();
                     break;
                 case SelectTokenWindowState.DuringOpenAnimation:
+                    view.InitializePlayerTokens(viewModel.PlayerTokens);
                     viewModel.OnOpenWindowFinished();
                     break;
                 case SelectTokenWindowState.DuringCloseAnimation:
@@ -107,7 +106,7 @@ namespace UI.SelectTokenWindow
 
         public async UniTask HandleAsync(TokenDetailsPanelOpenedEvent tokenDetailsPanelOpenedEvent)
         {
-            viewModel.OpenWindow(tokenDetailsPanelOpenedEvent.ResourceType);
+            viewModel.OpenWindow(tokenDetailsPanelOpenedEvent.ResourceType, tokenDetailsPanelOpenedEvent.CurrentPlayerTokens);
             await UniTask.WaitUntil(() => viewModel.State.Value == SelectTokenWindowState.Active);
         }
 

@@ -22,11 +22,10 @@ namespace UI.SelectTokenWindow.SelectBoardTokenPanel
 
         private SelectSingleTokenPresenter[] selectSingleTokenPresenters = new SelectSingleTokenPresenter[Enum.GetValues(typeof(ResourceType)).Length - 1];
 
-        public SelectBoardTokenPanelPresenter(SelectBoardTokenPanelView view, CommandFactory commandFactory, IGameModelReader gameModelReader)
+        public SelectBoardTokenPanelPresenter(SelectBoardTokenPanelView view, CommandFactory commandFactory)
         {
             this.view = view;
             this.viewModel = new SelectBoardTokenPanelViewModel();
-            this.gameModelReader = gameModelReader;
             this.commandFactory = commandFactory;
 
             InitializeChildMVP();
@@ -43,7 +42,7 @@ namespace UI.SelectTokenWindow.SelectBoardTokenPanel
                 }
 
                 var selectSingleTokenView = view.SelectSingleTokenViews[(int)resourceType];
-                var selectSingleTokenPresenter = new SelectSingleTokenPresenter(selectSingleTokenView, (ResourceType)resourceType, commandFactory, gameModelReader);
+                var selectSingleTokenPresenter = new SelectSingleTokenPresenter(selectSingleTokenView, (ResourceType)resourceType, commandFactory);
                 selectSingleTokenPresenters[(int)resourceType] = selectSingleTokenPresenter;
             }
         }

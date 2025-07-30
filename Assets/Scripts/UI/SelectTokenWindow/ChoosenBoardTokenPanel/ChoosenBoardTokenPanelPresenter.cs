@@ -19,16 +19,14 @@ namespace UI.SelectTokenWindow.ChoosenBoardTokenPanel
         private readonly ChoosenBoardTokenPanelView view;
         private readonly ChoosenBoardTokenPanelViewModel viewModel;
         private readonly CommandFactory commandFactory;
-        private readonly IGameModelReader gameModelReader;
         private readonly CompositeDisposable subscriptions = new CompositeDisposable();
         private IDisposable disposables;
 
-        public ChoosenBoardTokenPanelPresenter(ChoosenBoardTokenPanelView view, CommandFactory commandFactory, IGameModelReader gameModelReader)
+        public ChoosenBoardTokenPanelPresenter(ChoosenBoardTokenPanelView view, CommandFactory commandFactory)
         {
             this.view = view ?? throw new ArgumentNullException(nameof(view));
             this.viewModel = new ChoosenBoardTokenPanelViewModel();
             this.commandFactory = commandFactory ?? throw new ArgumentNullException(nameof(commandFactory));
-            this.gameModelReader = gameModelReader ?? throw new ArgumentNullException(nameof(gameModelReader));
 
             InitializeMVP();
             SubscribeToEvents();

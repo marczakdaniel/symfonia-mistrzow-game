@@ -32,8 +32,8 @@ namespace DefaultNamespace.Elements {
             Sequence pressSequence = DOTween.Sequence();
             
             // Zmniejsz z lekkim obrotem
-            pressSequence.Join(transform.DOScale(originalScale * 0.9f, 0.08f).SetEase(Ease.OutBack));
-            pressSequence.Join(transform.DORotate(new Vector3(0, 0, -1f), 0.08f).SetEase(Ease.OutQuad));
+            pressSequence.Join(transform.DOScale(originalScale * 0.9f, 0.06f).SetEase(Ease.OutBack));
+            pressSequence.Join(transform.DORotate(new Vector3(0, 0, -1f), 0.06f).SetEase(Ease.OutQuad));
             
             pressSequence.Play();
         }
@@ -51,11 +51,11 @@ namespace DefaultNamespace.Elements {
             Sequence releaseSequence = DOTween.Sequence();
             
             // Przywróć rozmiar z efektem sprężystości
-            releaseSequence.Join(transform.DOScale(originalScale * 1.05f, 0.12f).SetEase(Ease.OutBack));
-            releaseSequence.Join(transform.DOScale(originalScale, 0.06f).SetDelay(0.12f).SetEase(Ease.InOutQuad));
+            releaseSequence.Join(transform.DOScale(originalScale * 1.05f, 0.09f).SetEase(Ease.OutBack));
+            releaseSequence.Join(transform.DOScale(originalScale, 0.05f).SetDelay(0.09f).SetEase(Ease.InOutQuad));
             
             // Przywróć obrót
-            releaseSequence.Join(transform.DORotate(Vector3.zero, 0.12f).SetEase(Ease.OutQuad));
+            releaseSequence.Join(transform.DORotate(Vector3.zero, 0.09f).SetEase(Ease.OutQuad));
             
             releaseSequence.OnComplete(() => {
                 lockClick = false;
@@ -72,8 +72,8 @@ namespace DefaultNamespace.Elements {
                 
                 // Przywróć rozmiar bez efektów
                 Sequence exitSequence = DOTween.Sequence();
-                exitSequence.Join(transform.DOScale(originalScale, 0.08f).SetEase(Ease.OutQuad));
-                exitSequence.Join(transform.DORotate(Vector3.zero, 0.08f).SetEase(Ease.OutQuad));
+                exitSequence.Join(transform.DOScale(originalScale, 0.06f).SetEase(Ease.OutQuad));
+                exitSequence.Join(transform.DORotate(Vector3.zero, 0.06f).SetEase(Ease.OutQuad));
                 
                 exitSequence.Play();
             }
