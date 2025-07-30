@@ -38,11 +38,37 @@ ShaderVariantCollection:
         passType: 0
       - keywords: COLOR_FILTER EDGE_SHINY
         passType: 0
+      - keywords: COLOR_FILTER EDGE_SHINY GRADATION_COLOR2
+        passType: 0
+      - keywords: COLOR_FILTER EDGE_SHINY GRADATION_COLOR2 TRANSITION_SHINY
+        passType: 0
+      - keywords: COLOR_FILTER EDGE_SHINY TRANSITION_SHINY
+        passType: 0
       - keywords: COLOR_FILTER TRANSITION_SHINY
+        passType: 0
+      - keywords: DETAIL_MULTIPLY EDGE_SHINY
         passType: 0
       - keywords: EDGE_PLAIN
         passType: 0
       - keywords: EDGE_SHINY
+        passType: 0
+      - keywords: EDGE_SHINY GRADATION_COLOR2
+        passType: 0
+      - keywords: EDGE_SHINY GRADATION_COLOR4
+        passType: 0
+      - keywords: EDGE_SHINY SAMPLING_BLUR_FAST
+        passType: 0
+      - keywords: EDGE_SHINY SAMPLING_BLUR_MEDIUM
+        passType: 0
+      - keywords: EDGE_SHINY SAMPLING_EDGE_ALPHA
+        passType: 0
+      - keywords: EDGE_SHINY SAMPLING_EDGE_LUMINANCE
+        passType: 0
+      - keywords: EDGE_SHINY TARGET_HUE
+        passType: 0
+      - keywords: EDGE_SHINY TARGET_LUMINANCE
+        passType: 0
+      - keywords: EDGE_SHINY TRANSITION_SHINY
         passType: 0
       - keywords: SAMPLING_BLUR_DETAIL
         passType: 0
@@ -50,9 +76,23 @@ ShaderVariantCollection:
         passType: 0
       - keywords: SAMPLING_BLUR_MEDIUM
         passType: 0
+      - keywords: SAMPLING_BLUR_MEDIUM TRANSITION_BURN
+        passType: 0
+      - keywords: SAMPLING_BLUR_MEDIUM TRANSITION_DISSOLVE
+        passType: 0
+      - keywords: SAMPLING_BLUR_MEDIUM TRANSITION_MASK
+        passType: 0
+      - keywords: SAMPLING_BLUR_MEDIUM TRANSITION_MELT
+        passType: 0
+      - keywords: SAMPLING_BLUR_MEDIUM TRANSITION_PATTERN
+        passType: 0
       - keywords: SAMPLING_PIXELATION
         passType: 0
       - keywords: TONE_GRAYSCALE
+        passType: 0
+      - keywords: TRANSITION_BLAZE
+        passType: 0
+      - keywords: TRANSITION_BURN
         passType: 0
       - keywords: TRANSITION_CUTOFF
         passType: 0
@@ -61,6 +101,8 @@ ShaderVariantCollection:
       - keywords: TRANSITION_FADE
         passType: 0
       - keywords: TRANSITION_MASK
+        passType: 0
+      - keywords: TRANSITION_MELT
         passType: 0
       - keywords: TRANSITION_SHINY
         passType: 0

@@ -45,11 +45,13 @@ namespace UI.StartTurnWindow
         {
             switch (state)
             {
-                case StartTurnWindowState.Closed:
-                    view.gameObject.SetActive(false);
-                    break;  
-                case StartTurnWindowState.Opened:
-                    view.gameObject.SetActive(true);
+                case StartTurnWindowState.DuringOpenAnimation:
+                    await view.OpenWindow();
+                    viewModel.OpenAnimationCompleted();
+                    break;
+                case StartTurnWindowState.DuringCloseAnimation:
+                    await view.CloseWindow();
+                    viewModel.CloseAnimationCompleted();
                     break;
             }
         }   

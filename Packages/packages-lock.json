@@ -9,6 +9,13 @@
       },
       "hash": "0a98b387a92cf9f1f47012fc46d4cf33576e5916"
     },
+    "com.brunomikoski.animationsequencer": {
+      "version": "https://github.com/brunomikoski/Animation-Sequencer.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "1ed78c4c69ccf295d02098da2ae31e44a5dd16fa"
+    },
     "com.coffee.ui-effect": {
       "version": "https://github.com/mob-sakai/UIEffect.git?path=Packages/src",
       "depth": 0,

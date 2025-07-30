@@ -177,7 +177,8 @@ namespace Command
         {
             if (turnService.IsTokenReturnNeeded())
             {
-                await AsyncEventBus.Instance.PublishAndWaitAsync(new ReturnTokenWindowOpenedEvent(turnService.GetCurrentPlayerModel().Tokens.GetAllResources()));
+                var allPlayerTokensCount = turnService.GetCurrentPlayerModel().Tokens.TotalCount;
+                await AsyncEventBus.Instance.PublishAndWaitAsync(new ReturnTokenWindowOpenedEvent(turnService.GetCurrentPlayerModel().Tokens.GetAllResources(), allPlayerTokensCount));
                 return true;
             }
 
@@ -319,8 +320,9 @@ namespace Command
 
             turnService.AddTokenToReturnTokens(token);
 
-            var currentTokenCount = turnService.GetCurrentPlayerModel().Tokens.GetCount(token) - turnService.GetReturnTokensCount(token);
-            await AsyncEventBus.Instance.PublishAndWaitAsync(new TokenAddedToReturnTokensEvent(token, currentTokenCount, turnService.GetReturnTokens()));
+            var currentTokenCount = turnService.GetCurrentPlayerModel().Tokens.GetCount(token) - turnService.GetReturnTokensCount(token);   
+            var allPlayerTokensCount = turnService.GetCurrentPlayerModel().Tokens.TotalCount - turnService.GetAllReturnTokensCount();
+            await AsyncEventBus.Instance.PublishAndWaitAsync(new TokenAddedToReturnTokensEvent(token, currentTokenCount, allPlayerTokensCount, turnService.GetReturnTokens()));
             return true;
         }
     }
@@ -347,7 +349,8 @@ namespace Command
             turnService.RemoveTokenFromReturnTokens(token);
 
             var currentTokenCount = turnService.GetCurrentPlayerModel().Tokens.GetCount(token) - turnService.GetReturnTokensCount(token);
-            await AsyncEventBus.Instance.PublishAndWaitAsync(new TokenRemovedFromReturnTokensEvent(token, currentTokenCount, turnService.GetReturnTokens()));
+            var allPlayerTokensCount = turnService.GetCurrentPlayerModel().Tokens.TotalCount - turnService.GetAllReturnTokensCount();
+            await AsyncEventBus.Instance.PublishAndWaitAsync(new TokenRemovedFromReturnTokensEvent(token, currentTokenCount, allPlayerTokensCount, turnService.GetReturnTokens()));
             return true;
         }   
     }

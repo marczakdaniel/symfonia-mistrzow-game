@@ -93,9 +93,11 @@ namespace Events
     public class ReturnTokenWindowOpenedEvent : GameEvent
     {
         public Dictionary<ResourceType, int> CurrentPlayerTokens { get; private set; }
-        public ReturnTokenWindowOpenedEvent(Dictionary<ResourceType, int> currentPlayerTokens)
+        public int AllPlayerTokensCount { get; private set; }
+        public ReturnTokenWindowOpenedEvent(Dictionary<ResourceType, int> currentPlayerTokens, int allPlayerTokensCount)
         {
             CurrentPlayerTokens = currentPlayerTokens;  
+            AllPlayerTokensCount = allPlayerTokensCount;
         }
     }
 
@@ -103,12 +105,14 @@ namespace Events
     {
         public ResourceType ResourceType { get; private set; }
         public int CurrentTokenCount { get; private set; }
+        public int AllPlayerTokensCount { get; private set; }
         public ResourceType?[] CurrentReturnTokens { get; private set; }
 
-        public TokenAddedToReturnTokensEvent(ResourceType resourceType, int currentTokenCount, ResourceType?[] currentReturnTokens)
+        public TokenAddedToReturnTokensEvent(ResourceType resourceType, int currentTokenCount, int allPlayerTokensCount, ResourceType?[] currentReturnTokens)
         {
             ResourceType = resourceType;
             CurrentTokenCount = currentTokenCount;
+            AllPlayerTokensCount = allPlayerTokensCount;
             CurrentReturnTokens = currentReturnTokens;
         }
     }
@@ -117,12 +121,14 @@ namespace Events
     {
         public ResourceType ResourceType { get; private set; }
         public int CurrentTokenCount { get; private set; }
+        public int AllPlayerTokensCount { get; private set; }
         public ResourceType?[] CurrentReturnTokens { get; private set; }
 
-        public TokenRemovedFromReturnTokensEvent(ResourceType resourceType, int currentTokenCount, ResourceType?[] currentReturnTokens)
+        public TokenRemovedFromReturnTokensEvent(ResourceType resourceType, int currentTokenCount, int allPlayerTokensCount, ResourceType?[] currentReturnTokens)
         {
             ResourceType = resourceType;
             CurrentTokenCount = currentTokenCount;
+            AllPlayerTokensCount = allPlayerTokensCount;
             CurrentReturnTokens = currentReturnTokens;
         }
     }

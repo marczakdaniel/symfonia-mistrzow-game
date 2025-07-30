@@ -6,6 +6,8 @@ namespace UI.StartTurnWindow
     public enum StartTurnWindowState
     {
         Closed,
+        DuringOpenAnimation,
+        DuringCloseAnimation,
         Opened
     }
 
@@ -22,10 +24,20 @@ namespace UI.StartTurnWindow
         public void Open(string currentPlayerName)
         {
             CurrentPlayerName.Value = currentPlayerName;
+            SetState(StartTurnWindowState.DuringOpenAnimation);
+        }
+
+        public void OpenAnimationCompleted()
+        {
             SetState(StartTurnWindowState.Opened);
         }
 
         public void Close()
+        {
+            SetState(StartTurnWindowState.DuringCloseAnimation);
+        }
+
+        public void CloseAnimationCompleted()
         {
             SetState(StartTurnWindowState.Closed);
         }
