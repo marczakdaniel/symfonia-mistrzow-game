@@ -142,13 +142,17 @@ namespace Services
 
         public void ConfirmReturnTokens()
         {
-            turnModel.SetState(TurnState.ReadyToEndTurn);
             var currentPlayer = gameModel.GetPlayer(turnModel.CurrentPlayerId);
             var returnTokens = turnModel.GetReturnTokensCollection();
 
             gameModel.Board.AddTokens(returnTokens);
             currentPlayer.RemoveTokens(returnTokens);
 
+            turnModel.ClearReturnTokens();
+        }
+
+        public void ClearReturnTokens()
+        {
             turnModel.ClearReturnTokens();
         }
 

@@ -98,7 +98,7 @@ namespace UI.Board.BoardTokenPanel.BoardToken
             }
 
             SetTokenCount(numberOfTokens);
-            SetState(BoardTokenState.Active);
+            SetState(BoardTokenState.DuringAddingTokens);
             return true;
         }
 

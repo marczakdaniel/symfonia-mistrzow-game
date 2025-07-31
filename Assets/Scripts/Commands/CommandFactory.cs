@@ -109,6 +109,11 @@ namespace Command
             return new ConfirmReturnTokensCommand(turnService, boardService);
         }
 
+        public CloseReturnTokenWindowCommand CreateCloseReturnTokenWindowCommand()
+        {
+            return new CloseReturnTokenWindowCommand(turnService);
+        }
+
         public ReserveCardCommand CreateReserveCardCommand(string cardId)
         {
             return new ReserveCardCommand(cardId, turnService, boardService);

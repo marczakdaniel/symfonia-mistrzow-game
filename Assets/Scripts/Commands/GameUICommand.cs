@@ -231,6 +231,32 @@ namespace Command
             return true;
         }
     }
+
+    // Token Return Window
+
+    public class CloseReturnTokenWindowCommand : BaseUICommand
+    {
+        public override string CommandType => "CloseReturnTokenWindow";
+        private readonly TurnService turnService;
+
+        public CloseReturnTokenWindowCommand(TurnService turnService) : base()
+        {
+            this.turnService = turnService;
+        }
+
+        public override async UniTask<bool> Validate()
+        {
+            return true;
+        }
+
+        public override async UniTask<bool> Execute()
+        {
+            turnService.ClearReturnTokens();
+
+            await AsyncEventBus.Instance.PublishAndWaitAsync(new ReturnTokenWindowClosedEvent());
+            return true;
+        }
+    }
     /*
     public enum GameWindowType
     {

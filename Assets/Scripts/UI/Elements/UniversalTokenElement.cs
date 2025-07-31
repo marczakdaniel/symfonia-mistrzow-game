@@ -36,7 +36,7 @@ namespace Assets.Scripts.UI.Elements
             countText.text = $"x{currentValue}";
             image.sprite = resourceType.GetSingleResourceTypeImages().StackImage1;
 
-            if (playAnimation)
+            if (playAnimation && valueChange != 0)
             {
                 await valueChangeAnimationController.PlayAnimation(valueChange);
             }

@@ -104,6 +104,13 @@ namespace Events
         }
     }
 
+    public class ReturnTokenWindowClosedEvent : GameEvent
+    {
+        public ReturnTokenWindowClosedEvent()
+        {
+        }
+    }
+
     public class TokenAddedToReturnTokensEvent : GameEvent
     {
         public ResourceType ResourceType { get; private set; }

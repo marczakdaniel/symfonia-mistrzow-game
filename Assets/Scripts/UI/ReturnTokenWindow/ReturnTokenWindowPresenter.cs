@@ -14,7 +14,8 @@ namespace UI.ReturnTokenWindow
         IAsyncEventHandler<ReturnTokenWindowOpenedEvent>,
         IAsyncEventHandler<ReturnTokensConfirmedEvent>,
         IAsyncEventHandler<TokenAddedToReturnTokensEvent>,
-        IAsyncEventHandler<TokenRemovedFromReturnTokensEvent>
+        IAsyncEventHandler<TokenRemovedFromReturnTokensEvent>,
+        IAsyncEventHandler<ReturnTokenWindowClosedEvent>
     {
         private readonly ReturnTokenWindowViewModel viewModel;
         private readonly ReturnTokenWindowView view;
@@ -78,11 +79,18 @@ namespace UI.ReturnTokenWindow
         private void ConnectView(DisposableBuilder d)
         {
             view.OnAcceptClicked.Subscribe(_ => HandleAcceptClicked().ToObservable()).AddTo(ref d);
+            view.OnCloseClicked.Subscribe(_ => HandleCloseClicked().ToObservable()).AddTo(ref d);
         }
 
         private async UniTask HandleAcceptClicked()
         {
             var command = commandFactory.CreateConfirmReturnTokensCommand();
+            await CommandService.Instance.ExecuteCommandAsync(command);
+        }
+
+        private async UniTask HandleCloseClicked()
+        {
+            var command = commandFactory.CreateCloseReturnTokenWindowCommand();
             await CommandService.Instance.ExecuteCommandAsync(command);
         }
 
@@ -92,6 +100,7 @@ namespace UI.ReturnTokenWindow
             AsyncEventBus.Instance.Subscribe<ReturnTokensConfirmedEvent>(this);
             AsyncEventBus.Instance.Subscribe<TokenAddedToReturnTokensEvent>(this);
             AsyncEventBus.Instance.Subscribe<TokenRemovedFromReturnTokensEvent>(this);
+            AsyncEventBus.Instance.Subscribe<ReturnTokenWindowClosedEvent>(this);
         }
 
         public async UniTask HandleAsync(ReturnTokenWindowOpenedEvent gameEvent)
@@ -115,6 +124,12 @@ namespace UI.ReturnTokenWindow
         public async UniTask HandleAsync(TokenRemovedFromReturnTokensEvent gameEvent)
         {
             viewModel.UpdateAllPlayerTokensCount(gameEvent.AllPlayerTokensCount);
+        }
+
+        public async UniTask HandleAsync(ReturnTokenWindowClosedEvent gameEvent)
+        {
+            viewModel.CloseWindow();
+            await UniTask.WaitUntil(() => viewModel.State.Value == ReturnTokenWindowState.Disabled);
         }
 
         public void Dispose()

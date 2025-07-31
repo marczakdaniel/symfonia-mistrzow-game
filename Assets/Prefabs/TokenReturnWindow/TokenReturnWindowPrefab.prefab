@@ -113,6 +113,7 @@ RectTransform:
   - {fileID: 1851780626644332796}
   - {fileID: 5514220523615072877}
   - {fileID: 5385781865136105504}
+  - {fileID: 2145303911441389081}
   m_Father: {fileID: 1812466406857511271}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -187,6 +188,7 @@ MonoBehaviour:
   - rid: 404503320979570824
   - rid: 404503320979570826
   - rid: 404503320979570828
+  - rid: 404503341272137803
   updateType: 0
   timeScaleIndependent: 0
   autoplayMode: 2
@@ -229,6 +231,7 @@ MonoBehaviour:
         - {fileID: 8231176405706174193}
         - {fileID: 8925444949012759158}
         - {fileID: 5514220523615072877}
+        - {fileID: 2145303911441389081}
         scale: {x: 0, y: 0, z: 0}
     - rid: 404503320979570801
       type: {class: PlayUIEffectTweener, ns: AnimationSequencer, asm: Assembly-CSharp}
@@ -620,6 +623,32 @@ MonoBehaviour:
         actions:
         - rid: 404503329233961048
     - rid: 404503329233961048
+      type: {class: ScaleDOTweenAction, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
+      data:
+        direction: 0
+        ease:
+          ease: 7
+          curve:
+            serializedVersion: 2
+            m_Curve: []
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
+        isRelative: 0
+        scale: {x: 1, y: 1, z: 1}
+        axisConstraint: 0
+    - rid: 404503341272137803
+      type: {class: DOTweenAnimationStep, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
+      data:
+        delay: 1.5
+        flowType: 1
+        target: {fileID: 4017419551264235970}
+        duration: 0.3
+        loopCount: 0
+        loopType: 0
+        actions:
+        - rid: 404503341272137804
+    - rid: 404503341272137804
       type: {class: ScaleDOTweenAction, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
       data:
         direction: 0
@@ -1347,6 +1376,7 @@ MonoBehaviour:
   returnTokenAllTokenCountElementPrefab: {fileID: 920416764124865778}
   openAnimationSequencerController: {fileID: 3530890246299835360}
   closeAnimationSequencerController: {fileID: 4925795295754667447}
+  closeButton: {fileID: 2217268576871097120}
 --- !u!1 &4406660992560087493
 GameObject:
   m_ObjectHideFlags: 0
@@ -2091,6 +2121,7 @@ MonoBehaviour:
   - rid: 404503320979570824
   - rid: 404503320979570826
   - rid: 404503320979570828
+  - rid: 404503341272137805
   - rid: 404503320979570801
   - rid: 404503320979570832
   updateType: 0
@@ -2135,6 +2166,7 @@ MonoBehaviour:
         - {fileID: 8231176405706174193}
         - {fileID: 8925444949012759158}
         - {fileID: 5514220523615072877}
+        - {fileID: 2145303911441389081}
         scale: {x: 1, y: 1, z: 1}
     - rid: 404503320979570801
       type: {class: PlayUIEffectTweener, ns: AnimationSequencer, asm: Assembly-CSharp}
@@ -2514,6 +2546,32 @@ MonoBehaviour:
         flowType: 0
         targetGameObject: {fileID: 446245866826291990}
         active: 0
+    - rid: 404503341272137805
+      type: {class: DOTweenAnimationStep, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
+      data:
+        delay: 1.4
+        flowType: 1
+        target: {fileID: 4017419551264235970}
+        duration: 0.3
+        loopCount: 0
+        loopType: 0
+        actions:
+        - rid: 404503341272137806
+    - rid: 404503341272137806
+      type: {class: ScaleDOTweenAction, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
+      data:
+        direction: 0
+        ease:
+          ease: 7
+          curve:
+            serializedVersion: 2
+            m_Curve: []
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
+        isRelative: 0
+        scale: {x: 0, y: 0, z: 0}
+        axisConstraint: 0
 --- !u!1 &9071813600884346312
 GameObject:
   m_ObjectHideFlags: 0
@@ -3492,6 +3550,136 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5c87eac5e6688f48b509419b5356875, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1001 &6967218614320058534
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1229963622972550441}
+    m_Modifications:
+    - target: {fileID: 6300594846475825508, guid: ea2a29fe4129d9d49a2741d158f8b2ee, type: 3}
+      propertyPath: m_Name
+      value: UniversalCloseButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 9040183370846373567, guid: ea2a29fe4129d9d49a2741d158f8b2ee, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9040183370846373567, guid: ea2a29fe4129d9d49a2741d158f8b2ee, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9040183370846373567, guid: ea2a29fe4129d9d49a2741d158f8b2ee, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9040183370846373567, guid: ea2a29fe4129d9d49a2741d158f8b2ee, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9040183370846373567, guid: ea2a29fe4129d9d49a2741d158f8b2ee, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9040183370846373567, guid: ea2a29fe4129d9d49a2741d158f8b2ee, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9040183370846373567, guid: ea2a29fe4129d9d49a2741d158f8b2ee, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 152.0942
+      objectReference: {fileID: 0}
+    - target: {fileID: 9040183370846373567, guid: ea2a29fe4129d9d49a2741d158f8b2ee, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 119.5037
+      objectReference: {fileID: 0}
+    - target: {fileID: 9040183370846373567, guid: ea2a29fe4129d9d49a2741d158f8b2ee, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9040183370846373567, guid: ea2a29fe4129d9d49a2741d158f8b2ee, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9040183370846373567, guid: ea2a29fe4129d9d49a2741d158f8b2ee, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9040183370846373567, guid: ea2a29fe4129d9d49a2741d158f8b2ee, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9040183370846373567, guid: ea2a29fe4129d9d49a2741d158f8b2ee, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9040183370846373567, guid: ea2a29fe4129d9d49a2741d158f8b2ee, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9040183370846373567, guid: ea2a29fe4129d9d49a2741d158f8b2ee, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9040183370846373567, guid: ea2a29fe4129d9d49a2741d158f8b2ee, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9040183370846373567, guid: ea2a29fe4129d9d49a2741d158f8b2ee, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9040183370846373567, guid: ea2a29fe4129d9d49a2741d158f8b2ee, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9040183370846373567, guid: ea2a29fe4129d9d49a2741d158f8b2ee, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 858.94794
+      objectReference: {fileID: 0}
+    - target: {fileID: 9040183370846373567, guid: ea2a29fe4129d9d49a2741d158f8b2ee, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 470.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9040183370846373567, guid: ea2a29fe4129d9d49a2741d158f8b2ee, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9040183370846373567, guid: ea2a29fe4129d9d49a2741d158f8b2ee, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9040183370846373567, guid: ea2a29fe4129d9d49a2741d158f8b2ee, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ea2a29fe4129d9d49a2741d158f8b2ee, type: 3}
+--- !u!224 &2145303911441389081 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 9040183370846373567, guid: ea2a29fe4129d9d49a2741d158f8b2ee, type: 3}
+  m_PrefabInstance: {fileID: 6967218614320058534}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2217268576871097120 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9112429593930822534, guid: ea2a29fe4129d9d49a2741d158f8b2ee, type: 3}
+  m_PrefabInstance: {fileID: 6967218614320058534}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4017419551264235970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b954f9d444763348a1860fe2acf06d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &4017419551264235970 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6300594846475825508, guid: ea2a29fe4129d9d49a2741d158f8b2ee, type: 3}
+  m_PrefabInstance: {fileID: 6967218614320058534}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7204677553037589210
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -10,19 +10,21 @@ namespace UI.ReturnTokenWindow
     public class ReturnTokenWindowView : MonoBehaviour
     {
         public Subject<Unit> OnAcceptClicked = new Subject<Unit>();
-
+        public Subject<Unit> OnCloseClicked = new Subject<Unit>();
         [SerializeField] private ButtonElement acceptButton;
         [SerializeField] private UniversalTokenElement[] returnTokenSinglePlayerTokenPrefab = new UniversalTokenElement[6];
         [SerializeField] private ReturnTokenSelectedPanelView returnTokenSelectedPanelPrefab;
         [SerializeField] private ReturnTokenAllTokenCountElement returnTokenAllTokenCountElementPrefab;
         [SerializeField] private AnimationSequencerController openAnimationSequencerController;
         [SerializeField] private AnimationSequencerController closeAnimationSequencerController;
+        [SerializeField] private ButtonElement closeButton;
 
         public UniversalTokenElement[] ReturnTokenSinglePlayerTokenPrefab => returnTokenSinglePlayerTokenPrefab;
         public ReturnTokenSelectedPanelView ReturnTokenSelectedPanelPrefab => returnTokenSelectedPanelPrefab;
         public void Awake()
         {
             acceptButton.OnClick.Subscribe(OnAcceptClicked.OnNext).AddTo(this);
+            closeButton.OnClick.Subscribe(OnCloseClicked.OnNext).AddTo(this);
         }
 
         public async UniTask PlayOpenAnimation()
