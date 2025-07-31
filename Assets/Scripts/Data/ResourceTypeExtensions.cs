@@ -58,12 +58,12 @@ namespace DefaultNamespace.Data
         {
             return resourceType switch
             {
-                ResourceType.Melody => Color.blue,
-                ResourceType.Harmony => Color.green,
-                ResourceType.Rhythm => Color.red,
-                ResourceType.Instrumentation => new Color(0.6f, 0.3f, 0.1f), // Brown
-                ResourceType.Dynamics => Color.magenta,
-                ResourceType.Inspiration => Color.yellow,
+                ResourceType.Melody => new Color(0.1254902f, 0.254902f, 0.2627451f),
+                ResourceType.Harmony => new Color(0.2588235f, 0.3215686f, 0.1098039f),
+                ResourceType.Rhythm => new Color(0.4352942f, 0.1490196f, 0.04313726f),
+                ResourceType.Instrumentation => new Color(0.3568628f, 0.1529412f, 0.2588235f), // Brown
+                ResourceType.Dynamics => new Color(0.4156863f, 0.227451f, 0.09411766f),
+                ResourceType.Inspiration => new Color(0.7215686f, 0.4313726f, 0f),
                 _ => Color.white
             };
         }

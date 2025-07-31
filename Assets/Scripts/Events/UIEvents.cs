@@ -253,21 +253,24 @@ namespace Events
 
     public class PlayerResourcesWindowOpenedEvent : GameEvent
     {
-        public string PlayerId { get; private set; }
         public bool IsCurrentPlayer { get; private set; }
+        public string PlayerName { get; private set; }
+        public int NumberOfPoints { get; private set; }
         public Dictionary<ResourceType, int> CurrentPlayerTokens { get; private set; }
         public Dictionary<ResourceType, int> CurrentPlayerCards { get; private set; }
         public List<MusicCardData> ReservedMusicCards { get; private set; }
 
         public PlayerResourcesWindowOpenedEvent(
-            string playerId, 
             bool isCurrentPlayer, 
+            string playerName,
+            int numberOfPoints,
             Dictionary<ResourceType, int> currentPlayerTokens, 
             Dictionary<ResourceType, int> currentPlayerCards, 
             List<MusicCardData> reservedMusicCards)
         {
-            PlayerId = playerId;
             IsCurrentPlayer = isCurrentPlayer;
+            PlayerName = playerName;
+            NumberOfPoints = numberOfPoints;
             CurrentPlayerTokens = currentPlayerTokens;
             CurrentPlayerCards = currentPlayerCards;
             ReservedMusicCards = reservedMusicCards;

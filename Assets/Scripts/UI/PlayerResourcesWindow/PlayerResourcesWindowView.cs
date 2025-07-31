@@ -5,6 +5,7 @@ using Cysharp.Threading.Tasks;
 using DefaultNamespace.Data;
 using DefaultNamespace.Elements;
 using R3;
+using TMPro;
 using UI.MusicCardDetailsPanel;
 using UnityEngine;
 
@@ -24,13 +25,16 @@ namespace UI.PlayerResourcesWindow
         private ButtonElement closeButton;
 
         [SerializeField]
-        public AnimationSequencerController openAnimation;
+        private AnimationSequencerController openAnimation;
 
         [SerializeField]
-        public AnimationSequencerController closeAnimation;
+        private AnimationSequencerController closeAnimation;
 
-        public UniversalPlayerResourceElement[] PlayerResources => playerResources;
-        public DetailsMusicCardView[] DetailsMusicCardView => detailsMusicCardView;
+        [SerializeField]
+        private TextMeshProUGUI playerNameText;
+
+        [SerializeField]
+        private TextMeshProUGUI numberOfPointsText;
 
         public async UniTask PlayOpenAnimation()
         {
@@ -42,8 +46,11 @@ namespace UI.PlayerResourcesWindow
             await closeAnimation.PlayAsync();
         }
 
-        public void Initialize(Dictionary<ResourceType, int> currentPlayerTokens, Dictionary<ResourceType, int> currentPlayerCards, List<MusicCardData> reservedMusicCards)
+        public void Initialize(string playerName, int numberOfPoints, Dictionary<ResourceType, int> currentPlayerTokens, Dictionary<ResourceType, int> currentPlayerCards, List<MusicCardData> reservedMusicCards)
         {
+            playerNameText.text = playerName;
+            numberOfPointsText.text = numberOfPoints.ToString();
+
             for (int i = 0; i < playerResources.Length; i++)
             {
                 playerResources[i].Initialize((ResourceType)i, currentPlayerTokens[(ResourceType)i], currentPlayerCards[(ResourceType)i]);

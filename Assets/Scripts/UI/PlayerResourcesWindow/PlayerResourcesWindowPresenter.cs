@@ -52,7 +52,7 @@ namespace UI.PlayerResourcesWindow
 
         public async UniTask HandleAsync(PlayerResourcesWindowOpenedEvent playerResourcesWindowOpenedEvent)
         {
-            view.Initialize(playerResourcesWindowOpenedEvent.CurrentPlayerTokens, playerResourcesWindowOpenedEvent.CurrentPlayerCards, playerResourcesWindowOpenedEvent.ReservedMusicCards);
+            view.Initialize(playerResourcesWindowOpenedEvent.PlayerName, playerResourcesWindowOpenedEvent.NumberOfPoints, playerResourcesWindowOpenedEvent.CurrentPlayerTokens, playerResourcesWindowOpenedEvent.CurrentPlayerCards, playerResourcesWindowOpenedEvent.ReservedMusicCards);
             await view.PlayOpenAnimation();
         }
 

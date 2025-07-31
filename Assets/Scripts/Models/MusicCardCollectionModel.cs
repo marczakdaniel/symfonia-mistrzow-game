@@ -108,5 +108,14 @@ namespace Models
             return GetAllCards().FirstOrDefault(predicate);
         }
         
+        public ResourceCollectionModel GetAllResourceCollection()
+        {
+            var resources = new ResourceCollectionModel();
+            foreach (var card in GetAllCards())
+            {
+                resources.AddResource(card.ResourceProvided, 1);
+            }
+            return resources;
+        }
     }
 }

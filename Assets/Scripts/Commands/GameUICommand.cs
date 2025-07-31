@@ -200,12 +200,13 @@ namespace Command
         {
             var isCurrentPlayer = turnService.GetCurrentPlayerId() == playerId;
             var player = playerService.GetPlayer(playerId);
+            var numberOfPoints = player.Points;
+            var playerName = player.PlayerName;
             var currentPlayerTokens = player.Tokens.GetAllResources();
+            var currentPlayerCards = player.PurchasedCards.GetAllResourceCollection().GetAllResources();
             var reservedMusicCards = player.ReservedCards.GetAllCards().ToList();
 
-            UnityEngine.Debug.LogError($"OpenPlayerResourcesWindowCommand: {reservedMusicCards.Count}");
-
-            var openEvent = new PlayerResourcesWindowOpenedEvent(playerId, isCurrentPlayer, currentPlayerTokens, currentPlayerTokens, reservedMusicCards);
+            var openEvent = new PlayerResourcesWindowOpenedEvent(isCurrentPlayer, playerName, numberOfPoints, currentPlayerTokens, currentPlayerCards, reservedMusicCards);
             await AsyncEventBus.Instance.PublishAndWaitAsync(openEvent);
             return true;
         }

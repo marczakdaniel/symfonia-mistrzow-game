@@ -1,36 +1,38 @@
 # Details
 
-Date : 2025-07-27 22:12:23
+Date : 2025-07-31 23:24:28
 
 Directory c:\\Users\\danie\\Desktop\\symfonia-mistrzow-game\\Assets\\Scripts
 
-Total : 105 files,  7470 codes, 1387 comments, 1506 blanks, all 10363 lines
+Total : 115 files,  8509 codes, 1382 comments, 1688 blanks, all 11579 lines
 
 [Summary](results.md) / Details / [Diff Summary](diff.md) / [Diff Details](diff-details.md)
 
 ## Files
 | filename | language | code | comment | blank | total |
 | :--- | :--- | ---: | ---: | ---: | ---: |
-| [Assets/Scripts/Commands/Command.cs](/Assets/Scripts/Commands/Command.cs) | C# | 277 | 91 | 69 | 437 |
+| [Assets/Scripts/AnimationSequencer/PlayUIEffectTweener.cs](/Assets/Scripts/AnimationSequencer/PlayUIEffectTweener.cs) | C# | 43 | 0 | 5 | 48 |
+| [Assets/Scripts/AnimationSequencer/SetTargetTransformScale.cs](/Assets/Scripts/AnimationSequencer/SetTargetTransformScale.cs) | C# | 41 | 0 | 5 | 46 |
+| [Assets/Scripts/Commands/Command.cs](/Assets/Scripts/Commands/Command.cs) | C# | 372 | 92 | 90 | 554 |
 | [Assets/Scripts/Commands/CommandExecutor.cs](/Assets/Scripts/Commands/CommandExecutor.cs) | C# | 201 | 57 | 37 | 295 |
-| [Assets/Scripts/Commands/CommandFactory.cs](/Assets/Scripts/Commands/CommandFactory.cs) | C# | 75 | 18 | 22 | 115 |
+| [Assets/Scripts/Commands/CommandFactory.cs](/Assets/Scripts/Commands/CommandFactory.cs) | C# | 105 | 20 | 31 | 156 |
 | [Assets/Scripts/Commands/CommandQueue.cs](/Assets/Scripts/Commands/CommandQueue.cs) | C# | 207 | 44 | 43 | 294 |
 | [Assets/Scripts/Commands/CommandQueueUsageExample.cs](/Assets/Scripts/Commands/CommandQueueUsageExample.cs) | C# | 4 | 279 | 3 | 286 |
 | [Assets/Scripts/Commands/CommandService.cs](/Assets/Scripts/Commands/CommandService.cs) | C# | 175 | 52 | 38 | 265 |
 | [Assets/Scripts/Commands/CommandServiceDebugger.cs](/Assets/Scripts/Commands/CommandServiceDebugger.cs) | C# | 2 | 189 | 1 | 192 |
-| [Assets/Scripts/Commands/GameUICommand.cs](/Assets/Scripts/Commands/GameUICommand.cs) | C# | 103 | 66 | 20 | 189 |
+| [Assets/Scripts/Commands/GameUICommand.cs](/Assets/Scripts/Commands/GameUICommand.cs) | C# | 195 | 67 | 37 | 299 |
 | [Assets/Scripts/Commands/ICommand.cs](/Assets/Scripts/Commands/ICommand.cs) | C# | 58 | 39 | 15 | 112 |
 | [Assets/Scripts/Data/MusicCardData.cs](/Assets/Scripts/Data/MusicCardData.cs) | C# | 40 | 2 | 7 | 49 |
-| [Assets/Scripts/Data/ResourceCost.cs](/Assets/Scripts/Data/ResourceCost.cs) | C# | 70 | 3 | 8 | 81 |
+| [Assets/Scripts/Data/ResourceCost.cs](/Assets/Scripts/Data/ResourceCost.cs) | C# | 76 | 3 | 9 | 88 |
 | [Assets/Scripts/Data/ResourceType.cs](/Assets/Scripts/Data/ResourceType.cs) | C# | 12 | 0 | 2 | 14 |
 | [Assets/Scripts/Data/ResourceTypeExtensions.cs](/Assets/Scripts/Data/ResourceTypeExtensions.cs) | C# | 73 | 4 | 8 | 85 |
 | [Assets/Scripts/Data/ResourceTypeImages.cs](/Assets/Scripts/Data/ResourceTypeImages.cs) | C# | 10 | 0 | 2 | 12 |
 | [Assets/Scripts/Data/SingleResourceTypeImages.cs](/Assets/Scripts/Data/SingleResourceTypeImages.cs) | C# | 17 | 0 | 1 | 18 |
 | [Assets/Scripts/Events/AsyncEventBus.cs](/Assets/Scripts/Events/AsyncEventBus.cs) | C# | 214 | 17 | 46 | 277 |
 | [Assets/Scripts/Events/AsyncEventBusUsageExample.cs](/Assets/Scripts/Events/AsyncEventBusUsageExample.cs) | C# | 92 | 80 | 20 | 192 |
-| [Assets/Scripts/Events/GameEvents.cs](/Assets/Scripts/Events/GameEvents.cs) | C# | 27 | 177 | 6 | 210 |
-| [Assets/Scripts/Events/UIEvents.cs](/Assets/Scripts/Events/UIEvents.cs) | C# | 149 | 5 | 29 | 183 |
-| [Assets/Scripts/Managers/GameManager.cs](/Assets/Scripts/Managers/GameManager.cs) | C# | 48 | 12 | 12 | 72 |
+| [Assets/Scripts/Events/GameEvents.cs](/Assets/Scripts/Events/GameEvents.cs) | C# | 33 | 177 | 6 | 216 |
+| [Assets/Scripts/Events/UIEvents.cs](/Assets/Scripts/Events/UIEvents.cs) | C# | 232 | 7 | 44 | 283 |
+| [Assets/Scripts/Managers/GameManager.cs](/Assets/Scripts/Managers/GameManager.cs) | C# | 50 | 12 | 11 | 73 |
 | [Assets/Scripts/Models/BoardModel.cs](/Assets/Scripts/Models/BoardModel.cs) | C# | 351 | 4 | 70 | 425 |
 | [Assets/Scripts/Models/GameConfig.cs](/Assets/Scripts/Models/GameConfig.cs) | C# | 70 | 0 | 12 | 82 |
 | [Assets/Scripts/Models/GameModel.cs](/Assets/Scripts/Models/GameModel.cs) | C# | 300 | 16 | 74 | 390 |
@@ -40,13 +42,14 @@ Total : 105 files,  7470 codes, 1387 comments, 1506 blanks, all 10363 lines
 | [Assets/Scripts/Models/MusicCardRepository.cs](/Assets/Scripts/Models/MusicCardRepository.cs) | C# | 66 | 0 | 13 | 79 |
 | [Assets/Scripts/Models/PlayerModel.cs](/Assets/Scripts/Models/PlayerModel.cs) | C# | 55 | 0 | 16 | 71 |
 | [Assets/Scripts/Models/PlayerRepository.cs](/Assets/Scripts/Models/PlayerRepository.cs) | C# | 0 | 0 | 1 | 1 |
-| [Assets/Scripts/Models/ResourceCollectionModel.cs](/Assets/Scripts/Models/ResourceCollectionModel.cs) | C# | 120 | 1 | 18 | 139 |
-| [Assets/Scripts/Models/TurnModel.cs](/Assets/Scripts/Models/TurnModel.cs) | C# | 143 | 2 | 22 | 167 |
+| [Assets/Scripts/Models/ResourceCollectionModel.cs](/Assets/Scripts/Models/ResourceCollectionModel.cs) | C# | 150 | 1 | 23 | 174 |
+| [Assets/Scripts/Models/TurnModel.cs](/Assets/Scripts/Models/TurnModel.cs) | C# | 144 | 2 | 23 | 169 |
 | [Assets/Scripts/ReactiveObject/ExampleReactiveClass.cs](/Assets/Scripts/ReactiveObject/ExampleReactiveClass.cs) | C# | 75 | 23 | 9 | 107 |
 | [Assets/Scripts/ReactiveObject/ReactiveObject.cs](/Assets/Scripts/ReactiveObject/ReactiveObject.cs) | C# | 17 | 6 | 4 | 27 |
 | [Assets/Scripts/ReactiveObject/ReactiveObjectUsageExample.cs](/Assets/Scripts/ReactiveObject/ReactiveObjectUsageExample.cs) | C# | 83 | 12 | 16 | 111 |
 | [Assets/Scripts/Services/BoardService.cs](/Assets/Scripts/Services/BoardService.cs) | C# | 35 | 0 | 7 | 42 |
-| [Assets/Scripts/Services/TurnService.cs](/Assets/Scripts/Services/TurnService.cs) | C# | 167 | 9 | 41 | 217 |
+| [Assets/Scripts/Services/PlayerService.cs](/Assets/Scripts/Services/PlayerService.cs) | C# | 19 | 0 | 3 | 22 |
+| [Assets/Scripts/Services/TurnService.cs](/Assets/Scripts/Services/TurnService.cs) | C# | 228 | 10 | 54 | 292 |
 | [Assets/Scripts/Test/GameTestManager.cs](/Assets/Scripts/Test/GameTestManager.cs) | C# | 34 | 0 | 5 | 39 |
 | [Assets/Scripts/UI/Board/BoardEndTurnButton/BoardEndTurnButtonPresenter.cs](/Assets/Scripts/UI/Board/BoardEndTurnButton/BoardEndTurnButtonPresenter.cs) | C# | 65 | 0 | 15 | 80 |
 | [Assets/Scripts/UI/Board/BoardEndTurnButton/BoardEndTurnButtonView.cs](/Assets/Scripts/UI/Board/BoardEndTurnButton/BoardEndTurnButtonView.cs) | C# | 15 | 0 | 3 | 18 |
@@ -64,57 +67,64 @@ Total : 105 files,  7470 codes, 1387 comments, 1506 blanks, all 10363 lines
 | [Assets/Scripts/UI/Board/BoardMusicCardPanel/BoardMusicCard/BoardMusicCardViewModel.cs](/Assets/Scripts/UI/Board/BoardMusicCardPanel/BoardMusicCard/BoardMusicCardViewModel.cs) | C# | 147 | 0 | 27 | 174 |
 | [Assets/Scripts/UI/Board/BoardMusicCardPanel/BoardMusicCard/MusicCardCostView.cs](/Assets/Scripts/UI/Board/BoardMusicCardPanel/BoardMusicCard/MusicCardCostView.cs) | C# | 21 | 0 | 2 | 23 |
 | [Assets/Scripts/UI/Board/BoardMusicCardPanel/BoardMusicCard/MusicCardSingleCostView.cs](/Assets/Scripts/UI/Board/BoardMusicCardPanel/BoardMusicCard/MusicCardSingleCostView.cs) | C# | 19 | 0 | 1 | 20 |
-| [Assets/Scripts/UI/Board/BoardPlayersPanel/BoardPlayersPanelPresenter.cs](/Assets/Scripts/UI/Board/BoardPlayersPanel/BoardPlayersPanelPresenter.cs) | C# | 71 | 0 | 16 | 87 |
-| [Assets/Scripts/UI/Board/BoardPlayersPanel/BoardPlayersPanelView.cs](/Assets/Scripts/UI/Board/BoardPlayersPanel/BoardPlayersPanelView.cs) | C# | 10 | 0 | 2 | 12 |
-| [Assets/Scripts/UI/Board/BoardPlayersPanel/BoardPlayersPanelViewModel.cs](/Assets/Scripts/UI/Board/BoardPlayersPanel/BoardPlayersPanelViewModel.cs) | C# | 6 | 0 | 1 | 7 |
-| [Assets/Scripts/UI/Board/BoardPlayersPanel/BoardSinglePlayer/BoardSinglePlayerPresenter.cs](/Assets/Scripts/UI/Board/BoardPlayersPanel/BoardSinglePlayer/BoardSinglePlayerPresenter.cs) | C# | 78 | 0 | 14 | 92 |
-| [Assets/Scripts/UI/Board/BoardPlayersPanel/BoardSinglePlayer/BoardSinglePlayerView.cs](/Assets/Scripts/UI/Board/BoardPlayersPanel/BoardSinglePlayer/BoardSinglePlayerView.cs) | C# | 13 | 0 | 2 | 15 |
-| [Assets/Scripts/UI/Board/BoardPlayersPanel/BoardSinglePlayer/BoardSinglePlayerViewModel.cs](/Assets/Scripts/UI/Board/BoardPlayersPanel/BoardSinglePlayer/BoardSinglePlayerViewModel.cs) | C# | 36 | 0 | 7 | 43 |
-| [Assets/Scripts/UI/Board/BoardPresenter.cs](/Assets/Scripts/UI/Board/BoardPresenter.cs) | C# | 67 | 1 | 13 | 81 |
-| [Assets/Scripts/UI/Board/BoardTokenPanel/BoardTokenPanelPresenter.cs](/Assets/Scripts/UI/Board/BoardTokenPanel/BoardTokenPanelPresenter.cs) | C# | 67 | 0 | 14 | 81 |
-| [Assets/Scripts/UI/Board/BoardTokenPanel/BoardTokenPanelView.cs](/Assets/Scripts/UI/Board/BoardTokenPanel/BoardTokenPanelView.cs) | C# | 10 | 0 | 1 | 11 |
-| [Assets/Scripts/UI/Board/BoardTokenPanel/BoardTokenPanelViewModel.cs](/Assets/Scripts/UI/Board/BoardTokenPanel/BoardTokenPanelViewModel.cs) | C# | 6 | 0 | 1 | 7 |
-| [Assets/Scripts/UI/Board/BoardTokenPanel/BoardToken/BoardTokenChangeValueAnimation.cs](/Assets/Scripts/UI/Board/BoardTokenPanel/BoardToken/BoardTokenChangeValueAnimation.cs) | C# | 7 | 0 | 2 | 9 |
-| [Assets/Scripts/UI/Board/BoardTokenPanel/BoardToken/BoardTokenEntryAnimation.cs](/Assets/Scripts/UI/Board/BoardTokenPanel/BoardToken/BoardTokenEntryAnimation.cs) | C# | 71 | 10 | 20 | 101 |
-| [Assets/Scripts/UI/Board/BoardTokenPanel/BoardToken/BoardTokenPresenter.cs](/Assets/Scripts/UI/Board/BoardTokenPanel/BoardToken/BoardTokenPresenter.cs) | C# | 156 | 6 | 41 | 203 |
-| [Assets/Scripts/UI/Board/BoardTokenPanel/BoardToken/BoardTokenView.cs](/Assets/Scripts/UI/Board/BoardTokenPanel/BoardToken/BoardTokenView.cs) | C# | 35 | 0 | 5 | 40 |
-| [Assets/Scripts/UI/Board/BoardTokenPanel/BoardToken/BoardTokenViewModel.cs](/Assets/Scripts/UI/Board/BoardTokenPanel/BoardToken/BoardTokenViewModel.cs) | C# | 168 | 1 | 34 | 203 |
+| [Assets/Scripts/UI/Board/BoardPlayerPanel/BoardPlayersPanelPresenter.cs](/Assets/Scripts/UI/Board/BoardPlayerPanel/BoardPlayersPanelPresenter.cs) | C# | 101 | 0 | 14 | 115 |
+| [Assets/Scripts/UI/Board/BoardPlayerPanel/BoardPlayersPanelView.cs](/Assets/Scripts/UI/Board/BoardPlayerPanel/BoardPlayersPanelView.cs) | C# | 36 | 0 | 9 | 45 |
+| [Assets/Scripts/UI/Board/BoardPlayerPanel/BoardPlayersPanelViewModel.cs](/Assets/Scripts/UI/Board/BoardPlayerPanel/BoardPlayersPanelViewModel.cs) | C# | 38 | 0 | 6 | 44 |
+| [Assets/Scripts/UI/Board/BoardPresenter.cs](/Assets/Scripts/UI/Board/BoardPresenter.cs) | C# | 73 | 1 | 13 | 87 |
+| [Assets/Scripts/UI/Board/BoardToken/BoardTokenChangeValueAnimation.cs](/Assets/Scripts/UI/Board/BoardToken/BoardTokenChangeValueAnimation.cs) | C# | 7 | 0 | 2 | 9 |
+| [Assets/Scripts/UI/Board/BoardToken/BoardTokenEntryAnimation.cs](/Assets/Scripts/UI/Board/BoardToken/BoardTokenEntryAnimation.cs) | C# | 71 | 10 | 20 | 101 |
+| [Assets/Scripts/UI/Board/BoardToken/BoardTokenPresenter.cs](/Assets/Scripts/UI/Board/BoardToken/BoardTokenPresenter.cs) | C# | 153 | 5 | 34 | 192 |
+| [Assets/Scripts/UI/Board/BoardToken/BoardTokenViewModel.cs](/Assets/Scripts/UI/Board/BoardToken/BoardTokenViewModel.cs) | C# | 146 | 1 | 28 | 175 |
 | [Assets/Scripts/UI/Board/BoardView.cs](/Assets/Scripts/UI/Board/BoardView.cs) | C# | 19 | 0 | 1 | 20 |
 | [Assets/Scripts/UI/Board/BoardViewModel.cs](/Assets/Scripts/UI/Board/BoardViewModel.cs) | C# | 6 | 0 | 1 | 7 |
-| [Assets/Scripts/UI/Elements/ButtonElement.cs](/Assets/Scripts/UI/Elements/ButtonElement.cs) | C# | 20 | 0 | 3 | 23 |
-| [Assets/Scripts/UI/GameWindow/GameWindowPresenter.cs](/Assets/Scripts/UI/GameWindow/GameWindowPresenter.cs) | C# | 69 | 4 | 13 | 86 |
-| [Assets/Scripts/UI/GameWindow/GameWindowView.cs](/Assets/Scripts/UI/GameWindow/GameWindowView.cs) | C# | 22 | 0 | 2 | 24 |
+| [Assets/Scripts/UI/CardPurchaseWindow/CardPurchaseSingleToken/CardPurchaseSingleTokenPresenter.cs](/Assets/Scripts/UI/CardPurchaseWindow/CardPurchaseSingleToken/CardPurchaseSingleTokenPresenter.cs) | C# | 109 | 0 | 17 | 126 |
+| [Assets/Scripts/UI/CardPurchaseWindow/CardPurchaseSingleToken/CardPurchaseSingleTokenView.cs](/Assets/Scripts/UI/CardPurchaseWindow/CardPurchaseSingleToken/CardPurchaseSingleTokenView.cs) | C# | 40 | 0 | 7 | 47 |
+| [Assets/Scripts/UI/CardPurchaseWindow/CardPurchaseSingleToken/CardPurchaseSingleTokenViewModel.cs](/Assets/Scripts/UI/CardPurchaseWindow/CardPurchaseSingleToken/CardPurchaseSingleTokenViewModel.cs) | C# | 36 | 0 | 6 | 42 |
+| [Assets/Scripts/UI/CardPurchaseWindow/CardPurchaseSingleToken/CardPurchaseTokenElement.cs](/Assets/Scripts/UI/CardPurchaseWindow/CardPurchaseSingleToken/CardPurchaseTokenElement.cs) | C# | 14 | 0 | 2 | 16 |
+| [Assets/Scripts/UI/CardPurchaseWindow/CardPurchaseWindowPresenter.cs](/Assets/Scripts/UI/CardPurchaseWindow/CardPurchaseWindowPresenter.cs) | C# | 103 | 0 | 19 | 122 |
+| [Assets/Scripts/UI/CardPurchaseWindow/CardPurchaseWindowView.cs](/Assets/Scripts/UI/CardPurchaseWindow/CardPurchaseWindowView.cs) | C# | 38 | 0 | 8 | 46 |
+| [Assets/Scripts/UI/CardPurchaseWindow/CardPurchaseWindowViewModel.cs](/Assets/Scripts/UI/CardPurchaseWindow/CardPurchaseWindowViewModel.cs) | C# | 27 | 0 | 4 | 31 |
+| [Assets/Scripts/UI/Elements/ButtonElement.cs](/Assets/Scripts/UI/Elements/ButtonElement.cs) | C# | 56 | 7 | 19 | 82 |
+| [Assets/Scripts/UI/Elements/UniversalPlayerResourceElement.cs](/Assets/Scripts/UI/Elements/UniversalPlayerResourceElement.cs) | C# | 31 | 0 | 6 | 37 |
+| [Assets/Scripts/UI/Elements/UniversalTokenElement.cs](/Assets/Scripts/UI/Elements/UniversalTokenElement.cs) | C# | 41 | 0 | 10 | 51 |
+| [Assets/Scripts/UI/Elements/ValueChangeAnimationController.cs](/Assets/Scripts/UI/Elements/ValueChangeAnimationController.cs) | C# | 47 | 0 | 8 | 55 |
+| [Assets/Scripts/UI/GameWindow/GameWindowPresenter.cs](/Assets/Scripts/UI/GameWindow/GameWindowPresenter.cs) | C# | 75 | 4 | 13 | 92 |
+| [Assets/Scripts/UI/GameWindow/GameWindowView.cs](/Assets/Scripts/UI/GameWindow/GameWindowView.cs) | C# | 28 | 0 | 1 | 29 |
 | [Assets/Scripts/UI/GameWindow/GameWindowViewModel.cs](/Assets/Scripts/UI/GameWindow/GameWindowViewModel.cs) | C# | 6 | 0 | 1 | 7 |
 | [Assets/Scripts/UI/MusicCardDetailsPanel/DetailsMusicCardView.cs](/Assets/Scripts/UI/MusicCardDetailsPanel/DetailsMusicCardView.cs) | C# | 35 | 0 | 4 | 39 |
 | [Assets/Scripts/UI/MusicCardDetailsPanel/MusicCardDetailsPanelCloseAnimation.cs](/Assets/Scripts/UI/MusicCardDetailsPanel/MusicCardDetailsPanelCloseAnimation.cs) | C# | 160 | 34 | 43 | 237 |
 | [Assets/Scripts/UI/MusicCardDetailsPanel/MusicCardDetailsPanelOpenAnimation.cs](/Assets/Scripts/UI/MusicCardDetailsPanel/MusicCardDetailsPanelOpenAnimation.cs) | C# | 174 | 35 | 47 | 256 |
-| [Assets/Scripts/UI/MusicCardDetailsPanel/MusicCardDetailsPanelPresenter.cs](/Assets/Scripts/UI/MusicCardDetailsPanel/MusicCardDetailsPanelPresenter.cs) | C# | 95 | 4 | 20 | 119 |
-| [Assets/Scripts/UI/MusicCardDetailsPanel/MusicCardDetailsPanelView.cs](/Assets/Scripts/UI/MusicCardDetailsPanel/MusicCardDetailsPanelView.cs) | C# | 105 | 26 | 13 | 144 |
+| [Assets/Scripts/UI/MusicCardDetailsPanel/MusicCardDetailsPanelPresenter.cs](/Assets/Scripts/UI/MusicCardDetailsPanel/MusicCardDetailsPanelPresenter.cs) | C# | 96 | 2 | 20 | 118 |
+| [Assets/Scripts/UI/MusicCardDetailsPanel/MusicCardDetailsPanelView.cs](/Assets/Scripts/UI/MusicCardDetailsPanel/MusicCardDetailsPanelView.cs) | C# | 61 | 10 | 7 | 78 |
 | [Assets/Scripts/UI/MusicCardDetailsPanel/MusicCardDetailsPanelViewModel.cs](/Assets/Scripts/UI/MusicCardDetailsPanel/MusicCardDetailsPanelViewModel.cs) | C# | 115 | 0 | 25 | 140 |
+| [Assets/Scripts/UI/PlayerResourcesWindow/PlayerResourcesWindowPresenter.cs](/Assets/Scripts/UI/PlayerResourcesWindow/PlayerResourcesWindowPresenter.cs) | C# | 57 | 0 | 12 | 69 |
+| [Assets/Scripts/UI/PlayerResourcesWindow/PlayerResourcesWindowView.cs](/Assets/Scripts/UI/PlayerResourcesWindow/PlayerResourcesWindowView.cs) | C# | 59 | 0 | 12 | 71 |
+| [Assets/Scripts/UI/PlayerResourcesWindow/PlayerResourcesWindowViewModel.cs](/Assets/Scripts/UI/PlayerResourcesWindow/PlayerResourcesWindowViewModel.cs) | C# | 0 | 0 | 1 | 1 |
+| [Assets/Scripts/UI/ReturnTokenWindow/ReturnTokenAllTokenCountElement.cs](/Assets/Scripts/UI/ReturnTokenWindow/ReturnTokenAllTokenCountElement.cs) | C# | 23 | 0 | 2 | 25 |
 | [Assets/Scripts/UI/ReturnTokenWindow/ReturnTokenSelectedPanel/ReturnTokenSelectedPanelPresenter.cs](/Assets/Scripts/UI/ReturnTokenWindow/ReturnTokenSelectedPanel/ReturnTokenSelectedPanelPresenter.cs) | C# | 122 | 0 | 17 | 139 |
 | [Assets/Scripts/UI/ReturnTokenWindow/ReturnTokenSelectedPanel/ReturnTokenSelectedPanelView.cs](/Assets/Scripts/UI/ReturnTokenWindow/ReturnTokenSelectedPanel/ReturnTokenSelectedPanelView.cs) | C# | 69 | 0 | 12 | 81 |
 | [Assets/Scripts/UI/ReturnTokenWindow/ReturnTokenSelectedPanel/ReturnTokenSelectedPanelViewModel.cs](/Assets/Scripts/UI/ReturnTokenWindow/ReturnTokenSelectedPanel/ReturnTokenSelectedPanelViewModel.cs) | C# | 90 | 0 | 17 | 107 |
-| [Assets/Scripts/UI/ReturnTokenWindow/ReturnTokenSinglePlayerToken/ReturnTokenSinglePlayerTokenPresenter.cs](/Assets/Scripts/UI/ReturnTokenWindow/ReturnTokenSinglePlayerToken/ReturnTokenSinglePlayerTokenPresenter.cs) | C# | 102 | 0 | 16 | 118 |
+| [Assets/Scripts/UI/ReturnTokenWindow/ReturnTokenSinglePlayerToken/ReturnTokenSinglePlayerTokenPresenter.cs](/Assets/Scripts/UI/ReturnTokenWindow/ReturnTokenSinglePlayerToken/ReturnTokenSinglePlayerTokenPresenter.cs) | C# | 101 | 0 | 17 | 118 |
 | [Assets/Scripts/UI/ReturnTokenWindow/ReturnTokenSinglePlayerToken/ReturnTokenSinglePlayerTokenView.cs](/Assets/Scripts/UI/ReturnTokenWindow/ReturnTokenSinglePlayerToken/ReturnTokenSinglePlayerTokenView.cs) | C# | 25 | 0 | 4 | 29 |
-| [Assets/Scripts/UI/ReturnTokenWindow/ReturnTokenSinglePlayerToken/ReturnTokenSinglePlayerTokenViewModel.cs](/Assets/Scripts/UI/ReturnTokenWindow/ReturnTokenSinglePlayerToken/ReturnTokenSinglePlayerTokenViewModel.cs) | C# | 62 | 0 | 12 | 74 |
-| [Assets/Scripts/UI/ReturnTokenWindow/ReturnTokenWindowPresenter.cs](/Assets/Scripts/UI/ReturnTokenWindow/ReturnTokenWindowPresenter.cs) | C# | 94 | 0 | 13 | 107 |
-| [Assets/Scripts/UI/ReturnTokenWindow/ReturnTokenWindowView.cs](/Assets/Scripts/UI/ReturnTokenWindow/ReturnTokenWindowView.cs) | C# | 21 | 0 | 3 | 24 |
-| [Assets/Scripts/UI/ReturnTokenWindow/ReturnTokenWindowViewModel.cs](/Assets/Scripts/UI/ReturnTokenWindow/ReturnTokenWindowViewModel.cs) | C# | 25 | 0 | 4 | 29 |
-| [Assets/Scripts/UI/SelectTokenWindow/ChoosenBoardTokenPanel/ChoosenBoardTokenPanelPresenter.cs](/Assets/Scripts/UI/SelectTokenWindow/ChoosenBoardTokenPanel/ChoosenBoardTokenPanelPresenter.cs) | C# | 126 | 0 | 18 | 144 |
+| [Assets/Scripts/UI/ReturnTokenWindow/ReturnTokenSinglePlayerToken/ReturnTokenSinglePlayerTokenViewModel.cs](/Assets/Scripts/UI/ReturnTokenWindow/ReturnTokenSinglePlayerToken/ReturnTokenSinglePlayerTokenViewModel.cs) | C# | 52 | 0 | 10 | 62 |
+| [Assets/Scripts/UI/ReturnTokenWindow/ReturnTokenWindowPresenter.cs](/Assets/Scripts/UI/ReturnTokenWindow/ReturnTokenWindowPresenter.cs) | C# | 110 | 0 | 15 | 125 |
+| [Assets/Scripts/UI/ReturnTokenWindow/ReturnTokenWindowView.cs](/Assets/Scripts/UI/ReturnTokenWindow/ReturnTokenWindowView.cs) | C# | 38 | 0 | 5 | 43 |
+| [Assets/Scripts/UI/ReturnTokenWindow/ReturnTokenWindowViewModel.cs](/Assets/Scripts/UI/ReturnTokenWindow/ReturnTokenWindowViewModel.cs) | C# | 40 | 0 | 7 | 47 |
+| [Assets/Scripts/UI/SelectTokenWindow/ChoosenBoardTokenPanel/ChoosenBoardTokenPanelPresenter.cs](/Assets/Scripts/UI/SelectTokenWindow/ChoosenBoardTokenPanel/ChoosenBoardTokenPanelPresenter.cs) | C# | 124 | 0 | 18 | 142 |
 | [Assets/Scripts/UI/SelectTokenWindow/ChoosenBoardTokenPanel/ChoosenBoardTokenPanelView.cs](/Assets/Scripts/UI/SelectTokenWindow/ChoosenBoardTokenPanel/ChoosenBoardTokenPanelView.cs) | C# | 68 | 0 | 12 | 80 |
 | [Assets/Scripts/UI/SelectTokenWindow/ChoosenBoardTokenPanel/ChoosenBoardTokenPanelViewModel.cs](/Assets/Scripts/UI/SelectTokenWindow/ChoosenBoardTokenPanel/ChoosenBoardTokenPanelViewModel.cs) | C# | 91 | 0 | 17 | 108 |
 | [Assets/Scripts/UI/SelectTokenWindow/ChoosenBoardTokenPanel/ChoosenSingleBoardTokenView.cs](/Assets/Scripts/UI/SelectTokenWindow/ChoosenBoardTokenPanel/ChoosenSingleBoardTokenView.cs) | C# | 21 | 0 | 4 | 25 |
-| [Assets/Scripts/UI/SelectTokenWindow/SelectBoardTokenPanel/SelectBoardTokenPanelPresenter.cs](/Assets/Scripts/UI/SelectTokenWindow/SelectBoardTokenPanel/SelectBoardTokenPanelPresenter.cs) | C# | 82 | 0 | 18 | 100 |
+| [Assets/Scripts/UI/SelectTokenWindow/SelectBoardTokenPanel/SelectBoardTokenPanelPresenter.cs](/Assets/Scripts/UI/SelectTokenWindow/SelectBoardTokenPanel/SelectBoardTokenPanelPresenter.cs) | C# | 81 | 0 | 18 | 99 |
 | [Assets/Scripts/UI/SelectTokenWindow/SelectBoardTokenPanel/SelectBoardTokenPanelView.cs](/Assets/Scripts/UI/SelectTokenWindow/SelectBoardTokenPanel/SelectBoardTokenPanelView.cs) | C# | 10 | 0 | 1 | 11 |
 | [Assets/Scripts/UI/SelectTokenWindow/SelectBoardTokenPanel/SelectBoardTokenPanelViewModel.cs](/Assets/Scripts/UI/SelectTokenWindow/SelectBoardTokenPanel/SelectBoardTokenPanelViewModel.cs) | C# | 26 | 0 | 5 | 31 |
-| [Assets/Scripts/UI/SelectTokenWindow/SelectBoardTokenPanel/SelectSingleToken/SelectSingleTokenPresenter.cs](/Assets/Scripts/UI/SelectTokenWindow/SelectBoardTokenPanel/SelectSingleToken/SelectSingleTokenPresenter.cs) | C# | 122 | 1 | 17 | 140 |
+| [Assets/Scripts/UI/SelectTokenWindow/SelectBoardTokenPanel/SelectSingleToken/SelectSingleTokenPresenter.cs](/Assets/Scripts/UI/SelectTokenWindow/SelectBoardTokenPanel/SelectSingleToken/SelectSingleTokenPresenter.cs) | C# | 120 | 1 | 17 | 138 |
 | [Assets/Scripts/UI/SelectTokenWindow/SelectBoardTokenPanel/SelectSingleToken/SelectSingleTokenView.cs](/Assets/Scripts/UI/SelectTokenWindow/SelectBoardTokenPanel/SelectSingleToken/SelectSingleTokenView.cs) | C# | 56 | 6 | 11 | 73 |
 | [Assets/Scripts/UI/SelectTokenWindow/SelectBoardTokenPanel/SelectSingleToken/SelectSingleTokenViewModel.cs](/Assets/Scripts/UI/SelectTokenWindow/SelectBoardTokenPanel/SelectSingleToken/SelectSingleTokenViewModel.cs) | C# | 67 | 0 | 12 | 79 |
-| [Assets/Scripts/UI/SelectTokenWindow/SelectTokenWindowPresenter.cs](/Assets/Scripts/UI/SelectTokenWindow/SelectTokenWindowPresenter.cs) | C# | 110 | 1 | 20 | 131 |
-| [Assets/Scripts/UI/SelectTokenWindow/SelectTokenWindowView.cs](/Assets/Scripts/UI/SelectTokenWindow/SelectTokenWindowView.cs) | C# | 33 | 0 | 6 | 39 |
-| [Assets/Scripts/UI/SelectTokenWindow/SelectTokenWindowViewModel.cs](/Assets/Scripts/UI/SelectTokenWindow/SelectTokenWindowViewModel.cs) | C# | 47 | 0 | 11 | 58 |
-| [Assets/Scripts/UI/StartTurnWindow/StartTurnWindowPresenter.cs](/Assets/Scripts/UI/StartTurnWindow/StartTurnWindowPresenter.cs) | C# | 85 | 0 | 14 | 99 |
-| [Assets/Scripts/UI/StartTurnWindow/StartTurnWindowView.cs](/Assets/Scripts/UI/StartTurnWindow/StartTurnWindowView.cs) | C# | 21 | 0 | 4 | 25 |
-| [Assets/Scripts/UI/StartTurnWindow/StartTurnWindowViewModel.cs](/Assets/Scripts/UI/StartTurnWindow/StartTurnWindowViewModel.cs) | C# | 27 | 0 | 6 | 33 |
+| [Assets/Scripts/UI/SelectTokenWindow/SelectTokenWindowPresenter.cs](/Assets/Scripts/UI/SelectTokenWindow/SelectTokenWindowPresenter.cs) | C# | 109 | 1 | 20 | 130 |
+| [Assets/Scripts/UI/SelectTokenWindow/SelectTokenWindowView.cs](/Assets/Scripts/UI/SelectTokenWindow/SelectTokenWindowView.cs) | C# | 45 | 0 | 7 | 52 |
+| [Assets/Scripts/UI/SelectTokenWindow/SelectTokenWindowViewModel.cs](/Assets/Scripts/UI/SelectTokenWindow/SelectTokenWindowViewModel.cs) | C# | 55 | 0 | 11 | 66 |
+| [Assets/Scripts/UI/StartTurnWindow/StartTurnWindowPresenter.cs](/Assets/Scripts/UI/StartTurnWindow/StartTurnWindowPresenter.cs) | C# | 87 | 0 | 14 | 101 |
+| [Assets/Scripts/UI/StartTurnWindow/StartTurnWindowView.cs](/Assets/Scripts/UI/StartTurnWindow/StartTurnWindowView.cs) | C# | 34 | 0 | 7 | 41 |
+| [Assets/Scripts/UI/StartTurnWindow/StartTurnWindowViewModel.cs](/Assets/Scripts/UI/StartTurnWindow/StartTurnWindowViewModel.cs) | C# | 37 | 0 | 8 | 45 |
 
 [Summary](results.md) / Details / [Diff Summary](diff.md) / [Diff Details](diff-details.md)
