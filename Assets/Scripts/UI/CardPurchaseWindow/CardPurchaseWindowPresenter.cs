@@ -18,8 +18,8 @@ namespace UI.CardPurchaseWindow
         private readonly CardPurchaseWindowViewModel viewModel;
         private readonly CardPurchaseWindowView view;
         private readonly CommandFactory commandFactory;
+        private readonly CardPurchaseSingleTokenPresenter[] cardPurchaseSingleTokenPresenters = new CardPurchaseSingleTokenPresenter[6];
 
-        private List<CardPurchaseSingleTokenPresenter> cardPurchaseSingleTokenPresenters = new List<CardPurchaseSingleTokenPresenter>(6);
         private IDisposable disposables;
 
         public CardPurchaseWindowPresenter(CardPurchaseWindowView view, CommandFactory commandFactory)
@@ -35,11 +35,9 @@ namespace UI.CardPurchaseWindow
 
         private void InitializeChildMVP()
         {
-            foreach (var tokenType in Enum.GetValues(typeof(ResourceType)))
+            for (int i = 0; i < 6; i++)
             {
-                var tokenView = view.CardPurchaseSingleTokenViews[(int)tokenType];
-                var tokenPresenter = new CardPurchaseSingleTokenPresenter((ResourceType)tokenType, tokenView, commandFactory);
-                cardPurchaseSingleTokenPresenters.Add(tokenPresenter);
+                cardPurchaseSingleTokenPresenters[i] = new CardPurchaseSingleTokenPresenter((ResourceType)i, view.CardPurchaseSingleTokenViews[i], commandFactory);
             }
         }
 

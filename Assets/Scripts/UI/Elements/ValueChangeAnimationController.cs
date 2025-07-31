@@ -21,10 +21,20 @@ public class ValueChangeAnimationController : MonoBehaviour
         valueText.text = $"{startValue}";
     }
 
+    private bool isPlaying = false;
+
     public async UniTask PlayAnimation(int valueChange)
     {
+        Debug.Log($"PlayAnimation: {valueChange} {isPlaying}");
+        if (isPlaying)
+        {
+            return;
+        }
+
+        isPlaying = true;
         SetupText(valueChange);
         await animationSequencerController.PlayAsync();
+        isPlaying = false;
     }
 
     private void SetupText(int valueChange)

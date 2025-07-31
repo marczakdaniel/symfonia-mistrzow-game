@@ -194,12 +194,15 @@ namespace Events
     public class CardPurchaseWindowOpenedEvent : GameEvent
     {
         public MusicCardData MusicCardData { get; private set; }
+
+        public int CurrentSelectedTokensCount { get; private set; }
         public Dictionary<ResourceType, int> CurrentPlayerTokens { get; private set; }
 
-        public CardPurchaseWindowOpenedEvent(MusicCardData musicCardData, Dictionary<ResourceType, int> currentPlayerTokens)
+        public CardPurchaseWindowOpenedEvent(MusicCardData musicCardData, Dictionary<ResourceType, int> currentPlayerTokens, int currentSelectedTokensCount)
         {
             MusicCardData = musicCardData;
             CurrentPlayerTokens = currentPlayerTokens;
+            CurrentSelectedTokensCount = currentSelectedTokensCount;
         }
     }
 
@@ -216,6 +219,18 @@ namespace Events
         public int CurrentTokenCount { get; private set; }
 
         public TokenAddedToCardPurchaseEvent(ResourceType resourceType, int currentTokenCount)
+        {
+            ResourceType = resourceType;
+            CurrentTokenCount = currentTokenCount;
+        }
+    }
+
+    public class TokenRemovedFromCardPurchaseEvent : GameEvent
+    {
+        public ResourceType ResourceType { get; private set; }
+        public int CurrentTokenCount { get; private set; }
+
+        public TokenRemovedFromCardPurchaseEvent(ResourceType resourceType, int currentTokenCount)
         {
             ResourceType = resourceType;
             CurrentTokenCount = currentTokenCount;

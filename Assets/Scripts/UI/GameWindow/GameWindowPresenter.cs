@@ -38,7 +38,7 @@ namespace UI.GameWindow
         private void InitializeChildMVP()
         {
             boardPresenter = new BoardPresenter(view.BoardView, commandFactory, gameModelReader);
-            musicCardDetailsPanelPresenter = new MusicCardDetailsPanelPresenter(view.MusicCardDetailsPanelView, commandFactory, gameModelReader);
+            musicCardDetailsPanelPresenter = new MusicCardDetailsPanelPresenter(view.MusicCardDetailsPanelView, commandFactory);
             selectTokenWindowPresenter = new SelectTokenWindowPresenter(view.SelectTokenWindowView, commandFactory);
             startTurnWindowPresenter = new StartTurnWindowPresenter(view.StartTurnWindowView, commandFactory);
             returnTokenWindowPresenter = new ReturnTokenWindowPresenter(view.ReturnTokenWindowView, commandFactory);

@@ -15,10 +15,9 @@ namespace UI.MusicCardDetailsPanel {
         private readonly MusicCardDetailsPanelView view;
         private readonly MusicCardDetailsPanelViewModel viewModel = new MusicCardDetailsPanelViewModel();
         private readonly CommandFactory commandFactory;
-        private readonly IGameModelReader gameModelReader;
         private readonly CompositeDisposable subscriptions = new CompositeDisposable();
 
-        public MusicCardDetailsPanelPresenter(MusicCardDetailsPanelView view, CommandFactory commandFactory, IGameModelReader gameModelReader) {
+        public MusicCardDetailsPanelPresenter(MusicCardDetailsPanelView view, CommandFactory commandFactory) {
             this.view = view;
             this.commandFactory = commandFactory;
 

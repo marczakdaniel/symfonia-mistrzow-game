@@ -269,6 +269,16 @@ namespace Services
             turnModel.CardPurchaseTokens.AddResource(token, 1);
         }
 
+        public bool CanRemoveTokenFromCardPurchase(ResourceType token)
+        {
+            return turnModel.CardPurchaseTokens.GetCount(token) > 0;
+        }
+
+        public void RemoveTokenFromCardPurchase(ResourceType token)
+        {
+            turnModel.CardPurchaseTokens.RemoveResource(token, 1);
+        }
+
         public int GetCardPurchaseTokensCount(ResourceType token)
         {
             return turnModel.CardPurchaseTokens.GetCount(token);

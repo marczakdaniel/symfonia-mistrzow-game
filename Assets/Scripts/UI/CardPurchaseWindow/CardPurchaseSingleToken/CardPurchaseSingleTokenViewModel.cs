@@ -14,7 +14,7 @@ namespace UI.CardPurchaseWindow.CardPurchaseSingleToken
 
         public ResourceType Token { get; private set; }
         public ReactiveProperty<int> CurrentSelectedTokensCount { get; private set; } = new ReactiveProperty<int>(0);
-        public ReactiveProperty<int> PlayerTokensCount { get; private set; } = new ReactiveProperty<int>(0);
+        public int PlayerTokensCount { get; private set; } = 0;
 
         public CardPurchaseSingleTokenViewModel(ResourceType token)
         {
@@ -24,14 +24,19 @@ namespace UI.CardPurchaseWindow.CardPurchaseSingleToken
         public void SetCurrentSelectedTokensCount(int count)
         {
             CurrentSelectedTokensCount.Value = count;
+        }
+
+        public void Initialize(ResourceType token, int currentSelectedTokensCount, int playerTokensCount)
+        {
+            Token = token;
+            CurrentSelectedTokensCount.Value = currentSelectedTokensCount;
+            PlayerTokensCount = playerTokensCount;
             State.Value = CardPurchaseSingleTokenState.Active;
         }
 
-        public void SetPlayerTokensCount(int count)
+        public void Close()
         {
-            CurrentSelectedTokensCount.Value = 0;
-            PlayerTokensCount.Value = count;
-            State.Value = CardPurchaseSingleTokenState.Active;
+            State.Value = CardPurchaseSingleTokenState.Disabled;
         }
     }
 }

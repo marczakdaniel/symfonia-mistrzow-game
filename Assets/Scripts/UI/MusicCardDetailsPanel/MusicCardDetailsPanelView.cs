@@ -16,8 +16,6 @@ namespace UI.MusicCardDetailsPanel {
         [SerializeField] private ButtonElement buyButton;
         [SerializeField] private ButtonElement reserveButton;
         [SerializeField] private DetailsMusicCardView detailsMusicCardView;
-        [SerializeField] private MusicCardDetailsPanelOpenAnimation openAnimationController;
-        [SerializeField] private MusicCardDetailsPanelCloseAnimation closeAnimationController;
 
 
         private void Awake() {
@@ -44,9 +42,6 @@ namespace UI.MusicCardDetailsPanel {
         }
 
         public async UniTask PlayOpenAnimation() {
-            if (openAnimationController != null) {
-                await openAnimationController.PlayOpenAnimation();
-            }
         }
 
         /// <summary>
@@ -55,14 +50,8 @@ namespace UI.MusicCardDetailsPanel {
         /// <param name="level">Poziom (0-2)</param>
         /// <param name="position">Pozycja na poziomie (0-3)</param>
         public async UniTask PlayOpenAnimation(int level, int position) {
-            if (openAnimationController != null) {
-                await openAnimationController.PlayOpenAnimation(level, position);
-            }
         }
         public async UniTask PlayCloseAnimation() {
-            if (closeAnimationController != null) {
-                await closeAnimationController.PlayCloseAnimation();
-            }
         }
 
         /// <summary>
@@ -71,9 +60,6 @@ namespace UI.MusicCardDetailsPanel {
         /// <param name="level">Poziom (0-2)</param>
         /// <param name="position">Pozycja na poziomie (0-3)</param>
         public async UniTask PlayCloseAnimation(int level, int position) {
-            if (closeAnimationController != null) {
-                await closeAnimationController.PlayCloseAnimation(level, position);
-            }
         }
         public UniTask PlayBuyAnimation() {
             return UniTask.CompletedTask;
@@ -87,58 +73,6 @@ namespace UI.MusicCardDetailsPanel {
         }
         public void DisablePanel(){
             gameObject.SetActive(false);
-        }
-
-        public void SetToFinalAnimationState() {
-            if (openAnimationController != null) {
-                openAnimationController.SetToFinalState();
-            }
-        }
-
-        public void ResetToInitialAnimationState() {
-            if (openAnimationController != null) {
-                openAnimationController.ResetToInitialState();
-            }
-        }
-
-        /// <summary>
-        /// Resetuje panel do stanu początkowego z określonym poziomem i pozycją
-        /// </summary>
-        /// <param name="level">Poziom (0-2)</param>
-        /// <param name="position">Pozycja na poziomie (0-3)</param>
-        public void ResetToInitialAnimationState(int level, int position) {
-            if (openAnimationController != null) {
-                openAnimationController.ResetToInitialState(level, position);
-            }
-        }
-
-        /// <summary>
-        /// Ustawia panel na stan końcowy animacji zamykania z określonym poziomem i pozycją
-        /// </summary>
-        /// <param name="level">Poziom (0-2)</param>
-        /// <param name="position">Pozycja na poziomie (0-3)</param>
-        public void SetToFinalCloseState(int level, int position) {
-            if (closeAnimationController != null) {
-                closeAnimationController.SetToFinalCloseState(level, position);
-            }
-        }
-
-        /// <summary>
-        /// Ustawia panel na stan końcowy animacji zamykania z domyślnymi parametrami
-        /// </summary>
-        public void SetToFinalCloseState() {
-            if (closeAnimationController != null) {
-                closeAnimationController.SetToFinalCloseState();
-            }
-        }
-
-        /// <summary>
-        /// Resetuje panel do stanu otwartego (przydatne do debugowania)
-        /// </summary>
-        public void ResetToOpenState() {
-            if (closeAnimationController != null) {
-                closeAnimationController.ResetToOpenState();
-            }
         }
     }
 }

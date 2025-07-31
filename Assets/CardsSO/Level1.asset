@@ -24,4 +24,30 @@ MonoBehaviour:
     dynamics: 0
   cardImage: {fileID: 8331205241879288053, guid: f86f0288e41646d45a4cb3c3d48921b4, type: 3}
   cardName: Super nazwa karty
-  cardDescription: To jest super karta
+  cardDescription: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
+    nec interdum purus. Pellentesque habitant morbi tristique senectus et netus et
+    malesuada fames ac turpis egestas. Morbi tincidunt, ligula nec fermentum iaculis,
+    lorem odio varius nulla, sit amet cursus massa velit ut libero. Suspendisse gravida
+    leo vel tortor bibendum dapibus. Fusce ac lorem in purus pulvinar pharetra. Sed
+    malesuada est sed gravida pretium.  Vestibulum ante ipsum primis in faucibus
+    orci luctus et ultrices posuere cubilia curae; Aenean dapibus tincidunt eros,
+    in posuere leo mattis id. Morbi quis sapien ut justo laoreet porta. Nullam vehicula
+    orci in arcu sodales, a convallis erat congue. Sed dapibus dui non felis cursus,
+    a commodo risus fermentum. Mauris convallis libero vel augue porttitor, non facilisis
+    ex sodales.  Integer ac est non mauris scelerisque egestas. Pellentesque tempor
+    magna nec turpis tincidunt, ac ultrices tellus sollicitudin. Praesent faucibus,
+    justo nec commodo tincidunt, sapien elit ultricies libero, at feugiat neque sapien
+    sed odio. In luctus, erat ac feugiat rutrum, nisl turpis euismod velit, at mattis
+    diam elit sed sapien. Donec lacinia erat in dolor sagittis, at euismod magna
+    porttitor. Quisque eu magna ac elit aliquam mattis.  Cras eget vehicula metus.
+    Etiam id turpis porttitor, rutrum libero ac, tristique nisi. Nulla facilisi.
+    Sed scelerisque tincidunt elit, non faucibus est. Sed vel viverra nisi. Curabitur
+    fermentum justo nec efficitur finibus. Integer pulvinar dignissim porta. Ut lacinia
+    nulla quis felis malesuada tincidunt. Aenean ac libero vel purus dignissim tempor.
+    Maecenas nec eros convallis, fermentum elit vitae, maximus purus.  Nam sed nunc
+    nec purus scelerisque posuere. Integer posuere augue in malesuada ultrices. Suspendisse
+    lobortis lectus vitae orci convallis, ut tempus metus gravida. Mauris lobortis
+    sed erat at dapibus. Curabitur nec lorem sed augue dignissim fringilla. Fusce
+    facilisis rhoncus sollicitudin. Pellentesque eget quam in sapien hendrerit dapibus
+    sed nec mauris. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices
+    posuere cubilia curae; Duis sagittis at sem at eleifend.

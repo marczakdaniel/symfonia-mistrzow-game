@@ -147,7 +147,7 @@ namespace Command
             var currentPlayerTokens = turnService.GetCurrentPlayerModel().Tokens.GetAllResources();
             var musicCardData = MusicCardRepository.Instance.GetCard(musicCardId);
 
-            var openEvent = new CardPurchaseWindowOpenedEvent(musicCardData, currentPlayerTokens);
+            var openEvent = new CardPurchaseWindowOpenedEvent(musicCardData, currentPlayerTokens, 0);
             await AsyncEventBus.Instance.PublishAndWaitAsync(openEvent);
 
             return true;

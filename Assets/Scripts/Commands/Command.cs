@@ -469,6 +469,36 @@ namespace Command
         }
     }
 
+    public class RemoveTokenFromCardPurchaseCommand : BasePlayerActionCommand
+    {
+        public override string CommandType => "RemoveTokenFromCardPurchase";
+        private readonly ResourceType token;
+        private readonly TurnService turnService;
+
+        public RemoveTokenFromCardPurchaseCommand(ResourceType token, TurnService turnService) : base()
+        {
+            this.token = token;
+            this.turnService = turnService;
+        }
+        
+        public override async UniTask<bool> Validate()
+        {
+            return true;
+        }
+
+        public override async UniTask<bool> Execute()
+        {
+            if (!turnService.CanRemoveTokenFromCardPurchase(token))
+            {
+                return false;
+            }
+
+            turnService.RemoveTokenFromCardPurchase(token);
+            await AsyncEventBus.Instance.PublishAndWaitAsync(new TokenRemovedFromCardPurchaseEvent(token, turnService.GetCardPurchaseTokensCount(token)));
+            return true;
+        }
+    }
+
     
     public class PurchaseCardCommand : BasePlayerActionCommand
     {
@@ -499,8 +529,20 @@ namespace Command
                 return false;
             }
 
+            var slot = boardService.GetSlotWithCard(cardId);
+            if (slot == null)
+            {
+                return false;
+            }
+
+            
+
             turnService.PurchaseCard(cardId, selectedTokens);
             await AsyncEventBus.Instance.PublishAndWaitAsync(new CardPurchasedEvent(cardId, boardService.GetAllBoardResources()));
+
+            boardService.RefillSlot(slot.Level, slot.Position);
+            var putCardOnBoardEvent = new PutCardOnBoardEvent(slot.Level, slot.Position, cardId, slot.GetMusicCard());
+            await AsyncEventBus.Instance.PublishAndWaitAsync(putCardOnBoardEvent);
 
             UnityEngine.Debug.LogError("Card purchased");
             return true;

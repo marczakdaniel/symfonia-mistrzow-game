@@ -14,12 +14,12 @@ namespace UI.CardPurchaseWindow
         public Subject<Unit> OnCloseButtonClick = new();
         public Subject<Unit> OnConfirmButtonClick = new();
 
-        public CardPurchaseSingleTokenView[] CardPurchaseSingleTokenViews => cardPurchaseSingleTokenView;
-
-        [SerializeField] private CardPurchaseSingleTokenView[] cardPurchaseSingleTokenView = new CardPurchaseSingleTokenView[6];
         [SerializeField] private ButtonElement closeButton;
         [SerializeField] private ButtonElement confirmButton;
         [SerializeField] private DetailsMusicCardView musicCardView;
+        [SerializeField] private CardPurchaseSingleTokenView[] cardPurchaseSingleTokenViews = new CardPurchaseSingleTokenView[6];
+
+        public CardPurchaseSingleTokenView[] CardPurchaseSingleTokenViews => cardPurchaseSingleTokenViews;
 
         public void Awake()
         {

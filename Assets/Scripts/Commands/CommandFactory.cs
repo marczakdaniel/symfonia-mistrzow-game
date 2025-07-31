@@ -119,6 +119,11 @@ namespace Command
             return new AddTokenToCardPurchaseCommand(token, turnService);
         }
 
+        public RemoveTokenFromCardPurchaseCommand CreateRemoveTokenFromCardPurchaseCommand(ResourceType token)
+        {
+            return new RemoveTokenFromCardPurchaseCommand(token, turnService);
+        }
+
         public PurchaseCardCommand CreatePurchaseCardCommand(string cardId)
         {
             return new PurchaseCardCommand(cardId, turnService, boardService);
