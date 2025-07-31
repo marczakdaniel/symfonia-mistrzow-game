@@ -24,18 +24,18 @@ namespace Models
 
 
         
-        private List<PlayerModel> players { get; }
-        public BoardModel board { get; private set; }
+        public List<PlayerModel> Players { get; }
+        public BoardModel Board { get; private set; }
 
-        public TurnModel turnModel { get; private set; }
+        public TurnModel Turn { get; private set; }
 
         public GameModel()
         {
             //GameId = Guid.NewGuid().ToString();
             //GameName = gameName;
-            board = new BoardModel();
-            players = new List<PlayerModel>();
-            turnModel = new TurnModel();
+            Board = new BoardModel();
+            Players = new List<PlayerModel>();
+            Turn = new TurnModel();
         }
 
         private bool isInitialized = false;
@@ -59,44 +59,44 @@ namespace Models
 
         private void InitializeBoard(BoardConfig boardConfig)
         {
-            board.Initialize(boardConfig);
+            Board.Initialize(boardConfig);
         }
 
         public void AddPlayer(PlayerModel player)
         {
-            if (player == null || players.Contains(player))
+            if (player == null || Players.Contains(player))
             {
                 return;
             }
 
-            players.Add(player);
+            Players.Add(player);
 
         }
 
         public PlayerModel GetPlayer(string playerId)
         {
-            return players.FirstOrDefault(p => p.PlayerId == playerId);
+            return Players.FirstOrDefault(p => p.PlayerId == playerId);
         }
 
         public string GetNextPlayerId(string currentPlayerId)
         {
             if (currentPlayerId == null)
             {
-                return players[0].PlayerId;
+                return Players[0].PlayerId;
             }
 
-            var currentIndex = players.FindIndex(p => p.PlayerId == currentPlayerId);
-            return players[(currentIndex + 1) % players.Count].PlayerId;
+            var currentIndex = Players.FindIndex(p => p.PlayerId == currentPlayerId);
+            return Players[(currentIndex + 1) % Players.Count].PlayerId;
         }
 
         public bool IsPlayerExists(string playerId)
         {
-            return players.Any(p => p.PlayerId == playerId);
+            return Players.Any(p => p.PlayerId == playerId);
         }
 
         public PlayerModel[] GetPlayers()
         {
-            return players.ToArray();
+            return Players.ToArray();
         }
 
         // Game Flow Management
@@ -110,7 +110,7 @@ namespace Models
         public bool StartGame()
         {
             // 1. Initialize Board
-            board.StartGame();
+            Board.StartGame();
             return true;
         }
 
@@ -297,7 +297,7 @@ namespace Models
             // 3. Add new card to board - maybe not needed - different approach - maybe not needed
 
             var player = GetPlayer(playerId);
-            board.RemoveCardFromBoard(cardId);
+            Board.RemoveCardFromBoard(cardId);
             player.AddCardToReserved(cardId);
 
             return true;
@@ -347,7 +347,7 @@ namespace Models
 
         public MusicCardData[,] GetBoard()
         {
-            return board.GetCurrentBoardCards();
+            return Board.GetCurrentBoardCards();
         }
 
         // IGameModelReader implementation - returns read-only interfaces
@@ -369,22 +369,22 @@ namespace Models
 
         public IBoardSlotReader GetBoardSlot(int level, int position)
         {
-            return board.GetLevel(level).GetSlot(position);
+            return Board.GetLevel(level).GetSlot(position);
         }
 
         public int GetBoardTokenCount(ResourceType resourceType)
         {
-            return board.GetTokenCount(resourceType);
+            return Board.GetTokenCount(resourceType);
         }
 
         public TurnModel GetTurnModel()
         {
-            return turnModel;
+            return Turn;
         }
 
         public ITurnModelReader GetTurnModelReader()
         {
-            return turnModel;
+            return Turn;
         }
     }
 }

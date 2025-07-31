@@ -1,9 +1,9 @@
+using System.Linq;
 using Cysharp.Threading.Tasks;
 using DefaultNamespace.Data;
 using Events;
 using Models;
 using Services;
-using UnityEngine;
 
 namespace Command
 {
@@ -176,7 +176,60 @@ namespace Command
         }
     }
 
-    
+    // Player Resources Window
+
+    public class OpenPlayerResourcesWindowCommand : BaseUICommand
+    {
+        public override string CommandType => "OpenPlayerResourcesWindow";
+        private readonly string playerId;
+        private readonly TurnService turnService;
+        private readonly PlayerService playerService;
+        public OpenPlayerResourcesWindowCommand(string playerId, TurnService turnService, PlayerService playerService) : base()
+        {
+            this.playerId = playerId;
+            this.turnService = turnService;
+            this.playerService = playerService;
+        }
+
+        public override async UniTask<bool> Validate()
+        {
+            return true;
+        }
+
+        public override async UniTask<bool> Execute()
+        {
+            var isCurrentPlayer = turnService.GetCurrentPlayerId() == playerId;
+            var player = playerService.GetPlayer(playerId);
+            var currentPlayerTokens = player.Tokens.GetAllResources();
+            var reservedMusicCards = player.ReservedCards.GetAllCards().ToList();
+
+            UnityEngine.Debug.LogError($"OpenPlayerResourcesWindowCommand: {reservedMusicCards.Count}");
+
+            var openEvent = new PlayerResourcesWindowOpenedEvent(playerId, isCurrentPlayer, currentPlayerTokens, currentPlayerTokens, reservedMusicCards);
+            await AsyncEventBus.Instance.PublishAndWaitAsync(openEvent);
+            return true;
+        }
+    }
+
+    public class ClosePlayerResourcesWindowCommand : BaseUICommand
+    {
+        public override string CommandType => "ClosePlayerResourcesWindow";
+
+        public ClosePlayerResourcesWindowCommand() : base()
+        {
+        }
+
+        public override async UniTask<bool> Validate()
+        {
+            return true;
+        }
+
+        public override async UniTask<bool> Execute()
+        {
+            await AsyncEventBus.Instance.PublishAndWaitAsync(new PlayerResourcesWindowClosedEvent());
+            return true;
+        }
+    }
     /*
     public enum GameWindowType
     {

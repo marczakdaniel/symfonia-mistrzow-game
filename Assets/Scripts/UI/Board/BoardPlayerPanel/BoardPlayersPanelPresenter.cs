@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Command;
 using Cysharp.Threading.Tasks;
 using DefaultNamespace.Data;
 using Events;
@@ -17,13 +18,15 @@ namespace UI.Board.BoardPlayerPanel
     {
         private readonly BoardPlayerPanelViewModel viewModel;
         private readonly BoardPlayerPanelView view;
+        private readonly CommandFactory commandFactory;
         private IDisposable disposables;
 
-        public BoardPlayerPanelPresenter(BoardPlayerPanelView view, int index)
+        public BoardPlayerPanelPresenter(BoardPlayerPanelView view, int index, CommandFactory commandFactory)
         {
             this.view = view;
             this.viewModel = new BoardPlayerPanelViewModel(index);
-
+            this.commandFactory = commandFactory;
+            
             InitializeMVP();
             SubscribeToEvents();
         }
@@ -65,7 +68,13 @@ namespace UI.Board.BoardPlayerPanel
 
         private void ConnectView(DisposableBuilder d)
         {
+            view.OnClick.Subscribe(_ => HandlePlayerResourcesButtonClicked().ToObservable()).AddTo(ref d);
+        }
 
+        private async UniTask HandlePlayerResourcesButtonClicked()
+        {
+            var command = commandFactory.CreateOpenPlayerResourcesWindowCommand(viewModel.PlayerId);
+            await CommandService.Instance.ExecuteCommandAsync(command);
         }
 
         private void SubscribeToEvents()

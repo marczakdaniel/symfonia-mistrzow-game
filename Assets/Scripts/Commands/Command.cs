@@ -123,7 +123,7 @@ namespace Command
                 playerIds[i] = players[i].PlayerId;
             }
             // 2. Event publish and wait for UI to complete
-            var gameStartedEvent = new GameStartedEvent(playerIds, gameModel.board.TokenResources.GetAllResources());
+            var gameStartedEvent = new GameStartedEvent(playerIds, gameModel.Board.TokenResources.GetAllResources());
             await AsyncEventBus.Instance.PublishAndWaitAsync(gameStartedEvent);
 
             turnService.NextPlayerTurn();

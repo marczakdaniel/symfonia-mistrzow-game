@@ -7,7 +7,7 @@ namespace Services
     public class BoardService
     {
         private readonly GameModel gameModel;
-        private BoardModel boardModel => gameModel.board;
+        private BoardModel boardModel => gameModel.Board;
 
         public BoardService(GameModel gameModel)
         {

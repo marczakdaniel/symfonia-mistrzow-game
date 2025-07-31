@@ -248,4 +248,36 @@ namespace Events
             BoardTokens = boardTokens;
         }
     }
+
+    // Player Resources Window Events
+
+    public class PlayerResourcesWindowOpenedEvent : GameEvent
+    {
+        public string PlayerId { get; private set; }
+        public bool IsCurrentPlayer { get; private set; }
+        public Dictionary<ResourceType, int> CurrentPlayerTokens { get; private set; }
+        public Dictionary<ResourceType, int> CurrentPlayerCards { get; private set; }
+        public List<MusicCardData> ReservedMusicCards { get; private set; }
+
+        public PlayerResourcesWindowOpenedEvent(
+            string playerId, 
+            bool isCurrentPlayer, 
+            Dictionary<ResourceType, int> currentPlayerTokens, 
+            Dictionary<ResourceType, int> currentPlayerCards, 
+            List<MusicCardData> reservedMusicCards)
+        {
+            PlayerId = playerId;
+            IsCurrentPlayer = isCurrentPlayer;
+            CurrentPlayerTokens = currentPlayerTokens;
+            CurrentPlayerCards = currentPlayerCards;
+            ReservedMusicCards = reservedMusicCards;
+        }
+    }
+
+    public class PlayerResourcesWindowClosedEvent : GameEvent
+    {
+        public PlayerResourcesWindowClosedEvent()
+        {
+        }
+    }
 }

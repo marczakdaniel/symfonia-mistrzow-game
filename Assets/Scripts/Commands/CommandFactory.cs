@@ -10,12 +10,14 @@ namespace Command
         private readonly GameModel gameModel;
         private readonly TurnService turnService;
         private readonly BoardService boardService;
+        private readonly PlayerService playerService;
 
-        public CommandFactory(GameModel gameModel, TurnService turnService, BoardService boardService)
+        public CommandFactory(GameModel gameModel, TurnService turnService, BoardService boardService, PlayerService playerService)
         {
             this.gameModel = gameModel;
             this.turnService = turnService;
             this.boardService = boardService;
+            this.playerService = playerService;
         }
 
         // Game Flow Commands
@@ -137,6 +139,18 @@ namespace Command
         public CloseCardPurchaseWindowCommand CreateCloseCardPurchaseWindowCommand()
         {
             return new CloseCardPurchaseWindowCommand(turnService);
+        }
+
+        // Player Resources Window Commands
+
+        public OpenPlayerResourcesWindowCommand CreateOpenPlayerResourcesWindowCommand(string playerId)
+        {
+            return new OpenPlayerResourcesWindowCommand(playerId, turnService, playerService);
+        }
+
+        public ClosePlayerResourcesWindowCommand CreateClosePlayerResourcesWindowCommand()
+        {
+            return new ClosePlayerResourcesWindowCommand();
         }
     }
 }

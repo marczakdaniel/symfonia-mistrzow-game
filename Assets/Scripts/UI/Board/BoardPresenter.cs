@@ -45,7 +45,7 @@ namespace UI.Board
             boardEndTurnButtonPresenter = new BoardEndTurnButtonPresenter(view.BoardEndTurnButtonView, commandFactory);
             for (int i = 0; i < boardPlayerPanelPresenters.Length; i++)
             {
-                boardPlayerPanelPresenters[i] = new BoardPlayerPanelPresenter(view.BoardPlayerPanelViews[i], i);
+                boardPlayerPanelPresenters[i] = new BoardPlayerPanelPresenter(view.BoardPlayerPanelViews[i], i, commandFactory);
             }
         }
 

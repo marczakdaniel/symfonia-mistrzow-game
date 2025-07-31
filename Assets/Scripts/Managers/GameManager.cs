@@ -18,7 +18,7 @@ namespace Managers
         private GameModel gameModel;
         private TurnService turnService;
         private BoardService boardService;
-
+        private PlayerService playerService;
         public bool InitalizeGame(GameConfig gameConfig)
         {
             // Initialize MusicCardRepository
@@ -31,8 +31,9 @@ namespace Managers
             // Initialize CommandFactory and create services
             turnService = new TurnService(gameModel);
             boardService = new BoardService(gameModel);
+            playerService = new PlayerService(gameModel);
 
-            commandFactory = new CommandFactory(gameModel, turnService, boardService);
+            commandFactory = new CommandFactory(gameModel, turnService, boardService, playerService);
             CommandService.Instance.Initialize(commandFactory);
 
             CreateGameWindow();

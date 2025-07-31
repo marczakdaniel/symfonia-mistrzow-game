@@ -7,7 +7,7 @@ namespace Services
     public class TurnService
     {
         private readonly GameModel gameModel;
-        private TurnModel turnModel => gameModel.turnModel;
+        private TurnModel turnModel => gameModel.Turn;
         private MusicCardRepository musicCardRepository => MusicCardRepository.Instance;
         
         public TurnService(GameModel gameModel)
@@ -101,7 +101,7 @@ namespace Services
             var currentPlayer = gameModel.GetPlayer(turnModel.CurrentPlayerId);
 
             var selectedTokens = turnModel.GetSelectedTokensCollection();
-            gameModel.board.RemoveTokens(selectedTokens);
+            gameModel.Board.RemoveTokens(selectedTokens);
             currentPlayer.AddTokens(selectedTokens);
         }
 
@@ -146,7 +146,7 @@ namespace Services
             var currentPlayer = gameModel.GetPlayer(turnModel.CurrentPlayerId);
             var returnTokens = turnModel.GetReturnTokensCollection();
 
-            gameModel.board.AddTokens(returnTokens);
+            gameModel.Board.AddTokens(returnTokens);
             currentPlayer.RemoveTokens(returnTokens);
 
             turnModel.ClearReturnTokens();
@@ -193,7 +193,7 @@ namespace Services
             turnModel.SetState(TurnState.ReadyToEndTurn);
             var currentPlayer = gameModel.GetPlayer(turnModel.CurrentPlayerId);
 
-            if (!gameModel.board.RemoveCardFromBoard(cardId))
+            if (!gameModel.Board.RemoveCardFromBoard(cardId))
             {
                 UnityEngine.Debug.LogError($"[TurnService] Failed to remove card from board: {cardId}");
                 return false;
@@ -205,10 +205,10 @@ namespace Services
                 return false;
             }
 
-            if (gameModel.board.TokenResources.GetCount(ResourceType.Inspiration) > 0)
+            if (gameModel.Board.TokenResources.GetCount(ResourceType.Inspiration) > 0)
             {
                 var inspirationTokens = new ResourceCollectionModel(new ResourceType[] { ResourceType.Inspiration });
-                gameModel.board.RemoveTokens(inspirationTokens);
+                gameModel.Board.RemoveTokens(inspirationTokens);
                 currentPlayer.AddTokens(inspirationTokens);
             }
 
@@ -252,9 +252,9 @@ namespace Services
 
             var card = musicCardRepository.GetCard(cardId);
             currentPlayer.AddCardToPurchased(cardId);
-            gameModel.board.RemoveCardFromBoard(cardId);
+            gameModel.Board.RemoveCardFromBoard(cardId);
             currentPlayer.RemoveTokens(tokens);
-            gameModel.board.AddTokens(tokens);
+            gameModel.Board.AddTokens(tokens);
         }
 
         public bool CanAddTokenToCardPurchase(ResourceType token)
