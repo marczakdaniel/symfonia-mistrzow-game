@@ -7,7 +7,9 @@ using Events;
 using UI.Board.BoardTokenPanel;
 using R3;
 using UI.Board.BoardEndTurnButton;
-using UI.Board.BoardPlayersPanel;
+using UI.Board.BoardPlayerPanel;
+using UI.Board.BoardTokenPanel.BoardToken;
+using DefaultNamespace.Data;
 
 namespace UI.Board
 {
@@ -18,9 +20,9 @@ namespace UI.Board
         private readonly BoardViewModel viewModel = new BoardViewModel();
         private readonly IGameModelReader gameModelReader;
         private BoardMusicCardPanelPresenter boardMusicCardPanelPresenter;
-        private BoardTokenPanelPresenter boardTokenPanelPresenter;
+        private BoardTokenPresenter[] boardTokenPresenters = new BoardTokenPresenter[6];
         private BoardEndTurnButtonPresenter boardEndTurnButtonPresenter;
-        private BoardPlayersPanelPresenter boardPlayersPanelPresenter;  
+        private BoardPlayerPanelPresenter[] boardPlayerPanelPresenters = new BoardPlayerPanelPresenter[4];  
         private CommandFactory commandFactory;
 
         public BoardPresenter(BoardView view, CommandFactory commandFactory, IGameModelReader gameModelReader)
@@ -36,9 +38,15 @@ namespace UI.Board
         private void InitializeChildMCP()
         {
             boardMusicCardPanelPresenter = new BoardMusicCardPanelPresenter(view.BoardMusicCardPanelView, commandFactory, gameModelReader);
-            boardTokenPanelPresenter = new BoardTokenPanelPresenter(view.BoardTokenPanelView, commandFactory, gameModelReader);
+            for (int i = 0; i < boardTokenPresenters.Length; i++)
+            {
+                boardTokenPresenters[i] = new BoardTokenPresenter(view.BoardTokenPanelView[i], (ResourceType)i, commandFactory);
+            }
             boardEndTurnButtonPresenter = new BoardEndTurnButtonPresenter(view.BoardEndTurnButtonView, commandFactory);
-            boardPlayersPanelPresenter = new BoardPlayersPanelPresenter(view.BoardPlayersPanelView, gameModelReader);
+            for (int i = 0; i < boardPlayerPanelPresenters.Length; i++)
+            {
+                boardPlayerPanelPresenters[i] = new BoardPlayerPanelPresenter(view.BoardPlayerPanelViews[i], i);
+            }
         }
 
         private void InitializeMVP()
@@ -67,9 +75,7 @@ namespace UI.Board
         public async UniTask InitializeBoard()
         {
             await boardMusicCardPanelPresenter.InitializeBoard();
-            await boardTokenPanelPresenter.PutTokensOnBoard();
             await boardEndTurnButtonPresenter.OnGameStarted();
-            await boardPlayersPanelPresenter.OnGameStarted();
         }
 
         public async UniTask HandleAsync(GameStartedEvent gameEvent)

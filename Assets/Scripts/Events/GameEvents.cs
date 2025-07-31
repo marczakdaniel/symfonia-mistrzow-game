@@ -1,13 +1,19 @@
+using System.Collections.Generic;
 using DefaultNamespace.Data;
 using Models;
+using UnityEngine;
 
 namespace Events
 {
     // Game State Events
     public class GameStartedEvent : GameEvent
     {        
-        public GameStartedEvent()
+        public string[] PlayerIds { get; }
+        public Dictionary<ResourceType, int> BoardTokens { get; }
+        public GameStartedEvent(string[] playerIds, Dictionary<ResourceType, int> boardTokens)
         {
+            PlayerIds = playerIds;
+            BoardTokens = boardTokens;
         }
     }
 

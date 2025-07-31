@@ -96,12 +96,10 @@ namespace Command
     {
         public override string CommandType => "StartGame";
 
-        private readonly GameModel gameModel;
         private readonly TurnService turnService;
 
         public StartGameCommand(GameModel gameModel, TurnService turnService) : base(gameModel)
         {
-            this.gameModel = gameModel;
             this.turnService = turnService;
         }
 
@@ -118,9 +116,14 @@ namespace Command
             // event publish
             // 1. Model update - preparation
             gameModel.StartGame();
-            
+            var players = gameModel.GetPlayers();
+            var playerIds = new string[players.Length];
+            for (int i = 0; i < players.Length; i++)
+            {
+                playerIds[i] = players[i].PlayerId;
+            }
             // 2. Event publish and wait for UI to complete
-            var gameStartedEvent = new GameStartedEvent();
+            var gameStartedEvent = new GameStartedEvent(playerIds, gameModel.board.TokenResources.GetAllResources());
             await AsyncEventBus.Instance.PublishAndWaitAsync(gameStartedEvent);
 
             turnService.NextPlayerTurn();
