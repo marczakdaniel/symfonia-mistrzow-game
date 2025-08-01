@@ -42,19 +42,19 @@ namespace UI.Board.BoardMusicCardPanel
             level1CardPresenters = new BoardMusicCardPresenter[view.Level1Cards.Length];
             for (int i = 0; i < view.Level1Cards.Length; i++)
             {
-                level1CardPresenters[i] = new BoardMusicCardPresenter(view.Level1Cards[i], 1, i, commandFactory, gameModelReader);
+                level1CardPresenters[i] = new BoardMusicCardPresenter(view.Level1Cards[i], 1, i, commandFactory);
             }
 
             level2CardPresenters = new BoardMusicCardPresenter[view.Level2Cards.Length];
             for (int i = 0; i < view.Level2Cards.Length; i++)
             {
-                level2CardPresenters[i] = new BoardMusicCardPresenter(view.Level2Cards[i], 2, i, commandFactory, gameModelReader);
+                level2CardPresenters[i] = new BoardMusicCardPresenter(view.Level2Cards[i], 2, i, commandFactory);
             }
 
             level3CardPresenters = new BoardMusicCardPresenter[view.Level3Cards.Length];
             for (int i = 0; i < view.Level3Cards.Length; i++)
             {
-                level3CardPresenters[i] = new BoardMusicCardPresenter(view.Level3Cards[i], 3, i, commandFactory, gameModelReader);
+                level3CardPresenters[i] = new BoardMusicCardPresenter(view.Level3Cards[i], 3, i, commandFactory);
             }
 
             level1CardDeckPresenter = new BoardCardDeckPresenter(view.Level1CardDeck);
@@ -97,47 +97,12 @@ namespace UI.Board.BoardMusicCardPanel
 
         private async UniTask PutCardsOnBoardWithAnimations()
         {
-            
-            // Level 1 cards (index 0 in boardCards)
-            for (int i = 0; i < level1CardPresenters.Length; i++)
-            {
-                await level1CardPresenters[i].PutCardOnBoard();
-            }
-
-            // Level 2 cards (index 1 in boardCards)
-            for (int i = 0; i < level2CardPresenters.Length; i++)
-            {
-                await level2CardPresenters[i].PutCardOnBoard();
-            }
-
-            // Level 3 cards (index 2 in boardCards)
-            for (int i = 0; i < level3CardPresenters.Length; i++)
-            {
-                await level3CardPresenters[i].PutCardOnBoard();
-            }
+            await UniTask.CompletedTask;
         }
 
         public async UniTask RevealCards()
         {
-            // Level 1 cards (index 0 in boardCards)
-
-            var task = new List<UniTask>();
-            for (int i = 0; i < level1CardPresenters.Length; i++)
-            {
-                task.Add(level1CardPresenters[i].RevealCard());
-            }
-
-            for (int i = 0; i < level2CardPresenters.Length; i++)
-            {
-                task.Add(level2CardPresenters[i].RevealCard());
-            }
-
-            for (int i = 0; i < level3CardPresenters.Length; i++)
-            {
-                task.Add(level3CardPresenters[i].RevealCard());
-            }
-
-            await UniTask.WhenAll(task);
+            await UniTask.CompletedTask;
         }
     }
 }

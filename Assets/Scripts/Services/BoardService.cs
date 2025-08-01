@@ -38,5 +38,15 @@ namespace Services
         {
             boardModel.RefillSlot(level, position);
         }
+
+        public Dictionary<int, MusicCardData[]> GetBoardCards()
+        {
+            var boardCards = new Dictionary<int, MusicCardData[]>();
+            for (int i = 0; i < boardModel.Levels.Length; i++)
+            {
+                boardCards[boardModel.Levels[i].Level] = boardModel.Levels[i].GetAllCards();
+            }
+            return boardCards;
+        }
     }
 }

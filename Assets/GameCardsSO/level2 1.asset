@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a89d2db1057bcce428f142de1673f090, type: 3}
+  m_Name: level2 1
+  m_EditorClassIdentifier: 
+  id: 41
+  level: 2
+  points: 1
+  resourceProvided: 4
+  cost:
+    melody: 3
+    harmony: 2
+    rhythm: 2
+    instrumentation: 0
+    dynamics: 0
+  cardImage: {fileID: 0}
+  cardName: 
+  cardDescription: 

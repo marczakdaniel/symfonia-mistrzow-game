@@ -198,6 +198,16 @@ namespace Models
         {
             Deck.AddCard(cardId);
         }
+
+        public MusicCardData[] GetAllCards()
+        {
+            var cards = new MusicCardData[4];
+            for (int i = 0; i < 4; i++)
+            {
+                cards[i] = Slots[i].GetMusicCard();
+            }
+            return cards;
+        }
     }
     public class BoardModel
     {

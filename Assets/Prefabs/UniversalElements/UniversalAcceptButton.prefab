@@ -150,7 +150,7 @@ GameObject:
   - component: {fileID: 2207640838737138394}
   - component: {fileID: 219105691021765311}
   m_Layer: 5
-  m_Name: AcceptButton
+  m_Name: UniversalAcceptButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

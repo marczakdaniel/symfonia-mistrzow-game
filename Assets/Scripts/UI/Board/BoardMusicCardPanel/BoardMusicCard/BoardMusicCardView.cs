@@ -1,68 +1,47 @@
 using System;
 using R3;
 using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.UI;
-using TMPro;
 using DefaultNamespace.Data;
 using Cysharp.Threading.Tasks;
+using UI.MusicCardDetailsPanel;
+using BrunoMikoski.AnimationSequencer;
 
 namespace UI.Board.BoardMusicCardPanel.BoardMusicCard
 {
-    public class BoardMusicCardView : MonoBehaviour, IPointerClickHandler
+    public class BoardMusicCardView : MonoBehaviour
     {
         public Subject<Unit> OnCardClicked { get; private set; } = new Subject<Unit>();
 
-        [SerializeField] private MusicCardCostView costView;
-        [SerializeField] private Image cardImage;
-        [SerializeField] private TextMeshProUGUI pointsText;
-        [SerializeField] private Image resourceProvidedImage;
+        [SerializeField] 
+        private DetailsMusicCardView detailsMusicCardView;
 
-        [SerializeField] private BoardMusicCardAnimationController animationController;
+        [SerializeField] 
+        private AnimationSequencerController revealAnimation;
 
-        public void DisableCard()
+        [SerializeField]
+        private AnimationSequencerController hideAnimation;
+
+
+        public void Setup(MusicCardData musicCardData)
         {
-            gameObject.SetActive(false);
-        }
-        
-        public void EnableCard()
-        {
-            gameObject.SetActive(true);
+            detailsMusicCardView.Setup(musicCardData);
         }
 
-        public UniTask PlayPutOnBoardAnimation()
+        public async UniTask PlayRevealAnimation()
         {
-            return UniTask.CompletedTask;
+            await revealAnimation.PlayAsync();
         }
 
-        public UniTask PlayRevealAnimation()
+        public async UniTask PlayHideAnimation()
         {
-            // TODO : Play reveal animation
-            return UniTask.CompletedTask;
+            await hideAnimation.PlayAsync();
         }
 
-        public UniTask PlayMovingToPlayerResourcesAnimation()
+        public void Awake()
         {
-            // TODO : Play moving to player resources animation
-            return UniTask.CompletedTask;
+            detailsMusicCardView.OnCardClicked.Subscribe(_ => OnCardClicked.OnNext(Unit.Default)).AddTo(this);
         }
 
-        public void Setup(IMusicCardDataReader card)
-        {
-            costView.Setup(card.Cost);
-            cardImage.sprite = card.CardImage;
-            pointsText.text = card.Points.ToString();
-            resourceProvidedImage.sprite = card.ResourceProvided.GetSingleResourceTypeImages().StackImage1;
-        }
 
-        public void OnPointerClick(PointerEventData eventData)
-        {
-            OnCardClicked?.OnNext(Unit.Default);
-        }
-
-        private void OnDestroy()
-        {
-            OnCardClicked?.Dispose();
-        }
     }
 }

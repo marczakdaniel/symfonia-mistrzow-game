@@ -116,13 +116,13 @@ namespace Services
         public bool IsTokenReturnNeeded()
         {
             var currentPlayer = gameModel.GetPlayer(turnModel.CurrentPlayerId);
-            return currentPlayer.Tokens.GetTotalResourcese() > 5;
+            return currentPlayer.Tokens.GetTotalResourcese() > 10;
         }
 
         public bool CanAddTokenToReturnTokens(ResourceType token)
         {
             var currentPlayer = gameModel.GetPlayer(turnModel.CurrentPlayerId);
-            return currentPlayer.Tokens.GetCount(token) > 0 && currentPlayer.Tokens.GetTotalResourcese() - turnModel.GetAllReturnTokensCount() > 5;
+            return currentPlayer.Tokens.GetCount(token) > 0 && currentPlayer.Tokens.GetTotalResourcese() - turnModel.GetAllReturnTokensCount() > 10;
         }
 
         public void StartReturningTokens()

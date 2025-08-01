@@ -12,8 +12,8 @@ namespace Test
     public class GameTestManager : MonoBehaviour
     {
         [SerializeField] private GameManager gameManager;
-        [SerializeField] private MusicCardData[] musicCardDatas;
-        
+        [SerializeField] private MusicCardDeckData musicCardDeckData;
+
         public void Start()
         {
             TestStartGame();
@@ -29,10 +29,10 @@ namespace Test
 
         private GameConfig CreateTestGameConfig()
         {
-            var boardMusicCardConfig = new BoardMusicCardConfig(new string[] { }, new string[] { }, new string[] { }, musicCardDatas.Select(card => card.Id).ToList());
+            var boardMusicCardConfig = new BoardMusicCardConfig(new string[] { }, new string[] { }, new string[] { }, musicCardDeckData.Cards.Select(card => card.Id).ToList());
             var boardConfig = new BoardConfig(new BoardTokenConfig(7, 7, 7, 7, 7, 5), boardMusicCardConfig);
             var playerConfig = new PlayerConfig[] { new PlayerConfig(Guid.NewGuid().ToString(), "Player 1"), new PlayerConfig(Guid.NewGuid().ToString(), "Player 2") };
-            var gameConfig = new GameConfig(musicCardDatas, playerConfig, boardConfig);
+            var gameConfig = new GameConfig(musicCardDeckData.Cards, playerConfig, boardConfig);
             return gameConfig;
         }
     }

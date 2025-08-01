@@ -2725,21 +2725,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 2130943702}
-  musicCardDatas:
-  - {fileID: 11400000, guid: 810fcadde1cc64944b81e7e8022181a0, type: 2}
-  - {fileID: 11400000, guid: 293fba74ac9beba4b9a4b07a5a563119, type: 2}
-  - {fileID: 11400000, guid: 492e3be5dbbe4a34aa40512eb9a841b9, type: 2}
-  - {fileID: 11400000, guid: 2bbab1b3b5fcff749ac617306e603027, type: 2}
-  - {fileID: 11400000, guid: 39eab57e032b6d1439e39617bd00abca, type: 2}
-  - {fileID: 11400000, guid: 8b5f0b1d6e2f1ed45a710f863c66d9ea, type: 2}
-  - {fileID: 11400000, guid: 09463d71a08a61740a162c67da13e153, type: 2}
-  - {fileID: 11400000, guid: 5e3ba748225fb564d954845dd38548c1, type: 2}
-  - {fileID: 11400000, guid: 144e759a6a056b64e9ddbff9fc2e4a9f, type: 2}
-  - {fileID: 11400000, guid: 7ac669e8ae31fe2418a02c3ab14859d1, type: 2}
-  - {fileID: 11400000, guid: b977e9f2367227042a5e257960166a89, type: 2}
-  - {fileID: 11400000, guid: b9c409ca66cbfc64a9538a79f5217464, type: 2}
-  - {fileID: 11400000, guid: f49fb85694fb4424fa247ecf6f833fd3, type: 2}
-  - {fileID: 11400000, guid: f49fb85694fb4424fa247ecf6f833fd3, type: 2}
+  musicCardDeckData: {fileID: 11400000, guid: 2c8a9d769170921418eaebf326b220bf, type: 2}
 --- !u!4 &2003758707
 Transform:
   m_ObjectHideFlags: 0

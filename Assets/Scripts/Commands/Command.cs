@@ -97,10 +97,12 @@ namespace Command
         public override string CommandType => "StartGame";
 
         private readonly TurnService turnService;
+        private readonly BoardService boardService;
 
-        public StartGameCommand(GameModel gameModel, TurnService turnService) : base(gameModel)
+        public StartGameCommand(GameModel gameModel, TurnService turnService, BoardService boardService) : base(gameModel)
         {
             this.turnService = turnService;
+            this.boardService = boardService;
         }
 
         public override async UniTask<bool> Validate()
@@ -123,7 +125,8 @@ namespace Command
                 playerIds[i] = players[i].PlayerId;
             }
             // 2. Event publish and wait for UI to complete
-            var gameStartedEvent = new GameStartedEvent(playerIds, gameModel.Board.TokenResources.GetAllResources());
+            var boardCards = boardService.GetBoardCards();
+            var gameStartedEvent = new GameStartedEvent(playerIds, gameModel.Board.TokenResources.GetAllResources(), boardCards);
             await AsyncEventBus.Instance.PublishAndWaitAsync(gameStartedEvent);
 
             turnService.NextPlayerTurn();

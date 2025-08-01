@@ -46,4 +46,13 @@ namespace DefaultNamespace.Data
         public string CardName => cardName;
         public string CardDescription => cardDescription;
     }
+
+    [CreateAssetMenu(fileName = "MusicCardDeckData", menuName = "Game/MusicCardDeckData")]
+    public class MusicCardDeckData : ScriptableObject
+    {
+
+        [SerializeField] private MusicCardData[] cards = new MusicCardData[90];
+
+        public MusicCardData[] Cards => cards;
+    }
 }

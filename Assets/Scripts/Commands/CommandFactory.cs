@@ -24,7 +24,7 @@ namespace Command
 
         public StartGameCommand CreateStartGameCommand()
         {
-            return new StartGameCommand(gameModel, turnService);
+            return new StartGameCommand(gameModel, turnService, boardService);
         }
 
         // Player Actions Commands

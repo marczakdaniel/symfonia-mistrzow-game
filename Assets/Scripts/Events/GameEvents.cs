@@ -10,10 +10,12 @@ namespace Events
     {        
         public string[] PlayerIds { get; }
         public Dictionary<ResourceType, int> BoardTokens { get; }
-        public GameStartedEvent(string[] playerIds, Dictionary<ResourceType, int> boardTokens)
+        public Dictionary<int, MusicCardData[]> BoardCards { get; }
+        public GameStartedEvent(string[] playerIds, Dictionary<ResourceType, int> boardTokens, Dictionary<int, MusicCardData[]> boardCards)
         {
             PlayerIds = playerIds;
             BoardTokens = boardTokens;
+            BoardCards = boardCards;
         }
     }
 
