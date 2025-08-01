@@ -28,6 +28,7 @@ namespace Models
         public BoardModel Board { get; private set; }
 
         public TurnModel Turn { get; private set; }
+        public List<ConcertCardModel> ConcertCards { get; private set; } = new List<ConcertCardModel>();
 
         public GameModel()
         {
@@ -44,6 +45,7 @@ namespace Models
         {
             InitializePlayers(gameConfig.playerConfigs);
             InitializeBoard(gameConfig.boardConfig);
+            InitializeConcertCards(gameConfig.concertCardsConfig);
 
             isInitialized = true;
         }
@@ -60,6 +62,15 @@ namespace Models
         private void InitializeBoard(BoardConfig boardConfig)
         {
             Board.Initialize(boardConfig);
+        }
+
+        private void InitializeConcertCards(ConcertCardsConfig concertCardsConfig)
+        {
+            foreach (var concertCard in concertCardsConfig.ConcertCards)
+            {
+                var concertCardModel = new ConcertCardModel(concertCard);
+                ConcertCards.Add(concertCardModel);
+            }
         }
 
         public void AddPlayer(PlayerModel player)

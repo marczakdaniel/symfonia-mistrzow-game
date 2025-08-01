@@ -189,6 +189,16 @@ namespace Command
                 return true;
             }
 
+            if (turnService.CanClaimConcertCard(out string cardId))
+            {
+                turnService.ClaimConcertCard(cardId);
+                var concertCards = turnService.GetConcertCards();
+                var concertCardData = concertCards.Select(card => card.ConcertCardData).ToList();
+                var cardStates = concertCards.Select(card => card.State).ToList();
+                await AsyncEventBus.Instance.PublishAndWaitAsync(new ConcertCardsWindowOpenedEvent(concertCardData, cardStates));
+                return true;
+            }
+
             turnService.EndPlayerTurn();
             turnService.NextPlayerTurn();
 

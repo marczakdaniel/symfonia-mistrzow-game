@@ -117,5 +117,15 @@ namespace Models
             }
             return resources;
         }
+
+        public int CalculatePoints()
+        {
+            int points = 0;
+            foreach (var card in GetAllCards())
+            {
+                points += card.Points;
+            }
+            return points;
+        }
     }
 }

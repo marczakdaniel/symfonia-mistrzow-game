@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Assets.Scripts.Data;
 using DefaultNamespace.Data;
 using Models;
 using Unity.Collections.LowLevel.Unsafe;
@@ -311,6 +312,25 @@ namespace Events
     public class PlayerResourcesWindowClosedEvent : GameEvent
     {
         public PlayerResourcesWindowClosedEvent()
+        {
+        }
+    }
+
+    // Concert Cards Window Events
+    public class ConcertCardsWindowOpenedEvent : GameEvent
+    {
+        public List<ConcertCardData> ConcertCards { get; private set; }
+        public List<ConcertCardState> CardStates { get; private set; }
+        public ConcertCardsWindowOpenedEvent(List<ConcertCardData> concertCards, List<ConcertCardState> cardStates)
+        {
+            ConcertCards = concertCards;
+            CardStates = cardStates;
+        }
+    }
+
+    public class ConcertCardsWindowClosedEvent : GameEvent
+    {
+        public ConcertCardsWindowClosedEvent()
         {
         }
     }

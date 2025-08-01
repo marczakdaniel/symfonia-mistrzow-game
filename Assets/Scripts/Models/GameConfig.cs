@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Assets.Scripts.Data;
 using DefaultNamespace.Data;
 
 namespace Models
@@ -8,12 +9,14 @@ namespace Models
         public MusicCardData[] musicCardDatas;
         public PlayerConfig[] playerConfigs;
         public BoardConfig boardConfig;
+        public ConcertCardsConfig concertCardsConfig;
 
-        public GameConfig(MusicCardData[] musicCardDatas, PlayerConfig[] playerConfigs, BoardConfig boardConfig)
+        public GameConfig(MusicCardData[] musicCardDatas, PlayerConfig[] playerConfigs, BoardConfig boardConfig, ConcertCardsConfig concertCardsConfig)
         {
             this.musicCardDatas = musicCardDatas;
             this.playerConfigs = playerConfigs;
             this.boardConfig = boardConfig;
+            this.concertCardsConfig = concertCardsConfig;
         }
     }
 
@@ -77,6 +80,16 @@ namespace Models
         {
             PlayerId = playerId;
             PlayerName = playerName;
+        }
+    }
+
+    public class ConcertCardsConfig
+    {
+        public List<ConcertCardData> ConcertCards;
+
+        public ConcertCardsConfig(List<ConcertCardData> concertCards)
+        {
+            this.ConcertCards = concertCards;
         }
     }
 }

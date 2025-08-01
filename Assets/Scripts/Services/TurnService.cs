@@ -349,5 +349,46 @@ namespace Services
         {
             turnModel.CardPurchaseTokens.Clear();
         }
+
+        // Concert Cards Actions
+        public bool CanClaimConcertCard(out string cardId)
+        {
+            var currentPlayer = gameModel.GetPlayer(turnModel.CurrentPlayerId);
+            var concertCards = gameModel.ConcertCards;
+            var playerMusicCards = currentPlayer.PurchasedCards.GetAllResourceCollection();
+
+            foreach (var card in concertCards)
+            {
+                if (card.State == ConcertCardState.Available && card.CanClaim(playerMusicCards))
+                {
+                    cardId = card.ConcertCardData.Id;
+                    return true;
+                }
+            }
+
+            cardId = null;
+            return false;
+        }
+
+        public void ClaimConcertCard(string cardId)
+        {
+            if (!CanClaimConcertCard(out string id) || id != cardId)
+            {
+                Debug.LogError($"[TurnService] Cannot claim concert card: {cardId}");
+                return;
+            }
+
+            var currentPlayer = gameModel.GetPlayer(turnModel.CurrentPlayerId);
+            var concertCard = gameModel.ConcertCards.Find(card => card.ConcertCardData.Id == cardId);
+
+            currentPlayer.AddConcertCard(concertCard.ConcertCardData);
+            concertCard.SetState(ConcertCardState.Claimed);
+        }
+
+        public List<ConcertCardModel> GetConcertCards()
+        {
+            return gameModel.ConcertCards;
+        }
+
     }
 }

@@ -157,5 +157,17 @@ namespace Command
         {
             return new ClosePlayerResourcesWindowCommand();
         }
+
+        // Concert Cards Window Commands
+
+        public OpenConcertCardsWindowCommand CreateOpenConcertCardsWindowCommand()
+        {
+            return new OpenConcertCardsWindowCommand(turnService);
+        }
+
+        public CloseConcertCardsWindowCommand CreateCloseConcertCardsWindowCommand()
+        {
+            return new CloseConcertCardsWindowCommand();
+        }
     }
 }

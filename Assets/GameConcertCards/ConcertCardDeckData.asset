@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88bd37cee0106524e85c5f263edd4d25, type: 3}
+  m_Name: ConcertCardDeckData
+  m_EditorClassIdentifier: 
+  concertCards:
+  - {fileID: 11400000, guid: 6072a867eac895b4d93023bb0972a6d5, type: 2}
+  - {fileID: 11400000, guid: f70b7782d3d6b9d4d9988b2d35c3b7bb, type: 2}
+  - {fileID: 11400000, guid: b0436784dc8dfc4498d9c82217827ed0, type: 2}
+  - {fileID: 11400000, guid: f550605f00518d7429ed78e019703c03, type: 2}
+  - {fileID: 11400000, guid: e97b5d39fa16b1a4ba67c0b5c9131513, type: 2}
+  - {fileID: 11400000, guid: 0b5e45a3f1365b14b992314b6fce1e58, type: 2}
+  - {fileID: 11400000, guid: 8b3e9bf034461274e94ebbaf8b54c1bb, type: 2}
+  - {fileID: 11400000, guid: 1f66db32f20b2b84fb788f27e5b40656, type: 2}
+  - {fileID: 11400000, guid: 7af163801513df84995a8314d3691dfc, type: 2}
+  - {fileID: 11400000, guid: da316098432f5fd4c94e9847dd6161dc, type: 2}

@@ -263,6 +263,50 @@ namespace Command
             return true;
         }
     }
+
+    // Concert Cards Window
+
+    public class OpenConcertCardsWindowCommand : BaseUICommand
+    {
+        public override string CommandType => "OpenConcertCardsWindow";
+        private readonly TurnService turnService;
+
+        public OpenConcertCardsWindowCommand(TurnService turnService) : base()
+        {
+            this.turnService = turnService;
+        }
+
+        public override async UniTask<bool> Validate()
+        {
+            return true;
+        }
+
+        public override async UniTask<bool> Execute()
+        {
+            var concertCards = turnService.GetConcertCards();
+            var cardData = concertCards.Select(card => card.ConcertCardData).ToList();
+            var cardStates = concertCards.Select(card => card.State).ToList();
+            await AsyncEventBus.Instance.PublishAndWaitAsync(new ConcertCardsWindowOpenedEvent(cardData, cardStates));
+            return true;
+        }
+    }
+
+    public class CloseConcertCardsWindowCommand : BaseUICommand
+    {
+        public override string CommandType => "CloseConcertCardsWindow";
+
+        public override async UniTask<bool> Validate()
+        {
+            return true;
+        }
+        
+        public override async UniTask<bool> Execute()
+        {
+            await AsyncEventBus.Instance.PublishAndWaitAsync(new ConcertCardsWindowClosedEvent());
+            return true;
+        }
+    }
+
     /*
     public enum GameWindowType
     {

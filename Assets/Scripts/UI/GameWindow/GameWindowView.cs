@@ -1,3 +1,4 @@
+using Assets.Scripts.UI.ConcertCardsWindow;
 using UI.Board;
 using UI.CardPurchaseWindow;
 using UI.MusicCardDetailsPanel;
@@ -18,6 +19,7 @@ namespace UI.GameWindow
         public ReturnTokenWindowView ReturnTokenWindowView => returnTokenWindowView;
         public CardPurchaseWindowView CardPurchaseWindowView => cardPurchaseWindowView;
         public PlayerResourcesWindowView PlayerResourcesWindowView => playerResourcesWindowView;
+        public ConcertCardsWindowView ConcertCardsWindowView => concertCardsWindowView;
         [SerializeField] private BoardView boardView;
         [SerializeField] private MusicCardDetailsPanelView musicCardDetailsPanelView;
         [SerializeField] private SelectTokenWindowView selectTokenWindowView;
@@ -25,5 +27,6 @@ namespace UI.GameWindow
         [SerializeField] private ReturnTokenWindowView returnTokenWindowView;
         [SerializeField] private CardPurchaseWindowView cardPurchaseWindowView;
         [SerializeField] private PlayerResourcesWindowView playerResourcesWindowView;
+        [SerializeField] private ConcertCardsWindowView concertCardsWindowView;
     }
 }

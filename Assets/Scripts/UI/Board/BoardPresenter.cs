@@ -10,6 +10,7 @@ using UI.Board.BoardEndTurnButton;
 using UI.Board.BoardPlayerPanel;
 using UI.Board.BoardTokenPanel.BoardToken;
 using DefaultNamespace.Data;
+using System;
 
 namespace UI.Board
 {
@@ -24,6 +25,8 @@ namespace UI.Board
         private BoardEndTurnButtonPresenter boardEndTurnButtonPresenter;
         private BoardPlayerPanelPresenter[] boardPlayerPanelPresenters = new BoardPlayerPanelPresenter[4];  
         private CommandFactory commandFactory;
+
+        private IDisposable disposable;
 
         public BoardPresenter(BoardView view, CommandFactory commandFactory, IGameModelReader gameModelReader)
         {
@@ -51,18 +54,28 @@ namespace UI.Board
 
         private void InitializeMVP()
         {
-            ConnectModel();
-            ConnectView();
+            var d = Disposable.CreateBuilder();
+
+            ConnectModel(d);
+            ConnectView(d);
+
+            disposable = d.Build();
         }
 
-        private void ConnectModel()
+        private void ConnectModel(DisposableBuilder d)
         {
 
         }
         
-        private void ConnectView()
+        private void ConnectView(DisposableBuilder d)
         {
+            view.OnBoardConcertCardButtonClicked.Subscribe(_ => HandleBoardConcertCardButtonClicked().ToObservable()).AddTo(ref d);
+        }
 
+        private async UniTask HandleBoardConcertCardButtonClicked()
+        {
+            var command = commandFactory.CreateOpenConcertCardsWindowCommand();
+            await CommandService.Instance.ExecuteCommandAsync(command);
         }
 
         private void SubscribeToEvents()
@@ -81,6 +94,11 @@ namespace UI.Board
         public async UniTask HandleAsync(GameStartedEvent gameEvent)
         {
             await InitializeBoard();
+        }
+
+        public void Dispose()
+        {
+            disposable.Dispose();
         }
     
     }

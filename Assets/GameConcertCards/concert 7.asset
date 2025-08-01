@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf943fd79aa5eb947b252d3fa4703526, type: 3}
+  m_Name: concert 7
+  m_EditorClassIdentifier: 
+  id: 7
+  image: {fileID: 0}
+  requirements:
+    melody: 3
+    harmony: 3
+    rhythm: 3
+    instrumentation: 0
+    dynamics: 0
+  points: 3
