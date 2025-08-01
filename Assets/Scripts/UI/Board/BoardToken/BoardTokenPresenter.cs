@@ -48,39 +48,7 @@ namespace UI.Board.BoardTokenPanel.BoardToken
 
         private void ConnectModel(DisposableBuilder d)
         {
-            viewModel.State.Subscribe(state => HandleStateChange(state).Forget()).AddTo(ref d);
         }
-
-        private async UniTask HandleStateChange(BoardTokenState state)
-        {
-            switch (state) {
-                case BoardTokenState.DuringEntryAnimation:
-                    // TODO: Play entry animation
-                    view.Initialize(viewModel.ResourceType, viewModel.TokenCount);
-                    view.gameObject.SetActive(true);
-                    viewModel.CompleteEntryAnimation();
-                    break;
-                case BoardTokenState.DuringTokenDetailsPanelOpen:
-                    await UniTask.CompletedTask;
-                    break;
-                case BoardTokenState.DuringAddingTokens:
-                    await view.UpdateValue(viewModel.TokenCount);
-                    viewModel.CompleteAddingTokens();
-                    break;
-                case BoardTokenState.Active:
-                    view.gameObject.SetActive(true);
-                    await UniTask.CompletedTask;
-                    break;
-                case BoardTokenState.Disabled:
-                    view.gameObject.SetActive(false);
-                    break;
-                case BoardTokenState.DuringReturnTokensPanelOpen:
-                    await UniTask.CompletedTask;
-                    break;
-                default:
-                    break;
-            }
-        }   
 
         private void ConnectView(DisposableBuilder d)
         {
@@ -114,33 +82,28 @@ namespace UI.Board.BoardTokenPanel.BoardToken
 
         public async UniTask HandleAsync(SelectedTokensConfirmedEvent selectedTokensConfirmedEvent)
         {
-            viewModel.OnConfirmSelectedTokens(selectedTokensConfirmedEvent.BoardTokens[viewModel.ResourceType]);
-            await UniTask.WaitUntil(() => viewModel.State.Value == BoardTokenState.Active);
+            await view.UpdateValue(selectedTokensConfirmedEvent.BoardTokens[viewModel.ResourceType]);
         }
 
         public async UniTask HandleAsync(TokenDetailsPanelClosedEvent tokenDetailsPanelClosedEvent)
         {
-            viewModel.CloseTokenDetailsPanel();
-            await UniTask.WaitUntil(() => viewModel.State.Value == BoardTokenState.Active);
+            
         }
 
         public async UniTask HandleAsync(ReturnTokensConfirmedEvent returnTokensConfirmedEvent)
         {
-            viewModel.OnReturnTokensConfirmed(returnTokensConfirmedEvent.BoardTokens[viewModel.ResourceType]);
-            await UniTask.WaitUntil(() => viewModel.State.Value == BoardTokenState.Active);
+            await view.UpdateValue(returnTokensConfirmedEvent.BoardTokens[viewModel.ResourceType]);
         }
 
         public async UniTask HandleAsync(ReturnTokenWindowOpenedEvent returnTokenWindowOpenedEvent)
         {
-            viewModel.OpenReturnTokensPanel();
-            await UniTask.WaitUntil(() => viewModel.State.Value == BoardTokenState.DuringReturnTokensPanelOpen);
+            await UniTask.CompletedTask;
         }
 
         public async UniTask HandleAsync(GameStartedEvent gameStartedEvent)
         {
-            UnityEngine.Debug.LogError($"[BoardTokenPresenter] Game started event: {gameStartedEvent.BoardTokens[viewModel.ResourceType]}");
-            viewModel.OnEntry(gameStartedEvent.BoardTokens[viewModel.ResourceType]);
-            await UniTask.WaitUntil(() => viewModel.State.Value == BoardTokenState.Active);
+            view.Initialize(viewModel.ResourceType, gameStartedEvent.BoardTokens[viewModel.ResourceType]);
+            view.gameObject.SetActive(true);
         }
 
         public async UniTask HandleAsync(CardReservedEvent cardReservedEvent)
@@ -150,32 +113,22 @@ namespace UI.Board.BoardTokenPanel.BoardToken
                 return;
             }
 
-            UnityEngine.Debug.Log($"[BoardTokenPresenter] Card reserved event: {cardReservedEvent.InspirationTokensOnBoard}");
-
-            viewModel.SetTokenCount(cardReservedEvent.InspirationTokensOnBoard);
-
-            await UniTask.WaitUntil(() => viewModel.State.Value == BoardTokenState.Active);
+            await view.UpdateValue(cardReservedEvent.InspirationTokensOnBoard);
         }
 
         public async UniTask HandleAsync(CardPurchasedFromBoardEvent cardPurchasedFromBoardEvent)
         {
-            viewModel.SetTokenCount(cardPurchasedFromBoardEvent.BoardTokens[viewModel.ResourceType]);
+            await view.UpdateValue(cardPurchasedFromBoardEvent.BoardTokens[viewModel.ResourceType]);
         }
 
         public async UniTask HandleAsync(CardPurchasedFromReserveEvent cardPurchasedFromReserveEvent)
         {
-            if (viewModel.ResourceType != ResourceType.Inspiration)
-            {
-                return;
-            }
-
-            viewModel.SetTokenCount(cardPurchasedFromReserveEvent.BoardTokens[viewModel.ResourceType]);
+            await view.UpdateValue(cardPurchasedFromReserveEvent.BoardTokens[viewModel.ResourceType]);
         }
 
-        // Event Bus -> Presenter
         public async UniTask HandleAsync(TokenDetailsPanelOpenedEvent tokenDetailsPanelOpenedEvent)
         {
-            viewModel.OpenTokenDetailsPanel();
+            await UniTask.CompletedTask;
         }
 
         // Element actions
@@ -185,21 +138,6 @@ namespace UI.Board.BoardTokenPanel.BoardToken
         {
             var command = commandFactory.CreateOpenTokenDetailsPanelCommand(viewModel.ResourceType);
             await CommandService.Instance.ExecuteCommandAsync(command);
-        }
-
-        public async UniTask CloseTokenDetailsPanel()
-        {
-
-        }
-
-        public async UniTask AddTokens(int amount)
-        {
-
-        }  
-
-        public async UniTask RemoveTokens(int amount)
-        {
-
         }
 
         public void Dispose()
