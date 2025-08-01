@@ -16,7 +16,9 @@ namespace UI.Board.BoardTokenPanel.BoardToken
         IAsyncEventHandler<ReturnTokenWindowOpenedEvent>,
         IAsyncEventHandler<ReturnTokensConfirmedEvent>,
         IAsyncEventHandler<CardReservedEvent>,
-        IAsyncEventHandler<GameStartedEvent>
+        IAsyncEventHandler<GameStartedEvent>,   
+        IAsyncEventHandler<CardPurchasedFromBoardEvent>,
+        IAsyncEventHandler<CardPurchasedFromReserveEvent>
     {
         private readonly UniversalTokenElement view;
         private readonly BoardTokenViewModel viewModel;
@@ -82,7 +84,17 @@ namespace UI.Board.BoardTokenPanel.BoardToken
 
         private void ConnectView(DisposableBuilder d)
         {
-            view.OnTokenClicked.Subscribe(_ => HandleTokenClick().Forget()).AddTo(ref d);
+            view.OnTokenClicked.Subscribe(_ => HandleTokenClick().ToObservable()).AddTo(ref d);
+        }
+
+        private async UniTask HandleTokenClick()
+        {
+            if (viewModel.ResourceType == ResourceType.Inspiration)
+            {
+                return;
+            }
+            
+            await OpenTokenDetailsPanel();
         }
 
         private void SubscribeToEvents()
@@ -95,6 +107,9 @@ namespace UI.Board.BoardTokenPanel.BoardToken
             AsyncEventBus.Instance.Subscribe<ReturnTokenWindowOpenedEvent>(this);
             AsyncEventBus.Instance.Subscribe<CardReservedEvent>(this);
             AsyncEventBus.Instance.Subscribe<GameStartedEvent>(this);
+
+            AsyncEventBus.Instance.Subscribe<CardPurchasedFromBoardEvent>(this);
+            AsyncEventBus.Instance.Subscribe<CardPurchasedFromReserveEvent>(this);
         }
 
         public async UniTask HandleAsync(SelectedTokensConfirmedEvent selectedTokensConfirmedEvent)
@@ -142,16 +157,19 @@ namespace UI.Board.BoardTokenPanel.BoardToken
             await UniTask.WaitUntil(() => viewModel.State.Value == BoardTokenState.Active);
         }
 
-        // View -> Presenter -> Command
-
-        private async UniTask HandleTokenClick()
+        public async UniTask HandleAsync(CardPurchasedFromBoardEvent cardPurchasedFromBoardEvent)
         {
-            if (viewModel.ResourceType == ResourceType.Inspiration)
+            viewModel.SetTokenCount(cardPurchasedFromBoardEvent.BoardTokens[viewModel.ResourceType]);
+        }
+
+        public async UniTask HandleAsync(CardPurchasedFromReserveEvent cardPurchasedFromReserveEvent)
+        {
+            if (viewModel.ResourceType != ResourceType.Inspiration)
             {
                 return;
             }
-            
-            await OpenTokenDetailsPanel();
+
+            viewModel.SetTokenCount(cardPurchasedFromReserveEvent.BoardTokens[viewModel.ResourceType]);
         }
 
         // Event Bus -> Presenter

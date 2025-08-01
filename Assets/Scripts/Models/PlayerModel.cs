@@ -38,6 +38,8 @@ namespace Models
         public int GetPurchasedCardCount() => PurchasedCards.Count;
         public int GetReservedCardCount() => ReservedCards.Count;
 
+        public bool HasReserveCard(string cardId) => ReservedCards.FindCard(cardId) != null;
+
         public bool CanReserveMore() => ReservedCards.Count < 3;
 
         public ResourceCollectionModel CalculateRealCost(ResourceCollectionModel cost)
@@ -49,6 +51,11 @@ namespace Models
         public bool AddCardToReserved(string cardId)
         {
             return ReservedCards.AddCard(cardId);
+        }
+
+        public bool RemoveCardFromReserved(string cardId)
+        {
+            return ReservedCards.RemoveCard(cardId);
         }
 
         public bool AddCardToPurchased(string cardId)

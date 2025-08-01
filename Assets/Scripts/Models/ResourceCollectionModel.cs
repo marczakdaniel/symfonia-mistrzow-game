@@ -170,5 +170,38 @@ namespace Models
             }
             return result;
         }
+
+        public ResourceCollectionModel NeedToAddToHaveAll(ResourceCollectionModel other)
+        {
+            var result = new ResourceCollectionModel();
+            foreach (var r in other.resources)
+            {
+                if (resources[r.Key] < r.Value)
+                {
+                    result.AddResource(r.Key, r.Value - resources[r.Key]);
+                }
+            }
+            return result;
+        }
+    }
+
+    public static class ResourceCollectionModelExtensions
+    {
+        public static ResourceCollectionModel CombineCollections(this ResourceCollectionModel resourceCollectionModel, ResourceCollectionModel other)
+        {
+            var result = resourceCollectionModel.Clone();
+            result.Add(other);
+            return result;
+        }
+
+        public static ResourceCollectionModel GetMinTokens(this ResourceCollectionModel resourceCollectionModel, ResourceCollectionModel other)
+        {
+            var result = new ResourceCollectionModel();
+            foreach (var r in resourceCollectionModel.GetAllResources())
+            {
+                result.AddResource(r.Key, Math.Min(r.Value, other.GetCount(r.Key)));
+            }
+            return result;
+        }
     }
 }

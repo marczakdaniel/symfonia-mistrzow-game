@@ -121,9 +121,9 @@ namespace Command
 
         // Card purchase action commands
 
-        public AddTokenToCardPurchaseCommand CreateAddTokenToCardPurchaseCommand(ResourceType token)
+        public AddTokenToCardPurchaseCommand CreateAddTokenToCardPurchaseCommand(string cardId, ResourceType token)
         {
-            return new AddTokenToCardPurchaseCommand(token, turnService);
+            return new AddTokenToCardPurchaseCommand(cardId, token, turnService);
         }
 
         public RemoveTokenFromCardPurchaseCommand CreateRemoveTokenFromCardPurchaseCommand(ResourceType token)
@@ -133,7 +133,7 @@ namespace Command
 
         public PurchaseCardCommand CreatePurchaseCardCommand(string cardId)
         {
-            return new PurchaseCardCommand(cardId, turnService, boardService);
+            return new PurchaseCardCommand(cardId, turnService, boardService, playerService );
         }
 
         public OpenCardPurchaseWindowCommand CreateOpenCardPurchaseWindowCommand(string musicCardId)

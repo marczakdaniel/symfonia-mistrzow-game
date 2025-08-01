@@ -12,7 +12,8 @@ namespace UI.CardPurchaseWindow.CardPurchaseSingleToken
         IAsyncEventHandler<TokenAddedToCardPurchaseEvent>, 
         IAsyncEventHandler<CardPurchaseWindowOpenedEvent>,
         IAsyncEventHandler<CardPurchaseWindowClosedEvent>,
-        IAsyncEventHandler<TokenRemovedFromCardPurchaseEvent>
+        IAsyncEventHandler<TokenRemovedFromCardPurchaseEvent>,
+        IAsyncEventHandler<CardPurchasedFromBoardEvent>
     {
         private readonly CardPurchaseSingleTokenViewModel viewModel;
         private readonly CardPurchaseSingleTokenView view;
@@ -66,7 +67,7 @@ namespace UI.CardPurchaseWindow.CardPurchaseSingleToken
 
         private async UniTask HandleAddTokenClicked()
         {
-            var command = commandFactory.CreateAddTokenToCardPurchaseCommand(viewModel.Token);
+            var command = commandFactory.CreateAddTokenToCardPurchaseCommand(viewModel.CardId, viewModel.Token);
             await CommandService.Instance.ExecuteCommandAsync(command);
         }
 
@@ -82,6 +83,8 @@ namespace UI.CardPurchaseWindow.CardPurchaseSingleToken
             AsyncEventBus.Instance.Subscribe<TokenRemovedFromCardPurchaseEvent>(this);
             AsyncEventBus.Instance.Subscribe<CardPurchaseWindowOpenedEvent>(this);
             AsyncEventBus.Instance.Subscribe<CardPurchaseWindowClosedEvent>(this);
+            AsyncEventBus.Instance.Subscribe<TokenAddedToCardPurchaseEvent>(this);
+            AsyncEventBus.Instance.Subscribe<CardPurchasedFromBoardEvent>(this);
         }
 
         public async UniTask HandleAsync(TokenAddedToCardPurchaseEvent gameEvent)
@@ -108,11 +111,17 @@ namespace UI.CardPurchaseWindow.CardPurchaseSingleToken
         public async UniTask HandleAsync(CardPurchaseWindowOpenedEvent gameEvent)
         {
             UnityEngine.Debug.Log($"CardPurchaseWindowOpenedEvent: {gameEvent.CurrentPlayerTokens[viewModel.Token]}");
-            viewModel.Initialize(viewModel.Token, 0, gameEvent.CurrentPlayerTokens[viewModel.Token]);
+            viewModel.Initialize(viewModel.Token, gameEvent.InitialSelectedTokens[viewModel.Token], gameEvent.TokensNeededToPurchase[viewModel.Token], gameEvent.MusicCardData.Id);
             await UniTask.WaitUntil(() => viewModel.State.Value == CardPurchaseSingleTokenState.Active);
         }
 
         public async UniTask HandleAsync(CardPurchaseWindowClosedEvent gameEvent)
+        {
+            viewModel.Close();
+            await UniTask.WaitUntil(() => viewModel.State.Value == CardPurchaseSingleTokenState.Disabled);
+        }
+
+        public async UniTask HandleAsync(CardPurchasedFromBoardEvent gameEvent)
         {
             viewModel.Close();
             await UniTask.WaitUntil(() => viewModel.State.Value == CardPurchaseSingleTokenState.Disabled);

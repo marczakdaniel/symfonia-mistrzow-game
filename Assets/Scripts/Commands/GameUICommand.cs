@@ -144,10 +144,16 @@ namespace Command
 
         public override async UniTask<bool> Execute()
         {
-            var currentPlayerTokens = turnService.GetCurrentPlayerModel().Tokens.GetAllResources();
+            var currentPlayer = turnService.GetCurrentPlayerModel();
+            var currentPlayerTokens = currentPlayer.Tokens.GetAllResources();
             var musicCardData = MusicCardRepository.Instance.GetCard(musicCardId);
+            var initialTokens = turnService.GetInitialSelectedTokens(musicCardId);  
 
-            var openEvent = new CardPurchaseWindowOpenedEvent(musicCardData, currentPlayerTokens, 0);
+            turnService.InitializeCardPurchaseTokens(initialTokens);
+            var currentCardTokens = currentPlayer.PurchasedCards.GetAllResourceCollection().GetAllResources();  
+            var tokensNeededToPurchase = turnService.GetTokensNeededToPurchase(musicCardId);
+
+            var openEvent = new CardPurchaseWindowOpenedEvent(musicCardData, currentPlayerTokens, initialTokens.GetAllResources(), currentCardTokens, tokensNeededToPurchase.GetAllResources());
             await AsyncEventBus.Instance.PublishAndWaitAsync(openEvent);
 
             return true;

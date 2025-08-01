@@ -7,6 +7,7 @@ using UnityEngine;
 using Events;
 using Services;
 using Cysharp.Threading.Tasks;
+using System.Linq;
 
 namespace Command
 {
@@ -450,10 +451,12 @@ namespace Command
         public override string CommandType => "AddTokenToCardPurchase";
         private readonly ResourceType token;
         private readonly TurnService turnService;
+        private readonly string cardId;
 
-        public AddTokenToCardPurchaseCommand(ResourceType token, TurnService turnService) : base()
+        public AddTokenToCardPurchaseCommand(string cardId, ResourceType token, TurnService turnService) : base()
         {
             this.token = token;
+            this.cardId = cardId;
             this.turnService = turnService;
         }
 
@@ -464,7 +467,7 @@ namespace Command
 
         public override async UniTask<bool> Execute()
         {
-            if (!turnService.CanAddTokenToCardPurchase(token))
+            if (!turnService.CanAddTokenToCardPurchase(cardId, token))
             {
                 return false;
             }
@@ -512,12 +515,14 @@ namespace Command
         private readonly string cardId;
         private readonly TurnService turnService;
         private readonly BoardService boardService;
+        private readonly PlayerService playerService;
 
-        public PurchaseCardCommand(string cardId, TurnService turnService, BoardService boardService) : base()
+        public PurchaseCardCommand(string cardId, TurnService turnService, BoardService boardService, PlayerService playerService) : base()
         {
             this.cardId = cardId;
             this.turnService = turnService;
             this.boardService = boardService;
+            this.playerService = playerService;
         }
 
         public override async UniTask<bool> Validate()
@@ -536,19 +541,26 @@ namespace Command
             }
 
             var slot = boardService.GetSlotWithCard(cardId);
-            if (slot == null)
+            if (slot != null)
             {
-                return false;
+                var musicCardData = slot.GetMusicCard();
+                turnService.PurchaseCardFromBoard(cardId, selectedTokens);
+                await AsyncEventBus.Instance.PublishAndWaitAsync(new CardPurchasedFromBoardEvent(cardId, boardService.GetAllBoardResources()));
+
+                boardService.RefillSlot(slot.Level, slot.Position);
+                var putCardOnBoardEvent = new PutCardOnBoardEvent(slot.Level, slot.Position, cardId, slot.GetMusicCard());
+                await AsyncEventBus.Instance.PublishAndWaitAsync(putCardOnBoardEvent);
+                return true;
             }
 
-            
-
-            turnService.PurchaseCard(cardId, selectedTokens);
-            await AsyncEventBus.Instance.PublishAndWaitAsync(new CardPurchasedEvent(cardId, boardService.GetAllBoardResources()));
-
-            boardService.RefillSlot(slot.Level, slot.Position);
-            var putCardOnBoardEvent = new PutCardOnBoardEvent(slot.Level, slot.Position, cardId, slot.GetMusicCard());
-            await AsyncEventBus.Instance.PublishAndWaitAsync(putCardOnBoardEvent);
+            var currentPlayer = turnService.GetCurrentPlayerModel();
+            if (currentPlayer.HasReserveCard(cardId))
+            {
+                turnService.PurchaseCardFromReserve(cardId, selectedTokens);
+                var reservedCards = currentPlayer.ReservedCards.GetAllCards().ToList();
+                await AsyncEventBus.Instance.PublishAndWaitAsync(new CardPurchasedFromReserveEvent(cardId, reservedCards, boardService.GetAllBoardResources()));
+                return true;
+            }
 
             UnityEngine.Debug.LogError("Card purchased");
             return true;

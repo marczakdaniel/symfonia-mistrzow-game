@@ -13,7 +13,8 @@ namespace UI.CardPurchaseWindow
         IDisposable, 
         IAsyncEventHandler<CardPurchaseWindowOpenedEvent>, 
         IAsyncEventHandler<CardPurchaseWindowClosedEvent>,
-        IAsyncEventHandler<CardPurchasedEvent>
+        IAsyncEventHandler<CardPurchasedFromBoardEvent>,
+        IAsyncEventHandler<CardPurchasedFromReserveEvent>
     {
         private readonly CardPurchaseWindowViewModel viewModel;
         private readonly CardPurchaseWindowView view;
@@ -65,6 +66,7 @@ namespace UI.CardPurchaseWindow
                     break;
                 case CardPurchaseWindowState.Opened:
                     view.SetCardDetails(viewModel.MusicCardData);
+                    view.Setup(viewModel.CurrentPlayerTokens, viewModel.CurrentCardTokens);
                     view.Activate();
                     break;
             }
@@ -93,13 +95,14 @@ namespace UI.CardPurchaseWindow
         {
             AsyncEventBus.Instance.Subscribe<CardPurchaseWindowOpenedEvent>(this);
             AsyncEventBus.Instance.Subscribe<CardPurchaseWindowClosedEvent>(this);
-            AsyncEventBus.Instance.Subscribe<CardPurchasedEvent>(this);
+            AsyncEventBus.Instance.Subscribe<CardPurchasedFromBoardEvent>(this);
+            AsyncEventBus.Instance.Subscribe<CardPurchasedFromReserveEvent>(this);
         }
 
         public async UniTask HandleAsync(CardPurchaseWindowOpenedEvent gameEvent)
         {
-            viewModel.OpenCardPurchaseWindow(gameEvent.MusicCardData);
-            await UniTask.CompletedTask;
+            viewModel.OpenCardPurchaseWindow(gameEvent.MusicCardData, gameEvent.CurrentPlayerTokens, gameEvent.CurrentCardTokens);
+            await UniTask.WaitUntil(() => viewModel.State.Value == CardPurchaseWindowState.Opened);
         }
 
         public async UniTask HandleAsync(CardPurchaseWindowClosedEvent gameEvent)
@@ -108,7 +111,13 @@ namespace UI.CardPurchaseWindow
             await UniTask.CompletedTask;
         }
 
-        public async UniTask HandleAsync(CardPurchasedEvent gameEvent)
+        public async UniTask HandleAsync(CardPurchasedFromBoardEvent gameEvent)
+        {
+            viewModel.CloseCardPurchaseWindow();
+            await UniTask.CompletedTask;
+        }
+
+        public async UniTask HandleAsync(CardPurchasedFromReserveEvent gameEvent)
         {
             viewModel.CloseCardPurchaseWindow();
             await UniTask.CompletedTask;

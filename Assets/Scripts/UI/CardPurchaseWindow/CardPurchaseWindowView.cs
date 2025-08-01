@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using System.Xml.Serialization;
+using Assets.Scripts.UI.Elements;
 using DefaultNamespace.Data;
 using DefaultNamespace.Elements;
 using Mono.Cecil.Cil;
@@ -18,6 +20,7 @@ namespace UI.CardPurchaseWindow
         [SerializeField] private ButtonElement confirmButton;
         [SerializeField] private DetailsMusicCardView musicCardView;
         [SerializeField] private CardPurchaseSingleTokenView[] cardPurchaseSingleTokenViews = new CardPurchaseSingleTokenView[6];
+        [SerializeField] private UniversalPlayerResourceElement[] playerResourcesElements = new UniversalPlayerResourceElement[6];
 
         public CardPurchaseSingleTokenView[] CardPurchaseSingleTokenViews => cardPurchaseSingleTokenViews;
 
@@ -27,6 +30,13 @@ namespace UI.CardPurchaseWindow
             confirmButton.OnClick.Subscribe(OnConfirmButtonClick.OnNext).AddTo(this);
         }
         
+        public void Setup(Dictionary<ResourceType, int> currentPlayerTokens, Dictionary<ResourceType, int> currentCardTokens)
+        {
+            for (int i = 0; i < 6; i++)
+            {
+                playerResourcesElements[i].Initialize((ResourceType)i, currentPlayerTokens[(ResourceType)i], currentCardTokens[(ResourceType)i]);
+            }
+        }
 
         public void SetCardDetails(MusicCardData musicCardData)
         {

@@ -13,7 +13,8 @@ namespace UI.Board.BoardMusicCardPanel.BoardMusicCard
         IDisposable, 
         IAsyncEventHandler<CardReservedEvent>,
         IAsyncEventHandler<PutCardOnBoardEvent>,
-        IAsyncEventHandler<GameStartedEvent>
+        IAsyncEventHandler<GameStartedEvent>,
+        IAsyncEventHandler<CardPurchasedFromBoardEvent>
     {
         private readonly BoardMusicCardView view;
         private readonly BoardMusicCardViewModel viewModel;
@@ -48,6 +49,7 @@ namespace UI.Board.BoardMusicCardPanel.BoardMusicCard
         private void SubscribeToEvents()
         {
             AsyncEventBus.Instance.Subscribe<CardReservedEvent>(this);
+            AsyncEventBus.Instance.Subscribe<CardPurchasedFromBoardEvent>(this);
             AsyncEventBus.Instance.Subscribe<PutCardOnBoardEvent>(this);
             AsyncEventBus.Instance.Subscribe<GameStartedEvent>(this);
         }
@@ -55,6 +57,16 @@ namespace UI.Board.BoardMusicCardPanel.BoardMusicCard
         public async UniTask HandleAsync(CardReservedEvent cardReservedEvent)
         {
             if (cardReservedEvent.CardId != viewModel.MusicCardId)
+            {
+                return;
+            }
+            viewModel.HideCard();
+            await view.PlayHideAnimation();
+        }
+
+        public async UniTask HandleAsync(CardPurchasedFromBoardEvent cardPurchasedEvent)
+        {
+            if (cardPurchasedEvent.CardId != viewModel.MusicCardId)
             {
                 return;
             }

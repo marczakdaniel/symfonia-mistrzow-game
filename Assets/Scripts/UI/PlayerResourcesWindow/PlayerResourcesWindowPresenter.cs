@@ -9,7 +9,8 @@ namespace UI.PlayerResourcesWindow
     public class PlayerResourcesWindowPresenter : 
         IDisposable,
         IAsyncEventHandler<PlayerResourcesWindowOpenedEvent>,
-        IAsyncEventHandler<PlayerResourcesWindowClosedEvent>
+        IAsyncEventHandler<PlayerResourcesWindowClosedEvent>,
+        IAsyncEventHandler<CardPurchasedFromReserveEvent>
     {
         private readonly PlayerResourcesWindowView view;
         private readonly CommandFactory commandFactory;
@@ -36,18 +37,26 @@ namespace UI.PlayerResourcesWindow
         private void ConnectView(DisposableBuilder d)
         {
             view.OnCloseButtonClicked.Subscribe(_ => HandleCloseButtonClicked().ToObservable()).AddTo(ref d);
-        }
-
-        private void SubscribeToEvents()
-        {
-            AsyncEventBus.Instance.Subscribe<PlayerResourcesWindowOpenedEvent>(this);
-            AsyncEventBus.Instance.Subscribe<PlayerResourcesWindowClosedEvent>(this);
+            view.OnCardClicked.Subscribe(cardId => HandleCardClicked(cardId).ToObservable()).AddTo(ref d);
         }
 
         private async UniTask HandleCloseButtonClicked()
         {
             var command = commandFactory.CreateClosePlayerResourcesWindowCommand();
             await CommandService.Instance.ExecuteCommandAsync(command);
+        }
+
+        private async UniTask HandleCardClicked(string cardId)
+        {
+            var command = commandFactory.CreateOpenCardPurchaseWindowCommand(cardId);
+            await CommandService.Instance.ExecuteCommandAsync(command);
+        }
+
+        private void SubscribeToEvents()
+        {
+            AsyncEventBus.Instance.Subscribe<PlayerResourcesWindowOpenedEvent>(this);
+            AsyncEventBus.Instance.Subscribe<PlayerResourcesWindowClosedEvent>(this);
+            AsyncEventBus.Instance.Subscribe<CardPurchasedFromReserveEvent>(this);
         }
 
         public async UniTask HandleAsync(PlayerResourcesWindowOpenedEvent playerResourcesWindowOpenedEvent)
@@ -57,6 +66,11 @@ namespace UI.PlayerResourcesWindow
         }
 
         public async UniTask HandleAsync(PlayerResourcesWindowClosedEvent playerResourcesWindowClosedEvent)
+        {
+            await view.PlayCloseAnimation();
+        }
+
+        public async UniTask HandleAsync(CardPurchasedFromReserveEvent cardPurchasedFromReserveEvent)
         {
             await view.PlayCloseAnimation();
         }

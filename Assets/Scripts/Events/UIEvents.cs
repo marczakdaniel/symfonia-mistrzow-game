@@ -202,14 +202,23 @@ namespace Events
     {
         public MusicCardData MusicCardData { get; private set; }
 
-        public int CurrentSelectedTokensCount { get; private set; }
+        public Dictionary<ResourceType, int> InitialSelectedTokens { get; private set; }
         public Dictionary<ResourceType, int> CurrentPlayerTokens { get; private set; }
+        public Dictionary<ResourceType, int> CurrentCardTokens { get; private set; }
+        public Dictionary<ResourceType, int> TokensNeededToPurchase { get; private set; }
 
-        public CardPurchaseWindowOpenedEvent(MusicCardData musicCardData, Dictionary<ResourceType, int> currentPlayerTokens, int currentSelectedTokensCount)
+        public CardPurchaseWindowOpenedEvent(
+            MusicCardData musicCardData, 
+            Dictionary<ResourceType, int> currentPlayerTokens, 
+            Dictionary<ResourceType, int> initialSelectedTokens, 
+            Dictionary<ResourceType, int> currentCardTokens,
+            Dictionary<ResourceType, int> tokensNeededToPurchase)
         {
             MusicCardData = musicCardData;
             CurrentPlayerTokens = currentPlayerTokens;
-            CurrentSelectedTokensCount = currentSelectedTokensCount;
+            InitialSelectedTokens = initialSelectedTokens;
+            CurrentCardTokens = currentCardTokens;
+            TokensNeededToPurchase = tokensNeededToPurchase;
         }
     }
 
@@ -244,14 +253,29 @@ namespace Events
         }
     }
 
-    public class CardPurchasedEvent : GameEvent
+    public class CardPurchasedFromBoardEvent : GameEvent
     {
         public string CardId { get; private set; }
         public Dictionary<ResourceType, int> BoardTokens { get; private set; }
 
-        public CardPurchasedEvent(string cardId, Dictionary<ResourceType, int> boardTokens)
+        public CardPurchasedFromBoardEvent(string cardId, Dictionary<ResourceType, int> boardTokens)
         {
             CardId = cardId;
+            BoardTokens = boardTokens;
+        }
+    }
+
+    public class CardPurchasedFromReserveEvent : GameEvent
+    {
+        public string CardId { get; private set; }
+
+        public List<MusicCardData> ReservedMusicCards { get; private set; }
+        public Dictionary<ResourceType, int> BoardTokens { get; private set; }
+        
+        public CardPurchasedFromReserveEvent(string cardId, List<MusicCardData> reservedMusicCards, Dictionary<ResourceType, int> boardTokens)
+        {
+            CardId = cardId;
+            ReservedMusicCards = reservedMusicCards;
             BoardTokens = boardTokens;
         }
     }

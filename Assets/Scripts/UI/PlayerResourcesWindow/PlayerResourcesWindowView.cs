@@ -14,6 +14,7 @@ namespace UI.PlayerResourcesWindow
     public class PlayerResourcesWindowView : MonoBehaviour
     {
         public Subject<Unit> OnCloseButtonClicked { get; private set; } = new Subject<Unit>();
+        public Subject<string> OnCardClicked { get; private set; } = new Subject<string>();
 
         [SerializeField] 
         private UniversalPlayerResourceElement[] playerResources = new UniversalPlayerResourceElement[6];
@@ -73,6 +74,10 @@ namespace UI.PlayerResourcesWindow
         public void Awake()
         {
             closeButton.OnClick.Subscribe(OnCloseButtonClicked.OnNext).AddTo(this);
+            foreach (var card in detailsMusicCardView)
+            {
+                card.OnCardClicked.Subscribe(OnCardClicked.OnNext).AddTo(this);
+            }
         }
     }
 }
