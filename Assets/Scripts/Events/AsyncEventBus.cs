@@ -56,6 +56,10 @@ namespace Events
 
         private AsyncEventBus() { }
 
+        public void Initialize()
+        {
+        }
+
         public void Subscribe<T>(IAsyncEventHandler<T> handler, EventPriority priority = EventPriority.Normal) where T : IGameEvent
         {
             var eventType = typeof(T);

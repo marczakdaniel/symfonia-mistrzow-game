@@ -14,6 +14,11 @@ namespace Services
             this.gameModel = gameModel;
         }
 
+        public void StartGame()
+        {
+            boardModel.StartGame();
+        }
+
         public Dictionary<ResourceType, int> GetAllBoardResources()
         {
             return boardModel.TokenResources.GetAllResources();

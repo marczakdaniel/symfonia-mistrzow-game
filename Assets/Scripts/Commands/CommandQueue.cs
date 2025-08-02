@@ -206,6 +206,7 @@ namespace Command
             {
                 queuedCommand.MarkAsCompleted(false, ex.Message);
                 Debug.LogError($"[CommandQueue] Błąd podczas wykonywania {queuedCommand.Command.CommandType}: {ex.Message}");
+                throw ex;
             }
             finally
             {

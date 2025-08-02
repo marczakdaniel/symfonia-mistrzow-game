@@ -15,7 +15,6 @@ namespace UI.Board.BoardMusicCardPanel
     {
         private readonly BoardMusicCardPanelView view;
         private readonly BoardMusicCardPanelViewModel viewModel = new BoardMusicCardPanelViewModel();
-        private readonly IGameModelReader gameModelReader;
         private BoardMusicCardPresenter[] level1CardPresenters;
         private BoardMusicCardPresenter[] level2CardPresenters;
         private BoardMusicCardPresenter[] level3CardPresenters;
@@ -25,12 +24,10 @@ namespace UI.Board.BoardMusicCardPanel
         private CommandFactory commandFactory;
 
         public BoardMusicCardPanelPresenter(BoardMusicCardPanelView view, 
-                                          CommandFactory commandFactory,
-                                          IGameModelReader gameModelReader)
+                                          CommandFactory commandFactory)
         {
             this.view = view;
             this.commandFactory = commandFactory;
-            this.gameModelReader = gameModelReader;
 
             InitializeChildMCP();
             InitializeMVP();

@@ -19,6 +19,9 @@ namespace Services
             return players.FirstOrDefault(p => p.PlayerId == playerId);
         }
 
-        
+        public PlayerModel[] GetPlayers()
+        {
+            return players.ToArray();
+        }
     }
 }

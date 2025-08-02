@@ -6,68 +6,106 @@ using Cysharp.Threading.Tasks;
 using Events;
 using Command;
 using Services;
+using UI.MenuWindow;
+using DefaultNamespace.Data;
+using Assets.Scripts.Data;
+using UI.InfoWindow;
 
 namespace Managers
 {
     public class GameManager : MonoBehaviour
     {        
         [SerializeField] private GameWindowView gameWindowView;
+        [SerializeField] private MenuWindowView menuWindowView;
+
+        [SerializeField] private MusicCardDeckData musicCardDeckData;
+        [SerializeField] private ConcertCardDeckData concertCardDeckData;
+        [SerializeField] private InfoWindowView infoWindowView;
 
         private GameWindowPresenter gameWindowPresenter;    
+        private MenuWindowPresenter menuWindowPresenter;
+        private InfoWindowPresenter infoWindowPresenter;
         private CommandFactory commandFactory;
+
         private GameModel gameModel;
+        private GameConfig gameConfig;
+
         private TurnService turnService;
         private BoardService boardService;
         private PlayerService playerService;
-        public bool InitalizeGame(GameConfig gameConfig)
+        private ConfigService configService;
+        private GameService gameService;
+        private ConcertCardService concertCardService;  
+        public void Start()
         {
-            // Initialize MusicCardRepository
-            MusicCardRepository.Instance.Initialize(gameConfig.musicCardDatas);
-            // Initialize and create GameModel
-            gameModel = new GameModel();
-            gameModel.Initialize(gameConfig);
+            InitializeSingletons();
 
-            
-            // Initialize CommandFactory and create services
+            CreateModels();
+            CreateServices();
+            CreateCommandFactory();
+
+            CreateMenuWindow();
+            CreateGameWindow();
+            CreateInfoWindow();
+
+            OpenStartPageWindow().Forget();
+        }
+
+        private async UniTask OpenStartPageWindow()
+        {
+            var command = commandFactory.CreateOpenStartPageWindowCommand();
+            await CommandService.Instance.ExecuteCommandAsync(command);
+        }
+
+        private void InitializeSingletons()
+        {
+            AsyncEventBus.Instance.Initialize();
+            CommandService.Instance.Initialize();
+            MusicCardRepository.Instance.Initialize(musicCardDeckData.Cards);
+        }
+        private void CreateMenuWindow()
+        {
+            menuWindowPresenter = new MenuWindowPresenter(menuWindowView, commandFactory);
+        }
+
+        private void CreateInfoWindow()
+        {
+            infoWindowPresenter = new InfoWindowPresenter(infoWindowView, commandFactory);
+        }
+
+        private void CreateModels()
+        {
+            gameConfig = new GameConfig(musicCardDeckData.Cards);
+            gameModel = new GameModel();
+        }
+
+        private void CreateServices()
+        {
+            configService = new ConfigService(gameConfig);
             turnService = new TurnService(gameModel);
             boardService = new BoardService(gameModel);
             playerService = new PlayerService(gameModel);
-
-            commandFactory = new CommandFactory(gameModel, turnService, boardService, playerService);
-            CommandService.Instance.Initialize(commandFactory);
-
-            CreateGameWindow();
-            return true;
+            gameService = new GameService(gameModel);
+            concertCardService = new ConcertCardService(concertCardDeckData);
         }
+
+        private void CreateCommandFactory()
+        {
+            commandFactory = new CommandFactory(gameModel, turnService, boardService, playerService, configService, gameService, concertCardService);
+        }
+
+
+        // this should go to command layer
 
         private void CreateGameWindow()
         {
-            gameWindowPresenter = new GameWindowPresenter(gameWindowView, commandFactory, gameModel);
-        }
-
-        public async UniTask StartGame()
-        {
-            // TODO: Proper command execution
-            var startGameCommand = commandFactory.CreateStartGameCommand();
-            await CommandService.Instance.ExecuteCommandAsync(startGameCommand);
-
-            // TODO: Start turn for first player
-            //await CommandService.Instance.ExecuteCommandAsync(commandFactory.CreateStartPlayerTurnCommand());
-        }
-
-        public void PlayerTurn()
-        {
-            // Initialize board after changes
-            // Wait for player action
-            // Check for noble card
-            // Check if player won
-            // Next player turn
+            gameWindowPresenter = new GameWindowPresenter(gameWindowView, commandFactory);
         }
 
         private void OnDestroy()
         {
-            // Clean up event bus when game manager is destroyed
             AsyncEventBus.Instance.Clear();
+            CommandService.Instance.Clear();
         }
     }
 }

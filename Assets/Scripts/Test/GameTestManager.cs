@@ -10,6 +10,7 @@ using Assets.Scripts.Data;
 
 namespace Test
 {
+    /*
     public class GameTestManager : MonoBehaviour
     {
         [SerializeField] private GameManager gameManager;
@@ -39,4 +40,5 @@ namespace Test
             return gameConfig;
         }
     }
+    */
 }

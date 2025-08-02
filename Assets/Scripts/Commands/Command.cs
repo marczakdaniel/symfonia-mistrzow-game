@@ -11,115 +11,59 @@ using System.Linq;
 
 namespace Command
 {
-    /*
-    public class BuyMusicCardCommand : BasePlayerActionCommand
-    {
-        public override string CommandType => "BuyMusicCard";
-        public string MusicCardId { get; private set; }
-
-        private readonly GameModel gameModel;
-
-        public BuyMusicCardCommand(string playerId, string musicCardId, GameModel gameModel) : base(playerId, gameModel)
-        {
-            this.MusicCardId = musicCardId;
-            this.gameModel = gameModel;
-        }
-
-        public override async UniTask<bool> Validate()
-        {
-            // TODO: Check if 
-            // - Game is active
-            // - Player exists
-            // - Player is current player
-            // - Player has enough tokens
-            // - Music card is on board
-            return true;
-        }
-
-        public override async UniTask<bool> Execute()
-        {
-            // Change model
-            var result = gameModel.PurchaseCard(PlayerId, MusicCardId, new ResourceCollectionModel());
-
-            if (!result)
-            {
-                return false;
-            }
-
-            // Publish event and wait for UI to complete
-            var cardPurchasedEvent = new CardPurchasedEvent(PlayerId, MusicCardId, new ResourceCollectionModel());
-            await AsyncEventBus.Instance.PublishAndWaitAsync(cardPurchasedEvent);
-
-            // Optionally publish board update event
-            var boardUpdatedEvent = new BoardUpdatedEvent(gameModel.board);
-            await AsyncEventBus.Instance.PublishAndWaitAsync(boardUpdatedEvent);
-
-            return true;
-        }
-    }
-
-    public class ReserveMusicCardCommand : BasePlayerActionCommand
-    {
-        public override string CommandType => "ReserveMusicCard";
-        public string MusicCardId { get; private set; }
-        private readonly GameModel gameModel;
-
-        public ReserveMusicCardCommand(string playerId, string musicCardId, GameModel gameModel) : base(playerId, gameModel)
-        {
-            MusicCardId = musicCardId;
-            this.gameModel = gameModel;
-        }
-
-        public override async UniTask<bool> Validate()
-        {
-            return true;
-        }
-
-        public override async UniTask<bool> Execute()
-        {
-            var result = gameModel.ReserveCard(PlayerId, MusicCardId);
-
-            if (!result)
-            {
-                return false;
-            }
-
-            // Publish event and wait for UI to complete
-            var cardReservedEvent = new CardReservedEvent(PlayerId, MusicCardId, 1);
-            await AsyncEventBus.Instance.PublishAndWaitAsync(cardReservedEvent);
-
-            return true;
-        }
-    }
-    */
-
-    public class StartGameCommand : BaseGameFlowCommand
+    public class StartGameCommand : BasePlayerActionCommand
     {
         public override string CommandType => "StartGame";
 
+        private readonly GameService gameService;
         private readonly TurnService turnService;
         private readonly BoardService boardService;
+        private readonly PlayerService playerService;
+        private readonly ConfigService configService;
+        private readonly ConcertCardService concertCardService;
 
-        public StartGameCommand(GameModel gameModel, TurnService turnService, BoardService boardService) : base(gameModel)
+        public StartGameCommand(GameService gameService, TurnService turnService, BoardService boardService, PlayerService playerService, ConfigService configService, ConcertCardService concertCardService ) : base()
         {
             this.turnService = turnService;
             this.boardService = boardService;
+            this.gameService = gameService;
+            this.playerService = playerService;
+            this.configService = configService;
+            this.concertCardService = concertCardService;
         }
 
         public override async UniTask<bool> Validate()
         {
             // TODO: Check if game can be started
-            return gameModel.CanStartGame();
+            return true;
         }
 
         public override async UniTask<bool> Execute()
         {
+            var gameConfig = configService.GetGameConfig();
+            var boardConfig = configService.GetBoardConfig();
+            var concertCards = concertCardService.GetRandomConcertCards(gameConfig.GetPlayerConfigs().Count + 1);
+            gameConfig.SetupBoardConfig(boardConfig);
+            gameConfig.SetupConcertCardsConfig(concertCards.ToArray());
+
+            if (!gameConfig.IsInitialized)
+            {
+                return false;
+            }
+            
+            gameService.InitializeGame(gameConfig);
+
+            if (!gameService.CanStartGame())
+            {
+                return false;
+            }
+
             // model update
             // business logic
             // event publish
             // 1. Model update - preparation
-            gameModel.StartGame();
-            var players = gameModel.GetPlayers();
+            boardService.StartGame();
+            var players = playerService.GetPlayers();
             var playerIds = new string[players.Length];
             for (int i = 0; i < players.Length; i++)
             {
@@ -127,12 +71,12 @@ namespace Command
             }
             // 2. Event publish and wait for UI to complete
             var boardCards = boardService.GetBoardCards();
-            var gameStartedEvent = new GameStartedEvent(playerIds, gameModel.Board.TokenResources.GetAllResources(), boardCards);
+            var gameStartedEvent = new GameStartedEvent(playerIds, boardService.GetAllBoardResources(), boardCards);
             await AsyncEventBus.Instance.PublishAndWaitAsync(gameStartedEvent);
 
             turnService.NextPlayerTurn();
 
-            var currentPlayer = gameModel.GetPlayer(gameModel.GetTurnModel().CurrentPlayerId);
+            var currentPlayer = turnService.GetCurrentPlayerModel();
             await AsyncEventBus.Instance.PublishAndWaitAsync(new StartTurnWindowOpenedEvent(currentPlayer.PlayerId, currentPlayer.PlayerName));
 
             return true;
@@ -232,6 +176,7 @@ namespace Command
         {
             if (!turnService.CanAddTokenToSelectedTokens(token))
             {
+                await AsyncEventBus.Instance.PublishAndWaitAsync(new InfoWindowOpenedEvent("Nie możesz dodać tego tokenu do wybranych tokenów!"));
                 return false;
             }
 
@@ -296,8 +241,7 @@ namespace Command
         {
             if (!turnService.CanConfirmSelectedTokens())
             {
-                turnService.ClearSelectedTokens();
-                await AsyncEventBus.Instance.PublishAndWaitAsync(new TokenDetailsPanelClosedEvent());
+                await AsyncEventBus.Instance.PublishAndWaitAsync(new InfoWindowOpenedEvent("Nie możesz potwierdzić wybranych tokenów!"));
                 return true;
             }
 
@@ -424,11 +368,15 @@ namespace Command
         {
             if (!turnService.CanReserveCard())
             {
+                var description = "Nie możesz zarezerwować tego karty!\n Możesz zarezerwować maksymalnie 3 karty.";
+                await AsyncEventBus.Instance.PublishAndWaitAsync(new InfoWindowOpenedEvent(description));
                 return false;
             }
 
             if (!turnService.CanConfirmReserveMusicCard())
             {
+                var description = "Nie możesz zarezerwować tego karty!";
+                await AsyncEventBus.Instance.PublishAndWaitAsync(new InfoWindowOpenedEvent(description));
                 return false;
             }
 
@@ -448,7 +396,7 @@ namespace Command
             boardService.RefillSlot(slot.Level, slot.Position);
 
             var musicCardData = slot.GetMusicCard();
-            var putCardOnBoardEvent = new PutCardOnBoardEvent(slot.Level, slot.Position, cardId, musicCardData);
+            var putCardOnBoardEvent = new PutCardOnBoardEvent(slot.Level, slot.Position, musicCardData);
             await AsyncEventBus.Instance.PublishAndWaitAsync(putCardOnBoardEvent);
 
             return true;
@@ -479,6 +427,8 @@ namespace Command
         {
             if (!turnService.CanAddTokenToCardPurchase(cardId, token))
             {
+                var description = "Nie możesz dodać tego tokenu do zakupu karty!";
+                await AsyncEventBus.Instance.PublishAndWaitAsync(new InfoWindowOpenedEvent(description));
                 return false;
             }
 
@@ -546,7 +496,8 @@ namespace Command
 
             if (!turnService.CanPurchaseCardWithResources(cardId, selectedTokens))
             {
-                UnityEngine.Debug.LogError("Cannot purchase card");
+                var description = "Zakup się nie powiódł!";
+                await AsyncEventBus.Instance.PublishAndWaitAsync(new InfoWindowOpenedEvent(description));
                 return false;
             }
 
@@ -558,7 +509,7 @@ namespace Command
                 await AsyncEventBus.Instance.PublishAndWaitAsync(new CardPurchasedFromBoardEvent(cardId, boardService.GetAllBoardResources()));
 
                 boardService.RefillSlot(slot.Level, slot.Position);
-                var putCardOnBoardEvent = new PutCardOnBoardEvent(slot.Level, slot.Position, cardId, slot.GetMusicCard());
+                var putCardOnBoardEvent = new PutCardOnBoardEvent(slot.Level, slot.Position, slot.GetMusicCard());
                 await AsyncEventBus.Instance.PublishAndWaitAsync(putCardOnBoardEvent);
                 return true;
             }
@@ -573,6 +524,33 @@ namespace Command
             }
 
             UnityEngine.Debug.LogError("Card purchased");
+            return true;
+        }
+    }
+
+    public class AddPlayerCommand : BaseUICommand
+    {
+        public override string CommandType => "AddPlayer";
+
+        private readonly ConfigService configService;
+        private readonly string playerName;
+
+        public AddPlayerCommand(string playerName, ConfigService configService) : base()
+        {
+            this.playerName = playerName;
+            this.configService = configService;
+        }   
+
+        public override async UniTask<bool> Validate()
+        {
+            return true;
+        }
+
+        public override async UniTask<bool> Execute()
+        {
+            configService.AddPlayer(playerName);
+            var playerNames = configService.GetPlayerNames();
+            await AsyncEventBus.Instance.PublishAndWaitAsync(new PlayerAddedEvent(playerNames));
             return true;
         }
     }

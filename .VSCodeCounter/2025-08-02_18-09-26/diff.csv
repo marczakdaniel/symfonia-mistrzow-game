@@ -1,0 +1,17 @@
+"filename", "language", "C#", "comment", "blank", "total"
+"c:\Users\danie\Desktop\symfonia-mistrzow-game\Assets\Scripts\Commands\CommandService.cs", "C#", -8, -3, -1, -12
+"c:\Users\danie\Desktop\symfonia-mistrzow-game\Assets\Scripts\Data\MusicCardData.cs", "C#", -6, 0, -3, -9
+"c:\Users\danie\Desktop\symfonia-mistrzow-game\Assets\Scripts\Data\MusicCardDeckData.cs", "C#", 11, 0, 3, 14
+"c:\Users\danie\Desktop\symfonia-mistrzow-game\Assets\Scripts\Events\AsyncEventBus.cs", "C#", 3, 0, 1, 4
+"c:\Users\danie\Desktop\symfonia-mistrzow-game\Assets\Scripts\Events\UIEvents.cs", "C#", 12, 0, 2, 14
+"c:\Users\danie\Desktop\symfonia-mistrzow-game\Assets\Scripts\Managers\GameManager.cs", "C#", 43, -8, 11, 46
+"c:\Users\danie\Desktop\symfonia-mistrzow-game\Assets\Scripts\Models\GameConfig.cs", "C#", 12, 0, 4, 16
+"c:\Users\danie\Desktop\symfonia-mistrzow-game\Assets\Scripts\Services\ConfigService.cs", "C#", 12, 0, 1, 13
+"c:\Users\danie\Desktop\symfonia-mistrzow-game\Assets\Scripts\Test\GameTestManager.cs", "C#", -25, 31, -4, 2
+"c:\Users\danie\Desktop\symfonia-mistrzow-game\Assets\Scripts\UI\CreateGameWindow\CreateGameWindowPresenter.cs", "C#", 64, 0, 14, 78
+"c:\Users\danie\Desktop\symfonia-mistrzow-game\Assets\Scripts\UI\CreateGameWindow\CreateGameWindowView.cs", "C#", 38, 0, 10, 48
+"c:\Users\danie\Desktop\symfonia-mistrzow-game\Assets\Scripts\UI\CreatePlayerWindow\CreatePlayerWindowPresenter.cs", "C#", 6, 0, 1, 7
+"c:\Users\danie\Desktop\symfonia-mistrzow-game\Assets\Scripts\UI\CreatePlayerWindow\CreatePlayerWindowView.cs", "C#", 7, 0, 2, 9
+"c:\Users\danie\Desktop\symfonia-mistrzow-game\Assets\Scripts\UI\MenuWindow\MenuWindowPresenter.cs", "C#", 41, 0, 9, 50
+"c:\Users\danie\Desktop\symfonia-mistrzow-game\Assets\Scripts\UI\MenuWindow\MenuWindowView.cs", "C#", 13, 0, 2, 15
+"Total", "-", 223, 20, 52, 295

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Assets.Scripts.Data;
 using DefaultNamespace.Data;
 using Managers;
 using UnityEngine;
@@ -45,12 +46,12 @@ namespace Models
         {
             InitializePlayers(gameConfig.playerConfigs);
             InitializeBoard(gameConfig.boardConfig);
-            InitializeConcertCards(gameConfig.concertCardsConfig);
+            InitializeConcertCards(gameConfig.concertCards);
 
             isInitialized = true;
         }
 
-        private void InitializePlayers(PlayerConfig[] playerConfigs)
+        private void InitializePlayers(List<PlayerConfig> playerConfigs)
         {
             foreach (var playerConfig in playerConfigs)
             {
@@ -64,9 +65,9 @@ namespace Models
             Board.Initialize(boardConfig);
         }
 
-        private void InitializeConcertCards(ConcertCardsConfig concertCardsConfig)
+        private void InitializeConcertCards(ConcertCardData[] concertCards)
         {
-            foreach (var concertCard in concertCardsConfig.ConcertCards)
+            foreach (var concertCard in concertCards)
             {
                 var concertCardModel = new ConcertCardModel(concertCard);
                 ConcertCards.Add(concertCardModel);

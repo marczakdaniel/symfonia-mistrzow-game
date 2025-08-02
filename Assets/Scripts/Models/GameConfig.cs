@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Assets.Scripts.Data;
 using DefaultNamespace.Data;
@@ -7,16 +8,55 @@ namespace Models
     public class GameConfig
     {
         public MusicCardData[] musicCardDatas;
-        public PlayerConfig[] playerConfigs;
+        public List<PlayerConfig> playerConfigs = new List<PlayerConfig>();
         public BoardConfig boardConfig;
-        public ConcertCardsConfig concertCardsConfig;
+        public ConcertCardData[] concertCards;
 
-        public GameConfig(MusicCardData[] musicCardDatas, PlayerConfig[] playerConfigs, BoardConfig boardConfig, ConcertCardsConfig concertCardsConfig)
+        private bool isMusicCardDatasInitialized = false;
+        private bool isPlayerConfigsInitialized => playerConfigs.Count > 0;
+        private bool isBoardConfigInitialized = false;
+        private bool isConcertCardsInitialized = false;
+
+        public bool IsInitialized => isMusicCardDatasInitialized && isPlayerConfigsInitialized && isBoardConfigInitialized && isConcertCardsInitialized;
+
+        public GameConfig(MusicCardData[] musicCardDatas)
+        {
+            SetupMusicCardDatas(musicCardDatas);
+        }
+
+        public void SetupMusicCardDatas(MusicCardData[] musicCardDatas)
         {
             this.musicCardDatas = musicCardDatas;
-            this.playerConfigs = playerConfigs;
+            isMusicCardDatasInitialized = true;
+        }
+
+        public void SetupBoardConfig(BoardConfig boardConfig)
+        {
             this.boardConfig = boardConfig;
-            this.concertCardsConfig = concertCardsConfig;
+            isBoardConfigInitialized = true;
+        }
+
+        public void SetupConcertCardsConfig(ConcertCardData[] concertCards)
+        {
+            this.concertCards = concertCards;
+            isConcertCardsInitialized = true;
+        }
+
+        public void AddPlayer(string playerName)
+        {
+            var playerId = Guid.NewGuid().ToString();
+            var playerConfig = new PlayerConfig(playerId, playerName);
+            playerConfigs.Add(playerConfig);
+        }
+
+        public void ClearPlayerConfigs()
+        {
+            playerConfigs.Clear();
+        }
+
+        public List<PlayerConfig> GetPlayerConfigs()
+        {
+            return playerConfigs;
         }
     }
 
@@ -80,16 +120,6 @@ namespace Models
         {
             PlayerId = playerId;
             PlayerName = playerName;
-        }
-    }
-
-    public class ConcertCardsConfig
-    {
-        public List<ConcertCardData> ConcertCards;
-
-        public ConcertCardsConfig(List<ConcertCardData> concertCards)
-        {
-            this.ConcertCards = concertCards;
         }
     }
 }

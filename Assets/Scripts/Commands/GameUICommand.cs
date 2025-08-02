@@ -307,70 +307,161 @@ namespace Command
         }
     }
 
-    /*
-    public enum GameWindowType
-    {
-        MusicCardDetailsPanel,
-    }
+    // Info Window
 
-    public class GameWindowParameters
+    public class OpenInfoWindowCommand : BaseUICommand
     {
-        public GameWindowType WindowType { get; private set; }
-        public GameWindowParameters(GameWindowType windowType)
+        public override string CommandType => "OpenInfoWindow";
+        private readonly string description;
+
+        public OpenInfoWindowCommand(string description) : base()
         {
-            WindowType = windowType;
-    }
-
-
-
-    public class OpenGameWindowTypeCommand : BaseUICommand
-    {
-        public override string CommandType => "OpenGameWindowType";
-        public GameWindowType WindowType { get; private set; }
-
-        public OpenGameWindowTypeCommand(GameWindowType windowType,  GameModel gameModel) : base(gameModel)
-        {
-            WindowType = windowType;
+            this.description = description;
         }
 
-        public override bool Validate()
+        public override async UniTask<bool> Validate()
         {
-            return ValidateWindowType(WindowType);
+            return true;
         }
 
         public override async UniTask<bool> Execute()
         {
-            return await ExecuteWindowType(WindowType);
+            await AsyncEventBus.Instance.PublishAndWaitAsync(new InfoWindowOpenedEvent(description));
+            return true;
         }
+    }
 
-        private bool ValidateWindowType(GameWindowType windowType)
-        {
-            switch (windowType)
-            {
-                case GameWindowType.MusicCardDetailsPanel:
-                    return true;
-                default:
-                    return false;
-            }
-        }
+    public class CloseInfoWindowCommand : BaseUICommand
+    {
+        public override string CommandType => "CloseInfoWindow";
 
-        public UniTask<bool> ExecuteWindowType(GameWindowType windowType)
+        public override async UniTask<bool> Validate()
         {
-            switch (windowType)
-            {
-                case GameWindowType.MusicCardDetailsPanel:
-                    return ExecuteMusicCardDetailsPanel();
-                default:
-                    return UniTask.FromResult(false);
-            }
-        }
-
-        public async UniTask<bool> ExecuteMusicCardDetailsPanel()
-        {
-            Debug.Log("Open Music Card Details Panel");
-            await UniTask.CompletedTask;
             return true;
         }
 
-    }*/
+        public override async UniTask<bool> Execute()
+        {
+            await AsyncEventBus.Instance.PublishAndWaitAsync(new InfoWindowClosedEvent());
+            return true;
+        }
+    }
+
+    // Menu Window
+
+    public class OpenStartPageWindowCommand : BaseUICommand
+    {
+        public override string CommandType => "OpenStartPageWindow";
+
+        public override async UniTask<bool> Validate()
+        {
+            return true;
+        }
+
+        public override async UniTask<bool> Execute()
+        {
+            await AsyncEventBus.Instance.PublishAndWaitAsync(new StartPageWindowOpenedEvent());
+            return true;
+        }
+    }
+
+    public class CloseStartPageWindowCommand : BaseUICommand
+    {
+        public override string CommandType => "CloseStartPageWindow";
+
+        public override async UniTask<bool> Validate()
+        {
+            return true;
+        }
+
+        public override async UniTask<bool> Execute()
+        {
+            await AsyncEventBus.Instance.PublishAndWaitAsync(new StartPageWindowClosedEvent());
+            return true;
+        }
+    }
+
+    public class OpenGameCreationWindowCommand : BaseUICommand
+    {
+        public override string CommandType => "OpenGameCreationWindow";
+
+        public override async UniTask<bool> Validate()
+        {
+            return true;
+        }
+
+        public override async UniTask<bool> Execute()
+        {
+            await AsyncEventBus.Instance.PublishAndWaitAsync(new GameCreationWindowOpenedEvent());
+            return true;
+        }
+    }
+
+    public class CloseGameCreationWindowCommand : BaseUICommand
+    {
+        public override string CommandType => "CloseGameCreationWindow";
+        private readonly ConfigService configService;
+
+        public CloseGameCreationWindowCommand(ConfigService configService) : base()
+        {
+            this.configService = configService;
+        }
+
+        public override async UniTask<bool> Validate()
+        {
+            return true;
+        }
+
+        public override async UniTask<bool> Execute()
+        {
+            configService.ClearPlayers();
+            await AsyncEventBus.Instance.PublishAndWaitAsync(new GameCreationWindowClosedEvent());
+            return true;
+        }
+    }
+
+    public class OpenCreatePlayerWindowCommand : BaseUICommand
+    {
+        public override string CommandType => "OpenCreatePlayerWindow";
+
+        private readonly ConfigService configService;
+
+        public OpenCreatePlayerWindowCommand(ConfigService configService) : base()
+        {
+            this.configService = configService;
+        }
+
+        public override async UniTask<bool> Validate()
+        {
+            return true;
+        }
+
+        public override async UniTask<bool> Execute()
+        {
+            if (!configService.CanAddPlayer())
+            {
+                await AsyncEventBus.Instance.PublishAndWaitAsync(new InfoWindowOpenedEvent("Maksymalna liczba graczy to 4!"));
+                return false;
+            }
+
+            await AsyncEventBus.Instance.PublishAndWaitAsync(new CreatePlayerWindowOpenedEvent());
+            return true;
+        }
+    }
+
+    public class CloseCreatePlayerWindowCommand : BaseUICommand
+    {
+        public override string CommandType => "CloseCreatePlayerWindow";
+
+        public override async UniTask<bool> Validate()
+        {
+            return true;
+        }
+
+        public override async UniTask<bool> Execute()
+        {
+            await AsyncEventBus.Instance.PublishAndWaitAsync(new CreatePlayerWindowClosedEvent());
+            return true;
+        }
+    }
 }

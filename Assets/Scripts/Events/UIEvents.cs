@@ -186,14 +186,12 @@ namespace Events
         public int Level { get; private set; }
         public int Position { get; private set; }
 
-        public string CardId { get; private set; }
         public MusicCardData MusicCardData { get; private set; }
 
-        public PutCardOnBoardEvent(int level, int position, string cardId, MusicCardData musicCardData)
+        public PutCardOnBoardEvent(int level, int position, MusicCardData musicCardData)
         {
             Level = level;
             Position = position;
-            CardId = cardId;
             MusicCardData = musicCardData;
         }
     }
@@ -332,6 +330,76 @@ namespace Events
     {
         public ConcertCardsWindowClosedEvent()
         {
+        }
+    }
+
+    // Info Window Events
+    public class InfoWindowOpenedEvent : GameEvent
+    {
+        public string Description { get; private set; }
+
+        public InfoWindowOpenedEvent(string description)
+        {
+            Description = description;
+        }
+    }
+
+    public class InfoWindowClosedEvent : GameEvent
+    {
+        public InfoWindowClosedEvent()
+        {
+        }
+    }
+
+    // Menu Window Events
+    public class StartPageWindowOpenedEvent : GameEvent
+    {
+        public StartPageWindowOpenedEvent()
+        {
+        }   
+    }
+
+    public class StartPageWindowClosedEvent : GameEvent
+    {
+        public StartPageWindowClosedEvent()
+        {
+        }
+    }
+
+    public class GameCreationWindowOpenedEvent : GameEvent
+    {
+        public GameCreationWindowOpenedEvent()
+        {
+        }
+    }
+
+    public class GameCreationWindowClosedEvent : GameEvent
+    {
+        public GameCreationWindowClosedEvent()
+        {
+        }
+    }
+
+    public class CreatePlayerWindowOpenedEvent : GameEvent
+    {
+        public CreatePlayerWindowOpenedEvent()
+        {
+        }
+    }
+
+    public class CreatePlayerWindowClosedEvent : GameEvent
+    {
+        public CreatePlayerWindowClosedEvent()
+        {
+        }
+    }
+
+    public class PlayerAddedEvent : GameEvent
+    {
+        public List<string> PlayerNames { get; private set; }
+        public PlayerAddedEvent(List<string> playerNames)
+        {
+            PlayerNames = playerNames;
         }
     }
 }

@@ -80,7 +80,7 @@ namespace UI.Board.BoardMusicCardPanel.BoardMusicCard
             {
                 return;
             }
-            viewModel.RevealCard(putCardOnBoardEvent.CardId);
+            viewModel.RevealCard(putCardOnBoardEvent.MusicCardData.Id);
             view.Setup(putCardOnBoardEvent.MusicCardData);
             await view.PlayRevealAnimation();
         }

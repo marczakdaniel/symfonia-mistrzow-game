@@ -1,6 +1,7 @@
 using Assets.Scripts.UI.ConcertCardsWindow;
 using UI.Board;
 using UI.CardPurchaseWindow;
+using UI.InfoWindow;
 using UI.MusicCardDetailsPanel;
 using UI.PlayerResourcesWindow;
 using UI.ReturnTokenWindow;

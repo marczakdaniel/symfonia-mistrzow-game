@@ -11,37 +11,27 @@ namespace Command
         private readonly TurnService turnService;
         private readonly BoardService boardService;
         private readonly PlayerService playerService;
+        private readonly ConfigService configService;
+        private readonly GameService gameService;
+        private readonly ConcertCardService concertCardService;
 
-        public CommandFactory(GameModel gameModel, TurnService turnService, BoardService boardService, PlayerService playerService)
+        public CommandFactory(GameModel gameModel, TurnService turnService, BoardService boardService, PlayerService playerService, ConfigService configService, GameService gameService, ConcertCardService concertCardService)
         {
             this.gameModel = gameModel;
             this.turnService = turnService;
             this.boardService = boardService;
             this.playerService = playerService;
+            this.configService = configService;
+            this.gameService = gameService;
+            this.concertCardService = concertCardService;
         }
 
         // Game Flow Commands
 
         public StartGameCommand CreateStartGameCommand()
         {
-            return new StartGameCommand(gameModel, turnService, boardService);
+            return new StartGameCommand(gameService, turnService, boardService, playerService, configService, concertCardService);
         }
-
-        // Player Actions Commands
-
-        /*
-        
-        public BuyMusicCardCommand CreateBuyMusicCardCommand(string playerId, string musicCardId)
-        {
-            return new BuyMusicCardCommand(playerId, musicCardId, gameModel);
-        }
-
-        public ReserveMusicCardCommand CreateReserveMusicCardCommand(string playerId, string musicCardId)
-        {
-            return new ReserveMusicCardCommand(playerId, musicCardId, gameModel);
-        }
-
-        */
 
         // Token Action Commands
 
@@ -168,6 +158,59 @@ namespace Command
         public CloseConcertCardsWindowCommand CreateCloseConcertCardsWindowCommand()
         {
             return new CloseConcertCardsWindowCommand();
+        }
+
+        // Info Window Commands
+
+        public OpenInfoWindowCommand CreateOpenInfoWindowCommand(string description)
+        {
+            return new OpenInfoWindowCommand(description);
+        }
+
+        public CloseInfoWindowCommand CreateCloseInfoWindowCommand()
+        {
+            return new CloseInfoWindowCommand();
+        }
+
+        // Start Page Window Commands
+
+        public OpenStartPageWindowCommand CreateOpenStartPageWindowCommand()
+        {
+            return new OpenStartPageWindowCommand();
+        }
+
+        public CloseStartPageWindowCommand CreateCloseStartPageWindowCommand()
+        {
+            return new CloseStartPageWindowCommand();
+        }
+
+        // Game Creation Window Commands
+
+        public OpenGameCreationWindowCommand CreateOpenGameCreationWindowCommand()
+        {
+            return new OpenGameCreationWindowCommand();
+        }
+
+        public CloseGameCreationWindowCommand CreateCloseGameCreationWindowCommand()
+        {
+            return new CloseGameCreationWindowCommand(configService);
+        }
+
+        // Create Player Window Commands
+
+        public OpenCreatePlayerWindowCommand CreateOpenCreatePlayerWindowCommand()
+        {
+            return new OpenCreatePlayerWindowCommand(configService);
+        }
+
+        public CloseCreatePlayerWindowCommand CreateCloseCreatePlayerWindowCommand()    
+        {
+            return new CloseCreatePlayerWindowCommand();
+        }
+
+        public AddPlayerCommand CreateAddPlayerCommand(string playerName)
+        {
+            return new AddPlayerCommand(playerName, configService);
         }
     }
 }

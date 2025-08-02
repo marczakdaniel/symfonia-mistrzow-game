@@ -25,7 +25,6 @@ namespace Command
         }
 
         private CommandExecutor _commandExecutor;
-        private CommandFactory _commandFactory;
         private bool _isInitialized = false;
 
         private CommandService() { }
@@ -37,7 +36,7 @@ namespace Command
         /// <summary>
         /// Inicjalizuje CommandService z CommandFactory
         /// </summary>
-        public void Initialize(CommandFactory commandFactory)
+        public void Initialize()
         {
             if (_isInitialized)
             {
@@ -45,7 +44,6 @@ namespace Command
                 return;
             }
 
-            _commandFactory = commandFactory;
             _commandExecutor = new CommandExecutor();
 
             // Zarejestruj wszystkie typy komend
@@ -127,15 +125,6 @@ namespace Command
         }
 
         /// <summary>
-        /// Wygodne metody do tworzenia i wykonywania komend
-        /// </summary>
-        public async UniTask<bool> StartGameAsync()
-        {
-            var command = _commandFactory.CreateStartGameCommand();
-            return await ExecuteCommandAsync(command);
-        }
-
-        /// <summary>
         /// Wykonuje sekwencję komend w podanej kolejności
         /// </summary>
         public async UniTask<bool> ExecuteSequenceAsync(IEnumerable<ICommand> commands)
@@ -182,7 +171,6 @@ namespace Command
             }
             
             _commandExecutor = null;
-            _commandFactory = null;
             _isInitialized = false;
             
             Debug.Log("[CommandService] Wyczyszczono service");

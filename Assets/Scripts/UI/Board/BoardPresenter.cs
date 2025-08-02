@@ -19,7 +19,6 @@ namespace UI.Board
     {
         private readonly BoardView view;
         private readonly BoardViewModel viewModel = new BoardViewModel();
-        private readonly IGameModelReader gameModelReader;
         private BoardMusicCardPanelPresenter boardMusicCardPanelPresenter;
         private BoardTokenPresenter[] boardTokenPresenters = new BoardTokenPresenter[6];
         private BoardEndTurnButtonPresenter boardEndTurnButtonPresenter;
@@ -28,11 +27,10 @@ namespace UI.Board
 
         private IDisposable disposable;
 
-        public BoardPresenter(BoardView view, CommandFactory commandFactory, IGameModelReader gameModelReader)
+        public BoardPresenter(BoardView view, CommandFactory commandFactory)
         {
             this.view = view;
             this.commandFactory = commandFactory;
-            this.gameModelReader = gameModelReader;
             InitializeChildMCP();
             InitializeMVP();
             SubscribeToEvents();
@@ -40,7 +38,7 @@ namespace UI.Board
 
         private void InitializeChildMCP()
         {
-            boardMusicCardPanelPresenter = new BoardMusicCardPanelPresenter(view.BoardMusicCardPanelView, commandFactory, gameModelReader);
+            boardMusicCardPanelPresenter = new BoardMusicCardPanelPresenter(view.BoardMusicCardPanelView, commandFactory);
             for (int i = 0; i < boardTokenPresenters.Length; i++)
             {
                 boardTokenPresenters[i] = new BoardTokenPresenter(view.BoardTokenPanelView[i], (ResourceType)i, commandFactory);

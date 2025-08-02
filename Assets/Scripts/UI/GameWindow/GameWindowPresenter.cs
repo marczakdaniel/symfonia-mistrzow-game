@@ -1,3 +1,4 @@
+using System;
 using UI.Board;
 using Command;
 using UI.MusicCardDetailsPanel;
@@ -11,11 +12,12 @@ using UI.ReturnTokenWindow;
 using UI.CardPurchaseWindow;
 using UI.PlayerResourcesWindow;
 using Assets.Scripts.UI.ConcertCardsWindow;
+using UI.InfoWindow;
 
 namespace UI.GameWindow
 {
-    public class GameWindowPresenter : 
-        IAsyncEventHandler<GameStartedEvent>
+    public class GameWindowPresenter :
+        IDisposable
     {
         private readonly GameWindowView view;
         private readonly GameWindowViewModel viewModel = new GameWindowViewModel();
@@ -28,12 +30,11 @@ namespace UI.GameWindow
         private PlayerResourcesWindowPresenter playerResourcesWindowPresenter;
         private ConcertCardsWindowPresenter concertCardsWindowPresenter;
         private CommandFactory commandFactory;
-        private IGameModelReader gameModelReader;
-        public GameWindowPresenter(GameWindowView view, CommandFactory commandFactory, IGameModelReader gameModelReader)
+        public GameWindowPresenter(GameWindowView view, CommandFactory commandFactory)
         {
             this.view = view;
             this.commandFactory = commandFactory;
-            this.gameModelReader = gameModelReader;
+
             InitializeChildMVP();
             InitializeMVP();
             SubscribeToEvents();
@@ -41,7 +42,7 @@ namespace UI.GameWindow
 
         private void InitializeChildMVP()
         {
-            boardPresenter = new BoardPresenter(view.BoardView, commandFactory, gameModelReader);
+            boardPresenter = new BoardPresenter(view.BoardView, commandFactory);
             musicCardDetailsPanelPresenter = new MusicCardDetailsPanelPresenter(view.MusicCardDetailsPanelView, commandFactory);
             selectTokenWindowPresenter = new SelectTokenWindowPresenter(view.SelectTokenWindowView, commandFactory);
             startTurnWindowPresenter = new StartTurnWindowPresenter(view.StartTurnWindowView, commandFactory);
@@ -69,27 +70,10 @@ namespace UI.GameWindow
 
         private void SubscribeToEvents()
         {
-            AsyncEventBus.Instance.Subscribe<GameStartedEvent>(this);
         }
 
-        public async UniTask StartGame()
+        public void Dispose()
         {
-            var command = commandFactory.CreateStartGameCommand();
-            await command.Execute();
-        }
-
-        // Event Handlers
-        public async UniTask HandleAsync(GameStartedEvent gameEvent)
-        {
-            Debug.Log($"[GameWindowPresenter] Handling GameStartedEvent: {gameEvent.EventId}");
-            
-            // Start child presenters
-            //boardPresenter.StartGame();
-            
-            // Simulate UI update time
-            await UniTask.CompletedTask;
-            
-            Debug.Log($"[GameWindowPresenter] Completed handling GameStartedEvent: {gameEvent.EventId}");
         }
     }
 }
