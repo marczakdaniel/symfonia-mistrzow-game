@@ -8,13 +8,13 @@ namespace Events
 {
     public class MusicCardDetailsPanelOpenedEvent : GameEvent
     {
-        public string MusicCardId { get; private set; }
+        public MusicCardData MusicCardData { get; private set; }
         public int Level { get; private set; }
         public int Position { get; private set; }
 
-        public MusicCardDetailsPanelOpenedEvent(string musicCardId, int level, int position, bool canCardBePurchased, bool canCardBeReserved)
+        public MusicCardDetailsPanelOpenedEvent(MusicCardData musicCardData, int level, int position)
         {
-            MusicCardId = musicCardId;
+            MusicCardData = musicCardData;
             Level = level;
             Position = position;
         }
@@ -172,11 +172,13 @@ namespace Events
     {
         public string CardId { get; private set; }
         public int InspirationTokensOnBoard { get; private set; }
+        public int PlayerIndex { get; private set; }
 
-        public CardReservedEvent(string cardId, int inspirationTokensOnBoard)
+        public CardReservedEvent(string cardId, int inspirationTokensOnBoard, int playerIndex)
         {
             CardId = cardId;
             InspirationTokensOnBoard = inspirationTokensOnBoard;
+            PlayerIndex = playerIndex;
         }
     }
 

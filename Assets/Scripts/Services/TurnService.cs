@@ -27,6 +27,11 @@ namespace Services
             return turnModel.CurrentPlayerId;
         }
 
+        public int GetCurrentPlayerIndex()
+        {
+            return gameModel.Players.IndexOf(GetCurrentPlayerModel());
+        }
+
         // Game flow
 
         public void StartPlayerTurn()

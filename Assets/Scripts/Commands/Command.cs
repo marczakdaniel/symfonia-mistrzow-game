@@ -391,7 +391,8 @@ namespace Command
 
 
             var inspirationTokens = boardService.GetBoardTokenCount(ResourceType.Inspiration);
-            await AsyncEventBus.Instance.PublishAndWaitAsync(new CardReservedEvent(cardId, inspirationTokens));
+            var playerIndex = turnService.GetCurrentPlayerIndex();
+            await AsyncEventBus.Instance.PublishAndWaitAsync(new CardReservedEvent(cardId, inspirationTokens, playerIndex));
 
             boardService.RefillSlot(slot.Level, slot.Position);
 

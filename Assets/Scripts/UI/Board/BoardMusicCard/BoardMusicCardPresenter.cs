@@ -14,7 +14,9 @@ namespace UI.Board.BoardMusicCardPanel.BoardMusicCard
         IAsyncEventHandler<CardReservedEvent>,
         IAsyncEventHandler<PutCardOnBoardEvent>,
         IAsyncEventHandler<GameStartedEvent>,
-        IAsyncEventHandler<CardPurchasedFromBoardEvent>
+        IAsyncEventHandler<CardPurchasedFromBoardEvent>,
+        IAsyncEventHandler<MusicCardDetailsPanelOpenedEvent>,
+        IAsyncEventHandler<MusicCardDetailsPanelClosedEvent>
     {
         private readonly BoardMusicCardView view;
         private readonly BoardMusicCardViewModel viewModel;
@@ -52,6 +54,8 @@ namespace UI.Board.BoardMusicCardPanel.BoardMusicCard
             AsyncEventBus.Instance.Subscribe<CardPurchasedFromBoardEvent>(this);
             AsyncEventBus.Instance.Subscribe<PutCardOnBoardEvent>(this);
             AsyncEventBus.Instance.Subscribe<GameStartedEvent>(this);
+            AsyncEventBus.Instance.Subscribe<MusicCardDetailsPanelOpenedEvent>(this, EventPriority.High);
+            AsyncEventBus.Instance.Subscribe<MusicCardDetailsPanelClosedEvent>(this, EventPriority.Low);
         }
 
         public async UniTask HandleAsync(CardReservedEvent cardReservedEvent)
@@ -91,6 +95,20 @@ namespace UI.Board.BoardMusicCardPanel.BoardMusicCard
             var musicCardData = boardCards[viewModel.Level][viewModel.Position];
             viewModel.RevealCard(musicCardData.Id);
             view.Setup(musicCardData);
+            await view.PlayRevealAnimation();
+        }
+
+        public async UniTask HandleAsync(MusicCardDetailsPanelOpenedEvent musicCardDetailsPanelOpenedEvent)
+        {
+            if (musicCardDetailsPanelOpenedEvent.Level != viewModel.Level || musicCardDetailsPanelOpenedEvent.Position != viewModel.Position)
+            {
+                return;
+            }
+            await view.PlayHideAnimation();
+        }
+
+        public async UniTask HandleAsync(MusicCardDetailsPanelClosedEvent musicCardDetailsPanelClosedEvent)
+        {
             await view.PlayRevealAnimation();
         }
         // Input -> Command

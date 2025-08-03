@@ -4,6 +4,7 @@ using DefaultNamespace.Data;
 using Events;
 using Models;
 using Services;
+using Unity.VisualScripting.Dependencies.NCalc;
 
 namespace Command
 {
@@ -30,12 +31,10 @@ namespace Command
 
         public override async UniTask<bool> Execute()
         {
-            var canCardBePurchased = true;
-            var canCardBeReserved = true;
-
             turnService.StartSelectingMusicCard();
+            var musicCardData = MusicCardRepository.Instance.GetCard(MusicCardId);
 
-            await AsyncEventBus.Instance.PublishAndWaitAsync(new MusicCardDetailsPanelOpenedEvent(MusicCardId, Level, Position, canCardBePurchased, canCardBeReserved));
+            await AsyncEventBus.Instance.PublishAndWaitAsync(new MusicCardDetailsPanelOpenedEvent(musicCardData, Level, Position));
             return true;
         }
     }

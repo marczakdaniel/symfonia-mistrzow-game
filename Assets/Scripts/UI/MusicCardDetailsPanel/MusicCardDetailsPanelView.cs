@@ -1,3 +1,4 @@
+using BrunoMikoski.AnimationSequencer;
 using Cysharp.Threading.Tasks;
 using DefaultNamespace.Data;
 using DefaultNamespace.Elements;
@@ -10,28 +11,25 @@ namespace UI.MusicCardDetailsPanel {
         public Subject<Unit> OnCloseButtonClick = new();
         public Subject<Unit> OnBuyButtonClick = new();
         public Subject<Unit> OnReserveButtonClick = new();
+
         [SerializeField] private TextMeshProUGUI cardName;
         [SerializeField] private TextMeshProUGUI cardDescription;
         [SerializeField] private ButtonElement closeButton;
         [SerializeField] private ButtonElement buyButton;
         [SerializeField] private ButtonElement reserveButton;
         [SerializeField] private DetailsMusicCardView detailsMusicCardView;
-
+        [SerializeField] private AnimationSequencerController openAnimation;
+        [SerializeField] private MusicCardDetailsPanelOpenFromBoardAnimationController openFromBoardAnimation;
+        [SerializeField] private MusicCardDetailsPanelCloseForReservedAnimationController closeForReservedAnimation;
+        [SerializeField] private AnimationSequencerController closeToBoardAnimation;
+        [SerializeField] private AnimationSequencerController closeAnimation;
 
         private void Awake() {
-            closeButton.OnClick.Subscribe(CloseButtonClicked).AddTo(this);
-            buyButton.OnClick.Subscribe(BuyButtonClicked).AddTo(this);
-            reserveButton.OnClick.Subscribe(ReserveButtonClicked).AddTo(this);
+            closeButton.OnClick.Subscribe(_ => OnCloseButtonClick.OnNext(Unit.Default)).AddTo(this);
+            buyButton.OnClick.Subscribe(_ => OnBuyButtonClick.OnNext(Unit.Default)).AddTo(this);
+            reserveButton.OnClick.Subscribe(_ => OnReserveButtonClick.OnNext(Unit.Default)).AddTo(this);
         }
-        private void CloseButtonClicked(Unit unit) {
-            OnCloseButtonClick.OnNext(unit);
-        }
-        private void BuyButtonClicked(Unit unit) {
-            OnBuyButtonClick.OnNext(unit);
-        }
-        private void ReserveButtonClicked(Unit unit) {
-            OnReserveButtonClick.OnNext(unit);
-        }
+
         public void SetCardDetails(MusicCardData musicCardData) {
             if (musicCardData == null) {
                 return;
@@ -42,37 +40,22 @@ namespace UI.MusicCardDetailsPanel {
         }
 
         public async UniTask PlayOpenAnimation() {
+            await openAnimation.PlayAsync();
+        }
+        public async UniTask PlayOpenFromBoardAnimation(int level, int position) {
+            await openFromBoardAnimation.PlayOpenFromBoardAnimation(level, position);
         }
 
-        /// <summary>
-        /// Odtwarza animację otwierania okna z określonym poziomem i pozycją
-        /// </summary>
-        /// <param name="level">Poziom (0-2)</param>
-        /// <param name="position">Pozycja na poziomie (0-3)</param>
-        public async UniTask PlayOpenAnimation(int level, int position) {
+        public async UniTask PlayCloseToBoardAnimation() {
+            await closeToBoardAnimation.PlayAsync();
         }
+
         public async UniTask PlayCloseAnimation() {
+            await closeAnimation.PlayAsync();
         }
 
-        /// <summary>
-        /// Odtwarza animację zamykania okna z określonym poziomem i pozycją
-        /// </summary>
-        /// <param name="level">Poziom (0-2)</param>
-        /// <param name="position">Pozycja na poziomie (0-3)</param>
-        public async UniTask PlayCloseAnimation(int level, int position) {
-        }
-        public UniTask PlayBuyAnimation() {
-            return UniTask.CompletedTask;
-        }
-        public UniTask PlayReserveAnimation() {
-            return UniTask.CompletedTask;
-        }
-
-        public void EnablePanel(){
-            gameObject.SetActive(true);
-        }
-        public void DisablePanel(){
-            gameObject.SetActive(false);
+        public async UniTask PlayCloseForReservedAnimation(int playerIndex) {
+            await closeForReservedAnimation.PlayCloseForReservedAnimation(playerIndex);
         }
     }
 }
