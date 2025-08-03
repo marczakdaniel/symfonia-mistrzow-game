@@ -28,6 +28,8 @@ namespace UI.CreatePlayerWindow
         [SerializeField]
         private AnimationSequencerController closeAnimation;
 
+        
+
 
         public void Awake()
         {
@@ -44,6 +46,11 @@ namespace UI.CreatePlayerWindow
         {
             playerNameInputField.text = "";
             await closeAnimation.PlayAsync();
+        }
+
+        public void SetupAvatars(List<Sprite> avatars)
+        {
+            
         }
     }
 }

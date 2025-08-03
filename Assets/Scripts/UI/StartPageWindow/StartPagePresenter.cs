@@ -9,7 +9,9 @@ namespace UI.StartPageWindow
         IDisposable,
         IAsyncEventHandler<StartPageWindowOpenedEvent>,
         IAsyncEventHandler<StartPageWindowClosedEvent>,
-        IAsyncEventHandler<GameStartedEvent>
+        IAsyncEventHandler<GameStartedEvent>,
+        IAsyncEventHandler<GameCreationWindowOpenedEvent>,
+        IAsyncEventHandler<GameCreationWindowClosedEvent>
     {
         private readonly StartPageWindowView view;
         private readonly CommandFactory commandFactory;
@@ -59,6 +61,8 @@ namespace UI.StartPageWindow
             AsyncEventBus.Instance.Subscribe<StartPageWindowOpenedEvent>(this);
             AsyncEventBus.Instance.Subscribe<StartPageWindowClosedEvent>(this);
             AsyncEventBus.Instance.Subscribe<GameStartedEvent>(this);
+            AsyncEventBus.Instance.Subscribe<GameCreationWindowOpenedEvent>(this, EventPriority.Low);
+            AsyncEventBus.Instance.Subscribe<GameCreationWindowClosedEvent>(this, EventPriority.High);
         }
 
         public async UniTask HandleAsync(StartPageWindowOpenedEvent startPageWindowOpenedEvent)
@@ -76,6 +80,16 @@ namespace UI.StartPageWindow
             await view.PlayCloseAnimation();
         }
 
+        public async UniTask HandleAsync(GameCreationWindowOpenedEvent gameCreationWindowOpenedEvent)
+        {
+            await view.PlayCloseAnimation();
+        }
+
+
+        public async UniTask HandleAsync(GameCreationWindowClosedEvent gameCreationWindowClosedEvent)
+        {
+            await view.PlayOpenAnimation();
+        }
 
         public void Dispose()
         {

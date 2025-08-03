@@ -75,6 +75,7 @@ namespace UI.CreatePlayerWindow
         {
             await view.PlayCloseAnimation();
         }
+        
 
         public async UniTask HandleAsync(GameStartedEvent gameStartedEvent)
         {

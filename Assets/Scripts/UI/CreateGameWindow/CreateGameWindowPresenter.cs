@@ -12,7 +12,9 @@ namespace UI.CreateGameWindow
         IAsyncEventHandler<GameCreationWindowOpenedEvent>, 
         IAsyncEventHandler<GameCreationWindowClosedEvent>,
         IAsyncEventHandler<PlayerAddedEvent>,
-        IAsyncEventHandler<GameStartedEvent>
+        IAsyncEventHandler<GameStartedEvent>,
+        IAsyncEventHandler<CreatePlayerWindowOpenedEvent>,
+        IAsyncEventHandler<CreatePlayerWindowClosedEvent>
     {
         private readonly CreateGameWindowView view;
         private readonly CommandFactory commandFactory;
@@ -67,6 +69,8 @@ namespace UI.CreateGameWindow
             AsyncEventBus.Instance.Subscribe<GameCreationWindowClosedEvent>(this);
             AsyncEventBus.Instance.Subscribe<PlayerAddedEvent>(this);
             AsyncEventBus.Instance.Subscribe<GameStartedEvent>(this);
+            AsyncEventBus.Instance.Subscribe<CreatePlayerWindowOpenedEvent>(this, EventPriority.Low);
+            AsyncEventBus.Instance.Subscribe<CreatePlayerWindowClosedEvent>(this, EventPriority.High);
         }
 
         public async UniTask HandleAsync(GameCreationWindowOpenedEvent gameCreationWindowOpenedEvent)
@@ -81,13 +85,23 @@ namespace UI.CreateGameWindow
 
         public async UniTask HandleAsync(PlayerAddedEvent playerAddedEvent)
         {
+            await view.PlayOpenAnimation();
             view.SetPlayers(playerAddedEvent.PlayerNames);
-            await UniTask.CompletedTask;
         }
 
         public async UniTask HandleAsync(GameStartedEvent gameStartedEvent)
         {
             await view.PlayCloseAnimation();
+        }
+
+        public async UniTask HandleAsync(CreatePlayerWindowOpenedEvent createPlayerWindowOpenedEvent)
+        {
+            await view.PlayCloseAnimation();
+        }
+
+        public async UniTask HandleAsync(CreatePlayerWindowClosedEvent createPlayerWindowClosedEvent)
+        {
+            await view.PlayOpenAnimation();
         }
 
         public void Dispose()
