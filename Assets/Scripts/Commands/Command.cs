@@ -40,6 +40,12 @@ namespace Command
 
         public override async UniTask<bool> Execute()
         {
+            if (!configService.CanStartGame())
+            {
+                await AsyncEventBus.Instance.PublishAndWaitAsync(new InfoWindowOpenedEvent("Musisz dodać co najmniej 2 graczy!"));
+                return false;
+            }
+
             var gameConfig = configService.GetGameConfig();
             var boardConfig = configService.GetBoardConfig();
             var concertCards = concertCardService.GetRandomConcertCards(gameConfig.GetPlayerConfigs().Count + 1);
@@ -77,7 +83,8 @@ namespace Command
             turnService.NextPlayerTurn();
 
             var currentPlayer = turnService.GetCurrentPlayerModel();
-            await AsyncEventBus.Instance.PublishAndWaitAsync(new StartTurnWindowOpenedEvent(currentPlayer.PlayerId, currentPlayer.PlayerName));
+            var currentRound = turnService.GetCurrentRound();
+            await AsyncEventBus.Instance.PublishAndWaitAsync(new StartTurnWindowOpenedEvent(currentPlayer.PlayerId, currentPlayer.PlayerName, currentRound));
 
             return true;
         }
@@ -126,6 +133,12 @@ namespace Command
 
         public override async UniTask<bool> Execute()
         {
+            if (!turnService.HasActionBeenTaken())
+            {
+                await AsyncEventBus.Instance.PublishAndWaitAsync(new InfoWindowOpenedEvent("Nie wykonałeś żadnej akcji!"));
+                return false;
+            }
+
             if (turnService.IsTokenReturnNeeded())
             {
                 var allPlayerTokensCount = turnService.GetCurrentPlayerModel().Tokens.TotalCount;
@@ -140,6 +153,7 @@ namespace Command
                 var concertCardData = concertCards.Select(card => card.ConcertCardData).ToList();
                 var cardStates = concertCards.Select(card => card.State).ToList();
                 await AsyncEventBus.Instance.PublishAndWaitAsync(new ConcertCardsWindowOpenedEvent(concertCardData, cardStates));
+                await AsyncEventBus.Instance.PublishAndWaitAsync(new ConcertCardClaimedEvent(concertCardData, cardStates, turnService.GetCurrentPlayerModel().Points));
                 return true;
             }
 
@@ -147,7 +161,8 @@ namespace Command
             turnService.NextPlayerTurn();
 
             var currentPlayer = turnService.GetCurrentPlayerModel();
-            await AsyncEventBus.Instance.PublishAndWaitAsync(new StartTurnWindowOpenedEvent(currentPlayer.PlayerId, currentPlayer.PlayerName));
+            var currentRound = turnService.GetCurrentRound();
+            await AsyncEventBus.Instance.PublishAndWaitAsync(new StartTurnWindowOpenedEvent(currentPlayer.PlayerId, currentPlayer.PlayerName, currentRound));
 
             return true;
         }
@@ -366,6 +381,12 @@ namespace Command
 
         public override async UniTask<bool> Execute()
         {
+            if (turnService.HasActionBeenTaken())
+            {
+                await AsyncEventBus.Instance.PublishAndWaitAsync(new InfoWindowOpenedEvent("Wykonałeś już akcję w tej turze!"));
+                return false;
+            }
+
             if (!turnService.CanReserveCard())
             {
                 var description = "Nie możesz zarezerwować tego karty!\n Możesz zarezerwować maksymalnie 3 karty.";
@@ -493,6 +514,12 @@ namespace Command
 
         public override async UniTask<bool> Execute()
         {
+            if (turnService.HasActionBeenTaken())
+            {
+                await AsyncEventBus.Instance.PublishAndWaitAsync(new InfoWindowOpenedEvent("Wykonałeś już akcję w tej turze!"));
+                return false;
+            }
+
             var selectedTokens = turnService.GetCardPurchaseTokens();
 
             if (!turnService.CanPurchaseCardWithResources(cardId, selectedTokens))
@@ -507,7 +534,8 @@ namespace Command
             {
                 var musicCardData = slot.GetMusicCard();
                 turnService.PurchaseCardFromBoard(cardId, selectedTokens);
-                await AsyncEventBus.Instance.PublishAndWaitAsync(new CardPurchasedFromBoardEvent(cardId, boardService.GetAllBoardResources()));
+                var points = playerService.GetPlayer(turnService.GetCurrentPlayerId()).Points;  
+                await AsyncEventBus.Instance.PublishAndWaitAsync(new CardPurchasedFromBoardEvent(cardId, boardService.GetAllBoardResources(), points));
 
                 boardService.RefillSlot(slot.Level, slot.Position);
                 var putCardOnBoardEvent = new PutCardOnBoardEvent(slot.Level, slot.Position, slot.GetMusicCard());
@@ -520,7 +548,8 @@ namespace Command
             {
                 turnService.PurchaseCardFromReserve(cardId, selectedTokens);
                 var reservedCards = currentPlayer.ReservedCards.GetAllCards().ToList();
-                await AsyncEventBus.Instance.PublishAndWaitAsync(new CardPurchasedFromReserveEvent(cardId, reservedCards, boardService.GetAllBoardResources()));
+                var points = playerService.GetPlayer(turnService.GetCurrentPlayerId()).Points;  
+                await AsyncEventBus.Instance.PublishAndWaitAsync(new CardPurchasedFromReserveEvent(cardId, reservedCards, boardService.GetAllBoardResources(), points));
                 return true;
             }
 

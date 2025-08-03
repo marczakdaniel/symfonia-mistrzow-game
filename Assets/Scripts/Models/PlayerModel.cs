@@ -11,23 +11,23 @@ namespace Models
         public int Points { get; private set; }
         public ResourceCollectionModel Tokens { get; private set; }
         public ResourceCollectionModel PermanentResources { get; private set; }
-        public List<ConcertCardData> ConcertCards { get; private set; } = new List<ConcertCardData>();
+        private List<ConcertCardData> concertCards = new List<ConcertCardData>();
 
         public MusicCardCollectionModel ReservedCards { get; private set; } = new MusicCardCollectionModel();
-        public MusicCardCollectionModel PurchasedCards { get; private set; } = new MusicCardCollectionModel();
+        private MusicCardCollectionModel purchasedCards = new MusicCardCollectionModel();
 
         public PlayerModel(PlayerConfig playerConfig)
         {
             PlayerId = playerConfig.PlayerId;
             PlayerName = playerConfig.PlayerName;
             Tokens = new ResourceCollectionModel();
-            ConcertCards = new List<ConcertCardData>();
+            concertCards = new List<ConcertCardData>();
         }
 
 
         public MusicCardData FindCard(string cardId)
         {
-            var purchased = PurchasedCards.FindCard(cardId);
+            var purchased = purchasedCards.FindCard(cardId);
             if (purchased != null) return purchased;
 
             var reserved = ReservedCards.FindCard(cardId);
@@ -38,7 +38,7 @@ namespace Models
 
         public bool HasCard(string cardId) => FindCard(cardId) != null;
 
-        public int GetPurchasedCardCount() => PurchasedCards.Count;
+        public int GetPurchasedCardCount() => purchasedCards.Count;
         public int GetReservedCardCount() => ReservedCards.Count;
 
         public bool HasReserveCard(string cardId) => ReservedCards.FindCard(cardId) != null;
@@ -63,7 +63,14 @@ namespace Models
 
         public bool AddCardToPurchased(string cardId)
         {
-            return PurchasedCards.AddCard(cardId);
+            var result = purchasedCards.AddCard(cardId);
+            UpdatePoints();
+            return result;
+        }
+
+        public ResourceCollectionModel GetPurchasedAllResourceCollection()
+        {
+            return purchasedCards.GetAllResourceCollection();
         }
 
         public bool RemoveTokens(ResourceCollectionModel tokens)
@@ -80,25 +87,27 @@ namespace Models
 
         public bool AddConcertCard(ConcertCardData concertCard)
         {
-            ConcertCards.Add(concertCard);
+            concertCards.Add(concertCard);
+            UpdatePoints();
             return true;
         }
 
         public bool RemoveConcertCard(ConcertCardData concertCard)
         {
-            ConcertCards.Remove(concertCard);
+            concertCards.Remove(concertCard);
+            UpdatePoints();
             return true;
         }
 
         public int CalculatePointsFromMusicCards()
         {
-            return PurchasedCards.CalculatePoints();
+            return purchasedCards.CalculatePoints();
         }
 
         public int CalculatePointsFromConcertCards()
         {
             int points = 0;
-            foreach (var card in ConcertCards)
+            foreach (var card in concertCards)
             {
                 points += card.Points;
             }
@@ -108,6 +117,11 @@ namespace Models
         public int CalculatePoints()
         {
             return CalculatePointsFromMusicCards() + CalculatePointsFromConcertCards();
+        }
+
+        public void UpdatePoints()
+        {
+            Points = CalculatePoints();
         }
     }
 }

@@ -13,7 +13,7 @@ namespace UI.StartTurnWindow
 
         [SerializeField] private ButtonElement startTurnButton;
         [SerializeField] private TextMeshProUGUI currentPlayerNameText;
-
+        [SerializeField] private TextMeshProUGUI currentRoundText;
         [SerializeField] private AnimationSequencerController openAnimationSequencerController;
         [SerializeField] private AnimationSequencerController closeAnimationSequencerController;
 
@@ -29,13 +29,17 @@ namespace UI.StartTurnWindow
 
         public async UniTask CloseWindow()
         {
-            UnityEngine.Debug.Log("[StartTurnWindowView] CloseWindow");
             await closeAnimationSequencerController.PlayAsync();
         }
 
         public void SetCurrentPlayerName(string name)
         {
             currentPlayerNameText.SetText(name);
+        }
+
+        public void SetCurrentRound(int round)
+        {
+            currentRoundText.SetText($"Runda {round}");
         }
     }
 }

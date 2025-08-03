@@ -8,8 +8,6 @@ namespace Models
     public enum TurnState
     {
         WaitingForAction,
-        SelectingTokens,
-        SelectingMusicCard,
         ReadyToEndTurn,
     }
 
@@ -25,6 +23,7 @@ namespace Models
         public List<ResourceType> SelectedTokens {get; private set; } = new List<ResourceType>();
         public List<ResourceType> ReturnTokens {get; private set; } = new List<ResourceType>();
         public ResourceCollectionModel CardPurchaseTokens {get; private set; } = new ResourceCollectionModel();
+        public int CurrentRound {get; private set; } = 0;
 
         public bool CanAddTokenToSelectedTokens(ResourceType token)
         {
@@ -47,9 +46,13 @@ namespace Models
         public void SetCurrentPlayer(string playerId)
         {
             CurrentPlayerId = playerId;
-
         }
 
+        public void SetCurrentRound(int round)
+        {
+            CurrentRound = round;
+        }
+    
         // Selected Tokens
 
         public void AddTokenToSelectedTokens(ResourceType token)

@@ -23,5 +23,11 @@ namespace Services
         {
             return players.ToArray();
         }
+
+        public void UpdatePoints(string playerId)
+        {
+            var player = GetPlayer(playerId);
+            player.CalculatePoints();
+        }
     }
 }

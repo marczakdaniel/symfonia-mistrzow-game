@@ -12,33 +12,26 @@ namespace UI.Board.BoardPlayerPanel
 
     public class BoardPlayerPanelViewModel
     {
-        public ReactiveProperty<BoardPlayerPanelState> State { get; private set; } = new ReactiveProperty<BoardPlayerPanelState>(BoardPlayerPanelState.Disabled);
-        public ReactiveProperty<int> PlayerPoints { get; private set; } = new ReactiveProperty<int>(0);
         public string PlayerId { get; private set; }
         public Sprite PlayerImage { get; private set; }
         public int Index { get; private set; }
+        public bool IsCurrentPlayer { get; private set; }
 
         public BoardPlayerPanelViewModel(int index)
         {
             Index = index;
         }
 
-        public void Initialize(string playerId, int points, Sprite playerImage)
+        public void Initialize(string playerId, Sprite playerImage)
         {
             PlayerId = playerId;
-            PlayerPoints.Value = 0;
             PlayerImage = playerImage;
-            State.Value = BoardPlayerPanelState.Enabled;
+            IsCurrentPlayer = false;
         }
 
         public void SetCurrentPlayer(bool isCurrentPlayer)
         {
-            State.Value = isCurrentPlayer ? BoardPlayerPanelState.CurrentPlayer : BoardPlayerPanelState.Enabled;
-        }
-
-        public void SetPlayerPoints(int points)
-        {
-            PlayerPoints.Value = points;
+            IsCurrentPlayer = isCurrentPlayer;
         }
     }
 }

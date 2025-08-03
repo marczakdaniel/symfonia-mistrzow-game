@@ -31,7 +31,6 @@ namespace Command
 
         public override async UniTask<bool> Execute()
         {
-            turnService.StartSelectingMusicCard();
             var musicCardData = MusicCardRepository.Instance.GetCard(MusicCardId);
 
             await AsyncEventBus.Instance.PublishAndWaitAsync(new MusicCardDetailsPanelOpenedEvent(musicCardData, Level, Position));
@@ -58,7 +57,6 @@ namespace Command
 
         public override async UniTask<bool> Execute()
         {
-            turnService.StopSelectingMusicCard();
             await AsyncEventBus.Instance.PublishAndWaitAsync(new MusicCardDetailsPanelClosedEvent(MusicCardId));
             return true;
         }
@@ -85,7 +83,6 @@ namespace Command
 
         public override async UniTask<bool> Execute()
         {
-            turnService.StartSelectingTokens();
             var currentTokenCounts = boardService.GetAllBoardResources();
             var currentPlayerTokens = turnService.GetCurrentPlayerModel().Tokens.GetAllResources();
             if (!turnService.CanAddTokenToSelectedTokens(ResourceType))
@@ -149,7 +146,7 @@ namespace Command
             var initialTokens = turnService.GetInitialSelectedTokens(musicCardId);  
 
             turnService.InitializeCardPurchaseTokens(initialTokens);
-            var currentCardTokens = currentPlayer.PurchasedCards.GetAllResourceCollection().GetAllResources();  
+            var currentCardTokens = currentPlayer.GetPurchasedAllResourceCollection().GetAllResources();  
             var tokensNeededToPurchase = turnService.GetTokensNeededToPurchase(musicCardId);
 
             var openEvent = new CardPurchaseWindowOpenedEvent(musicCardData, currentPlayerTokens, initialTokens.GetAllResources(), currentCardTokens, tokensNeededToPurchase.GetAllResources());
@@ -208,7 +205,7 @@ namespace Command
             var numberOfPoints = player.Points;
             var playerName = player.PlayerName;
             var currentPlayerTokens = player.Tokens.GetAllResources();
-            var currentPlayerCards = player.PurchasedCards.GetAllResourceCollection().GetAllResources();
+            var currentPlayerCards = player.GetPurchasedAllResourceCollection().GetAllResources();
             var reservedMusicCards = player.ReservedCards.GetAllCards().ToList();
 
             var openEvent = new PlayerResourcesWindowOpenedEvent(isCurrentPlayer, playerName, numberOfPoints, currentPlayerTokens, currentPlayerCards, reservedMusicCards);

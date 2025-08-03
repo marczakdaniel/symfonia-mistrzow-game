@@ -14,7 +14,10 @@ namespace UI.Board.BoardPlayerPanel
     public class BoardPlayerPanelPresenter : 
         IDisposable,
         IAsyncEventHandler<GameStartedEvent>,
-        IAsyncEventHandler<TurnStartedEvent>
+        IAsyncEventHandler<TurnStartedEvent>,
+        IAsyncEventHandler<CardPurchasedFromBoardEvent>,
+        IAsyncEventHandler<CardPurchasedFromReserveEvent>,
+        IAsyncEventHandler<ConcertCardClaimedEvent>
     {
         private readonly BoardPlayerPanelViewModel viewModel;
         private readonly BoardPlayerPanelView view;
@@ -35,36 +38,11 @@ namespace UI.Board.BoardPlayerPanel
         {
             var d = new DisposableBuilder();
 
-            ConnectModel(d);
             ConnectView(d);
 
             disposables = d.Build();
         }
 
-        private void ConnectModel(DisposableBuilder d)
-        {
-            viewModel.State.Subscribe(state => HandleStateChanged(state).ToObservable()).AddTo(ref d);
-        }
-
-        private async UniTask HandleStateChanged(BoardPlayerPanelState state)
-        {
-            switch (state)
-            {
-                case BoardPlayerPanelState.Disabled:
-                    view.gameObject.SetActive(false);
-                    break;
-                case BoardPlayerPanelState.Enabled:
-                    view.SetPlayerImage(viewModel.PlayerImage);
-                    view.SetPlayerPoints(viewModel.PlayerPoints.Value);
-                    view.SetActivePlayerIndicator(false);
-                    view.gameObject.SetActive(true);
-                    break;
-                case BoardPlayerPanelState.CurrentPlayer:
-                    view.SetActivePlayerIndicator(true);
-                    view.gameObject.SetActive(true);
-                    break;
-            }
-        }
 
         private void ConnectView(DisposableBuilder d)
         {
@@ -81,16 +59,24 @@ namespace UI.Board.BoardPlayerPanel
         {
             AsyncEventBus.Instance.Subscribe<GameStartedEvent>(this);
             AsyncEventBus.Instance.Subscribe<TurnStartedEvent>(this);
+            AsyncEventBus.Instance.Subscribe<CardPurchasedFromBoardEvent>(this);
+            AsyncEventBus.Instance.Subscribe<CardPurchasedFromReserveEvent>(this);
+            AsyncEventBus.Instance.Subscribe<ConcertCardClaimedEvent>(this);
         }
 
         public async UniTask HandleAsync(GameStartedEvent gameEvent)
         {
-            UnityEngine.Debug.Log($"GameStartedEvent: {viewModel.Index} {gameEvent.PlayerIds.Length}");
-            if (gameEvent.PlayerIds.Length > viewModel.Index)
+            if (gameEvent.PlayerIds.Length <= viewModel.Index)
             {
-                viewModel.Initialize(gameEvent.PlayerIds[viewModel.Index], 0, null);
-                await UniTask.WaitUntil(() => viewModel.State.Value == BoardPlayerPanelState.Enabled);
+                return;
             }
+
+            viewModel.Initialize(gameEvent.PlayerIds[viewModel.Index], null);
+
+            view.SetPlayerImage(viewModel.PlayerImage);
+            view.SetPlayerPoints(0 );
+            view.SetActivePlayerIndicator(false);
+            await view.PlayActivateAnimation();
         }
 
         public async UniTask HandleAsync(TurnStartedEvent turnEvent)
@@ -98,13 +84,40 @@ namespace UI.Board.BoardPlayerPanel
             if (turnEvent.CurrentPlayerId == viewModel.PlayerId)
             {
                 viewModel.SetCurrentPlayer(true);
-                await UniTask.WaitUntil(() => viewModel.State.Value == BoardPlayerPanelState.CurrentPlayer);
+                await view.PlayCurrentPlayerAnimation();
             }
-            else if (viewModel.State.Value == BoardPlayerPanelState.CurrentPlayer && turnEvent.CurrentPlayerId != viewModel.PlayerId)
+            else if (viewModel.IsCurrentPlayer && turnEvent.CurrentPlayerId != viewModel.PlayerId)
             {
                 viewModel.SetCurrentPlayer(false);
-                await UniTask.WaitUntil(() => viewModel.State.Value == BoardPlayerPanelState.Enabled);
+                await view.PlayStopCurrentPlayerAnimation();
             }
+        }
+
+        public async UniTask HandleAsync(CardPurchasedFromBoardEvent cardPurchasedFromBoardEvent)
+        {
+            if (!viewModel.IsCurrentPlayer)
+            {
+                return;
+            }
+            view.SetPlayerPoints(cardPurchasedFromBoardEvent.Points);
+        }
+
+        public async UniTask HandleAsync(CardPurchasedFromReserveEvent cardPurchasedFromReserveEvent)
+        {
+            if (!viewModel.IsCurrentPlayer)
+            {
+                return;
+            }
+            view.SetPlayerPoints(cardPurchasedFromReserveEvent.Points);
+        }
+
+        public async UniTask HandleAsync(ConcertCardClaimedEvent concertCardClaimedEvent)
+        {
+            if (!viewModel.IsCurrentPlayer)
+            {
+                return;
+            }
+            view.SetPlayerPoints(concertCardClaimedEvent.Points);
         }
 
         public void Dispose()

@@ -1,3 +1,5 @@
+using BrunoMikoski.AnimationSequencer;
+using Cysharp.Threading.Tasks;
 using DefaultNamespace.Elements;
 using R3;
 using TMPro;
@@ -21,6 +23,15 @@ namespace UI.Board.BoardPlayerPanel
 
         [SerializeField]
         private TextMeshProUGUI playerPointsText;
+        
+        [SerializeField]
+        private AnimationSequencerController activateAnimation;
+
+        [SerializeField]
+        private AnimationSequencerController currentPlayerAnimation;
+
+        [SerializeField]
+        private AnimationSequencerController stopCurrentPlayerAnimation;
 
         public void SetPlayerImage(Sprite sprite)
         {
@@ -35,6 +46,21 @@ namespace UI.Board.BoardPlayerPanel
         public void SetPlayerPoints(int points)
         {
             playerPointsText.text = points.ToString();
+        }
+
+        public async UniTask PlayActivateAnimation()
+        {
+            await activateAnimation.PlayAsync();
+        }
+
+        public async UniTask PlayCurrentPlayerAnimation()
+        {
+            await currentPlayerAnimation.PlayAsync();
+        }
+
+        public async UniTask PlayStopCurrentPlayerAnimation()
+        {
+            await stopCurrentPlayerAnimation.PlayAsync();
         }
 
         public void Awake()

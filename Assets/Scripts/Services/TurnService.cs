@@ -47,6 +47,16 @@ namespace Services
         {
             var nextPlayerId = gameModel.GetNextPlayerId(turnModel.CurrentPlayerId);
             turnModel.SetCurrentPlayer(nextPlayerId);
+            
+            if  (turnModel.CurrentPlayerId == gameModel.Players[0].PlayerId)
+            {
+                turnModel.SetCurrentRound(turnModel.CurrentRound + 1);
+            }
+        }
+        
+        public int GetCurrentRound()
+        {
+            return turnModel.CurrentRound;
         }
 
         // PLAYER ACTIONS
@@ -55,14 +65,9 @@ namespace Services
         // 3. Purchase Card from Board
         // 4. Purchase Card from Reserved
 
-        // Selected Tokens Actions
-        public void StartSelectingTokens()
+        public bool HasActionBeenTaken()        
         {
-            if (turnModel.State != TurnState.WaitingForAction)
-            {
-                return;
-            }
-            turnModel.SetState(TurnState.SelectingTokens);
+            return turnModel.State == TurnState.ReadyToEndTurn;
         }
 
         public bool CanAddTokenToSelectedTokens(ResourceType token)
@@ -99,7 +104,7 @@ namespace Services
 
         public bool CanConfirmSelectedTokens()
         {
-            return turnModel.State == TurnState.SelectingTokens;
+            return turnModel.State == TurnState.WaitingForAction;
         }
 
         public void ConfirmSelectedTokens()
@@ -179,18 +184,10 @@ namespace Services
         }
 
         // Reserve Card Actions
-        public void StartSelectingMusicCard()
-        {
-            if (turnModel.State != TurnState.WaitingForAction)
-            {
-                return;
-            }
-            turnModel.SetState(TurnState.SelectingMusicCard);
-        }
 
         public bool CanConfirmReserveMusicCard()
         {
-            return turnModel.State == TurnState.SelectingMusicCard;
+            return turnModel.State == TurnState.WaitingForAction;
         }
 
         public bool CanReserveCard()
@@ -226,11 +223,6 @@ namespace Services
             return true;
         }
 
-        public void StopSelectingMusicCard()
-        {
-            turnModel.SetState(TurnState.WaitingForAction);
-        }
-
         // Buy card actions
 
         public bool CanPurchaseCard(string cardId)
@@ -246,7 +238,7 @@ namespace Services
         {
             var currentPlayer = gameModel.GetPlayer(turnModel.CurrentPlayerId);
             var card = musicCardRepository.GetCard(cardId);
-            var tokensFromCard = currentPlayer.PurchasedCards.GetAllResourceCollection();
+            var tokensFromCard = currentPlayer.GetPurchasedAllResourceCollection();
             var allPlayerTokens = currentPlayer.Tokens.CombineCollections(tokensFromCard);
             var needToAdd = allPlayerTokens.HowManychNeedToAddToHaveAll(card.cost.GetResourceCollectionModel());
             var numberOfInspirationTokens = tokens.GetCount(ResourceType.Inspiration);
@@ -257,7 +249,7 @@ namespace Services
         {
             var currentPlayer = gameModel.GetPlayer(turnModel.CurrentPlayerId);
             var card = musicCardRepository.GetCard(cardId);
-            var tokensFromCard = currentPlayer.PurchasedCards.GetAllResourceCollection();
+            var tokensFromCard = currentPlayer.GetPurchasedAllResourceCollection();
             var allPlayerTokens = currentPlayer.Tokens.CombineCollections(tokensFromCard);
             
             var neededTokens = tokensFromCard.NeedToAddToHaveAll(card.cost.GetResourceCollectionModel());
@@ -276,7 +268,7 @@ namespace Services
         {
             var currentPlayer = gameModel.GetPlayer(turnModel.CurrentPlayerId);
             var card = musicCardRepository.GetCard(cardId);
-            var tokensFromCard = currentPlayer.PurchasedCards.GetAllResourceCollection();
+            var tokensFromCard = currentPlayer.GetPurchasedAllResourceCollection();
             var allPlayerTokens = currentPlayer.Tokens.CombineCollections(tokensFromCard);
             var neededTokens = tokensFromCard.NeedToAddToHaveAll(card.cost.GetResourceCollectionModel());
             return neededTokens;
@@ -360,7 +352,7 @@ namespace Services
         {
             var currentPlayer = gameModel.GetPlayer(turnModel.CurrentPlayerId);
             var concertCards = gameModel.ConcertCards;
-            var playerMusicCards = currentPlayer.PurchasedCards.GetAllResourceCollection();
+            var playerMusicCards = currentPlayer.GetPurchasedAllResourceCollection();
 
             foreach (var card in concertCards)
             {

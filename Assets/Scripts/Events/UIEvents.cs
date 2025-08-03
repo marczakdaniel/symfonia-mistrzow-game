@@ -159,11 +159,13 @@ namespace Events
     {
         public string CurrentPlayerId { get; private set; }
         public string CurrentPlayerName { get; private set; }
+        public int CurrentRound { get; private set; }
 
-        public StartTurnWindowOpenedEvent(string currentPlayerId, string currentPlayerName)
+        public StartTurnWindowOpenedEvent(string currentPlayerId, string currentPlayerName, int currentRound)
         {
             CurrentPlayerId = currentPlayerId;
             CurrentPlayerName = currentPlayerName;
+            CurrentRound = currentRound;
         }
     }
 
@@ -259,10 +261,13 @@ namespace Events
         public string CardId { get; private set; }
         public Dictionary<ResourceType, int> BoardTokens { get; private set; }
 
-        public CardPurchasedFromBoardEvent(string cardId, Dictionary<ResourceType, int> boardTokens)
+        public int Points { get; private set; }
+
+        public CardPurchasedFromBoardEvent(string cardId, Dictionary<ResourceType, int> boardTokens, int points)
         {
             CardId = cardId;
             BoardTokens = boardTokens;
+            Points = points;
         }
     }
 
@@ -272,12 +277,15 @@ namespace Events
 
         public List<MusicCardData> ReservedMusicCards { get; private set; }
         public Dictionary<ResourceType, int> BoardTokens { get; private set; }
+
+        public int Points { get; private set; }
         
-        public CardPurchasedFromReserveEvent(string cardId, List<MusicCardData> reservedMusicCards, Dictionary<ResourceType, int> boardTokens)
+        public CardPurchasedFromReserveEvent(string cardId, List<MusicCardData> reservedMusicCards, Dictionary<ResourceType, int> boardTokens, int points)
         {
             CardId = cardId;
             ReservedMusicCards = reservedMusicCards;
             BoardTokens = boardTokens;
+            Points = points;
         }
     }
 
@@ -325,6 +333,20 @@ namespace Events
         {
             ConcertCards = concertCards;
             CardStates = cardStates;
+        }
+    }
+
+    public class ConcertCardClaimedEvent : GameEvent
+    {
+        public List<ConcertCardData> ConcertCards { get; private set; }
+        public List<ConcertCardState> CardStates { get; private set; }
+        public int Points { get; private set; }
+
+        public ConcertCardClaimedEvent(List<ConcertCardData> concertCards, List<ConcertCardState> cardStates, int points)
+        {
+            ConcertCards = concertCards;
+            CardStates = cardStates;
+            Points = points;
         }
     }
 
