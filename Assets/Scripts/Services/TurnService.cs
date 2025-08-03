@@ -117,12 +117,6 @@ namespace Services
             currentPlayer.AddTokens(selectedTokens);
         }
 
-        public void EndSelectingTokensWithNoConfirmation()
-        {
-            turnModel.SetState(TurnState.WaitingForAction);
-            ClearSelectedTokens();
-        }
-
         // Return Tokens Actions
 
         public bool IsTokenReturnNeeded()
