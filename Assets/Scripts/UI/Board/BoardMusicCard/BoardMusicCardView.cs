@@ -32,8 +32,9 @@ namespace UI.Board.BoardMusicCardPanel.BoardMusicCard
             await revealAnimation.PlayAsync();
         }
 
-        public async UniTask PlayHideAnimation()
+        public async UniTask PlayHideAnimation(int delay = 0)
         {
+            await UniTask.Delay(delay);
             await hideAnimation.PlayAsync();
         }
 

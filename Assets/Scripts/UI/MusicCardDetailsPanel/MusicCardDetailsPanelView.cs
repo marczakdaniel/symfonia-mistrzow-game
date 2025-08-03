@@ -48,13 +48,15 @@ namespace UI.MusicCardDetailsPanel {
 
         public async UniTask PlayCloseToBoardAnimation() {
             await closeToBoardAnimation.PlayAsync();
+            PlayCloseAnimation(50).Forget();
         }
 
-        public async UniTask PlayCloseAnimation() {
+        public async UniTask PlayCloseAnimation(int delay = 0) {
+            await UniTask.Delay(delay);
             await closeAnimation.PlayAsync();
         }
 
-        public async UniTask PlayCloseForReservedAnimation(int playerIndex) {
+        public async UniTask PlayCloseForReservedAnimation(int playerIndex, int delay = 0) {
             await closeForReservedAnimation.PlayCloseForReservedAnimation(playerIndex);
         }
     }

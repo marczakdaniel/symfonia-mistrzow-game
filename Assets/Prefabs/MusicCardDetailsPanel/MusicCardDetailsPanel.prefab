@@ -99,7 +99,6 @@ MonoBehaviour:
   - rid: 4232360083899285592
   - rid: 4232360083899285590
   - rid: 4232360083899285595
-  - rid: 4232360083899285580
   updateType: 0
   timeScaleIndependent: 0
   autoplayMode: 2
@@ -122,13 +121,6 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
-    - rid: 4232360083899285580
-      type: {class: SetGameObjectActiveStep, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
-      data:
-        delay: 0
-        flowType: 0
-        targetGameObject: {fileID: 8146083409881361514}
-        active: 0
     - rid: 4232360083899285582
       type: {class: DOTweenAnimationStep, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
       data:

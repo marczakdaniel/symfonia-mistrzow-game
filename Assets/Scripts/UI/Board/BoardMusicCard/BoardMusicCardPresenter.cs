@@ -54,7 +54,7 @@ namespace UI.Board.BoardMusicCardPanel.BoardMusicCard
             AsyncEventBus.Instance.Subscribe<CardPurchasedFromBoardEvent>(this);
             AsyncEventBus.Instance.Subscribe<PutCardOnBoardEvent>(this);
             AsyncEventBus.Instance.Subscribe<GameStartedEvent>(this);
-            AsyncEventBus.Instance.Subscribe<MusicCardDetailsPanelOpenedEvent>(this, EventPriority.High);
+            AsyncEventBus.Instance.Subscribe<MusicCardDetailsPanelOpenedEvent>(this);
             AsyncEventBus.Instance.Subscribe<MusicCardDetailsPanelClosedEvent>(this, EventPriority.Low);
         }
 
@@ -104,7 +104,7 @@ namespace UI.Board.BoardMusicCardPanel.BoardMusicCard
             {
                 return;
             }
-            await view.PlayHideAnimation();
+            await view.PlayHideAnimation(50);
         }
 
         public async UniTask HandleAsync(MusicCardDetailsPanelClosedEvent musicCardDetailsPanelClosedEvent)
