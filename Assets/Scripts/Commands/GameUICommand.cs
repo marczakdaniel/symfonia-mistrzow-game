@@ -130,11 +130,13 @@ namespace Command
         private readonly TurnService turnService;
         private readonly string musicCardId;
         private readonly BoardService boardService;
-        public OpenCardPurchaseWindowCommand(string musicCardId, TurnService turnService, BoardService boardService) : base()
+        private readonly bool isFromMusicCardDetailsPanel;
+        public OpenCardPurchaseWindowCommand(string musicCardId, bool isFromMusicCardDetailsPanel, TurnService turnService, BoardService boardService) : base()
         {
             this.turnService = turnService;
             this.musicCardId = musicCardId;
             this.boardService = boardService;
+            this.isFromMusicCardDetailsPanel = isFromMusicCardDetailsPanel;
         }
 
         public override async UniTask<bool> Validate()
@@ -153,8 +155,16 @@ namespace Command
             var currentCardTokens = currentPlayer.GetPurchasedAllResourceCollection().GetAllResources();  
             var tokensNeededToPurchase = turnService.GetTokensNeededToPurchase(musicCardId);
 
-            var openEvent = new CardPurchaseWindowOpenedEvent(musicCardData, currentPlayerTokens, initialTokens.GetAllResources(), currentCardTokens, tokensNeededToPurchase.GetAllResources());
-            await AsyncEventBus.Instance.PublishAndWaitAsync(openEvent);
+            if (isFromMusicCardDetailsPanel)
+            {
+                var openEvent = new CardPurchaseWindowOpenedFromMusicCardDetailsPanelEvent(musicCardData, currentPlayerTokens, initialTokens.GetAllResources(), currentCardTokens, tokensNeededToPurchase.GetAllResources());
+                await AsyncEventBus.Instance.PublishAndWaitAsync(openEvent);
+            }
+            else
+            {
+                var openEvent = new CardPurchaseWindowOpenedFromReservedEvent(musicCardData, currentPlayerTokens, initialTokens.GetAllResources(), currentCardTokens, tokensNeededToPurchase.GetAllResources());
+                await AsyncEventBus.Instance.PublishAndWaitAsync(openEvent);
+            }
 
             return true;
         }
@@ -164,8 +174,10 @@ namespace Command
     {
         public override string CommandType => "CloseCardPurchaseWindow";
         private readonly TurnService turnService;
-        public CloseCardPurchaseWindowCommand(TurnService turnService) : base()
+        private readonly bool isFromMusicCardDetailsPanel;
+        public CloseCardPurchaseWindowCommand(bool isFromMusicCardDetailsPanel, TurnService turnService) : base()
         {
+            this.isFromMusicCardDetailsPanel = isFromMusicCardDetailsPanel;
             this.turnService = turnService;
         }
 
@@ -177,7 +189,14 @@ namespace Command
         public override async UniTask<bool> Execute()
         {
             turnService.ClearCardPurchaseTokens();
-            await AsyncEventBus.Instance.PublishAndWaitAsync(new CardPurchaseWindowClosedEvent());
+            if (isFromMusicCardDetailsPanel)
+            {
+                await AsyncEventBus.Instance.PublishAndWaitAsync(new CardPurchaseWindowClosedFromMusicCardDetailsPanelEvent());
+            }
+            else
+            {
+                await AsyncEventBus.Instance.PublishAndWaitAsync(new CardPurchaseWindowClosedFromReservedEvent());
+            }
             return true;
         }
     }

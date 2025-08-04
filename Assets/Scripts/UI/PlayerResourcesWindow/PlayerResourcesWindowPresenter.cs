@@ -48,7 +48,7 @@ namespace UI.PlayerResourcesWindow
 
         private async UniTask HandleCardClicked(string cardId)
         {
-            var command = commandFactory.CreateOpenCardPurchaseWindowCommand(cardId);
+            var command = commandFactory.CreateOpenCardPurchaseWindowCommand(cardId, false);
             await CommandService.Instance.ExecuteCommandAsync(command);
         }
 

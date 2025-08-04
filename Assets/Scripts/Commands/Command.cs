@@ -539,7 +539,8 @@ namespace Command
                 var musicCardData = slot.GetMusicCard();
                 turnService.PurchaseCardFromBoard(cardId, selectedTokens);
                 var points = playerService.GetPlayer(turnService.GetCurrentPlayerId()).Points;  
-                await AsyncEventBus.Instance.PublishAndWaitAsync(new CardPurchasedFromBoardEvent(cardId, boardService.GetAllBoardResources(), points));
+                var playerIndex = turnService.GetCurrentPlayerIndex();
+                await AsyncEventBus.Instance.PublishAndWaitAsync(new CardPurchasedFromBoardEvent(cardId, boardService.GetAllBoardResources(), playerIndex, points));
 
                 boardService.RefillSlot(slot.Level, slot.Position);
                 var putCardOnBoardEvent = new PutCardOnBoardEvent(slot.Level, slot.Position, slot.GetMusicCard());
@@ -552,7 +553,8 @@ namespace Command
             {
                 turnService.PurchaseCardFromReserve(cardId, selectedTokens);                var reservedCards = currentPlayer.ReservedCards.GetAllCards().ToList();
                 var points = playerService.GetPlayer(turnService.GetCurrentPlayerId()).Points;  
-                await AsyncEventBus.Instance.PublishAndWaitAsync(new CardPurchasedFromReserveEvent(cardId, reservedCards, boardService.GetAllBoardResources(), points));
+                var playerIndex = turnService.GetCurrentPlayerIndex();
+                await AsyncEventBus.Instance.PublishAndWaitAsync(new CardPurchasedFromReserveEvent(cardId, reservedCards, boardService.GetAllBoardResources(), playerIndex, points));
                 return true;
             }
 

@@ -203,7 +203,7 @@ namespace Events
     }
 
     // Card purchase action events
-    public class CardPurchaseWindowOpenedEvent : GameEvent
+    public class CardPurchaseWindowOpenedFromMusicCardDetailsPanelEvent : GameEvent
     {
         public MusicCardData MusicCardData { get; private set; }
 
@@ -212,7 +212,7 @@ namespace Events
         public Dictionary<ResourceType, int> CurrentCardTokens { get; private set; }
         public Dictionary<ResourceType, int> TokensNeededToPurchase { get; private set; }
 
-        public CardPurchaseWindowOpenedEvent(
+        public CardPurchaseWindowOpenedFromMusicCardDetailsPanelEvent(
             MusicCardData musicCardData, 
             Dictionary<ResourceType, int> currentPlayerTokens, 
             Dictionary<ResourceType, int> initialSelectedTokens, 
@@ -227,9 +227,40 @@ namespace Events
         }
     }
 
-    public class CardPurchaseWindowClosedEvent : GameEvent
+    public class CardPurchaseWindowClosedFromMusicCardDetailsPanelEvent : GameEvent
     {
-        public CardPurchaseWindowClosedEvent()
+        public CardPurchaseWindowClosedFromMusicCardDetailsPanelEvent()
+        {
+        }
+    }
+
+    public class CardPurchaseWindowOpenedFromReservedEvent : GameEvent
+    {
+        public MusicCardData MusicCardData { get; private set; }
+
+        public Dictionary<ResourceType, int> InitialSelectedTokens { get; private set; }
+        public Dictionary<ResourceType, int> CurrentPlayerTokens { get; private set; }
+        public Dictionary<ResourceType, int> CurrentCardTokens { get; private set; }
+        public Dictionary<ResourceType, int> TokensNeededToPurchase { get; private set; }
+
+        public CardPurchaseWindowOpenedFromReservedEvent(
+            MusicCardData musicCardData, 
+            Dictionary<ResourceType, int> currentPlayerTokens, 
+            Dictionary<ResourceType, int> initialSelectedTokens, 
+            Dictionary<ResourceType, int> currentCardTokens,
+            Dictionary<ResourceType, int> tokensNeededToPurchase)
+        {
+            MusicCardData = musicCardData;
+            CurrentPlayerTokens = currentPlayerTokens;
+            InitialSelectedTokens = initialSelectedTokens;
+            CurrentCardTokens = currentCardTokens;
+            TokensNeededToPurchase = tokensNeededToPurchase;
+        }
+    }
+    
+    public class CardPurchaseWindowClosedFromReservedEvent : GameEvent
+    {
+        public CardPurchaseWindowClosedFromReservedEvent()
         {
         }
     }
@@ -262,13 +293,15 @@ namespace Events
     {
         public string CardId { get; private set; }
         public Dictionary<ResourceType, int> BoardTokens { get; private set; }
+        public int PlayerIndex { get; private set; }
 
         public int Points { get; private set; }
 
-        public CardPurchasedFromBoardEvent(string cardId, Dictionary<ResourceType, int> boardTokens, int points)
+        public CardPurchasedFromBoardEvent(string cardId, Dictionary<ResourceType, int> boardTokens, int playerIndex, int points)
         {
             CardId = cardId;
             BoardTokens = boardTokens;
+            PlayerIndex = playerIndex;
             Points = points;
         }
     }
@@ -279,14 +312,16 @@ namespace Events
 
         public List<MusicCardData> ReservedMusicCards { get; private set; }
         public Dictionary<ResourceType, int> BoardTokens { get; private set; }
+        public int PlayerIndex { get; private set; }
 
         public int Points { get; private set; }
         
-        public CardPurchasedFromReserveEvent(string cardId, List<MusicCardData> reservedMusicCards, Dictionary<ResourceType, int> boardTokens, int points)
+        public CardPurchasedFromReserveEvent(string cardId, List<MusicCardData> reservedMusicCards, Dictionary<ResourceType, int> boardTokens, int playerIndex, int points)
         {
             CardId = cardId;
             ReservedMusicCards = reservedMusicCards;
             BoardTokens = boardTokens;
+            PlayerIndex = playerIndex;
             Points = points;
         }
     }

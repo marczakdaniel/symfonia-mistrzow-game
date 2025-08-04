@@ -6,6 +6,7 @@ using Cysharp.Threading.Tasks;
 using DefaultNamespace.Data;
 using DefaultNamespace.Elements;
 using Mono.Cecil.Cil;
+using MusicCardGame.UI.CardPurchaseWindow;
 using R3;
 using UI.CardPurchaseWindow.CardPurchaseSingleToken;
 using UI.MusicCardDetailsPanel;
@@ -26,7 +27,7 @@ namespace UI.CardPurchaseWindow
 
         [SerializeField] private AnimationSequencerController openAnimationFromMusicCardDetailsPanel;
         [SerializeField] private AnimationSequencerController closeAnimationToMusicCardDetailsPanel;
-
+        [SerializeField] private CardPurchaseWindowPurchaseAnimation purchaseAnimation;
         public CardPurchaseSingleTokenView[] CardPurchaseSingleTokenViews => cardPurchaseSingleTokenViews;
 
         public void Awake()
@@ -56,6 +57,11 @@ namespace UI.CardPurchaseWindow
         public async UniTask PlayCloseAnimation()
         {
             await closeAnimationToMusicCardDetailsPanel.PlayAsync();
+        }
+
+        public async UniTask PlayPurchaseAnimation(int playerIndex)
+        {
+            await purchaseAnimation.PlayPurchaseAnimation(playerIndex);
         }
     }
 }

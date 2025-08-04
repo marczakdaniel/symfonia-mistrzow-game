@@ -2,7 +2,6 @@
 using System;
 using BrunoMikoski.AnimationSequencer;
 using UnityEngine;
-using UnityEngine.UIElements;
 using DG.Tweening;
 using System.Collections.Generic;
 namespace AnimationSequencer

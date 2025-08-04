@@ -10,7 +10,10 @@ namespace UI.MusicCardDetailsPanel {
     public class MusicCardDetailsPanelPresenter : 
         IAsyncEventHandler<MusicCardDetailsPanelOpenedEvent>, 
         IAsyncEventHandler<MusicCardDetailsPanelClosedEvent>,
-        IAsyncEventHandler<CardReservedEvent>
+        IAsyncEventHandler<CardReservedEvent>,
+        IAsyncEventHandler<CardPurchaseWindowOpenedFromMusicCardDetailsPanelEvent>,
+        IAsyncEventHandler<CardPurchaseWindowClosedFromMusicCardDetailsPanelEvent>,
+        IAsyncEventHandler<CardPurchasedFromBoardEvent>
     {
         private readonly MusicCardDetailsPanelView view;
         private readonly CommandFactory commandFactory;
@@ -41,7 +44,7 @@ namespace UI.MusicCardDetailsPanel {
         }
         private async UniTask HandleBuyButtonClick() 
         {
-            var command = commandFactory.CreateOpenCardPurchaseWindowCommand(viewModel.MusicCardData.Id);
+            var command = commandFactory.CreateOpenCardPurchaseWindowCommand(viewModel.MusicCardData.Id, true);
             await CommandService.Instance.ExecuteCommandAsync(command);
         }
 
@@ -54,6 +57,9 @@ namespace UI.MusicCardDetailsPanel {
             AsyncEventBus.Instance.Subscribe<MusicCardDetailsPanelOpenedEvent>(this);
             AsyncEventBus.Instance.Subscribe<MusicCardDetailsPanelClosedEvent>(this, EventPriority.High);
             AsyncEventBus.Instance.Subscribe<CardReservedEvent>(this);
+            AsyncEventBus.Instance.Subscribe<CardPurchaseWindowOpenedFromMusicCardDetailsPanelEvent>(this, EventPriority.High);
+            AsyncEventBus.Instance.Subscribe<CardPurchaseWindowClosedFromMusicCardDetailsPanelEvent>(this, EventPriority.Low);
+            AsyncEventBus.Instance.Subscribe<CardPurchasedFromBoardEvent>(this, EventPriority.High);
         }
 
 
@@ -72,6 +78,18 @@ namespace UI.MusicCardDetailsPanel {
         public async UniTask HandleAsync(CardReservedEvent cardReservedEvent) {
             viewModel.ClearMusicCardData();
             await view.PlayCloseForReservedAnimation(cardReservedEvent.PlayerIndex);
+        }
+
+        public async UniTask HandleAsync(CardPurchaseWindowOpenedFromMusicCardDetailsPanelEvent cardPurchaseWindowOpenedFromMusicCardDetailsPanelEvent) {
+            await view.PlayMoveToCardPurchaseWindowAnimation();
+        }
+
+        public async UniTask HandleAsync(CardPurchaseWindowClosedFromMusicCardDetailsPanelEvent cardPurchaseWindowClosedFromMusicCardDetailsPanelEvent) {
+            await view.PlayMoveFromCardPurchaseWindowAnimation();
+        }
+
+        public async UniTask HandleAsync(CardPurchasedFromBoardEvent cardPurchasedFromBoardEvent) {
+            await view.PlayCloseAnimation();
         }
     }
 }

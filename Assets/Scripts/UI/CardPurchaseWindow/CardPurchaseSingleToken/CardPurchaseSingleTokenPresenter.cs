@@ -10,8 +10,9 @@ namespace UI.CardPurchaseWindow.CardPurchaseSingleToken
     public class CardPurchaseSingleTokenPresenter : 
         IDisposable, 
         IAsyncEventHandler<TokenAddedToCardPurchaseEvent>, 
-        IAsyncEventHandler<CardPurchaseWindowOpenedEvent>,
-        IAsyncEventHandler<TokenRemovedFromCardPurchaseEvent>
+        IAsyncEventHandler<TokenRemovedFromCardPurchaseEvent>,
+        IAsyncEventHandler<CardPurchaseWindowOpenedFromMusicCardDetailsPanelEvent>,
+        IAsyncEventHandler<CardPurchaseWindowOpenedFromReservedEvent>
     {
         private readonly CardPurchaseSingleTokenViewModel viewModel;
         private readonly CardPurchaseSingleTokenView view;
@@ -63,7 +64,8 @@ namespace UI.CardPurchaseWindow.CardPurchaseSingleToken
         {
             AsyncEventBus.Instance.Subscribe<TokenAddedToCardPurchaseEvent>(this);
             AsyncEventBus.Instance.Subscribe<TokenRemovedFromCardPurchaseEvent>(this);
-            AsyncEventBus.Instance.Subscribe<CardPurchaseWindowOpenedEvent>(this);
+            AsyncEventBus.Instance.Subscribe<CardPurchaseWindowOpenedFromMusicCardDetailsPanelEvent>(this);
+            AsyncEventBus.Instance.Subscribe<CardPurchaseWindowOpenedFromReservedEvent>(this);
             AsyncEventBus.Instance.Subscribe<TokenAddedToCardPurchaseEvent>(this);
         }
 
@@ -86,7 +88,14 @@ namespace UI.CardPurchaseWindow.CardPurchaseSingleToken
             view.UpdateCurrentSelectedTokensCount(gameEvent.CurrentTokenCount);
             await UniTask.CompletedTask;
         }
-        public async UniTask HandleAsync(CardPurchaseWindowOpenedEvent gameEvent)
+        public async UniTask HandleAsync(CardPurchaseWindowOpenedFromMusicCardDetailsPanelEvent gameEvent)
+        {
+            viewModel.SetCardId(gameEvent.MusicCardData.Id);
+            view.Initialize(viewModel.Token, gameEvent.InitialSelectedTokens[viewModel.Token], gameEvent.TokensNeededToPurchase[viewModel.Token]);
+            await UniTask.CompletedTask;
+        }
+
+        public async UniTask HandleAsync(CardPurchaseWindowOpenedFromReservedEvent gameEvent)
         {
             viewModel.SetCardId(gameEvent.MusicCardData.Id);
             view.Initialize(viewModel.Token, gameEvent.InitialSelectedTokens[viewModel.Token], gameEvent.TokensNeededToPurchase[viewModel.Token]);

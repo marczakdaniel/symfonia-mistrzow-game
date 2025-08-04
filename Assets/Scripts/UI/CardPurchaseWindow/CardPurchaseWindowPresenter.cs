@@ -11,8 +11,10 @@ namespace UI.CardPurchaseWindow
 {
     public class CardPurchaseWindowPresenter : 
         IDisposable, 
-        IAsyncEventHandler<CardPurchaseWindowOpenedEvent>, 
-        IAsyncEventHandler<CardPurchaseWindowClosedEvent>,
+        IAsyncEventHandler<CardPurchaseWindowOpenedFromMusicCardDetailsPanelEvent>, 
+        IAsyncEventHandler<CardPurchaseWindowClosedFromMusicCardDetailsPanelEvent>,
+        IAsyncEventHandler<CardPurchaseWindowOpenedFromReservedEvent>,
+        IAsyncEventHandler<CardPurchaseWindowClosedFromReservedEvent>,
         IAsyncEventHandler<CardPurchasedFromBoardEvent>,
         IAsyncEventHandler<CardPurchasedFromReserveEvent>
     {
@@ -65,7 +67,7 @@ namespace UI.CardPurchaseWindow
 
         private async UniTask HandleCloseButtonClick()
         {
-            var command = commandFactory.CreateCloseCardPurchaseWindowCommand();
+            var command = commandFactory.CreateCloseCardPurchaseWindowCommand(viewModel.IsFromMusicCardDetailsPanel);
             await CommandService.Instance.ExecuteCommandAsync(command);
         }
 
@@ -77,33 +79,50 @@ namespace UI.CardPurchaseWindow
 
         private void SubscribeToEvents()
         {
-            AsyncEventBus.Instance.Subscribe<CardPurchaseWindowOpenedEvent>(this);
-            AsyncEventBus.Instance.Subscribe<CardPurchaseWindowClosedEvent>(this);
+            AsyncEventBus.Instance.Subscribe<CardPurchaseWindowOpenedFromMusicCardDetailsPanelEvent>(this);
+            AsyncEventBus.Instance.Subscribe<CardPurchaseWindowClosedFromMusicCardDetailsPanelEvent>(this);
+            AsyncEventBus.Instance.Subscribe<CardPurchaseWindowOpenedFromReservedEvent>(this);
+            AsyncEventBus.Instance.Subscribe<CardPurchaseWindowClosedFromReservedEvent>(this);
             AsyncEventBus.Instance.Subscribe<CardPurchasedFromBoardEvent>(this);
             AsyncEventBus.Instance.Subscribe<CardPurchasedFromReserveEvent>(this);
         }
 
-        public async UniTask HandleAsync(CardPurchaseWindowOpenedEvent gameEvent)
+        public async UniTask HandleAsync(CardPurchaseWindowOpenedFromMusicCardDetailsPanelEvent gameEvent)
         {
             viewModel.SetMusicCardData(gameEvent.MusicCardData);
+            viewModel.SetIsFromMusicCardDetailsPanel(true);
             view.SetCardDetails(gameEvent.MusicCardData);
             view.Setup(gameEvent.CurrentPlayerTokens, gameEvent.CurrentCardTokens);
             await view.PlayOpenAnimation();
         }
 
-        public async UniTask HandleAsync(CardPurchaseWindowClosedEvent gameEvent)
+        public async UniTask HandleAsync(CardPurchaseWindowClosedFromMusicCardDetailsPanelEvent gameEvent)
+        {
+            await view.PlayCloseAnimation();
+        }
+
+        public async UniTask HandleAsync(CardPurchaseWindowOpenedFromReservedEvent gameEvent)
+        {
+            viewModel.SetMusicCardData(gameEvent.MusicCardData);
+            viewModel.SetIsFromMusicCardDetailsPanel(false);
+            view.SetCardDetails(gameEvent.MusicCardData);
+            view.Setup(gameEvent.CurrentPlayerTokens, gameEvent.CurrentCardTokens);
+            await view.PlayOpenAnimation();
+        }
+
+        public async UniTask HandleAsync(CardPurchaseWindowClosedFromReservedEvent gameEvent)
         {
             await view.PlayCloseAnimation();
         }
 
         public async UniTask HandleAsync(CardPurchasedFromBoardEvent gameEvent)
         {
-            await view.PlayCloseAnimation();
+            await view.PlayPurchaseAnimation(gameEvent.PlayerIndex);
         }
 
         public async UniTask HandleAsync(CardPurchasedFromReserveEvent gameEvent)
         {
-            await view.PlayCloseAnimation();
+            await view.PlayPurchaseAnimation(gameEvent.PlayerIndex);
         }
 
         public void Dispose()

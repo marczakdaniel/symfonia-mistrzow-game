@@ -23,6 +23,8 @@ namespace UI.MusicCardDetailsPanel {
         [SerializeField] private MusicCardDetailsPanelCloseForReservedAnimationController closeForReservedAnimation;
         [SerializeField] private AnimationSequencerController closeToBoardAnimation;
         [SerializeField] private AnimationSequencerController closeAnimation;
+        [SerializeField] private AnimationSequencerController moveToCardPurchaseWindow;
+        [SerializeField] private AnimationSequencerController moveFromCardPurchaseWindow;
 
         private void Awake() {
             closeButton.OnClick.Subscribe(_ => OnCloseButtonClick.OnNext(Unit.Default)).AddTo(this);
@@ -62,6 +64,14 @@ namespace UI.MusicCardDetailsPanel {
 
         public async UniTask PlayCloseForReservedAnimation(int playerIndex, int delay = 0) {
             await closeForReservedAnimation.PlayCloseForReservedAnimation(playerIndex);
+        }
+
+        public async UniTask PlayMoveToCardPurchaseWindowAnimation() {
+            await moveToCardPurchaseWindow.PlayAsync();
+        }
+
+        public async UniTask PlayMoveFromCardPurchaseWindowAnimation() {
+            await moveFromCardPurchaseWindow.PlayAsync();
         }
     }
 }
