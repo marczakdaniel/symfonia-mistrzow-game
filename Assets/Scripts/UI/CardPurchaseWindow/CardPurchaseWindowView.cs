@@ -27,6 +27,10 @@ namespace UI.CardPurchaseWindow
 
         [SerializeField] private AnimationSequencerController openAnimationFromMusicCardDetailsPanel;
         [SerializeField] private AnimationSequencerController closeAnimationToMusicCardDetailsPanel;
+
+        [SerializeField] private CardPurchaseWindowOpenFromReservedAnimation openAnimationFromReserved;
+        [SerializeField] private AnimationSequencerController closeAnimationToReserved;
+
         [SerializeField] private CardPurchaseWindowPurchaseAnimation purchaseAnimation;
         public CardPurchaseSingleTokenView[] CardPurchaseSingleTokenViews => cardPurchaseSingleTokenViews;
 
@@ -54,12 +58,12 @@ namespace UI.CardPurchaseWindow
             musicCardView.SetCanBePurchased(canBePurchased);
         }
 
-        public async UniTask PlayOpenAnimation()
+        public async UniTask PlayOpenAnimationFromMusicCardDetailsPanel()
         {
             await openAnimationFromMusicCardDetailsPanel.PlayAsync();
         }
 
-        public async UniTask PlayCloseAnimation()
+        public async UniTask PlayCloseAnimationToMusicCardDetailsPanel()
         {
             await closeAnimationToMusicCardDetailsPanel.PlayAsync();
         }
@@ -67,6 +71,16 @@ namespace UI.CardPurchaseWindow
         public async UniTask PlayPurchaseAnimation(int playerIndex)
         {
             await purchaseAnimation.PlayPurchaseAnimation(playerIndex);
+        }
+
+        public async UniTask PlayOpenAnimationFromReserved(int cardIndex)
+        {
+            await openAnimationFromReserved.PlayOpenAnimation(cardIndex);
+        }
+
+        public async UniTask PlayCloseAnimationToReserved()
+        {
+            await closeAnimationToReserved.PlayAsync();
         }
     }
 }

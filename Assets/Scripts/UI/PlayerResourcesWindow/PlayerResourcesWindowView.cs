@@ -14,7 +14,7 @@ namespace UI.PlayerResourcesWindow
     public class PlayerResourcesWindowView : MonoBehaviour
     {
         public Subject<Unit> OnCloseButtonClicked { get; private set; } = new Subject<Unit>();
-        public Subject<string> OnCardClicked { get; private set; } = new Subject<string>();
+        public Subject<(string, int)> OnCardClicked { get; private set; } = new Subject<(string, int)>();
 
         [SerializeField] 
         private UniversalPlayerResourceElement[] playerResources = new UniversalPlayerResourceElement[6];
@@ -71,12 +71,29 @@ namespace UI.PlayerResourcesWindow
             }
         }
 
+        public async UniTask HideCard(int cardIndex)
+        {
+            await UniTask.Delay(50);
+            detailsMusicCardView[cardIndex].gameObject.SetActive(false);
+        }
+        public void ShowCard(int cardIndex)
+        {
+            detailsMusicCardView[cardIndex].gameObject.SetActive(true);
+        }
+
         public void Awake()
         {
             closeButton.OnClick.Subscribe(OnCloseButtonClicked.OnNext).AddTo(this);
-            foreach (var card in detailsMusicCardView)
+            
+            for (int cardIndex = 0; cardIndex < detailsMusicCardView.Length; cardIndex++)
             {
-                card.OnCardClicked.Subscribe(OnCardClicked.OnNext).AddTo(this);
+                var card = detailsMusicCardView[cardIndex];
+                var capturedCardIndex = cardIndex; // Lokalna kopia dla closure
+                if (card != null)
+                {
+                    Debug.Log($"Card clicked: {card.gameObject.name}, card index: {cardIndex}");
+                    card.OnCardClicked.Subscribe(cardId => OnCardClicked.OnNext((cardId, capturedCardIndex))).AddTo(this);
+                }
             }
         }
     }

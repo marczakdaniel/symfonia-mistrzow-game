@@ -10,7 +10,9 @@ namespace UI.PlayerResourcesWindow
         IDisposable,
         IAsyncEventHandler<PlayerResourcesWindowOpenedEvent>,
         IAsyncEventHandler<PlayerResourcesWindowClosedEvent>,
-        IAsyncEventHandler<CardPurchasedFromReserveEvent>
+        IAsyncEventHandler<CardPurchasedFromReserveEvent>,
+        IAsyncEventHandler<CardPurchaseWindowOpenedFromReservedEvent>,
+        IAsyncEventHandler<CardPurchaseWindowClosedFromReservedEvent>
     {
         private readonly PlayerResourcesWindowView view;
         private readonly CommandFactory commandFactory;
@@ -37,7 +39,7 @@ namespace UI.PlayerResourcesWindow
         private void ConnectView(DisposableBuilder d)
         {
             view.OnCloseButtonClicked.Subscribe(_ => HandleCloseButtonClicked().ToObservable()).AddTo(ref d);
-            view.OnCardClicked.Subscribe(cardId => HandleCardClicked(cardId).ToObservable()).AddTo(ref d);
+            view.OnCardClicked.Subscribe(x => HandleCardClicked(x.Item1, x.Item2).ToObservable()).AddTo(ref d);
         }
 
         private async UniTask HandleCloseButtonClicked()
@@ -46,9 +48,10 @@ namespace UI.PlayerResourcesWindow
             await CommandService.Instance.ExecuteCommandAsync(command);
         }
 
-        private async UniTask HandleCardClicked(string cardId)
+        private async UniTask HandleCardClicked(string cardId, int cardIndex)
         {
-            var command = commandFactory.CreateOpenCardPurchaseWindowCommand(cardId, false);
+            UnityEngine.Debug.Log($"Card clicked: {cardId}, card index: {cardIndex}");
+            var command = commandFactory.CreateOpenCardPurchaseWindowCommandFromReserved(cardId, cardIndex);
             await CommandService.Instance.ExecuteCommandAsync(command);
         }
 
@@ -57,6 +60,8 @@ namespace UI.PlayerResourcesWindow
             AsyncEventBus.Instance.Subscribe<PlayerResourcesWindowOpenedEvent>(this);
             AsyncEventBus.Instance.Subscribe<PlayerResourcesWindowClosedEvent>(this);
             AsyncEventBus.Instance.Subscribe<CardPurchasedFromReserveEvent>(this);
+            AsyncEventBus.Instance.Subscribe<CardPurchaseWindowOpenedFromReservedEvent>(this, EventPriority.High);
+            AsyncEventBus.Instance.Subscribe<CardPurchaseWindowClosedFromReservedEvent>(this, EventPriority.Low);
         }
 
         public async UniTask HandleAsync(PlayerResourcesWindowOpenedEvent playerResourcesWindowOpenedEvent)
@@ -73,6 +78,18 @@ namespace UI.PlayerResourcesWindow
         public async UniTask HandleAsync(CardPurchasedFromReserveEvent cardPurchasedFromReserveEvent)
         {
             await view.PlayCloseAnimation();
+        }
+
+        public async UniTask HandleAsync(CardPurchaseWindowOpenedFromReservedEvent cardPurchaseWindowOpenedFromReservedEvent)
+        {
+            view.HideCard(cardPurchaseWindowOpenedFromReservedEvent.CardIndex).Forget();
+            await UniTask.CompletedTask;
+        }
+
+        public async UniTask HandleAsync(CardPurchaseWindowClosedFromReservedEvent cardPurchaseWindowClosedFromReservedEvent)
+        {
+            view.ShowCard(cardPurchaseWindowClosedFromReservedEvent.CardIndex);
+            await UniTask.CompletedTask;
         }
 
         public void Dispose()

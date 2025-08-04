@@ -131,13 +131,15 @@ namespace Command
         private readonly string musicCardId;
         private readonly BoardService boardService;
         private readonly bool isFromMusicCardDetailsPanel;
+        private readonly int cardIndex;
         private readonly PlayerService playerService;
-        public OpenCardPurchaseWindowCommand(string musicCardId, bool isFromMusicCardDetailsPanel, TurnService turnService, BoardService boardService, PlayerService playerService) : base()
+        public OpenCardPurchaseWindowCommand(string musicCardId, bool isFromMusicCardDetailsPanel, int cardIndex, TurnService turnService, BoardService boardService, PlayerService playerService) : base()
         {
             this.turnService = turnService;
             this.musicCardId = musicCardId;
             this.boardService = boardService;
             this.isFromMusicCardDetailsPanel = isFromMusicCardDetailsPanel;
+            this.cardIndex = cardIndex;
             this.playerService = playerService;
         }
 
@@ -166,7 +168,9 @@ namespace Command
             }
             else
             {
-                var openEvent = new CardPurchaseWindowOpenedFromReservedEvent(musicCardData, currentPlayerTokens, initialTokens.GetAllResources(), currentCardTokens, tokensNeededToPurchase.GetAllResources());
+                var playerResources = playerService.GetPlayerResourcesFromCardAndTokens(turnService.GetCurrentPlayerId());
+                var canBePurchased = boardService.CanBePurchased(musicCardData, playerResources);
+                var openEvent = new CardPurchaseWindowOpenedFromReservedEvent(musicCardData, currentPlayerTokens, initialTokens.GetAllResources(), currentCardTokens, tokensNeededToPurchase.GetAllResources(), cardIndex, canBePurchased);
                 await AsyncEventBus.Instance.PublishAndWaitAsync(openEvent);
             }
 
@@ -179,9 +183,11 @@ namespace Command
         public override string CommandType => "CloseCardPurchaseWindow";
         private readonly TurnService turnService;
         private readonly bool isFromMusicCardDetailsPanel;
-        public CloseCardPurchaseWindowCommand(bool isFromMusicCardDetailsPanel, TurnService turnService) : base()
+        private readonly int cardIndex;
+        public CloseCardPurchaseWindowCommand(bool isFromMusicCardDetailsPanel, int cardIndex, TurnService turnService) : base()
         {
             this.isFromMusicCardDetailsPanel = isFromMusicCardDetailsPanel;
+            this.cardIndex = cardIndex;
             this.turnService = turnService;
         }
 
@@ -199,7 +205,7 @@ namespace Command
             }
             else
             {
-                await AsyncEventBus.Instance.PublishAndWaitAsync(new CardPurchaseWindowClosedFromReservedEvent());
+                await AsyncEventBus.Instance.PublishAndWaitAsync(new CardPurchaseWindowClosedFromReservedEvent(cardIndex));
             }
             return true;
         }

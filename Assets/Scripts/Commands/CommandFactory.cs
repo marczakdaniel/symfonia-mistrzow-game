@@ -126,14 +126,24 @@ namespace Command
             return new PurchaseCardCommand(cardId, turnService, boardService, playerService );
         }
 
-        public OpenCardPurchaseWindowCommand CreateOpenCardPurchaseWindowCommand(string musicCardId, bool isFromMusicCardDetailsPanel)
-        {       
-            return new OpenCardPurchaseWindowCommand(musicCardId, isFromMusicCardDetailsPanel, turnService, boardService, playerService);
+        public OpenCardPurchaseWindowCommand CreateOpenCardPurchaseWindowCommandFromMusicCardDetailsPanel(string musicCardId)
+        {
+            return new OpenCardPurchaseWindowCommand(musicCardId, true, -1, turnService, boardService, playerService);
         }
 
-        public CloseCardPurchaseWindowCommand CreateCloseCardPurchaseWindowCommand(bool isFromMusicCardDetailsPanel)
+        public OpenCardPurchaseWindowCommand CreateOpenCardPurchaseWindowCommandFromReserved(string musicCardId, int cardIndex)
         {
-            return new CloseCardPurchaseWindowCommand(isFromMusicCardDetailsPanel, turnService);
+            return new OpenCardPurchaseWindowCommand(musicCardId, false, cardIndex, turnService, boardService, playerService);
+        }
+
+        public CloseCardPurchaseWindowCommand CreateCloseCardPurchaseWindowCommandFromMusicCardDetailsPanel()
+        {
+            return new CloseCardPurchaseWindowCommand(true, -1, turnService);
+        }
+
+        public CloseCardPurchaseWindowCommand CreateCloseCardPurchaseWindowCommandFromReserved(int cardIndex)
+        {
+            return new CloseCardPurchaseWindowCommand(false, cardIndex, turnService);
         }
 
         // Player Resources Window Commands

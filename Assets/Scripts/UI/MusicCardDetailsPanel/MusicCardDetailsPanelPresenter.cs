@@ -44,7 +44,7 @@ namespace UI.MusicCardDetailsPanel {
         }
         private async UniTask HandleBuyButtonClick() 
         {
-            var command = commandFactory.CreateOpenCardPurchaseWindowCommand(viewModel.MusicCardData.Id, true);
+            var command = commandFactory.CreateOpenCardPurchaseWindowCommandFromMusicCardDetailsPanel(viewModel.MusicCardData.Id);
             await CommandService.Instance.ExecuteCommandAsync(command);
         }
 

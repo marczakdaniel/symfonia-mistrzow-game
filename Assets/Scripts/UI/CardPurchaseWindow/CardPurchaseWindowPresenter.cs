@@ -67,8 +67,16 @@ namespace UI.CardPurchaseWindow
 
         private async UniTask HandleCloseButtonClick()
         {
-            var command = commandFactory.CreateCloseCardPurchaseWindowCommand(viewModel.IsFromMusicCardDetailsPanel);
-            await CommandService.Instance.ExecuteCommandAsync(command);
+            if (viewModel.IsFromMusicCardDetailsPanel)
+            {
+                var command = commandFactory.CreateCloseCardPurchaseWindowCommandFromMusicCardDetailsPanel();
+                await CommandService.Instance.ExecuteCommandAsync(command);
+            }
+            else
+            {
+                var command = commandFactory.CreateCloseCardPurchaseWindowCommandFromReserved(viewModel.CardIndex);
+                await CommandService.Instance.ExecuteCommandAsync(command);
+            }
         }
 
         private async UniTask HandleConfirmButtonClick()
@@ -94,26 +102,28 @@ namespace UI.CardPurchaseWindow
             view.SetCardDetails(gameEvent.MusicCardData);
             view.Setup(gameEvent.CurrentPlayerTokens, gameEvent.CurrentCardTokens);
             view.SetCanBePurchased(gameEvent.CanBePurchased);
-            await view.PlayOpenAnimation();
+            await view.PlayOpenAnimationFromMusicCardDetailsPanel();
         }
 
         public async UniTask HandleAsync(CardPurchaseWindowClosedFromMusicCardDetailsPanelEvent gameEvent)
         {
-            await view.PlayCloseAnimation();
+            await view.PlayCloseAnimationToMusicCardDetailsPanel();
         }
 
         public async UniTask HandleAsync(CardPurchaseWindowOpenedFromReservedEvent gameEvent)
         {
             viewModel.SetMusicCardData(gameEvent.MusicCardData);
             viewModel.SetIsFromMusicCardDetailsPanel(false);
+            viewModel.SetCardIndex(gameEvent.CardIndex);
             view.SetCardDetails(gameEvent.MusicCardData);
             view.Setup(gameEvent.CurrentPlayerTokens, gameEvent.CurrentCardTokens);
-            await view.PlayOpenAnimation();
+            view.SetCanBePurchased(gameEvent.CanBePurchased);
+            await view.PlayOpenAnimationFromReserved(gameEvent.CardIndex);
         }
 
         public async UniTask HandleAsync(CardPurchaseWindowClosedFromReservedEvent gameEvent)
         {
-            await view.PlayCloseAnimation();
+            await view.PlayCloseAnimationToReserved();
         }
 
         public async UniTask HandleAsync(CardPurchasedFromBoardEvent gameEvent)

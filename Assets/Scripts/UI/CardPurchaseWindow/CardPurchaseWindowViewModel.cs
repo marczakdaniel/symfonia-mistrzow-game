@@ -8,7 +8,7 @@ namespace UI.CardPurchaseWindow
     {
         public MusicCardData MusicCardData { get; private set; }
         public bool IsFromMusicCardDetailsPanel { get; private set; }
-
+        public int CardIndex { get; private set; }
         public CardPurchaseWindowViewModel()
         {
         }
@@ -21,6 +21,11 @@ namespace UI.CardPurchaseWindow
         public void SetIsFromMusicCardDetailsPanel(bool isFromMusicCardDetailsPanel)
         {
             IsFromMusicCardDetailsPanel = isFromMusicCardDetailsPanel;
+        }
+
+        public void SetCardIndex(int cardIndex)
+        {
+            CardIndex = cardIndex;
         }
 
     }

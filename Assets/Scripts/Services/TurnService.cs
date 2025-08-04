@@ -382,6 +382,5 @@ namespace Services
         {
             return gameModel.ConcertCards;
         }
-
     }
 }

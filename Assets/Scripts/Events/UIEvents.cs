@@ -245,26 +245,35 @@ namespace Events
         public Dictionary<ResourceType, int> CurrentPlayerTokens { get; private set; }
         public Dictionary<ResourceType, int> CurrentCardTokens { get; private set; }
         public Dictionary<ResourceType, int> TokensNeededToPurchase { get; private set; }
+        public int CardIndex { get; private set; }
+        public bool CanBePurchased { get; private set; }
 
         public CardPurchaseWindowOpenedFromReservedEvent(
             MusicCardData musicCardData, 
             Dictionary<ResourceType, int> currentPlayerTokens, 
             Dictionary<ResourceType, int> initialSelectedTokens, 
             Dictionary<ResourceType, int> currentCardTokens,
-            Dictionary<ResourceType, int> tokensNeededToPurchase)
+            Dictionary<ResourceType, int> tokensNeededToPurchase,
+            int cardIndex,
+            bool canBePurchased)
         {
             MusicCardData = musicCardData;
             CurrentPlayerTokens = currentPlayerTokens;
             InitialSelectedTokens = initialSelectedTokens;
             CurrentCardTokens = currentCardTokens;
             TokensNeededToPurchase = tokensNeededToPurchase;
+            CardIndex = cardIndex;
+            CanBePurchased = canBePurchased;
         }
     }
     
     public class CardPurchaseWindowClosedFromReservedEvent : GameEvent
     {
-        public CardPurchaseWindowClosedFromReservedEvent()
+        public int CardIndex { get; private set; }
+
+        public CardPurchaseWindowClosedFromReservedEvent(int cardIndex)
         {
+            CardIndex = cardIndex;
         }
     }
 

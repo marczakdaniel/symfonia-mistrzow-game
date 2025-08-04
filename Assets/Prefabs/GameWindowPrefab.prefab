@@ -571,6 +571,21 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1812466406857511271, guid: 6166ac2d0dd5cdd48b8e7cd7465671af, type: 3}
   m_PrefabInstance: {fileID: 4105700336364755274}
   m_PrefabAsset: {fileID: 0}
+--- !u!224 &3138306569615352003 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 1402837754744387977, guid: 6166ac2d0dd5cdd48b8e7cd7465671af, type: 3}
+  m_PrefabInstance: {fileID: 4105700336364755274}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &4433597281056897664 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 395522435852641226, guid: 6166ac2d0dd5cdd48b8e7cd7465671af, type: 3}
+  m_PrefabInstance: {fileID: 4105700336364755274}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &6063922988331826106 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 7844427670123111152, guid: 6166ac2d0dd5cdd48b8e7cd7465671af, type: 3}
+  m_PrefabInstance: {fileID: 4105700336364755274}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5200252657360059005
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -663,6 +678,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: CardPurchaseWindow
       objectReference: {fileID: 0}
+    - target: {fileID: 4796234093700061038, guid: 49bfb4a7706a55140b62f97f1369497f, type: 3}
+      propertyPath: cardPositions.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4796234093700061038, guid: 49bfb4a7706a55140b62f97f1369497f, type: 3}
+      propertyPath: 'cardPositions.Array.data[0]'
+      value: 
+      objectReference: {fileID: 4433597281056897664}
+    - target: {fileID: 4796234093700061038, guid: 49bfb4a7706a55140b62f97f1369497f, type: 3}
+      propertyPath: 'cardPositions.Array.data[1]'
+      value: 
+      objectReference: {fileID: 6063922988331826106}
+    - target: {fileID: 4796234093700061038, guid: 49bfb4a7706a55140b62f97f1369497f, type: 3}
+      propertyPath: 'cardPositions.Array.data[2]'
+      value: 
+      objectReference: {fileID: 3138306569615352003}
     - target: {fileID: 6225324508408563519, guid: 49bfb4a7706a55140b62f97f1369497f, type: 3}
       propertyPath: 'playersPositions.Array.data[0]'
       value: 

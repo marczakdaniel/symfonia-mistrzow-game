@@ -127,5 +127,10 @@ namespace Models
             }
             return points;
         }
+
+        public int IndexOf(string cardId)
+        {
+            return cardIds.IndexOf(cardId);
+        }
     }
 }
