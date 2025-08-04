@@ -131,12 +131,14 @@ namespace Command
         private readonly string musicCardId;
         private readonly BoardService boardService;
         private readonly bool isFromMusicCardDetailsPanel;
-        public OpenCardPurchaseWindowCommand(string musicCardId, bool isFromMusicCardDetailsPanel, TurnService turnService, BoardService boardService) : base()
+        private readonly PlayerService playerService;
+        public OpenCardPurchaseWindowCommand(string musicCardId, bool isFromMusicCardDetailsPanel, TurnService turnService, BoardService boardService, PlayerService playerService) : base()
         {
             this.turnService = turnService;
             this.musicCardId = musicCardId;
             this.boardService = boardService;
             this.isFromMusicCardDetailsPanel = isFromMusicCardDetailsPanel;
+            this.playerService = playerService;
         }
 
         public override async UniTask<bool> Validate()
@@ -157,7 +159,9 @@ namespace Command
 
             if (isFromMusicCardDetailsPanel)
             {
-                var openEvent = new CardPurchaseWindowOpenedFromMusicCardDetailsPanelEvent(musicCardData, currentPlayerTokens, initialTokens.GetAllResources(), currentCardTokens, tokensNeededToPurchase.GetAllResources());
+                var playerResources = playerService.GetPlayerResourcesFromCardAndTokens(turnService.GetCurrentPlayerId());
+                var canBePurchased = boardService.CanBePurchased(musicCardData, playerResources);
+                var openEvent = new CardPurchaseWindowOpenedFromMusicCardDetailsPanelEvent(musicCardData, currentPlayerTokens, initialTokens.GetAllResources(), currentCardTokens, tokensNeededToPurchase.GetAllResources(), canBePurchased);
                 await AsyncEventBus.Instance.PublishAndWaitAsync(openEvent);
             }
             else

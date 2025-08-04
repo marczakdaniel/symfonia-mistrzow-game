@@ -128,7 +128,7 @@ namespace Command
 
         public OpenCardPurchaseWindowCommand CreateOpenCardPurchaseWindowCommand(string musicCardId, bool isFromMusicCardDetailsPanel)
         {       
-            return new OpenCardPurchaseWindowCommand(musicCardId, isFromMusicCardDetailsPanel, turnService, boardService);
+            return new OpenCardPurchaseWindowCommand(musicCardId, isFromMusicCardDetailsPanel, turnService, boardService, playerService);
         }
 
         public CloseCardPurchaseWindowCommand CreateCloseCardPurchaseWindowCommand(bool isFromMusicCardDetailsPanel)

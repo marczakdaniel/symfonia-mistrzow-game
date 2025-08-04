@@ -49,6 +49,11 @@ namespace UI.CardPurchaseWindow
             musicCardView.Setup(musicCardData);
         }
 
+        public void SetCanBePurchased(bool canBePurchased)
+        {
+            musicCardView.SetCanBePurchased(canBePurchased);
+        }
+
         public async UniTask PlayOpenAnimation()
         {
             await openAnimationFromMusicCardDetailsPanel.PlayAsync();

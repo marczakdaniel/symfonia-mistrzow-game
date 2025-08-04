@@ -93,6 +93,7 @@ namespace UI.CardPurchaseWindow
             viewModel.SetIsFromMusicCardDetailsPanel(true);
             view.SetCardDetails(gameEvent.MusicCardData);
             view.Setup(gameEvent.CurrentPlayerTokens, gameEvent.CurrentCardTokens);
+            view.SetCanBePurchased(gameEvent.CanBePurchased);
             await view.PlayOpenAnimation();
         }
 
