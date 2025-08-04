@@ -5,6 +5,7 @@ using DefaultNamespace.Data;
 using Cysharp.Threading.Tasks;
 using UI.MusicCardDetailsPanel;
 using BrunoMikoski.AnimationSequencer;
+using UnityEngine.UI;
 
 namespace UI.Board.BoardMusicCardPanel.BoardMusicCard
 {
@@ -19,6 +20,13 @@ namespace UI.Board.BoardMusicCardPanel.BoardMusicCard
         private AnimationSequencerController revealAnimation;
 
         [SerializeField]
+        private AnimationSequencerController revealAnimationPart2;
+
+        [SerializeField]
+        private AnimationSequencerController simpleShowAnimation;
+
+
+        [SerializeField]
         private AnimationSequencerController hideAnimation;
 
 
@@ -30,6 +38,12 @@ namespace UI.Board.BoardMusicCardPanel.BoardMusicCard
         public async UniTask PlayRevealAnimation()
         {
             await revealAnimation.PlayAsync();
+            await revealAnimationPart2.PlayAsync();
+        }
+
+        public async UniTask PlaySimpleShowAnimation()
+        {
+            await simpleShowAnimation.PlayAsync();
         }
 
         public async UniTask PlayHideAnimation(int delay = 0)

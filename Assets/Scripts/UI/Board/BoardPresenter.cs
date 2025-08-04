@@ -13,6 +13,7 @@ using DefaultNamespace.Data;
 using System;
 using UI.Board.BoardMusicCardPanel.BoardMusicCard;
 using UI.Board.BoardMusicCardPanel.BoardCardDeck;
+using System.Collections.Generic;
 
 namespace UI.Board
 {
@@ -73,9 +74,9 @@ namespace UI.Board
                 level3CardPresenters[i] = new BoardMusicCardPresenter(view.Level3Cards[i], 3, i, commandFactory);
             }
 
-            level1CardDeckPresenter = new BoardCardDeckPresenter(view.Level1CardDeck);
-            level2CardDeckPresenter = new BoardCardDeckPresenter(view.Level2CardDeck);
-            level3CardDeckPresenter = new BoardCardDeckPresenter(view.Level3CardDeck);
+            level1CardDeckPresenter = new BoardCardDeckPresenter(view.Level1CardDeck, 1);
+            level2CardDeckPresenter = new BoardCardDeckPresenter(view.Level2CardDeck, 2);
+            level3CardDeckPresenter = new BoardCardDeckPresenter(view.Level3CardDeck, 3);
         }
 
         private void InitializeMVP()
@@ -106,7 +107,7 @@ namespace UI.Board
 
         private void SubscribeToEvents()
         {
-            AsyncEventBus.Instance.Subscribe<GameStartedEvent>(this, EventPriority.Critical);
+            AsyncEventBus.Instance.Subscribe<GameStartedEvent>(this, EventPriority.SuperCritical);
         }
 
         // Event Handlers

@@ -1,15 +1,27 @@
+using System;
+using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
+using Events;
+using Unity.VisualScripting;
+using Unity.VisualScripting.Dependencies.NCalc;
+
 namespace UI.Board.BoardMusicCardPanel.BoardCardDeck
 {
-    public class BoardCardDeckPresenter
+    public class BoardCardDeckPresenter : 
+        IAsyncEventHandler<PutCardOnBoardEvent>
     {
         private readonly BoardCardDeckView view;
-        private readonly BoardCardDeckViewModel viewModel = new BoardCardDeckViewModel();
+        private readonly BoardCardDeckViewModel viewModel;
 
-        public BoardCardDeckPresenter(BoardCardDeckView view)
+        public BoardCardDeckPresenter(BoardCardDeckView view, int level)
         {
             this.view = view;
+            this.viewModel = new BoardCardDeckViewModel(level);
+
+            view.SetLevel(level);
 
             InitializeMVP();
+            SubscribeToEvents();
         }
 
         private void InitializeMVP()
@@ -26,6 +38,21 @@ namespace UI.Board.BoardMusicCardPanel.BoardCardDeck
         private void ConnectView()
         {
 
+        }
+
+        private void SubscribeToEvents()
+        {
+            AsyncEventBus.Instance.Subscribe<PutCardOnBoardEvent>(this, EventPriority.High);
+        }
+
+        public async UniTask HandleAsync(PutCardOnBoardEvent eventData)
+        {
+            if (viewModel.Level != eventData.Level)
+            {
+                return;
+            }
+
+            await view.PlayPutCardOnBoardAnimationWithHide(eventData.Position, 50);
         }
     }
 }

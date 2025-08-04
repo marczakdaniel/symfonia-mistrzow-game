@@ -109,7 +109,7 @@ namespace UI.Board.BoardMusicCardPanel.BoardMusicCard
 
         public async UniTask HandleAsync(MusicCardDetailsPanelClosedEvent musicCardDetailsPanelClosedEvent)
         {
-            await view.PlayRevealAnimation();
+            await view.PlaySimpleShowAnimation();
         }
         // Input -> Command
         private async UniTask HandleCardClick()

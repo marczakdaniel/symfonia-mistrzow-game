@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using R3;
 using DefaultNamespace.Elements;
+using Coffee.UIEffects;
 
 namespace UI.MusicCardDetailsPanel {
     public class DetailsMusicCardView : MonoBehaviour 
@@ -16,9 +17,8 @@ namespace UI.MusicCardDetailsPanel {
         [SerializeField] private TextMeshProUGUI pointsText;
         [SerializeField] private Image resourceProvidedImage;
         [SerializeField] private ButtonElement button;
-        [SerializeField] private GameObject level1Frame;
-        [SerializeField] private GameObject level2Frame;
-        [SerializeField] private GameObject level3Frame;
+        [SerializeField] private UIEffect uiEffect;
+        [SerializeField] private Color[] uiEffectColors = new Color[3];
 
         private string cardId;
 
@@ -48,29 +48,7 @@ namespace UI.MusicCardDetailsPanel {
             pointsText.text = card.points.ToString();
             resourceProvidedImage.sprite = card.resourceProvided.GetSingleResourceTypeImages().StackImage1;
 
-            switch (card.level)
-            {
-                case 1:
-                    level1Frame.SetActive(true);
-                    level2Frame.SetActive(false);
-                    level3Frame.SetActive(false);
-                    break;
-                case 2:
-                    level1Frame.SetActive(false);
-                    level2Frame.SetActive(true);
-                    level3Frame.SetActive(false);
-                    break;
-                case 3:
-                    level1Frame.SetActive(false);
-                    level2Frame.SetActive(false);
-                    level3Frame.SetActive(true);
-                    break;
-                default:
-                    level1Frame.SetActive(true);
-                    level2Frame.SetActive(false);
-                    level3Frame.SetActive(false);
-                    break;
-            }
+            uiEffect.color = uiEffectColors[card.level - 1];
         }
     }
 }

@@ -8,6 +8,7 @@ using Events;
 using Services;
 using Cysharp.Threading.Tasks;
 using System.Linq;
+using JetBrains.Annotations;
 
 namespace Command
 {
@@ -546,8 +547,7 @@ namespace Command
             var currentPlayer = turnService.GetCurrentPlayerModel();
             if (currentPlayer.HasReserveCard(cardId))
             {
-                turnService.PurchaseCardFromReserve(cardId, selectedTokens);
-                var reservedCards = currentPlayer.ReservedCards.GetAllCards().ToList();
+                turnService.PurchaseCardFromReserve(cardId, selectedTokens);                var reservedCards = currentPlayer.ReservedCards.GetAllCards().ToList();
                 var points = playerService.GetPlayer(turnService.GetCurrentPlayerId()).Points;  
                 await AsyncEventBus.Instance.PublishAndWaitAsync(new CardPurchasedFromReserveEvent(cardId, reservedCards, boardService.GetAllBoardResources(), points));
                 return true;

@@ -68,7 +68,7 @@ namespace UI.CreateGameWindow
             AsyncEventBus.Instance.Subscribe<GameCreationWindowOpenedEvent>(this);
             AsyncEventBus.Instance.Subscribe<GameCreationWindowClosedEvent>(this);
             AsyncEventBus.Instance.Subscribe<PlayerAddedEvent>(this);
-            AsyncEventBus.Instance.Subscribe<GameStartedEvent>(this);
+            AsyncEventBus.Instance.Subscribe<GameStartedEvent>(this, EventPriority.Critical);
             AsyncEventBus.Instance.Subscribe<CreatePlayerWindowOpenedEvent>(this, EventPriority.Low);
             AsyncEventBus.Instance.Subscribe<CreatePlayerWindowClosedEvent>(this, EventPriority.High);
         }

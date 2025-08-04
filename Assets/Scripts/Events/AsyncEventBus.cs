@@ -29,7 +29,8 @@ namespace Events
         Low = 0,
         Normal = 1,
         High = 2,
-        Critical = 3
+        Critical = 3,
+        SuperCritical = 4
     }
 
     public class AsyncEventBus

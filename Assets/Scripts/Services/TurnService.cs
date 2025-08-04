@@ -284,6 +284,7 @@ namespace Services
 
             currentPlayer.RemoveTokens(tokens);
             gameModel.Board.AddTokens(tokens);
+            ClearCardPurchaseTokens();
         }
 
         public void PurchaseCardFromReserve(string cardId, ResourceCollectionModel tokens)
@@ -297,6 +298,7 @@ namespace Services
             
             currentPlayer.RemoveTokens(tokens);
             gameModel.Board.AddTokens(tokens);
+            ClearCardPurchaseTokens();
         }
 
 
