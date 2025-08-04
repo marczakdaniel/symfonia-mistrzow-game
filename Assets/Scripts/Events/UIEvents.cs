@@ -11,12 +11,14 @@ namespace Events
         public MusicCardData MusicCardData { get; private set; }
         public int Level { get; private set; }
         public int Position { get; private set; }
+        public bool CanBePurchased { get; private set; }
 
-        public MusicCardDetailsPanelOpenedEvent(MusicCardData musicCardData, int level, int position)
+        public MusicCardDetailsPanelOpenedEvent(MusicCardData musicCardData, int level, int position, bool canBePurchased)
         {
             MusicCardData = musicCardData;
             Level = level;
             Position = position;
+            CanBePurchased = canBePurchased;
         }
     }
 

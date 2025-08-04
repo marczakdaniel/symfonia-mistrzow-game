@@ -60,6 +60,7 @@ namespace UI.MusicCardDetailsPanel {
         public async UniTask HandleAsync(MusicCardDetailsPanelOpenedEvent musicCardDetailsPanelOpenedEvent) {
             viewModel.SetMusicCardData(musicCardDetailsPanelOpenedEvent.MusicCardData);
             view.SetCardDetails(musicCardDetailsPanelOpenedEvent.MusicCardData);
+            view.SetCanBePurchased(musicCardDetailsPanelOpenedEvent.CanBePurchased);
             await view.PlayOpenFromBoardAnimation(musicCardDetailsPanelOpenedEvent.Level, musicCardDetailsPanelOpenedEvent.Position);
         }
 

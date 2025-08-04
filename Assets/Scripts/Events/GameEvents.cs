@@ -33,10 +33,12 @@ namespace Events
     public class TurnStartedEvent : GameEvent
     {
         public string CurrentPlayerId { get; }
+        public List<string> MusicCardIdsThatCanBePurchased { get; }
 
-        public TurnStartedEvent(string currentPlayerId)
+        public TurnStartedEvent(string currentPlayerId, List<string> musicCardIdsThatCanBePurchased)
         {
             CurrentPlayerId = currentPlayerId;
+            MusicCardIdsThatCanBePurchased = musicCardIdsThatCanBePurchased;
         }
     }
 

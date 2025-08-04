@@ -53,5 +53,30 @@ namespace Services
             }
             return boardCards;
         }
+
+        public List<string> GetMusicCardIdsFromBoardThatCanBePurchased(PlayerModel playerModel)
+        {
+            var playerResources = playerModel.Tokens.CombineCollections(playerModel.GetPurchasedAllResourceCollection());
+
+            var result = new List<string>();
+            foreach (var level in boardModel.Levels)
+            {
+                foreach (var card in level.GetAllCards())
+                {
+                    if (CanBePurchased(card, playerResources))
+                    {
+                        result.Add(card.Id);
+                    }
+                }
+            }
+            return result;
+        }
+        public bool CanBePurchased(MusicCardData card, ResourceCollectionModel playerResources)
+        {
+            var cardCost = card.cost.GetResourceCollectionModel();  
+            var needToAdd = playerResources.HowManychNeedToAddToHaveAll(cardCost);
+            var numberOfInspirationTokens = playerResources.GetCount(ResourceType.Inspiration);
+            return needToAdd <= numberOfInspirationTokens;
+        }
     }
 }

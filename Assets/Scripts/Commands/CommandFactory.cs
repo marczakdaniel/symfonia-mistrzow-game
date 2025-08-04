@@ -49,7 +49,7 @@ namespace Command
         
         public OpenMusicCardDetailsPanelCommand CreateOpenMusicCardDetailsPanelCommand(string musicCardId, int level, int position)
         {
-            return new OpenMusicCardDetailsPanelCommand(musicCardId, level, position, turnService);
+            return new OpenMusicCardDetailsPanelCommand(musicCardId, level, position, turnService, boardService);
         }
 
         public CloseMusicCardDetailsPanelCommand CreateCloseMusicCardDetailsPanelCommand(string musicCardId)
@@ -79,7 +79,7 @@ namespace Command
 
         public StartPlayerTurnCommand CreateStartPlayerTurnCommand()
         {
-            return new StartPlayerTurnCommand(gameModel, turnService);
+            return new StartPlayerTurnCommand(gameModel, turnService, boardService);
         }
 
         // Return token action commands

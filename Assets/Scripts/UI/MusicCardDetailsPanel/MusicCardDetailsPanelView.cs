@@ -39,6 +39,10 @@ namespace UI.MusicCardDetailsPanel {
             detailsMusicCardView.Setup(musicCardData);
         }
 
+        public void SetCanBePurchased(bool canBePurchased) {
+            detailsMusicCardView.SetCanBePurchased(canBePurchased);
+        }
+
         public async UniTask PlayOpenAnimation() {
             await openAnimation.PlayAsync();
         }

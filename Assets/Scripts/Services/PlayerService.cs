@@ -8,7 +8,7 @@ namespace Services
     {
         private readonly GameModel gameModel;
         private List<PlayerModel> players => gameModel.Players;
-
+        private MusicCardRepository musicCardRepository => MusicCardRepository.Instance;
         public PlayerService(GameModel gameModel)
         {
             this.gameModel = gameModel;
@@ -28,6 +28,14 @@ namespace Services
         {
             var player = GetPlayer(playerId);
             player.CalculatePoints();
+        }
+
+        public ResourceCollectionModel GetPlayerResourcesFromCardAndTokens(string playerId)
+        {
+            var player = GetPlayer(playerId);
+            var tokensFromCard = player.GetPurchasedAllResourceCollection();
+            var allPlayerTokens = player.Tokens.CombineCollections(tokensFromCard);
+            return allPlayerTokens;
         }
     }
 }

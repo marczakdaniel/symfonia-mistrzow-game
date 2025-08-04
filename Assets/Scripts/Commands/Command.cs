@@ -95,11 +95,13 @@ namespace Command
     public class StartPlayerTurnCommand : BasePlayerActionCommand
     {
         public override string CommandType => "StartPlayerTurn";
-        private readonly TurnService turnService;
+        private readonly TurnService turnService;       
+        private readonly BoardService boardService;
 
-        public StartPlayerTurnCommand(GameModel gameModel, TurnService turnService) : base()
+        public StartPlayerTurnCommand(GameModel gameModel, TurnService turnService, BoardService boardService) : base()
         {
             this.turnService = turnService;
+            this.boardService = boardService;
         }
 
         public override async UniTask<bool> Validate()
@@ -110,7 +112,8 @@ namespace Command
         public override async UniTask<bool> Execute()
         {
             turnService.StartPlayerTurn();
-            var turnStartedEvent = new TurnStartedEvent(turnService.GetCurrentPlayerId());
+            var musicCardIdsThatCanBePurchased = boardService.GetMusicCardIdsFromBoardThatCanBePurchased(turnService.GetCurrentPlayerModel());
+            var turnStartedEvent = new TurnStartedEvent(turnService.GetCurrentPlayerId(), musicCardIdsThatCanBePurchased);
             await AsyncEventBus.Instance.PublishAndWaitAsync(turnStartedEvent);
 
             return true;

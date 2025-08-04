@@ -49,6 +49,12 @@ namespace UI.MusicCardDetailsPanel {
             resourceProvidedImage.sprite = card.resourceProvided.GetSingleResourceTypeImages().StackImage1;
 
             uiEffect.color = uiEffectColors[card.level - 1];
+            SetCanBePurchased(false);
+        }
+
+        public void SetCanBePurchased(bool canBePurchased)
+        {
+            uiEffect.edgeMode = canBePurchased ? EdgeMode.Shiny : EdgeMode.None;
         }
     }
 }

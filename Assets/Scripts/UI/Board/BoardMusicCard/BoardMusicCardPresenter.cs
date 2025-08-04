@@ -16,7 +16,10 @@ namespace UI.Board.BoardMusicCardPanel.BoardMusicCard
         IAsyncEventHandler<GameStartedEvent>,
         IAsyncEventHandler<CardPurchasedFromBoardEvent>,
         IAsyncEventHandler<MusicCardDetailsPanelOpenedEvent>,
-        IAsyncEventHandler<MusicCardDetailsPanelClosedEvent>
+        IAsyncEventHandler<MusicCardDetailsPanelClosedEvent>,
+        IAsyncEventHandler<TurnStartedEvent>,
+        IAsyncEventHandler<CardPurchasedFromReserveEvent>,
+        IAsyncEventHandler<SelectedTokensConfirmedEvent>
     {
         private readonly BoardMusicCardView view;
         private readonly BoardMusicCardViewModel viewModel;
@@ -56,10 +59,14 @@ namespace UI.Board.BoardMusicCardPanel.BoardMusicCard
             AsyncEventBus.Instance.Subscribe<GameStartedEvent>(this);
             AsyncEventBus.Instance.Subscribe<MusicCardDetailsPanelOpenedEvent>(this);
             AsyncEventBus.Instance.Subscribe<MusicCardDetailsPanelClosedEvent>(this, EventPriority.Low);
+            AsyncEventBus.Instance.Subscribe<TurnStartedEvent>(this);
+            AsyncEventBus.Instance.Subscribe<CardPurchasedFromReserveEvent>(this);
+            AsyncEventBus.Instance.Subscribe<SelectedTokensConfirmedEvent>(this);
         }
 
         public async UniTask HandleAsync(CardReservedEvent cardReservedEvent)
         {
+            view.SetCanBePurchased(false);
             if (cardReservedEvent.CardId != viewModel.MusicCardId)
             {
                 return;
@@ -70,6 +77,7 @@ namespace UI.Board.BoardMusicCardPanel.BoardMusicCard
 
         public async UniTask HandleAsync(CardPurchasedFromBoardEvent cardPurchasedEvent)
         {
+            view.SetCanBePurchased(false);
             if (cardPurchasedEvent.CardId != viewModel.MusicCardId)
             {
                 return;
@@ -111,6 +119,25 @@ namespace UI.Board.BoardMusicCardPanel.BoardMusicCard
         {
             await view.PlaySimpleShowAnimation();
         }
+
+        public async UniTask HandleAsync(TurnStartedEvent turnStartedEvent)
+        {
+            view.SetCanBePurchased(turnStartedEvent.MusicCardIdsThatCanBePurchased.Contains(viewModel.MusicCardId));
+            await UniTask.CompletedTask;
+        }
+
+        public async UniTask HandleAsync(CardPurchasedFromReserveEvent cardPurchasedFromReserveEvent)
+        {
+            view.SetCanBePurchased(false);
+            await UniTask.CompletedTask;
+        }
+
+        public async UniTask HandleAsync(SelectedTokensConfirmedEvent selectedTokensConfirmedEvent)
+        {
+            view.SetCanBePurchased(false);
+            await UniTask.CompletedTask;
+        }
+
         // Input -> Command
         private async UniTask HandleCardClick()
         {

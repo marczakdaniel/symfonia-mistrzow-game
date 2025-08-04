@@ -15,13 +15,15 @@ namespace Command
         public int Level { get; private set; }
         public int Position { get; private set; }
         private readonly TurnService turnService;
+        private readonly BoardService boardService;
 
-        public OpenMusicCardDetailsPanelCommand(string musicCardId, int level, int position, TurnService turnService) : base()
+        public OpenMusicCardDetailsPanelCommand(string musicCardId, int level, int position, TurnService turnService, BoardService boardService) : base()
         {
             MusicCardId = musicCardId;
             Level = level;
             Position = position;
             this.turnService = turnService;
+            this.boardService = boardService;
         }
 
         public override async UniTask<bool> Validate()
@@ -32,8 +34,11 @@ namespace Command
         public override async UniTask<bool> Execute()
         {
             var musicCardData = MusicCardRepository.Instance.GetCard(MusicCardId);
+            var currentPlayer = turnService.GetCurrentPlayerModel();
+            var currentPlayerResources = currentPlayer.Tokens.CombineCollections(currentPlayer.GetPurchasedAllResourceCollection());
+            var canBePurchased = boardService.CanBePurchased(musicCardData, currentPlayerResources);
 
-            await AsyncEventBus.Instance.PublishAndWaitAsync(new MusicCardDetailsPanelOpenedEvent(musicCardData, Level, Position));
+            await AsyncEventBus.Instance.PublishAndWaitAsync(new MusicCardDetailsPanelOpenedEvent(musicCardData, Level, Position, canBePurchased));
             return true;
         }
     }
