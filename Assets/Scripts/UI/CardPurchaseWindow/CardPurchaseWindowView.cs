@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using System.Xml.Serialization;
 using Assets.Scripts.UI.Elements;
+using BrunoMikoski.AnimationSequencer;
+using Cysharp.Threading.Tasks;
 using DefaultNamespace.Data;
 using DefaultNamespace.Elements;
 using Mono.Cecil.Cil;
@@ -21,6 +23,9 @@ namespace UI.CardPurchaseWindow
         [SerializeField] private DetailsMusicCardView musicCardView;
         [SerializeField] private CardPurchaseSingleTokenView[] cardPurchaseSingleTokenViews = new CardPurchaseSingleTokenView[6];
         [SerializeField] private UniversalPlayerResourceElement[] playerResourcesElements = new UniversalPlayerResourceElement[6];
+
+        [SerializeField] private AnimationSequencerController openAnimationFromMusicCardDetailsPanel;
+        [SerializeField] private AnimationSequencerController closeAnimationToMusicCardDetailsPanel;
 
         public CardPurchaseSingleTokenView[] CardPurchaseSingleTokenViews => cardPurchaseSingleTokenViews;
 
@@ -43,14 +48,14 @@ namespace UI.CardPurchaseWindow
             musicCardView.Setup(musicCardData);
         }
 
-        public void Activate()
+        public async UniTask PlayOpenAnimation()
         {
-            gameObject.SetActive(true);
+            await openAnimationFromMusicCardDetailsPanel.PlayAsync();
         }
 
-        public void Deactivate()
+        public async UniTask PlayCloseAnimation()
         {
-            gameObject.SetActive(false);
+            await closeAnimationToMusicCardDetailsPanel.PlayAsync();
         }
     }
 }

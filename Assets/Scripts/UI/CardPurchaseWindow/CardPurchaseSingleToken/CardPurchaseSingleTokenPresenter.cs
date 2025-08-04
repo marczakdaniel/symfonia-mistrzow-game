@@ -11,9 +11,7 @@ namespace UI.CardPurchaseWindow.CardPurchaseSingleToken
         IDisposable, 
         IAsyncEventHandler<TokenAddedToCardPurchaseEvent>, 
         IAsyncEventHandler<CardPurchaseWindowOpenedEvent>,
-        IAsyncEventHandler<CardPurchaseWindowClosedEvent>,
-        IAsyncEventHandler<TokenRemovedFromCardPurchaseEvent>,
-        IAsyncEventHandler<CardPurchasedFromBoardEvent>
+        IAsyncEventHandler<TokenRemovedFromCardPurchaseEvent>
     {
         private readonly CardPurchaseSingleTokenViewModel viewModel;
         private readonly CardPurchaseSingleTokenView view;
@@ -41,22 +39,6 @@ namespace UI.CardPurchaseWindow.CardPurchaseSingleToken
 
         private void ConnectModel(DisposableBuilder d)
         {
-            viewModel.State.Subscribe(state => HandleStateChange(state).ToObservable()).AddTo(ref d);
-            viewModel.CurrentSelectedTokensCount.Subscribe(count => view.Initialize(viewModel.Token, count, viewModel.PlayerTokensCount)).AddTo(ref d);
-        }
-
-        private async UniTask HandleStateChange(CardPurchaseSingleTokenState state)
-        {
-            switch (state)
-            {
-                case CardPurchaseSingleTokenState.Disabled:
-                    view.Deactivate();
-                    break;
-                case CardPurchaseSingleTokenState.Active:
-                    view.Initialize(viewModel.Token, viewModel.CurrentSelectedTokensCount.Value, viewModel.PlayerTokensCount);
-                    view.Activate();
-                    break;
-            }
         }
 
         private void ConnectView(DisposableBuilder d)
@@ -82,9 +64,7 @@ namespace UI.CardPurchaseWindow.CardPurchaseSingleToken
             AsyncEventBus.Instance.Subscribe<TokenAddedToCardPurchaseEvent>(this);
             AsyncEventBus.Instance.Subscribe<TokenRemovedFromCardPurchaseEvent>(this);
             AsyncEventBus.Instance.Subscribe<CardPurchaseWindowOpenedEvent>(this);
-            AsyncEventBus.Instance.Subscribe<CardPurchaseWindowClosedEvent>(this);
             AsyncEventBus.Instance.Subscribe<TokenAddedToCardPurchaseEvent>(this);
-            AsyncEventBus.Instance.Subscribe<CardPurchasedFromBoardEvent>(this);
         }
 
         public async UniTask HandleAsync(TokenAddedToCardPurchaseEvent gameEvent)
@@ -93,8 +73,7 @@ namespace UI.CardPurchaseWindow.CardPurchaseSingleToken
             {
                 return;
             }
-
-            viewModel.SetCurrentSelectedTokensCount(gameEvent.CurrentTokenCount);
+            view.UpdateCurrentSelectedTokensCount(gameEvent.CurrentTokenCount);
             await UniTask.CompletedTask;
         }
 
@@ -104,27 +83,14 @@ namespace UI.CardPurchaseWindow.CardPurchaseSingleToken
             {
                 return;
             }
-
-            viewModel.SetCurrentSelectedTokensCount(gameEvent.CurrentTokenCount);
+            view.UpdateCurrentSelectedTokensCount(gameEvent.CurrentTokenCount);
             await UniTask.CompletedTask;
         }
         public async UniTask HandleAsync(CardPurchaseWindowOpenedEvent gameEvent)
         {
-            UnityEngine.Debug.Log($"CardPurchaseWindowOpenedEvent: {gameEvent.CurrentPlayerTokens[viewModel.Token]}");
-            viewModel.Initialize(viewModel.Token, gameEvent.InitialSelectedTokens[viewModel.Token], gameEvent.TokensNeededToPurchase[viewModel.Token], gameEvent.MusicCardData.Id);
-            await UniTask.WaitUntil(() => viewModel.State.Value == CardPurchaseSingleTokenState.Active);
-        }
-
-        public async UniTask HandleAsync(CardPurchaseWindowClosedEvent gameEvent)
-        {
-            viewModel.Close();
-            await UniTask.WaitUntil(() => viewModel.State.Value == CardPurchaseSingleTokenState.Disabled);
-        }
-
-        public async UniTask HandleAsync(CardPurchasedFromBoardEvent gameEvent)
-        {
-            viewModel.Close();
-            await UniTask.WaitUntil(() => viewModel.State.Value == CardPurchaseSingleTokenState.Disabled);
+            viewModel.SetCardId(gameEvent.MusicCardData.Id);
+            view.Initialize(viewModel.Token, gameEvent.InitialSelectedTokens[viewModel.Token], gameEvent.TokensNeededToPurchase[viewModel.Token]);
+            await UniTask.CompletedTask;
         }
 
         public void Dispose()

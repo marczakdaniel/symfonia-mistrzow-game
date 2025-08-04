@@ -54,22 +54,6 @@ namespace UI.CardPurchaseWindow
 
         private void ConnectModel(DisposableBuilder d)
         {
-            viewModel.State.Subscribe(state => HandleStateChange(state).ToObservable()).AddTo(ref d);
-        }
-
-        public async UniTask HandleStateChange(CardPurchaseWindowState state)
-        {
-            switch (state)
-            {
-                case CardPurchaseWindowState.Closed:
-                    view.Deactivate();
-                    break;
-                case CardPurchaseWindowState.Opened:
-                    view.SetCardDetails(viewModel.MusicCardData);
-                    view.Setup(viewModel.CurrentPlayerTokens, viewModel.CurrentCardTokens);
-                    view.Activate();
-                    break;
-            }
         }
 
 
@@ -101,26 +85,25 @@ namespace UI.CardPurchaseWindow
 
         public async UniTask HandleAsync(CardPurchaseWindowOpenedEvent gameEvent)
         {
-            viewModel.OpenCardPurchaseWindow(gameEvent.MusicCardData, gameEvent.CurrentPlayerTokens, gameEvent.CurrentCardTokens);
-            await UniTask.WaitUntil(() => viewModel.State.Value == CardPurchaseWindowState.Opened);
+            viewModel.SetMusicCardData(gameEvent.MusicCardData);
+            view.SetCardDetails(gameEvent.MusicCardData);
+            view.Setup(gameEvent.CurrentPlayerTokens, gameEvent.CurrentCardTokens);
+            await view.PlayOpenAnimation();
         }
 
         public async UniTask HandleAsync(CardPurchaseWindowClosedEvent gameEvent)
         {
-            viewModel.CloseCardPurchaseWindow();
-            await UniTask.CompletedTask;
+            await view.PlayCloseAnimation();
         }
 
         public async UniTask HandleAsync(CardPurchasedFromBoardEvent gameEvent)
         {
-            viewModel.CloseCardPurchaseWindow();
-            await UniTask.CompletedTask;
+            await view.PlayCloseAnimation();
         }
 
         public async UniTask HandleAsync(CardPurchasedFromReserveEvent gameEvent)
         {
-            viewModel.CloseCardPurchaseWindow();
-            await UniTask.CompletedTask;
+            await view.PlayCloseAnimation();
         }
 
         public void Dispose()

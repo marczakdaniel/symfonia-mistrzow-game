@@ -33,15 +33,5 @@ namespace UI.CardPurchaseWindow.CardPurchaseSingleToken
             addTokenButton.OnClick.Subscribe(OnAddTokenClicked.OnNext).AddTo(this);
             removeTokenButton.OnClick.Subscribe(OnRemoveTokenClicked.OnNext).AddTo(this);
         }
-
-        public void Activate()
-        {
-            gameObject.SetActive(true);
-        }
-
-        public void Deactivate()
-        {
-            gameObject.SetActive(false);
-        }
     }
 }

@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &446245866826291990
+--- !u!1 &11938477193332785
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,41 +8,768 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1229963622972550441}
+  - component: {fileID: 4925142672007303201}
   m_Layer: 5
-  m_Name: Container
+  m_Name: OpenAnimation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!224 &1229963622972550441
+--- !u!224 &4925142672007303201
 RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 446245866826291990}
+  m_GameObject: {fileID: 11938477193332785}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 3184720045485671070}
-  - {fileID: 395522435852641226}
-  - {fileID: 471054319979245269}
-  - {fileID: 1243643727503064362}
-  - {fileID: 3729697805517178575}
-  - {fileID: 4853486903006622826}
-  - {fileID: 4589775858636556384}
-  - {fileID: 5143167641804260857}
-  - {fileID: 5268968615262491468}
-  m_Father: {fileID: 1812466406857511271}
+  - {fileID: 4825234896637862389}
+  - {fileID: 7798067857258331549}
+  - {fileID: 1907291874886564108}
+  - {fileID: 7835921890465075123}
+  m_Father: {fileID: 8992993578898591486}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &924216576778942587
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8526897853970962832}
+  - component: {fileID: 2516974400277696167}
+  m_Layer: 5
+  m_Name: CloseToMusicCardDetailsAnimation
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &8526897853970962832
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 924216576778942587}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5168012492185798924}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2516974400277696167
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 924216576778942587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c10d422b52559da41aa9676770a8fc65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animationSteps:
+  - rid: 4232360102194315339
+  - rid: 4232360102194315348
+  - rid: 4232360102194315340
+  - rid: 4232360102194315352
+  - rid: 4232360102194315357
+  - rid: 4232360102194315359
+  - rid: 4232360102194315361
+  - rid: 4232360102194315363
+  - rid: 4232360102194315365
+  - rid: 4232360102194315367
+  - rid: 4232360102194315369
+  - rid: 4232360102194315370
+  - rid: 4232360102194315371
+  - rid: 4232360102194315389
+  - rid: 4232360102194315372
+  - rid: 4232360102194315373
+  - rid: 4232360102194315374
+  - rid: 4232360102194315381
+  - rid: 4232360102194315382
+  - rid: 4232360102194315384
+  - rid: 4232360102194315344
+  - rid: 4232360102194315350
+  - rid: 4232360102194315355
+  - rid: 4232360102194315338
+  updateType: 0
+  timeScaleIndependent: 0
+  autoplayMode: 2
+  startPaused: 0
+  playbackSpeed: 1
+  playType: 0
+  loops: 0
+  loopType: 0
+  autoKill: 1
+  onStartEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onFinishedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onProgressEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  progress: -1
+  references:
+    version: 2
+    RefIds:
+    - rid: 4232360102194315338
+      type: {class: SetGameObjectActiveStep, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
+      data:
+        delay: 0
+        flowType: 0
+        targetGameObject: {fileID: 2214667615051023844}
+        active: 0
+    - rid: 4232360102194315339
+      type: {class: SetTargetsTransformScale, ns: AnimationSequencer, asm: Assembly-CSharp}
+      data:
+        delay: 0
+        flowType: 1
+        targets:
+        - {fileID: 6226259625058948037}
+        - {fileID: 4371177801110786027}
+        - {fileID: 505666494493839545}
+        - {fileID: 3630881009970634795}
+        - {fileID: 3066174904080405061}
+        - {fileID: 977442352847821179}
+        - {fileID: 4853486903006622826}
+        - {fileID: 4589775858636556384}
+        - {fileID: 8719558156011177765}
+        - {fileID: 6567518411594694879}
+        - {fileID: 860320829720110228}
+        - {fileID: 6041010240356421613}
+        - {fileID: 7701915725996307151}
+        - {fileID: 8940815571914638391}
+        - {fileID: 5268968615262491468}
+        - {fileID: 1243643727503064362}
+        scale: {x: 1, y: 1, z: 1}
+    - rid: 4232360102194315340
+      type: {class: DOTweenAnimationStep, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
+      data:
+        delay: 0
+        flowType: 1
+        target: {fileID: 8695388658619096863}
+        duration: 0
+        loopCount: 0
+        loopType: 0
+        actions:
+        - rid: 4232360102194315341
+    - rid: 4232360102194315341
+      type: {class: AnchoredPositionMoveToRectTransformPositionDOTweenActionBase, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
+      data:
+        direction: 0
+        ease:
+          ease: 7
+          curve:
+            serializedVersion: 2
+            m_Curve: []
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
+        isRelative: 0
+        axisConstraint: 0
+        target: {fileID: 7798067857258331549}
+    - rid: 4232360102194315344
+      type: {class: DOTweenAnimationStep, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
+      data:
+        delay: 0
+        flowType: 0
+        target: {fileID: 8695388658619096863}
+        duration: 1
+        loopCount: 0
+        loopType: 0
+        actions:
+        - rid: 4232360102194315345
+    - rid: 4232360102194315345
+      type: {class: AnchoredPositionMoveToRectTransformPositionDOTweenActionBase, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
+      data:
+        direction: 0
+        ease:
+          ease: 7
+          curve:
+            serializedVersion: 2
+            m_Curve: []
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
+        isRelative: 0
+        axisConstraint: 0
+        target: {fileID: 4825234896637862389}
+    - rid: 4232360102194315348
+      type: {class: DOTweenAnimationStep, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
+      data:
+        delay: 0
+        flowType: 1
+        target: {fileID: 8695388658619096863}
+        duration: 0
+        loopCount: 0
+        loopType: 0
+        actions:
+        - rid: 4232360102194315349
+    - rid: 4232360102194315349
+      type: {class: RectTransformSizeDOTweenAction, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
+      data:
+        direction: 0
+        ease:
+          ease: 7
+          curve:
+            serializedVersion: 2
+            m_Curve: []
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
+        isRelative: 0
+        sizeDelta: {x: 436.3, y: 181.5}
+        axisConstraint: 0
+    - rid: 4232360102194315350
+      type: {class: DOTweenAnimationStep, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
+      data:
+        delay: 0
+        flowType: 1
+        target: {fileID: 8695388658619096863}
+        duration: 1
+        loopCount: 0
+        loopType: 0
+        actions:
+        - rid: 4232360102194315351
+    - rid: 4232360102194315351
+      type: {class: RectTransformSizeDOTweenAction, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
+      data:
+        direction: 0
+        ease:
+          ease: 7
+          curve:
+            serializedVersion: 2
+            m_Curve: []
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
+        isRelative: 0
+        sizeDelta: {x: 537, y: 202}
+        axisConstraint: 0
+    - rid: 4232360102194315352
+      type: {class: DOTweenAnimationStep, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
+      data:
+        delay: 0
+        flowType: 1
+        target: {fileID: 2994372875828074950}
+        duration: 0
+        loopCount: 0
+        loopType: 0
+        actions:
+        - rid: 4232360102194315354
+    - rid: 4232360102194315354
+      type: {class: AnchoredPositionMoveToRectTransformPositionDOTweenActionBase, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
+      data:
+        direction: 0
+        ease:
+          ease: 7
+          curve:
+            serializedVersion: 2
+            m_Curve: []
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
+        isRelative: 0
+        axisConstraint: 0
+        target: {fileID: 7835921890465075123}
+    - rid: 4232360102194315355
+      type: {class: DOTweenAnimationStep, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
+      data:
+        delay: 0.5
+        flowType: 1
+        target: {fileID: 2994372875828074950}
+        duration: 0.5
+        loopCount: 0
+        loopType: 0
+        actions:
+        - rid: 4232360102194315356
+    - rid: 4232360102194315356
+      type: {class: AnchoredPositionMoveToRectTransformPositionDOTweenActionBase, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
+      data:
+        direction: 0
+        ease:
+          ease: 7
+          curve:
+            serializedVersion: 2
+            m_Curve: []
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
+        isRelative: 0
+        axisConstraint: 0
+        target: {fileID: 1907291874886564108}
+    - rid: 4232360102194315357
+      type: {class: DOTweenAnimationStep, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
+      data:
+        delay: 0
+        flowType: 0
+        target: {fileID: 3826165869319649545}
+        duration: 0.3
+        loopCount: 0
+        loopType: 0
+        actions:
+        - rid: 4232360102194315358
+    - rid: 4232360102194315358
+      type: {class: ScaleDOTweenAction, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
+      data:
+        direction: 0
+        ease:
+          ease: 7
+          curve:
+            serializedVersion: 2
+            m_Curve: []
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
+        isRelative: 0
+        scale: {x: 0, y: 0, z: 0}
+        axisConstraint: 0
+    - rid: 4232360102194315359
+      type: {class: DOTweenAnimationStep, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
+      data:
+        delay: 0
+        flowType: 1
+        target: {fileID: 4271475272137460465}
+        duration: 0.3
+        loopCount: 0
+        loopType: 0
+        actions:
+        - rid: 4232360102194315360
+    - rid: 4232360102194315360
+      type: {class: ScaleDOTweenAction, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
+      data:
+        direction: 0
+        ease:
+          ease: 7
+          curve:
+            serializedVersion: 2
+            m_Curve: []
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
+        isRelative: 0
+        scale: {x: 0, y: 0, z: 0}
+        axisConstraint: 0
+    - rid: 4232360102194315361
+      type: {class: DOTweenAnimationStep, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
+      data:
+        delay: 0.1
+        flowType: 1
+        target: {fileID: 4764124646421497014}
+        duration: 0.3
+        loopCount: 0
+        loopType: 0
+        actions:
+        - rid: 4232360102194315362
+    - rid: 4232360102194315362
+      type: {class: ScaleDOTweenAction, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
+      data:
+        direction: 0
+        ease:
+          ease: 7
+          curve:
+            serializedVersion: 2
+            m_Curve: []
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
+        isRelative: 0
+        scale: {x: 0, y: 0, z: 0}
+        axisConstraint: 0
+    - rid: 4232360102194315363
+      type: {class: DOTweenAnimationStep, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
+      data:
+        delay: 0.2
+        flowType: 1
+        target: {fileID: 2944236189803468952}
+        duration: 0.3
+        loopCount: 0
+        loopType: 0
+        actions:
+        - rid: 4232360102194315364
+    - rid: 4232360102194315364
+      type: {class: ScaleDOTweenAction, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
+      data:
+        direction: 0
+        ease:
+          ease: 7
+          curve:
+            serializedVersion: 2
+            m_Curve: []
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
+        isRelative: 0
+        scale: {x: 0, y: 0, z: 0}
+        axisConstraint: 0
+    - rid: 4232360102194315365
+      type: {class: DOTweenAnimationStep, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
+      data:
+        delay: 0.3
+        flowType: 1
+        target: {fileID: 1401165686683895754}
+        duration: 0.3
+        loopCount: 0
+        loopType: 0
+        actions:
+        - rid: 4232360102194315366
+    - rid: 4232360102194315366
+      type: {class: ScaleDOTweenAction, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
+      data:
+        direction: 0
+        ease:
+          ease: 7
+          curve:
+            serializedVersion: 2
+            m_Curve: []
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
+        isRelative: 0
+        scale: {x: 0, y: 0, z: 0}
+        axisConstraint: 0
+    - rid: 4232360102194315367
+      type: {class: DOTweenAnimationStep, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
+      data:
+        delay: 0.4
+        flowType: 1
+        target: {fileID: 2744652813901444952}
+        duration: 0.3
+        loopCount: 0
+        loopType: 0
+        actions:
+        - rid: 4232360102194315368
+    - rid: 4232360102194315368
+      type: {class: ScaleDOTweenAction, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
+      data:
+        direction: 0
+        ease:
+          ease: 7
+          curve:
+            serializedVersion: 2
+            m_Curve: []
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
+        isRelative: 0
+        scale: {x: 0, y: 0, z: 0}
+        axisConstraint: 0
+    - rid: 4232360102194315369
+      type: {class: DOTweenAnimationStep, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
+      data:
+        delay: 0.5
+        flowType: 1
+        target: {fileID: 4537572267478205750}
+        duration: 0.3
+        loopCount: 0
+        loopType: 0
+        actions:
+        - rid: 4232360102194315375
+    - rid: 4232360102194315370
+      type: {class: DOTweenAnimationStep, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
+      data:
+        delay: 0.6
+        flowType: 1
+        target: {fileID: 1865931292969225736}
+        duration: 0.3
+        loopCount: 0
+        loopType: 0
+        actions:
+        - rid: 4232360102194315376
+    - rid: 4232360102194315371
+      type: {class: DOTweenAnimationStep, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
+      data:
+        delay: 0.7
+        flowType: 1
+        target: {fileID: 1430778094277657802}
+        duration: 0.3
+        loopCount: 0
+        loopType: 0
+        actions:
+        - rid: 4232360102194315377
+    - rid: 4232360102194315372
+      type: {class: DOTweenAnimationStep, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
+      data:
+        delay: 0.8
+        flowType: 1
+        target: {fileID: 7887944564352602198}
+        duration: 0.3
+        loopCount: 0
+        loopType: 0
+        actions:
+        - rid: 4232360102194315378
+    - rid: 4232360102194315373
+      type: {class: DOTweenAnimationStep, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
+      data:
+        delay: 0.9
+        flowType: 1
+        target: {fileID: 5715365934171772844}
+        duration: 0.3
+        loopCount: 0
+        loopType: 0
+        actions:
+        - rid: 4232360102194315379
+    - rid: 4232360102194315374
+      type: {class: DOTweenAnimationStep, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
+      data:
+        delay: 1
+        flowType: 1
+        target: {fileID: 2271490998985815015}
+        duration: 0.3
+        loopCount: 0
+        loopType: 0
+        actions:
+        - rid: 4232360102194315380
+    - rid: 4232360102194315375
+      type: {class: ScaleDOTweenAction, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
+      data:
+        direction: 0
+        ease:
+          ease: 7
+          curve:
+            serializedVersion: 2
+            m_Curve: []
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
+        isRelative: 0
+        scale: {x: 0, y: 0, z: 0}
+        axisConstraint: 0
+    - rid: 4232360102194315376
+      type: {class: ScaleDOTweenAction, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
+      data:
+        direction: 0
+        ease:
+          ease: 7
+          curve:
+            serializedVersion: 2
+            m_Curve: []
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
+        isRelative: 0
+        scale: {x: 0, y: 0, z: 0}
+        axisConstraint: 0
+    - rid: 4232360102194315377
+      type: {class: ScaleDOTweenAction, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
+      data:
+        direction: 0
+        ease:
+          ease: 7
+          curve:
+            serializedVersion: 2
+            m_Curve: []
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
+        isRelative: 0
+        scale: {x: 0, y: 0, z: 0}
+        axisConstraint: 0
+    - rid: 4232360102194315378
+      type: {class: ScaleDOTweenAction, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
+      data:
+        direction: 0
+        ease:
+          ease: 7
+          curve:
+            serializedVersion: 2
+            m_Curve: []
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
+        isRelative: 0
+        scale: {x: 0, y: 0, z: 0}
+        axisConstraint: 0
+    - rid: 4232360102194315379
+      type: {class: ScaleDOTweenAction, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
+      data:
+        direction: 0
+        ease:
+          ease: 7
+          curve:
+            serializedVersion: 2
+            m_Curve: []
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
+        isRelative: 0
+        scale: {x: 0, y: 0, z: 0}
+        axisConstraint: 0
+    - rid: 4232360102194315380
+      type: {class: ScaleDOTweenAction, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
+      data:
+        direction: 0
+        ease:
+          ease: 7
+          curve:
+            serializedVersion: 2
+            m_Curve: []
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
+        isRelative: 0
+        scale: {x: 0, y: 0, z: 0}
+        axisConstraint: 0
+    - rid: 4232360102194315381
+      type: {class: DOTweenAnimationStep, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
+      data:
+        delay: 1.1
+        flowType: 1
+        target: {fileID: 5161255968774609054}
+        duration: 0.3
+        loopCount: 0
+        loopType: 0
+        actions:
+        - rid: 4232360102194315386
+    - rid: 4232360102194315382
+      type: {class: DOTweenAnimationStep, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
+      data:
+        delay: 1.2
+        flowType: 1
+        target: {fileID: 9121829595599660476}
+        duration: 0.3
+        loopCount: 0
+        loopType: 0
+        actions:
+        - rid: 4232360102194315383
+    - rid: 4232360102194315383
+      type: {class: ScaleDOTweenAction, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
+      data:
+        direction: 0
+        ease:
+          ease: 7
+          curve:
+            serializedVersion: 2
+            m_Curve: []
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
+        isRelative: 0
+        scale: {x: 0, y: 0, z: 0}
+        axisConstraint: 0
+    - rid: 4232360102194315384
+      type: {class: DOTweenAnimationStep, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
+      data:
+        delay: 1.3
+        flowType: 1
+        target: {fileID: 7521473583686423364}
+        duration: 0.3
+        loopCount: 0
+        loopType: 0
+        actions:
+        - rid: 4232360102194315385
+    - rid: 4232360102194315385
+      type: {class: ScaleDOTweenAction, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
+      data:
+        direction: 0
+        ease:
+          ease: 7
+          curve:
+            serializedVersion: 2
+            m_Curve: []
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
+        isRelative: 0
+        scale: {x: 0, y: 0, z: 0}
+        axisConstraint: 0
+    - rid: 4232360102194315386
+      type: {class: ScaleDOTweenAction, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
+      data:
+        direction: 0
+        ease:
+          ease: 7
+          curve:
+            serializedVersion: 2
+            m_Curve: []
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
+        isRelative: 0
+        scale: {x: 0, y: 0, z: 0}
+        axisConstraint: 0
+    - rid: 4232360102194315389
+      type: {class: DOTweenAnimationStep, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
+      data:
+        delay: 0.7
+        flowType: 1
+        target: {fileID: 7238647351963680528}
+        duration: 0.3
+        loopCount: 0
+        loopType: 0
+        actions:
+        - rid: 4232360102194315390
+    - rid: 4232360102194315390
+      type: {class: ScaleDOTweenAction, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
+      data:
+        direction: 0
+        ease:
+          ease: 7
+          curve:
+            serializedVersion: 2
+            m_Curve: []
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
+        isRelative: 0
+        scale: {x: 0, y: 0, z: 0}
+        axisConstraint: 0
+--- !u!1 &963852704241424147
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1907291874886564108}
+  m_Layer: 5
+  m_Name: CardStartPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1907291874886564108
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963852704241424147}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4925142672007303201}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -628, y: -18}
+  m_SizeDelta: {x: 272.4779, y: 340.5971}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1430778094277657802
 GameObject:
@@ -69,12 +796,12 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1430778094277657802}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1229963622972550441}
+  m_Father: {fileID: 7851262277554356017}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -180,6 +907,189 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1 &2214667615051023844
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7851262277554356017}
+  - component: {fileID: 7704698411454872702}
+  - component: {fileID: 770337946727975063}
+  - component: {fileID: 8784358505571858315}
+  m_Layer: 5
+  m_Name: Canvas
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &7851262277554356017
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2214667615051023844}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 3184720045485671070}
+  - {fileID: 395522435852641226}
+  - {fileID: 471054319979245269}
+  - {fileID: 1243643727503064362}
+  - {fileID: 3729697805517178575}
+  - {fileID: 4853486903006622826}
+  - {fileID: 4589775858636556384}
+  - {fileID: 5143167641804260857}
+  - {fileID: 5268968615262491468}
+  - {fileID: 8992993578898591486}
+  m_Father: {fileID: 1812466406857511271}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!223 &7704698411454872702
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2214667615051023844}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
+  m_AdditionalShaderChannelsFlag: 25
+  m_UpdateRectTransformForStandalone: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
+--- !u!114 &770337946727975063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2214667615051023844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_UiScaleMode: 0
+  m_ReferencePixelsPerUnit: 100
+  m_ScaleFactor: 1
+  m_ReferenceResolution: {x: 800, y: 600}
+  m_ScreenMatchMode: 0
+  m_MatchWidthOrHeight: 0
+  m_PhysicalUnit: 3
+  m_FallbackScreenDPI: 96
+  m_DefaultSpriteDPI: 96
+  m_DynamicPixelsPerUnit: 1
+  m_PresetInfoIsWorld: 1
+--- !u!114 &8784358505571858315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2214667615051023844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+--- !u!1 &2877467323857758627
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7798067857258331549}
+  m_Layer: 5
+  m_Name: EndAcceptButtonPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &7798067857258331549
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2877467323857758627}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4925142672007303201}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -644, y: -418.89}
+  m_SizeDelta: {x: 436.3, y: 181.5}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &3200096961212259719
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5168012492185798924}
+  m_Layer: 5
+  m_Name: Animations
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &5168012492185798924
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3200096961212259719}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 5049602588781541754}
+  - {fileID: 8526897853970962832}
+  m_Father: {fileID: 1812466406857511271}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &3826165869319649545
 GameObject:
   m_ObjectHideFlags: 0
@@ -205,12 +1115,12 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3826165869319649545}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1229963622972550441}
+  m_Father: {fileID: 7851262277554356017}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -345,7 +1255,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1229963622972550441}
+  - {fileID: 5168012492185798924}
+  - {fileID: 7851262277554356017}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -382,6 +1293,43 @@ MonoBehaviour:
   - {fileID: 439832820468720644}
   - {fileID: 4552524441626122534}
   - {fileID: 3016087063275073502}
+  openAnimationFromMusicCardDetailsPanel: {fileID: 6983650077295441444}
+  closeAnimationToMusicCardDetailsPanel: {fileID: 2516974400277696167}
+--- !u!1 &4191665190520933180
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4825234896637862389}
+  m_Layer: 5
+  m_Name: StartAcceptButtonPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &4825234896637862389
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4191665190520933180}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4925142672007303201}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -425}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &4319728189093611869
 GameObject:
   m_ObjectHideFlags: 0
@@ -406,7 +1354,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4319728189093611869}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -417,7 +1365,7 @@ RectTransform:
   - {fileID: 6041010240356421613}
   - {fileID: 7701915725996307151}
   - {fileID: 8940815571914638391}
-  m_Father: {fileID: 1229963622972550441}
+  m_Father: {fileID: 7851262277554356017}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -450,6 +1398,738 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!1 &4545762745163107905
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5049602588781541754}
+  - component: {fileID: 6983650077295441444}
+  m_Layer: 5
+  m_Name: OpenFromMusicCardDetailsAnimation
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &5049602588781541754
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4545762745163107905}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5168012492185798924}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &6983650077295441444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4545762745163107905}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c10d422b52559da41aa9676770a8fc65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animationSteps:
+  - rid: 4232360102194315338
+  - rid: 4232360102194315339
+  - rid: 4232360102194315348
+  - rid: 4232360102194315340
+  - rid: 4232360102194315352
+  - rid: 4232360102194315344
+  - rid: 4232360102194315350
+  - rid: 4232360102194315355
+  - rid: 4232360102194315357
+  - rid: 4232360102194315359
+  - rid: 4232360102194315361
+  - rid: 4232360102194315363
+  - rid: 4232360102194315365
+  - rid: 4232360102194315367
+  - rid: 4232360102194315369
+  - rid: 4232360102194315370
+  - rid: 4232360102194315371
+  - rid: 4232360102194315389
+  - rid: 4232360102194315372
+  - rid: 4232360102194315373
+  - rid: 4232360102194315374
+  - rid: 4232360102194315381
+  - rid: 4232360102194315382
+  - rid: 4232360102194315384
+  updateType: 0
+  timeScaleIndependent: 0
+  autoplayMode: 2
+  startPaused: 0
+  playbackSpeed: 1
+  playType: 0
+  loops: 0
+  loopType: 0
+  autoKill: 1
+  onStartEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onFinishedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onProgressEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  progress: -1
+  references:
+    version: 2
+    RefIds:
+    - rid: 4232360102194315338
+      type: {class: SetGameObjectActiveStep, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
+      data:
+        delay: 0
+        flowType: 0
+        targetGameObject: {fileID: 2214667615051023844}
+        active: 1
+    - rid: 4232360102194315339
+      type: {class: SetTargetsTransformScale, ns: AnimationSequencer, asm: Assembly-CSharp}
+      data:
+        delay: 0
+        flowType: 1
+        targets:
+        - {fileID: 6226259625058948037}
+        - {fileID: 4371177801110786027}
+        - {fileID: 505666494493839545}
+        - {fileID: 3630881009970634795}
+        - {fileID: 3066174904080405061}
+        - {fileID: 977442352847821179}
+        - {fileID: 4853486903006622826}
+        - {fileID: 4589775858636556384}
+        - {fileID: 8719558156011177765}
+        - {fileID: 6567518411594694879}
+        - {fileID: 860320829720110228}
+        - {fileID: 6041010240356421613}
+        - {fileID: 7701915725996307151}
+        - {fileID: 8940815571914638391}
+        - {fileID: 5268968615262491468}
+        - {fileID: 1243643727503064362}
+        scale: {x: 0, y: 0, z: 0}
+    - rid: 4232360102194315340
+      type: {class: DOTweenAnimationStep, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
+      data:
+        delay: 0
+        flowType: 1
+        target: {fileID: 8695388658619096863}
+        duration: 0
+        loopCount: 0
+        loopType: 0
+        actions:
+        - rid: 4232360102194315341
+    - rid: 4232360102194315341
+      type: {class: AnchoredPositionMoveToRectTransformPositionDOTweenActionBase, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
+      data:
+        direction: 0
+        ease:
+          ease: 7
+          curve:
+            serializedVersion: 2
+            m_Curve: []
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
+        isRelative: 0
+        axisConstraint: 0
+        target: {fileID: 4825234896637862389}
+    - rid: 4232360102194315344
+      type: {class: DOTweenAnimationStep, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
+      data:
+        delay: 0
+        flowType: 0
+        target: {fileID: 8695388658619096863}
+        duration: 1
+        loopCount: 0
+        loopType: 0
+        actions:
+        - rid: 4232360102194315345
+    - rid: 4232360102194315345
+      type: {class: AnchoredPositionMoveToRectTransformPositionDOTweenActionBase, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
+      data:
+        direction: 0
+        ease:
+          ease: 7
+          curve:
+            serializedVersion: 2
+            m_Curve: []
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
+        isRelative: 0
+        axisConstraint: 0
+        target: {fileID: 7798067857258331549}
+    - rid: 4232360102194315348
+      type: {class: DOTweenAnimationStep, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
+      data:
+        delay: 0
+        flowType: 1
+        target: {fileID: 8695388658619096863}
+        duration: 0
+        loopCount: 0
+        loopType: 0
+        actions:
+        - rid: 4232360102194315349
+    - rid: 4232360102194315349
+      type: {class: RectTransformSizeDOTweenAction, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
+      data:
+        direction: 0
+        ease:
+          ease: 7
+          curve:
+            serializedVersion: 2
+            m_Curve: []
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
+        isRelative: 0
+        sizeDelta: {x: 537, y: 202}
+        axisConstraint: 0
+    - rid: 4232360102194315350
+      type: {class: DOTweenAnimationStep, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
+      data:
+        delay: 0
+        flowType: 1
+        target: {fileID: 8695388658619096863}
+        duration: 1
+        loopCount: 0
+        loopType: 0
+        actions:
+        - rid: 4232360102194315351
+    - rid: 4232360102194315351
+      type: {class: RectTransformSizeDOTweenAction, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
+      data:
+        direction: 0
+        ease:
+          ease: 7
+          curve:
+            serializedVersion: 2
+            m_Curve: []
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
+        isRelative: 0
+        sizeDelta: {x: 436.3, y: 181.5}
+        axisConstraint: 0
+    - rid: 4232360102194315352
+      type: {class: DOTweenAnimationStep, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
+      data:
+        delay: 0
+        flowType: 1
+        target: {fileID: 2994372875828074950}
+        duration: 0
+        loopCount: 0
+        loopType: 0
+        actions:
+        - rid: 4232360102194315354
+    - rid: 4232360102194315354
+      type: {class: AnchoredPositionMoveToRectTransformPositionDOTweenActionBase, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
+      data:
+        direction: 0
+        ease:
+          ease: 7
+          curve:
+            serializedVersion: 2
+            m_Curve: []
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
+        isRelative: 0
+        axisConstraint: 0
+        target: {fileID: 1907291874886564108}
+    - rid: 4232360102194315355
+      type: {class: DOTweenAnimationStep, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
+      data:
+        delay: 0
+        flowType: 1
+        target: {fileID: 2994372875828074950}
+        duration: 0.5
+        loopCount: 0
+        loopType: 0
+        actions:
+        - rid: 4232360102194315356
+    - rid: 4232360102194315356
+      type: {class: AnchoredPositionMoveToRectTransformPositionDOTweenActionBase, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
+      data:
+        direction: 0
+        ease:
+          ease: 7
+          curve:
+            serializedVersion: 2
+            m_Curve: []
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
+        isRelative: 0
+        axisConstraint: 0
+        target: {fileID: 7835921890465075123}
+    - rid: 4232360102194315357
+      type: {class: DOTweenAnimationStep, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
+      data:
+        delay: 0
+        flowType: 0
+        target: {fileID: 3826165869319649545}
+        duration: 0.3
+        loopCount: 0
+        loopType: 0
+        actions:
+        - rid: 4232360102194315358
+    - rid: 4232360102194315358
+      type: {class: ScaleDOTweenAction, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
+      data:
+        direction: 0
+        ease:
+          ease: 7
+          curve:
+            serializedVersion: 2
+            m_Curve: []
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
+        isRelative: 0
+        scale: {x: 1, y: 1, z: 1}
+        axisConstraint: 0
+    - rid: 4232360102194315359
+      type: {class: DOTweenAnimationStep, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
+      data:
+        delay: 0
+        flowType: 1
+        target: {fileID: 4271475272137460465}
+        duration: 0.3
+        loopCount: 0
+        loopType: 0
+        actions:
+        - rid: 4232360102194315360
+    - rid: 4232360102194315360
+      type: {class: ScaleDOTweenAction, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
+      data:
+        direction: 0
+        ease:
+          ease: 7
+          curve:
+            serializedVersion: 2
+            m_Curve: []
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
+        isRelative: 0
+        scale: {x: 1, y: 1, z: 1}
+        axisConstraint: 0
+    - rid: 4232360102194315361
+      type: {class: DOTweenAnimationStep, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
+      data:
+        delay: 0.1
+        flowType: 1
+        target: {fileID: 4764124646421497014}
+        duration: 0.3
+        loopCount: 0
+        loopType: 0
+        actions:
+        - rid: 4232360102194315362
+    - rid: 4232360102194315362
+      type: {class: ScaleDOTweenAction, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
+      data:
+        direction: 0
+        ease:
+          ease: 7
+          curve:
+            serializedVersion: 2
+            m_Curve: []
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
+        isRelative: 0
+        scale: {x: 1, y: 1, z: 1}
+        axisConstraint: 0
+    - rid: 4232360102194315363
+      type: {class: DOTweenAnimationStep, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
+      data:
+        delay: 0.2
+        flowType: 1
+        target: {fileID: 2944236189803468952}
+        duration: 0.3
+        loopCount: 0
+        loopType: 0
+        actions:
+        - rid: 4232360102194315364
+    - rid: 4232360102194315364
+      type: {class: ScaleDOTweenAction, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
+      data:
+        direction: 0
+        ease:
+          ease: 7
+          curve:
+            serializedVersion: 2
+            m_Curve: []
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
+        isRelative: 0
+        scale: {x: 1, y: 1, z: 1}
+        axisConstraint: 0
+    - rid: 4232360102194315365
+      type: {class: DOTweenAnimationStep, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
+      data:
+        delay: 0.3
+        flowType: 1
+        target: {fileID: 1401165686683895754}
+        duration: 0.3
+        loopCount: 0
+        loopType: 0
+        actions:
+        - rid: 4232360102194315366
+    - rid: 4232360102194315366
+      type: {class: ScaleDOTweenAction, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
+      data:
+        direction: 0
+        ease:
+          ease: 7
+          curve:
+            serializedVersion: 2
+            m_Curve: []
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
+        isRelative: 0
+        scale: {x: 1, y: 1, z: 1}
+        axisConstraint: 0
+    - rid: 4232360102194315367
+      type: {class: DOTweenAnimationStep, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
+      data:
+        delay: 0.4
+        flowType: 1
+        target: {fileID: 2744652813901444952}
+        duration: 0.3
+        loopCount: 0
+        loopType: 0
+        actions:
+        - rid: 4232360102194315368
+    - rid: 4232360102194315368
+      type: {class: ScaleDOTweenAction, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
+      data:
+        direction: 0
+        ease:
+          ease: 7
+          curve:
+            serializedVersion: 2
+            m_Curve: []
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
+        isRelative: 0
+        scale: {x: 1, y: 1, z: 1}
+        axisConstraint: 0
+    - rid: 4232360102194315369
+      type: {class: DOTweenAnimationStep, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
+      data:
+        delay: 0.5
+        flowType: 1
+        target: {fileID: 4537572267478205750}
+        duration: 0.3
+        loopCount: 0
+        loopType: 0
+        actions:
+        - rid: 4232360102194315375
+    - rid: 4232360102194315370
+      type: {class: DOTweenAnimationStep, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
+      data:
+        delay: 0.6
+        flowType: 1
+        target: {fileID: 1865931292969225736}
+        duration: 0.3
+        loopCount: 0
+        loopType: 0
+        actions:
+        - rid: 4232360102194315376
+    - rid: 4232360102194315371
+      type: {class: DOTweenAnimationStep, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
+      data:
+        delay: 0.7
+        flowType: 1
+        target: {fileID: 1430778094277657802}
+        duration: 0.3
+        loopCount: 0
+        loopType: 0
+        actions:
+        - rid: 4232360102194315377
+    - rid: 4232360102194315372
+      type: {class: DOTweenAnimationStep, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
+      data:
+        delay: 0.8
+        flowType: 1
+        target: {fileID: 7887944564352602198}
+        duration: 0.3
+        loopCount: 0
+        loopType: 0
+        actions:
+        - rid: 4232360102194315378
+    - rid: 4232360102194315373
+      type: {class: DOTweenAnimationStep, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
+      data:
+        delay: 0.9
+        flowType: 1
+        target: {fileID: 5715365934171772844}
+        duration: 0.3
+        loopCount: 0
+        loopType: 0
+        actions:
+        - rid: 4232360102194315379
+    - rid: 4232360102194315374
+      type: {class: DOTweenAnimationStep, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
+      data:
+        delay: 1
+        flowType: 1
+        target: {fileID: 2271490998985815015}
+        duration: 0.3
+        loopCount: 0
+        loopType: 0
+        actions:
+        - rid: 4232360102194315380
+    - rid: 4232360102194315375
+      type: {class: ScaleDOTweenAction, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
+      data:
+        direction: 0
+        ease:
+          ease: 7
+          curve:
+            serializedVersion: 2
+            m_Curve: []
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
+        isRelative: 0
+        scale: {x: 1, y: 1, z: 1}
+        axisConstraint: 0
+    - rid: 4232360102194315376
+      type: {class: ScaleDOTweenAction, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
+      data:
+        direction: 0
+        ease:
+          ease: 7
+          curve:
+            serializedVersion: 2
+            m_Curve: []
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
+        isRelative: 0
+        scale: {x: 1, y: 1, z: 1}
+        axisConstraint: 0
+    - rid: 4232360102194315377
+      type: {class: ScaleDOTweenAction, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
+      data:
+        direction: 0
+        ease:
+          ease: 7
+          curve:
+            serializedVersion: 2
+            m_Curve: []
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
+        isRelative: 0
+        scale: {x: 1, y: 1, z: 1}
+        axisConstraint: 0
+    - rid: 4232360102194315378
+      type: {class: ScaleDOTweenAction, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
+      data:
+        direction: 0
+        ease:
+          ease: 7
+          curve:
+            serializedVersion: 2
+            m_Curve: []
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
+        isRelative: 0
+        scale: {x: 1, y: 1, z: 1}
+        axisConstraint: 0
+    - rid: 4232360102194315379
+      type: {class: ScaleDOTweenAction, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
+      data:
+        direction: 0
+        ease:
+          ease: 7
+          curve:
+            serializedVersion: 2
+            m_Curve: []
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
+        isRelative: 0
+        scale: {x: 1, y: 1, z: 1}
+        axisConstraint: 0
+    - rid: 4232360102194315380
+      type: {class: ScaleDOTweenAction, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
+      data:
+        direction: 0
+        ease:
+          ease: 7
+          curve:
+            serializedVersion: 2
+            m_Curve: []
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
+        isRelative: 0
+        scale: {x: 1, y: 1, z: 1}
+        axisConstraint: 0
+    - rid: 4232360102194315381
+      type: {class: DOTweenAnimationStep, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
+      data:
+        delay: 1.1
+        flowType: 1
+        target: {fileID: 5161255968774609054}
+        duration: 0.3
+        loopCount: 0
+        loopType: 0
+        actions:
+        - rid: 4232360102194315386
+    - rid: 4232360102194315382
+      type: {class: DOTweenAnimationStep, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
+      data:
+        delay: 1.2
+        flowType: 1
+        target: {fileID: 9121829595599660476}
+        duration: 0.3
+        loopCount: 0
+        loopType: 0
+        actions:
+        - rid: 4232360102194315383
+    - rid: 4232360102194315383
+      type: {class: ScaleDOTweenAction, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
+      data:
+        direction: 0
+        ease:
+          ease: 7
+          curve:
+            serializedVersion: 2
+            m_Curve: []
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
+        isRelative: 0
+        scale: {x: 1, y: 1, z: 1}
+        axisConstraint: 0
+    - rid: 4232360102194315384
+      type: {class: DOTweenAnimationStep, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
+      data:
+        delay: 1.3
+        flowType: 1
+        target: {fileID: 7521473583686423364}
+        duration: 0.3
+        loopCount: 0
+        loopType: 0
+        actions:
+        - rid: 4232360102194315385
+    - rid: 4232360102194315385
+      type: {class: ScaleDOTweenAction, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
+      data:
+        direction: 0
+        ease:
+          ease: 7
+          curve:
+            serializedVersion: 2
+            m_Curve: []
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
+        isRelative: 0
+        scale: {x: 1, y: 1, z: 1}
+        axisConstraint: 0
+    - rid: 4232360102194315386
+      type: {class: ScaleDOTweenAction, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
+      data:
+        direction: 0
+        ease:
+          ease: 7
+          curve:
+            serializedVersion: 2
+            m_Curve: []
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
+        isRelative: 0
+        scale: {x: 1, y: 1, z: 1}
+        axisConstraint: 0
+    - rid: 4232360102194315389
+      type: {class: DOTweenAnimationStep, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
+      data:
+        delay: 0.7
+        flowType: 1
+        target: {fileID: 7238647351963680528}
+        duration: 0.3
+        loopCount: 0
+        loopType: 0
+        actions:
+        - rid: 4232360102194315390
+    - rid: 4232360102194315390
+      type: {class: ScaleDOTweenAction, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
+      data:
+        direction: 0
+        ease:
+          ease: 7
+          curve:
+            serializedVersion: 2
+            m_Curve: []
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
+        isRelative: 0
+        scale: {x: 1, y: 1, z: 1}
+        axisConstraint: 0
+--- !u!1 &5918353815414904488
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7835921890465075123}
+  m_Layer: 5
+  m_Name: CardEndPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &7835921890465075123
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5918353815414904488}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4925142672007303201}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -644, y: 48}
+  m_SizeDelta: {x: 272.4779, y: 340.5971}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &7238647351963680528
 GameObject:
   m_ObjectHideFlags: 0
@@ -475,12 +2155,12 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7238647351963680528}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1229963622972550441}
+  m_Father: {fileID: 7851262277554356017}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -549,7 +2229,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8849687745027798884}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -560,7 +2240,7 @@ RectTransform:
   - {fileID: 3630881009970634795}
   - {fileID: 3066174904080405061}
   - {fileID: 977442352847821179}
-  m_Father: {fileID: 1229963622972550441}
+  m_Father: {fileID: 7851262277554356017}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -593,6 +2273,42 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!1 &8945478406945012500
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8992993578898591486}
+  m_Layer: 5
+  m_Name: AnimationContainer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &8992993578898591486
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8945478406945012500}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 4925142672007303201}
+  m_Father: {fileID: 7851262277554356017}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &9071813600884346312
 GameObject:
   m_ObjectHideFlags: 0
@@ -624,7 +2340,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1229963622972550441}
+  m_Father: {fileID: 7851262277554356017}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -846,7 +2562,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8648323861855928573, guid: f4949cae5383449418bdf434eed84970, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8648323861855928573, guid: f4949cae5383449418bdf434eed84970, type: 3}
       propertyPath: m_AnchorMin.x
@@ -854,7 +2570,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8648323861855928573, guid: f4949cae5383449418bdf434eed84970, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8648323861855928573, guid: f4949cae5383449418bdf434eed84970, type: 3}
       propertyPath: m_SizeDelta.x
@@ -863,6 +2579,18 @@ PrefabInstance:
     - target: {fileID: 8648323861855928573, guid: f4949cae5383449418bdf434eed84970, type: 3}
       propertyPath: m_SizeDelta.y
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8648323861855928573, guid: f4949cae5383449418bdf434eed84970, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8648323861855928573, guid: f4949cae5383449418bdf434eed84970, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8648323861855928573, guid: f4949cae5383449418bdf434eed84970, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8648323861855928573, guid: f4949cae5383449418bdf434eed84970, type: 3}
       propertyPath: m_LocalPosition.x
@@ -894,11 +2622,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8648323861855928573, guid: f4949cae5383449418bdf434eed84970, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 191.9647
       objectReference: {fileID: 0}
     - target: {fileID: 8648323861855928573, guid: f4949cae5383449418bdf434eed84970, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -50
       objectReference: {fileID: 0}
     - target: {fileID: 8648323861855928573, guid: f4949cae5383449418bdf434eed84970, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -922,12 +2650,17 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3299563937831103252, guid: f4949cae5383449418bdf434eed84970, type: 3}
   m_PrefabInstance: {fileID: 74049130092890072}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 7887944564352602198}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3d953359f37b7a142a39c827f190ed38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &7887944564352602198 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7813895439394592654, guid: f4949cae5383449418bdf434eed84970, type: 3}
+  m_PrefabInstance: {fileID: 74049130092890072}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &8719558156011177765 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8648323861855928573, guid: f4949cae5383449418bdf434eed84970, type: 3}
@@ -959,7 +2692,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8648323861855928573, guid: f4949cae5383449418bdf434eed84970, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8648323861855928573, guid: f4949cae5383449418bdf434eed84970, type: 3}
       propertyPath: m_AnchorMin.x
@@ -967,7 +2700,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8648323861855928573, guid: f4949cae5383449418bdf434eed84970, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8648323861855928573, guid: f4949cae5383449418bdf434eed84970, type: 3}
       propertyPath: m_SizeDelta.x
@@ -976,6 +2709,18 @@ PrefabInstance:
     - target: {fileID: 8648323861855928573, guid: f4949cae5383449418bdf434eed84970, type: 3}
       propertyPath: m_SizeDelta.y
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8648323861855928573, guid: f4949cae5383449418bdf434eed84970, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8648323861855928573, guid: f4949cae5383449418bdf434eed84970, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8648323861855928573, guid: f4949cae5383449418bdf434eed84970, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8648323861855928573, guid: f4949cae5383449418bdf434eed84970, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1007,11 +2752,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8648323861855928573, guid: f4949cae5383449418bdf434eed84970, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 191.9647
       objectReference: {fileID: 0}
     - target: {fileID: 8648323861855928573, guid: f4949cae5383449418bdf434eed84970, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -745
       objectReference: {fileID: 0}
     - target: {fileID: 8648323861855928573, guid: f4949cae5383449418bdf434eed84970, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1035,12 +2780,17 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3299563937831103252, guid: f4949cae5383449418bdf434eed84970, type: 3}
   m_PrefabInstance: {fileID: 293064787820397770}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 7521473583686423364}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3d953359f37b7a142a39c827f190ed38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &7521473583686423364 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7813895439394592654, guid: f4949cae5383449418bdf434eed84970, type: 3}
+  m_PrefabInstance: {fileID: 293064787820397770}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &8940815571914638391 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8648323861855928573, guid: f4949cae5383449418bdf434eed84970, type: 3}
@@ -1072,7 +2822,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8648323861855928573, guid: f4949cae5383449418bdf434eed84970, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8648323861855928573, guid: f4949cae5383449418bdf434eed84970, type: 3}
       propertyPath: m_AnchorMin.x
@@ -1080,7 +2830,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8648323861855928573, guid: f4949cae5383449418bdf434eed84970, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8648323861855928573, guid: f4949cae5383449418bdf434eed84970, type: 3}
       propertyPath: m_SizeDelta.x
@@ -1089,6 +2839,18 @@ PrefabInstance:
     - target: {fileID: 8648323861855928573, guid: f4949cae5383449418bdf434eed84970, type: 3}
       propertyPath: m_SizeDelta.y
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8648323861855928573, guid: f4949cae5383449418bdf434eed84970, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8648323861855928573, guid: f4949cae5383449418bdf434eed84970, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8648323861855928573, guid: f4949cae5383449418bdf434eed84970, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8648323861855928573, guid: f4949cae5383449418bdf434eed84970, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1120,11 +2882,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8648323861855928573, guid: f4949cae5383449418bdf434eed84970, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 191.9647
       objectReference: {fileID: 0}
     - target: {fileID: 8648323861855928573, guid: f4949cae5383449418bdf434eed84970, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -606
       objectReference: {fileID: 0}
     - target: {fileID: 8648323861855928573, guid: f4949cae5383449418bdf434eed84970, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1148,7 +2910,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3299563937831103252, guid: f4949cae5383449418bdf434eed84970, type: 3}
   m_PrefabInstance: {fileID: 1362258831546266162}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 9121829595599660476}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3d953359f37b7a142a39c827f190ed38, type: 3}
@@ -1159,13 +2921,18 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8648323861855928573, guid: f4949cae5383449418bdf434eed84970, type: 3}
   m_PrefabInstance: {fileID: 1362258831546266162}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &9121829595599660476 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7813895439394592654, guid: f4949cae5383449418bdf434eed84970, type: 3}
+  m_PrefabInstance: {fileID: 1362258831546266162}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2314548224383599847
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1229963622972550441}
+    m_TransformParent: {fileID: 7851262277554356017}
     m_Modifications:
     - target: {fileID: 689274067817684257, guid: 0973b1000e77b2b4b89a553b4cd9c46f, type: 3}
       propertyPath: m_Name
@@ -1261,67 +3028,67 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3792099167110416594, guid: 0973b1000e77b2b4b89a553b4cd9c46f, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3792099167110416594, guid: 0973b1000e77b2b4b89a553b4cd9c46f, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3792099167110416594, guid: 0973b1000e77b2b4b89a553b4cd9c46f, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 157.81897
       objectReference: {fileID: 0}
     - target: {fileID: 3792099167110416594, guid: 0973b1000e77b2b4b89a553b4cd9c46f, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -38.80255
       objectReference: {fileID: 0}
     - target: {fileID: 4557311674122161567, guid: 0973b1000e77b2b4b89a553b4cd9c46f, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4557311674122161567, guid: 0973b1000e77b2b4b89a553b4cd9c46f, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4557311674122161567, guid: 0973b1000e77b2b4b89a553b4cd9c46f, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 35.498955
       objectReference: {fileID: 0}
     - target: {fileID: 4557311674122161567, guid: 0973b1000e77b2b4b89a553b4cd9c46f, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -38.80255
       objectReference: {fileID: 0}
     - target: {fileID: 5238766824081789531, guid: 0973b1000e77b2b4b89a553b4cd9c46f, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5238766824081789531, guid: 0973b1000e77b2b4b89a553b4cd9c46f, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5238766824081789531, guid: 0973b1000e77b2b4b89a553b4cd9c46f, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 96.65896
       objectReference: {fileID: 0}
     - target: {fileID: 5238766824081789531, guid: 0973b1000e77b2b4b89a553b4cd9c46f, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -38.80255
       objectReference: {fileID: 0}
     - target: {fileID: 5892266869726627619, guid: 0973b1000e77b2b4b89a553b4cd9c46f, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5892266869726627619, guid: 0973b1000e77b2b4b89a553b4cd9c46f, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5892266869726627619, guid: 0973b1000e77b2b4b89a553b4cd9c46f, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 218.97896
       objectReference: {fileID: 0}
     - target: {fileID: 5892266869726627619, guid: 0973b1000e77b2b4b89a553b4cd9c46f, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -38.80255
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1338,12 +3105,17 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2924064775057523893, guid: 0973b1000e77b2b4b89a553b4cd9c46f, type: 3}
   m_PrefabInstance: {fileID: 2314548224383599847}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 2994372875828074950}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: db2f980c7fca7bc49af3562d3745312f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &2994372875828074950 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 689274067817684257, guid: 0973b1000e77b2b4b89a553b4cd9c46f, type: 3}
+  m_PrefabInstance: {fileID: 2314548224383599847}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2531453491034292258
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1370,7 +3142,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8648323861855928573, guid: f4949cae5383449418bdf434eed84970, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8648323861855928573, guid: f4949cae5383449418bdf434eed84970, type: 3}
       propertyPath: m_AnchorMin.x
@@ -1378,7 +3150,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8648323861855928573, guid: f4949cae5383449418bdf434eed84970, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8648323861855928573, guid: f4949cae5383449418bdf434eed84970, type: 3}
       propertyPath: m_SizeDelta.x
@@ -1387,6 +3159,18 @@ PrefabInstance:
     - target: {fileID: 8648323861855928573, guid: f4949cae5383449418bdf434eed84970, type: 3}
       propertyPath: m_SizeDelta.y
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8648323861855928573, guid: f4949cae5383449418bdf434eed84970, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8648323861855928573, guid: f4949cae5383449418bdf434eed84970, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8648323861855928573, guid: f4949cae5383449418bdf434eed84970, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8648323861855928573, guid: f4949cae5383449418bdf434eed84970, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1418,11 +3202,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8648323861855928573, guid: f4949cae5383449418bdf434eed84970, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 191.9647
       objectReference: {fileID: 0}
     - target: {fileID: 8648323861855928573, guid: f4949cae5383449418bdf434eed84970, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -189
       objectReference: {fileID: 0}
     - target: {fileID: 8648323861855928573, guid: f4949cae5383449418bdf434eed84970, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1446,12 +3230,17 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3299563937831103252, guid: f4949cae5383449418bdf434eed84970, type: 3}
   m_PrefabInstance: {fileID: 2531453491034292258}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 5715365934171772844}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3d953359f37b7a142a39c827f190ed38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &5715365934171772844 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7813895439394592654, guid: f4949cae5383449418bdf434eed84970, type: 3}
+  m_PrefabInstance: {fileID: 2531453491034292258}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &6567518411594694879 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8648323861855928573, guid: f4949cae5383449418bdf434eed84970, type: 3}
@@ -1483,7 +3272,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8648323861855928573, guid: f4949cae5383449418bdf434eed84970, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8648323861855928573, guid: f4949cae5383449418bdf434eed84970, type: 3}
       propertyPath: m_AnchorMin.x
@@ -1491,7 +3280,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8648323861855928573, guid: f4949cae5383449418bdf434eed84970, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8648323861855928573, guid: f4949cae5383449418bdf434eed84970, type: 3}
       propertyPath: m_SizeDelta.x
@@ -1500,6 +3289,18 @@ PrefabInstance:
     - target: {fileID: 8648323861855928573, guid: f4949cae5383449418bdf434eed84970, type: 3}
       propertyPath: m_SizeDelta.y
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8648323861855928573, guid: f4949cae5383449418bdf434eed84970, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8648323861855928573, guid: f4949cae5383449418bdf434eed84970, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8648323861855928573, guid: f4949cae5383449418bdf434eed84970, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8648323861855928573, guid: f4949cae5383449418bdf434eed84970, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1531,11 +3332,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8648323861855928573, guid: f4949cae5383449418bdf434eed84970, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 191.9647
       objectReference: {fileID: 0}
     - target: {fileID: 8648323861855928573, guid: f4949cae5383449418bdf434eed84970, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -467
       objectReference: {fileID: 0}
     - target: {fileID: 8648323861855928573, guid: f4949cae5383449418bdf434eed84970, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1559,12 +3360,17 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3299563937831103252, guid: f4949cae5383449418bdf434eed84970, type: 3}
   m_PrefabInstance: {fileID: 3157303120950988560}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 5161255968774609054}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3d953359f37b7a142a39c827f190ed38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &5161255968774609054 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7813895439394592654, guid: f4949cae5383449418bdf434eed84970, type: 3}
+  m_PrefabInstance: {fileID: 3157303120950988560}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &6041010240356421613 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8648323861855928573, guid: f4949cae5383449418bdf434eed84970, type: 3}
@@ -1596,7 +3402,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8648323861855928573, guid: 82b59a7c9117e024fb838a83154a72e2, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8648323861855928573, guid: 82b59a7c9117e024fb838a83154a72e2, type: 3}
       propertyPath: m_AnchorMin.x
@@ -1604,7 +3410,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8648323861855928573, guid: 82b59a7c9117e024fb838a83154a72e2, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8648323861855928573, guid: 82b59a7c9117e024fb838a83154a72e2, type: 3}
       propertyPath: m_SizeDelta.x
@@ -1613,6 +3419,18 @@ PrefabInstance:
     - target: {fileID: 8648323861855928573, guid: 82b59a7c9117e024fb838a83154a72e2, type: 3}
       propertyPath: m_SizeDelta.y
       value: 196.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8648323861855928573, guid: 82b59a7c9117e024fb838a83154a72e2, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8648323861855928573, guid: 82b59a7c9117e024fb838a83154a72e2, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8648323861855928573, guid: 82b59a7c9117e024fb838a83154a72e2, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8648323861855928573, guid: 82b59a7c9117e024fb838a83154a72e2, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1644,11 +3462,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8648323861855928573, guid: 82b59a7c9117e024fb838a83154a72e2, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 333.85
       objectReference: {fileID: 0}
     - target: {fileID: 8648323861855928573, guid: 82b59a7c9117e024fb838a83154a72e2, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -98.35
       objectReference: {fileID: 0}
     - target: {fileID: 8648323861855928573, guid: 82b59a7c9117e024fb838a83154a72e2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1667,12 +3485,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 82b59a7c9117e024fb838a83154a72e2, type: 3}
+--- !u!1 &4764124646421497014 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7813895439394592654, guid: 82b59a7c9117e024fb838a83154a72e2, type: 3}
+  m_PrefabInstance: {fileID: 3345359369591837496}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &5605423062015633219 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7180826930696074363, guid: 82b59a7c9117e024fb838a83154a72e2, type: 3}
   m_PrefabInstance: {fileID: 3345359369591837496}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 4764124646421497014}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f99f15c245012cc428d438e7a2b2c5e1, type: 3}
@@ -1709,7 +3532,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8648323861855928573, guid: 82b59a7c9117e024fb838a83154a72e2, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8648323861855928573, guid: 82b59a7c9117e024fb838a83154a72e2, type: 3}
       propertyPath: m_AnchorMin.x
@@ -1717,7 +3540,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8648323861855928573, guid: 82b59a7c9117e024fb838a83154a72e2, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8648323861855928573, guid: 82b59a7c9117e024fb838a83154a72e2, type: 3}
       propertyPath: m_SizeDelta.x
@@ -1726,6 +3549,18 @@ PrefabInstance:
     - target: {fileID: 8648323861855928573, guid: 82b59a7c9117e024fb838a83154a72e2, type: 3}
       propertyPath: m_SizeDelta.y
       value: 196.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8648323861855928573, guid: 82b59a7c9117e024fb838a83154a72e2, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8648323861855928573, guid: 82b59a7c9117e024fb838a83154a72e2, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8648323861855928573, guid: 82b59a7c9117e024fb838a83154a72e2, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8648323861855928573, guid: 82b59a7c9117e024fb838a83154a72e2, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1757,11 +3592,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8648323861855928573, guid: 82b59a7c9117e024fb838a83154a72e2, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 333.85
       objectReference: {fileID: 0}
     - target: {fileID: 8648323861855928573, guid: 82b59a7c9117e024fb838a83154a72e2, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -252.15
       objectReference: {fileID: 0}
     - target: {fileID: 8648323861855928573, guid: 82b59a7c9117e024fb838a83154a72e2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1785,12 +3620,17 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7180826930696074363, guid: 82b59a7c9117e024fb838a83154a72e2, type: 3}
   m_PrefabInstance: {fileID: 4948488109890014998}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 2944236189803468952}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f99f15c245012cc428d438e7a2b2c5e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &2944236189803468952 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7813895439394592654, guid: 82b59a7c9117e024fb838a83154a72e2, type: 3}
+  m_PrefabInstance: {fileID: 4948488109890014998}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &4371177801110786027 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8648323861855928573, guid: 82b59a7c9117e024fb838a83154a72e2, type: 3}
@@ -1822,7 +3662,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8648323861855928573, guid: 82b59a7c9117e024fb838a83154a72e2, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8648323861855928573, guid: 82b59a7c9117e024fb838a83154a72e2, type: 3}
       propertyPath: m_AnchorMin.x
@@ -1830,7 +3670,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8648323861855928573, guid: 82b59a7c9117e024fb838a83154a72e2, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8648323861855928573, guid: 82b59a7c9117e024fb838a83154a72e2, type: 3}
       propertyPath: m_SizeDelta.x
@@ -1839,6 +3679,18 @@ PrefabInstance:
     - target: {fileID: 8648323861855928573, guid: 82b59a7c9117e024fb838a83154a72e2, type: 3}
       propertyPath: m_SizeDelta.y
       value: 196.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8648323861855928573, guid: 82b59a7c9117e024fb838a83154a72e2, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8648323861855928573, guid: 82b59a7c9117e024fb838a83154a72e2, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8648323861855928573, guid: 82b59a7c9117e024fb838a83154a72e2, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8648323861855928573, guid: 82b59a7c9117e024fb838a83154a72e2, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1870,11 +3722,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8648323861855928573, guid: 82b59a7c9117e024fb838a83154a72e2, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 333.85
       objectReference: {fileID: 0}
     - target: {fileID: 8648323861855928573, guid: 82b59a7c9117e024fb838a83154a72e2, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -559.74994
       objectReference: {fileID: 0}
     - target: {fileID: 8648323861855928573, guid: 82b59a7c9117e024fb838a83154a72e2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1893,12 +3745,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 82b59a7c9117e024fb838a83154a72e2, type: 3}
+--- !u!1 &2744652813901444952 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7813895439394592654, guid: 82b59a7c9117e024fb838a83154a72e2, type: 3}
+  m_PrefabInstance: {fileID: 5361112808332714198}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &3008707732300977325 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7180826930696074363, guid: 82b59a7c9117e024fb838a83154a72e2, type: 3}
   m_PrefabInstance: {fileID: 5361112808332714198}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 2744652813901444952}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f99f15c245012cc428d438e7a2b2c5e1, type: 3}
@@ -1935,7 +3792,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8648323861855928573, guid: 82b59a7c9117e024fb838a83154a72e2, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8648323861855928573, guid: 82b59a7c9117e024fb838a83154a72e2, type: 3}
       propertyPath: m_AnchorMin.x
@@ -1943,7 +3800,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8648323861855928573, guid: 82b59a7c9117e024fb838a83154a72e2, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8648323861855928573, guid: 82b59a7c9117e024fb838a83154a72e2, type: 3}
       propertyPath: m_SizeDelta.x
@@ -1952,6 +3809,18 @@ PrefabInstance:
     - target: {fileID: 8648323861855928573, guid: 82b59a7c9117e024fb838a83154a72e2, type: 3}
       propertyPath: m_SizeDelta.y
       value: 196.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8648323861855928573, guid: 82b59a7c9117e024fb838a83154a72e2, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8648323861855928573, guid: 82b59a7c9117e024fb838a83154a72e2, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8648323861855928573, guid: 82b59a7c9117e024fb838a83154a72e2, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8648323861855928573, guid: 82b59a7c9117e024fb838a83154a72e2, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1983,11 +3852,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8648323861855928573, guid: 82b59a7c9117e024fb838a83154a72e2, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 333.85
       objectReference: {fileID: 0}
     - target: {fileID: 8648323861855928573, guid: 82b59a7c9117e024fb838a83154a72e2, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -713.5499
       objectReference: {fileID: 0}
     - target: {fileID: 8648323861855928573, guid: 82b59a7c9117e024fb838a83154a72e2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2016,19 +3885,24 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7180826930696074363, guid: 82b59a7c9117e024fb838a83154a72e2, type: 3}
   m_PrefabInstance: {fileID: 5947066457662362296}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 4537572267478205750}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f99f15c245012cc428d438e7a2b2c5e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &4537572267478205750 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7813895439394592654, guid: 82b59a7c9117e024fb838a83154a72e2, type: 3}
+  m_PrefabInstance: {fileID: 5947066457662362296}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7420310860245687071
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1229963622972550441}
+    m_TransformParent: {fileID: 7851262277554356017}
     m_Modifications:
     - target: {fileID: 2185939632088761344, guid: b9154c91616e4af45b5e4f49218ccc18, type: 3}
       propertyPath: m_Name
@@ -2084,19 +3958,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6140852761355165136, guid: b9154c91616e4af45b5e4f49218ccc18, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6140852761355165136, guid: b9154c91616e4af45b5e4f49218ccc18, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6140852761355165136, guid: b9154c91616e4af45b5e4f49218ccc18, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6140852761355165136, guid: b9154c91616e4af45b5e4f49218ccc18, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -644
+      value: -643.99994
       objectReference: {fileID: 0}
     - target: {fileID: 6140852761355165136, guid: b9154c91616e4af45b5e4f49218ccc18, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -2118,6 +3992,14 @@ PrefabInstance:
       propertyPath: m_text
       value: KUP
       objectReference: {fileID: 0}
+    - target: {fileID: 8816783387646441428, guid: b9154c91616e4af45b5e4f49218ccc18, type: 3}
+      propertyPath: m_fontSize
+      value: 85
+      objectReference: {fileID: 0}
+    - target: {fileID: 8816783387646441428, guid: b9154c91616e4af45b5e4f49218ccc18, type: 3}
+      propertyPath: m_fontSizeMax
+      value: 85
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2133,19 +4015,24 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 219105691021765311, guid: b9154c91616e4af45b5e4f49218ccc18, type: 3}
   m_PrefabInstance: {fileID: 7420310860245687071}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 8695388658619096863}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3b954f9d444763348a1860fe2acf06d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &8695388658619096863 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2185939632088761344, guid: b9154c91616e4af45b5e4f49218ccc18, type: 3}
+  m_PrefabInstance: {fileID: 7420310860245687071}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7797808488495152021
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1229963622972550441}
+    m_TransformParent: {fileID: 7851262277554356017}
     m_Modifications:
     - target: {fileID: 6300594846475825508, guid: ea2a29fe4129d9d49a2741d158f8b2ee, type: 3}
       propertyPath: m_Name
@@ -2184,6 +4071,18 @@ PrefabInstance:
       value: 119.5037
       objectReference: {fileID: 0}
     - target: {fileID: 9040183370846373567, guid: ea2a29fe4129d9d49a2741d158f8b2ee, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9040183370846373567, guid: ea2a29fe4129d9d49a2741d158f8b2ee, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9040183370846373567, guid: ea2a29fe4129d9d49a2741d158f8b2ee, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9040183370846373567, guid: ea2a29fe4129d9d49a2741d158f8b2ee, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -2201,15 +4100,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9040183370846373567, guid: ea2a29fe4129d9d49a2741d158f8b2ee, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 9040183370846373567, guid: ea2a29fe4129d9d49a2741d158f8b2ee, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 9040183370846373567, guid: ea2a29fe4129d9d49a2741d158f8b2ee, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 9040183370846373567, guid: ea2a29fe4129d9d49a2741d158f8b2ee, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -2246,12 +4145,17 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 9112429593930822534, guid: ea2a29fe4129d9d49a2741d158f8b2ee, type: 3}
   m_PrefabInstance: {fileID: 7797808488495152021}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 4271475272137460465}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3b954f9d444763348a1860fe2acf06d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &4271475272137460465 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6300594846475825508, guid: ea2a29fe4129d9d49a2741d158f8b2ee, type: 3}
+  m_PrefabInstance: {fileID: 7797808488495152021}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8355722705653408873
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2278,7 +4182,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8648323861855928573, guid: f4949cae5383449418bdf434eed84970, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8648323861855928573, guid: f4949cae5383449418bdf434eed84970, type: 3}
       propertyPath: m_AnchorMin.x
@@ -2286,7 +4190,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8648323861855928573, guid: f4949cae5383449418bdf434eed84970, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8648323861855928573, guid: f4949cae5383449418bdf434eed84970, type: 3}
       propertyPath: m_SizeDelta.x
@@ -2295,6 +4199,18 @@ PrefabInstance:
     - target: {fileID: 8648323861855928573, guid: f4949cae5383449418bdf434eed84970, type: 3}
       propertyPath: m_SizeDelta.y
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8648323861855928573, guid: f4949cae5383449418bdf434eed84970, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8648323861855928573, guid: f4949cae5383449418bdf434eed84970, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8648323861855928573, guid: f4949cae5383449418bdf434eed84970, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8648323861855928573, guid: f4949cae5383449418bdf434eed84970, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2326,11 +4242,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8648323861855928573, guid: f4949cae5383449418bdf434eed84970, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 191.9647
       objectReference: {fileID: 0}
     - target: {fileID: 8648323861855928573, guid: f4949cae5383449418bdf434eed84970, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -328
       objectReference: {fileID: 0}
     - target: {fileID: 8648323861855928573, guid: f4949cae5383449418bdf434eed84970, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2354,12 +4270,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8648323861855928573, guid: f4949cae5383449418bdf434eed84970, type: 3}
   m_PrefabInstance: {fileID: 8355722705653408873}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2271490998985815015 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7813895439394592654, guid: f4949cae5383449418bdf434eed84970, type: 3}
+  m_PrefabInstance: {fileID: 8355722705653408873}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &6791175817146634109 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3299563937831103252, guid: f4949cae5383449418bdf434eed84970, type: 3}
   m_PrefabInstance: {fileID: 8355722705653408873}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 2271490998985815015}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3d953359f37b7a142a39c827f190ed38, type: 3}
@@ -2391,7 +4312,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8648323861855928573, guid: 82b59a7c9117e024fb838a83154a72e2, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8648323861855928573, guid: 82b59a7c9117e024fb838a83154a72e2, type: 3}
       propertyPath: m_AnchorMin.x
@@ -2399,7 +4320,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8648323861855928573, guid: 82b59a7c9117e024fb838a83154a72e2, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8648323861855928573, guid: 82b59a7c9117e024fb838a83154a72e2, type: 3}
       propertyPath: m_SizeDelta.x
@@ -2408,6 +4329,18 @@ PrefabInstance:
     - target: {fileID: 8648323861855928573, guid: 82b59a7c9117e024fb838a83154a72e2, type: 3}
       propertyPath: m_SizeDelta.y
       value: 196.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8648323861855928573, guid: 82b59a7c9117e024fb838a83154a72e2, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8648323861855928573, guid: 82b59a7c9117e024fb838a83154a72e2, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8648323861855928573, guid: 82b59a7c9117e024fb838a83154a72e2, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8648323861855928573, guid: 82b59a7c9117e024fb838a83154a72e2, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2439,11 +4372,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8648323861855928573, guid: 82b59a7c9117e024fb838a83154a72e2, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 333.85
       objectReference: {fileID: 0}
     - target: {fileID: 8648323861855928573, guid: 82b59a7c9117e024fb838a83154a72e2, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -867.3499
       objectReference: {fileID: 0}
     - target: {fileID: 8648323861855928573, guid: 82b59a7c9117e024fb838a83154a72e2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2472,12 +4405,17 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7180826930696074363, guid: 82b59a7c9117e024fb838a83154a72e2, type: 3}
   m_PrefabInstance: {fileID: 8472843335694784902}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1865931292969225736}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f99f15c245012cc428d438e7a2b2c5e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1865931292969225736 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7813895439394592654, guid: 82b59a7c9117e024fb838a83154a72e2, type: 3}
+  m_PrefabInstance: {fileID: 8472843335694784902}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &9151728151975055428
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2504,7 +4442,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8648323861855928573, guid: 82b59a7c9117e024fb838a83154a72e2, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8648323861855928573, guid: 82b59a7c9117e024fb838a83154a72e2, type: 3}
       propertyPath: m_AnchorMin.x
@@ -2512,7 +4450,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8648323861855928573, guid: 82b59a7c9117e024fb838a83154a72e2, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8648323861855928573, guid: 82b59a7c9117e024fb838a83154a72e2, type: 3}
       propertyPath: m_SizeDelta.x
@@ -2521,6 +4459,18 @@ PrefabInstance:
     - target: {fileID: 8648323861855928573, guid: 82b59a7c9117e024fb838a83154a72e2, type: 3}
       propertyPath: m_SizeDelta.y
       value: 196.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8648323861855928573, guid: 82b59a7c9117e024fb838a83154a72e2, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8648323861855928573, guid: 82b59a7c9117e024fb838a83154a72e2, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8648323861855928573, guid: 82b59a7c9117e024fb838a83154a72e2, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8648323861855928573, guid: 82b59a7c9117e024fb838a83154a72e2, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2552,11 +4502,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8648323861855928573, guid: 82b59a7c9117e024fb838a83154a72e2, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 333.85
       objectReference: {fileID: 0}
     - target: {fileID: 8648323861855928573, guid: 82b59a7c9117e024fb838a83154a72e2, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -405.94998
       objectReference: {fileID: 0}
     - target: {fileID: 8648323861855928573, guid: 82b59a7c9117e024fb838a83154a72e2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2580,12 +4530,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8648323861855928573, guid: 82b59a7c9117e024fb838a83154a72e2, type: 3}
   m_PrefabInstance: {fileID: 9151728151975055428}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1401165686683895754 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7813895439394592654, guid: 82b59a7c9117e024fb838a83154a72e2, type: 3}
+  m_PrefabInstance: {fileID: 9151728151975055428}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &2064359779049464895 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7180826930696074363, guid: 82b59a7c9117e024fb838a83154a72e2, type: 3}
   m_PrefabInstance: {fileID: 9151728151975055428}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1401165686683895754}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f99f15c245012cc428d438e7a2b2c5e1, type: 3}
