@@ -3,15 +3,19 @@ using UnityEngine;
 using UI.Board.BoardMusicCardPanel.BoardMusicCard;
 using TMPro;
 using Coffee.UIEffects;
+using R3;
+using DefaultNamespace.Elements;
 
 namespace UI.Board.BoardMusicCardPanel.BoardCardDeck
 {
     public class BoardCardDeckView : MonoBehaviour
     {
+        public Subject<Unit> OnClick = new Subject<Unit>();
         [SerializeField] private BoardCardDeckAnimationController animationController;
         [SerializeField] private TextMeshProUGUI levelText;
         [SerializeField] private UIEffect cardLevelEffect;
         [SerializeField] private Color[] cardLevelColors = new Color[3];
+        [SerializeField] private ButtonElement buttonElement;
 
         public async UniTask PlayPutCardOnBoardAnimationWithHide(int position, int delay = 0)
         {
@@ -40,6 +44,11 @@ namespace UI.Board.BoardMusicCardPanel.BoardCardDeck
                     levelText.text = "III";
                     break;
             }
+        }
+
+        public void Awake()
+        {
+            buttonElement.OnClick.Subscribe(_ => OnClick.OnNext(Unit.Default)).AddTo(this);
         }
     }
 }

@@ -78,5 +78,15 @@ namespace Services
             var numberOfInspirationTokens = playerResources.GetCount(ResourceType.Inspiration);
             return needToAdd <= numberOfInspirationTokens;
         }
+
+        public bool GetRandomCardFromDeck(int cardLevel, out string cardId)
+        {
+            return boardModel.GetRandomCardFromDeck(cardLevel, out cardId);
+        }
+
+        public bool IsCardDeckEmpty(int cardLevel)
+        {
+            return boardModel.IsCardDeckEmpty(cardLevel);
+        }
     }
 }

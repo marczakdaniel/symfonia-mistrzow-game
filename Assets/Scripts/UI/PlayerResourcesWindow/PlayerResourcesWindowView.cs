@@ -47,7 +47,14 @@ namespace UI.PlayerResourcesWindow
             await closeAnimation.PlayAsync();
         }
 
-        public void Initialize(string playerName, int numberOfPoints, Dictionary<ResourceType, int> currentPlayerTokens, Dictionary<ResourceType, int> currentPlayerCards, List<MusicCardData> reservedMusicCards)
+        public void Initialize(
+            bool isCurrentPlayer, 
+            string playerName, 
+            int numberOfPoints, 
+            Dictionary<ResourceType, int> currentPlayerTokens, 
+            Dictionary<ResourceType, int> currentPlayerCards, 
+            List<MusicCardData> reservedMusicCards, 
+                List<string> reservedMusicCardsThatCanBePurchased)
         {
             playerNameText.text = playerName;
             numberOfPointsText.text = numberOfPoints.ToString();
@@ -63,6 +70,8 @@ namespace UI.PlayerResourcesWindow
                 {
                     detailsMusicCardView[i].gameObject.SetActive(true);
                     detailsMusicCardView[i].Setup(reservedMusicCards[i]);
+                    detailsMusicCardView[i].SetCardFront(isCurrentPlayer);
+                    detailsMusicCardView[i].SetCanBePurchased(isCurrentPlayer &&reservedMusicCardsThatCanBePurchased.Contains(reservedMusicCards[i].Id));
                 }
                 else
                 {

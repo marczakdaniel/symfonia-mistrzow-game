@@ -150,7 +150,7 @@ namespace Command
 
         public OpenPlayerResourcesWindowCommand CreateOpenPlayerResourcesWindowCommand(string playerId)
         {
-            return new OpenPlayerResourcesWindowCommand(playerId, turnService, playerService);
+            return new OpenPlayerResourcesWindowCommand(playerId, turnService, playerService, boardService);
         }
 
         public ClosePlayerResourcesWindowCommand CreateClosePlayerResourcesWindowCommand()
@@ -221,6 +221,21 @@ namespace Command
         public AddPlayerCommand CreateAddPlayerCommand(string playerName)
         {
             return new AddPlayerCommand(playerName, configService);
+        }
+
+        public OpenReserveDeckCardWindowCommand CreateOpenReserveDeckCardWindowCommand(int cardLevel)
+        {
+            return new OpenReserveDeckCardWindowCommand(cardLevel, boardService);
+        }
+        
+        public CloseReserveDeckCardWindowCommand CreateCloseReserveDeckCardWindowCommand()
+        {
+            return new CloseReserveDeckCardWindowCommand();
+        }
+
+        public ReserveDeckCardCommand CreateReserveDeckCardCommand(int cardLevel)
+        {
+            return new ReserveDeckCardCommand(cardLevel, turnService, boardService);
         }
     }
 }

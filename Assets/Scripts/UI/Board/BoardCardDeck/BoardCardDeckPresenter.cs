@@ -2,9 +2,8 @@ using System;
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using Events;
-using Unity.VisualScripting;
-using Unity.VisualScripting.Dependencies.NCalc;
-
+using Command;
+using R3;
 namespace UI.Board.BoardMusicCardPanel.BoardCardDeck
 {
     public class BoardCardDeckPresenter : 
@@ -12,12 +11,13 @@ namespace UI.Board.BoardMusicCardPanel.BoardCardDeck
     {
         private readonly BoardCardDeckView view;
         private readonly BoardCardDeckViewModel viewModel;
-
-        public BoardCardDeckPresenter(BoardCardDeckView view, int level)
+        private readonly CommandFactory commandFactory;
+        private IDisposable disposable;
+        public BoardCardDeckPresenter(BoardCardDeckView view, int level, CommandFactory commandFactory)
         {
             this.view = view;
             this.viewModel = new BoardCardDeckViewModel(level);
-
+            this.commandFactory = commandFactory;
             view.SetLevel(level);
 
             InitializeMVP();
@@ -26,22 +26,31 @@ namespace UI.Board.BoardMusicCardPanel.BoardCardDeck
 
         private void InitializeMVP()
         {
-            ConnectModel();
-            ConnectView();
+            var d = Disposable.CreateBuilder();
+
+            ConnectModel(d);
+            ConnectView(d);
+
+            disposable = d.Build();
         }
         
-        private void ConnectModel()
+        private void ConnectModel(DisposableBuilder d)
         {
-
         }
         
-        private void ConnectView()
+        private void ConnectView(DisposableBuilder d)
         {
+            view.OnClick.Subscribe(_ => HandleClick().ToObservable()).AddTo(ref d);
+        }
 
+        private async UniTask HandleClick()
+        {
+            var command = commandFactory.CreateOpenReserveDeckCardWindowCommand(viewModel.Level);
+            await CommandService.Instance.ExecuteCommandAsync(command);
         }
 
         private void SubscribeToEvents()
-        {
+        {   
             AsyncEventBus.Instance.Subscribe<PutCardOnBoardEvent>(this, EventPriority.High);
         }
 

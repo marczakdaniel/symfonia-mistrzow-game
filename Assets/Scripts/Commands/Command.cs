@@ -398,13 +398,6 @@ namespace Command
                 return false;
             }
 
-            if (!turnService.CanConfirmReserveMusicCard())
-            {
-                var description = "Nie możesz zarezerwować tego karty!";
-                await AsyncEventBus.Instance.PublishAndWaitAsync(new InfoWindowOpenedEvent(description));
-                return false;
-            }
-
             var slot = boardService.GetSlotWithCard(cardId);
 
             if (slot == null)
@@ -586,6 +579,47 @@ namespace Command
             configService.AddPlayer(playerName);
             var playerNames = configService.GetPlayerNames();
             await AsyncEventBus.Instance.PublishAndWaitAsync(new PlayerAddedEvent(playerNames));
+            return true;
+        }
+    }
+
+    public class ReserveDeckCardCommand : BaseUICommand
+    {
+        public override string CommandType => "ReserveDeckCard";
+
+        private readonly TurnService turnService;
+        private readonly BoardService boardService;
+        private readonly int cardLevel;
+        public ReserveDeckCardCommand(int cardLevel, TurnService turnService, BoardService boardService) : base()
+        {
+            this.turnService = turnService;
+            this.boardService = boardService;
+            this.cardLevel = cardLevel;
+        }
+
+        public override async UniTask<bool> Validate()
+        {
+            return true;
+        }
+
+        public override async UniTask<bool> Execute()
+        {
+            if (turnService.HasActionBeenTaken())
+            {
+                await AsyncEventBus.Instance.PublishAndWaitAsync(new InfoWindowOpenedEvent("Wykonałeś już akcję w tej turze!"));
+                return false;
+            }
+
+            if (!turnService.CanReserveCard())
+            {
+                await AsyncEventBus.Instance.PublishAndWaitAsync(new InfoWindowOpenedEvent("Nie możesz zarezerwować karty z talii!"));
+                return false;
+            }
+
+            boardService.GetRandomCardFromDeck(cardLevel, out var cardId);
+
+            turnService.ReserveDeckCard(cardId);
+            await AsyncEventBus.Instance.PublishAndWaitAsync(new DeckCardReservedEvent(cardId));
             return true;
         }
     }

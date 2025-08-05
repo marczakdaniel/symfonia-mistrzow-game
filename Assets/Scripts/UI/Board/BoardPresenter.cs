@@ -74,9 +74,9 @@ namespace UI.Board
                 level3CardPresenters[i] = new BoardMusicCardPresenter(view.Level3Cards[i], 3, i, commandFactory);
             }
 
-            level1CardDeckPresenter = new BoardCardDeckPresenter(view.Level1CardDeck, 1);
-            level2CardDeckPresenter = new BoardCardDeckPresenter(view.Level2CardDeck, 2);
-            level3CardDeckPresenter = new BoardCardDeckPresenter(view.Level3CardDeck, 3);
+            level1CardDeckPresenter = new BoardCardDeckPresenter(view.Level1CardDeck, 1, commandFactory);
+            level2CardDeckPresenter = new BoardCardDeckPresenter(view.Level2CardDeck, 2, commandFactory);
+            level3CardDeckPresenter = new BoardCardDeckPresenter(view.Level3CardDeck, 3, commandFactory);
         }
 
         private void InitializeMVP()

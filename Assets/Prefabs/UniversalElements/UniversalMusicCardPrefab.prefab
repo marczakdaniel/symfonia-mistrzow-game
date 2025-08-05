@@ -195,6 +195,8 @@ MonoBehaviour:
   - {r: 0.5568628, g: 0.5568628, b: 0.5568628, a: 1}
   - {r: 1, g: 1, b: 1, a: 1}
   - {r: 1.3867924, g: 1.3867924, b: 1.3867924, a: 1}
+  cardReverse: {fileID: 3580311385808300587}
+  cardFront: {fileID: 1732298385187056497}
 --- !u!1 &1061791591710198066
 GameObject:
   m_ObjectHideFlags: 0

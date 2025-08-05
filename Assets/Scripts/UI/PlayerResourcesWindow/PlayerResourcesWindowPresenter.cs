@@ -16,12 +16,14 @@ namespace UI.PlayerResourcesWindow
     {
         private readonly PlayerResourcesWindowView view;
         private readonly CommandFactory commandFactory;
+        private readonly PlayerResourcesWindowViewModel viewModel;
         private IDisposable disposable;
         
         public PlayerResourcesWindowPresenter(PlayerResourcesWindowView view, CommandFactory commandFactory)
         {
             this.view = view;
             this.commandFactory = commandFactory;
+            this.viewModel = new PlayerResourcesWindowViewModel();
 
             InitializeMVP();
             SubscribeToEvents();
@@ -50,7 +52,11 @@ namespace UI.PlayerResourcesWindow
 
         private async UniTask HandleCardClicked(string cardId, int cardIndex)
         {
-            UnityEngine.Debug.Log($"Card clicked: {cardId}, card index: {cardIndex}");
+            if (!viewModel.IsCurrentPlayer)
+            {
+                return;
+            }
+
             var command = commandFactory.CreateOpenCardPurchaseWindowCommandFromReserved(cardId, cardIndex);
             await CommandService.Instance.ExecuteCommandAsync(command);
         }
@@ -64,13 +70,21 @@ namespace UI.PlayerResourcesWindow
             AsyncEventBus.Instance.Subscribe<CardPurchaseWindowClosedFromReservedEvent>(this, EventPriority.Low);
         }
 
-        public async UniTask HandleAsync(PlayerResourcesWindowOpenedEvent playerResourcesWindowOpenedEvent)
+        public async UniTask HandleAsync(PlayerResourcesWindowOpenedEvent openEvent)
         {
-            view.Initialize(playerResourcesWindowOpenedEvent.PlayerName, playerResourcesWindowOpenedEvent.NumberOfPoints, playerResourcesWindowOpenedEvent.CurrentPlayerTokens, playerResourcesWindowOpenedEvent.CurrentPlayerCards, playerResourcesWindowOpenedEvent.ReservedMusicCards);
+            viewModel.SetIsCurrentPlayer(openEvent.IsCurrentPlayer);
+            view.Initialize(
+                openEvent.IsCurrentPlayer, 
+                openEvent.PlayerName, 
+                openEvent.NumberOfPoints, 
+                openEvent.CurrentPlayerTokens, 
+                openEvent.CurrentPlayerCards, 
+                openEvent.ReservedMusicCards, 
+                openEvent.ReservedMusicCardsThatCanBePurchased);
             await view.PlayOpenAnimation();
         }
 
-        public async UniTask HandleAsync(PlayerResourcesWindowClosedEvent playerResourcesWindowClosedEvent)
+        public async UniTask HandleAsync(PlayerResourcesWindowClosedEvent closeEvent)
         {
             await view.PlayCloseAnimation();
         }

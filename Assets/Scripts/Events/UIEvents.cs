@@ -348,6 +348,7 @@ namespace Events
         public Dictionary<ResourceType, int> CurrentPlayerTokens { get; private set; }
         public Dictionary<ResourceType, int> CurrentPlayerCards { get; private set; }
         public List<MusicCardData> ReservedMusicCards { get; private set; }
+        public List<string> ReservedMusicCardsThatCanBePurchased { get; private set; }
 
         public PlayerResourcesWindowOpenedEvent(
             bool isCurrentPlayer, 
@@ -355,7 +356,8 @@ namespace Events
             int numberOfPoints,
             Dictionary<ResourceType, int> currentPlayerTokens, 
             Dictionary<ResourceType, int> currentPlayerCards, 
-            List<MusicCardData> reservedMusicCards)
+            List<MusicCardData> reservedMusicCards,
+            List<string> reservedMusicCardsThatCanBePurchased)
         {
             IsCurrentPlayer = isCurrentPlayer;
             PlayerName = playerName;
@@ -363,6 +365,7 @@ namespace Events
             CurrentPlayerTokens = currentPlayerTokens;
             CurrentPlayerCards = currentPlayerCards;
             ReservedMusicCards = reservedMusicCards;
+            ReservedMusicCardsThatCanBePurchased = reservedMusicCardsThatCanBePurchased;
         }
     }
 
@@ -473,6 +476,34 @@ namespace Events
         public PlayerAddedEvent(List<string> playerNames)
         {
             PlayerNames = playerNames;
+        }
+    }
+
+    // Reserve Deck Card Window Events
+    public class ReserveDeckCardWindowOpenedEvent : GameEvent
+    {
+        public int CardLevel { get; private set; }
+
+        public ReserveDeckCardWindowOpenedEvent(int cardLevel)
+        {
+            CardLevel = cardLevel;
+        }
+    }
+
+    public class ReserveDeckCardWindowClosedEvent : GameEvent
+    {
+        public ReserveDeckCardWindowClosedEvent()
+        {
+        }
+    }
+
+    public class DeckCardReservedEvent : GameEvent
+    {
+        public string CardId { get; private set; }
+
+        public DeckCardReservedEvent(string cardId)
+        {
+            CardId = cardId;
         }
     }
 }

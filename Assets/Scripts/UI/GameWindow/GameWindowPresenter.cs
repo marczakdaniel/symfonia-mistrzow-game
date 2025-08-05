@@ -2,17 +2,13 @@ using System;
 using UI.Board;
 using Command;
 using UI.MusicCardDetailsPanel;
-using Cysharp.Threading.Tasks;
-using UnityEngine;
-using Events;
-using Models;
 using UI.SelectTokenWindow;
 using UI.StartTurnWindow;
 using UI.ReturnTokenWindow;
 using UI.CardPurchaseWindow;
 using UI.PlayerResourcesWindow;
 using Assets.Scripts.UI.ConcertCardsWindow;
-using UI.InfoWindow;
+using UI.ReserveDeckCardWindow;
 
 namespace UI.GameWindow
 {
@@ -29,6 +25,7 @@ namespace UI.GameWindow
         private CardPurchaseWindowPresenter cardPurchaseWindowPresenter;
         private PlayerResourcesWindowPresenter playerResourcesWindowPresenter;
         private ConcertCardsWindowPresenter concertCardsWindowPresenter;
+        private ReserveDeckCardWindowPresenter reserveDeckCardWindowPresenter;
         private CommandFactory commandFactory;
         public GameWindowPresenter(GameWindowView view, CommandFactory commandFactory)
         {
@@ -50,6 +47,7 @@ namespace UI.GameWindow
             cardPurchaseWindowPresenter = new CardPurchaseWindowPresenter(view.CardPurchaseWindowView, commandFactory);
             playerResourcesWindowPresenter = new PlayerResourcesWindowPresenter(view.PlayerResourcesWindowView, commandFactory);
             concertCardsWindowPresenter = new ConcertCardsWindowPresenter(view.ConcertCardsWindowView, commandFactory);
+            reserveDeckCardWindowPresenter = new ReserveDeckCardWindowPresenter(view.ReserveDeckCardWindowView, commandFactory);
         }
 
         private void InitializeMVP()

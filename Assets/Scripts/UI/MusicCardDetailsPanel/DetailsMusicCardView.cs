@@ -19,6 +19,8 @@ namespace UI.MusicCardDetailsPanel {
         [SerializeField] private ButtonElement button;
         [SerializeField] private UIEffect uiEffect;
         [SerializeField] private Color[] uiEffectColors = new Color[3];
+        [SerializeField] private GameObject cardReverse;
+        [SerializeField] private GameObject cardFront;
 
         private string cardId;
 
@@ -48,9 +50,20 @@ namespace UI.MusicCardDetailsPanel {
             pointsText.text = card.points.ToString();
             resourceProvidedImage.sprite = card.resourceProvided.GetSingleResourceTypeImages().StackImage1;
 
-            uiEffect.color = uiEffectColors[card.level - 1];
+            SetCardLevel(card.level);
             SetCanBePurchased(false);
         }
+
+        public void SetCardFront(bool isFront)
+        {
+            cardReverse.SetActive(!isFront);
+            cardFront.SetActive(isFront);
+        }
+
+        public void SetCardLevel(int cardLevel)
+        {
+            uiEffect.color = uiEffectColors[cardLevel - 1];
+        }   
 
         public void SetCanBePurchased(bool canBePurchased)
         {

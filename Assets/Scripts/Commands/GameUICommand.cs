@@ -219,11 +219,13 @@ namespace Command
         private readonly string playerId;
         private readonly TurnService turnService;
         private readonly PlayerService playerService;
-        public OpenPlayerResourcesWindowCommand(string playerId, TurnService turnService, PlayerService playerService) : base()
+        private readonly BoardService boardService;
+        public OpenPlayerResourcesWindowCommand(string playerId, TurnService turnService, PlayerService playerService, BoardService boardService) : base()
         {
             this.playerId = playerId;
             this.turnService = turnService;
             this.playerService = playerService;
+            this.boardService = boardService;
         }
 
         public override async UniTask<bool> Validate()
@@ -241,7 +243,10 @@ namespace Command
             var currentPlayerCards = player.GetPurchasedAllResourceCollection().GetAllResources();
             var reservedMusicCards = player.ReservedCards.GetAllCards().ToList();
 
-            var openEvent = new PlayerResourcesWindowOpenedEvent(isCurrentPlayer, playerName, numberOfPoints, currentPlayerTokens, currentPlayerCards, reservedMusicCards);
+            var allResource = playerService.GetPlayerResourcesFromCardAndTokens(playerId);
+            var reservedMusicCardsThatCanBePurchased = player.ReservedCards.GetAllCards().Where(card => boardService.CanBePurchased(card, allResource)).Select(card => card.Id).ToList();
+
+            var openEvent = new PlayerResourcesWindowOpenedEvent(isCurrentPlayer, playerName, numberOfPoints, currentPlayerTokens, currentPlayerCards, reservedMusicCards, reservedMusicCardsThatCanBePurchased);
             await AsyncEventBus.Instance.PublishAndWaitAsync(openEvent);
             return true;
         }
@@ -490,6 +495,55 @@ namespace Command
         public override async UniTask<bool> Execute()
         {
             await AsyncEventBus.Instance.PublishAndWaitAsync(new CreatePlayerWindowClosedEvent());
+            return true;
+        }
+    }
+
+    public class OpenReserveDeckCardWindowCommand : BaseUICommand
+    {
+        public override string CommandType => "OpenReserveDeckCardWindow";
+
+        private readonly int cardLevel;
+        private readonly BoardService boardService;
+
+        public OpenReserveDeckCardWindowCommand(int cardLevel, BoardService boardService) : base()
+        {
+            this.cardLevel = cardLevel;
+            this.boardService = boardService;
+        }
+
+        public override async UniTask<bool> Validate()
+        {
+            return true;
+        }
+
+        public override async UniTask<bool> Execute()
+        {
+            var isEmpty = boardService.IsCardDeckEmpty(cardLevel);
+            if (isEmpty)
+            {
+                await AsyncEventBus.Instance.PublishAndWaitAsync(new InfoWindowOpenedEvent("Nie ma już kart w tej karcie!"));
+                return false;
+            }
+
+            await AsyncEventBus.Instance.PublishAndWaitAsync(new ReserveDeckCardWindowOpenedEvent(cardLevel));
+
+            return true;
+        }
+    }
+
+    public class CloseReserveDeckCardWindowCommand : BaseUICommand
+    {
+        public override string CommandType => "CloseReserveDeckCardWindow";
+
+        public override async UniTask<bool> Validate()
+        {
+            return true;
+        }
+
+        public override async UniTask<bool> Execute()
+        {
+            await AsyncEventBus.Instance.PublishAndWaitAsync(new ReserveDeckCardWindowClosedEvent());
             return true;
         }
     }

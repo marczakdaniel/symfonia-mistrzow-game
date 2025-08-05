@@ -16,7 +16,6 @@ namespace UI.SelectTokenWindow.SelectBoardTokenPanel
         private readonly SelectBoardTokenPanelView view;
         private readonly SelectBoardTokenPanelViewModel viewModel;
 
-        private readonly IGameModelReader gameModelReader;
         private readonly CommandFactory commandFactory;
         private IDisposable disposables;
 

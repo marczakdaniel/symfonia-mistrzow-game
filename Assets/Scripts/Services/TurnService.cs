@@ -179,11 +179,6 @@ namespace Services
 
         // Reserve Card Actions
 
-        public bool CanConfirmReserveMusicCard()
-        {
-            return turnModel.State == TurnState.WaitingForAction;
-        }
-
         public bool CanReserveCard()
         {
             var currentPlayer = gameModel.GetPlayer(turnModel.CurrentPlayerId);
@@ -381,6 +376,23 @@ namespace Services
         public List<ConcertCardModel> GetConcertCards()
         {
             return gameModel.ConcertCards;
+        }
+
+        public bool ReserveDeckCard(string cardId)
+        {
+            var board = gameModel.Board;
+
+            if (!board.RemoveCardFromDeck(cardId))
+            {
+                Debug.LogError($"[TurnService] Failed to remove card from deck: {cardId}");
+                return false;
+            }
+
+            var currentPlayer = gameModel.GetPlayer(turnModel.CurrentPlayerId);
+            currentPlayer.AddCardToReserved(cardId);
+            turnModel.SetState(TurnState.ReadyToEndTurn);
+
+            return true;
         }
     }
 }

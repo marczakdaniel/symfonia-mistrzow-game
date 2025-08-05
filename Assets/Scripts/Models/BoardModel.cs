@@ -7,17 +7,7 @@ using UnityEngine;
 
 namespace Models
 {
-
-    public interface IBoardSlotReader
-    {
-        int Position { get; }
-        int Level { get; }
-        string CardId { get; }
-        bool IsEmpty { get; }
-        bool IsOccupied { get; }
-        IMusicCardDataReader GetMusicCardData();
-    }
-    public class BoardSlot : IBoardSlotReader
+    public class BoardSlot
     {
         public int Position { get; private set; }
         public int Level { get; private set; }
@@ -73,11 +63,6 @@ namespace Models
         public override string ToString()
         {
             return $"BoardSlot(Position: {Position}, Level: {Level}, CardId: {CardId}, IsEmpty: {IsEmpty})";
-        }
-
-        public IMusicCardDataReader GetMusicCardData()
-        {
-            return IsEmpty ? null : MusicCardRepository.Instance.GetCard(CardId);
         }
     }
 
@@ -179,6 +164,35 @@ namespace Models
 
             Deck.RemoveCard(nextCardId);
             return slot.PlaceCard(nextCardId);
+        }
+
+        public bool GetRandomCardFromDeck(out string cardId)
+        {
+            if (Deck.IsEmpty)
+            {
+                cardId = null;
+                return false;
+            }
+
+            cardId = Deck.GetRandomCardId();
+            return !string.IsNullOrEmpty(cardId);
+        }
+
+        public bool RemoveCardFromDeck(string cardId)
+        {
+            if (Deck.IsEmpty)
+            {
+                Debug.LogWarning($"[BoardLevel] Cannot remove card {cardId} from deck because it is empty.");
+                return false;
+            }
+
+            if (!Deck.Contains(cardId))
+            {
+                Debug.LogWarning($"[BoardLevel] Cannot remove card {cardId} from deck because it is not in the deck.");
+                return false;
+            }
+
+            return Deck.RemoveCard(cardId);
         }
 
         public void RefillAllSlots()
@@ -430,6 +444,36 @@ namespace Models
             if (slot == null) return;
 
             boardLevel.RefillSlot(slot);
+        }
+
+        public bool GetRandomCardFromDeck(int cardLevel, out string cardId)
+        {
+            var boardLevel = GetLevel(cardLevel);
+            if (boardLevel == null)
+            {
+                cardId = null;
+                return false;
+            }
+
+            return boardLevel.GetRandomCardFromDeck(out cardId);
+        }
+
+        public bool RemoveCardFromDeck(string cardId)
+        {
+            foreach (var level in Levels)
+            {
+                if (level.Deck.Contains(cardId))
+                {
+                    return level.RemoveCardFromDeck(cardId);
+                }
+            }
+            return false;
+        }
+
+        public bool IsCardDeckEmpty(int cardLevel)
+        {
+            var boardLevel = GetLevel(cardLevel);
+            return boardLevel.Deck.IsEmpty;
         }
     }
 }
