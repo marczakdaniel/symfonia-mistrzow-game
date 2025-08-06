@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88bd37cee0106524e85c5f263edd4d25, type: 3}
+  m_Name: TestConcertDeck
+  m_EditorClassIdentifier: 
+  concertCards:
+  - {fileID: 11400000, guid: 479bbdc949b2cf7428afa96169f6cfbe, type: 2}
+  - {fileID: 11400000, guid: 9805a008f98d6bc44bdcbd68fbadbd39, type: 2}
+  - {fileID: 11400000, guid: 342f235299b0e3446b33dbcc093d6a78, type: 2}
+  - {fileID: 11400000, guid: 01c92bcad0c28a049bdad143623faedd, type: 2}
+  - {fileID: 11400000, guid: 54d76582351451f4c84973b542c21522, type: 2}

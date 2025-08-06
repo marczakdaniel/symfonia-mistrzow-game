@@ -58,7 +58,7 @@ namespace Assets.Scripts.UI.Elements
             switch (cardState)
             {
                 case ConcertCardState.Available:
-                    imageEffect.toneIntensity = 0;
+                    imageEffect.toneIntensity = 1f;
                     break;
                 case ConcertCardState.ReadyToClaim:
                 case ConcertCardState.Claimed:

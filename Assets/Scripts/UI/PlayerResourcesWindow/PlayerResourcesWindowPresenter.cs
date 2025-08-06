@@ -74,7 +74,8 @@ namespace UI.PlayerResourcesWindow
         {
             viewModel.SetIsCurrentPlayer(openEvent.IsCurrentPlayer);
             view.Initialize(
-                openEvent.IsCurrentPlayer, 
+                openEvent.IsCurrentPlayer,
+                openEvent.CanPlayerExecuteAction,
                 openEvent.PlayerName, 
                 openEvent.NumberOfPoints, 
                 openEvent.CurrentPlayerTokens, 

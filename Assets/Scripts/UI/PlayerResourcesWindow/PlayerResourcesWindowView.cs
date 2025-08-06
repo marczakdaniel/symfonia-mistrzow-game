@@ -49,6 +49,7 @@ namespace UI.PlayerResourcesWindow
 
         public void Initialize(
             bool isCurrentPlayer, 
+            bool canPlayerExecuteAction,
             string playerName, 
             int numberOfPoints, 
             Dictionary<ResourceType, int> currentPlayerTokens, 
@@ -71,12 +72,20 @@ namespace UI.PlayerResourcesWindow
                     detailsMusicCardView[i].gameObject.SetActive(true);
                     detailsMusicCardView[i].Setup(reservedMusicCards[i]);
                     detailsMusicCardView[i].SetCardFront(isCurrentPlayer);
-                    detailsMusicCardView[i].SetCanBePurchased(isCurrentPlayer &&reservedMusicCardsThatCanBePurchased.Contains(reservedMusicCards[i].Id));
+                    detailsMusicCardView[i].SetCanBePurchased(isCurrentPlayer && canPlayerExecuteAction && reservedMusicCardsThatCanBePurchased.Contains(reservedMusicCards[i].Id));
                 }
                 else
                 {
                     detailsMusicCardView[i].gameObject.SetActive(false);
                 }
+            }
+        }
+
+        public void SetCanBePurchased(bool canBePurchased)
+        {
+            for (int i = 0; i < detailsMusicCardView.Length; i++)
+            {
+                detailsMusicCardView[i].SetCanBePurchased(canBePurchased);
             }
         }
 

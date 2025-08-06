@@ -343,6 +343,7 @@ namespace Events
     public class PlayerResourcesWindowOpenedEvent : GameEvent
     {
         public bool IsCurrentPlayer { get; private set; }
+        public bool CanPlayerExecuteAction { get; private set; }
         public string PlayerName { get; private set; }
         public int NumberOfPoints { get; private set; }
         public Dictionary<ResourceType, int> CurrentPlayerTokens { get; private set; }
@@ -352,6 +353,7 @@ namespace Events
 
         public PlayerResourcesWindowOpenedEvent(
             bool isCurrentPlayer, 
+            bool canPlayerExecuteAction,
             string playerName,
             int numberOfPoints,
             Dictionary<ResourceType, int> currentPlayerTokens, 
@@ -360,6 +362,7 @@ namespace Events
             List<string> reservedMusicCardsThatCanBePurchased)
         {
             IsCurrentPlayer = isCurrentPlayer;
+            CanPlayerExecuteAction = canPlayerExecuteAction;
             PlayerName = playerName;
             NumberOfPoints = numberOfPoints;
             CurrentPlayerTokens = currentPlayerTokens;

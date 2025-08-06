@@ -245,8 +245,8 @@ namespace Command
 
             var allResource = playerService.GetPlayerResourcesFromCardAndTokens(playerId);
             var reservedMusicCardsThatCanBePurchased = player.ReservedCards.GetAllCards().Where(card => boardService.CanBePurchased(card, allResource)).Select(card => card.Id).ToList();
-
-            var openEvent = new PlayerResourcesWindowOpenedEvent(isCurrentPlayer, playerName, numberOfPoints, currentPlayerTokens, currentPlayerCards, reservedMusicCards, reservedMusicCardsThatCanBePurchased);
+            var canPlayerExecuteAction = !turnService.HasActionBeenTaken();
+            var openEvent = new PlayerResourcesWindowOpenedEvent(isCurrentPlayer, canPlayerExecuteAction, playerName, numberOfPoints, currentPlayerTokens, currentPlayerCards, reservedMusicCards, reservedMusicCardsThatCanBePurchased);
             await AsyncEventBus.Instance.PublishAndWaitAsync(openEvent);
             return true;
         }
