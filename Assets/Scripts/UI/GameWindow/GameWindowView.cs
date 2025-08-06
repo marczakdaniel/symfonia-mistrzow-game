@@ -1,6 +1,7 @@
 using Assets.Scripts.UI.ConcertCardsWindow;
 using UI.Board;
 using UI.CardPurchaseWindow;
+using UI.DeckCardInfoWindow;
 using UI.InfoWindow;
 using UI.MusicCardDetailsPanel;
 using UI.PlayerResourcesWindow;
@@ -23,6 +24,7 @@ namespace UI.GameWindow
         public PlayerResourcesWindowView PlayerResourcesWindowView => playerResourcesWindowView;
         public ConcertCardsWindowView ConcertCardsWindowView => concertCardsWindowView;
         public ReserveDeckCardWindowView ReserveDeckCardWindowView => reserveDeckCardWindowView;
+        public DeckCardInfoWindowView DeckCardInfoWindowView => deckCardInfoWindowView;
         [SerializeField] private BoardView boardView;
         [SerializeField] private MusicCardDetailsPanelView musicCardDetailsPanelView;
         [SerializeField] private SelectTokenWindowView selectTokenWindowView;
@@ -32,5 +34,6 @@ namespace UI.GameWindow
         [SerializeField] private PlayerResourcesWindowView playerResourcesWindowView;
         [SerializeField] private ConcertCardsWindowView concertCardsWindowView;
         [SerializeField] private ReserveDeckCardWindowView reserveDeckCardWindowView;
+        [SerializeField] private DeckCardInfoWindowView deckCardInfoWindowView;
     }
 }

@@ -499,11 +499,32 @@ namespace Events
 
     public class DeckCardReservedEvent : GameEvent
     {
-        public string CardId { get; private set; }
+        public MusicCardData MusicCardData { get; private set; }
 
-        public DeckCardReservedEvent(string cardId)
+        public DeckCardReservedEvent(MusicCardData musicCardData)
         {
-            CardId = cardId;
+            MusicCardData = musicCardData;
+        }
+    }
+
+    // Deck Card Info Window Events
+    public class DeckCardInfoWindowOpenedEvent : GameEvent
+    {
+        public MusicCardData MusicCardData { get; private set; }
+
+        public DeckCardInfoWindowOpenedEvent(MusicCardData musicCardData)
+        {
+            MusicCardData = musicCardData;
+        }
+    }
+
+    public class DeckCardInfoWindowClosedEvent : GameEvent
+    {
+        public int PlayerIndex { get; private set; }
+
+        public DeckCardInfoWindowClosedEvent(int playerIndex)
+        {
+            PlayerIndex = playerIndex;
         }
     }
 }

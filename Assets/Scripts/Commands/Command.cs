@@ -617,9 +617,10 @@ namespace Command
             }
 
             boardService.GetRandomCardFromDeck(cardLevel, out var cardId);
+            var musicCardData = MusicCardRepository.Instance.GetCard(cardId);
 
             turnService.ReserveDeckCard(cardId);
-            await AsyncEventBus.Instance.PublishAndWaitAsync(new DeckCardReservedEvent(cardId));
+            await AsyncEventBus.Instance.PublishAndWaitAsync(new DeckCardReservedEvent(musicCardData));
             return true;
         }
     }

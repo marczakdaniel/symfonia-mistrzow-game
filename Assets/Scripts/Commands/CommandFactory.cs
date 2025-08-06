@@ -237,5 +237,12 @@ namespace Command
         {
             return new ReserveDeckCardCommand(cardLevel, turnService, boardService);
         }
+
+        // Deck Card Info Window Commands
+
+        public CloseDeckCardInfoWindowCommand CreateCloseDeckCardInfoWindowCommand()
+        {
+            return new CloseDeckCardInfoWindowCommand(turnService);
+        }   
     }
 }

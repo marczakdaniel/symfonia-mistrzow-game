@@ -547,4 +547,27 @@ namespace Command
             return true;
         }
     }
+
+    public class CloseDeckCardInfoWindowCommand : BaseUICommand
+    {
+        public override string CommandType => "CloseDeckCardInfoWindow";
+        private readonly TurnService turnService;
+
+        public CloseDeckCardInfoWindowCommand(TurnService turnService) : base()
+        {
+            this.turnService = turnService;
+        }
+
+        public override async UniTask<bool> Validate()
+        {
+            return true;
+        }
+
+        public override async UniTask<bool> Execute()
+        {
+            var playerIndex = turnService.GetCurrentPlayerIndex();
+            await AsyncEventBus.Instance.PublishAndWaitAsync(new DeckCardInfoWindowClosedEvent(playerIndex));
+            return true;
+        }
+    }
 }

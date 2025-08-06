@@ -9,6 +9,7 @@ using UI.CardPurchaseWindow;
 using UI.PlayerResourcesWindow;
 using Assets.Scripts.UI.ConcertCardsWindow;
 using UI.ReserveDeckCardWindow;
+using UI.DeckCardInfoWindow;
 
 namespace UI.GameWindow
 {
@@ -26,6 +27,7 @@ namespace UI.GameWindow
         private PlayerResourcesWindowPresenter playerResourcesWindowPresenter;
         private ConcertCardsWindowPresenter concertCardsWindowPresenter;
         private ReserveDeckCardWindowPresenter reserveDeckCardWindowPresenter;
+        private DeckCardInfoWindowPresenter deckCardInfoWindowPresenter;
         private CommandFactory commandFactory;
         public GameWindowPresenter(GameWindowView view, CommandFactory commandFactory)
         {
@@ -48,6 +50,7 @@ namespace UI.GameWindow
             playerResourcesWindowPresenter = new PlayerResourcesWindowPresenter(view.PlayerResourcesWindowView, commandFactory);
             concertCardsWindowPresenter = new ConcertCardsWindowPresenter(view.ConcertCardsWindowView, commandFactory);
             reserveDeckCardWindowPresenter = new ReserveDeckCardWindowPresenter(view.ReserveDeckCardWindowView, commandFactory);
+            deckCardInfoWindowPresenter = new DeckCardInfoWindowPresenter(view.DeckCardInfoWindowView, commandFactory);
         }
 
         private void InitializeMVP()

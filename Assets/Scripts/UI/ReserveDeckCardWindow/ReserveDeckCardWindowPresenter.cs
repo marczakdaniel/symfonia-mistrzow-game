@@ -9,7 +9,8 @@ namespace UI.ReserveDeckCardWindow {
         : IDisposable,
         IAsyncEventHandler<ReserveDeckCardWindowOpenedEvent>,
         IAsyncEventHandler<ReserveDeckCardWindowClosedEvent>,
-        IAsyncEventHandler<DeckCardReservedEvent>
+        IAsyncEventHandler<DeckCardReservedEvent>,
+        IAsyncEventHandler<DeckCardInfoWindowClosedEvent>
     {
         private readonly ReserveDeckCardWindowView view;
         private readonly CommandFactory commandFactory;
@@ -58,7 +59,8 @@ namespace UI.ReserveDeckCardWindow {
         {
             AsyncEventBus.Instance.Subscribe<ReserveDeckCardWindowOpenedEvent>(this);
             AsyncEventBus.Instance.Subscribe<ReserveDeckCardWindowClosedEvent>(this);
-            AsyncEventBus.Instance.Subscribe<DeckCardReservedEvent>(this);
+            AsyncEventBus.Instance.Subscribe<DeckCardReservedEvent>(this, EventPriority.High);
+            AsyncEventBus.Instance.Subscribe<DeckCardInfoWindowClosedEvent>(this, EventPriority.High);
         }
 
         public async UniTask HandleAsync(ReserveDeckCardWindowOpenedEvent openedEvent)
@@ -75,7 +77,13 @@ namespace UI.ReserveDeckCardWindow {
 
         public async UniTask HandleAsync(DeckCardReservedEvent reservedEvent)
         {
-            await view.PlayCloseAnimation();
+            view.Setup(reservedEvent.MusicCardData);
+            await view.PlayReserveAnimation();
+        }
+
+        public async UniTask HandleAsync(DeckCardInfoWindowClosedEvent closedEvent)
+        {
+            await view.PlayHideAnimation();
         }
 
         public void Dispose()

@@ -33,6 +33,12 @@ namespace UI.ReserveDeckCardWindow
         [SerializeField]
         private AnimationSequencerController closeAnimation;
 
+        [SerializeField]
+        private AnimationSequencerController reserveAnimation;
+
+        [SerializeField]
+        private AnimationSequencerController hideAnimation;
+
         public void Setup(MusicCardData musicCardData)
         {
             detailsMusicCardView.Setup(musicCardData);
@@ -59,6 +65,16 @@ namespace UI.ReserveDeckCardWindow
         public async UniTask PlayCloseAnimation()
         {
             await closeAnimation.PlayAsync();
+        }
+
+        public async UniTask PlayReserveAnimation()
+        {
+            await reserveAnimation.PlayAsync();
+        }
+
+        public async UniTask PlayHideAnimation()
+        {
+            await hideAnimation.PlayAsync();
         }
 
         public void Awake()
