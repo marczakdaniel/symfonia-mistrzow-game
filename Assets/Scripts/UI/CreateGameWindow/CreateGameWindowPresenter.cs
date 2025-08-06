@@ -86,7 +86,7 @@ namespace UI.CreateGameWindow
         public async UniTask HandleAsync(PlayerAddedEvent playerAddedEvent)
         {
             await view.PlayOpenAnimation();
-            view.SetPlayers(playerAddedEvent.PlayerNames);
+            view.SetPlayers(playerAddedEvent.PlayerNames, playerAddedEvent.PlayerAvatars);
         }
 
         public async UniTask HandleAsync(GameStartedEvent gameStartedEvent)

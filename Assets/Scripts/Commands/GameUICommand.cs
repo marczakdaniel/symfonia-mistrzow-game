@@ -478,7 +478,9 @@ namespace Command
                 return false;
             }
 
-            await AsyncEventBus.Instance.PublishAndWaitAsync(new CreatePlayerWindowOpenedEvent());
+            var availablePlayerAvatars = configService.GetAvailablePlayerAvatars();
+
+            await AsyncEventBus.Instance.PublishAndWaitAsync(new CreatePlayerWindowOpenedEvent(availablePlayerAvatars));
             return true;
         }
     }

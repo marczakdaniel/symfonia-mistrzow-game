@@ -74,6 +74,7 @@ namespace Command
         private readonly object _queueLock = new();
         
         private bool _isProcessing = false;
+        private bool _cancelNewCommandsOnExecution = true;
         private CancellationTokenSource _cancellationTokenSource = new();
 
         public int QueuedCount 
@@ -89,11 +90,34 @@ namespace Command
 
         public bool IsProcessing => _isProcessing;
 
+        public bool CancelNewCommandsOnExecution 
+        { 
+            get => _cancelNewCommandsOnExecution; 
+            set 
+            {
+                _cancelNewCommandsOnExecution = value;
+                // Jeśli włączamy opcję podczas gdy jakaś komenda się wykonuje,
+                // anuluj wszystkie oczekujące komendy
+                if (value && _isProcessing)
+                {
+                    CancelAllPending();
+                    Debug.Log("[CommandQueue] Anulowano wszystkie oczekujące komendy - włączono opcję CancelOnExecution podczas wykonywania");
+                }
+            }
+        }
+
         /// <summary>
         /// Dodaje komendę do kolejki i zwraca UniTask do oczekiwania na jej wykonanie
         /// </summary>
         public async UniTask<bool> EnqueueAsync(ICommand command)
         {
+            // Sprawdź czy należy anulować nowe komendy podczas wykonywania
+            if (_cancelNewCommandsOnExecution && _isProcessing)
+            {
+                Debug.LogWarning($"[CommandQueue] Anulowano komendę {command.CommandType} - inna komenda jest w trakcie wykonywania");
+                return false;
+            }
+
             var queuedCommand = new QueuedCommand(command);
             
             lock (_queueLock)
@@ -115,6 +139,13 @@ namespace Command
         /// </summary>
         public string EnqueueFireAndForget(ICommand command)
         {
+            // Sprawdź czy należy anulować nowe komendy podczas wykonywania
+            if (_cancelNewCommandsOnExecution && _isProcessing)
+            {
+                Debug.LogWarning($"[CommandQueue] Anulowano komendę (Fire&Forget) {command.CommandType} - inna komenda jest w trakcie wykonywania");
+                return null;
+            }
+
             var queuedCommand = new QueuedCommand(command);
             
             lock (_queueLock)
@@ -288,7 +319,7 @@ namespace Command
         {
             lock (_queueLock)
             {
-                return $"Queued: {_commandQueue.Count}, Processing: {_isProcessing}, History: {_executionHistory.Count}";
+                return $"Queued: {_commandQueue.Count}, Processing: {_isProcessing}, CancelOnExecution: {_cancelNewCommandsOnExecution}, History: {_executionHistory.Count}";
             }
         }
     }

@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Models;
+using UnityEngine;
 
 namespace Services
 {
@@ -22,6 +23,11 @@ namespace Services
         public PlayerModel[] GetPlayers()
         {
             return players.ToArray();
+        }
+
+        public Sprite[] GetPlayerAvatars()
+        {
+            return players.Select(p => p.PlayerAvatar).ToArray();
         }
 
         public void UpdatePoints(string playerId)

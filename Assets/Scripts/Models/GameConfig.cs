@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Assets.Scripts.Data;
 using DefaultNamespace.Data;
+using UnityEngine;
 
 namespace Models
 {
@@ -42,10 +43,10 @@ namespace Models
             isConcertCardsInitialized = true;
         }
 
-        public void AddPlayer(string playerName)
+            public void AddPlayer(string playerName, Sprite playerAvatar)
         {
             var playerId = Guid.NewGuid().ToString();
-            var playerConfig = new PlayerConfig(playerId, playerName);
+            var playerConfig = new PlayerConfig(playerId, playerName, playerAvatar);
             playerConfigs.Add(playerConfig);
         }
 
@@ -115,11 +116,13 @@ namespace Models
     {
         public string PlayerId;
         public string PlayerName;
+        public Sprite PlayerAvatar;
 
-        public PlayerConfig(string playerId, string playerName)
+        public PlayerConfig(string playerId, string playerName, Sprite playerAvatar)
         {
             PlayerId = playerId;
             PlayerName = playerName;
+            PlayerAvatar = playerAvatar;
         }
     }
 }

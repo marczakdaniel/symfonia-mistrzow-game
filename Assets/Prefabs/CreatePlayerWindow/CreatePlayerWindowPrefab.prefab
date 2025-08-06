@@ -724,6 +724,8 @@ MonoBehaviour:
   closeButton: {fileID: 8842381955824667781}
   openAnimation: {fileID: 8668718877401384722}
   closeAnimation: {fileID: 4508311219681895405}
+  avatarsContainer: {fileID: 5507319879444294608}
+  playerImageElementPrefab: {fileID: 8893133005968841139, guid: e76ab83309fc26e4e9adcfe4d2d96c93, type: 3}
 --- !u!1 &4310850375689078658
 GameObject:
   m_ObjectHideFlags: 0

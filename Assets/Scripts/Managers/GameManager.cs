@@ -10,6 +10,7 @@ using UI.MenuWindow;
 using DefaultNamespace.Data;
 using Assets.Scripts.Data;
 using UI.InfoWindow;
+using Data;
 
 namespace Managers
 {
@@ -21,6 +22,7 @@ namespace Managers
         [SerializeField] private MusicCardDeckData musicCardDeckData;
         [SerializeField] private ConcertCardDeckData concertCardDeckData;
         [SerializeField] private InfoWindowView infoWindowView;
+        [SerializeField] private PlayerAvatarsData playerAvatarsData;
 
         private GameWindowPresenter gameWindowPresenter;    
         private MenuWindowPresenter menuWindowPresenter;
@@ -81,7 +83,7 @@ namespace Managers
 
         private void CreateServices()
         {
-            configService = new ConfigService(gameConfig);
+            configService = new ConfigService(gameConfig, playerAvatarsData.Avatars);
             turnService = new TurnService(gameModel);
             boardService = new BoardService(gameModel);
             playerService = new PlayerService(gameModel);

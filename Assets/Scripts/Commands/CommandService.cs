@@ -34,6 +34,19 @@ namespace Command
         public int QueuedCommandsCount => _commandExecutor?.QueuedCommandsCount ?? 0;
 
         /// <summary>
+        /// Czy nowe komendy są anulowane podczas wykonywania innych komend
+        /// </summary>
+        public bool CancelNewCommandsOnExecution 
+        { 
+            get => _commandExecutor?.CancelNewCommandsOnExecution ?? false; 
+            set 
+            { 
+                if (_commandExecutor != null) 
+                    _commandExecutor.CancelNewCommandsOnExecution = value; 
+            } 
+        }
+
+        /// <summary>
         /// Inicjalizuje CommandService z CommandFactory
         /// </summary>
         public void Initialize()
@@ -239,6 +252,24 @@ namespace Command
             }
 
             return _commandExecutor.GetCommandTypeStats();
+        }
+
+        /// <summary>
+        /// Włącza opcję anulowania nowych komend podczas wykonywania
+        /// </summary>
+        public void EnableCancelOnExecution()
+        {
+            CancelNewCommandsOnExecution = true;
+            Debug.Log("[CommandService] Włączono anulowanie nowych komend podczas wykonywania");
+        }
+
+        /// <summary>
+        /// Wyłącza opcję anulowania nowych komend podczas wykonywania
+        /// </summary>
+        public void DisableCancelOnExecution()
+        {
+            CancelNewCommandsOnExecution = false;
+            Debug.Log("[CommandService] Wyłączono anulowanie nowych komend podczas wykonywania");
         }
 
         /// <summary>

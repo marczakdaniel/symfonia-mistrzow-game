@@ -38,11 +38,11 @@ namespace UI.CreateGameWindow
             closeButton.OnClick.Subscribe(_ => OnCloseButtonClicked.OnNext(Unit.Default)).AddTo(this);
         }
 
-        public void SetPlayers(List<string> playerNames)
+        public void SetPlayers(List<string> playerNames, List<Sprite> playerAvatars)
         {
             for (int i = 0; i < playerNames.Count; i++)
             {
-                singlePlayerElements[i].Initialize(playerNames[i]);
+                singlePlayerElements[i].Initialize(playerNames[i], playerAvatars[i]);
                 singlePlayerElements[i].SetActive(true);
             }
 
@@ -54,7 +54,7 @@ namespace UI.CreateGameWindow
 
         public async UniTask PlayOpenAnimation()
         {
-            SetPlayers(new List<string>());
+            SetPlayers(new List<string>(), new List<Sprite>());
             await openAnimation.PlayAsync();
         }
 

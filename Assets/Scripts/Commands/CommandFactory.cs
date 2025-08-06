@@ -2,6 +2,7 @@ using System;
 using DefaultNamespace.Data;
 using Models;
 using Services;
+using UnityEngine;
 
 namespace Command
 {
@@ -218,9 +219,9 @@ namespace Command
             return new CloseCreatePlayerWindowCommand();
         }
 
-        public AddPlayerCommand CreateAddPlayerCommand(string playerName)
+        public AddPlayerCommand CreateAddPlayerCommand(string playerName, Sprite playerAvatar)
         {
-            return new AddPlayerCommand(playerName, configService);
+            return new AddPlayerCommand(playerName, playerAvatar, configService);
         }
 
         public OpenReserveDeckCardWindowCommand CreateOpenReserveDeckCardWindowCommand(int cardLevel)

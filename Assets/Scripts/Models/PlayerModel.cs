@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Assets.Scripts.Data;
 using DefaultNamespace.Data;
+using UnityEngine;
 
 namespace Models
 {
@@ -8,6 +9,7 @@ namespace Models
     {
         public string PlayerId { get; private set; }
         public string PlayerName { get; private set; }
+        public Sprite PlayerAvatar { get; private set; }
         public int Points { get; private set; }
         public ResourceCollectionModel Tokens { get; private set; }
         public ResourceCollectionModel PermanentResources { get; private set; }
@@ -20,6 +22,7 @@ namespace Models
         {
             PlayerId = playerConfig.PlayerId;
             PlayerName = playerConfig.PlayerName;
+            PlayerAvatar = playerConfig.PlayerAvatar;
             Tokens = new ResourceCollectionModel();
             concertCards = new List<ConcertCardData>();
         }

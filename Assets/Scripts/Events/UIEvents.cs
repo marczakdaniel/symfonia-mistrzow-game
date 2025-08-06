@@ -3,6 +3,7 @@ using Assets.Scripts.Data;
 using DefaultNamespace.Data;
 using Models;
 using Unity.Collections.LowLevel.Unsafe;
+using UnityEngine;
 
 namespace Events
 {
@@ -461,8 +462,10 @@ namespace Events
 
     public class CreatePlayerWindowOpenedEvent : GameEvent
     {
-        public CreatePlayerWindowOpenedEvent()
+        public List<Sprite> AvailablePlayerAvatars { get; private set; }
+        public CreatePlayerWindowOpenedEvent(List<Sprite> availablePlayerAvatars)
         {
+            AvailablePlayerAvatars = availablePlayerAvatars;
         }
     }
 
@@ -476,9 +479,11 @@ namespace Events
     public class PlayerAddedEvent : GameEvent
     {
         public List<string> PlayerNames { get; private set; }
-        public PlayerAddedEvent(List<string> playerNames)
+        public List<Sprite> PlayerAvatars { get; private set; }
+        public PlayerAddedEvent(List<string> playerNames, List<Sprite> playerAvatars)
         {
             PlayerNames = playerNames;
+            PlayerAvatars = playerAvatars;
         }
     }
 

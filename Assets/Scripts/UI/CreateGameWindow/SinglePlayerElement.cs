@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 namespace UI.CreateGameWindow
 {
@@ -7,10 +8,12 @@ namespace UI.CreateGameWindow
     {
         [SerializeField] private TextMeshProUGUI playerNameText;
         [SerializeField] private GameObject content;
+        [SerializeField] private Image image;
 
-        public void Initialize(string playerName)
+        public void Initialize(string playerName, Sprite playerAvatar)
         {
             playerNameText.text = playerName;
+            image.sprite = playerAvatar;
         }
 
         public void SetActive(bool isActive)

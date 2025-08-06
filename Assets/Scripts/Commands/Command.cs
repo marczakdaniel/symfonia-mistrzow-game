@@ -78,7 +78,8 @@ namespace Command
             }
             // 2. Event publish and wait for UI to complete
             var boardCards = boardService.GetBoardCards();
-            var gameStartedEvent = new GameStartedEvent(playerIds, boardService.GetAllBoardResources(), boardCards);
+            var playerAvatars = playerService.GetPlayerAvatars();
+            var gameStartedEvent = new GameStartedEvent(playerIds, playerAvatars, boardService.GetAllBoardResources(), boardCards);
             await AsyncEventBus.Instance.PublishAndWaitAsync(gameStartedEvent);
 
             turnService.NextPlayerTurn();
@@ -562,11 +563,13 @@ namespace Command
 
         private readonly ConfigService configService;
         private readonly string playerName;
+        private readonly Sprite playerAvatar;
 
-        public AddPlayerCommand(string playerName, ConfigService configService) : base()
+        public AddPlayerCommand(string playerName, Sprite playerAvatar, ConfigService configService) : base()
         {
             this.playerName = playerName;
             this.configService = configService;
+            this.playerAvatar = playerAvatar;
         }   
 
         public override async UniTask<bool> Validate()
@@ -576,9 +579,10 @@ namespace Command
 
         public override async UniTask<bool> Execute()
         {
-            configService.AddPlayer(playerName);
+            configService.AddPlayer(playerName, playerAvatar);
             var playerNames = configService.GetPlayerNames();
-            await AsyncEventBus.Instance.PublishAndWaitAsync(new PlayerAddedEvent(playerNames));
+            var playerAvatars = configService.GetPlayerAvatars();
+            await AsyncEventBus.Instance.PublishAndWaitAsync(new PlayerAddedEvent(playerNames, playerAvatars));
             return true;
         }
     }

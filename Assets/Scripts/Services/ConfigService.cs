@@ -2,20 +2,23 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Models;
+using UnityEngine;
 
 namespace Services
 {
     public class ConfigService
     {
         private readonly GameConfig gameConfig;
-        public ConfigService(GameConfig gameConfig)
+        private readonly List<Sprite> playerAvatarsData;
+        public ConfigService(GameConfig gameConfig, List<Sprite> playerAvatarsData)
         {
             this.gameConfig = gameConfig;
+            this.playerAvatarsData = playerAvatarsData;
         }
 
-        public void AddPlayer(string playerName)
+        public void AddPlayer(string playerName, Sprite playerAvatar)
         {
-            gameConfig.AddPlayer(playerName);
+            gameConfig.AddPlayer(playerName, playerAvatar);
         }
 
         public void ClearPlayers()
@@ -26,6 +29,16 @@ namespace Services
         public List<string> GetPlayerNames()
         {
             return gameConfig.GetPlayerConfigs().Select(playerConfig => playerConfig.PlayerName).ToList();
+        }
+
+        public List<Sprite> GetPlayerAvatars()
+        {
+            return gameConfig.GetPlayerConfigs().Select(playerConfig => playerConfig.PlayerAvatar).ToList();
+        }
+
+        public List<Sprite> GetAvailablePlayerAvatars()
+        {
+            return playerAvatarsData;
         }
 
         public bool CanAddPlayer()

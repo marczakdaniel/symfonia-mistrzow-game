@@ -41,6 +41,15 @@ namespace Command
         public bool IsExecuting => _commandQueue.IsProcessing;
 
         /// <summary>
+        /// Czy nowe komendy są anulowane podczas wykonywania innych komend
+        /// </summary>
+        public bool CancelNewCommandsOnExecution 
+        { 
+            get => _commandQueue.CancelNewCommandsOnExecution; 
+            set => _commandQueue.CancelNewCommandsOnExecution = value; 
+        }
+
+        /// <summary>
         /// Rejestruje typ komendy dla statystyk i debugowania
         /// </summary>
         public void RegisterCommandType<T>() where T : ICommand

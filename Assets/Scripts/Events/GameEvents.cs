@@ -9,11 +9,13 @@ namespace Events
     public class GameStartedEvent : GameEvent
     {        
         public string[] PlayerIds { get; }
+        public Sprite[] PlayerAvatars { get; }
         public Dictionary<ResourceType, int> BoardTokens { get; }
         public Dictionary<int, MusicCardData[]> BoardCards { get; }
-        public GameStartedEvent(string[] playerIds, Dictionary<ResourceType, int> boardTokens, Dictionary<int, MusicCardData[]> boardCards)
+        public GameStartedEvent(string[] playerIds, Sprite[] playerAvatars, Dictionary<ResourceType, int> boardTokens, Dictionary<int, MusicCardData[]> boardCards)
         {
             PlayerIds = playerIds;
+            PlayerAvatars = playerAvatars;
             BoardTokens = boardTokens;
             BoardCards = boardCards;
         }

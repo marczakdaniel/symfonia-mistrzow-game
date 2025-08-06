@@ -71,7 +71,7 @@ namespace UI.Board.BoardPlayerPanel
                 return;
             }
 
-            viewModel.Initialize(gameEvent.PlayerIds[viewModel.Index], null);
+            viewModel.Initialize(gameEvent.PlayerIds[viewModel.Index], gameEvent.PlayerAvatars[viewModel.Index]);
 
             view.SetPlayerImage(viewModel.PlayerImage);
             view.SetPlayerPoints(0 );
