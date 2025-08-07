@@ -15,8 +15,12 @@ namespace Assets.Scripts.UI.Elements
 
         [SerializeField]
         private Image cardImage;
+
         [SerializeField]
         private TextMeshProUGUI cardCountText;
+
+        [SerializeField]
+        private GameObject separator;
 
         public void Initialize(ResourceType resourceType, int tokenCount, int cardCount)
         {
@@ -26,6 +30,13 @@ namespace Assets.Scripts.UI.Elements
             cardCountText.text = cardCount.ToString();
 
             UpdateValue(tokenCount, cardCount);
+            
+            if (resourceType == ResourceType.Inspiration)
+            {
+                cardImage.gameObject.SetActive(false);
+                separator.SetActive(false);
+                tokenImage.rectTransform.anchoredPosition = new Vector2(0, 0);
+            }
         }
 
         public void UpdateValue(int tokenCount, int cardCount)

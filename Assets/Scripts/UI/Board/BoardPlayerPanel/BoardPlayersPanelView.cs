@@ -2,9 +2,11 @@ using BrunoMikoski.AnimationSequencer;
 using Cysharp.Threading.Tasks;
 using DefaultNamespace.Elements;
 using R3;
+using UI.Board.BoardPlayerPanel.BoardPlayerPanelSingleResource;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Coffee.UIEffects;
 
 namespace UI.Board.BoardPlayerPanel
 {
@@ -18,34 +20,34 @@ namespace UI.Board.BoardPlayerPanel
         [SerializeField] 
         private Image playerImage;
 
-        [SerializeField] 
-        private GameObject activePlayerIndicator;
-
         [SerializeField]
         private TextMeshProUGUI playerPointsText;
+
+        [SerializeField]
+        private AnimationSequencerController pointsAnimation;
         
         [SerializeField]
         private AnimationSequencerController activateAnimation;
 
         [SerializeField]
-        private AnimationSequencerController currentPlayerAnimation;
-
+        private UIEffect currentPlayerEffect;
+        
         [SerializeField]
-        private AnimationSequencerController stopCurrentPlayerAnimation;
+        private BoardPlayerPanelSingleResourceView[] singleResourceViews = new BoardPlayerPanelSingleResourceView[6];
+
+        public BoardPlayerPanelSingleResourceView[] SingleResourceViews => singleResourceViews;
 
         public void SetPlayerImage(Sprite sprite)
         {
             playerImage.sprite = sprite;
         }
 
-        public void SetActivePlayerIndicator(bool isActive)
-        {
-            activePlayerIndicator.SetActive(isActive);
-        }
-
         public void SetPlayerPoints(int points)
         {
             playerPointsText.text = points.ToString();
+            pointsAnimation.ClearPlayingSequence();
+            pointsAnimation.ResetToInitialState();
+            pointsAnimation.Play();
         }
 
         public async UniTask PlayActivateAnimation()
@@ -55,12 +57,14 @@ namespace UI.Board.BoardPlayerPanel
 
         public async UniTask PlayCurrentPlayerAnimation()
         {
-            await currentPlayerAnimation.PlayAsync();
+            currentPlayerEffect.enabled = true;
+            await UniTask.CompletedTask;
         }
 
         public async UniTask PlayStopCurrentPlayerAnimation()
         {
-            await stopCurrentPlayerAnimation.PlayAsync();
+            currentPlayerEffect.enabled = false;
+            await UniTask.CompletedTask;
         }
 
         public void Awake()

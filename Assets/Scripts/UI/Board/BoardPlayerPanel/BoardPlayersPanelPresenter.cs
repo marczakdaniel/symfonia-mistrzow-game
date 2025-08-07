@@ -7,6 +7,7 @@ using Events;
 using Models;
 using R3;
 using UI.Board.BoardPlayerPanel;
+using UI.Board.BoardPlayerPanel.BoardPlayerPanelSingleResource;
 using Unity.VisualScripting;
 
 namespace UI.Board.BoardPlayerPanel
@@ -24,14 +25,25 @@ namespace UI.Board.BoardPlayerPanel
         private readonly CommandFactory commandFactory;
         private IDisposable disposables;
 
+        private BoardPlayerPanelSingleResourcePresenter[] singleResourcePresenters = new BoardPlayerPanelSingleResourcePresenter[6];
+
         public BoardPlayerPanelPresenter(BoardPlayerPanelView view, int index, CommandFactory commandFactory)
         {
             this.view = view;
             this.viewModel = new BoardPlayerPanelViewModel(index);
             this.commandFactory = commandFactory;
             
+            InitializeChildren();
             InitializeMVP();
             SubscribeToEvents();
+        }
+
+        private void InitializeChildren()
+        {
+            for (int i = 0; i < singleResourcePresenters.Length; i++)
+            {
+                singleResourcePresenters[i] = new BoardPlayerPanelSingleResourcePresenter(viewModel.Index, (ResourceType)i, view.SingleResourceViews[i], commandFactory);
+            }
         }
 
         private void InitializeMVP()
@@ -74,8 +86,8 @@ namespace UI.Board.BoardPlayerPanel
             viewModel.Initialize(gameEvent.PlayerIds[viewModel.Index], gameEvent.PlayerAvatars[viewModel.Index]);
 
             view.SetPlayerImage(viewModel.PlayerImage);
-            view.SetPlayerPoints(0 );
-            view.SetActivePlayerIndicator(false);
+            view.SetPlayerPoints(viewModel.Points);
+            await view.PlayStopCurrentPlayerAnimation();
             await view.PlayActivateAnimation();
         }
 
@@ -95,28 +107,31 @@ namespace UI.Board.BoardPlayerPanel
 
         public async UniTask HandleAsync(CardPurchasedFromBoardEvent cardPurchasedFromBoardEvent)
         {
-            if (!viewModel.IsCurrentPlayer)
+            if (!viewModel.IsCurrentPlayer && viewModel.Points != cardPurchasedFromBoardEvent.Points)
             {
                 return;
             }
+            viewModel.SetPoints(cardPurchasedFromBoardEvent.Points);
             view.SetPlayerPoints(cardPurchasedFromBoardEvent.Points);
         }
 
         public async UniTask HandleAsync(CardPurchasedFromReserveEvent cardPurchasedFromReserveEvent)
         {
-            if (!viewModel.IsCurrentPlayer)
+            if (!viewModel.IsCurrentPlayer && viewModel.Points != cardPurchasedFromReserveEvent.Points)
             {
                 return;
             }
+            viewModel.SetPoints(cardPurchasedFromReserveEvent.Points);
             view.SetPlayerPoints(cardPurchasedFromReserveEvent.Points);
         }
 
         public async UniTask HandleAsync(ConcertCardClaimedEvent concertCardClaimedEvent)
         {
-            if (!viewModel.IsCurrentPlayer)
+            if (!viewModel.IsCurrentPlayer && viewModel.Points != concertCardClaimedEvent.Points)
             {
                 return;
             }
+            viewModel.SetPoints(concertCardClaimedEvent.Points);
             view.SetPlayerPoints(concertCardClaimedEvent.Points);
         }
 

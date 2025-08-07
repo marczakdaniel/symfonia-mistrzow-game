@@ -535,4 +535,18 @@ namespace Events
             PlayerIndex = playerIndex;
         }
     }
+
+    public class PlayerResourcesUpdatedEvent : GameEvent
+    {
+        public string PlayerId { get; private set; }
+        public Dictionary<ResourceType, int> CurrentPlayerTokens { get; private set; }
+        public Dictionary<ResourceType, int> CurrentPlayerCards { get; private set; }
+
+        public PlayerResourcesUpdatedEvent(string playerId, Dictionary<ResourceType, int> currentPlayerTokens, Dictionary<ResourceType, int> currentPlayerCards)
+        {
+            PlayerId = playerId;
+            CurrentPlayerTokens = currentPlayerTokens;
+            CurrentPlayerCards = currentPlayerCards;
+        }
+    }
 }

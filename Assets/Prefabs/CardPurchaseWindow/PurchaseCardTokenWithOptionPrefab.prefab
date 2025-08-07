@@ -300,7 +300,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 6210571262265733881}
+  - {fileID: 2078850243448148866}
   - {fileID: 8870650251323481664}
   - {fileID: 7401325796571958841}
   m_Father: {fileID: 8648323861855928573}
@@ -841,10 +841,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f99f15c245012cc428d438e7a2b2c5e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardPurchaseTokenElement: {fileID: 8162414242511479760}
+  cardPurchaseTokenElement: {fileID: 4300751146258219691}
   addTokenButton: {fileID: 4051170043986714653}
   removeTokenButton: {fileID: 2706760529892746530}
---- !u!1001 &9091518513112991848
+--- !u!1001 &3801707737416722707
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -878,7 +878,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2890165558515726993, guid: 22ddb596ccfd0ee4db12f42837f45cb8, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 200
+      value: 285.5
       objectReference: {fileID: 0}
     - target: {fileID: 2890165558515726993, guid: 22ddb596ccfd0ee4db12f42837f45cb8, type: 3}
       propertyPath: m_SizeDelta.y
@@ -941,15 +941,15 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 22ddb596ccfd0ee4db12f42837f45cb8, type: 3}
---- !u!224 &6210571262265733881 stripped
+--- !u!224 &2078850243448148866 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2890165558515726993, guid: 22ddb596ccfd0ee4db12f42837f45cb8, type: 3}
-  m_PrefabInstance: {fileID: 9091518513112991848}
+  m_PrefabInstance: {fileID: 3801707737416722707}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8162414242511479760 stripped
+--- !u!114 &4300751146258219691 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1111605615337188280, guid: 22ddb596ccfd0ee4db12f42837f45cb8, type: 3}
-  m_PrefabInstance: {fileID: 9091518513112991848}
+  m_PrefabInstance: {fileID: 3801707737416722707}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1

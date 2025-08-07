@@ -3158,7 +3158,7 @@ MonoBehaviour:
       data:
         direction: 0
         ease:
-          ease: 7
+          ease: 27
           curve:
             serializedVersion: 2
             m_Curve: []
@@ -3171,7 +3171,7 @@ MonoBehaviour:
     - rid: 4232360102194315361
       type: {class: DOTweenAnimationStep, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
       data:
-        delay: 0.1
+        delay: 0
         flowType: 1
         target: {fileID: 4764124646421497014}
         duration: 0.3
@@ -3184,7 +3184,7 @@ MonoBehaviour:
       data:
         direction: 0
         ease:
-          ease: 7
+          ease: 27
           curve:
             serializedVersion: 2
             m_Curve: []
@@ -3197,7 +3197,7 @@ MonoBehaviour:
     - rid: 4232360102194315363
       type: {class: DOTweenAnimationStep, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
       data:
-        delay: 0.2
+        delay: 0
         flowType: 1
         target: {fileID: 2944236189803468952}
         duration: 0.3
@@ -3210,7 +3210,7 @@ MonoBehaviour:
       data:
         direction: 0
         ease:
-          ease: 7
+          ease: 27
           curve:
             serializedVersion: 2
             m_Curve: []
@@ -3223,7 +3223,7 @@ MonoBehaviour:
     - rid: 4232360102194315365
       type: {class: DOTweenAnimationStep, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
       data:
-        delay: 0.3
+        delay: 0
         flowType: 1
         target: {fileID: 1401165686683895754}
         duration: 0.3
@@ -3236,7 +3236,7 @@ MonoBehaviour:
       data:
         direction: 0
         ease:
-          ease: 7
+          ease: 27
           curve:
             serializedVersion: 2
             m_Curve: []
@@ -3249,7 +3249,7 @@ MonoBehaviour:
     - rid: 4232360102194315367
       type: {class: DOTweenAnimationStep, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
       data:
-        delay: 0.4
+        delay: 0
         flowType: 1
         target: {fileID: 2744652813901444952}
         duration: 0.3
@@ -3262,7 +3262,7 @@ MonoBehaviour:
       data:
         direction: 0
         ease:
-          ease: 7
+          ease: 27
           curve:
             serializedVersion: 2
             m_Curve: []
@@ -3275,7 +3275,7 @@ MonoBehaviour:
     - rid: 4232360102194315369
       type: {class: DOTweenAnimationStep, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
       data:
-        delay: 0.5
+        delay: 0
         flowType: 1
         target: {fileID: 4537572267478205750}
         duration: 0.3
@@ -3286,7 +3286,7 @@ MonoBehaviour:
     - rid: 4232360102194315370
       type: {class: DOTweenAnimationStep, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
       data:
-        delay: 0.6
+        delay: 0
         flowType: 1
         target: {fileID: 1865931292969225736}
         duration: 0.3
@@ -3297,7 +3297,7 @@ MonoBehaviour:
     - rid: 4232360102194315371
       type: {class: DOTweenAnimationStep, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
       data:
-        delay: 0.7
+        delay: 0
         flowType: 1
         target: {fileID: 1430778094277657802}
         duration: 0.3
@@ -3308,7 +3308,7 @@ MonoBehaviour:
     - rid: 4232360102194315372
       type: {class: DOTweenAnimationStep, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
       data:
-        delay: 0.8
+        delay: 0
         flowType: 1
         target: {fileID: 7887944564352602198}
         duration: 0.3
@@ -3319,7 +3319,7 @@ MonoBehaviour:
     - rid: 4232360102194315373
       type: {class: DOTweenAnimationStep, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
       data:
-        delay: 0.9
+        delay: 0
         flowType: 1
         target: {fileID: 5715365934171772844}
         duration: 0.3
@@ -3330,7 +3330,7 @@ MonoBehaviour:
     - rid: 4232360102194315374
       type: {class: DOTweenAnimationStep, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
       data:
-        delay: 1
+        delay: 0
         flowType: 1
         target: {fileID: 2271490998985815015}
         duration: 0.3
@@ -3343,7 +3343,7 @@ MonoBehaviour:
       data:
         direction: 0
         ease:
-          ease: 7
+          ease: 27
           curve:
             serializedVersion: 2
             m_Curve: []
@@ -3358,7 +3358,7 @@ MonoBehaviour:
       data:
         direction: 0
         ease:
-          ease: 7
+          ease: 27
           curve:
             serializedVersion: 2
             m_Curve: []
@@ -3373,7 +3373,7 @@ MonoBehaviour:
       data:
         direction: 0
         ease:
-          ease: 7
+          ease: 27
           curve:
             serializedVersion: 2
             m_Curve: []
@@ -3388,7 +3388,7 @@ MonoBehaviour:
       data:
         direction: 0
         ease:
-          ease: 7
+          ease: 27
           curve:
             serializedVersion: 2
             m_Curve: []
@@ -3403,7 +3403,7 @@ MonoBehaviour:
       data:
         direction: 0
         ease:
-          ease: 7
+          ease: 27
           curve:
             serializedVersion: 2
             m_Curve: []
@@ -3418,7 +3418,7 @@ MonoBehaviour:
       data:
         direction: 0
         ease:
-          ease: 7
+          ease: 27
           curve:
             serializedVersion: 2
             m_Curve: []
@@ -3431,7 +3431,7 @@ MonoBehaviour:
     - rid: 4232360102194315381
       type: {class: DOTweenAnimationStep, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
       data:
-        delay: 1.1
+        delay: 0
         flowType: 1
         target: {fileID: 5161255968774609054}
         duration: 0.3
@@ -3442,7 +3442,7 @@ MonoBehaviour:
     - rid: 4232360102194315382
       type: {class: DOTweenAnimationStep, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
       data:
-        delay: 1.2
+        delay: 0
         flowType: 1
         target: {fileID: 9121829595599660476}
         duration: 0.3
@@ -3455,7 +3455,7 @@ MonoBehaviour:
       data:
         direction: 0
         ease:
-          ease: 7
+          ease: 27
           curve:
             serializedVersion: 2
             m_Curve: []
@@ -3468,7 +3468,7 @@ MonoBehaviour:
     - rid: 4232360102194315384
       type: {class: DOTweenAnimationStep, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
       data:
-        delay: 1.3
+        delay: 0
         flowType: 1
         target: {fileID: 7521473583686423364}
         duration: 0.3
@@ -3481,7 +3481,7 @@ MonoBehaviour:
       data:
         direction: 0
         ease:
-          ease: 7
+          ease: 27
           curve:
             serializedVersion: 2
             m_Curve: []
@@ -3496,7 +3496,7 @@ MonoBehaviour:
       data:
         direction: 0
         ease:
-          ease: 7
+          ease: 27
           curve:
             serializedVersion: 2
             m_Curve: []
@@ -3509,7 +3509,7 @@ MonoBehaviour:
     - rid: 4232360102194315389
       type: {class: DOTweenAnimationStep, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
       data:
-        delay: 0.7
+        delay: 0
         flowType: 1
         target: {fileID: 7238647351963680528}
         duration: 0.3
@@ -3522,7 +3522,7 @@ MonoBehaviour:
       data:
         direction: 0
         ease:
-          ease: 7
+          ease: 27
           curve:
             serializedVersion: 2
             m_Curve: []

@@ -269,6 +269,10 @@ namespace Command
             turnService.ClearSelectedTokens();
             var boardTokens = boardService.GetAllBoardResources();
             await AsyncEventBus.Instance.PublishAndWaitAsync(new SelectedTokensConfirmedEvent(boardTokens));
+
+            var currentPlayerTokens = turnService.GetCurrentPlayerModel().Tokens.GetAllResources();
+            var currentPlayerCards = turnService.GetCurrentPlayerModel().GetPurchasedAllResourceCollection().GetAllResources();
+            await AsyncEventBus.Instance.PublishAndWaitAsync(new PlayerResourcesUpdatedEvent(turnService.GetCurrentPlayerId(), currentPlayerTokens, currentPlayerCards));
             return true;
         }
     }
@@ -360,6 +364,10 @@ namespace Command
             var boardTokens = boardService.GetAllBoardResources();
             await AsyncEventBus.Instance.PublishAndWaitAsync(new ReturnTokensConfirmedEvent(boardTokens));
 
+            var currentPlayerTokens = turnService.GetCurrentPlayerModel().Tokens.GetAllResources();
+            var currentPlayerCards = turnService.GetCurrentPlayerModel().GetPurchasedAllResourceCollection().GetAllResources();
+            await AsyncEventBus.Instance.PublishAndWaitAsync(new PlayerResourcesUpdatedEvent(turnService.GetCurrentPlayerId(), currentPlayerTokens, currentPlayerCards));
+
             return true;
         }  
     }
@@ -412,6 +420,10 @@ namespace Command
             var inspirationTokens = boardService.GetBoardTokenCount(ResourceType.Inspiration);
             var playerIndex = turnService.GetCurrentPlayerIndex();
             await AsyncEventBus.Instance.PublishAndWaitAsync(new CardReservedEvent(cardId, inspirationTokens, playerIndex));
+
+            var currentPlayerTokens = turnService.GetCurrentPlayerModel().Tokens.GetAllResources();
+            var currentPlayerCards = turnService.GetCurrentPlayerModel().GetPurchasedAllResourceCollection().GetAllResources();
+            await AsyncEventBus.Instance.PublishAndWaitAsync(new PlayerResourcesUpdatedEvent(turnService.GetCurrentPlayerId(), currentPlayerTokens, currentPlayerCards));
 
             boardService.RefillSlot(slot.Level, slot.Position);
 
@@ -536,6 +548,10 @@ namespace Command
                 var playerIndex = turnService.GetCurrentPlayerIndex();
                 await AsyncEventBus.Instance.PublishAndWaitAsync(new CardPurchasedFromBoardEvent(cardId, boardService.GetAllBoardResources(), playerIndex, points));
 
+                var currentPlayerTokens = turnService.GetCurrentPlayerModel().Tokens.GetAllResources();
+                var currentPlayerCards = turnService.GetCurrentPlayerModel().GetPurchasedAllResourceCollection().GetAllResources();
+                await AsyncEventBus.Instance.PublishAndWaitAsync(new PlayerResourcesUpdatedEvent(turnService.GetCurrentPlayerId(), currentPlayerTokens, currentPlayerCards));
+
                 boardService.RefillSlot(slot.Level, slot.Position);
                 var putCardOnBoardEvent = new PutCardOnBoardEvent(slot.Level, slot.Position, slot.GetMusicCard());
                 await AsyncEventBus.Instance.PublishAndWaitAsync(putCardOnBoardEvent);
@@ -545,10 +561,16 @@ namespace Command
             var currentPlayer = turnService.GetCurrentPlayerModel();
             if (currentPlayer.HasReserveCard(cardId))
             {
-                turnService.PurchaseCardFromReserve(cardId, selectedTokens);                var reservedCards = currentPlayer.ReservedCards.GetAllCards().ToList();
+                turnService.PurchaseCardFromReserve(cardId, selectedTokens);                
+                var reservedCards = currentPlayer.ReservedCards.GetAllCards().ToList();
                 var points = playerService.GetPlayer(turnService.GetCurrentPlayerId()).Points;  
                 var playerIndex = turnService.GetCurrentPlayerIndex();
                 await AsyncEventBus.Instance.PublishAndWaitAsync(new CardPurchasedFromReserveEvent(cardId, reservedCards, boardService.GetAllBoardResources(), playerIndex, points));
+
+                var currentPlayerTokens = turnService.GetCurrentPlayerModel().Tokens.GetAllResources();
+                var currentPlayerCards = turnService.GetCurrentPlayerModel().GetPurchasedAllResourceCollection().GetAllResources();
+                await AsyncEventBus.Instance.PublishAndWaitAsync(new PlayerResourcesUpdatedEvent(turnService.GetCurrentPlayerId(), currentPlayerTokens, currentPlayerCards));
+
                 return true;
             }
 
@@ -625,6 +647,10 @@ namespace Command
 
             turnService.ReserveDeckCard(cardId);
             await AsyncEventBus.Instance.PublishAndWaitAsync(new DeckCardReservedEvent(musicCardData));
+
+            var currentPlayerTokens = turnService.GetCurrentPlayerModel().Tokens.GetAllResources();
+            var currentPlayerCards = turnService.GetCurrentPlayerModel().GetPurchasedAllResourceCollection().GetAllResources();
+            await AsyncEventBus.Instance.PublishAndWaitAsync(new PlayerResourcesUpdatedEvent(turnService.GetCurrentPlayerId(), currentPlayerTokens, currentPlayerCards));
             return true;
         }
     }
