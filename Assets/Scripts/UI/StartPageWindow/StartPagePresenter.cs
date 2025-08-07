@@ -36,7 +36,6 @@ namespace UI.StartPageWindow
         private void ConnectView(DisposableBuilder d)
         {
             view.OnPlayButtonClicked.Subscribe(_ => HandlePlayButtonClicked().ToObservable()).AddTo(ref d);
-            view.OnTestButtonClicked.Subscribe(_ => HandleTestButtonClicked().ToObservable()).AddTo(ref d);
             view.OnManualButtonClicked.Subscribe(_ => HandleManualButtonClicked().ToObservable()).AddTo(ref d);
         }
 
@@ -44,11 +43,6 @@ namespace UI.StartPageWindow
         {
             var command = commandFactory.CreateOpenGameCreationWindowCommand();
             await CommandService.Instance.ExecuteCommandAsync(command);
-        }
-
-        private async UniTask HandleTestButtonClicked()
-        {
-            
         }
 
         private async UniTask HandleManualButtonClicked()

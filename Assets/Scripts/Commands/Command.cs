@@ -86,7 +86,8 @@ namespace Command
 
             var currentPlayer = turnService.GetCurrentPlayerModel();
             var currentRound = turnService.GetCurrentRound();
-            await AsyncEventBus.Instance.PublishAndWaitAsync(new StartTurnWindowOpenedEvent(currentPlayer.PlayerId, currentPlayer.PlayerName, currentRound));
+            var currentPlayerAvatar = currentPlayer.PlayerAvatar;
+            await AsyncEventBus.Instance.PublishAndWaitAsync(new StartTurnWindowOpenedEvent(currentPlayer.PlayerName, currentRound, currentPlayerAvatar));
 
             return true;
         }
@@ -167,7 +168,8 @@ namespace Command
 
             var currentPlayer = turnService.GetCurrentPlayerModel();
             var currentRound = turnService.GetCurrentRound();
-            await AsyncEventBus.Instance.PublishAndWaitAsync(new StartTurnWindowOpenedEvent(currentPlayer.PlayerId, currentPlayer.PlayerName, currentRound));
+            var currentPlayerAvatar = currentPlayer.PlayerAvatar;
+            await AsyncEventBus.Instance.PublishAndWaitAsync(new StartTurnWindowOpenedEvent(currentPlayer.PlayerName, currentRound, currentPlayerAvatar));
 
             return true;
         }

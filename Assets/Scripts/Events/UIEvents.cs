@@ -160,15 +160,15 @@ namespace Events
     // Start Turn Window Events
     public class StartTurnWindowOpenedEvent : GameEvent
     {
-        public string CurrentPlayerId { get; private set; }
         public string CurrentPlayerName { get; private set; }
         public int CurrentRound { get; private set; }
+        public Sprite CurrentPlayerAvatar { get; private set; }
 
-        public StartTurnWindowOpenedEvent(string currentPlayerId, string currentPlayerName, int currentRound)
+        public StartTurnWindowOpenedEvent(string currentPlayerName, int currentRound, Sprite currentPlayerAvatar)
         {
-            CurrentPlayerId = currentPlayerId;
             CurrentPlayerName = currentPlayerName;
             CurrentRound = currentRound;
+            CurrentPlayerAvatar = currentPlayerAvatar;
         }
     }
 
@@ -347,6 +347,7 @@ namespace Events
         public bool CanPlayerExecuteAction { get; private set; }
         public string PlayerName { get; private set; }
         public int NumberOfPoints { get; private set; }
+        public Sprite PlayerAvatar { get; private set; }
         public Dictionary<ResourceType, int> CurrentPlayerTokens { get; private set; }
         public Dictionary<ResourceType, int> CurrentPlayerCards { get; private set; }
         public List<MusicCardData> ReservedMusicCards { get; private set; }
@@ -357,6 +358,7 @@ namespace Events
             bool canPlayerExecuteAction,
             string playerName,
             int numberOfPoints,
+            Sprite playerAvatar,
             Dictionary<ResourceType, int> currentPlayerTokens, 
             Dictionary<ResourceType, int> currentPlayerCards, 
             List<MusicCardData> reservedMusicCards,
@@ -366,6 +368,7 @@ namespace Events
             CanPlayerExecuteAction = canPlayerExecuteAction;
             PlayerName = playerName;
             NumberOfPoints = numberOfPoints;
+            PlayerAvatar = playerAvatar;
             CurrentPlayerTokens = currentPlayerTokens;
             CurrentPlayerCards = currentPlayerCards;
             ReservedMusicCards = reservedMusicCards;

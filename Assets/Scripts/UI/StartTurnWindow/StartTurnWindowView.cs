@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using Cysharp.Threading.Tasks;
 using BrunoMikoski.AnimationSequencer;
+using UnityEngine.UI;
 
 namespace UI.StartTurnWindow
 {
@@ -14,6 +15,7 @@ namespace UI.StartTurnWindow
         [SerializeField] private ButtonElement startTurnButton;
         [SerializeField] private TextMeshProUGUI currentPlayerNameText;
         [SerializeField] private TextMeshProUGUI currentRoundText;
+        [SerializeField] private Image currentPlayerAvatar;
         [SerializeField] private AnimationSequencerController openAnimationSequencerController;
         [SerializeField] private AnimationSequencerController closeAnimationSequencerController;
 
@@ -32,14 +34,26 @@ namespace UI.StartTurnWindow
             await closeAnimationSequencerController.PlayAsync();
         }
 
-        public void SetCurrentPlayerName(string name)
+        private void SetCurrentPlayerName(string name)
         {
             currentPlayerNameText.SetText(name);
         }
 
-        public void SetCurrentRound(int round)
+        private void SetCurrentRound(int round)
         {
             currentRoundText.SetText($"Runda {round}");
+        }
+
+        private void SetCurrentPlayerAvatar(Sprite avatar)
+        {
+            currentPlayerAvatar.sprite = avatar;
+        }
+
+        public void Setup(string currentPlayerName, int currentRound, Sprite currentPlayerAvatar)
+        {
+            SetCurrentPlayerName(currentPlayerName);
+            SetCurrentRound(currentRound);
+            SetCurrentPlayerAvatar(currentPlayerAvatar);
         }
     }
 }

@@ -113,6 +113,7 @@ namespace UI.Board.BoardPlayerPanel
             }
             viewModel.SetPoints(cardPurchasedFromBoardEvent.Points);
             view.SetPlayerPoints(cardPurchasedFromBoardEvent.Points);
+            await UniTask.CompletedTask;
         }
 
         public async UniTask HandleAsync(CardPurchasedFromReserveEvent cardPurchasedFromReserveEvent)
@@ -123,6 +124,7 @@ namespace UI.Board.BoardPlayerPanel
             }
             viewModel.SetPoints(cardPurchasedFromReserveEvent.Points);
             view.SetPlayerPoints(cardPurchasedFromReserveEvent.Points);
+            await UniTask.CompletedTask;
         }
 
         public async UniTask HandleAsync(ConcertCardClaimedEvent concertCardClaimedEvent)

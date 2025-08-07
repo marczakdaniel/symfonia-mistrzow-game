@@ -50,8 +50,7 @@ namespace UI.StartTurnWindow
 
         public async UniTask HandleAsync(StartTurnWindowOpenedEvent eventData)
         {
-            view.SetCurrentPlayerName(eventData.CurrentPlayerName);
-            view.SetCurrentRound(eventData.CurrentRound);
+            view.Setup(eventData.CurrentPlayerName, eventData.CurrentRound, eventData.CurrentPlayerAvatar);
             await view.OpenWindow();
         }
 

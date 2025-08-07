@@ -77,6 +77,7 @@ namespace UI.PlayerResourcesWindow
                 openEvent.IsCurrentPlayer,
                 openEvent.CanPlayerExecuteAction,
                 openEvent.PlayerName, 
+                openEvent.PlayerAvatar,
                 openEvent.NumberOfPoints, 
                 openEvent.CurrentPlayerTokens, 
                 openEvent.CurrentPlayerCards, 

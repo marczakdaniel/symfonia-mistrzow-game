@@ -8,6 +8,7 @@ using R3;
 using TMPro;
 using UI.MusicCardDetailsPanel;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace UI.PlayerResourcesWindow
 {
@@ -37,6 +38,9 @@ namespace UI.PlayerResourcesWindow
         [SerializeField]
         private TextMeshProUGUI numberOfPointsText;
 
+        [SerializeField]
+        private Image playerAvatar;
+
         public async UniTask PlayOpenAnimation()
         {
             await openAnimation.PlayAsync();
@@ -51,15 +55,16 @@ namespace UI.PlayerResourcesWindow
             bool isCurrentPlayer, 
             bool canPlayerExecuteAction,
             string playerName, 
+            Sprite avatar,
             int numberOfPoints, 
             Dictionary<ResourceType, int> currentPlayerTokens, 
             Dictionary<ResourceType, int> currentPlayerCards, 
             List<MusicCardData> reservedMusicCards, 
-                List<string> reservedMusicCardsThatCanBePurchased)
+            List<string> reservedMusicCardsThatCanBePurchased)
         {
             playerNameText.text = playerName;
             numberOfPointsText.text = numberOfPoints.ToString();
-
+            playerAvatar.sprite = avatar;
             for (int i = 0; i < playerResources.Length; i++)
             {
                 playerResources[i].Initialize((ResourceType)i, currentPlayerTokens[(ResourceType)i], currentPlayerCards[(ResourceType)i]);
