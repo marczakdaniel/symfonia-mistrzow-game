@@ -67,8 +67,8 @@ namespace UI.Board.BoardTokenPanel.BoardToken
 
         private void SubscribeToEvents()
         {
-            AsyncEventBus.Instance.Subscribe<TokenDetailsPanelOpenedEvent>(this);
-            AsyncEventBus.Instance.Subscribe<TokenDetailsPanelClosedEvent>(this);
+            AsyncEventBus.Instance.Subscribe<TokenDetailsPanelOpenedEvent>(this, EventPriority.Critical);
+            AsyncEventBus.Instance.Subscribe<TokenDetailsPanelClosedEvent>(this, EventPriority.Low);
             AsyncEventBus.Instance.Subscribe<SelectedTokensConfirmedEvent>(this);
                         
             AsyncEventBus.Instance.Subscribe<ReturnTokensConfirmedEvent>(this);
@@ -82,12 +82,21 @@ namespace UI.Board.BoardTokenPanel.BoardToken
 
         public async UniTask HandleAsync(SelectedTokensConfirmedEvent selectedTokensConfirmedEvent)
         {
+            if (viewModel.ResourceType == ResourceType.Inspiration)
+            {
+                return;
+            }
+            await view.PlayShowAnimation();
             await view.UpdateValue(selectedTokensConfirmedEvent.BoardTokens[viewModel.ResourceType]);
         }
 
         public async UniTask HandleAsync(TokenDetailsPanelClosedEvent tokenDetailsPanelClosedEvent)
         {
-            
+            if (viewModel.ResourceType == ResourceType.Inspiration)
+            {
+                return;
+            }
+            await view.PlayShowAnimation();
         }
 
         public async UniTask HandleAsync(ReturnTokensConfirmedEvent returnTokensConfirmedEvent)
@@ -103,7 +112,7 @@ namespace UI.Board.BoardTokenPanel.BoardToken
         public async UniTask HandleAsync(GameStartedEvent gameStartedEvent)
         {
             view.Initialize(viewModel.ResourceType, gameStartedEvent.BoardTokens[viewModel.ResourceType]);
-            view.gameObject.SetActive(true);
+            await view.PlayShowAnimation();
         }
 
         public async UniTask HandleAsync(CardReservedEvent cardReservedEvent)
@@ -128,7 +137,18 @@ namespace UI.Board.BoardTokenPanel.BoardToken
 
         public async UniTask HandleAsync(TokenDetailsPanelOpenedEvent tokenDetailsPanelOpenedEvent)
         {
+            if (viewModel.ResourceType == ResourceType.Inspiration)
+            {
+                return;
+            }
+            HideAnimationWithDelay().Forget();
             await UniTask.CompletedTask;
+        }
+
+        private async UniTask HideAnimationWithDelay()
+        {
+            await UniTask.Delay(50);
+            await view.PlayHideAnimation();
         }
 
         // Element actions

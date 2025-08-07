@@ -2,12 +2,13 @@ using Cysharp.Threading.Tasks;
 using UnityEngine;
 using R3;
 using DefaultNamespace.Elements;
-using UI.SelectTokenWindow.SelectBoardTokenPanel;
+using UI.SelectTokenWindow.SelectBoardToken;
 using UI.SelectTokenWindow.ChoosenBoardTokenPanel;
 using Assets.Scripts.UI.Elements;
 using System.Collections.Generic;
 using DefaultNamespace.Data;
 using System;
+using BrunoMikoski.AnimationSequencer;
 
 namespace UI.SelectTokenWindow
 {
@@ -16,14 +17,17 @@ namespace UI.SelectTokenWindow
         public Subject<Unit> OnCloseButtonClicked { get; private set; } = new Subject<Unit>();
         public Subject<Unit> OnAcceptButtonClicked { get; private set; } = new Subject<Unit>();
         
-        public SelectBoardTokenPanelView SelectBoardTokenPanelView => selectBoardTokenPanelView;
         public ChoosenBoardTokenPanelView ChoosenBoardTokenPanelView => choosenBoardTokenPanelView;
-
-        [SerializeField] private SelectBoardTokenPanelView selectBoardTokenPanelView;
+        public UniversalTokenElement[] SelectBoardTokens => selectBoardTokens;
         [SerializeField] private ChoosenBoardTokenPanelView choosenBoardTokenPanelView;
         [SerializeField] private ButtonElement closeButton;
         [SerializeField] private ButtonElement acceptButton;
-        [SerializeField] private UniversalTokenElement[] playerTokens = new UniversalTokenElement[6];
+        [SerializeField] private UniversalPlayerResourceElement[] playerTokens = new UniversalPlayerResourceElement[6];
+        [SerializeField] private UniversalTokenElement[] selectBoardTokens = new UniversalTokenElement[5];
+
+        [SerializeField] private SelectTokenWindowOpenAnimation openAnimation;
+        [SerializeField] private AnimationSequencerController closeAnimation;
+        [SerializeField] private AnimationSequencerController hideAnimation;
 
         private void Awake()
         {
@@ -31,21 +35,28 @@ namespace UI.SelectTokenWindow
             acceptButton.OnClick.Subscribe(_ => OnAcceptButtonClicked.OnNext(Unit.Default)).AddTo(this);
         }
 
-        public void OnCloseWindow()
+        public async UniTask OnCloseWindow()
         {
-            gameObject.SetActive(false);
+            await closeAnimation.PlayAsync();
+            PlayHideWithDelay().Forget();
         }
 
-        public void OnOpenWindow()
+        public async UniTask PlayHideWithDelay()
         {
-            gameObject.SetActive(true);
+            await UniTask.Delay(50);
+            await hideAnimation.PlayAsync();
         }
 
-        public void InitializePlayerTokens(Dictionary<ResourceType, int> playerTokens)
+        public async UniTask OnOpenWindow()
         {
-            foreach (var token in Enum.GetValues(typeof(ResourceType)))
+            await openAnimation.PlayOpenAnimation();
+        }
+
+        public void InitializePlayerTokens(Dictionary<ResourceType, int> tokens, Dictionary<ResourceType, int> currentPlayerTokens)
+        {
+            for (int i = 0; i < playerTokens.Length; i++)
             {
-                this.playerTokens[(int)token].Initialize((ResourceType)token, playerTokens[(ResourceType)token]);
+                playerTokens[i].Initialize((ResourceType)i, tokens[(ResourceType)i], currentPlayerTokens[(ResourceType)i]);
             }
         }
     }

@@ -42,12 +42,14 @@ namespace Events
         public Dictionary<ResourceType, int> CurrentTokenCounts { get; private set; }
 
         public Dictionary<ResourceType, int> CurrentPlayerTokens { get; private set; }
+        public Dictionary<ResourceType, int> CurrentPlayerCards { get; private set; }
 
-        public TokenDetailsPanelOpenedEvent(ResourceType? resourceType, Dictionary<ResourceType, int> currentTokenCounts, Dictionary<ResourceType, int> currentPlayerTokens)
+        public TokenDetailsPanelOpenedEvent(ResourceType? resourceType, Dictionary<ResourceType, int> currentTokenCounts, Dictionary<ResourceType, int> currentPlayerTokens, Dictionary<ResourceType, int> currentPlayerCards)
         {
             ResourceType = resourceType;
             CurrentTokenCounts = currentTokenCounts;
             CurrentPlayerTokens = currentPlayerTokens;
+            CurrentPlayerCards = currentPlayerCards;
         }
     }
 

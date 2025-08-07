@@ -32,61 +32,15 @@ namespace UI.SelectTokenWindow.ChoosenBoardTokenPanel
             SubscribeToEvents();
         }
 
-        public async UniTask OpenPanel(ResourceType? selectedToken)
-        {
-            viewModel.OnOpenAnimation(selectedToken);
-            await UniTask.WaitUntil(() => viewModel.State.Value == ChoosenBoardTokenPanelState.Active);
-        }
-
-        public async UniTask ClosePanel()
-        {
-            viewModel.OnCloseAnimation();
-            await UniTask.WaitUntil(() => viewModel.State.Value == ChoosenBoardTokenPanelState.Disabled);
-        }
-
         private void InitializeMVP()
         {
             var d = Disposable.CreateBuilder();
 
-            ConnectModel(d);
             ConnectView(d);
 
             disposables = d.Build();
         }
 
-        private void ConnectModel(DisposableBuilder d)
-        {
-            viewModel.State.Subscribe(state => HandleStateChange(state).ToObservable()).AddTo(subscriptions);
-        }
-
-        private async UniTask HandleStateChange(ChoosenBoardTokenPanelState state)
-        {
-            switch (state)
-            {
-                case ChoosenBoardTokenPanelState.Disabled:  
-                    await view.OnDisabled();
-                    break;
-                case ChoosenBoardTokenPanelState.DuringOpenAnimation:
-                    await view.OnOpenAnimation(viewModel.SelectedTokens);
-                    viewModel.OnOpenAnimationFinished();
-                    break;  
-                case ChoosenBoardTokenPanelState.DuringCloseAnimation:
-                    await view.OnCloseAnimation();
-                    viewModel.OnCloseAnimationFinished();
-                    break;
-                case ChoosenBoardTokenPanelState.DuringAddingTokenAnimation:
-                    await view.OnAddingTokenAnimation(viewModel.SelectedTokens);
-                    viewModel.OnAddingTokenAnimationFinished();
-                    break;
-                case ChoosenBoardTokenPanelState.DuringRemovingTokenAnimation:
-                    await view.OnRemovingTokenAnimation(viewModel.SelectedTokens);
-                    viewModel.OnRemovingTokenAnimationFinished();
-                    break;
-                case ChoosenBoardTokenPanelState.Active:
-                    await view.OnActivated();
-                    break;
-            }
-        }
 
         private void ConnectView(DisposableBuilder d)
         {
@@ -115,23 +69,25 @@ namespace UI.SelectTokenWindow.ChoosenBoardTokenPanel
         public async UniTask HandleAsync(TokenAddedToSelectedTokensEvent gameEvent)
         {
             viewModel.AddToken(gameEvent.CurrentSelectedTokens);
-            await UniTask.WaitUntil(() => viewModel.State.Value == ChoosenBoardTokenPanelState.Active);
+            await view.OnAddingTokenAnimation(viewModel.SelectedTokens);
         }
 
         public async UniTask HandleAsync(TokenRemovedFromSelectedTokensEvent gameEvent)
         {
             viewModel.RemoveToken(gameEvent.CurrentSelectedTokens);
-            await UniTask.WaitUntil(() => viewModel.State.Value == ChoosenBoardTokenPanelState.Active);
+            await view.OnRemovingTokenAnimation(viewModel.SelectedTokens);
         }
 
         public async UniTask HandleAsync(TokenDetailsPanelOpenedEvent gameEvent)
         {
-            await OpenPanel(gameEvent.ResourceType);
+            viewModel.OnOpenAnimation(gameEvent.ResourceType);
+            await view.OnOpenAnimation(viewModel.SelectedTokens);
         }
 
         public async UniTask HandleAsync(TokenDetailsPanelClosedEvent gameEvent)
         {
-            await ClosePanel();
+            viewModel.OnCloseAnimation();
+            await view.OnCloseAnimation();
         }
 
         public void Dispose()

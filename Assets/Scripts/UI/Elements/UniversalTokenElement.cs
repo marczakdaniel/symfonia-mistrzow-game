@@ -1,3 +1,4 @@
+using BrunoMikoski.AnimationSequencer;
 using Cysharp.Threading.Tasks;
 using DefaultNamespace.Data;
 using DefaultNamespace.Elements;
@@ -17,6 +18,8 @@ namespace Assets.Scripts.UI.Elements
         [SerializeField] private TextMeshProUGUI countText;
         [SerializeField] private ButtonElement button;
         [SerializeField] private ValueChangeAnimationController valueChangeAnimationController;
+        [SerializeField] private AnimationSequencerController showAnimation;
+        [SerializeField] private AnimationSequencerController hideAnimation;
 
         private int currentValue = 0;
         private ResourceType resourceType;
@@ -40,6 +43,16 @@ namespace Assets.Scripts.UI.Elements
             {
                 await valueChangeAnimationController.PlayAnimation(valueChange);
             }
+        }
+
+        public async UniTask PlayShowAnimation()
+        {
+            await showAnimation.PlayAsync();
+        }
+
+        public async UniTask PlayHideAnimation()
+        {
+            await hideAnimation.PlayAsync();
         }
 
         public void Awake()

@@ -90,14 +90,15 @@ namespace Command
         {
             var currentTokenCounts = boardService.GetAllBoardResources();
             var currentPlayerTokens = turnService.GetCurrentPlayerModel().Tokens.GetAllResources();
+            var currentPlayerCards = turnService.GetCurrentPlayerModel().GetPurchasedAllResourceCollection().GetAllResources();
             if (!turnService.CanAddTokenToSelectedTokens(ResourceType))
             {
-                await AsyncEventBus.Instance.PublishAndWaitAsync(new TokenDetailsPanelOpenedEvent(null, currentTokenCounts, currentPlayerTokens));
+                await AsyncEventBus.Instance.PublishAndWaitAsync(new TokenDetailsPanelOpenedEvent(null, currentTokenCounts, currentPlayerTokens, currentPlayerCards));
                 return false;
             }
             turnService.AddTokenToSelectedTokens(ResourceType);
 
-            await AsyncEventBus.Instance.PublishAndWaitAsync(new TokenDetailsPanelOpenedEvent(ResourceType, currentTokenCounts, currentPlayerTokens));
+            await AsyncEventBus.Instance.PublishAndWaitAsync(new TokenDetailsPanelOpenedEvent(ResourceType, currentTokenCounts, currentPlayerTokens, currentPlayerCards));
             return true;
         }
     }

@@ -41,6 +41,9 @@ namespace UI.Board
         public BoardCardDeckView Level2CardDeck => level2CardDeck;
         public BoardCardDeckView Level3CardDeck => level3CardDeck;
 
+        public AnimationSequencerController OpenedAnimation => opendAnimation;
+        public AnimationSequencerController ClosedAnimation => closeAnimation;
+
 
         public async UniTask PlayOpenAnimation()
         {

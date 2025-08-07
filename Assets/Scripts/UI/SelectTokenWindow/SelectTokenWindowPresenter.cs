@@ -3,10 +3,10 @@ using Models;
 using Cysharp.Threading.Tasks;
 using Events;
 using R3;
-using UI.SelectTokenWindow.SelectBoardTokenPanel;
-using UnityEngine;
 using Command;
 using UI.SelectTokenWindow.ChoosenBoardTokenPanel;
+using UI.SelectTokenWindow.SelectBoardToken;
+using DefaultNamespace.Data;
 
 namespace UI.SelectTokenWindow
 {
@@ -17,17 +17,15 @@ namespace UI.SelectTokenWindow
         IAsyncEventHandler<SelectedTokensConfirmedEvent>
     {
         private readonly SelectTokenWindowView view;
-        private readonly SelectTokenWindowViewModel viewModel;
         private readonly CommandFactory commandFactory;
         private IDisposable disposables;
 
-        private SelectBoardTokenPanelPresenter selectBoardTokenPanelPresenter;
+        private SelectBoardTokenPresenter[] selectBoardTokenPresenters = new SelectBoardTokenPresenter[5];
         private ChoosenBoardTokenPanelPresenter choosenBoardTokenPanelPresenter;
 
         public SelectTokenWindowPresenter(SelectTokenWindowView view, CommandFactory commandFactory)
         {
             this.view = view;
-            this.viewModel = new SelectTokenWindowViewModel();
             this.commandFactory = commandFactory;
 
             InitializeChildMVP();
@@ -39,45 +37,22 @@ namespace UI.SelectTokenWindow
 
         private void InitializeChildMVP()
         {
-            selectBoardTokenPanelPresenter = new SelectBoardTokenPanelPresenter(view.SelectBoardTokenPanelView, commandFactory);
             choosenBoardTokenPanelPresenter = new ChoosenBoardTokenPanelPresenter(view.ChoosenBoardTokenPanelView, commandFactory);
+
+            for (int i = 0; i < selectBoardTokenPresenters.Length; i++)
+            {
+                selectBoardTokenPresenters[i] = new SelectBoardTokenPresenter(view.SelectBoardTokens[i], (ResourceType)i, commandFactory);
+            }
         }
 
         private void InitializeMVP()
         {
             var d = Disposable.CreateBuilder();
 
-            ConnectModel(d);
             ConnectView(d);
 
             disposables = d.Build();
         }
-
-        private void ConnectModel(DisposableBuilder d)
-        {
-            viewModel.State.Subscribe(state => HandleStateChange(state).ToObservable()).AddTo(ref d);
-        }
-
-        private async UniTask HandleStateChange(SelectTokenWindowState state)
-        {
-            switch (state)
-            {
-                case SelectTokenWindowState.Closed:
-                    view.OnCloseWindow();
-                    break;
-                case SelectTokenWindowState.DuringOpenAnimation:
-                    view.InitializePlayerTokens(viewModel.PlayerTokens);
-                    viewModel.OnOpenWindowFinished();
-                    break;
-                case SelectTokenWindowState.DuringCloseAnimation:
-                    viewModel.OnCloseWindowFinished();
-                    break;
-                case SelectTokenWindowState.Active:
-                    view.OnOpenWindow();
-                    break;
-            }
-        }
-
 
         private void ConnectView(DisposableBuilder d)
         {
@@ -104,22 +79,20 @@ namespace UI.SelectTokenWindow
             AsyncEventBus.Instance.Subscribe<SelectedTokensConfirmedEvent>(this);
         }
 
-        public async UniTask HandleAsync(TokenDetailsPanelOpenedEvent tokenDetailsPanelOpenedEvent)
+        public async UniTask HandleAsync(TokenDetailsPanelOpenedEvent openedEvent)
         {
-            viewModel.OpenWindow(tokenDetailsPanelOpenedEvent.ResourceType, tokenDetailsPanelOpenedEvent.CurrentPlayerTokens);
-            await UniTask.WaitUntil(() => viewModel.State.Value == SelectTokenWindowState.Active);
+            view.InitializePlayerTokens(openedEvent.CurrentPlayerTokens, openedEvent.CurrentPlayerCards);
+            await view.OnOpenWindow();
         }
 
         public async UniTask HandleAsync(TokenDetailsPanelClosedEvent tokenDetailsPanelClosedEvent)
         {
-            viewModel.CloseWindow();
-            await UniTask.WaitUntil(() => viewModel.State.Value == SelectTokenWindowState.Closed);
+            await view.OnCloseWindow();
         }
 
         public async UniTask HandleAsync(SelectedTokensConfirmedEvent selectedTokensConfirmedEvent)
         {
-            viewModel.CloseWindow();
-            await UniTask.WaitUntil(() => viewModel.State.Value == SelectTokenWindowState.Closed);
+            await view.OnCloseWindow();
         }
 
         public void Dispose()

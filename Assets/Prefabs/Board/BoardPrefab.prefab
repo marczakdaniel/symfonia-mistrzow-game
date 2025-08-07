@@ -49,7 +49,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1727578333486992282}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
   m_Name: 
@@ -737,6 +737,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BoardTokenPrefab (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 9198687676562992004, guid: 433a59703a586cd4fbca5c7ffd07d5ae, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -849,6 +853,10 @@ PrefabInstance:
     - target: {fileID: 9198687676562992004, guid: 433a59703a586cd4fbca5c7ffd07d5ae, type: 3}
       propertyPath: m_Name
       value: BoardTokenPrefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 9198687676562992004, guid: 433a59703a586cd4fbca5c7ffd07d5ae, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -963,6 +971,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BoardTokenPrefab (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 9198687676562992004, guid: 433a59703a586cd4fbca5c7ffd07d5ae, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1075,6 +1087,10 @@ PrefabInstance:
     - target: {fileID: 9198687676562992004, guid: 433a59703a586cd4fbca5c7ffd07d5ae, type: 3}
       propertyPath: m_Name
       value: BoardTokenPrefab (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9198687676562992004, guid: 433a59703a586cd4fbca5c7ffd07d5ae, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1860,6 +1876,10 @@ PrefabInstance:
     - target: {fileID: 9198687676562992004, guid: 433a59703a586cd4fbca5c7ffd07d5ae, type: 3}
       propertyPath: m_Name
       value: BoardTokenPrefab (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9198687676562992004, guid: 433a59703a586cd4fbca5c7ffd07d5ae, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
