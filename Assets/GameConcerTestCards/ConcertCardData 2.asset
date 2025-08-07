@@ -15,9 +15,9 @@ MonoBehaviour:
   id: 3
   image: {fileID: -4225341187225261249, guid: 89e86b485ff885f4bb5c5ef1b3503293, type: 3}
   requirements:
-    melody: 0
+    melody: 1
     harmony: 0
-    rhythm: 1
+    rhythm: 0
     instrumentation: 0
     dynamics: 0
   points: 3

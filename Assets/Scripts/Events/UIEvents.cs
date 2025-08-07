@@ -390,23 +390,21 @@ namespace Events
     {
         public List<ConcertCardData> ConcertCards { get; private set; }
         public List<ConcertCardState> CardStates { get; private set; }
-        public ConcertCardsWindowOpenedEvent(List<ConcertCardData> concertCards, List<ConcertCardState> cardStates)
+        public List<Sprite> OwnerAvatars { get; private set; }
+        public ConcertCardsWindowOpenedEvent(List<ConcertCardData> concertCards, List<ConcertCardState> cardStates, List<Sprite> ownerAvatars)
         {
             ConcertCards = concertCards;
             CardStates = cardStates;
+            OwnerAvatars = ownerAvatars;
         }
     }
 
     public class ConcertCardClaimedEvent : GameEvent
     {
-        public List<ConcertCardData> ConcertCards { get; private set; }
-        public List<ConcertCardState> CardStates { get; private set; }
         public int Points { get; private set; }
 
-        public ConcertCardClaimedEvent(List<ConcertCardData> concertCards, List<ConcertCardState> cardStates, int points)
+        public ConcertCardClaimedEvent(int points)
         {
-            ConcertCards = concertCards;
-            CardStates = cardStates;
             Points = points;
         }
     }

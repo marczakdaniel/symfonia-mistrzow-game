@@ -109,18 +109,11 @@ namespace UI.Board
         {
             AsyncEventBus.Instance.Subscribe<GameStartedEvent>(this, EventPriority.SuperCritical);
         }
-
-        // Event Handlers
-        
-        public async UniTask InitializeBoard()
-        {
-            await boardEndTurnButtonPresenter.OnGameStarted();
-        }
+    
 
         public async UniTask HandleAsync(GameStartedEvent gameEvent)
         {
             await view.PlayOpenAnimation();
-            await InitializeBoard();
         }
 
         public void Dispose()

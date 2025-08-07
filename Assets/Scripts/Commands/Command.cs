@@ -152,14 +152,16 @@ namespace Command
                 return true;
             }
 
-            if (turnService.CanClaimConcertCard(out string cardId))
+            turnService.SetConcertCardReadyToClaimState();
+
+            if (turnService.CanClaimAnyConcertCard())
             {
-                turnService.ClaimConcertCard(cardId);
-                var concertCards = turnService.GetConcertCards();
-                var concertCardData = concertCards.Select(card => card.ConcertCardData).ToList();
-                var cardStates = concertCards.Select(card => card.State).ToList();
-                await AsyncEventBus.Instance.PublishAndWaitAsync(new ConcertCardsWindowOpenedEvent(concertCardData, cardStates));
-                await AsyncEventBus.Instance.PublishAndWaitAsync(new ConcertCardClaimedEvent(concertCardData, cardStates, turnService.GetCurrentPlayerModel().Points));
+                var concertCardData = turnService.GetConcertCardsData();
+                var cardStates = turnService.GetConcertCardStates();
+                turnService.ClaimAllConcertCardsReadyToClaim();
+                var ownerAvatars = turnService.GetClaimedConcertCardOwnerAvatar();
+                await AsyncEventBus.Instance.PublishAndWaitAsync(new ConcertCardsWindowOpenedEvent(concertCardData, cardStates, ownerAvatars));
+                await AsyncEventBus.Instance.PublishAndWaitAsync(new ConcertCardClaimedEvent(turnService.GetCurrentPlayerModel().Points));
                 return true;
             }
 

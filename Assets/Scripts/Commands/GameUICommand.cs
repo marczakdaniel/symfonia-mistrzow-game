@@ -319,10 +319,26 @@ namespace Command
 
         public override async UniTask<bool> Execute()
         {
-            var concertCards = turnService.GetConcertCards();
-            var cardData = concertCards.Select(card => card.ConcertCardData).ToList();
-            var cardStates = concertCards.Select(card => card.State).ToList();
-            await AsyncEventBus.Instance.PublishAndWaitAsync(new ConcertCardsWindowOpenedEvent(cardData, cardStates));
+            turnService.SetConcertCardReadyToClaimState();
+            var canClaimAnyConcertCard = turnService.CanClaimAnyConcertCard();
+
+            var cardData = turnService.GetConcertCardsData();
+            var cardStates = turnService.GetConcertCardStates();
+
+            if (canClaimAnyConcertCard)
+            {
+                turnService.ClaimAllConcertCardsReadyToClaim();
+            }
+
+            var ownerAvatars = turnService.GetClaimedConcertCardOwnerAvatar();
+
+            await AsyncEventBus.Instance.PublishAndWaitAsync(new ConcertCardsWindowOpenedEvent(cardData, cardStates, ownerAvatars));
+
+            if (canClaimAnyConcertCard)
+            {
+                await AsyncEventBus.Instance.PublishAndWaitAsync(new ConcertCardClaimedEvent(turnService.GetCurrentPlayerModel().Points));
+            }
+
             return true;
         }
     }

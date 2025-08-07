@@ -54,8 +54,9 @@ namespace Assets.Scripts.UI.ConcertCardsWindow
 
         public async UniTask HandleAsync(ConcertCardsWindowOpenedEvent gameEvent)
         {
-            view.Initialize(gameEvent.ConcertCards, gameEvent.CardStates);
+            view.Initialize(gameEvent.ConcertCards, gameEvent.CardStates, gameEvent.OwnerAvatars);
             await view.PlayOpenAnimation();
+            await view.PlayClaimAnimation();
         }
 
         public async UniTask HandleAsync(ConcertCardsWindowClosedEvent gameEvent)

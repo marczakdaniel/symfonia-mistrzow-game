@@ -14,15 +14,23 @@ namespace Models
         public ConcertCardData ConcertCardData { get; private set; }
         public ConcertCardState State { get; private set; }
 
+        public string OwnerId { get; private set; }
+
         public ConcertCardModel(ConcertCardData concertCardData)
         {
             this.ConcertCardData = concertCardData;
             this.State = ConcertCardState.Available;
         }
 
-        public void SetState(ConcertCardState state)
+        public void SetReadyToClaim()
         {
-            State = state;
+            State = ConcertCardState.ReadyToClaim;
+        }
+
+        public void SetClaimed(string ownerId)
+        {
+            State = ConcertCardState.Claimed;
+            OwnerId = ownerId;
         }
 
         public bool CanClaim(ResourceCollectionModel playerMusicCards)

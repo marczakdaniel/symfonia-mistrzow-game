@@ -1,13 +1,22 @@
 using System;
 using Command;
 using Cysharp.Threading.Tasks;
+using Events;
 using R3;
 
 namespace UI.Board.BoardEndTurnButton
 {
-    public class BoardEndTurnButtonPresenter : IDisposable
+    public class BoardEndTurnButtonPresenter : 
+        IDisposable, 
+        IAsyncEventHandler<TurnStartedEvent>,
+        IAsyncEventHandler<GameStartedEvent>,
+        IAsyncEventHandler<SelectedTokensConfirmedEvent>,
+        IAsyncEventHandler<CardPurchasedFromBoardEvent>,
+        IAsyncEventHandler<CardPurchasedFromReserveEvent>,
+        IAsyncEventHandler<CardReservedEvent>,
+        IAsyncEventHandler<DeckCardReservedEvent>
+        
     {
-        private readonly BoardEndTurnButtonViewModel viewModel;
         private readonly BoardEndTurnButtonView view;
         private readonly CommandFactory commandFactory;
         
@@ -16,16 +25,10 @@ namespace UI.Board.BoardEndTurnButton
         public BoardEndTurnButtonPresenter(BoardEndTurnButtonView view, CommandFactory commandFactory)
         {
             this.view = view;
-            this.viewModel = new BoardEndTurnButtonViewModel();
             this.commandFactory = commandFactory;
 
             InitializeMVP();
             SubscribeToEvents();
-        }
-
-        public async UniTask OnGameStarted()
-        {
-            viewModel.SetEnabled();
         }
 
         private void InitializeMVP()
@@ -40,20 +43,6 @@ namespace UI.Board.BoardEndTurnButton
 
         private void ConnectModel(DisposableBuilder d)
         {
-            viewModel.State.Subscribe(state => HandleStateChange(state).ToObservable()).AddTo(ref d);
-        }
-
-        private async UniTask HandleStateChange(BoardEndTurnButtonState state)
-        {
-            switch (state)
-            {
-                case BoardEndTurnButtonState.Disabled:
-                    view.gameObject.SetActive(false);
-                    break;
-                case BoardEndTurnButtonState.Enabled:
-                    view.gameObject.SetActive(true);
-                    break;
-            }
         }
 
         private void ConnectView(DisposableBuilder d)
@@ -69,8 +58,50 @@ namespace UI.Board.BoardEndTurnButton
 
         private void SubscribeToEvents()
         {
-
+            AsyncEventBus.Instance.Subscribe<TurnStartedEvent>(this, EventPriority.Low);
+            AsyncEventBus.Instance.Subscribe<GameStartedEvent>(this);
+            AsyncEventBus.Instance.Subscribe<SelectedTokensConfirmedEvent>(this, EventPriority.Low);
+            AsyncEventBus.Instance.Subscribe<CardPurchasedFromBoardEvent>(this, EventPriority.Low);
+            AsyncEventBus.Instance.Subscribe<CardPurchasedFromReserveEvent>(this, EventPriority.Low);
+            AsyncEventBus.Instance.Subscribe<CardReservedEvent>(this, EventPriority.Low);
+            AsyncEventBus.Instance.Subscribe<DeckCardReservedEvent>(this, EventPriority.Low);
         }
+
+        public async UniTask HandleAsync(TurnStartedEvent gameEvent)
+        {
+            await view.PlayDisabledAnimation();
+        }
+
+        public async UniTask HandleAsync(GameStartedEvent gameEvent)
+        {
+            await view.PlayActiveAnimation();
+        }
+
+        public async UniTask HandleAsync(SelectedTokensConfirmedEvent gameEvent)
+        {
+            await view.PlayActiveAnimation();
+        }
+
+        public async UniTask HandleAsync(CardPurchasedFromBoardEvent gameEvent)
+        {
+            await view.PlayActiveAnimation();
+        }
+
+        public async UniTask HandleAsync(CardPurchasedFromReserveEvent gameEvent)
+        {
+            await view.PlayActiveAnimation();
+        }
+
+        public async UniTask HandleAsync(CardReservedEvent gameEvent)
+        {
+            await view.PlayActiveAnimation();
+        }
+
+        public async UniTask HandleAsync(DeckCardReservedEvent gameEvent)
+        {
+            await view.PlayActiveAnimation();
+        }
+
 
         public void Dispose()
         {

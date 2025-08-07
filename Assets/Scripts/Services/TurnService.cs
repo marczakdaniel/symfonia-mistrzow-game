@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using Assets.Scripts.Data;
 using DefaultNamespace.Data;
 using Models;
 using UnityEngine;
@@ -360,22 +362,80 @@ namespace Services
 
         public void ClaimConcertCard(string cardId)
         {
-            if (!CanClaimConcertCard(out string id) || id != cardId)
-            {
-                Debug.LogError($"[TurnService] Cannot claim concert card: {cardId}");
-                return;
-            }
-
             var currentPlayer = gameModel.GetPlayer(turnModel.CurrentPlayerId);
             var concertCard = gameModel.ConcertCards.Find(card => card.ConcertCardData.Id == cardId);
 
             currentPlayer.AddConcertCard(concertCard.ConcertCardData);
-            concertCard.SetState(ConcertCardState.Claimed);
+            concertCard.SetClaimed(currentPlayer.PlayerId);
         }
 
         public List<ConcertCardModel> GetConcertCards()
         {
             return gameModel.ConcertCards;
+        }
+
+        public List<ConcertCardData> GetConcertCardsData()
+        {
+            return gameModel.ConcertCards.Select(card => card.ConcertCardData).ToList();
+        }
+
+        public void SetConcertCardReadyToClaimState()
+        {
+            var currentPlayer = gameModel.GetPlayer(turnModel.CurrentPlayerId);
+            var concertCards = gameModel.ConcertCards;
+            var playerMusicCards = currentPlayer.GetPurchasedAllResourceCollection();
+
+            foreach (var card in concertCards)
+            {
+                if (card.State == ConcertCardState.Available && card.CanClaim(playerMusicCards))
+                {
+                    card.SetReadyToClaim();
+                }
+            }
+        }
+
+        public bool CanClaimAnyConcertCard()
+        {
+            var currentPlayer = gameModel.GetPlayer(turnModel.CurrentPlayerId);
+            var concertCards = gameModel.ConcertCards;
+            var playerMusicCards = currentPlayer.GetPurchasedAllResourceCollection();
+            return concertCards.Any(card => card.State == ConcertCardState.ReadyToClaim);
+        }
+
+        public List<ConcertCardState> GetConcertCardStates()
+        {
+            return gameModel.ConcertCards.Select(card => card.State).ToList();
+        }
+
+        public void ClaimAllConcertCardsReadyToClaim()
+        {
+            var concertCards = gameModel.ConcertCards;
+            foreach (var card in concertCards)
+            {
+                if (card.State == ConcertCardState.ReadyToClaim)
+                {
+                    ClaimConcertCard(card.ConcertCardData.Id);
+                }
+            }
+        }
+
+        public List<Sprite> GetClaimedConcertCardOwnerAvatar()
+        {
+            var concertCards = gameModel.ConcertCards;
+            var result = new List<Sprite>();
+            foreach (var card in concertCards)
+            {
+                if (card.State == ConcertCardState.Claimed)
+                {
+                    var player = gameModel.GetPlayer(card.OwnerId);
+                    result.Add(player.PlayerAvatar);
+                }
+                else
+                {
+                    result.Add(null);
+                }
+            }
+            return result;
         }
 
         public bool ReserveDeckCard(string cardId)
