@@ -69,7 +69,7 @@ namespace UI.Board.BoardTokenPanel.BoardToken
         {
             AsyncEventBus.Instance.Subscribe<TokenDetailsPanelOpenedEvent>(this, EventPriority.Critical);
             AsyncEventBus.Instance.Subscribe<TokenDetailsPanelClosedEvent>(this, EventPriority.Low);
-            AsyncEventBus.Instance.Subscribe<SelectedTokensConfirmedEvent>(this);
+            AsyncEventBus.Instance.Subscribe<SelectedTokensConfirmedEvent>(this, EventPriority.Low);
                         
             AsyncEventBus.Instance.Subscribe<ReturnTokensConfirmedEvent>(this);
             AsyncEventBus.Instance.Subscribe<ReturnTokenWindowOpenedEvent>(this);
