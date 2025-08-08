@@ -391,7 +391,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animationSteps:
+  - rid: 4232360201771548747
+  - rid: 4232360201771548748
   - rid: 4232360201771548672
+  - rid: 4232360201771548750
+  - rid: 4232360201771548752
+  - rid: 4232360201771548753
+  - rid: 4232360201771548754
+  - rid: 4232360201771548755
   updateType: 0
   timeScaleIndependent: 0
   autoplayMode: 2
@@ -421,6 +428,173 @@ MonoBehaviour:
         flowType: 0
         targetGameObject: {fileID: 4638948648222400241}
         active: 1
+    - rid: 4232360201771548747
+      type: {class: SetTargetsTransformScale, ns: AnimationSequencer, asm: Assembly-CSharp}
+      data:
+        delay: 0
+        flowType: 1
+        targets:
+        - {fileID: 8764662727939062698}
+        - {fileID: 7917915750728159436}
+        - {fileID: 1031381229685417323}
+        - {fileID: 2020526128075481270}
+        scale: {x: 0, y: 0, z: 0}
+    - rid: 4232360201771548748
+      type: {class: DOTweenAnimationStep, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
+      data:
+        delay: 0
+        flowType: 1
+        target: {fileID: 9071813600884346312}
+        duration: 0
+        loopCount: 0
+        loopType: 0
+        actions:
+        - rid: 4232360201771548749
+    - rid: 4232360201771548749
+      type: {class: AnchoredPositionMoveToPositionDOTweenActionBase, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
+      data:
+        direction: 0
+        ease:
+          ease: 7
+          curve:
+            serializedVersion: 2
+            m_Curve: []
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
+        isRelative: 0
+        axisConstraint: 0
+        position: {x: 0, y: -1100}
+    - rid: 4232360201771548750
+      type: {class: DOTweenAnimationStep, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
+      data:
+        delay: 0
+        flowType: 0
+        target: {fileID: 9071813600884346312}
+        duration: 0.5
+        loopCount: 0
+        loopType: 0
+        actions:
+        - rid: 4232360201771548751
+    - rid: 4232360201771548751
+      type: {class: AnchoredPositionMoveToPositionDOTweenActionBase, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
+      data:
+        direction: 0
+        ease:
+          ease: 7
+          curve:
+            serializedVersion: 2
+            m_Curve: []
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
+        isRelative: 0
+        axisConstraint: 0
+        position: {x: 0, y: 0}
+    - rid: 4232360201771548752
+      type: {class: DOTweenAnimationStep, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
+      data:
+        delay: 0
+        flowType: 0
+        target: {fileID: 2170567936566602352}
+        duration: 0.3
+        loopCount: 0
+        loopType: 0
+        actions:
+        - rid: 4232360201771548756
+    - rid: 4232360201771548753
+      type: {class: DOTweenAnimationStep, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
+      data:
+        delay: 0.1
+        flowType: 1
+        target: {fileID: 7012642719890560319}
+        duration: 0.3
+        loopCount: 0
+        loopType: 0
+        actions:
+        - rid: 4232360201771548757
+    - rid: 4232360201771548754
+      type: {class: DOTweenAnimationStep, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
+      data:
+        delay: 0.2
+        flowType: 1
+        target: {fileID: 208235171503579288}
+        duration: 0.3
+        loopCount: 0
+        loopType: 0
+        actions:
+        - rid: 4232360201771548758
+    - rid: 4232360201771548755
+      type: {class: DOTweenAnimationStep, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
+      data:
+        delay: 0.3
+        flowType: 1
+        target: {fileID: 1205177737770476869}
+        duration: 0.3
+        loopCount: 0
+        loopType: 0
+        actions:
+        - rid: 4232360201771548759
+    - rid: 4232360201771548756
+      type: {class: ScaleDOTweenAction, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
+      data:
+        direction: 0
+        ease:
+          ease: 27
+          curve:
+            serializedVersion: 2
+            m_Curve: []
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
+        isRelative: 0
+        scale: {x: 1, y: 1, z: 1}
+        axisConstraint: 0
+    - rid: 4232360201771548757
+      type: {class: ScaleDOTweenAction, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
+      data:
+        direction: 0
+        ease:
+          ease: 27
+          curve:
+            serializedVersion: 2
+            m_Curve: []
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
+        isRelative: 0
+        scale: {x: 1, y: 1, z: 1}
+        axisConstraint: 0
+    - rid: 4232360201771548758
+      type: {class: ScaleDOTweenAction, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
+      data:
+        direction: 0
+        ease:
+          ease: 27
+          curve:
+            serializedVersion: 2
+            m_Curve: []
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
+        isRelative: 0
+        scale: {x: 1, y: 1, z: 1}
+        axisConstraint: 0
+    - rid: 4232360201771548759
+      type: {class: ScaleDOTweenAction, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
+      data:
+        direction: 0
+        ease:
+          ease: 27
+          curve:
+            serializedVersion: 2
+            m_Curve: []
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
+        isRelative: 0
+        scale: {x: 1, y: 1, z: 1}
+        axisConstraint: 0
 --- !u!1 &9071813600884346312
 GameObject:
   m_ObjectHideFlags: 0
@@ -722,6 +896,18 @@ PrefabInstance:
       value: 257.777
       objectReference: {fileID: 0}
     - target: {fileID: 3970860754817728321, guid: d65388015791b654994ed523a6305dd4, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3970860754817728321, guid: d65388015791b654994ed523a6305dd4, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3970860754817728321, guid: d65388015791b654994ed523a6305dd4, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3970860754817728321, guid: d65388015791b654994ed523a6305dd4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -794,6 +980,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d65388015791b654994ed523a6305dd4, type: 3}
+--- !u!1 &1205177737770476869 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4298874805356214962, guid: d65388015791b654994ed523a6305dd4, type: 3}
+  m_PrefabInstance: {fileID: 3103276047381471223}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &2020526128075481270 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3970860754817728321, guid: d65388015791b654994ed523a6305dd4, type: 3}
@@ -804,7 +995,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4703972127326961415, guid: d65388015791b654994ed523a6305dd4, type: 3}
   m_PrefabInstance: {fileID: 3103276047381471223}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1205177737770476869}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b7db30b0d842bbe42be29117b054b93b, type: 3}
@@ -877,6 +1068,18 @@ PrefabInstance:
     - target: {fileID: 3970860754817728321, guid: d65388015791b654994ed523a6305dd4, type: 3}
       propertyPath: m_SizeDelta.y
       value: 257.777
+      objectReference: {fileID: 0}
+    - target: {fileID: 3970860754817728321, guid: d65388015791b654994ed523a6305dd4, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3970860754817728321, guid: d65388015791b654994ed523a6305dd4, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3970860754817728321, guid: d65388015791b654994ed523a6305dd4, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3970860754817728321, guid: d65388015791b654994ed523a6305dd4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -955,6 +1158,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d65388015791b654994ed523a6305dd4, type: 3}
+--- !u!1 &208235171503579288 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4298874805356214962, guid: d65388015791b654994ed523a6305dd4, type: 3}
+  m_PrefabInstance: {fileID: 4128506814315928106}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1031381229685417323 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3970860754817728321, guid: d65388015791b654994ed523a6305dd4, type: 3}
@@ -965,7 +1173,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4703972127326961415, guid: d65388015791b654994ed523a6305dd4, type: 3}
   m_PrefabInstance: {fileID: 4128506814315928106}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 208235171503579288}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b7db30b0d842bbe42be29117b054b93b, type: 3}
@@ -1010,6 +1218,18 @@ PrefabInstance:
     - target: {fileID: 3601961321547712104, guid: 84093e96ff1b79649a6e2a1e0b29983e, type: 3}
       propertyPath: m_SizeDelta.y
       value: 403.6961
+      objectReference: {fileID: 0}
+    - target: {fileID: 3601961321547712104, guid: 84093e96ff1b79649a6e2a1e0b29983e, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3601961321547712104, guid: 84093e96ff1b79649a6e2a1e0b29983e, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3601961321547712104, guid: 84093e96ff1b79649a6e2a1e0b29983e, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3601961321547712104, guid: 84093e96ff1b79649a6e2a1e0b29983e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1104,12 +1324,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 84093e96ff1b79649a6e2a1e0b29983e, type: 3}
+--- !u!1 &2170567936566602352 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6215392882694690738, guid: 84093e96ff1b79649a6e2a1e0b29983e, type: 3}
+  m_PrefabInstance: {fileID: 5214863720884583874}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &4782338387785010949 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 720766706934772423, guid: 84093e96ff1b79649a6e2a1e0b29983e, type: 3}
   m_PrefabInstance: {fileID: 5214863720884583874}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 2170567936566602352}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b7db30b0d842bbe42be29117b054b93b, type: 3}
@@ -1179,6 +1404,18 @@ PrefabInstance:
     - target: {fileID: 3970860754817728321, guid: d65388015791b654994ed523a6305dd4, type: 3}
       propertyPath: m_SizeDelta.y
       value: 257.777
+      objectReference: {fileID: 0}
+    - target: {fileID: 3970860754817728321, guid: d65388015791b654994ed523a6305dd4, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3970860754817728321, guid: d65388015791b654994ed523a6305dd4, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3970860754817728321, guid: d65388015791b654994ed523a6305dd4, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3970860754817728321, guid: d65388015791b654994ed523a6305dd4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1258,12 +1495,17 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4703972127326961415, guid: d65388015791b654994ed523a6305dd4, type: 3}
   m_PrefabInstance: {fileID: 6555344115434549133}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 7012642719890560319}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b7db30b0d842bbe42be29117b054b93b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &7012642719890560319 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4298874805356214962, guid: d65388015791b654994ed523a6305dd4, type: 3}
+  m_PrefabInstance: {fileID: 6555344115434549133}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &7917915750728159436 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3970860754817728321, guid: d65388015791b654994ed523a6305dd4, type: 3}

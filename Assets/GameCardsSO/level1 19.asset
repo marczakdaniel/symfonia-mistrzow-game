@@ -23,5 +23,16 @@ MonoBehaviour:
     instrumentation: 0
     dynamics: 1
   cardImage: {fileID: 0}
-  cardName: 
-  cardDescription: 
+  cardName: "Rumu\u0144skie ta\u0144ce ludowe - B\xE9la Bart\xF3k"
+  cardDescription: "ChatGPT said: Rumu\u0144skie ta\u0144ce ludowe B\xE9li Bart\xF3ka,
+    skomponowane w 1915 roku na fortepian, a p\xF3\u017Aniej zorkiestrowane przez
+    samego kompozytora, to cykl sze\u015Bciu kr\xF3tkich miniatur opartych na autentycznych
+    melodiach, kt\xF3re Bart\xF3k zebra\u0142 podczas swoich etnograficznych podr\xF3\u017Cy
+    po Siedmiogrodzie. Ka\u017Cdy taniec pochodzi z innego regionu i zachowuje charakter
+    orygina\u0142u \u2013 od energicznych skok\xF3w po liryczne, ko\u0142ysz\u0105ce
+    melodie. Bart\xF3k zachowa\u0142 surowo\u015B\u0107 ludowych motyw\xF3w, wzbogacaj\u0105c
+    je nowoczesn\u0105 harmonik\u0105 i rytmik\u0105. Utw\xF3r, cho\u0107 kr\xF3tki,
+    jest barwn\u0105 podr\xF3\u017C\u0105 przez tradycj\u0119 rumu\u0144sk\u0105
+    i przyk\u0142adem, jak kompozytor potrafi\u0142 po\u0142\u0105czy\u0107 badania
+    folkloru z artystyczn\u0105 wirtuozeri\u0105. To jedna z jego najbardziej lubianych
+    miniatur koncertowych."

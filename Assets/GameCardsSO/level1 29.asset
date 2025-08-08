@@ -23,5 +23,15 @@ MonoBehaviour:
     instrumentation: 0
     dynamics: 0
   cardImage: {fileID: 0}
-  cardName: 
-  cardDescription: 
+  cardName: "Ucze\u0144 czarnoksi\u0119\u017Cnika - Paul Dukas"
+  cardDescription: "Ucze\u0144 czarnoksi\u0119\u017Cnika Paula Dukasa, skomponowany
+    w 1897 roku, to symfoniczna scherzo-fantazja inspirowana ballad\u0105 Johanna
+    Wolfganga von Goethego. Utw\xF3r opowiada histori\u0119 m\u0142odego adepta magii,
+    kt\xF3ry pr\xF3buje u\u017Cy\u0107 zakl\u0119\u0107 mistrza do o\u017Cywienia
+    miot\u0142y\u2026 i traci nad ni\u0105 kontrol\u0119. Dukas ilustruje akcj\u0119
+    muzyk\u0105 pe\u0142n\u0105 humoru i dramatycznych kontrast\xF3w \u2013 od lekkich,
+    figlarnych temat\xF3w po narastaj\u0105ce, burzliwe crescenda symbolizuj\u0105ce
+    wodn\u0105 katastrof\u0119. Mistrzowska orkiestracja sprawia, \u017Ce ka\u017Cdy
+    epizod jest plastyczny i sugestywny. Cho\u0107 kompozytor pozostawi\u0142 niewiele
+    dzie\u0142, Ucze\u0144 czarnoksi\u0119\u017Cnika sta\u0142 si\u0119 jego najs\u0142ynniejsz\u0105
+    kompozycj\u0105, znan\u0105 m.in. z animowanej adaptacji w filmie Disneya Fantasia."

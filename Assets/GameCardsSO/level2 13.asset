@@ -23,5 +23,15 @@ MonoBehaviour:
     instrumentation: 2
     dynamics: 2
   cardImage: {fileID: 0}
-  cardName: 
-  cardDescription: 
+  cardName: Koncert fortepianowy a-moll op. 16 - Edvard Grieg
+  cardDescription: "Koncert fortepianowy a-moll op. 16 Edvarda Griega, skomponowany
+    w 1868 roku, to najs\u0142ynniejsze dzie\u0142o norweskiego kompozytora i jeden
+    z najcz\u0119\u015Bciej wykonywanych koncert\xF3w romantycznych. Utw\xF3r otwiera
+    efektowny zjazd akordowy fortepianu, po kt\xF3rym pojawia si\u0119 szeroki, liryczny
+    temat inspirowany norweskim folklorem. Grieg \u0142\u0105czy tu wirtuozeri\u0119
+    partii solowej z bogat\u0105, barwn\u0105 orkiestracj\u0105, tworz\u0105c muzyk\u0119
+    pe\u0142n\u0105 kontrast\xF3w \u2013 od dramatycznych kulminacji po subtelne,
+    nastrojowe fragmenty. Druga cz\u0119\u015B\u0107, Adagio, emanuje spokojem i
+    ciep\u0142em, a fina\u0142owe Allegro moderato w rytmie hallingu wprowadza taneczny,
+    narodowy akcent. Koncert ten sta\u0142 si\u0119 muzyczn\u0105 wizyt\xF3wk\u0105
+    Norwegii i klasyk\u0105 repertuaru pianistycznego."

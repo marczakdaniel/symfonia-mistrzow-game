@@ -23,5 +23,14 @@ MonoBehaviour:
     instrumentation: 1
     dynamics: 4
   cardImage: {fileID: 0}
-  cardName: 
-  cardDescription: 
+  cardName: "Noc na \u0141ysej G\xF3rze - Modest Mussorgski"
+  cardDescription: "Noc na \u0141ysej G\xF3rze Modesta Musorgskiego, skomponowana
+    w 1867 roku i znana g\u0142\xF3wnie w orkiestracji Niko\u0142aja Rimskiego-Korsakowa,
+    to jedno z najs\u0142ynniejszych dzie\u0142 rosyjskiego symfonizmu programowego.
+    Utw\xF3r przedstawia nocny sabat czarownic na szczycie mitycznej g\xF3ry \u2013
+    pe\u0142en demonicznych ta\u0144c\xF3w, gro\u017Anych fanfar i mrocznych kulminacji.
+    Musorgski u\u017Cywa gwa\u0142townych kontrast\xF3w dynamicznych, ostrych rytm\xF3w
+    i \u015Bmia\u0142ej harmonii, by odda\u0107 atmosfer\u0119 grozy i dzikiej euforii.
+    W ko\u0144cowych taktach pojawia si\u0119 spokojny motyw \u015Bwitu, symbolizuj\u0105cy
+    rozproszenie z\u0142ych mocy. Noc na \u0141ysej G\xF3rze sta\u0142a si\u0119
+    ikon\u0105 muzyki grozy i cz\u0119sto go\u015Bci w filmach oraz kulturze popularnej."

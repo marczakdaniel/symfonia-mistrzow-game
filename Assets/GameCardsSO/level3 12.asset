@@ -23,5 +23,15 @@ MonoBehaviour:
     instrumentation: 0
     dynamics: 7
   cardImage: {fileID: 0}
-  cardName: 
-  cardDescription: 
+  cardName: 'Symfonia nr 2 e-moll op. 27 - Siergiej Rachmaninow '
+  cardDescription: "Symfonia nr 2 e-moll op. 27 Siergieja Rachmaninowa, uko\u0144czona
+    w 1907 roku, to jedno z najbardziej lirycznych i pe\u0142nych emocji dzie\u0142
+    rosyjskiego romantyzmu. Po trudnym okresie tw\xF3rczym kompozytor powr\xF3ci\u0142
+    z symfoni\u0105 emanuj\u0105c\u0105 ciep\u0142em i rozbudowan\u0105 melodyk\u0105.
+    Cztery cz\u0119\u015Bci \u0142\u0105cz\u0105 dramatyczne napi\u0119cia z pe\u0142nymi
+    nostalgii, \u015Bpiewnymi tematami, a bogata orkiestracja podkre\u015Bla ekspresj\u0119
+    i romantyczny charakter. Szczeg\xF3lnie s\u0142ynna jest druga cz\u0119\u015B\u0107
+    Adagio sostenuto, znana ze swojej wzruszaj\u0105cej, melancholijnej melodii.
+    Symfonia ta, cz\u0119sto uwa\u017Cana za kwintesencj\u0119 rosyjskiej duszy muzycznej,
+    do dzi\u015B zachwyca s\u0142uchaczy na ca\u0142ym \u015Bwiecie swoj\u0105 g\u0142\u0119bi\u0105
+    i pi\u0119knem."

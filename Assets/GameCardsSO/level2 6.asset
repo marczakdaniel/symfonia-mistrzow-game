@@ -23,5 +23,14 @@ MonoBehaviour:
     instrumentation: 0
     dynamics: 6
   cardImage: {fileID: 0}
-  cardName: 
-  cardDescription: 
+  cardName: "Symfonia nr 104 \u201ELondy\u0144ska\u201D - Joseph Haydn"
+  cardDescription: "Symfonia nr 104 D-dur \u201ELondy\u0144ska\u201D Josepha Haydna,
+    uko\u0144czona w 1795 roku, to ostatnia i zarazem jedna z najbardziej efektownych
+    symfonii kompozytora. Powsta\u0142a podczas jego drugiego pobytu w Anglii i zosta\u0142a
+    entuzjastycznie przyj\u0119ta na londy\u0144skiej premierze. Utw\xF3r otwiera
+    majestatyczne wst\u0119pne Adagio, kt\xF3re przechodzi w \u017Cywe Allegro o
+    tanecznym charakterze. W Andante Haydn bawi si\u0119 kontrastami nastroju, Menuet
+    pulsuje ludowym rytmem, a fina\u0142owe Spiritoso opiera si\u0119 na temacie
+    inspirowanym melodi\u0105 wiejsk\u0105. Symfonia 104 \u0142\u0105czy klasyczn\u0105
+    klarowno\u015B\u0107 formy z energi\u0105 i humorem, b\u0119d\u0105c godnym zwie\u0144czeniem
+    ca\u0142ego dorobku symfonicznego Haydna."

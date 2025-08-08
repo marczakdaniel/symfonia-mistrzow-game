@@ -23,5 +23,14 @@ MonoBehaviour:
     instrumentation: 2
     dynamics: 2
   cardImage: {fileID: 0}
-  cardName: 
-  cardDescription: 
+  cardName: El amor brujo (wersja koncertowa) - Manuel de Falla
+  cardDescription: "El amor brujo Manuela de Falli, w wersji koncertowej uko\u0144czonej
+    w 1925 roku, to hiszpa\u0144ska suita baletowa przesycona duchem flamenco i andaluzyjskiego
+    folkloru. Utw\xF3r opowiada histori\u0119 Cyganki Candelas, kt\xF3ra pr\xF3buje
+    uwolni\u0107 si\u0119 od ducha zmar\u0142ego ukochanego, ta\u0144cz\u0105c s\u0142ynny
+    \u201ETaniec ognia\u201D. De Falla wykorzystuje charakterystyczne rytmy, modalne
+    skale i ostinatowe figury, by odda\u0107 zar\xF3wno mistycyzm, jak i nami\u0119tno\u015B\u0107
+    opowie\u015Bci. Partie wokalne, instrumentacja i taneczny puls tworz\u0105 intensywn\u0105,
+    barwn\u0105 atmosfer\u0119. Wersja koncertowa, skr\xF3cona i pozbawiona cz\u0119\u015Bci
+    teatralnych, pozwala skupi\u0107 si\u0119 na czystej sile muzyki, kt\xF3ra sta\u0142a
+    si\u0119 jednym z symboli hiszpa\u0144skiej to\u017Csamo\u015Bci w XX wieku."

@@ -23,5 +23,16 @@ MonoBehaviour:
     instrumentation: 1
     dynamics: 2
   cardImage: {fileID: 0}
-  cardName: 
-  cardDescription: 
+  cardName: "Ta\u0144ce po\u0142owieckie - Alexander Borodin"
+  cardDescription: "Ta\u0144ce po\u0142owieckie Aleksandra Borodina, pochodz\u0105ce
+    z II aktu opery Ksi\u0105\u017C\u0119 Igor (skomponowanej w latach 1869\u20131887),
+    to jeden z najs\u0142ynniejszych fragment\xF3w rosyjskiej muzyki operowej. Przedstawiaj\u0105
+    barwne, rytmiczne ta\u0144ce koczowniczego ludu Po\u0142owc\xF3w, pe\u0142ne
+    egzotycznych melodii, orientalnych skal i pulsuj\u0105cych rytm\xF3w. Borodin
+    mistrzowsko wykorzysta\u0142 orkiestr\u0119, by odda\u0107 zar\xF3wno \u017Cywio\u0142owy
+    temperament, jak i zmys\u0142owy urok tej muzyki \u2013 od \u0142agodnych ch\xF3r\xF3w
+    po porywaj\u0105ce fina\u0142y taneczne. Cho\u0107 opera zosta\u0142a uko\u0144czona
+    po \u015Bmierci kompozytora przez Rimskiego-Korsakowa i G\u0142azunowa, Ta\u0144ce
+    po\u0142owieckie szybko zdoby\u0142y samodzieln\u0105 popularno\u015B\u0107 i
+    do dzi\u015B zachwycaj\u0105 koncertow\u0105 publiczno\u015B\u0107 swoj\u0105
+    energi\u0105 i barwno\u015Bci\u0105."

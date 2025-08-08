@@ -23,5 +23,15 @@ MonoBehaviour:
     instrumentation: 6
     dynamics: 3
   cardImage: {fileID: 0}
-  cardName: 
-  cardDescription: 
+  cardName: "Ognisty ptak - Igor Strawi\u0144ski"
+  cardDescription: "Ognisty ptak Igora Strawi\u0144skiego, skomponowany w 1910 roku
+    jako balet dla Balet\xF3w Rosyjskich Diagilewa, to prze\u0142omowe dzie\u0142o
+    \u0142\u0105cz\u0105ce rosyjski folklor z nowoczesn\u0105 orkiestracj\u0105 i
+    dramatyczn\u0105 narracj\u0105. Oparta na ba\u015Bni o magicznym ptaku, muzyka
+    zachwyca bogactwem barw, dynamicznymi kontrastami i \u017Cywio\u0142owymi rytmami.
+    Strawi\u0144ski wykorzystuje motywy tematyczne, kt\xF3re prowadz\u0105 s\u0142uchacza
+    przez opowie\u015B\u0107 o walce dobra ze z\u0142em, zako\u0144czon\u0105 triumfem
+    \u015Bwiat\u0142a. Ognisty ptak przyni\xF3s\u0142 kompozytorowi \u015Bwiatow\u0105
+    s\u0142aw\u0119 i zapocz\u0105tkowa\u0142 jego epok\u0119 neoklasyczn\u0105,
+    staj\u0105c si\u0119 jednym z najwa\u017Cniejszych i najcz\u0119\u015Bciej wykonywanych
+    dzie\u0142 baletowych XX wieku."

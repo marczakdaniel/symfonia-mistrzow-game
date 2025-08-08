@@ -23,5 +23,16 @@ MonoBehaviour:
     instrumentation: 4
     dynamics: 0
   cardImage: {fileID: 0}
-  cardName: 
-  cardDescription: 
+  cardName: "Le carnaval des animaux - Camille Saint-Sa\xEBns"
+  cardDescription: "Le carnaval des animaux Camille\u2019a Saint-Sa\xEBnsa, skomponowany
+    w 1886 roku, to humorystyczna suita kameralna przedstawiaj\u0105ca w muzyce rozmaite
+    zwierz\u0119ta. Cho\u0107 dzi\u015B jest jednym z jego najbardziej lubianych
+    dzie\u0142, kompozytor za \u017Cycia zezwala\u0142 na publiczne wykonywanie jedynie
+    cz\u0119\u015Bci \u201E\u0141ab\u0119d\u017A\u201D, obawiaj\u0105c si\u0119,
+    \u017Ce \u017Cartobliwy charakter ca\u0142o\u015Bci zaszkodzi jego powa\u017Cnemu
+    wizerunkowi. Ka\u017Cdy z czternastu kr\xF3tkich utwor\xF3w ilustruje inne stworzenie
+    \u2013 od majestatycznych lw\xF3w, przez kury, \u017C\xF3\u0142wie i kangury,
+    po akwariowe ryby. Saint-Sa\xEBns bawi si\u0119 cytatami muzycznymi i efektami
+    instrumentalnymi, tworz\u0105c dzie\u0142o lekkie, pe\u0142ne wdzi\u0119ku i
+    pomys\u0142owo\u015Bci, kt\xF3re do dzi\u015B czaruje s\u0142uchaczy w ka\u017Cdym
+    wieku."

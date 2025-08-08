@@ -23,5 +23,15 @@ MonoBehaviour:
     instrumentation: 0
     dynamics: 0
   cardImage: {fileID: 0}
-  cardName: 
-  cardDescription: 
+  cardName: Serenada nr 1 op. 11 - Alexander Glazunov
+  cardDescription: "Serenada nr 1 op. 11 Aleksandra G\u0142azunowa, skomponowana
+    w 1881 roku, to wczesne, pe\u0142ne m\u0142odzie\u0144czej energii dzie\u0142o
+    rosyjskiego kompozytora. Powsta\u0142a, gdy G\u0142azunow mia\u0142 zaledwie
+    16 lat, i ju\u017C wtedy zwr\xF3ci\u0142a uwag\u0119 mistrz\xF3w takich jak Balakirew
+    czy Rimsky-Korsakow. Utw\xF3r, utrzymany w pogodnym i eleganckim tonie, \u0142\u0105czy
+    romantyczn\u0105 melodyk\u0119 z przejrzyst\u0105, klasyczn\u0105 form\u0105.
+    W czterech cz\u0119\u015Bciach s\u0142ycha\u0107 zar\xF3wno taneczne rytmy, jak
+    i liryczne kantyleny, a bogata orkiestracja zdradza niezwyk\u0142\u0105 dojrza\u0142o\u015B\u0107
+    m\u0142odego tw\xF3rcy. Serenada nr 1 sta\u0142a si\u0119 jednym z pierwszych
+    sukces\xF3w koncertowych G\u0142azunowa i zapowiedzi\u0105 jego dalszej, b\u0142yskotliwej
+    kariery."

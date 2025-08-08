@@ -23,5 +23,16 @@ MonoBehaviour:
     instrumentation: 2
     dynamics: 3
   cardImage: {fileID: 0}
-  cardName: 
-  cardDescription: 
+  cardName: Kamarinskaya - Mikhail Glinka
+  cardDescription: "Kamarinskaya Michai\u0142a Glinki, skomponowana w 1848 roku,
+    to pierwsze w historii rosyjskiej muzyki symfonicznej dzie\u0142o oparte w ca\u0142o\u015Bci
+    na autentycznych melodiach ludowych. Utw\xF3r \u0142\u0105czy dwie pie\u015Bni:
+    liryczn\u0105 melodi\u0119 weseln\u0105 i \u017Cywio\u0142owy taniec kamarinskaya,
+    oparty na kr\xF3tkim, powtarzaj\u0105cym si\u0119 motywie. Glinka rozwija je
+    metod\u0105 wariacyjno-orkiestracyjn\u0105, zamiast tradycyjnego przetwarzania
+    tematycznego, co nadaje muzyce hipnotyczny, wiruj\u0105cy charakter. Bogata instrumentacja
+    i rytmiczna energia sprawiaj\u0105, \u017Ce Kamarinskaya sta\u0142a si\u0119
+    wzorem dla p\xF3\u017Aniejszych rosyjskich kompozytor\xF3w, m.in. Czajkowskiego
+    i Musorgskiego. Dzie\u0142o to cz\u0119sto nazywane jest \u201Ematk\u0105 rosyjskiej
+    symfoniki\u201D ze wzgl\u0119du na jego wp\u0142yw na narodow\u0105 szko\u0142\u0119
+    muzyczn\u0105."

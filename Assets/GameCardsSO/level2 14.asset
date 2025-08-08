@@ -23,5 +23,15 @@ MonoBehaviour:
     instrumentation: 3
     dynamics: 0
   cardImage: {fileID: 0}
-  cardName: 
-  cardDescription: 
+  cardName: Fontanny Rzymu - Ottorino Respighi
+  cardDescription: "Fontanny Rzymu Ottorina Respighiego, skomponowane w 1916 roku,
+    to pierwszy utw\xF3r z jego s\u0142ynnej \u201Erzymskiej trylogii\u201D poemat\xF3w
+    symfonicznych. Kompozytor maluje w nim cztery muzyczne obrazy przedstawiaj\u0105ce
+    rzymskie fontanny o r\xF3\u017Cnych porach dnia: Fontann\u0119 di Valle Giulia
+    o \u015Bwicie, Fontann\u0119 Trytona rano, Fontann\u0119 Trevi w po\u0142udnie
+    i Fontann\u0119 Villa Medici o zmierzchu. Respighi wykorzystuje bogat\u0105 orkiestracj\u0119
+    i subtelne zmiany barw, by odda\u0107 gr\u0119 \u015Bwiat\u0142a na wodzie, szum
+    strumieni i nastr\xF3j ka\u017Cdej sceny. Dzie\u0142o, \u0142\u0105cz\u0105ce
+    impresjonistyczn\u0105 kolorystyk\u0119 z w\u0142osk\u0105 melodyjno\u015Bci\u0105,
+    sta\u0142o si\u0119 jednym z najpi\u0119kniejszych przyk\u0142ad\xF3w muzycznego
+    malarstwa orkiestrowego XX wieku."

@@ -23,5 +23,15 @@ MonoBehaviour:
     instrumentation: 0
     dynamics: 2
   cardImage: {fileID: 0}
-  cardName: 
-  cardDescription: 
+  cardName: "Koncert tr\u0105bkowy Es-dur - Johann Nepomuk Hummel"
+  cardDescription: "Koncert tr\u0105bkowy Es-dur Johanna Nepomuka Hummela, skomponowany
+    w 1803 roku dla wirtuoza Antona Weidingera, jest jednym z najwa\u017Cniejszych
+    dzie\u0142 w repertuarze tr\u0105bkowym. Powsta\u0142 z my\u015Bl\u0105 o nowym
+    w\xF3wczas instrumencie \u2013 tr\u0105bce klapowej \u2013 kt\xF3ra umo\u017Cliwia\u0142a
+    granie pe\u0142nych skal chromatycznych. Hummel wykorzysta\u0142 jej mo\u017Cliwo\u015Bci,
+    tworz\u0105c utw\xF3r pe\u0142en b\u0142yskotliwych pasa\u017Cy, szerokich melodii
+    i efektownych kontrast\xF3w. Pierwsza cz\u0119\u015B\u0107 ma klasyczny, dostojny
+    charakter, druga l\u015Bni kantylen\u0105, a fina\u0142 to radosny, taneczny
+    popis. Koncert \u0142\u0105czy elegancj\u0119 stylu klasycznego z wirtuozostwem,
+    kt\xF3re do dzi\u015B stanowi wyzwanie i przyjemno\u015B\u0107 dla wykonawc\xF3w
+    na ca\u0142ym \u015Bwiecie."

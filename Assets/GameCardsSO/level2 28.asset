@@ -23,5 +23,15 @@ MonoBehaviour:
     instrumentation: 0
     dynamics: 5
   cardImage: {fileID: 0}
-  cardName: 
-  cardDescription: 
+  cardName: "Sinfonietta - Leo\u0161 Jan\xE1\u010Dek"
+  cardDescription: "Sinfonietta Leo\u0161a Jan\xE1\u010Dka, skomponowana w 1926 roku,
+    to pi\u0119ciocz\u0119\u015Bciowy utw\xF3r orkiestrowy b\u0119d\u0105cy muzycznym
+    ho\u0142dem dla nowoczesnego, wolnego pa\u0144stwa czechos\u0142owackiego. Powsta\u0142a
+    z inspiracji fanfarami wojskowej orkiestry z Brna, a jej premierze towarzyszy\u0142o
+    ogromne powodzenie. Dzie\u0142o otwiera s\u0142ynna sekwencja fanfar d\u0119tych
+    blaszanych, kt\xF3re powracaj\u0105 w finale, spinaj\u0105c ca\u0142o\u015B\u0107
+    klamr\u0105. W poszczeg\xF3lnych cz\u0119\u015Bciach Jan\xE1\u010Dek maluje d\u017Awi\u0119kowe
+    obrazy miejsc z Brna i okolic, \u0142\u0105cz\u0105c \u017Cywe rytmy, modaln\u0105
+    melodyk\u0119 i charakterystyczne dla siebie kr\xF3tkie motywy. Sinfonietta jest
+    przyk\u0142adem muzyki pe\u0142nej energii, optymizmu i narodowej dumy, a jej
+    blask orkiestrowy czyni j\u0105 jednym z najefektowniejszych utwor\xF3w XX wieku."

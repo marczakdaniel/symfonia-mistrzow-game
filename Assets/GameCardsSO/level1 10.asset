@@ -23,5 +23,14 @@ MonoBehaviour:
     instrumentation: 2
     dynamics: 1
   cardImage: {fileID: 0}
-  cardName: 
-  cardDescription: 
+  cardName: "Uwertura do \u201ECyrulik sewilski\u201D - Gioachino Rossini"
+  cardDescription: "Uwertura do Cyrulika sewilskiego Gioachina Rossiniego, skomponowana
+    w 1816 roku, to jedna z najbardziej rozpoznawalnych introdukcji operowych w historii
+    muzyki. Co ciekawe, Rossini nie napisa\u0142 jej specjalnie do \u201ECyrulika\u201D
+    \u2013 wcze\u015Bniej wykorzysta\u0142 ten sam materia\u0142 w innych operach,
+    a mimo to idealnie oddaje komiczny i pe\u0142en energii charakter dzie\u0142a.
+    Uwertura zaczyna si\u0119 spokojnym, kantylenowym wst\u0119pem, po czym wybucha
+    seri\u0105 \u017Cywio\u0142owych, rytmicznych temat\xF3w, typowych dla stylu
+    Rossiniego. S\u0142ynne crescenda buduj\u0105 napi\u0119cie, kt\xF3re wywo\u0142uje
+    u s\u0142uchaczy u\u015Bmiech i oczekiwanie na akcj\u0119 sceniczn\u0105. To
+    muzyczny majstersztyk, kt\xF3ry samodzielnie sta\u0142 si\u0119 koncertowym hitem."

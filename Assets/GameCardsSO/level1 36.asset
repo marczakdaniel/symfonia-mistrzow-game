@@ -23,5 +23,15 @@ MonoBehaviour:
     instrumentation: 1
     dynamics: 3
   cardImage: {fileID: 0}
-  cardName: 
-  cardDescription: 
+  cardName: "Ma\u0142a suita op. 1 - Carl Nielsen"
+  cardDescription: "ChatGPT said: Ma\u0142a suita op. 1 Carla Nielsena, skomponowana
+    w 1888 roku, to pierwsze opublikowane dzie\u0142o du\u0144skiego kompozytora
+    i jeden z jego wczesnych sukces\xF3w. Utw\xF3r przeznaczony jest na orkiestr\u0119
+    smyczkow\u0105 i sk\u0142ada si\u0119 z trzech cz\u0119\u015Bci: lirycznego Pr\xE4ludium,
+    tanecznego Intermezzo oraz \u017Cywio\u0142owego Finale. Ju\u017C w tej kompozycji
+    wida\u0107 charakterystyczne cechy stylu Nielsena \u2013 prostot\u0119 temat\xF3w,
+    \u015Bwie\u017Co\u015B\u0107 melodyki i umiej\u0119tne operowanie kontrastami.
+    Mimo niewielkich rozmiar\xF3w suita ma wyrazist\u0105 dramaturgi\u0119, a jej
+    bezpo\u015Bredni, ciep\u0142y ton sprawi\u0142, \u017Ce szybko zdoby\u0142a popularno\u015B\u0107
+    w Danii. To muzyka, kt\xF3ra \u0142\u0105czy klasyczn\u0105 form\u0119 z nordyckim
+    kolorytem i m\u0142odzie\u0144cz\u0105 energi\u0105."

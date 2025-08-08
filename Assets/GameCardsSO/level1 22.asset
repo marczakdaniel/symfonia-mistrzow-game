@@ -23,5 +23,15 @@ MonoBehaviour:
     instrumentation: 0
     dynamics: 2
   cardImage: {fileID: 0}
-  cardName: 
-  cardDescription: 
+  cardName: "Koncert fletowy \u201ELa tempesta di mare\u201D - Antonio Vivaldi"
+  cardDescription: "Koncert fletowy La tempesta di mare (\u201ESztorm morski\u201D)
+    Antonio Vivaldiego, znany m.in. jako RV 433, to barokowy majstersztyk malarstwa
+    d\u017Awi\u0119kowego. Powsta\u0142 w Wenecji oko\u0142o 1720 roku i jest cz\u0119\u015Bci\u0105
+    serii koncert\xF3w solowych, w kt\xF3rych Vivaldi eksperymentowa\u0142 z efektami
+    ilustracyjnymi. Ju\u017C w pierwszych taktach s\u0142ycha\u0107 porywiste figuracje
+    fletu, imituj\u0105ce podmuchy wiatru i fale uderzaj\u0105ce o statek. Kontrast
+    mi\u0119dzy gwa\u0142townymi pasa\u017Cami a spokojniejszymi epizodami odzwierciedla
+    zmienno\u015B\u0107 morskiego \u017Cywio\u0142u. Utw\xF3r wymaga od wykonawcy
+    zar\xF3wno technicznej bieg\u0142o\u015Bci, jak i zdolno\u015Bci narracyjnych,
+    by odda\u0107 dramat i pi\u0119kno sztormowej scenerii w typowo weneckim, barokowym
+    stylu."

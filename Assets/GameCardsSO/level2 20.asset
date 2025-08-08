@@ -23,5 +23,16 @@ MonoBehaviour:
     instrumentation: 0
     dynamics: 2
   cardImage: {fileID: 0}
-  cardName: 
-  cardDescription: 
+  cardName: "Koncert na orkiestr\u0119 - B\xE9la Bart\xF3k"
+  cardDescription: "Koncert na orkiestr\u0119 B\xE9li Bart\xF3ka, skomponowany w
+    1943 roku na zam\xF3wienie Serge\u2019a Koussevitzky\u2019ego dla Bosto\u0144skiej
+    Orkiestry Symfonicznej, to jedno z najbardziej popularnych dzie\u0142 symfonicznych
+    XX wieku. Powsta\u0142 w czasie pobytu kompozytora w Stanach Zjednoczonych, kiedy
+    zmaga\u0142 si\u0119 z chorob\u0105 i t\u0119sknot\u0105 za ojczyzn\u0105. Utw\xF3r,
+    mimo tytu\u0142u, ma form\u0119 pi\u0119ciocz\u0119\u015Bciowej symfonii, w kt\xF3rej
+    poszczeg\xF3lne sekcje orkiestry traktowane s\u0105 solistycznie. Bart\xF3k \u0142\u0105czy
+    tu energi\u0119 rytm\xF3w ludowych, mistrzostwo kontrapunktu i b\u0142yskotliw\u0105
+    orkiestracj\u0119, tworz\u0105c muzyk\u0119 pe\u0142n\u0105 kontrast\xF3w \u2013
+    od \u017Cartobliwych epizod\xF3w po dramatyczne kulminacje. Koncert na orkiestr\u0119
+    sta\u0142 si\u0119 symbolem triumfu tw\xF3rczej si\u0142y nad przeciwno\u015Bciami
+    losu."

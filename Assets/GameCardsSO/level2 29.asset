@@ -23,5 +23,15 @@ MonoBehaviour:
     instrumentation: 0
     dynamics: 5
   cardImage: {fileID: 0}
-  cardName: 
-  cardDescription: 
+  cardName: "Koncert na orkiestr\u0119 smyczkow\u0105 - Gra\u017Cyna Bacewicz"
+  cardDescription: "Koncert na orkiestr\u0119 smyczkow\u0105 Gra\u017Cyny Bacewicz,
+    skomponowany w 1948 roku, to wa\u017Cne dzie\u0142o polskiej muzyki XX wieku,
+    \u0142\u0105cz\u0105ce nowoczesn\u0105 technik\u0119 kompozytorsk\u0105 z melodyjn\u0105
+    lekko\u015Bci\u0105 i rytmiczn\u0105 energi\u0105. Utw\xF3r napisany jest na
+    kameralny sk\u0142ad smyczk\xF3w i charakteryzuje si\u0119 klarown\u0105 faktur\u0105
+    oraz wyrazistymi kontrastami. Bacewicz zgrabnie \u0142\u0105czy elementy neoklasyczne
+    z folklorem, tworz\u0105c muzyk\u0119 pe\u0142n\u0105 \u017Cycia, temperamentu
+    i \u015Bwie\u017Co\u015Bci. Koncert by\u0142 wielokrotnie nagradzany i wykonywany
+    na arenie mi\u0119dzynarodowej, podkre\u015Blaj\u0105c talent kompozytorki jako
+    jednej z czo\u0142owych postaci polskiej awangardy. To dynamiczne, pe\u0142ne
+    pasji dzie\u0142o, kt\xF3re fascynuje zar\xF3wno s\u0142uchaczy, jak i wykonawc\xF3w."

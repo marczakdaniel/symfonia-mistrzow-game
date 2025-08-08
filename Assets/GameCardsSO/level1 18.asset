@@ -23,5 +23,15 @@ MonoBehaviour:
     instrumentation: 1
     dynamics: 1
   cardImage: {fileID: 0}
-  cardName: 
-  cardDescription: 
+  cardName: "Pavane op. 50 - Gabriel Faur\xE9"
+  cardDescription: "Pavane op. 50 Gabriela Faur\xE9, skomponowana w 1887 roku, to
+    elegancki utw\xF3r orkiestrowy utrzymany w dostojnym, powolnym rytmie renesansowego
+    ta\u0144ca. Kompozytor stworzy\u0142 go pocz\u0105tkowo jako utw\xF3r instrumentalny,
+    lecz p\xF3\u017Aniej doda\u0142 opcjonaln\u0105 parti\u0119 ch\xF3ru do tekstu
+    Roberta de Montesquiou. Melodia Pavane jest subtelna i zmys\u0142owa, a delikatna
+    orkiestracja z udzia\u0142em flet\xF3w i smyczk\xF3w nadaje ca\u0142o\u015Bci
+    lekko melancholijny nastr\xF3j. Cho\u0107 powsta\u0142a jako muzyka salonowa,
+    szybko zdoby\u0142a popularno\u015B\u0107 na estradach koncertowych. Dzi\u015B
+    Pavane uchodzi za jeden z najpi\u0119kniejszych przyk\u0142ad\xF3w francuskiego
+    liryzmu ko\u0144ca XIX wieku, \u0142\u0105cz\u0105cego wdzi\u0119k z wyrafinowan\u0105
+    prostot\u0105."

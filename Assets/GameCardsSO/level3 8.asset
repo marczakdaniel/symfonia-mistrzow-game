@@ -23,5 +23,15 @@ MonoBehaviour:
     instrumentation: 0
     dynamics: 0
   cardImage: {fileID: 0}
-  cardName: 
-  cardDescription: 
+  cardName: "Symfonia nr 6 a-moll \u201ETragiczna\u201D - Gustav Mahler"
+  cardDescription: "Symfonia nr 6 a-moll \u201ETragiczna\u201D Gustava Mahlera, skomponowana
+    w latach 1903\u20131904, to jedno z najbardziej dramatycznych i mrocznych dzie\u0142
+    w jego dorobku. Cztery cz\u0119\u015Bci symfonii tworz\u0105 intensywn\u0105
+    opowie\u015B\u0107 o walce, cierpieniu i nieuchronnym losie. Utw\xF3r otwiera
+    pe\u0142ne napi\u0119cia Allegro energico, po kt\xF3rym nast\u0119puje liryczne
+    Andante moderato. Scherzo zaskakuje burzliwymi kontrastami, a monumentalny fina\u0142
+    przynosi dramatyczne kulminacje, uwie\u0144czone s\u0142ynnymi \u201Euderzeniami
+    losu\u201D \u2013 trzema gwa\u0142townymi akordami tam-tamu, kt\xF3re symbolizuj\u0105
+    tragiczne przeznaczenie. Mahler stworzy\u0142 dzie\u0142o o ogromnej sile wyrazu,
+    pe\u0142ne symboliki i emocjonalnej g\u0142\u0119bi, kt\xF3re do dzi\u015B fascynuje
+    s\u0142uchaczy i wykonawc\xF3w."

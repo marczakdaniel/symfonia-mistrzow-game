@@ -23,5 +23,15 @@ MonoBehaviour:
     instrumentation: 0
     dynamics: 0
   cardImage: {fileID: 0}
-  cardName: 
-  cardDescription: 
+  cardName: "Szeherezada op. 35 - Niko\u0142aj Rimski-Korsakow"
+  cardDescription: "Szeherezada op. 35 Niko\u0142aja Rimskiego-Korsakowa, skomponowana
+    w 1888 roku, to czterocz\u0119\u015Bciowa suita symfoniczna inspirowana \u201EBa\u015Bniami
+    tysi\u0105ca i jednej nocy\u201D. Kompozytor nie opowiada tu jednej, konkretnej
+    historii, lecz tworzy muzyczne obrazy pe\u0142ne orientalnego kolorytu. Smyczkowe
+    solo skrzypiec symbolizuje posta\u0107 Szeherezady, snuj\u0105cej opowie\u015Bci,
+    kt\xF3re maj\u0105 ocali\u0107 jej \u017Cycie, a pot\u0119\u017Cne tematy blachy
+    uosabiaj\u0105 su\u0142tana. Ka\u017Cda cz\u0119\u015B\u0107 maluje inny epizod
+    \u2013 od morskich przyg\xF3d po romantyczne sceny \u2013 wykorzystuj\u0105c
+    bogat\u0105 orkiestracj\u0119 i mistrzowskie efekty instrumentalne. Szeherezada
+    uchodzi za wzorcowy przyk\u0142ad muzyki ilustracyjnej i jeden z najpi\u0119kniejszych
+    klejnot\xF3w rosyjskiego p\xF3\u017Anego romantyzmu."

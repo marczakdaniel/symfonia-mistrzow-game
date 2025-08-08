@@ -23,5 +23,15 @@ MonoBehaviour:
     instrumentation: 5
     dynamics: 0
   cardImage: {fileID: 0}
-  cardName: 
-  cardDescription: 
+  cardName: "Symfonia nr 2 \u201ECztery temperamenty\u201D - Carl Nielsen"
+  cardDescription: "Symfonia nr 2 \u201ECztery temperamenty\u201D op. 16 Carla Nielsena,
+    skomponowana w latach 1901\u20131902, to barwny portret muzyczny inspirowany
+    czterema typami temperamentu ludzkiego. Ka\u017Cda z czterech cz\u0119\u015Bci
+    odpowiada innemu charakterowi: cholerycznemu (Allegro collerico), flegmatycznemu
+    (Allegro comodo e flemmatico), melancholicznemu (Andante malincolico) i sangwinicznemu
+    (Allegro sanguineo). Nielsen z humorem i psychologiczn\u0105 wnikliwo\u015Bci\u0105
+    oddaje cechy ka\u017Cdego temperamentu \u2013 od gwa\u0142townych wybuch\xF3w
+    po beztrosk\u0105 lekko\u015B\u0107. Orkiestracja jest pe\u0142na kontrast\xF3w,
+    a tematy rozwijaj\u0105 si\u0119 z charakterystyczn\u0105 dla kompozytora energi\u0105.
+    Symfonia ta, \u0142\u0105cz\u0105ca klasyczn\u0105 form\u0119 z programowym pomys\u0142em,
+    jest jednym z najbardziej przyst\u0119pnych i barwnych dzie\u0142 Nielsena."

@@ -23,5 +23,15 @@ MonoBehaviour:
     instrumentation: 0
     dynamics: 0
   cardImage: {fileID: 0}
-  cardName: 
-  cardDescription: 
+  cardName: Eine Alpensinfonie op. 64 - Richard Strauss
+  cardDescription: "Eine Alpensinfonie op. 64 Richarda Straussa, skomponowana w 1915
+    roku, to monumentalny poemat symfoniczny opisuj\u0105cy w\u0119dr\xF3wk\u0119
+    po alpejskich szczytach. Dzie\u0142o trwa oko\u0142o 50 minut i sk\u0142ada si\u0119
+    z jednego, ci\u0105g\u0142ego ruchu muzycznego, kt\xF3ry prowadzi s\u0142uchacza
+    przez r\xF3\u017Cnorodne krajobrazy \u2013 od porannej mg\u0142y, przez burze
+    i gwa\u0142towne wzburzenie g\xF3rskich potok\xF3w, a\u017C po zach\xF3d s\u0142o\u0144ca
+    i nocn\u0105 cisz\u0119. Strauss wykorzystuje pot\u0119\u017Cn\u0105 orkiestr\u0119
+    z bogatym instrumentarium, tworz\u0105c barwne i realistyczne efekty d\u017Awi\u0119kowe.
+    Eine Alpensinfonie to mistrzowskie po\u0142\u0105czenie impresjonizmu i ekspresjonizmu,
+    kt\xF3re oddaje majestat i dziko\u015B\u0107 natury w pe\u0142ni symfonicznej
+    formy."

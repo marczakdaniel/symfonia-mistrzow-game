@@ -23,5 +23,14 @@ MonoBehaviour:
     instrumentation: 1
     dynamics: 1
   cardImage: {fileID: 0}
-  cardName: 
-  cardDescription: 
+  cardName: Andante festivo - Jean Sibelius
+  cardDescription: "Andante festivo Jeana Sibeliusa, skomponowane w 1922 roku na
+    kwartet smyczkowy, a p\xF3\u017Aniej zorkiestrowane przez samego kompozytora,
+    jest jednym z jego najbardziej podnios\u0142ych i uroczystych utwor\xF3w. Powsta\u0142o
+    z okazji \u015Bwi\u0119ta fabryki w rodzinnym mie\u015Bcie kompozytora, jednak
+    w swojej p\xF3\u017Aniejszej wersji sta\u0142o si\u0119 muzyk\u0105 cz\u0119sto
+    wykonywan\u0105 podczas oficjalnych ceremonii w Finlandii. Charakteryzuje si\u0119
+    szerok\u0105, hymn\xADow\u0105 melodi\u0105, p\u0142ynnymi harmoniami i spokojnym,
+    majestatycznym tempem. W 1939 roku Sibelius nagra\u0142 to dzie\u0142o osobi\u015Bcie
+    na potrzeby transmisji radiowej, co by\u0142o rzadkim wydarzeniem w jego karierze.
+    Andante festivo pozostaje symbolem fi\u0144skiej powagi i dumy narodowej."

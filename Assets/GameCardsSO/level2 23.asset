@@ -23,5 +23,15 @@ MonoBehaviour:
     instrumentation: 0
     dynamics: 0
   cardImage: {fileID: 0}
-  cardName: 
-  cardDescription: 
+  cardName: Fantasia on a Theme by Thomas Tallis - Ralph Vaughan Williams
+  cardDescription: "Fantasia on a Theme by Thomas Tallis Ralpha Vaughana Williamsa,
+    skomponowana w 1910 roku, to jedno z najbardziej nastrojowych dzie\u0142 brytyjskiej
+    muzyki orkiestrowej. Kompozytor opar\u0142 j\u0105 na XVI-wiecznym chora\u0142owym
+    temacie Thomasa Tallisa, kt\xF3ry pozna\u0142 podczas pracy nad nowym wydaniem
+    English Hymnal. Utw\xF3r przeznaczony jest na potr\xF3jny zesp\xF3\u0142 smyczk\xF3w
+    \u2013 orkiestr\u0119, mniejszy zesp\xF3\u0142 oraz kwartet solist\xF3w \u2013
+    co pozwala na tworzenie niezwyk\u0142ych efekt\xF3w przestrzennych. Williams
+    \u0142\u0105czy renesansow\u0105 prostot\u0119 melodii z impresjonistyczn\u0105
+    harmoni\u0105 i szerokimi \u0142ukami fraz, tworz\u0105c medytacyjny, niemal
+    duchowy klimat. Fantazja ta sta\u0142a si\u0119 jednym z najbardziej cenionych
+    utwor\xF3w w repertuarze smyczkowym XX wieku."

@@ -23,5 +23,15 @@ MonoBehaviour:
     instrumentation: 2
     dynamics: 1
   cardImage: {fileID: 0}
-  cardName: 
-  cardDescription: 
+  cardName: Walc A-dur op. 39 nr 15 - Johannes Brahms
+  cardDescription: "Walc A-dur op. 39 nr 15 Johannesa Brahmsa, skomponowany w 1865
+    roku jako cz\u0119\u015B\u0107 cyklu 16 kr\xF3tkich walc\xF3w fortepianowych,
+    to jeden z najbardziej znanych i uwielbianych utwor\xF3w kompozytora. Powsta\u0142
+    w wersji na cztery r\u0119ce oraz w uproszczonej wersji solowej, dzi\u0119ki
+    czemu szybko zdoby\u0142 popularno\u015B\u0107 w domowym muzykowaniu XIX wieku.
+    Utw\xF3r urzeka prost\u0105, \u015Bpiewn\u0105 melodi\u0105 i ciep\u0142ym, pogodnym
+    nastrojem, zachowuj\u0105c przy tym elegancj\u0119 klasycznego walca. Brahms,
+    cho\u0107 kojarzony g\u0142\xF3wnie z monumentalnymi formami, w tym miniaturowym
+    dziele pokazuje swoj\u0105 liryczn\u0105, kameraln\u0105 stron\u0119. To muzyka,
+    kt\xF3ra potrafi oczarowa\u0107 od pierwszych takt\xF3w i na d\u0142ugo pozosta\u0107
+    w pami\u0119ci."

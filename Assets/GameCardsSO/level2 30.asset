@@ -23,5 +23,15 @@ MonoBehaviour:
     instrumentation: 6
     dynamics: 0
   cardImage: {fileID: 0}
-  cardName: 
-  cardDescription: 
+  cardName: Koncert fortepianowy nr 2 f-moll op. 21 - Fryderyk Chopin
+  cardDescription: "Koncert fortepianowy nr 2 f-moll op. 21 Fryderyka Chopina, skomponowany
+    w 1829 roku, to jedno z najwa\u017Cniejszych dzie\u0142 m\u0142odego kompozytora.
+    Cho\u0107 formalnie by\u0142 drugim napisanym koncertem, premier\u0119 mia\u0142
+    przed swoim numerem pierwszym. Utw\xF3r zachwyca liryzmem i g\u0142\u0119bokim
+    wyrazem emocji, \u0142\u0105cz\u0105c romantyczn\u0105 wra\u017Cliwo\u015B\u0107
+    z wirtuozeri\u0105 partii solowej. Szczeg\xF3lnie s\u0142ynna jest druga cz\u0119\u015B\u0107
+    Romanza, pe\u0142na ciep\u0142a i delikatno\u015Bci, kt\xF3ra sta\u0142a si\u0119
+    jednym z symboli muzyki fortepianowej. Ca\u0142o\u015B\u0107 otwiera dramatyczne
+    Allegro maestoso, a fina\u0142 Allegro vivace emanuje energi\u0105 i rado\u015Bci\u0105.
+    Koncert ten odzwierciedla wyj\u0105tkow\u0105 zdolno\u015B\u0107 Chopina do \u0142\u0105czenia
+    melodyjno\u015Bci z technicznym mistrzostwem."

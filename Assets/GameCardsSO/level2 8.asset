@@ -23,5 +23,15 @@ MonoBehaviour:
     instrumentation: 0
     dynamics: 3
   cardImage: {fileID: 0}
-  cardName: 
-  cardDescription: 
+  cardName: "L\u2019Arl\xE9sienne Suite nr 1 i nr 2 - Georges Bizet"
+  cardDescription: "L\u2019Arl\xE9sienne Suity nr 1 i nr 2 Georgesa Bizeta powsta\u0142y
+    z muzyki napisanej w 1872 roku do sztuki Alphonse\u2019a Daudeta. Cho\u0107 sama
+    sztuka nie odnios\u0142a sukcesu, muzyka Bizeta zdoby\u0142a ogromn\u0105 popularno\u015B\u0107
+    dzi\u0119ki swojej melodyjno\u015Bci i barwnej orkiestracji. Suita nr 1, opracowana
+    przez kompozytora, zawiera m.in. majestatyczne Pr\xE9lude i taneczn\u0105 Carillon.
+    Suita nr 2 zosta\u0142a zestawiona po\u015Bmiertnie przez Ernesta Guirauda i
+    obejmuje m.in. s\u0142ynn\u0105 Farandole, \u0142\u0105cz\u0105c\u0105 temat
+    ludowy z energetycznym fina\u0142em. Oba cykle emanuj\u0105 prowansalskim kolorytem,
+    \u0142\u0105cz\u0105c francuski wdzi\u0119k z dramatyczn\u0105 ekspresj\u0105,
+    i do dzi\u015B s\u0105 sta\u0142ym punktem repertuaru orkiestr na ca\u0142ym
+    \u015Bwiecie."

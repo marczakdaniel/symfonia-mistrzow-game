@@ -23,5 +23,15 @@ MonoBehaviour:
     instrumentation: 0
     dynamics: 2
   cardImage: {fileID: 0}
-  cardName: 
-  cardDescription: 
+  cardName: Album dla dzieci op. 39 - Pyotr Tchaikovsky
+  cardDescription: "Album dla dzieci op. 39 Piotra Czajkowskiego, skomponowany w
+    1878 roku, to cykl 24 miniatur fortepianowych przeznaczonych dla m\u0142odych
+    pianist\xF3w. Inspirowany podobnymi zbiorami Roberta Schumanna, kompozytor stworzy\u0142
+    utwory proste technicznie, lecz pe\u0142ne melodii i charakteru. Znajdziemy tu
+    zar\xF3wno scenki z \u017Cycia dzieci, jak i stylizacje ta\u0144c\xF3w oraz nawi\u0105zania
+    do rosyjskich pie\u015Bni ludowych. Czajkowski pragn\u0105\u0142, by m\u0142odzie\u017C
+    mog\u0142a od pocz\u0105tku obcowa\u0107 z warto\u015Bciow\u0105 muzyk\u0105,
+    dlatego ka\u017Cdy utw\xF3r \u0142\u0105czy walory dydaktyczne z artystycznymi.
+    Album dla dzieci do dzi\u015B jest skarbnic\u0105 urokliwych miniatur, kt\xF3re
+    wprowadzaj\u0105 pocz\u0105tkuj\u0105cych pianist\xF3w w \u015Bwiat romantycznej
+    wra\u017Cliwo\u015Bci."

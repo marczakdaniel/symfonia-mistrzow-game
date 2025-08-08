@@ -23,5 +23,15 @@ MonoBehaviour:
     instrumentation: 1
     dynamics: 1
   cardImage: {fileID: 0}
-  cardName: 
-  cardDescription: 
+  cardName: "Symfonia nr 94 \u201EZ niespodziank\u0105\u201D - Joseph Haydn"
+  cardDescription: "Symfonia nr 94 G-dur \u201EZ niespodziank\u0105\u201D Josepha
+    Haydna, skomponowana w 1791 roku podczas jego pierwszego pobytu w Londynie, to
+    jedno z najbardziej rozpoznawalnych dzie\u0142 klasycyzmu. Przydomek zawdzi\u0119cza
+    nag\u0142emu, g\u0142o\u015Bnemu akordowi w wolnej cz\u0119\u015Bci Andante,
+    kt\xF3ry przerywa \u0142agodn\u0105 melodi\u0119 i zaskakuje s\u0142uchaczy.
+    Wed\u0142ug anegdoty Haydn zastosowa\u0142 ten efekt, by utrzyma\u0107 publiczno\u015B\u0107
+    w czujno\u015Bci \u2013 a mo\u017Ce po prostu dla \u017Cartu. Symfonia \u0142\u0105czy
+    elegancj\u0119 formy z b\u0142yskotliwym humorem, tak charakterystycznym dla
+    kompozytora. Dynamiczne fina\u0142y, klarowna orkiestracja i pomys\u0142owe tematy
+    sprawiaj\u0105, \u017Ce dzie\u0142o do dzi\u015B bawi i zachwyca publiczno\u015B\u0107
+    na ca\u0142ym \u015Bwiecie."

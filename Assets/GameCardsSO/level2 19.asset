@@ -23,5 +23,15 @@ MonoBehaviour:
     instrumentation: 3
     dynamics: 0
   cardImage: {fileID: 0}
-  cardName: 
-  cardDescription: 
+  cardName: La mer - Claude Debussy
+  cardDescription: "La mer Claude\u2019a Debussy\u2019ego, skomponowana w latach
+    1903\u20131905, to trzycz\u0119\u015Bciowy poemat symfoniczny b\u0119d\u0105cy
+    jednym z arcydzie\u0142 impresjonizmu w muzyce. Kompozytor maluje w nim d\u017Awi\u0119kowy
+    portret morza \u2013 od subtelnych porank\xF3w po pot\u0119g\u0119 fal. Cz\u0119\u015Bci
+    zatytu\u0142owane s\u0105: Od \u015Bwitu do po\u0142udnia na morzu, Gra fal oraz
+    Dialog wiatru z morzem. Debussy unika dos\u0142ownego ilustratorstwa, zamiast
+    tego oddaj\u0105c wra\u017Cenia i atmosfer\u0119 poprzez bogat\u0105 harmonik\u0119,
+    zmienn\u0105 rytmik\u0119 i mistrzowsk\u0105 orkiestracj\u0119. La mer pocz\u0105tkowo
+    spotka\u0142a si\u0119 z mieszanymi recenzjami, lecz dzi\u015B uchodzi za jedno
+    z najwa\u017Cniejszych dzie\u0142 symfonicznych XX wieku i wzorcowy przyk\u0142ad
+    muzycznego malarstwa."

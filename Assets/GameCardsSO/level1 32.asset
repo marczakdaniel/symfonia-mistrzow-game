@@ -23,5 +23,15 @@ MonoBehaviour:
     instrumentation: 0
     dynamics: 4
   cardImage: {fileID: 0}
-  cardName: 
-  cardDescription: 
+  cardName: "Moja ojczyzna: \u201EWe\u0142tawa\u201D - Bed\u0159ich Smetana"
+  cardDescription: "We\u0142tawa Bed\u0159icha Smetany, skomponowana w 1874 roku,
+    to druga cz\u0119\u015B\u0107 cyklu symfonicznego Moja ojczyzna, b\u0119d\u0105cego
+    muzycznym ho\u0142dem dla Czech. Utw\xF3r przedstawia w d\u017Awi\u0119kach bieg
+    rzeki We\u0142tawy \u2013 od \u017Ar\xF3de\u0142 w g\xF3rskich strumieniach,
+    przez malownicze krajobrazy, wesela wiejskie i nocny blask ksi\u0119\u017Cyca,
+    a\u017C po majestatyczny przep\u0142yw przez Prag\u0119. Smetana, mimo \u017Ce
+    by\u0142 ju\u017C ca\u0142kowicie g\u0142uchy, stworzy\u0142 muzyk\u0119 pe\u0142n\u0105
+    barw i ruchu, wykorzystuj\u0105c p\u0142ynne figuracje smyczk\xF3w i szerokie
+    tematy melodyczne. We\u0142tawa sta\u0142a si\u0119 jednym z najpi\u0119kniejszych
+    przyk\u0142ad\xF3w muzycznego pejza\u017Cu w romantyzmie i do dzi\u015B jest
+    symbolem czeskiej to\u017Csamo\u015Bci narodowej."

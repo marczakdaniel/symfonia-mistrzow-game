@@ -23,5 +23,15 @@ MonoBehaviour:
     instrumentation: 1
     dynamics: 1
   cardImage: {fileID: 0}
-  cardName: 
-  cardDescription: 
+  cardName: "Rus\u0142an i Ludmi\u0142a (uwertura) - Mikhail Glinka"
+  cardDescription: "Uwertura do opery Rus\u0142an i Ludmi\u0142a Michai\u0142a Glinki,
+    skomponowanej w latach 1837\u20131842, to b\u0142yskotliwy wst\u0119p do dzie\u0142a
+    opartego na poemacie Aleksandra Puszkina. Rozpoczyna si\u0119 b\u0142yskawiczn\u0105,
+    energiczn\u0105 fanfar\u0105 smyczk\xF3w, kt\xF3ra od razu wci\u0105ga s\u0142uchacza
+    w wir muzycznej akcji. Tematy uwertury \u2013 pe\u0142ne lekko\u015Bci, wdzi\u0119ku
+    i rosyjskiego kolorytu \u2013 zapowiadaj\u0105 barwn\u0105, fantastyczn\u0105
+    opowie\u015B\u0107 o rycerzu Rus\u0142anie i jego przygodach w poszukiwaniu ukochanej
+    Ludmi\u0142y. Uwertura jest popisem wirtuozerii orkiestry i do dzi\u015B cieszy
+    si\u0119 popularno\u015Bci\u0105 jako samodzielny utw\xF3r koncertowy, uchodz\u0105c
+    za jedno z naj\u017Cywszych i najbardziej porywaj\u0105cych dzie\u0142 rosyjskiego
+    romantyzmu."

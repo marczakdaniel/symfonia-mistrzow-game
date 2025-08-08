@@ -23,5 +23,15 @@ MonoBehaviour:
     instrumentation: 4
     dynamics: 2
   cardImage: {fileID: 0}
-  cardName: 
-  cardDescription: 
+  cardName: "Koncert wiolonczelowy nr 1 a-moll op. 33 - Camille Saint-Sa\xEBns"
+  cardDescription: "Koncert wiolonczelowy nr 1 a-moll op. 33 Camille\u2019a Saint-Sa\xEBnsa,
+    skomponowany w 1872 roku dla belgijskiego wirtuoza Augusta Tolbeka, uchodzi za
+    jedno z najwybitniejszych dzie\u0142 w repertuarze wiolonczelowym. Kompozytor
+    zrywa tu z tradycyjnym, tr\xF3jcz\u0119\u015Bciowym uk\u0142adem koncertu, \u0142\u0105cz\u0105c
+    wszystkie cz\u0119\u015Bci w jedn\u0105, sp\xF3jn\u0105 form\u0119 o trzech wyra\u017Anych
+    odcinkach. Utw\xF3r otwiera gwa\u0142towne, energiczne wej\u015Bcie solisty,
+    po kt\xF3rym nast\u0119puj\u0105 liryczne epizody i wirtuozowskie pasa\u017Ce.
+    Saint-Sa\xEBns mistrzowsko r\xF3wnowa\u017Cy parti\u0119 wiolonczeli z orkiestr\u0105,
+    tworz\u0105c dialog pe\u0142en ekspresji i elegancji. Koncert ten, \u0142\u0105cz\u0105cy
+    romantyczny \u017Car z klasyczn\u0105 przejrzysto\u015Bci\u0105, jest ulubionym
+    sprawdzianem techniki i wra\u017Cliwo\u015Bci wiolonczelist\xF3w."

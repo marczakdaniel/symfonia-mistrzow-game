@@ -23,5 +23,15 @@ MonoBehaviour:
     instrumentation: 7
     dynamics: 3
   cardImage: {fileID: 0}
-  cardName: 
-  cardDescription: 
+  cardName: "Gurre-Lieder - Arnold Sch\xF6nberg"
+  cardDescription: "Gurre-Lieder Arnolda Sch\xF6nberga, skomponowane w latach 1900\u20131911,
+    to monumentalne dzie\u0142o na solist\xF3w, ch\xF3r i wielk\u0105 orkiestr\u0119,
+    b\u0119d\u0105ce jednym z ostatnich przyk\u0142ad\xF3w p\xF3\u017Anego romantyzmu.
+    Oparte na tekstach du\u0144skiego poety Jens Petersena, opowiadaj\u0105 histori\u0119
+    tragicznej mi\u0142o\u015Bci kr\xF3la Gura i Markizy Tove. Muzyka \u0142\u0105czy
+    ekspresyjne melodie, bogat\u0105 orkiestracj\u0119 i dramatyczne momenty, wykorzystuj\u0105c
+    jeszcze tonalno\u015B\u0107, zanim Sch\xF6nberg przeszed\u0142 do atonalno\u015Bci
+    i dwunastotonowo\u015Bci. Gurre-Lieder imponuj\u0105 rozmiarami \u2013 dzie\u0142o
+    trwa ponad godzin\u0119 i wymaga ogromnych si\u0142 wykonawczych. To symboliczny
+    pomost mi\u0119dzy romantyzmem a muzyczn\u0105 awangard\u0105 XX wieku, ukazuj\u0105cy
+    genialn\u0105 wyobra\u017Ani\u0119 i emocjonaln\u0105 g\u0142\u0119bi\u0119 kompozytora."

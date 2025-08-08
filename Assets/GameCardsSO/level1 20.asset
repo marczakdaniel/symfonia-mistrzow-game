@@ -23,5 +23,15 @@ MonoBehaviour:
     instrumentation: 0
     dynamics: 1
   cardImage: {fileID: 0}
-  cardName: 
-  cardDescription: 
+  cardName: Obrazki z wystawy - Modest Musorgski
+  cardDescription: "Obrazki z wystawy Modesta Musorgskiego, skomponowane w 1874 roku,
+    to cykl dziesi\u0119ciu miniatur fortepianowych po\u0142\u0105czonych powtarzaj\u0105cym
+    si\u0119 motywem \u201EPromenady\u201D. Utw\xF3r powsta\u0142 jako muzyczny ho\u0142d
+    dla przyjaciela kompozytora, malarza i architekta Wiktora Hartmanna, kt\xF3rego
+    prace Musorgski ogl\u0105da\u0142 na po\u015Bmiertnej wystawie. Ka\u017Cda cz\u0119\u015B\u0107
+    przedstawia inne dzie\u0142o \u2013 od groteskowych postaci w \u201EGnomie\u201D
+    po monumentalne \u201EWielkie wrota kijowskie\u201D. Styl fortepianowy jest odwa\u017Cny
+    i nowatorski, pe\u0142en kontrast\xF3w dynamicznych i kolorystycznych, kt\xF3re
+    niemal maluj\u0105 obrazy d\u017Awi\u0119kiem. Cho\u0107 dzi\u015B znane s\u0105
+    liczne orkiestracje, wersja fortepianowa zachowuje bezpo\u015Bredni\u0105 ekspresj\u0119
+    i surow\u0105 si\u0142\u0119 orygina\u0142u."

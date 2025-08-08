@@ -23,5 +23,15 @@ MonoBehaviour:
     instrumentation: 2
     dynamics: 0
   cardImage: {fileID: 0}
-  cardName: 
-  cardDescription: 
+  cardName: Koncert fortepianowy nr 21 C-dur KV 467 - Wolfgang Amadeus Mozart
+  cardDescription: "Koncert fortepianowy nr 21 C-dur KV 467 Wolfganga Amadeusa Mozarta,
+    skomponowany w 1785 roku w Wiedniu, to jedno z jego najs\u0142ynniejszych dzie\u0142
+    w tym gatunku. Utw\xF3r zachwyca r\xF3wnowag\u0105 mi\u0119dzy wirtuozeri\u0105
+    solisty a \u015Bpiewno\u015Bci\u0105 i elegancj\u0105 orkiestry. Szczeg\xF3ln\u0105
+    s\u0142aw\u0119 zdoby\u0142a druga cz\u0119\u015B\u0107 Andante, o lirycznej,
+    ko\u0142ysz\u0105cej melodii, znanej m.in. z filmu Elvira Madigan. Pierwsza cz\u0119\u015B\u0107
+    pe\u0142na jest energii i blasku, a fina\u0142owe Allegro vivace assai wnosi
+    radosny, taneczny charakter. Koncert KV 467 to przyk\u0142ad dojrza\u0142ego
+    stylu Mozarta, w kt\xF3rym lekko\u015B\u0107 formy \u0142\u0105czy si\u0119 z
+    g\u0142\u0119bi\u0105 emocjonaln\u0105, czyni\u0105c go per\u0142\u0105 klasycznego
+    repertuaru fortepianowego."

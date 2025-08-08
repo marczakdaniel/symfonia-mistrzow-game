@@ -23,5 +23,15 @@ MonoBehaviour:
     instrumentation: 3
     dynamics: 0
   cardImage: {fileID: 0}
-  cardName: 
-  cardDescription: 
+  cardName: "Uwertura \u201ESen nocy letniej\u201D op. 21 - Felix Mendelssohn-Bartholdy"
+  cardDescription: "Uwertura Sen nocy letniej op. 21 Feliksa Mendelssohna-Bartholdy,
+    skomponowana w 1826 roku, to niezwyk\u0142e dzie\u0142o m\u0142odzie\u0144cze
+    \u2013 powsta\u0142o, gdy kompozytor mia\u0142 zaledwie 17 lat. Zainspirowana
+    komedi\u0105 Szekspira, uwertura mistrzowsko oddaje ba\u015Bniowy \u015Bwiat
+    elf\xF3w, le\u015Bnych przyg\xF3d i romantycznych intryg. Lekkie, migotliwe figuracje
+    smyczk\xF3w maluj\u0105 obraz nocnego lasu, a kontrasty dynamiczne i barwne tematy
+    wprowadzaj\u0105 zar\xF3wno humor, jak i poetyck\u0105 nostalgi\u0119. Ju\u017C
+    w tej kompozycji s\u0142ycha\u0107 charakterystyczn\u0105 dla Mendelssohna przejrzysto\u015B\u0107
+    formy i wyczucie orkiestracji. Uwertura sta\u0142a si\u0119 samodzielnym utworem
+    koncertowym, a p\xF3\u017Aniej pos\u0142u\u017Cy\u0142a jako wst\u0119p do pe\u0142nej
+    muzyki scenicznej napisanej przez kompozytora do sztuki Szekspira."

@@ -23,5 +23,15 @@ MonoBehaviour:
     instrumentation: 3
     dynamics: 0
   cardImage: {fileID: 0}
-  cardName: 
-  cardDescription: 
+  cardName: Orfeusz i Eurydyka (uwertura) - Christoph Willibald Gluck
+  cardDescription: "Uwertura do opery Orfeusz i Eurydyka Christopha Willibalda Glucka,
+    kt\xF3rej pierwsza wersja powsta\u0142a w 1762 roku, odzwierciedla reformatorski
+    charakter ca\u0142ego dzie\u0142a. Gluck odszed\u0142 tu od rozbudowanych, wirtuozowskich
+    wst\u0119p\xF3w typowych dla oper barokowych, tworz\u0105c muzyk\u0119 prost\u0105,
+    klarown\u0105 i silnie zwi\u0105zan\u0105 z dramatem scenicznym. Uwertura wprowadza
+    s\u0142uchacza w tragiczny, a zarazem liryczny nastr\xF3j historii o mi\u0142o\u015Bci
+    silniejszej ni\u017C \u015Bmier\u0107. \u0141agodne tematy smyczk\xF3w kontrastuj\u0105
+    z bardziej napi\u0119tymi fragmentami, zapowiadaj\u0105c emocjonalny przebieg
+    opery. To przyk\u0142ad, jak Gluck podporz\u0105dkowa\u0142 form\u0119 i ekspresj\u0119
+    muzyki opowie\u015Bci, otwieraj\u0105c drog\u0119 do opery klasycznej w nowoczesnym
+    kszta\u0142cie."

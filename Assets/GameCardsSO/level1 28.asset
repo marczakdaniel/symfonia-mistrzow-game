@@ -23,5 +23,15 @@ MonoBehaviour:
     instrumentation: 0
     dynamics: 0
   cardImage: {fileID: 0}
-  cardName: 
-  cardDescription: 
+  cardName: Serenada Es-dur op. 7 - Richard Strauss
+  cardDescription: "Serenada Es-dur op. 7 Richarda Straussa, skomponowana w 1881
+    roku, to jedno z jego pierwszych znacz\u0105cych dzie\u0142 orkiestrowych. Powsta\u0142a,
+    gdy kompozytor mia\u0142 zaledwie 17 lat, i ju\u017C wtedy zdradza\u0142a jego
+    talent do barwnej instrumentacji. Utw\xF3r przeznaczony jest na orkiestr\u0119
+    d\u0119t\u0105 i utrzymany w lekkim, eleganckim nastroju, nawi\u0105zuj\u0105cym
+    do klasycznych serenad Mozarta czy Beethovena. Melodia p\u0142ynie swobodnie,
+    a harmonijne wsp\xF3\u0142brzmienia nadaj\u0105 muzyce ciep\u0142o i wdzi\u0119k.
+    Mimo m\u0142odzie\u0144czego wieku Strauss wykaza\u0142 si\u0119 tu dojrza\u0142ym
+    wyczuciem formy i orkiestracji, tworz\u0105c miniatur\u0119, kt\xF3ra do dzi\u015B
+    pozostaje ulubionym utworem w repertuarze zespo\u0142\xF3w d\u0119tych na ca\u0142ym
+    \u015Bwiecie."

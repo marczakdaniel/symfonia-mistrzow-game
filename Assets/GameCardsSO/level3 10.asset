@@ -23,5 +23,16 @@ MonoBehaviour:
     instrumentation: 0
     dynamics: 7
   cardImage: {fileID: 0}
-  cardName: 
-  cardDescription: 
+  cardName: Messa da Requiem - Giuseppe Verdi
+  cardDescription: "Messa da Requiem Giuseppe Verdiego, skomponowana w 1874 roku,
+    to monumentalne dzie\u0142o sakralne \u0142\u0105cz\u0105ce dramatyzm opery z
+    g\u0142\u0119bok\u0105 duchowo\u015Bci\u0105 mszy \u017Ca\u0142obnej. Powsta\u0142a
+    na cze\u015B\u0107 w\u0142oskiego poety Alessandro Manzoniego i odzwierciedla
+    zar\xF3wno pot\u0119g\u0119 ludzkich emocji, jak i refleksj\u0119 nad \u015Bmierci\u0105
+    i zbawieniem. Verdi wykorzystuje pe\u0142n\u0105 orkiestr\u0119, ch\xF3r oraz
+    czterech solist\xF3w, tworz\u0105c muzyk\u0119 o ogromnej sile wyrazu \u2013
+    od przera\u017Caj\u0105cego \u201EDies irae\u201D, przez liryczne \u201EAgnus
+    Dei\u201D, po triumfalne \u201ELibera me\u201D. Messa da Requiem \u0142\u0105czy
+    monumentalno\u015B\u0107 i intymno\u015B\u0107, staj\u0105c si\u0119 jednym z
+    najwa\u017Cniejszych i najcz\u0119\u015Bciej wykonywanych dzie\u0142 ch\xF3ralnych
+    w historii muzyki."

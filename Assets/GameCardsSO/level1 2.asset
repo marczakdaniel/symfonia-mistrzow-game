@@ -23,5 +23,14 @@ MonoBehaviour:
     instrumentation: 1
     dynamics: 0
   cardImage: {fileID: 0}
-  cardName: 
-  cardDescription: 
+  cardName: 'Impromptu op. 90 nr 2 - Franz Schubert '
+  cardDescription: "Impromptu op. 90 nr 2 Franza Schuberta, skomponowane w 1827 roku,
+    to b\u0142yskotliwy popis wirtuozerii i melodyjnej inwencji. Utw\xF3r utrzymany
+    jest w tonacji Es-dur i opiera si\u0119 na nieustannym, wiruj\u0105cym akompaniamencie
+    prawej r\u0119ki, kt\xF3ry nadaje mu charakter tanecznego ko\u0142owrotu. Schubert
+    \u0142\u0105czy tu lekko\u015B\u0107 i wdzi\u0119k z melancholijnymi przeb\u0142yskami,
+    tak typowymi dla jego stylu. Cho\u0107 pierwotnie impromptusy nie cieszy\u0142y
+    si\u0119 wielk\u0105 popularno\u015Bci\u0105, dzi\u015B nale\u017C\u0105 do \u017Celaznego
+    repertuaru pianist\xF3w. Ten konkretny utw\xF3r wymaga precyzji i finezji, a
+    przy tym zachowuje spontaniczny, niemal improwizacyjny urok, zgodny z sam\u0105
+    ide\u0105 formy impromptu."

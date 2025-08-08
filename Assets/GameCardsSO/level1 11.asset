@@ -23,5 +23,15 @@ MonoBehaviour:
     instrumentation: 2
     dynamics: 0
   cardImage: {fileID: 0}
-  cardName: 
-  cardDescription: 
+  cardName: "Pie\u015Bni bez s\u0142\xF3w, op. 19 nr 1 - Felix Mendelssohn"
+  cardDescription: "Pie\u015Bni bez s\u0142\xF3w op. 19 nr 1 Feliksa Mendelssohna,
+    znana tak\u017Ce jako \u201EAndante con moto\u201D w tonacji e-moll, otwiera
+    pierwszy zeszyt cyklu miniatur fortepianowych, publikowanego od 1832 roku. Utw\xF3r
+    urzeka \u015Bpiewn\u0105, liryczn\u0105 melodi\u0105, kt\xF3rej prostota kryje
+    mistrzowsk\u0105 harmoni\u0119 i subteln\u0105 faktur\u0119 akompaniamentu. Mendelssohn
+    stworzy\u0142 ide\u0119 \u201Epie\u015Bni\u201D pozbawionej s\u0142\xF3w, w kt\xF3rej
+    fortepian przejmuje rol\u0119 g\u0142osu ludzkiego, wyra\u017Caj\u0105c emocje
+    samym brzmieniem. Op. 19 nr 1 ma delikatnie melancholijny charakter, a jednocze\u015Bnie
+    zachowuje klasyczn\u0105 r\xF3wnowag\u0119 formy. To muzyka, kt\xF3ra przemawia
+    bezpo\u015Brednio do uczu\u0107, pozostawiaj\u0105c s\u0142uchaczowi swobod\u0119
+    w\u0142asnej interpretacji nastroju i znacze\u0144."

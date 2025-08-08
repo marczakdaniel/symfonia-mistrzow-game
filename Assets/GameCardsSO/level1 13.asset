@@ -23,5 +23,14 @@ MonoBehaviour:
     instrumentation: 0
     dynamics: 2
   cardImage: {fileID: 0}
-  cardName: 
-  cardDescription: 
+  cardName: "Nad pi\u0119knym modrym Dunajem - Johann Strauss II"
+  cardDescription: "Nad pi\u0119knym modrym Dunajem Johanna Straussa II, skomponowany
+    w 1867 roku, to najs\u0142ynniejszy walc wiede\u0144ski i nieoficjalny hymn Austrii.
+    Utw\xF3r pierwotnie powsta\u0142 jako ch\xF3r m\u0119ski z akompaniamentem fortepianu,
+    jednak dopiero wersja orkiestrowa przynios\u0142a mu \u015Bwiatow\u0105 s\u0142aw\u0119.
+    Melodia, lekka i ko\u0142ysz\u0105ca, oddaje urok Wiednia i romantyczny obraz
+    rzeki Dunaj, cho\u0107 sama woda w tym miejscu nie by\u0142a wcale \u201Eb\u0142\u0119kitna\u201D
+    \u2013 okre\u015Blenie mia\u0142o charakter poetycki. Walc szybko podbi\u0142
+    sale balowe Europy, a dzi\u015B to obowi\u0105zkowy punkt noworocznych koncert\xF3w
+    Filharmonik\xF3w Wiede\u0144skich, symbolizuj\u0105cy elegancj\u0119 i beztroski
+    czar XIX-wiecznej Austrii."

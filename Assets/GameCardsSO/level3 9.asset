@@ -23,5 +23,15 @@ MonoBehaviour:
     instrumentation: 5
     dynamics: 3
   cardImage: {fileID: 0}
-  cardName: 
-  cardDescription: 
+  cardName: Symfonia nr 5 cis-moll - Gustav Mahler
+  cardDescription: "Symfonia nr 5 cis-moll Gustava Mahlera, skomponowana w latach
+    1901\u20131902, to monumentalne, pi\u0119ciocz\u0119\u015Bciowe dzie\u0142o ukazuj\u0105ce
+    bogactwo emocji \u2013 od tragizmu po triumf. Rozpoczyna si\u0119 surowym, dramatycznym
+    Trauermarsch (marszem \u017Ca\u0142obnym), kt\xF3ry prowadzi do pe\u0142nego
+    liryzmu Adagietto \u2013 jednej z najs\u0142ynniejszych cz\u0119\u015Bci symfonii,
+    cz\u0119sto wykonywanej osobno. \u015Arodkowe cz\u0119\u015Bci \u0142\u0105cz\u0105
+    dynamiczne, energiczne scherzo z pe\u0142nym \u017Cycia rondem. Mahler mistrzowsko
+    operuje kontrastami, wykorzystuj\u0105c bogat\u0105 orkiestracj\u0119 do budowania
+    napi\u0119cia i roz\u0142adowania emocji. Symfonia nr 5 to jedno z najwa\u017Cniejszych
+    dzie\u0142 romantyzmu prze\u0142omu XIX i XX wieku, b\u0119d\u0105ce zarazem
+    muzyczn\u0105 podr\xF3\u017C\u0105 przez dramat i nadziej\u0119."

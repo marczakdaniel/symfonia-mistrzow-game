@@ -23,5 +23,15 @@ MonoBehaviour:
     instrumentation: 0
     dynamics: 1
   cardImage: {fileID: 0}
-  cardName: 
-  cardDescription: 
+  cardName: "Pulcinella (suita) - Igor Strawi\u0144ski"
+  cardDescription: "Pulcinella Igora Strawi\u0144skiego, w wersji suity orkiestrowej
+    z 1922 roku, wywodzi si\u0119 z baletu skomponowanego dwa lata wcze\u015Bniej
+    dla Balet\xF3w Rosyjskich Sergiusza Diagilewa. Inspiracj\u0105 by\u0142y utwory
+    przypisywane w\u0142oskiemu kompozytorowi XVIII wieku, Giovanniemu Battista Pergolesiemu,
+    kt\xF3re Strawi\u0144ski przearan\u017Cowa\u0142, nadaj\u0105c im nowoczesn\u0105
+    harmonik\u0119, rytmik\u0119 i orkiestracj\u0119. Pulcinella sta\u0142a si\u0119
+    punktem zwrotnym w tw\xF3rczo\u015Bci Strawi\u0144skiego, rozpoczynaj\u0105c
+    jego okres neoklasyczny. Suita zachowuje lekko\u015B\u0107 i wdzi\u0119k orygina\u0142\xF3w,
+    ale wzbogaca je o ironi\u0119 i wyrafinowany humor. To muzyka, kt\xF3ra \u0142\u0105czy
+    barokow\u0105 elegancj\u0119 z XX-wieczn\u0105 \u015Bwie\u017Co\u015Bci\u0105,
+    oddaj\u0105c ducha commedia dell\u2019arte w nowym, stylizowanym uj\u0119ciu."

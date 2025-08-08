@@ -23,5 +23,15 @@ MonoBehaviour:
     instrumentation: 3
     dynamics: 3
   cardImage: {fileID: 0}
-  cardName: 
-  cardDescription: 
+  cardName: "Symfonia nr 7 \u201ELeningradzka\u201D - Dmitrij Szostakowicz"
+  cardDescription: "Symfonia nr 7 \u201ELeningradzka\u201D Dmitrija Szostakowicza,
+    skomponowana w 1941 roku podczas II wojny \u015Bwiatowej, sta\u0142a si\u0119
+    symbolem oporu i wytrwa\u0142o\u015Bci mieszka\u0144c\xF3w obl\u0119\u017Conego
+    Leningradu. Utw\xF3r, trwaj\u0105cy ponad 70 minut, zawiera monumentalne tematy,
+    kt\xF3re odzwierciedlaj\u0105 zar\xF3wno groz\u0119 wojny, jak i niez\u0142omnego
+    ducha narodu. Szczeg\xF3lnie znana jest pierwsza cz\u0119\u015B\u0107 z charakterystycznym
+    \u201Emotywem inwazji\u201D \u2013 powtarzaj\u0105cym si\u0119 rytmem, kt\xF3ry
+    stopniowo narasta, tworz\u0105c atmosfer\u0119 zagro\u017Cenia. Symfonia 7 by\u0142a
+    wykonywana na \u017Cywo nawet podczas obl\u0119\u017Cenia, dodaj\u0105c nadziei
+    walcz\u0105cym. To dzie\u0142o, \u0142\u0105cz\u0105ce dramatyzm i patos, pozostaje
+    jednym z najwa\u017Cniejszych \u015Bwiadectw muzycznej historii XX wieku."

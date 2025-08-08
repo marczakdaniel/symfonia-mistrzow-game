@@ -23,5 +23,15 @@ MonoBehaviour:
     instrumentation: 3
     dynamics: 0
   cardImage: {fileID: 0}
-  cardName: 
-  cardDescription: 
+  cardName: "Symfonia nr 2 \u201EZmartwychwstanie\u201D - Gustav Mahler"
+  cardDescription: "Symfonia nr 2 \u201EZmartwychwstanie\u201D Gustava Mahlera, komponowana
+    w latach 1888\u20131894, to monumentalne dzie\u0142o \u0142\u0105cz\u0105ce orkiestr\u0119,
+    ch\xF3r i solist\xF3w wokalnych. Mahler prowadzi s\u0142uchacza w duchowej podr\xF3\u017Cy
+    od dramatycznej walki i rozpaczy po triumf wiary w \u017Cycie wieczne. Pierwsza
+    cz\u0119\u015B\u0107 ma form\u0119 pot\u0119\u017Cnego allegra o symfonicznym
+    rozmachu, kolejne \u2013 od lirycznego Andante po \u017Cartobliwe Scherzo \u2013
+    tworz\u0105 kontrast przed kulminacyjnym fina\u0142em. W ostatniej cz\u0119\u015Bci
+    do orkiestry do\u0142\u0105cza ch\xF3r, \u015Bpiewaj\u0105c s\u0142owa Friedricha
+    Klopstocka i samego Mahlera. Bogata orkiestracja, g\u0142\u0119bia emocji i filozoficzny
+    wymiar czyni\u0105 z \u201EZmartwychwstania\u201D jedno z najbardziej poruszaj\u0105cych
+    dzie\u0142 p\xF3\u017Anego romantyzmu."

@@ -23,5 +23,15 @@ MonoBehaviour:
     instrumentation: 3
     dynamics: 0
   cardImage: {fileID: 0}
-  cardName: 
-  cardDescription: 
+  cardName: "Symfonia nr 7 e-moll \u201ENocna\u201D - Gustav Mahler"
+  cardDescription: "Symfonia nr 7 e-moll \u201ENocna\u201D Gustava Mahlera, skomponowana
+    mi\u0119dzy 1904 a 1905 rokiem, to tajemnicze i z\u0142o\u017Cone dzie\u0142o
+    pe\u0142ne kontrast\xF3w mi\u0119dzy \u015Bwiat\u0142em a cieniem. Czasem nazywana
+    \u201ENocn\u0105 symfoni\u0105\u201D, \u0142\u0105czy mroczne, senne nastroje
+    z momentami energii i ekstazy. Sk\u0142ada si\u0119 z pi\u0119ciu cz\u0119\u015Bci,
+    z kt\xF3rych dwie stanowi\u0105 swego rodzaju \u201Enocturnes\u201D \u2013 refleksyjne
+    i pe\u0142ne magii, a pozosta\u0142e wprowadzaj\u0105 dynamiczne, cz\u0119sto
+    groteskowe elementy. Mahler wykorzystuje bogat\u0105 orkiestracj\u0119 i nietypowe
+    instrumenty, jak dzwonki czy kot\u0142y, by stworzy\u0107 niezwyk\u0142\u0105
+    atmosfer\u0119. Symfonia nr 7 to podr\xF3\u017C przez zakamarki ludzkiej duszy,
+    balansuj\u0105ca mi\u0119dzy melancholi\u0105 a si\u0142\u0105 \u017Cycia"

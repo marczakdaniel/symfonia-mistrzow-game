@@ -22,6 +22,7 @@ namespace DefaultNamespace.Data
 
         [Header("Card Info")]
         public string cardName;
+        [TextArea]
         public string cardDescription;
 
         public string Id => id;

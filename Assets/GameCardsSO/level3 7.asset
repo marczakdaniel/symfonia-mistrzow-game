@@ -23,5 +23,16 @@ MonoBehaviour:
     instrumentation: 0
     dynamics: 3
   cardImage: {fileID: 0}
-  cardName: 
-  cardDescription: 
+  cardName: "Koncert na orkiestr\u0119 - Witold Lutos\u0142awski"
+  cardDescription: "Koncert na orkiestr\u0119 Witolda Lutos\u0142awskiego, skomponowany
+    w latach 1950\u20131954, to jedno z najwa\u017Cniejszych dzie\u0142 polskiej
+    muzyki XX wieku. Utw\xF3r \u0142\u0105czy nowoczesne techniki kompozytorskie
+    z barwn\u0105, ekspresyjn\u0105 orkiestracj\u0105. Lutos\u0142awski korzysta
+    tu m.in. z techniki aleatoryzmu kontrolowanego, gdzie wykonawcy maj\u0105 pewn\u0105
+    swobod\u0119 rytmiczn\u0105, co nadaje muzyce \u017Cywio\u0142owo\u015B\u0107
+    i niespodziewane efekty. Koncert sk\u0142ada si\u0119 z pi\u0119ciu cz\u0119\u015Bci,
+    z kt\xF3rych ka\u017Cda prezentuje r\xF3\u017Cne sekcje orkiestry jako solist\xF3w,
+    podkre\u015Blaj\u0105c bogactwo barw i faktur. To dynamiczne, pe\u0142ne kontrast\xF3w
+    dzie\u0142o, kt\xF3re ukazuje mistrzostwo Lutos\u0142awskiego w \u0142\u0105czeniu
+    tradycji z awangard\u0105 i pozostaje jednym z filar\xF3w wsp\xF3\u0142czesnego
+    repertuaru orkiestrowego."

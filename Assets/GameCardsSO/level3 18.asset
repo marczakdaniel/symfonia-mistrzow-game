@@ -23,5 +23,15 @@ MonoBehaviour:
     instrumentation: 0
     dynamics: 0
   cardImage: {fileID: 0}
-  cardName: 
-  cardDescription: 
+  cardName: Symfonia nr 8 c-moll - Anton Bruckner
+  cardDescription: "Symfonia nr 8 c-moll Antona Brucknera, uko\u0144czona w 1887
+    roku i zrewidowana w 1890, uchodzi za jego najbardziej monumentalne dzie\u0142o.
+    Rozpisana na ogromn\u0105 orkiestr\u0119, trwa ponad 80 minut i \u0142\u0105czy
+    duchow\u0105 g\u0142\u0119bi\u0119 z architektonicznym rozmachem. Cztery cz\u0119\u015Bci
+    prowadz\u0105 od mrocznego, dramatycznego Allegro moderato, przez refleksyjne
+    Scherzo i medytacyjne Adagio, po pot\u0119\u017Cny fina\u0142, w kt\xF3rym powracaj\u0105
+    motywy z ca\u0142ej symfonii. Bruckner okre\u015Bla\u0142 j\u0105 jako \u201Emisterium
+    wiary\u201D, a jej skala i intensywno\u015B\u0107 sprawiaj\u0105, \u017Ce nazywana
+    jest cz\u0119sto \u201EKoron\u0105 symfonii\u201D. To dzie\u0142o wymaga od wykonawc\xF3w
+    i s\u0142uchaczy skupienia, nagradzaj\u0105c ich jednak prze\u017Cyciem o niemal
+    metafizycznym wymiarze."

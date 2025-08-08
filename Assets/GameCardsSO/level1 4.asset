@@ -23,5 +23,15 @@ MonoBehaviour:
     instrumentation: 3
     dynamics: 1
   cardImage: {fileID: 0}
-  cardName: 
-  cardDescription: 
+  cardName: Peer Gynt Suite nr 1 op. 46 - Edvard Grieg
+  cardDescription: "Peer Gynt Suite nr 1 op. 46 Edvarda Griega powsta\u0142a w 1888
+    roku jako wyb\xF3r fragment\xF3w muzyki scenicznej do dramatu Henrika Ibsena.
+    Sk\u0142ada si\u0119 z czterech cz\u0119\u015Bci, z kt\xF3rych ka\u017Cda maluje
+    odmienny obraz \u2013 od poranka w norweskich g\xF3rach (\u201EPoranek\u201D),
+    przez taneczn\u0105 elegancj\u0119 (\u201ETaniec Anitry\u201D), po mroczne napi\u0119cie
+    (\u201E\u015Amier\u0107 \xC5se\u201D) i dziki p\u0119d w \u201EJaskini kr\xF3la
+    g\xF3r\u201D. Grieg mistrzowsko oddaje tu atmosfer\u0119 ba\u015Bni i folkloru,
+    u\u017Cywaj\u0105c prostych, ale sugestywnych temat\xF3w. Suita szybko zdoby\u0142a
+    popularno\u015B\u0107 niezale\u017Cnie od samej sztuki i sta\u0142a si\u0119
+    jednym z najbardziej rozpoznawalnych dzie\u0142 muzyki romantycznej, cz\u0119sto
+    wykorzystywanym w kulturze popularnej."
