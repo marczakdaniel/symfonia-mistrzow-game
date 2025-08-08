@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: concert 9
   m_EditorClassIdentifier: 
   id: 9
-  image: {fileID: 0}
+  image: {fileID: -2465115896051390643, guid: 93ee667731b47484cb496f81e168a8f3, type: 3}
   requirements:
     melody: 3
     harmony: 3

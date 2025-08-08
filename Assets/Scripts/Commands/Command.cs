@@ -165,7 +165,13 @@ namespace Command
                 return true;
             }
 
-            turnService.EndPlayerTurn();
+
+            if (turnService.IsGameEnded())
+            {
+                // TODO: End game
+                return true;
+            }
+
             turnService.NextPlayerTurn();
 
             var currentPlayer = turnService.GetCurrentPlayerModel();

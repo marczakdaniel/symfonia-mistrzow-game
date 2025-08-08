@@ -1,15 +1,15 @@
 fileFormatVersion: 2
-guid: 44e2d2e55cba12b408028a005e267414
+guid: 93ee667731b47484cb496f81e168a8f3
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8594304915730320725
-    second: u7955542541_The_interior_of_the_grand_concert_hall_Wiener_Mus_cc7f435e-fa4f-47be-9c57-97f54bc00617_0_0
+      213: -2465115896051390643
+    second: u7955542541_The_interior_of_the_grand_concert_hall_National_P_424983de-e735-4dcc-9c55-81ccd8426bea_0_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 0
+    enableMipMap: 1
     sRGBTexture: 1
     linearTexture: 0
     fadeOut: 0
@@ -126,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: u7955542541_The_interior_of_the_grand_concert_hall_Wiener_Mus_cc7f435e-fa4f-47be-9c57-97f54bc00617_0_0
+      name: u7955542541_The_interior_of_the_grand_concert_hall_National_P_424983de-e735-4dcc-9c55-81ccd8426bea_0_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 816
-        height: 1456
+        width: 768
+        height: 1536
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ba23086b635eab880800000000000000
-      internalID: -8594304915730320725
+      spriteID: d4720bd37262acdd0800000000000000
+      internalID: -2465115896051390643
       vertices: []
       indices: 
       edges: []
@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      u7955542541_The_interior_of_the_grand_concert_hall_National_P_424983de-e735-4dcc-9c55-81ccd8426bea_0_0: -2465115896051390643
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -34,15 +34,16 @@ namespace Services
             return gameModel.Players.IndexOf(GetCurrentPlayerModel());
         }
 
+        public int GetNumberOfPlayers()
+        {
+            return gameModel.Players.Count;
+        }
+
         // Game flow
 
         public void StartPlayerTurn()
         {
             turnModel.SetState(TurnState.WaitingForAction);
-        }
-
-        public void EndPlayerTurn()
-        {
         }
 
         public void NextPlayerTurn()
@@ -59,6 +60,31 @@ namespace Services
         public int GetCurrentRound()
         {
             return turnModel.CurrentRound;
+        }
+
+        public bool IsLastRound()
+        {
+            var players = gameModel.Players;
+            foreach (var player in players)
+            {
+                if (player.Points >= 3)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public bool IsRoundEnded()
+        {
+            var currentPlayerIndex = GetCurrentPlayerIndex();
+            var numberOfPlayers = GetNumberOfPlayers();
+            return currentPlayerIndex == numberOfPlayers - 1;
+        }
+
+        public bool IsGameEnded()
+        {
+            return IsLastRound() && IsRoundEnded();
         }
 
         // PLAYER ACTIONS

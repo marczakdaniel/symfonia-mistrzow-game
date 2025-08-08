@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: concert 2
   m_EditorClassIdentifier: 
   id: 2
-  image: {fileID: 0}
+  image: {fileID: 7893569344573888706, guid: 96bd4319ef8ff574c91bafae0c2ee56e, type: 3}
   requirements:
     melody: 3
     harmony: 0
