@@ -11,6 +11,7 @@ using DefaultNamespace.Data;
 using Assets.Scripts.Data;
 using UI.InfoWindow;
 using Data;
+using UI.ResultWindow;
 
 namespace Managers
 {
@@ -23,10 +24,11 @@ namespace Managers
         [SerializeField] private ConcertCardDeckData concertCardDeckData;
         [SerializeField] private InfoWindowView infoWindowView;
         [SerializeField] private PlayerAvatarsData playerAvatarsData;
-
+        [SerializeField] private ResultWindowView resultWindowView;
         private GameWindowPresenter gameWindowPresenter;    
         private MenuWindowPresenter menuWindowPresenter;
         private InfoWindowPresenter infoWindowPresenter;
+        private ResultWindowPresenter resultWindowPresenter;
         private CommandFactory commandFactory;
 
         private GameModel gameModel;
@@ -49,6 +51,7 @@ namespace Managers
             CreateMenuWindow();
             CreateGameWindow();
             CreateInfoWindow();
+            CreateResultWindow();
 
             OpenStartPageWindow().Forget();
         }
@@ -73,6 +76,11 @@ namespace Managers
         private void CreateInfoWindow()
         {
             infoWindowPresenter = new InfoWindowPresenter(infoWindowView, commandFactory);
+        }
+
+        private void CreateResultWindow()
+        {
+            resultWindowPresenter = new ResultWindowPresenter(resultWindowView, commandFactory);
         }
 
         private void CreateModels()

@@ -43,6 +43,8 @@ namespace Models
 
         public int GetPurchasedCardCount() => purchasedCards.Count;
         public int GetReservedCardCount() => ReservedCards.Count;
+        public int GetConcertCardCount() => concertCards.Count;
+        public int GetTokenCount() => Tokens.GetTotalResourcese();
 
         public bool HasReserveCard(string cardId) => ReservedCards.FindCard(cardId) != null;
 

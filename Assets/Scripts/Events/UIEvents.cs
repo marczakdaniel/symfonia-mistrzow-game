@@ -552,4 +552,18 @@ namespace Events
             CurrentPlayerCards = currentPlayerCards;
         }
     }
+
+    public class ResultWindowOpenedEvent : GameEvent
+    {
+        public List<string> PlayerNames { get; private set; }
+        public List<int> PlayerPoints { get; private set; }
+        public List<Sprite> PlayerAvatars { get; private set; }
+
+        public ResultWindowOpenedEvent(List<string> playerNames, List<int> playerPoints, List<Sprite> playerAvatars)
+        {
+            PlayerNames = playerNames;
+            PlayerPoints = playerPoints;
+            PlayerAvatars = playerAvatars;
+        }
+    }
 }

@@ -168,7 +168,11 @@ namespace Command
 
             if (turnService.IsGameEnded())
             {
-                // TODO: End game
+                var ranking = turnService.GetRanking();
+                var playerNames = ranking.Select(player => player.PlayerName).ToList();
+                var playerPoints = ranking.Select(player => player.Points).ToList();
+                var playerAvatars = ranking.Select(player => player.PlayerAvatar).ToList();
+                await AsyncEventBus.Instance.PublishAndWaitAsync(new ResultWindowOpenedEvent(playerNames, playerPoints, playerAvatars));
                 return true;
             }
 

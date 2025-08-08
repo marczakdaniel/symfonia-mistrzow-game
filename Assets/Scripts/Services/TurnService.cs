@@ -67,7 +67,7 @@ namespace Services
             var players = gameModel.Players;
             foreach (var player in players)
             {
-                if (player.Points >= 3)
+                if (player.Points >= 15)
                 {
                     return true;
                 }
@@ -87,6 +87,18 @@ namespace Services
             return IsLastRound() && IsRoundEnded();
         }
 
+        public List<PlayerModel> GetRanking()
+        {
+            var players = gameModel.Players;
+            players
+                .OrderByDescending(player => player.Points)
+                .ThenBy(player => player.GetPurchasedCardCount())
+                .ThenByDescending(player => player.GetReservedCardCount())
+                .ThenByDescending(player => player.GetConcertCardCount())
+                .ThenByDescending(player => player.GetTokenCount())
+                .ToList();
+            return players;
+        }
         // PLAYER ACTIONS
         // 1. Select Tokens
         // 2. Reserve Card
