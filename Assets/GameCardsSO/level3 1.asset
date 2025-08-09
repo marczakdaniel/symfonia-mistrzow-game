@@ -22,7 +22,7 @@ MonoBehaviour:
     rhythm: 5
     instrumentation: 3
     dynamics: 0
-  cardImage: {fileID: 0}
+  cardImage: {fileID: 916090261725292327, guid: ed6b565b4bdb348448cd0bb4f9613fcb, type: 3}
   cardName: "Symfonia nr 7 e-moll \u201ENocna\u201D - Gustav Mahler"
   cardDescription: "Symfonia nr 7 e-moll \u201ENocna\u201D Gustava Mahlera, skomponowana
     mi\u0119dzy 1904 a 1905 rokiem, to tajemnicze i z\u0142o\u017Cone dzie\u0142o

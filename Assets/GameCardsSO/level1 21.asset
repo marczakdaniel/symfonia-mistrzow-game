@@ -22,7 +22,7 @@ MonoBehaviour:
     rhythm: 0
     instrumentation: 2
     dynamics: 1
-  cardImage: {fileID: 0}
+  cardImage: {fileID: -5750353039905602045, guid: 12ba25795876cb44082d1e0b5e167082, type: 3}
   cardName: Walc A-dur op. 39 nr 15 - Johannes Brahms
   cardDescription: "Walc A-dur op. 39 nr 15 Johannesa Brahmsa, skomponowany w 1865
     roku jako cz\u0119\u015B\u0107 cyklu 16 kr\xF3tkich walc\xF3w fortepianowych,

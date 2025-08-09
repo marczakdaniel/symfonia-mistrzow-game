@@ -22,7 +22,7 @@ MonoBehaviour:
     rhythm: 4
     instrumentation: 2
     dynamics: 0
-  cardImage: {fileID: 0}
+  cardImage: {fileID: -4004772778501413904, guid: 859a64f30f9172e428ccb8b5566d786f, type: 3}
   cardName: Koncert fortepianowy nr 21 C-dur KV 467 - Wolfgang Amadeus Mozart
   cardDescription: "Koncert fortepianowy nr 21 C-dur KV 467 Wolfganga Amadeusa Mozarta,
     skomponowany w 1785 roku w Wiedniu, to jedno z jego najs\u0142ynniejszych dzie\u0142

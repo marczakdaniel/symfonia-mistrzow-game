@@ -22,7 +22,7 @@ MonoBehaviour:
     rhythm: 2
     instrumentation: 0
     dynamics: 2
-  cardImage: {fileID: 0}
+  cardImage: {fileID: -6270953770400647376, guid: 5da6c438335fb5b4d96cf43ecaaec86f, type: 3}
   cardName: Album dla dzieci op. 39 - Pyotr Tchaikovsky
   cardDescription: "Album dla dzieci op. 39 Piotra Czajkowskiego, skomponowany w
     1878 roku, to cykl 24 miniatur fortepianowych przeznaczonych dla m\u0142odych

@@ -22,7 +22,7 @@ MonoBehaviour:
     rhythm: 0
     instrumentation: 2
     dynamics: 0
-  cardImage: {fileID: 0}
+  cardImage: {fileID: -2014771838305702419, guid: 36cb546721e25e44f9f4492ccba67823, type: 3}
   cardName: Petite Suite de Concert op. 77 - Samuel Coleridge-Taylor
   cardDescription: "Petite Suite de Concert op. 77 Samuela Coleridge\u2019a-Taylora,
     skomponowana w 1911 roku, to czterocz\u0119\u015Bciowa suita orkiestrowa, w kt\xF3rej

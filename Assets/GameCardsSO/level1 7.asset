@@ -22,7 +22,7 @@ MonoBehaviour:
     rhythm: 3
     instrumentation: 0
     dynamics: 0
-  cardImage: {fileID: 0}
+  cardImage: {fileID: 7028616704906629411, guid: 91820a0e9b1d93040868e42d2324678c, type: 3}
   cardName: Suite bergamasque - Claude Debussy
   cardDescription: "Suite bergamasque Claude\u2019a Debussy\u2019ego, skomponowana
     oko\u0142o 1890 roku i zrewidowana przed publikacj\u0105 w 1905, to jeden z najs\u0142ynniejszych

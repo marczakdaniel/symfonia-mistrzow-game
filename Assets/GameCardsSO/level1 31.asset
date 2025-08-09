@@ -22,7 +22,7 @@ MonoBehaviour:
     rhythm: 0
     instrumentation: 3
     dynamics: 0
-  cardImage: {fileID: 0}
+  cardImage: {fileID: -30749221642623036, guid: ef9b3f209636aa649b6ba0c3aa7acf96, type: 3}
   cardName: Orfeusz i Eurydyka (uwertura) - Christoph Willibald Gluck
   cardDescription: "Uwertura do opery Orfeusz i Eurydyka Christopha Willibalda Glucka,
     kt\xF3rej pierwsza wersja powsta\u0142a w 1762 roku, odzwierciedla reformatorski

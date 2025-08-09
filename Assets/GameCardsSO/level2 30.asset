@@ -22,7 +22,7 @@ MonoBehaviour:
     rhythm: 0
     instrumentation: 6
     dynamics: 0
-  cardImage: {fileID: 0}
+  cardImage: {fileID: 2730765880487802524, guid: b8c1086829d6c414fbb012c8245521c4, type: 3}
   cardName: Koncert fortepianowy nr 2 f-moll op. 21 - Fryderyk Chopin
   cardDescription: "Koncert fortepianowy nr 2 f-moll op. 21 Fryderyka Chopina, skomponowany
     w 1829 roku, to jedno z najwa\u017Cniejszych dzie\u0142 m\u0142odego kompozytora.

@@ -22,7 +22,7 @@ MonoBehaviour:
     rhythm: 7
     instrumentation: 3
     dynamics: 0
-  cardImage: {fileID: 0}
+  cardImage: {fileID: 5762964619451691618, guid: a3a5a2296f0baf9458cb5356cd294da0, type: 3}
   cardName: Symfonia nr 9 d-moll op. 125 - Ludwig van Beethoven
   cardDescription: "Symfonia nr 9 d-moll op. 125 Ludwiga van Beethovena, uko\u0144czona
     w 1824 roku, to jedno z najpot\u0119\u017Cniejszych i najbardziej wp\u0142ywowych

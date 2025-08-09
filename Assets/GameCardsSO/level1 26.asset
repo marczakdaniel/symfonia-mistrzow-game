@@ -22,7 +22,7 @@ MonoBehaviour:
     rhythm: 0
     instrumentation: 1
     dynamics: 2
-  cardImage: {fileID: 0}
+  cardImage: {fileID: -1045133410153605164, guid: bde69a20a2c4c794faae5250f17255cc, type: 3}
   cardName: "Ta\u0144ce po\u0142owieckie - Alexander Borodin"
   cardDescription: "Ta\u0144ce po\u0142owieckie Aleksandra Borodina, pochodz\u0105ce
     z II aktu opery Ksi\u0105\u017C\u0119 Igor (skomponowanej w latach 1869\u20131887),

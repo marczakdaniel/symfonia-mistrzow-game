@@ -22,7 +22,7 @@ MonoBehaviour:
     rhythm: 0
     instrumentation: 3
     dynamics: 3
-  cardImage: {fileID: 0}
+  cardImage: {fileID: 2034566960907004412, guid: 5f28756238725b34d9a17546255d168b, type: 3}
   cardName: "Symfonia nr 7 \u201ELeningradzka\u201D - Dmitrij Szostakowicz"
   cardDescription: "Symfonia nr 7 \u201ELeningradzka\u201D Dmitrija Szostakowicza,
     skomponowana w 1941 roku podczas II wojny \u015Bwiatowej, sta\u0142a si\u0119

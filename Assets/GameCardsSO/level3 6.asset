@@ -22,7 +22,7 @@ MonoBehaviour:
     rhythm: 0
     instrumentation: 0
     dynamics: 0
-  cardImage: {fileID: 0}
+  cardImage: {fileID: 3811139775257118856, guid: 4de37d3ccf26ef04880548eca6c176d8, type: 3}
   cardName: The Dream of Gerontius op. 38 - Edward Elgar
   cardDescription: "The Dream of Gerontius op. 38 Edwarda Elgara, skomponowany w
     1900 roku, to oratorium oparte na poemacie Johna Henry\u2019ego Newmana, kt\xF3re

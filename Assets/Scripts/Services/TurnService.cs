@@ -488,6 +488,14 @@ namespace Services
 
             var currentPlayer = gameModel.GetPlayer(turnModel.CurrentPlayerId);
             currentPlayer.AddCardToReserved(cardId);
+
+            if (gameModel.Board.TokenResources.GetCount(ResourceType.Inspiration) > 0)
+            {
+                var inspirationTokens = new ResourceCollectionModel(new ResourceType[] { ResourceType.Inspiration });
+                gameModel.Board.RemoveTokens(inspirationTokens);
+                currentPlayer.AddTokens(inspirationTokens);
+            }
+            
             turnModel.SetState(TurnState.ReadyToEndTurn);
 
             return true;

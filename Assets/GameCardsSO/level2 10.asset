@@ -22,7 +22,7 @@ MonoBehaviour:
     rhythm: 0
     instrumentation: 1
     dynamics: 4
-  cardImage: {fileID: 0}
+  cardImage: {fileID: -1783808350427418317, guid: c446b325fd0c12e44b3b0967042e983c, type: 3}
   cardName: "Noc na \u0141ysej G\xF3rze - Modest Mussorgski"
   cardDescription: "Noc na \u0141ysej G\xF3rze Modesta Musorgskiego, skomponowana
     w 1867 roku i znana g\u0142\xF3wnie w orkiestracji Niko\u0142aja Rimskiego-Korsakowa,

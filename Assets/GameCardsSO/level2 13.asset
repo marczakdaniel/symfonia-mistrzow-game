@@ -22,7 +22,7 @@ MonoBehaviour:
     rhythm: 3
     instrumentation: 2
     dynamics: 2
-  cardImage: {fileID: 0}
+  cardImage: {fileID: 5379824893481949807, guid: 58c37e4dad76913449700ec1cef6e3dd, type: 3}
   cardName: Koncert fortepianowy a-moll op. 16 - Edvard Grieg
   cardDescription: "Koncert fortepianowy a-moll op. 16 Edvarda Griega, skomponowany
     w 1868 roku, to najs\u0142ynniejsze dzie\u0142o norweskiego kompozytora i jeden

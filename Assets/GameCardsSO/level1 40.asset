@@ -22,7 +22,7 @@ MonoBehaviour:
     rhythm: 0
     instrumentation: 0
     dynamics: 0
-  cardImage: {fileID: 0}
+  cardImage: {fileID: 1192843865154028290, guid: 11d66a364ad90a54ea856c8074070d59, type: 3}
   cardName: Petite Symphonie  - Charles Gounod
   cardDescription: "Petite Symphonie Charles\u2019a Gounoda, skomponowana w 1885
     roku, to urokliwe dzie\u0142o na orkiestr\u0119 d\u0119t\u0105, napisane na zam\xF3wienie

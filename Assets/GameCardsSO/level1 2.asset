@@ -22,7 +22,7 @@ MonoBehaviour:
     rhythm: 1
     instrumentation: 1
     dynamics: 0
-  cardImage: {fileID: 0}
+  cardImage: {fileID: 6937817954938267909, guid: 1fc82c8327767bc489c4f179184f1ee0, type: 3}
   cardName: 'Impromptu op. 90 nr 2 - Franz Schubert '
   cardDescription: "Impromptu op. 90 nr 2 Franza Schuberta, skomponowane w 1827 roku,
     to b\u0142yskotliwy popis wirtuozerii i melodyjnej inwencji. Utw\xF3r utrzymany

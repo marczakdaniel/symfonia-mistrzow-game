@@ -22,7 +22,7 @@ MonoBehaviour:
     rhythm: 0
     instrumentation: 0
     dynamics: 0
-  cardImage: {fileID: 0}
+  cardImage: {fileID: -6946007662723423348, guid: f9d95f3a14edc6d46a514d0559d605af, type: 3}
   cardName: "Symfonia nr 8 G-dur op. 88 - Anton\xEDn Dvo\u0159\xE1k"
   cardDescription: "Symfonia nr 8 G-dur op. 88 Anton\xEDna Dvo\u0159\xE1ka, skomponowana
     w 1889 roku, wyr\xF3\u017Cnia si\u0119 pogodnym, pastoralnym charakterem i bogactwem

@@ -22,7 +22,7 @@ MonoBehaviour:
     rhythm: 2
     instrumentation: 3
     dynamics: 0
-  cardImage: {fileID: 0}
+  cardImage: {fileID: 6344236997622909882, guid: 3fc36ef6b5842d7409c0ee899df25d44, type: 3}
   cardName: La mer - Claude Debussy
   cardDescription: "La mer Claude\u2019a Debussy\u2019ego, skomponowana w latach
     1903\u20131905, to trzycz\u0119\u015Bciowy poemat symfoniczny b\u0119d\u0105cy

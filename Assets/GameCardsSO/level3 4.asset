@@ -22,7 +22,7 @@ MonoBehaviour:
     rhythm: 0
     instrumentation: 7
     dynamics: 3
-  cardImage: {fileID: 0}
+  cardImage: {fileID: -102480566709390014, guid: 5434d3da3e6ed604e966ae9bff5b832f, type: 3}
   cardName: "Gurre-Lieder - Arnold Sch\xF6nberg"
   cardDescription: "Gurre-Lieder Arnolda Sch\xF6nberga, skomponowane w latach 1900\u20131911,
     to monumentalne dzie\u0142o na solist\xF3w, ch\xF3r i wielk\u0105 orkiestr\u0119,

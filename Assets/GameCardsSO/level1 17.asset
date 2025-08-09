@@ -22,7 +22,7 @@ MonoBehaviour:
     rhythm: 1
     instrumentation: 1
     dynamics: 1
-  cardImage: {fileID: 0}
+  cardImage: {fileID: 6660783624410144326, guid: ae31965d1fa25ba43a94892d5572de66, type: 3}
   cardName: Andante festivo - Jean Sibelius
   cardDescription: "Andante festivo Jeana Sibeliusa, skomponowane w 1922 roku na
     kwartet smyczkowy, a p\xF3\u017Aniej zorkiestrowane przez samego kompozytora,

@@ -22,7 +22,7 @@ MonoBehaviour:
     rhythm: 0
     instrumentation: 2
     dynamics: 0
-  cardImage: {fileID: 0}
+  cardImage: {fileID: -8038976213705442086, guid: fa423fbc0489ced4dbfccfa1e91f5977, type: 3}
   cardName: "Uwertura do \u201EWolnego strzelca\u201D - Carl Maria von Weber"
   cardDescription: "Uwertura do Wolnego strzelca Carla Marii von Webera, skomponowana
     w 1820 roku, to dramatyczny wst\u0119p do opery uwa\u017Canej za pocz\u0105tek

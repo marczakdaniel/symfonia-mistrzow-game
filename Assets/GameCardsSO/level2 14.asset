@@ -22,7 +22,7 @@ MonoBehaviour:
     rhythm: 0
     instrumentation: 3
     dynamics: 0
-  cardImage: {fileID: 0}
+  cardImage: {fileID: 3301111849194120939, guid: a07d488019b881b48b1d761dd4f65d7c, type: 3}
   cardName: Fontanny Rzymu - Ottorino Respighi
   cardDescription: "Fontanny Rzymu Ottorina Respighiego, skomponowane w 1916 roku,
     to pierwszy utw\xF3r z jego s\u0142ynnej \u201Erzymskiej trylogii\u201D poemat\xF3w

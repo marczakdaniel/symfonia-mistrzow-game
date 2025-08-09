@@ -22,7 +22,7 @@ MonoBehaviour:
     rhythm: 0
     instrumentation: 2
     dynamics: 2
-  cardImage: {fileID: 0}
+  cardImage: {fileID: -5622901713081898559, guid: 19f870100f7e71245b93854aa0df7453, type: 3}
   cardName: El amor brujo (wersja koncertowa) - Manuel de Falla
   cardDescription: "El amor brujo Manuela de Falli, w wersji koncertowej uko\u0144czonej
     w 1925 roku, to hiszpa\u0144ska suita baletowa przesycona duchem flamenco i andaluzyjskiego

@@ -22,7 +22,7 @@ MonoBehaviour:
     rhythm: 2
     instrumentation: 3
     dynamics: 0
-  cardImage: {fileID: 0}
+  cardImage: {fileID: 9108365968018652678, guid: b3181790c421c994d96886f308b38988, type: 3}
   cardName: Serenada na smyczki C-dur op. 48 - Pyotr Iljicz Tchaikovsky
   cardDescription: "Serenada na smyczki C-dur op. 48 Piotra Iljicza Czajkowskiego,
     skomponowana jesieni\u0105 1880 roku, to czterocz\u0119\u015Bciowe dzie\u0142o

@@ -22,7 +22,7 @@ MonoBehaviour:
     rhythm: 0
     instrumentation: 5
     dynamics: 3
-  cardImage: {fileID: 0}
+  cardImage: {fileID: 7571068671740948714, guid: a3dad6fc3a1bed545ac18320b51f0efd, type: 3}
   cardName: Symfonia nr 2 D-dur op. 43 - Jean Sibelius
   cardDescription: "Symfonia nr 2 D-dur op. 43 Jeana Sibeliusa, uko\u0144czona w
     1902 roku, to jedno z jego najbardziej znanych i najcz\u0119\u015Bciej wykonywanych

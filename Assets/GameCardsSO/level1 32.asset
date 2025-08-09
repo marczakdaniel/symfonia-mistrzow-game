@@ -22,7 +22,7 @@ MonoBehaviour:
     rhythm: 0
     instrumentation: 0
     dynamics: 4
-  cardImage: {fileID: 0}
+  cardImage: {fileID: 5272401415994956661, guid: 15d2331b49b9cc04cb913bb5ea6192b9, type: 3}
   cardName: "Moja ojczyzna: \u201EWe\u0142tawa\u201D - Bed\u0159ich Smetana"
   cardDescription: "We\u0142tawa Bed\u0159icha Smetany, skomponowana w 1874 roku,
     to druga cz\u0119\u015B\u0107 cyklu symfonicznego Moja ojczyzna, b\u0119d\u0105cego

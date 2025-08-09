@@ -22,7 +22,7 @@ MonoBehaviour:
     rhythm: 4
     instrumentation: 0
     dynamics: 0
-  cardImage: {fileID: 0}
+  cardImage: {fileID: 8102358098348255977, guid: 7edb74c9f28c333469a225c8ca971d07, type: 3}
   cardName: Sonata K. 380 - Domenico Scarlatti
   cardDescription: "Sonata K. 380 E-dur Domenica Scarlattiego, znana tak\u017Ce jako
     L. 23, to jedna z ponad 550 sonat klawiszowych, kt\xF3re kompozytor stworzy\u0142

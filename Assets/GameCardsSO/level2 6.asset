@@ -22,7 +22,7 @@ MonoBehaviour:
     rhythm: 0
     instrumentation: 0
     dynamics: 6
-  cardImage: {fileID: 0}
+  cardImage: {fileID: -963791335356448533, guid: 5afa2fc8f343d0d4c82a8480ec2cd717, type: 3}
   cardName: "Symfonia nr 104 \u201ELondy\u0144ska\u201D - Joseph Haydn"
   cardDescription: "Symfonia nr 104 D-dur \u201ELondy\u0144ska\u201D Josepha Haydna,
     uko\u0144czona w 1795 roku, to ostatnia i zarazem jedna z najbardziej efektownych

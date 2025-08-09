@@ -22,7 +22,7 @@ MonoBehaviour:
     rhythm: 1
     instrumentation: 1
     dynamics: 0
-  cardImage: {fileID: 0}
+  cardImage: {fileID: -855298285791758126, guid: 61646c742d7197d49aa30919d328f5ca, type: 3}
   cardName: Bagatelle op. 33 nr 1 - Ludwig van Beethoven
   cardDescription: "Bagatela op. 33 nr 1 Ludwiga van Beethovena to kr\xF3tki, lekki
     utw\xF3r fortepianowy, kt\xF3ry powsta\u0142 oko\u0142o 1801 roku, w okresie,

@@ -22,7 +22,7 @@ MonoBehaviour:
     rhythm: 2
     instrumentation: 1
     dynamics: 0
-  cardImage: {fileID: 0}
+  cardImage: {fileID: 4130640169021434097, guid: 5a05c10617fec7d46b707b282ccb956e, type: 3}
   cardName: Kinderszenen op. 15 - Robert Schumann
   cardDescription: "Kinderszenen op. 15 Roberta Schumanna to cykl trzynastu miniatur
     fortepianowych z 1838 roku, w kt\xF3rych kompozytor z czu\u0142o\u015Bci\u0105

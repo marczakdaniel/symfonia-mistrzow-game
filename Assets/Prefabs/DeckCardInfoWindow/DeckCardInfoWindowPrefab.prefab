@@ -35,8 +35,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: 2309.9167}
-  m_SizeDelta: {x: 1120, y: 2827.01}
+  m_AnchoredPosition: {x: 0, y: 2111.8198}
+  m_SizeDelta: {x: 1120, y: 2634.26}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &3002146170079827625
 CanvasRenderer:
@@ -240,6 +240,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animationSteps:
   - rid: 4232360129876721664
+  - rid: 4232360216121835601
+  - rid: 4232360216121835597
   - rid: 4232360129876721784
   - rid: 4232360129876721767
   - rid: 4232360129876721770
@@ -247,7 +249,7 @@ MonoBehaviour:
   - rid: 4232360129876721774
   - rid: 4232360129876721785
   - rid: 4232360129876721786
-  - rid: 4232360129876721787
+  - rid: 4232360216121835599
   updateType: 0
   timeScaleIndependent: 0
   autoplayMode: 2
@@ -355,7 +357,6 @@ MonoBehaviour:
         flowType: 1
         targets:
         - {fileID: 1498763881018225672}
-        - {fileID: 2817304161632436986}
         - {fileID: 4066142811690669251}
         scale: {x: 0, y: 0, z: 0}
     - rid: 4232360129876721785
@@ -380,17 +381,6 @@ MonoBehaviour:
         loopType: 0
         actions:
         - rid: 4232360129876721789
-    - rid: 4232360129876721787
-      type: {class: DOTweenAnimationStep, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
-      data:
-        delay: 0
-        flowType: 1
-        target: {fileID: 3814969016786506883}
-        duration: 0.3
-        loopCount: 0
-        loopType: 0
-        actions:
-        - rid: 4232360129876721790
     - rid: 4232360129876721788
       type: {class: ScaleDOTweenAction, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
       data:
@@ -421,21 +411,6 @@ MonoBehaviour:
         isRelative: 0
         scale: {x: 1, y: 1, z: 1}
         axisConstraint: 0
-    - rid: 4232360129876721790
-      type: {class: ScaleDOTweenAction, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
-      data:
-        direction: 0
-        ease:
-          ease: 27
-          curve:
-            serializedVersion: 2
-            m_Curve: []
-            m_PreInfinity: 2
-            m_PostInfinity: 2
-            m_RotationOrder: 4
-        isRelative: 0
-        scale: {x: 1, y: 1, z: 1}
-        axisConstraint: 0
     - rid: 4232360147484672095
       type: {class: AnchoredPositionMoveToPositionDOTweenActionBase, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
       data:
@@ -451,6 +426,84 @@ MonoBehaviour:
         isRelative: 0
         axisConstraint: 0
         position: {x: 0, y: 33}
+    - rid: 4232360216121835597
+      type: {class: DOTweenAnimationStep, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
+      data:
+        delay: 0
+        flowType: 1
+        target: {fileID: 3814969016786506883}
+        duration: 0
+        loopCount: 0
+        loopType: 0
+        actions:
+        - rid: 4232360216121835598
+    - rid: 4232360216121835598
+      type: {class: AnchoredPositionMoveToPositionDOTweenActionBase, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
+      data:
+        direction: 0
+        ease:
+          ease: 7
+          curve:
+            serializedVersion: 2
+            m_Curve: []
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
+        isRelative: 0
+        axisConstraint: 0
+        position: {x: 2000, y: 28.6}
+    - rid: 4232360216121835599
+      type: {class: DOTweenAnimationStep, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
+      data:
+        delay: 0
+        flowType: 1
+        target: {fileID: 3814969016786506883}
+        duration: 0.3
+        loopCount: 0
+        loopType: 0
+        actions:
+        - rid: 4232360216121835600
+    - rid: 4232360216121835600
+      type: {class: AnchoredPositionMoveToPositionDOTweenActionBase, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
+      data:
+        direction: 0
+        ease:
+          ease: 7
+          curve:
+            serializedVersion: 2
+            m_Curve: []
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
+        isRelative: 0
+        axisConstraint: 0
+        position: {x: 306, y: 28.6}
+    - rid: 4232360216121835601
+      type: {class: DOTweenAnimationStep, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
+      data:
+        delay: 0
+        flowType: 1
+        target: {fileID: 614755800370432245}
+        duration: 0
+        loopCount: 0
+        loopType: 0
+        actions:
+        - rid: 4232360216121835602
+    - rid: 4232360216121835602
+      type: {class: AnchoredPositionMoveToPositionDOTweenActionBase, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
+      data:
+        direction: 0
+        ease:
+          ease: 7
+          curve:
+            serializedVersion: 2
+            m_Curve: []
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
+        isRelative: 0
+        axisConstraint: 0
+        position: {x: 0, y: 0}
 --- !u!1 &2916307032253367368
 GameObject:
   m_ObjectHideFlags: 0

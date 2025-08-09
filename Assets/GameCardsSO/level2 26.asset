@@ -22,7 +22,7 @@ MonoBehaviour:
     rhythm: 0
     instrumentation: 2
     dynamics: 3
-  cardImage: {fileID: 0}
+  cardImage: {fileID: -8868653072870737037, guid: 3f2e77e55fcd25a4a9f28aa1936a0158, type: 3}
   cardName: Symfonia nr 2 h-moll - Alexander Borodin
   cardDescription: "Symfonia nr 2 h-moll Aleksandra Borodina, komponowana w latach
     1869\u20131876, uchodzi za jedno z najwa\u017Cniejszych dzie\u0142 rosyjskiego

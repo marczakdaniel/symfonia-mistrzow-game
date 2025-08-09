@@ -22,7 +22,7 @@ MonoBehaviour:
     rhythm: 1
     instrumentation: 1
     dynamics: 1
-  cardImage: {fileID: 0}
+  cardImage: {fileID: 4113829005332862926, guid: e09bb7925a9198840b9af50d8692e9b6, type: 3}
   cardName: "Symfonia nr 94 \u201EZ niespodziank\u0105\u201D - Joseph Haydn"
   cardDescription: "Symfonia nr 94 G-dur \u201EZ niespodziank\u0105\u201D Josepha
     Haydna, skomponowana w 1791 roku podczas jego pierwszego pobytu w Londynie, to

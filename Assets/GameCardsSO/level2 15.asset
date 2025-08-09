@@ -22,7 +22,7 @@ MonoBehaviour:
     rhythm: 1
     instrumentation: 4
     dynamics: 2
-  cardImage: {fileID: 0}
+  cardImage: {fileID: -41970534257140035, guid: 745fbf572739389409c3bd347827bbf0, type: 3}
   cardName: "Koncert wiolonczelowy nr 1 a-moll op. 33 - Camille Saint-Sa\xEBns"
   cardDescription: "Koncert wiolonczelowy nr 1 a-moll op. 33 Camille\u2019a Saint-Sa\xEBnsa,
     skomponowany w 1872 roku dla belgijskiego wirtuoza Augusta Tolbeka, uchodzi za

@@ -22,7 +22,7 @@ MonoBehaviour:
     rhythm: 2
     instrumentation: 0
     dynamics: 0
-  cardImage: {fileID: 0}
+  cardImage: {fileID: -5042980196633182231, guid: 8167a2b3aa9e7274c9d68593e2388d25, type: 3}
   cardName: Koncert skrzypcowy a-moll op. 82 - Alexander Glazunov
   cardDescription: "Koncert skrzypcowy a-moll op. 82 Aleksandra G\u0142azunowa, skomponowany
     w 1904 roku, to liryczne i wirtuozowskie dzie\u0142o, kt\xF3re wyr\xF3\u017Cnia

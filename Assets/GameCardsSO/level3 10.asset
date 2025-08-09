@@ -22,7 +22,7 @@ MonoBehaviour:
     rhythm: 0
     instrumentation: 0
     dynamics: 7
-  cardImage: {fileID: 0}
+  cardImage: {fileID: -2664783550769548753, guid: 0b982de71c8476741bb2001e86fa6ab8, type: 3}
   cardName: Messa da Requiem - Giuseppe Verdi
   cardDescription: "Messa da Requiem Giuseppe Verdiego, skomponowana w 1874 roku,
     to monumentalne dzie\u0142o sakralne \u0142\u0105cz\u0105ce dramatyzm opery z

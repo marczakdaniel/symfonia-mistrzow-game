@@ -22,7 +22,7 @@ MonoBehaviour:
     rhythm: 6
     instrumentation: 0
     dynamics: 0
-  cardImage: {fileID: 0}
+  cardImage: {fileID: 1679825127283579670, guid: a4cc3d68a6bf0ec4199c7e77054ad23b, type: 3}
   cardName: "Requiem op. 48 - Gabriel Faur\xE9"
   cardDescription: "Requiem op. 48 Gabriela Faur\xE9, skomponowane w latach 1887\u20131890,
     wyr\xF3\u017Cnia si\u0119 spokojem i \u0142agodnym charakterem, odmiennym od

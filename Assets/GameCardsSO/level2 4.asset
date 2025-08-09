@@ -22,7 +22,7 @@ MonoBehaviour:
     rhythm: 5
     instrumentation: 3
     dynamics: 0
-  cardImage: {fileID: 0}
+  cardImage: {fileID: -2947526863502713391, guid: a273f968a9b2bfd42a9fe9682d9c6b1a, type: 3}
   cardName: "Uwertura \u201ESen nocy letniej\u201D op. 21 - Felix Mendelssohn-Bartholdy"
   cardDescription: "Uwertura Sen nocy letniej op. 21 Feliksa Mendelssohna-Bartholdy,
     skomponowana w 1826 roku, to niezwyk\u0142e dzie\u0142o m\u0142odzie\u0144cze

@@ -22,7 +22,7 @@ MonoBehaviour:
     rhythm: 3
     instrumentation: 6
     dynamics: 3
-  cardImage: {fileID: 0}
+  cardImage: {fileID: 1339047737661862774, guid: f83f464bf225c3d4096de6bf9da7d9cb, type: 3}
   cardName: "Ognisty ptak - Igor Strawi\u0144ski"
   cardDescription: "Ognisty ptak Igora Strawi\u0144skiego, skomponowany w 1910 roku
     jako balet dla Balet\xF3w Rosyjskich Diagilewa, to prze\u0142omowe dzie\u0142o

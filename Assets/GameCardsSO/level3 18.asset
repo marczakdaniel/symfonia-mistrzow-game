@@ -22,7 +22,7 @@ MonoBehaviour:
     rhythm: 7
     instrumentation: 0
     dynamics: 0
-  cardImage: {fileID: 0}
+  cardImage: {fileID: -5789677524543127715, guid: 495f3c5b9f8729247af209d4ce8ba5bc, type: 3}
   cardName: Symfonia nr 8 c-moll - Anton Bruckner
   cardDescription: "Symfonia nr 8 c-moll Antona Brucknera, uko\u0144czona w 1887
     roku i zrewidowana w 1890, uchodzi za jego najbardziej monumentalne dzie\u0142o.

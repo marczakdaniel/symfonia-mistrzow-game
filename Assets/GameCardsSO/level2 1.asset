@@ -22,7 +22,7 @@ MonoBehaviour:
     rhythm: 2
     instrumentation: 0
     dynamics: 0
-  cardImage: {fileID: 0}
+  cardImage: {fileID: -8419024768148562069, guid: c6526c1f929e0c3499180c5b2c820286, type: 3}
   cardName: Symfonia nr 1 C-dur op. 21 - Ludwig van Beethoven
   cardDescription: "Symfonia nr 1 C-dur op. 21 Ludwiga van Beethovena, uko\u0144czona
     w 1800 roku, to dzie\u0142o otwieraj\u0105ce jego drog\u0119 w gatunku, kt\xF3ry

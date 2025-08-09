@@ -22,7 +22,7 @@ MonoBehaviour:
     rhythm: 0
     instrumentation: 1
     dynamics: 0
-  cardImage: {fileID: 0}
+  cardImage: {fileID: -6470460504253458178, guid: 5c2d58ae0dd9c15409ce8cba9166e917, type: 3}
   cardName: Divertimento B-dur KV 137 - Wolfgang Amadeus Mozart
   cardDescription: "Divertimento B-dur KV 137 Wolfganga Amadeusa Mozarta powsta\u0142o
     w styczniu 1772 roku, gdy m\u0142ody kompozytor mia\u0142 zaledwie 16 lat. Utw\xF3r

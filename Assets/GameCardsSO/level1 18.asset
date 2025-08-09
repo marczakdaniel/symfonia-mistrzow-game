@@ -22,7 +22,7 @@ MonoBehaviour:
     rhythm: 2
     instrumentation: 1
     dynamics: 1
-  cardImage: {fileID: 0}
+  cardImage: {fileID: 2960402581040015946, guid: 60655bfac077962428b1671ffd272c6e, type: 3}
   cardName: "Pavane op. 50 - Gabriel Faur\xE9"
   cardDescription: "Pavane op. 50 Gabriela Faur\xE9, skomponowana w 1887 roku, to
     elegancki utw\xF3r orkiestrowy utrzymany w dostojnym, powolnym rytmie renesansowego

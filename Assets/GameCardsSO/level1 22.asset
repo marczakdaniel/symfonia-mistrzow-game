@@ -22,7 +22,7 @@ MonoBehaviour:
     rhythm: 0
     instrumentation: 0
     dynamics: 2
-  cardImage: {fileID: 0}
+  cardImage: {fileID: -7371509505491802261, guid: 4fa59de2a0de8ae449ecfabda46f3b62, type: 3}
   cardName: "Koncert fletowy \u201ELa tempesta di mare\u201D - Antonio Vivaldi"
   cardDescription: "Koncert fletowy La tempesta di mare (\u201ESztorm morski\u201D)
     Antonio Vivaldiego, znany m.in. jako RV 433, to barokowy majstersztyk malarstwa

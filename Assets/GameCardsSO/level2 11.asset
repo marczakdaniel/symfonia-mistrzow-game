@@ -22,7 +22,7 @@ MonoBehaviour:
     rhythm: 0
     instrumentation: 0
     dynamics: 0
-  cardImage: {fileID: 0}
+  cardImage: {fileID: 281652535026622303, guid: a57df30200324444493211abdf845409, type: 3}
   cardName: "Szeherezada op. 35 - Niko\u0142aj Rimski-Korsakow"
   cardDescription: "Szeherezada op. 35 Niko\u0142aja Rimskiego-Korsakowa, skomponowana
     w 1888 roku, to czterocz\u0119\u015Bciowa suita symfoniczna inspirowana \u201EBa\u015Bniami

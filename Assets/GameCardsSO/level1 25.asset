@@ -22,7 +22,7 @@ MonoBehaviour:
     rhythm: 0
     instrumentation: 1
     dynamics: 1
-  cardImage: {fileID: 0}
+  cardImage: {fileID: 6894999169920593895, guid: 1dc67e19dadf9a74f84b160483586555, type: 3}
   cardName: "Rus\u0142an i Ludmi\u0142a (uwertura) - Mikhail Glinka"
   cardDescription: "Uwertura do opery Rus\u0142an i Ludmi\u0142a Michai\u0142a Glinki,
     skomponowanej w latach 1837\u20131842, to b\u0142yskotliwy wst\u0119p do dzie\u0142a

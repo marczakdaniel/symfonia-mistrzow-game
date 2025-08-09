@@ -22,7 +22,7 @@ MonoBehaviour:
     rhythm: 0
     instrumentation: 0
     dynamics: 5
-  cardImage: {fileID: 0}
+  cardImage: {fileID: 9125048449310441231, guid: bc1c2aba4577abb488ad907431726265, type: 3}
   cardName: "Sinfonietta - Leo\u0161 Jan\xE1\u010Dek"
   cardDescription: "Sinfonietta Leo\u0161a Jan\xE1\u010Dka, skomponowana w 1926 roku,
     to pi\u0119ciocz\u0119\u015Bciowy utw\xF3r orkiestrowy b\u0119d\u0105cy muzycznym

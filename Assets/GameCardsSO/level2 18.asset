@@ -22,7 +22,7 @@ MonoBehaviour:
     rhythm: 0
     instrumentation: 0
     dynamics: 0
-  cardImage: {fileID: 0}
+  cardImage: {fileID: 2032972958061289525, guid: c0360b608c398cf488d228b8b1b05d1b, type: 3}
   cardName: Symfonia klasyczna nr 1 D-dur op. 25 - Sergei Prokofiew
   cardDescription: "Symfonia klasyczna nr 1 D-dur op. 25 Sergiusza Prokofiewa, uko\u0144czona
     w 1917 roku, to ho\u0142d dla stylu Haydna i Mozarta, napisany jednak z charakterystycznym

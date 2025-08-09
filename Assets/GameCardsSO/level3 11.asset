@@ -22,7 +22,7 @@ MonoBehaviour:
     rhythm: 0
     instrumentation: 3
     dynamics: 6
-  cardImage: {fileID: 0}
+  cardImage: {fileID: 5757751276978669553, guid: 38de6d562d9b8454db0d193df91248ce, type: 3}
   cardName: Symphonie fantastique op. 14 - Hector Berlioz
   cardDescription: "Symphonie fantastique op. 14 Hectora Berlioza, skomponowana w
     1830 roku, to jedno z najbardziej innowacyjnych i ekspresyjnych dzie\u0142 romantyzmu.

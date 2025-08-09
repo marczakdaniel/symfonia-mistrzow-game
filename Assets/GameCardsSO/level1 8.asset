@@ -22,7 +22,7 @@ MonoBehaviour:
     rhythm: 0
     instrumentation: 0
     dynamics: 0
-  cardImage: {fileID: 0}
+  cardImage: {fileID: 8288426215254106694, guid: 6ef66370b34793947bd75fd04bc71b59, type: 3}
   cardName: "Gymnop\xE9die nr 1 - Erik Satie"
   cardDescription: "Gymnop\xE9die nr 1 Erika Satie\u2019ego, skomponowana w 1888
     roku, to jedno z najbardziej rozpoznawalnych dzie\u0142 muzyki fortepianowej

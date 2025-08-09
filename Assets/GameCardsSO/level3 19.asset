@@ -22,7 +22,7 @@ MonoBehaviour:
     rhythm: 6
     instrumentation: 3
     dynamics: 0
-  cardImage: {fileID: 0}
+  cardImage: {fileID: -9077199038371864319, guid: 41c3e7e9503c16b4f8d37379cb967488, type: 3}
   cardName: "Symfonia nr 2 \u201EZmartwychwstanie\u201D - Gustav Mahler"
   cardDescription: "Symfonia nr 2 \u201EZmartwychwstanie\u201D Gustava Mahlera, komponowana
     w latach 1888\u20131894, to monumentalne dzie\u0142o \u0142\u0105cz\u0105ce orkiestr\u0119,

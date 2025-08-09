@@ -22,7 +22,7 @@ MonoBehaviour:
     rhythm: 0
     instrumentation: 0
     dynamics: 5
-  cardImage: {fileID: 0}
+  cardImage: {fileID: -907776890014986012, guid: 9bed75117c6812c4d9a2e296ab2cd9ec, type: 3}
   cardName: "Koncert na orkiestr\u0119 smyczkow\u0105 - Gra\u017Cyna Bacewicz"
   cardDescription: "Koncert na orkiestr\u0119 smyczkow\u0105 Gra\u017Cyny Bacewicz,
     skomponowany w 1948 roku, to wa\u017Cne dzie\u0142o polskiej muzyki XX wieku,

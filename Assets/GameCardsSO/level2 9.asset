@@ -22,7 +22,7 @@ MonoBehaviour:
     rhythm: 0
     instrumentation: 0
     dynamics: 0
-  cardImage: {fileID: 0}
+  cardImage: {fileID: -8586417740124189794, guid: 1e6f0c0ebfab1e742b24a05ea06b8a8f, type: 3}
   cardName: Wariacje na temat Haydna op. 56a - Johannes Brahms
   cardDescription: "Wariacje na temat Haydna op. 56a Johannesa Brahmsa, skomponowane
     w 1873 roku na orkiestr\u0119 symfoniczn\u0105 (istnieje te\u017C wersja fortepianowa

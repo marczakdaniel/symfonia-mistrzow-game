@@ -22,7 +22,7 @@ MonoBehaviour:
     rhythm: 3
     instrumentation: 5
     dynamics: 3
-  cardImage: {fileID: 0}
+  cardImage: {fileID: 5223280560187763028, guid: 0d8c2a34cecb5fa44a4f115dac699c0c, type: 3}
   cardName: Symfonia nr 5 cis-moll - Gustav Mahler
   cardDescription: "Symfonia nr 5 cis-moll Gustava Mahlera, skomponowana w latach
     1901\u20131902, to monumentalne, pi\u0119ciocz\u0119\u015Bciowe dzie\u0142o ukazuj\u0105ce

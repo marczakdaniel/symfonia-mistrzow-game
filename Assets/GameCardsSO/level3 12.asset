@@ -22,7 +22,7 @@ MonoBehaviour:
     rhythm: 0
     instrumentation: 0
     dynamics: 7
-  cardImage: {fileID: 0}
+  cardImage: {fileID: -1635963809266141271, guid: 56dc6e3b42145dd42a96aa178e7d2b7b, type: 3}
   cardName: 'Symfonia nr 2 e-moll op. 27 - Siergiej Rachmaninow '
   cardDescription: "Symfonia nr 2 e-moll op. 27 Siergieja Rachmaninowa, uko\u0144czona
     w 1907 roku, to jedno z najbardziej lirycznych i pe\u0142nych emocji dzie\u0142

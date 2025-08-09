@@ -22,7 +22,7 @@ MonoBehaviour:
     rhythm: 1
     instrumentation: 2
     dynamics: 1
-  cardImage: {fileID: 0}
+  cardImage: {fileID: -5099292496197868168, guid: 81414674bbabebf47bbaab857f68cfe6, type: 3}
   cardName: "Uwertura do \u201ECyrulik sewilski\u201D - Gioachino Rossini"
   cardDescription: "Uwertura do Cyrulika sewilskiego Gioachina Rossiniego, skomponowana
     w 1816 roku, to jedna z najbardziej rozpoznawalnych introdukcji operowych w historii

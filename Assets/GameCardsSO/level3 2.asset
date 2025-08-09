@@ -22,7 +22,7 @@ MonoBehaviour:
     rhythm: 0
     instrumentation: 7
     dynamics: 0
-  cardImage: {fileID: 0}
+  cardImage: {fileID: -3236048163448779655, guid: 50364f4599c9db84884d0f3c478bf981, type: 3}
   cardName: Planety op. 32 - Gustav Holst
   cardDescription: "Planety op. 32 Gustava Holsta, skomponowane w latach 1914\u20131916,
     to siedmiocz\u0119\u015Bciowy poemat symfoniczny, w kt\xF3rym ka\u017Cda cz\u0119\u015B\u0107

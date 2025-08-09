@@ -22,7 +22,7 @@ MonoBehaviour:
     rhythm: 3
     instrumentation: 0
     dynamics: 0
-  cardImage: {fileID: 0}
+  cardImage: {fileID: -6910697209631215935, guid: 0383e2441ab5f504eb533d4417f84230, type: 3}
   cardName: Eine Alpensinfonie op. 64 - Richard Strauss
   cardDescription: "Eine Alpensinfonie op. 64 Richarda Straussa, skomponowana w 1915
     roku, to monumentalny poemat symfoniczny opisuj\u0105cy w\u0119dr\xF3wk\u0119
