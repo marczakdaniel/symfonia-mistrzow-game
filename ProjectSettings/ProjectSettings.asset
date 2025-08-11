@@ -680,7 +680,7 @@ PlayerSettings:
     ReservedCFE: DOTWEEN
     Standalone: DOTWEEN;DOTWEEN_ENABLED
     VisionOS: DOTWEEN
-    WebGL: DOTWEEN
+    WebGL: DOTWEEN;DOTWEEN_ENABLED
     Windows Store Apps: DOTWEEN
     XboxOne: DOTWEEN
     iPhone: DOTWEEN
