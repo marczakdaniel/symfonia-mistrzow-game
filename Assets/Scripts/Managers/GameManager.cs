@@ -67,6 +67,7 @@ namespace Managers
             AsyncEventBus.Instance.Initialize();
             CommandService.Instance.Initialize();
             MusicCardRepository.Instance.Initialize(musicCardDeckData.Cards);
+            _ = MusicService.Instance;
         }
         private void CreateMenuWindow()
         {
