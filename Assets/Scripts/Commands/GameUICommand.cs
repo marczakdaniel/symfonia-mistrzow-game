@@ -590,4 +590,47 @@ namespace Command
             return true;
         }
     }
+
+    public class OpenResultPlayerResourcesWindowCommand : BaseUICommand
+    {
+        public override string CommandType => "OpenResultPlayerResourcesWindow";
+
+        private readonly PlayerService playerService;
+
+        private readonly string playerId;
+
+            public OpenResultPlayerResourcesWindowCommand(string playerId, PlayerService playerService) : base()
+        {
+            this.playerId = playerId;
+            this.playerService = playerService;
+        }
+
+        public override async UniTask<bool> Validate()
+        {
+            return true;
+        }
+
+        public override async UniTask<bool> Execute()
+        {
+            var player = playerService.GetPlayer(playerId);
+            var playerMusicCardDatas = player.GetPurchasedMusicCardDatas();
+            await AsyncEventBus.Instance.PublishAndWaitAsync(new ResultPlayerResourcesWindowOpenedEvent(playerMusicCardDatas));
+            return true;
+        }
+    }
+
+    public class CloseResultPlayerResourcesWindowCommand : BaseUICommand
+    {
+        public override string CommandType => "CloseResultPlayerResourcesWindow";
+
+        public override async UniTask<bool> Validate()
+        {
+            return true;
+        }
+
+        public override async UniTask<bool> Execute()
+        {
+            return true;
+        }
+    }
 }

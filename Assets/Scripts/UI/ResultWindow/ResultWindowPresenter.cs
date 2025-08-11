@@ -12,12 +12,14 @@ namespace UI.ResultWindow
     {
         private readonly ResultWindowView view;
         private readonly CommandFactory commandFactory;
+        private readonly ResultWindowViewModel viewModel;
         private IDisposable disposable;
 
         public ResultWindowPresenter(ResultWindowView view, CommandFactory commandFactory)
         {
             this.view = view;
             this.commandFactory = commandFactory;
+            viewModel = new ResultWindowViewModel();
 
             Initialize();
             SubscribeEvents();
@@ -34,7 +36,13 @@ namespace UI.ResultWindow
 
         private void ConnectView(DisposableBuilder d)
         {
-            
+            view.OnPlayerClicked.Subscribe(playerIndex => HandlePlayerClicked(playerIndex).ToObservable()).AddTo(ref d);
+        }
+
+        private async UniTask HandlePlayerClicked(int playerIndex)
+        {
+            var command = commandFactory.CreateOpenResultPlayerResourcesWindowCommand(viewModel.PlayerIds[playerIndex]);
+            await CommandService.Instance.ExecuteCommandAsync(command);
         }
 
         private void SubscribeEvents()
@@ -44,6 +52,7 @@ namespace UI.ResultWindow
 
         public async UniTask HandleAsync(ResultWindowOpenedEvent e)
         {
+            viewModel.SetPlayerIds(e.PlayerIds);
             view.Setup(e.PlayerNames, e.PlayerPoints, e.PlayerAvatars);
             await view.PlayOpenAnimation();
         }

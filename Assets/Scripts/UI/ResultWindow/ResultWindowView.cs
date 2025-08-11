@@ -1,12 +1,15 @@
 using System.Collections.Generic;
 using BrunoMikoski.AnimationSequencer;
 using Cysharp.Threading.Tasks;
+using R3;
 using UnityEngine;
 
 namespace UI.ResultWindow
 {
     public class ResultWindowView : MonoBehaviour
     {
+        public Subject<int> OnPlayerClicked = new Subject<int>();
+
         [SerializeField]
         private ResultPlayerElement[] playerElements = new ResultPlayerElement[4];
 
@@ -42,6 +45,14 @@ namespace UI.ResultWindow
         public async UniTask PlayCloseAnimation()
         {
             await closeAnimation.PlayAsync();
+        }
+
+        public void Awake()
+        {
+            for (int i = 0; i < playerElements.Length; i++)
+            {
+                playerElements[i].OnClicked.Subscribe(_ => OnPlayerClicked.OnNext(i)).AddTo(this);
+            }
         }
     }
 }

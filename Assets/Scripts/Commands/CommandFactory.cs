@@ -245,5 +245,18 @@ namespace Command
         {
             return new CloseDeckCardInfoWindowCommand(turnService);
         }   
+
+        // Result Player Resources Window Commands
+
+        public OpenResultPlayerResourcesWindowCommand CreateOpenResultPlayerResourcesWindowCommand(string playerId)
+        {
+            return new OpenResultPlayerResourcesWindowCommand(playerId, playerService);
+        }
+
+        public CloseResultPlayerResourcesWindowCommand CreateCloseResultPlayerResourcesWindowCommand()
+        {
+            return new CloseResultPlayerResourcesWindowCommand();
+        }
+
     }
 }

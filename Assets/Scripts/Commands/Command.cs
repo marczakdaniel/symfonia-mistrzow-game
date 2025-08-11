@@ -172,7 +172,8 @@ namespace Command
                 var playerNames = ranking.Select(player => player.PlayerName).ToList();
                 var playerPoints = ranking.Select(player => player.Points).ToList();
                 var playerAvatars = ranking.Select(player => player.PlayerAvatar).ToList();
-                await AsyncEventBus.Instance.PublishAndWaitAsync(new ResultWindowOpenedEvent(playerNames, playerPoints, playerAvatars));
+                var playerIds = ranking.Select(player => player.PlayerId).ToList();
+                await AsyncEventBus.Instance.PublishAndWaitAsync(new ResultWindowOpenedEvent(playerIds, playerNames, playerPoints, playerAvatars));
                 return true;
             }
 

@@ -555,15 +555,34 @@ namespace Events
 
     public class ResultWindowOpenedEvent : GameEvent
     {
+        public List<string> PlayerIds { get; private set; }
         public List<string> PlayerNames { get; private set; }
         public List<int> PlayerPoints { get; private set; }
         public List<Sprite> PlayerAvatars { get; private set; }
 
-        public ResultWindowOpenedEvent(List<string> playerNames, List<int> playerPoints, List<Sprite> playerAvatars)
+        public ResultWindowOpenedEvent(List<string> playerIds, List<string> playerNames, List<int> playerPoints, List<Sprite> playerAvatars)
         {
+            PlayerIds = playerIds;
             PlayerNames = playerNames;
             PlayerPoints = playerPoints;
             PlayerAvatars = playerAvatars;
+        }
+    }
+
+    public class ResultPlayerResourcesWindowOpenedEvent : GameEvent
+    {
+        public List<MusicCardData> PlayerMusicCardDatas { get; private set; }
+
+        public ResultPlayerResourcesWindowOpenedEvent(List<MusicCardData> playerMusicCardDatas)
+        {
+            PlayerMusicCardDatas = playerMusicCardDatas;
+        }
+    }
+
+    public class ResultPlayerResourcesWindowClosedEvent : GameEvent
+    {
+        public ResultPlayerResourcesWindowClosedEvent()
+        {
         }
     }
 }

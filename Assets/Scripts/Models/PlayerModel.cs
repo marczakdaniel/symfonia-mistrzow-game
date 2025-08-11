@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using Assets.Scripts.Data;
 using DefaultNamespace.Data;
 using UnityEngine;
@@ -127,6 +128,11 @@ namespace Models
         public void UpdatePoints()
         {
             Points = CalculatePoints();
+        }
+
+        public List<MusicCardData> GetPurchasedMusicCardDatas()
+        {
+            return purchasedCards.GetAllCards().ToList();
         }
     }
 }
