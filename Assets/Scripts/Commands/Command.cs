@@ -79,7 +79,6 @@ namespace Command
             // 2. Event publish and wait for UI to complete
             var boardCards = boardService.GetBoardCards();
             var playerAvatars = playerService.GetPlayerAvatars();
-            MusicService.Instance.StartMusic();
             var gameStartedEvent = new GameStartedEvent(playerIds, playerAvatars, boardService.GetAllBoardResources(), boardCards);
             await AsyncEventBus.Instance.PublishAndWaitAsync(gameStartedEvent);
 
