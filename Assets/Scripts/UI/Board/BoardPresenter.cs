@@ -97,11 +97,18 @@ namespace UI.Board
         private void ConnectView(DisposableBuilder d)
         {
             view.OnBoardConcertCardButtonClicked.Subscribe(_ => HandleBoardConcertCardButtonClicked().ToObservable()).AddTo(ref d);
+            view.OnBoardSettingsButtonClicked.Subscribe(_ => HandleBoardSettingsButtonClicked().ToObservable()).AddTo(ref d);
         }
 
         private async UniTask HandleBoardConcertCardButtonClicked()
         {
             var command = commandFactory.CreateOpenConcertCardsWindowCommand();
+            await CommandService.Instance.ExecuteCommandAsync(command);
+        }
+
+        private async UniTask HandleBoardSettingsButtonClicked()
+        {
+            var command = commandFactory.CreateOpenSettingsWindowCommand();
             await CommandService.Instance.ExecuteCommandAsync(command);
         }
 
@@ -118,8 +125,36 @@ namespace UI.Board
 
         public void Dispose()
         {
+            DisposeChild();
             disposable.Dispose();
         }
-    
+
+        private void DisposeChild()
+        {
+            boardEndTurnButtonPresenter.Dispose();
+            for (int i = 0; i < boardPlayerPanelPresenters.Length; i++)
+            {
+                boardPlayerPanelPresenters[i].Dispose();
+            }
+            for (int i = 0; i < boardTokenPresenters.Length; i++)
+            {
+                boardTokenPresenters[i].Dispose();
+            }
+            for (int i = 0; i < level1CardPresenters.Length; i++)
+            {
+                level1CardPresenters[i].Dispose();
+            }
+            for (int i = 0; i < level2CardPresenters.Length; i++)
+            {
+                level2CardPresenters[i].Dispose();
+            }
+            for (int i = 0; i < level3CardPresenters.Length; i++)
+            {
+                level3CardPresenters[i].Dispose();
+            }
+            level1CardDeckPresenter.Dispose();
+            level2CardDeckPresenter.Dispose();
+            level3CardDeckPresenter.Dispose();
+        }
     }
 }

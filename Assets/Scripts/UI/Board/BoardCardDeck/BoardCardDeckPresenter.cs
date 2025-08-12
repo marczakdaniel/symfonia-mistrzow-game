@@ -7,6 +7,7 @@ using R3;
 namespace UI.Board.BoardMusicCardPanel.BoardCardDeck
 {
     public class BoardCardDeckPresenter : 
+        IDisposable,
         IAsyncEventHandler<PutCardOnBoardEvent>
     {
         private readonly BoardCardDeckView view;
@@ -62,6 +63,11 @@ namespace UI.Board.BoardMusicCardPanel.BoardCardDeck
             }
 
             await view.PlayPutCardOnBoardAnimationWithHide(eventData.Position, 50);
+        }
+
+        public void Dispose()
+        {
+            disposable.Dispose();
         }
     }
 }

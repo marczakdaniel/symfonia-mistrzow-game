@@ -5,9 +5,11 @@ using DefaultNamespace.Data;
 using Models;
 using R3;
 using UnityEngine;
+using System;
 
 namespace UI.MusicCardDetailsPanel {
     public class MusicCardDetailsPanelPresenter : 
+        IDisposable,
         IAsyncEventHandler<MusicCardDetailsPanelOpenedEvent>, 
         IAsyncEventHandler<MusicCardDetailsPanelClosedEvent>,
         IAsyncEventHandler<CardReservedEvent>,
@@ -18,7 +20,7 @@ namespace UI.MusicCardDetailsPanel {
         private readonly MusicCardDetailsPanelView view;
         private readonly CommandFactory commandFactory;
         private readonly MusicCardDetailsPanelViewModel viewModel;
-        private readonly CompositeDisposable subscriptions = new CompositeDisposable();
+        private IDisposable disposable;
 
         public MusicCardDetailsPanelPresenter(MusicCardDetailsPanelView view, CommandFactory commandFactory) {
             this.view = view;
@@ -30,12 +32,14 @@ namespace UI.MusicCardDetailsPanel {
         }
 
         private void InitializeMVP() {
-            ConnectView();
+            var d = Disposable.CreateBuilder();
+            ConnectView(d);
+            disposable = d.Build();
         }
-        private void ConnectView() {
-            view.OnCloseButtonClick.Subscribe(_ => HandleCloseButtonClick().Forget()).AddTo(subscriptions);
-            view.OnBuyButtonClick.Subscribe(_ => HandleBuyButtonClick().Forget()).AddTo(subscriptions);
-            view.OnReserveButtonClick.Subscribe(_ => HandleReserveButtonClick().Forget()).AddTo(subscriptions);
+        private void ConnectView(DisposableBuilder d) {
+            view.OnCloseButtonClick.Subscribe(_ => HandleCloseButtonClick().Forget()).AddTo(ref d);
+            view.OnBuyButtonClick.Subscribe(_ => HandleBuyButtonClick().Forget()).AddTo(ref d);
+            view.OnReserveButtonClick.Subscribe(_ => HandleReserveButtonClick().Forget()).AddTo(ref d);
         }
 
         private async UniTask HandleCloseButtonClick() {
@@ -90,6 +94,11 @@ namespace UI.MusicCardDetailsPanel {
 
         public async UniTask HandleAsync(CardPurchasedFromBoardEvent cardPurchasedFromBoardEvent) {
             await view.PlayCloseAnimation();
+        }
+
+        public void Dispose()
+        {
+            disposable.Dispose();
         }
     }
 }

@@ -258,5 +258,21 @@ namespace Command
             return new CloseResultPlayerResourcesWindowCommand();
         }
 
+        // Settings Window Commands
+
+        public OpenSettingsWindowCommand CreateOpenSettingsWindowCommand()
+        {
+            return new OpenSettingsWindowCommand();
+        }
+
+        public CloseSettingsWindowCommand CreateCloseSettingsWindowCommand()
+        {
+            return new CloseSettingsWindowCommand();
+        }
+
+        public RestartGameCommand CreateRestartGameCommand()
+        {
+            return new RestartGameCommand();
+        }
     }
 }

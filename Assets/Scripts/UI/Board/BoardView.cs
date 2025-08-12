@@ -15,10 +15,12 @@ namespace UI.Board
     public class BoardView : MonoBehaviour
     {
         public Subject<Unit> OnBoardConcertCardButtonClicked { get; private set; } = new Subject<Unit>();
+        public Subject<Unit> OnBoardSettingsButtonClicked { get; private set; } = new Subject<Unit>();
         [SerializeField] private UniversalTokenElement[] boardTokenPanelView;
         [SerializeField] private BoardEndTurnButtonView boardEndTurnButtonView;
         [SerializeField] private BoardPlayerPanelView[] boardPlayerPanelViews = new BoardPlayerPanelView[4];
         [SerializeField] private ButtonElement boardConcertCardButton;
+        [SerializeField] private ButtonElement boardSettingsButton;
 
         [SerializeField] private BoardMusicCardView[] level1Cards;
         [SerializeField] private BoardMusicCardView[] level2Cards;
@@ -41,9 +43,6 @@ namespace UI.Board
         public BoardCardDeckView Level2CardDeck => level2CardDeck;
         public BoardCardDeckView Level3CardDeck => level3CardDeck;
 
-        public AnimationSequencerController OpenedAnimation => opendAnimation;
-        public AnimationSequencerController ClosedAnimation => closeAnimation;
-
 
         public async UniTask PlayOpenAnimation()
         {
@@ -58,6 +57,7 @@ namespace UI.Board
         public void Awake()
         {
             boardConcertCardButton.OnClick.Subscribe(_ => OnBoardConcertCardButtonClicked.OnNext(Unit.Default)).AddTo(this);
+            boardSettingsButton.OnClick.Subscribe(_ => OnBoardSettingsButtonClicked.OnNext(Unit.Default)).AddTo(this);
         }
     }
 }

@@ -15,7 +15,7 @@ namespace UI.StartPageWindow
     {
         private readonly StartPageWindowView view;
         private readonly CommandFactory commandFactory;
-        private readonly IDisposable disposable;
+        private IDisposable disposable;
 
         public StartPageWindowPresenter(StartPageWindowView view, CommandFactory commandFactory)
         {   
@@ -31,6 +31,8 @@ namespace UI.StartPageWindow
             var d = Disposable.CreateBuilder();
 
             ConnectView(d);
+
+            disposable = d.Build();
         }
 
         private void ConnectView(DisposableBuilder d)

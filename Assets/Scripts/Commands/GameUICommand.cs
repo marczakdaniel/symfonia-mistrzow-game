@@ -5,6 +5,7 @@ using Events;
 using Models;
 using Services;
 using Unity.VisualScripting.Dependencies.NCalc;
+using UnityEngine.SceneManagement;
 
 namespace Command
 {
@@ -630,6 +631,56 @@ namespace Command
 
         public override async UniTask<bool> Execute()
         {
+            return true;
+        }
+    }
+
+    // Settings Window
+
+    public class OpenSettingsWindowCommand : BaseUICommand
+    {
+        public override string CommandType => "OpenSettingsWindow";
+
+        public override async UniTask<bool> Validate()
+        {
+            return true;
+        }
+
+        public override async UniTask<bool> Execute()
+        {
+            await AsyncEventBus.Instance.PublishAndWaitAsync(new SettingsWindowOpenedEvent());
+            return true;
+        }
+    }
+
+    public class CloseSettingsWindowCommand : BaseUICommand
+    {
+        public override string CommandType => "CloseSettingsWindow";
+
+        public override async UniTask<bool> Validate()
+        {
+            return true;
+        }
+
+        public override async UniTask<bool> Execute()
+        {
+            await AsyncEventBus.Instance.PublishAndWaitAsync(new SettingsWindowClosedEvent());
+            return true;
+        }
+    }
+
+    public class RestartGameCommand : BaseUICommand
+    {
+        public override string CommandType => "RestartGame";
+
+        public override async UniTask<bool> Validate()
+        {
+            return true;
+        }
+
+        public override async UniTask<bool> Execute()
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             return true;
         }
     }

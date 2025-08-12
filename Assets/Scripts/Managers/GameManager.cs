@@ -12,6 +12,7 @@ using Assets.Scripts.Data;
 using UI.InfoWindow;
 using Data;
 using UI.ResultWindow;
+using UI.SettingsWindow;
 
 namespace Managers
 {
@@ -19,6 +20,7 @@ namespace Managers
     {        
         [SerializeField] private GameWindowView gameWindowView;
         [SerializeField] private MenuWindowView menuWindowView;
+        [SerializeField] private SettingsWindowView settingsWindowView;
 
         [SerializeField] private MusicCardDeckData musicCardDeckData;
         [SerializeField] private ConcertCardDeckData concertCardDeckData;
@@ -29,6 +31,7 @@ namespace Managers
         private MenuWindowPresenter menuWindowPresenter;
         private InfoWindowPresenter infoWindowPresenter;
         private ResultWindowPresenter resultWindowPresenter;
+        private SettingsWindowPresenter settingsWindowPresenter;
         private CommandFactory commandFactory;
 
         private GameModel gameModel;
@@ -52,6 +55,7 @@ namespace Managers
             CreateGameWindow();
             CreateInfoWindow();
             CreateResultWindow();
+            CreateSettingsWindow();
 
             OpenStartPageWindow().Forget();
         }
@@ -81,6 +85,11 @@ namespace Managers
         private void CreateResultWindow()
         {
             resultWindowPresenter = new ResultWindowPresenter(resultWindowView, commandFactory);
+        }
+
+        private void CreateSettingsWindow()
+        {
+            settingsWindowPresenter = new SettingsWindowPresenter(settingsWindowView, commandFactory);
         }
 
         private void CreateModels()
@@ -116,6 +125,12 @@ namespace Managers
         {
             AsyncEventBus.Instance.Clear();
             CommandService.Instance.Clear();
+
+            gameWindowPresenter.Dispose();
+            menuWindowPresenter.Dispose();
+            infoWindowPresenter.Dispose();
+            resultWindowPresenter.Dispose();
+            settingsWindowPresenter.Dispose();
         }
     }
 }

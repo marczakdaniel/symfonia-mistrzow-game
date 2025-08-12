@@ -8,6 +8,7 @@ using UI.StartPageWindow;
 namespace UI.MenuWindow
 {
     public class MenuWindowPresenter
+        : IDisposable
     {
         private readonly MenuWindowView view;
         private readonly CommandFactory commandFactory;
@@ -48,6 +49,19 @@ namespace UI.MenuWindow
 
         private void SubscribeToEvents()
         {
+        }
+
+        public void Dispose()
+        {
+            DisposeChild();
+            disposable.Dispose();
+        }
+
+        private void DisposeChild()
+        {
+            startPageWindowPresenter.Dispose();
+            createGameWindowPresenter.Dispose();
+            createPlayerWindowPresenter.Dispose();
         }
     }
 }

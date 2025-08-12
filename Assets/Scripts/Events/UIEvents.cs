@@ -585,4 +585,20 @@ namespace Events
         {
         }
     }
+
+    // Settings Window Events
+
+    public class SettingsWindowOpenedEvent : GameEvent
+    {
+        public SettingsWindowOpenedEvent()
+        {
+        }
+    }   
+
+    public class SettingsWindowClosedEvent : GameEvent
+    {
+        public SettingsWindowClosedEvent()
+        {
+        }
+    }
 }

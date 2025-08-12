@@ -75,6 +75,21 @@ namespace UI.GameWindow
 
         public void Dispose()
         {
+            DisposeChild();
+        }
+
+        private void DisposeChild()
+        {
+            boardPresenter.Dispose();
+            musicCardDetailsPanelPresenter.Dispose();
+            selectTokenWindowPresenter.Dispose();
+            startTurnWindowPresenter.Dispose();
+            returnTokenWindowPresenter.Dispose();
+            cardPurchaseWindowPresenter.Dispose();
+            playerResourcesWindowPresenter.Dispose();
+            concertCardsWindowPresenter.Dispose();
+            reserveDeckCardWindowPresenter.Dispose();
+            deckCardInfoWindowPresenter.Dispose();
         }
     }
 }
