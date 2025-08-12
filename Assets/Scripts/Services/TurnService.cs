@@ -67,7 +67,7 @@ namespace Services
             var players = gameModel.Players;
             foreach (var player in players)
             {
-                if (player.Points >= 0)
+                if (player.Points >= 15)
                 {
                     return true;
                 }
