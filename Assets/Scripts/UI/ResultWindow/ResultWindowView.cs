@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using BrunoMikoski.AnimationSequencer;
 using Cysharp.Threading.Tasks;
+using DefaultNamespace.Elements;
 using R3;
 using UnityEngine;
 
@@ -9,15 +10,20 @@ namespace UI.ResultWindow
     public class ResultWindowView : MonoBehaviour
     {
         public Subject<int> OnPlayerClicked = new Subject<int>();
+        public Subject<Unit> OnSettingsButtonClicked = new Subject<Unit>();
 
         [SerializeField]
         private ResultPlayerElement[] playerElements = new ResultPlayerElement[4];
+
+        [SerializeField]
+        private ButtonElement settingsButton;
 
         [SerializeField]
         private AnimationSequencerController openAnimation;
 
         [SerializeField]
         private AnimationSequencerController closeAnimation;
+        
 
         public void Setup(
             List<string> playersName,
@@ -53,6 +59,8 @@ namespace UI.ResultWindow
             {
                 playerElements[i].OnClicked.Subscribe(_ => OnPlayerClicked.OnNext(i)).AddTo(this);
             }
+
+            settingsButton.OnClick.Subscribe(OnSettingsButtonClicked.OnNext).AddTo(this);
         }
     }
 }

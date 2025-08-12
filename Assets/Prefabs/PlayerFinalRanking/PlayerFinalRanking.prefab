@@ -120,6 +120,7 @@ MonoBehaviour:
   - {fileID: 1999210140875952266}
   - {fileID: 8650494218390594861}
   - {fileID: 7662541226034323696}
+  settingsButton: {fileID: 2974443650916973917}
   openAnimation: {fileID: 2616907025214306710}
   closeAnimation: {fileID: 8000788709991839253}
 --- !u!1 &4406660992560087493
@@ -191,6 +192,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3184720045485671070}
+  - {fileID: 3627955030001315465}
   - {fileID: 8764662727939062698}
   - {fileID: 2852489068349885724}
   m_Father: {fileID: 1812466406857511271}
@@ -263,6 +265,94 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!1 &4832831152758135685
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3627955030001315465}
+  - component: {fileID: 458389570683727519}
+  - component: {fileID: 3734632264508014868}
+  - component: {fileID: 2974443650916973917}
+  m_Layer: 5
+  m_Name: SettingsButton
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &3627955030001315465
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4832831152758135685}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2781555108986077895}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 864, y: 445.85}
+  m_SizeDelta: {x: 120, y: 120}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &458389570683727519
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4832831152758135685}
+  m_CullTransparentMesh: 1
+--- !u!114 &3734632264508014868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4832831152758135685}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: -1655109142887154325, guid: e564830ce316cda4cb360faf7a2d04bd, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!114 &2974443650916973917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4832831152758135685}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b954f9d444763348a1860fe2acf06d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6192387184089449481
 GameObject:
   m_ObjectHideFlags: 0
@@ -399,6 +489,7 @@ MonoBehaviour:
   - rid: 4232360201771548753
   - rid: 4232360201771548754
   - rid: 4232360201771548755
+  - rid: 4232360287071109204
   updateType: 0
   timeScaleIndependent: 0
   autoplayMode: 2
@@ -438,6 +529,7 @@ MonoBehaviour:
         - {fileID: 7917915750728159436}
         - {fileID: 1031381229685417323}
         - {fileID: 2020526128075481270}
+        - {fileID: 3627955030001315465}
         scale: {x: 0, y: 0, z: 0}
     - rid: 4232360201771548748
       type: {class: DOTweenAnimationStep, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
@@ -581,6 +673,32 @@ MonoBehaviour:
         scale: {x: 1, y: 1, z: 1}
         axisConstraint: 0
     - rid: 4232360201771548759
+      type: {class: ScaleDOTweenAction, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
+      data:
+        direction: 0
+        ease:
+          ease: 27
+          curve:
+            serializedVersion: 2
+            m_Curve: []
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
+        isRelative: 0
+        scale: {x: 1, y: 1, z: 1}
+        axisConstraint: 0
+    - rid: 4232360287071109204
+      type: {class: DOTweenAnimationStep, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
+      data:
+        delay: 0
+        flowType: 1
+        target: {fileID: 4832831152758135685}
+        duration: 0.3
+        loopCount: 0
+        loopType: 0
+        actions:
+        - rid: 4232360287071109205
+    - rid: 4232360287071109205
       type: {class: ScaleDOTweenAction, ns: BrunoMikoski.AnimationSequencer, asm: BrunoMikoski.AnimationSequencer}
       data:
         direction: 0

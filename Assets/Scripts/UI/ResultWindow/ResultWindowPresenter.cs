@@ -1,4 +1,5 @@
 using System;
+using System.Threading.Tasks;
 using Command;
 using Cysharp.Threading.Tasks;
 using Events;
@@ -37,6 +38,13 @@ namespace UI.ResultWindow
         private void ConnectView(DisposableBuilder d)
         {
             view.OnPlayerClicked.Subscribe(playerIndex => HandlePlayerClicked(playerIndex).ToObservable()).AddTo(ref d);
+            view.OnSettingsButtonClicked.Subscribe(_ => HandleSettingsButtonClicked().ToObservable()).AddTo(ref d);
+        }
+
+        private async UniTask HandleSettingsButtonClicked()
+        {
+            var command = commandFactory.CreateOpenSettingsWindowCommand();
+            await CommandService.Instance.ExecuteCommandAsync(command);
         }
 
         private async UniTask HandlePlayerClicked(int playerIndex)
