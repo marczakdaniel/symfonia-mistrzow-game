@@ -16,9 +16,8 @@ namespace UI.Board.BoardPlayerPanel
         IDisposable,
         IAsyncEventHandler<GameStartedEvent>,
         IAsyncEventHandler<TurnStartedEvent>,
-        IAsyncEventHandler<CardPurchasedFromBoardEvent>,
-        IAsyncEventHandler<CardPurchasedFromReserveEvent>,
-        IAsyncEventHandler<ConcertCardClaimedEvent>
+        IAsyncEventHandler<ConcertCardClaimedEvent>,
+        IAsyncEventHandler<PlayerResourcesUpdatedEvent>
     {
         private readonly BoardPlayerPanelViewModel viewModel;
         private readonly BoardPlayerPanelView view;
@@ -71,9 +70,8 @@ namespace UI.Board.BoardPlayerPanel
         {
             AsyncEventBus.Instance.Subscribe<GameStartedEvent>(this);
             AsyncEventBus.Instance.Subscribe<TurnStartedEvent>(this);
-            AsyncEventBus.Instance.Subscribe<CardPurchasedFromBoardEvent>(this);
-            AsyncEventBus.Instance.Subscribe<CardPurchasedFromReserveEvent>(this);
             AsyncEventBus.Instance.Subscribe<ConcertCardClaimedEvent>(this);
+            AsyncEventBus.Instance.Subscribe<PlayerResourcesUpdatedEvent>(this);
         }
 
         public async UniTask HandleAsync(GameStartedEvent gameEvent)
@@ -105,27 +103,6 @@ namespace UI.Board.BoardPlayerPanel
             }
         }
 
-        public async UniTask HandleAsync(CardPurchasedFromBoardEvent cardPurchasedFromBoardEvent)
-        {
-            if (!viewModel.IsCurrentPlayer && viewModel.Points != cardPurchasedFromBoardEvent.Points)
-            {
-                return;
-            }
-            viewModel.SetPoints(cardPurchasedFromBoardEvent.Points);
-            view.SetPlayerPoints(cardPurchasedFromBoardEvent.Points);
-            await UniTask.CompletedTask;
-        }
-
-        public async UniTask HandleAsync(CardPurchasedFromReserveEvent cardPurchasedFromReserveEvent)
-        {
-            if (!viewModel.IsCurrentPlayer && viewModel.Points != cardPurchasedFromReserveEvent.Points)
-            {
-                return;
-            }
-            viewModel.SetPoints(cardPurchasedFromReserveEvent.Points);
-            view.SetPlayerPoints(cardPurchasedFromReserveEvent.Points);
-            await UniTask.CompletedTask;
-        }
 
         public async UniTask HandleAsync(ConcertCardClaimedEvent concertCardClaimedEvent)
         {
@@ -135,6 +112,17 @@ namespace UI.Board.BoardPlayerPanel
             }
             viewModel.SetPoints(concertCardClaimedEvent.Points);
             view.SetPlayerPoints(concertCardClaimedEvent.Points);
+        }
+
+        public async UniTask HandleAsync(PlayerResourcesUpdatedEvent playerResourcesUpdatedEvent)
+        {
+            if (playerResourcesUpdatedEvent.PlayerId != viewModel.PlayerId && viewModel.Points != playerResourcesUpdatedEvent.PlayerPoints)
+            {
+                return;
+            }
+            viewModel.SetPoints(playerResourcesUpdatedEvent.PlayerPoints);
+            view.SetPlayerPoints(playerResourcesUpdatedEvent.PlayerPoints);
+            await UniTask.CompletedTask;
         }
 
         public void Dispose()

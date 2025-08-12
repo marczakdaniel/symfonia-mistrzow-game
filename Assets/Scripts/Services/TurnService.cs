@@ -90,14 +90,13 @@ namespace Services
         public List<PlayerModel> GetRanking()
         {
             var players = gameModel.Players;
-            players
+            return players
                 .OrderByDescending(player => player.Points)
                 .ThenBy(player => player.GetPurchasedCardCount())
                 .ThenByDescending(player => player.GetReservedCardCount())
                 .ThenByDescending(player => player.GetConcertCardCount())
                 .ThenByDescending(player => player.GetTokenCount())
                 .ToList();
-            return players;
         }
         // PLAYER ACTIONS
         // 1. Select Tokens

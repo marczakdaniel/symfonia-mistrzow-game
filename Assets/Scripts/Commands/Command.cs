@@ -287,7 +287,8 @@ namespace Command
 
             var currentPlayerTokens = turnService.GetCurrentPlayerModel().Tokens.GetAllResources();
             var currentPlayerCards = turnService.GetCurrentPlayerModel().GetPurchasedAllResourceCollection().GetAllResources();
-            await AsyncEventBus.Instance.PublishAndWaitAsync(new PlayerResourcesUpdatedEvent(turnService.GetCurrentPlayerId(), currentPlayerTokens, currentPlayerCards));
+            var playerPoints = turnService.GetCurrentPlayerModel().Points;
+            await AsyncEventBus.Instance.PublishAndWaitAsync(new PlayerResourcesUpdatedEvent(turnService.GetCurrentPlayerId(), currentPlayerTokens, currentPlayerCards, playerPoints));
             await AsyncEventBus.Instance.PublishAndWaitAsync(new ShowNextTurnButtonEvent());
             return true;
         }
@@ -382,7 +383,8 @@ namespace Command
 
             var currentPlayerTokens = turnService.GetCurrentPlayerModel().Tokens.GetAllResources();
             var currentPlayerCards = turnService.GetCurrentPlayerModel().GetPurchasedAllResourceCollection().GetAllResources();
-            await AsyncEventBus.Instance.PublishAndWaitAsync(new PlayerResourcesUpdatedEvent(turnService.GetCurrentPlayerId(), currentPlayerTokens, currentPlayerCards));
+            var playerPoints = turnService.GetCurrentPlayerModel().Points;
+            await AsyncEventBus.Instance.PublishAndWaitAsync(new PlayerResourcesUpdatedEvent(turnService.GetCurrentPlayerId(), currentPlayerTokens, currentPlayerCards, playerPoints));
 
             return true;
         }  
@@ -439,7 +441,8 @@ namespace Command
 
             var currentPlayerTokens = turnService.GetCurrentPlayerModel().Tokens.GetAllResources();
             var currentPlayerCards = turnService.GetCurrentPlayerModel().GetPurchasedAllResourceCollection().GetAllResources();
-            await AsyncEventBus.Instance.PublishAndWaitAsync(new PlayerResourcesUpdatedEvent(turnService.GetCurrentPlayerId(), currentPlayerTokens, currentPlayerCards));
+            var playerPoints = turnService.GetCurrentPlayerModel().Points;
+            await AsyncEventBus.Instance.PublishAndWaitAsync(new PlayerResourcesUpdatedEvent(turnService.GetCurrentPlayerId(), currentPlayerTokens, currentPlayerCards, playerPoints));
 
             if (boardService.IsCardDeckEmpty(slot.Level))
             {
@@ -572,7 +575,8 @@ namespace Command
 
                 var currentPlayerTokens = turnService.GetCurrentPlayerModel().Tokens.GetAllResources();
                 var currentPlayerCards = turnService.GetCurrentPlayerModel().GetPurchasedAllResourceCollection().GetAllResources();
-                await AsyncEventBus.Instance.PublishAndWaitAsync(new PlayerResourcesUpdatedEvent(turnService.GetCurrentPlayerId(), currentPlayerTokens, currentPlayerCards));
+                var playerPoints = turnService.GetCurrentPlayerModel().Points;
+                await AsyncEventBus.Instance.PublishAndWaitAsync(new PlayerResourcesUpdatedEvent(turnService.GetCurrentPlayerId(), currentPlayerTokens, currentPlayerCards, playerPoints));
 
                 if (boardService.IsCardDeckEmpty(slot.Level))
                 {
@@ -598,7 +602,8 @@ namespace Command
 
                 var currentPlayerTokens = turnService.GetCurrentPlayerModel().Tokens.GetAllResources();
                 var currentPlayerCards = turnService.GetCurrentPlayerModel().GetPurchasedAllResourceCollection().GetAllResources();
-                await AsyncEventBus.Instance.PublishAndWaitAsync(new PlayerResourcesUpdatedEvent(turnService.GetCurrentPlayerId(), currentPlayerTokens, currentPlayerCards));
+                var playerPoints = turnService.GetCurrentPlayerModel().Points;
+                await AsyncEventBus.Instance.PublishAndWaitAsync(new PlayerResourcesUpdatedEvent(turnService.GetCurrentPlayerId(), currentPlayerTokens, currentPlayerCards, playerPoints));
                 await AsyncEventBus.Instance.PublishAndWaitAsync(new ShowNextTurnButtonEvent());
 
                 return true;
@@ -680,7 +685,8 @@ namespace Command
 
             var currentPlayerTokens = turnService.GetCurrentPlayerModel().Tokens.GetAllResources();
             var currentPlayerCards = turnService.GetCurrentPlayerModel().GetPurchasedAllResourceCollection().GetAllResources();
-            await AsyncEventBus.Instance.PublishAndWaitAsync(new PlayerResourcesUpdatedEvent(turnService.GetCurrentPlayerId(), currentPlayerTokens, currentPlayerCards));
+            var playerPoints = turnService.GetCurrentPlayerModel().Points;
+            await AsyncEventBus.Instance.PublishAndWaitAsync(new PlayerResourcesUpdatedEvent(turnService.GetCurrentPlayerId(), currentPlayerTokens, currentPlayerCards, playerPoints));
 
             return true;
         }
