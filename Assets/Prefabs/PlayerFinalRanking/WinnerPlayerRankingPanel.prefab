@@ -222,6 +222,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3601961321547712104}
   - component: {fileID: 720766706934772423}
+  - component: {fileID: 5632439277194873108}
   m_Layer: 5
   m_Name: WinnerPlayerRankingPanel
   m_TagString: Untagged
@@ -267,6 +268,19 @@ MonoBehaviour:
   playerName: {fileID: 6000106092704064851}
   playerPoints: {fileID: 4426724108982467510}
   playerAvatar: {fileID: 3161982791555019043}
+  resultButton: {fileID: 5632439277194873108}
+--- !u!114 &5632439277194873108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6215392882694690738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b954f9d444763348a1860fe2acf06d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8297488596275666026
 GameObject:
   m_ObjectHideFlags: 0
