@@ -288,6 +288,7 @@ namespace Command
             var currentPlayerTokens = turnService.GetCurrentPlayerModel().Tokens.GetAllResources();
             var currentPlayerCards = turnService.GetCurrentPlayerModel().GetPurchasedAllResourceCollection().GetAllResources();
             await AsyncEventBus.Instance.PublishAndWaitAsync(new PlayerResourcesUpdatedEvent(turnService.GetCurrentPlayerId(), currentPlayerTokens, currentPlayerCards));
+            await AsyncEventBus.Instance.PublishAndWaitAsync(new ShowNextTurnButtonEvent());
             return true;
         }
     }
@@ -442,6 +443,7 @@ namespace Command
 
             if (boardService.IsCardDeckEmpty(slot.Level))
             {
+                await AsyncEventBus.Instance.PublishAndWaitAsync(new ShowNextTurnButtonEvent());
                 return true;                
             }
 
@@ -449,6 +451,7 @@ namespace Command
             var musicCardData = slot.GetMusicCard();
             var putCardOnBoardEvent = new PutCardOnBoardEvent(slot.Level, slot.Position, musicCardData, boardService.IsCardDeckEmpty(slot.Level));
             await AsyncEventBus.Instance.PublishAndWaitAsync(putCardOnBoardEvent);
+            await AsyncEventBus.Instance.PublishAndWaitAsync(new ShowNextTurnButtonEvent());
 
             return true;
         }
@@ -573,12 +576,14 @@ namespace Command
 
                 if (boardService.IsCardDeckEmpty(slot.Level))
                 {
+                    await AsyncEventBus.Instance.PublishAndWaitAsync(new ShowNextTurnButtonEvent());
                     return true;
                 }
 
                 boardService.RefillSlot(slot.Level, slot.Position);
                 var putCardOnBoardEvent = new PutCardOnBoardEvent(slot.Level, slot.Position, slot.GetMusicCard(), boardService.IsCardDeckEmpty(slot.Level));
                 await AsyncEventBus.Instance.PublishAndWaitAsync(putCardOnBoardEvent);
+                await AsyncEventBus.Instance.PublishAndWaitAsync(new ShowNextTurnButtonEvent());
                 return true;
             }
 
@@ -594,6 +599,7 @@ namespace Command
                 var currentPlayerTokens = turnService.GetCurrentPlayerModel().Tokens.GetAllResources();
                 var currentPlayerCards = turnService.GetCurrentPlayerModel().GetPurchasedAllResourceCollection().GetAllResources();
                 await AsyncEventBus.Instance.PublishAndWaitAsync(new PlayerResourcesUpdatedEvent(turnService.GetCurrentPlayerId(), currentPlayerTokens, currentPlayerCards));
+                await AsyncEventBus.Instance.PublishAndWaitAsync(new ShowNextTurnButtonEvent());
 
                 return true;
             }

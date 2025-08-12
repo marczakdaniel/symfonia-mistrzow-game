@@ -605,4 +605,11 @@ namespace Events
         {
         }
     }
+
+    public class ShowNextTurnButtonEvent : GameEvent
+    {
+        public ShowNextTurnButtonEvent()
+        {
+        }
+    }
 }

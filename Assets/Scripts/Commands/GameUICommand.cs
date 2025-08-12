@@ -588,6 +588,7 @@ namespace Command
         {
             var playerIndex = turnService.GetCurrentPlayerIndex();
             await AsyncEventBus.Instance.PublishAndWaitAsync(new DeckCardInfoWindowClosedEvent(playerIndex));
+            await AsyncEventBus.Instance.PublishAndWaitAsync(new ShowNextTurnButtonEvent());
             return true;
         }
     }
