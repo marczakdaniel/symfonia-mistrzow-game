@@ -196,12 +196,14 @@ namespace Events
         public int Position { get; private set; }
 
         public MusicCardData MusicCardData { get; private set; }
+        public bool IsDeckCardEmpty { get; private set; }
 
-        public PutCardOnBoardEvent(int level, int position, MusicCardData musicCardData)
+        public PutCardOnBoardEvent(int level, int position, MusicCardData musicCardData, bool isDeckCardEmpty)
         {
             Level = level;
             Position = position;
             MusicCardData = musicCardData;
+            IsDeckCardEmpty = isDeckCardEmpty;
         }
     }
 
@@ -511,10 +513,12 @@ namespace Events
     public class DeckCardReservedEvent : GameEvent
     {
         public MusicCardData MusicCardData { get; private set; }
+        public bool IsDeckCardEmpty { get; private set; }
 
-        public DeckCardReservedEvent(MusicCardData musicCardData)
+        public DeckCardReservedEvent(MusicCardData musicCardData, bool isDeckCardEmpty)
         {
             MusicCardData = musicCardData;
+            IsDeckCardEmpty = isDeckCardEmpty;
         }
     }
 

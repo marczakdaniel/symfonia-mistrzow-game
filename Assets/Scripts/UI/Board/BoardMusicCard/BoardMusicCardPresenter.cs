@@ -19,7 +19,8 @@ namespace UI.Board.BoardMusicCardPanel.BoardMusicCard
         IAsyncEventHandler<MusicCardDetailsPanelClosedEvent>,
         IAsyncEventHandler<TurnStartedEvent>,
         IAsyncEventHandler<CardPurchasedFromReserveEvent>,
-        IAsyncEventHandler<SelectedTokensConfirmedEvent>
+        IAsyncEventHandler<SelectedTokensConfirmedEvent>,
+        IAsyncEventHandler<DeckCardReservedEvent>
     {
         private readonly BoardMusicCardView view;
         private readonly BoardMusicCardViewModel viewModel;
@@ -62,10 +63,16 @@ namespace UI.Board.BoardMusicCardPanel.BoardMusicCard
             AsyncEventBus.Instance.Subscribe<TurnStartedEvent>(this);
             AsyncEventBus.Instance.Subscribe<CardPurchasedFromReserveEvent>(this);
             AsyncEventBus.Instance.Subscribe<SelectedTokensConfirmedEvent>(this);
+            AsyncEventBus.Instance.Subscribe<DeckCardReservedEvent>(this);
         }
 
         public async UniTask HandleAsync(CardReservedEvent cardReservedEvent)
         {
+            if (viewModel.CardDisabled)
+            {
+                return;
+            }
+
             view.SetCanBePurchased(false);
             if (cardReservedEvent.CardId != viewModel.MusicCardId)
             {
@@ -73,10 +80,20 @@ namespace UI.Board.BoardMusicCardPanel.BoardMusicCard
             }
             viewModel.HideCard();
             await view.PlayHideAnimation();
+
+            if (viewModel.CardCanBeDisabled)
+            {
+                viewModel.SetCardDisabled();
+            }
         }
 
         public async UniTask HandleAsync(CardPurchasedFromBoardEvent cardPurchasedEvent)
         {
+            if (viewModel.CardDisabled)
+            {
+                return;
+            }
+
             view.SetCanBePurchased(false);
             if (cardPurchasedEvent.CardId != viewModel.MusicCardId)
             {
@@ -84,14 +101,30 @@ namespace UI.Board.BoardMusicCardPanel.BoardMusicCard
             }
             viewModel.HideCard();
             await view.PlayHideAnimation();
+
+            if (viewModel.CardCanBeDisabled)
+            {
+                viewModel.SetCardDisabled();
+            }
         }
 
         public async UniTask HandleAsync(PutCardOnBoardEvent putCardOnBoardEvent)
         {
+            if (viewModel.CardDisabled)
+            {
+                return;
+            }
+
+            if (putCardOnBoardEvent.Level == viewModel.Level && putCardOnBoardEvent.IsDeckCardEmpty)
+            {
+                viewModel.SetCardCanBeDisabled();
+            }
+
             if (putCardOnBoardEvent.Level != viewModel.Level || putCardOnBoardEvent.Position != viewModel.Position)
             {
                 return;
             }
+            
             viewModel.RevealCard(putCardOnBoardEvent.MusicCardData.Id);
             view.Setup(putCardOnBoardEvent.MusicCardData);
             await view.PlayRevealAnimation();
@@ -108,6 +141,11 @@ namespace UI.Board.BoardMusicCardPanel.BoardMusicCard
 
         public async UniTask HandleAsync(MusicCardDetailsPanelOpenedEvent musicCardDetailsPanelOpenedEvent)
         {
+            if (viewModel.CardDisabled)
+            {
+                return;
+            }
+
             if (musicCardDetailsPanelOpenedEvent.Level != viewModel.Level || musicCardDetailsPanelOpenedEvent.Position != viewModel.Position)
             {
                 return;
@@ -117,24 +155,59 @@ namespace UI.Board.BoardMusicCardPanel.BoardMusicCard
 
         public async UniTask HandleAsync(MusicCardDetailsPanelClosedEvent musicCardDetailsPanelClosedEvent)
         {
+            if (viewModel.CardDisabled)
+            {
+                return;
+            }
+
             await view.PlaySimpleShowAnimation();
         }
 
         public async UniTask HandleAsync(TurnStartedEvent turnStartedEvent)
         {
+            if (viewModel.CardDisabled)
+            {
+                return;
+            }
+
             view.SetCanBePurchased(turnStartedEvent.MusicCardIdsThatCanBePurchased.Contains(viewModel.MusicCardId));
             await UniTask.CompletedTask;
         }
 
         public async UniTask HandleAsync(CardPurchasedFromReserveEvent cardPurchasedFromReserveEvent)
         {
+            if (viewModel.CardDisabled)
+            {
+                return;
+            }
+
             view.SetCanBePurchased(false);
             await UniTask.CompletedTask;
         }
 
         public async UniTask HandleAsync(SelectedTokensConfirmedEvent selectedTokensConfirmedEvent)
         {
+            if (viewModel.CardDisabled)
+            {
+                return;
+            }
+
             view.SetCanBePurchased(false);
+            await UniTask.CompletedTask;
+        }
+
+        public async UniTask HandleAsync(DeckCardReservedEvent deckCardReservedEvent)
+        {
+            if (viewModel.CardDisabled)
+            {
+                return;
+            }
+
+            if (deckCardReservedEvent.MusicCardData.Level == viewModel.Level && deckCardReservedEvent.IsDeckCardEmpty)
+            {
+                viewModel.SetCardCanBeDisabled();
+            }
+
             await UniTask.CompletedTask;
         }
 

@@ -222,6 +222,11 @@ namespace Models
             }
             return cards;
         }
+
+        public bool HasAnyCardInDeck()
+        {
+            return Deck.Count > 0;
+        }
     }
     public class BoardModel
     {
@@ -475,5 +480,6 @@ namespace Models
             var boardLevel = GetLevel(cardLevel);
             return boardLevel.Deck.IsEmpty;
         }
+        
     }
 }

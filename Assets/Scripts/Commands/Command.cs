@@ -440,10 +440,14 @@ namespace Command
             var currentPlayerCards = turnService.GetCurrentPlayerModel().GetPurchasedAllResourceCollection().GetAllResources();
             await AsyncEventBus.Instance.PublishAndWaitAsync(new PlayerResourcesUpdatedEvent(turnService.GetCurrentPlayerId(), currentPlayerTokens, currentPlayerCards));
 
-            boardService.RefillSlot(slot.Level, slot.Position);
+            if (boardService.IsCardDeckEmpty(slot.Level))
+            {
+                return true;                
+            }
 
+            boardService.RefillSlot(slot.Level, slot.Position);
             var musicCardData = slot.GetMusicCard();
-            var putCardOnBoardEvent = new PutCardOnBoardEvent(slot.Level, slot.Position, musicCardData);
+            var putCardOnBoardEvent = new PutCardOnBoardEvent(slot.Level, slot.Position, musicCardData, boardService.IsCardDeckEmpty(slot.Level));
             await AsyncEventBus.Instance.PublishAndWaitAsync(putCardOnBoardEvent);
 
             return true;
@@ -567,8 +571,13 @@ namespace Command
                 var currentPlayerCards = turnService.GetCurrentPlayerModel().GetPurchasedAllResourceCollection().GetAllResources();
                 await AsyncEventBus.Instance.PublishAndWaitAsync(new PlayerResourcesUpdatedEvent(turnService.GetCurrentPlayerId(), currentPlayerTokens, currentPlayerCards));
 
+                if (boardService.IsCardDeckEmpty(slot.Level))
+                {
+                    return true;
+                }
+
                 boardService.RefillSlot(slot.Level, slot.Position);
-                var putCardOnBoardEvent = new PutCardOnBoardEvent(slot.Level, slot.Position, slot.GetMusicCard());
+                var putCardOnBoardEvent = new PutCardOnBoardEvent(slot.Level, slot.Position, slot.GetMusicCard(), boardService.IsCardDeckEmpty(slot.Level));
                 await AsyncEventBus.Instance.PublishAndWaitAsync(putCardOnBoardEvent);
                 return true;
             }
@@ -661,11 +670,12 @@ namespace Command
             var musicCardData = MusicCardRepository.Instance.GetCard(cardId);
 
             turnService.ReserveDeckCard(cardId);
-            await AsyncEventBus.Instance.PublishAndWaitAsync(new DeckCardReservedEvent(musicCardData));
+            await AsyncEventBus.Instance.PublishAndWaitAsync(new DeckCardReservedEvent(musicCardData, boardService.IsCardDeckEmpty(cardLevel)));
 
             var currentPlayerTokens = turnService.GetCurrentPlayerModel().Tokens.GetAllResources();
             var currentPlayerCards = turnService.GetCurrentPlayerModel().GetPurchasedAllResourceCollection().GetAllResources();
             await AsyncEventBus.Instance.PublishAndWaitAsync(new PlayerResourcesUpdatedEvent(turnService.GetCurrentPlayerId(), currentPlayerTokens, currentPlayerCards));
+
             return true;
         }
     }

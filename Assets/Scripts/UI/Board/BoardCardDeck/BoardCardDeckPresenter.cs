@@ -8,7 +8,8 @@ namespace UI.Board.BoardMusicCardPanel.BoardCardDeck
 {
     public class BoardCardDeckPresenter : 
         IDisposable,
-        IAsyncEventHandler<PutCardOnBoardEvent>
+        IAsyncEventHandler<PutCardOnBoardEvent>,
+        IAsyncEventHandler<DeckCardReservedEvent>
     {
         private readonly BoardCardDeckView view;
         private readonly BoardCardDeckViewModel viewModel;
@@ -53,6 +54,7 @@ namespace UI.Board.BoardMusicCardPanel.BoardCardDeck
         private void SubscribeToEvents()
         {   
             AsyncEventBus.Instance.Subscribe<PutCardOnBoardEvent>(this, EventPriority.High);
+            AsyncEventBus.Instance.Subscribe<DeckCardReservedEvent>(this, EventPriority.High);
         }
 
         public async UniTask HandleAsync(PutCardOnBoardEvent eventData)
@@ -63,6 +65,24 @@ namespace UI.Board.BoardMusicCardPanel.BoardCardDeck
             }
 
             await view.PlayPutCardOnBoardAnimationWithHide(eventData.Position, 50);
+            
+            if (eventData.IsDeckCardEmpty)
+            {
+                await view.PlayDeckDisabledAnimation();
+            }
+        }
+
+        public async UniTask HandleAsync(DeckCardReservedEvent eventData)
+        {
+            if (viewModel.Level != eventData.MusicCardData.Level)
+            {
+                return;
+            }
+
+            if (eventData.IsDeckCardEmpty)
+            {
+                await view.PlayDeckDisabledAnimation(); 
+            }
         }
 
         public void Dispose()

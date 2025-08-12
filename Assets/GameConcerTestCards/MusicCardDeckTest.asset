@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 239e406834798da43a15f7b034819b32, type: 3}
+  m_Name: MusicCardDeckTest
+  m_EditorClassIdentifier: 
+  cards:
+  - {fileID: 11400000, guid: 59d05e7dc23fc1947a047ba3d4a045b7, type: 2}
+  - {fileID: 11400000, guid: c91db06075b42574c89fb26f19a21e76, type: 2}
+  - {fileID: 11400000, guid: 79c77615586945b4f95fb32366633ec4, type: 2}
+  - {fileID: 11400000, guid: 2b177916d5617e746ae63740e969ee2b, type: 2}
+  - {fileID: 11400000, guid: 5c64dcb4ce4688242ba3d1fd6a7e9d87, type: 2}
+  - {fileID: 11400000, guid: bca78f2c59dc7e449ac594e6cd5741c1, type: 2}
+  - {fileID: 11400000, guid: de5b6646c7a605c42a1e42fd523e9d45, type: 2}
+  - {fileID: 11400000, guid: 5d71be92f7693664b9f6e9bd420108ff, type: 2}
+  - {fileID: 11400000, guid: 2a331f41ca06ffc43932e545c96b1c31, type: 2}
+  - {fileID: 11400000, guid: 3c67953754d613149aa1c288a6360d3b, type: 2}
+  - {fileID: 11400000, guid: 043d280dd1b22f541973427cdebec66d, type: 2}
+  - {fileID: 11400000, guid: d251aa36b4743fa4d9cbd9aeeb38cc98, type: 2}
+  - {fileID: 11400000, guid: f53063d13bdfdb243b7d0457907d37bc, type: 2}
+  - {fileID: 11400000, guid: 2c979722ec27a8148882a07ffdbdfd46, type: 2}
+  - {fileID: 11400000, guid: 026be10cb0f60f34eb3e3172ef501441, type: 2}

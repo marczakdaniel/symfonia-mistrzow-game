@@ -543,7 +543,7 @@ namespace Command
             var isEmpty = boardService.IsCardDeckEmpty(cardLevel);
             if (isEmpty)
             {
-                await AsyncEventBus.Instance.PublishAndWaitAsync(new InfoWindowOpenedEvent("Nie ma już kart w tej karcie!"));
+                await AsyncEventBus.Instance.PublishAndWaitAsync(new InfoWindowOpenedEvent("Nide ma już kart na stosie!"));
                 return false;
             }
 

@@ -5,6 +5,7 @@ using TMPro;
 using Coffee.UIEffects;
 using R3;
 using DefaultNamespace.Elements;
+using BrunoMikoski.AnimationSequencer;
 
 namespace UI.Board.BoardMusicCardPanel.BoardCardDeck
 {
@@ -16,13 +17,18 @@ namespace UI.Board.BoardMusicCardPanel.BoardCardDeck
         [SerializeField] private UIEffect cardLevelEffect;
         [SerializeField] private Color[] cardLevelColors = new Color[3];
         [SerializeField] private ButtonElement buttonElement;
+        [SerializeField] private AnimationSequencerController deckDisabledAnimation;
 
         public async UniTask PlayPutCardOnBoardAnimationWithHide(int position, int delay = 0)
         {
             await animationController.PlayPutCardOnBoardAnimation(position);
             animationController.PlayHideAnimation(position, delay).Forget();
         }
-        
+
+        public async UniTask PlayDeckDisabledAnimation()
+        {
+            await deckDisabledAnimation.PlayAsync();
+        }
 
         public async UniTask PlayHideAnimation(int position)
         {

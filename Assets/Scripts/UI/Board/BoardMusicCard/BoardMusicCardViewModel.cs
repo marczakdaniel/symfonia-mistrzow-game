@@ -8,9 +8,14 @@ namespace UI.Board.BoardMusicCardPanel.BoardMusicCard
         public int Level { get; private set; }
         public int Position { get; private set; }
 
+        public bool CardDisabled { get; private set; }
+        public bool CardCanBeDisabled { get; private set; }
+
         public BoardMusicCardViewModel(int level, int position) {
             Level = level;
             Position = position;
+            CardDisabled = false;
+            CardCanBeDisabled = false;
         }
 
         public void RevealCard(string musicCardId)
@@ -21,6 +26,16 @@ namespace UI.Board.BoardMusicCardPanel.BoardMusicCard
         public void HideCard()
         {
             MusicCardId = null;
+        }
+
+        public void SetCardDisabled()
+        {
+            CardDisabled = true;
+        }
+
+        public void SetCardCanBeDisabled()
+        {
+            CardCanBeDisabled = true;
         }
     }
 }

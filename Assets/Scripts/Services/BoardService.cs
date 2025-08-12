@@ -63,7 +63,7 @@ namespace Services
             {
                 foreach (var card in level.GetAllCards())
                 {
-                    if (CanBePurchased(card, playerResources))
+                    if (card != null &&CanBePurchased(card, playerResources))
                     {
                         result.Add(card.Id);
                     }

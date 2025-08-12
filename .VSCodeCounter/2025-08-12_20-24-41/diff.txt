@@ -1,0 +1,67 @@
+Date : 2025-08-12 20:24:41
+Directory : c:\Users\danie\Desktop\symfonia-mistrzow-game\Assets\Scripts
+Total : 24 files,  740 codes, 3 comments, 164 blanks, all 907 lines
+
+Languages
++----------+------------+------------+------------+------------+------------+
+| language | files      | code       | comment    | blank      | total      |
++----------+------------+------------+------------+------------+------------+
+| C#       |         23 |        599 |          3 |        117 |        719 |
+| Markdown |          1 |        141 |          0 |         47 |        188 |
++----------+------------+------------+------------+------------+------------+
+
+Directories
++-------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                                                    | files      | code       | comment    | blank      | total      |
++-------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                                                       |         24 |        740 |          3 |        164 |        907 |
+| Commands                                                                                                                |          3 |        100 |          2 |         26 |        128 |
+| Data                                                                                                                    |          1 |          1 |          0 |          1 |          2 |
+| Documentation                                                                                                           |          1 |        141 |          0 |         47 |        188 |
+| Events                                                                                                                  |          1 |         40 |          1 |          8 |         49 |
+| Managers                                                                                                                |          1 |         21 |          0 |          2 |         23 |
+| Models                                                                                                                  |          1 |          7 |          0 |          1 |          8 |
+| Services                                                                                                                |          1 |         18 |          0 |          2 |         20 |
+| UI                                                                                                                      |         15 |        412 |          0 |         77 |        489 |
+| UI\Board                                                                                                                |          3 |         40 |          0 |          1 |         41 |
+| UI\Board (Files)                                                                                                        |          2 |         35 |          0 |          0 |         35 |
+| UI\Board\BoardCardDeck                                                                                                  |          1 |          5 |          0 |          1 |          6 |
+| UI\GameWindow                                                                                                           |          1 |         14 |          0 |          1 |         15 |
+| UI\MenuWindow                                                                                                           |          1 |         12 |          0 |          2 |         14 |
+| UI\MusicCardDetailsPanel                                                                                                |          1 |          8 |          0 |          1 |          9 |
+| UI\ResultPlayerResources                                                                                                |          2 |         96 |          0 |         21 |        117 |
+| UI\ResultWindow                                                                                                         |          4 |        145 |          0 |         29 |        174 |
+| UI\SettingsWindow                                                                                                       |          2 |         96 |          0 |         21 |        117 |
+| UI\StartPageWindow                                                                                                      |          1 |          1 |          0 |          1 |          2 |
++-------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++-------------------------------------------------------------------------------------------------------------------------+----------+------------+------------+------------+------------+
+| filename                                                                                                                | language | code       | comment    | blank      | total      |
++-------------------------------------------------------------------------------------------------------------------------+----------+------------+------------+------------+------------+
+| c:\Users\danie\Desktop\symfonia-mistrzow-game\Assets\Scripts\Commands\Command.cs                                        | C#       |          6 |         -1 |          0 |          5 |
+| c:\Users\danie\Desktop\symfonia-mistrzow-game\Assets\Scripts\Commands\CommandFactory.cs                                 | C#       |         20 |          2 |          7 |         29 |
+| c:\Users\danie\Desktop\symfonia-mistrzow-game\Assets\Scripts\Commands\GameUICommand.cs                                  | C#       |         74 |          1 |         19 |         94 |
+| c:\Users\danie\Desktop\symfonia-mistrzow-game\Assets\Scripts\Data\MusicCardData.cs                                      | C#       |          1 |          0 |          1 |          2 |
+| c:\Users\danie\Desktop\symfonia-mistrzow-game\Assets\Scripts\Documentation\MusicService_README.md                       | Markdown |        141 |          0 |         47 |        188 |
+| c:\Users\danie\Desktop\symfonia-mistrzow-game\Assets\Scripts\Events\UIEvents.cs                                         | C#       |         40 |          1 |          8 |         49 |
+| c:\Users\danie\Desktop\symfonia-mistrzow-game\Assets\Scripts\Managers\GameManager.cs                                    | C#       |         21 |          0 |          2 |         23 |
+| c:\Users\danie\Desktop\symfonia-mistrzow-game\Assets\Scripts\Models\PlayerModel.cs                                      | C#       |          7 |          0 |          1 |          8 |
+| c:\Users\danie\Desktop\symfonia-mistrzow-game\Assets\Scripts\Services\TurnService.cs                                    | C#       |         18 |          0 |          2 |         20 |
+| c:\Users\danie\Desktop\symfonia-mistrzow-game\Assets\Scripts\UI\Board\BoardCardDeck\BoardCardDeckPresenter.cs           | C#       |          5 |          0 |          1 |          6 |
+| c:\Users\danie\Desktop\symfonia-mistrzow-game\Assets\Scripts\UI\Board\BoardPresenter.cs                                 | C#       |         34 |          0 |          1 |         35 |
+| c:\Users\danie\Desktop\symfonia-mistrzow-game\Assets\Scripts\UI\Board\BoardView.cs                                      | C#       |          1 |          0 |         -1 |          0 |
+| c:\Users\danie\Desktop\symfonia-mistrzow-game\Assets\Scripts\UI\GameWindow\GameWindowPresenter.cs                       | C#       |         14 |          0 |          1 |         15 |
+| c:\Users\danie\Desktop\symfonia-mistrzow-game\Assets\Scripts\UI\MenuWindow\MenuWindowPresenter.cs                       | C#       |         12 |          0 |          2 |         14 |
+| c:\Users\danie\Desktop\symfonia-mistrzow-game\Assets\Scripts\UI\MusicCardDetailsPanel\MusicCardDetailsPanelPresenter.cs | C#       |          8 |          0 |          1 |          9 |
+| c:\Users\danie\Desktop\symfonia-mistrzow-game\Assets\Scripts\UI\ResultPlayerResources\ResultPlayerResourcesPresenter.cs | C#       |         51 |          0 |         11 |         62 |
+| c:\Users\danie\Desktop\symfonia-mistrzow-game\Assets\Scripts\UI\ResultPlayerResources\ResultPlayerResourcesView.cs      | C#       |         45 |          0 |         10 |         55 |
+| c:\Users\danie\Desktop\symfonia-mistrzow-game\Assets\Scripts\UI\ResultWindow\ResultPlayerElement.cs                     | C#       |         30 |          0 |          7 |         37 |
+| c:\Users\danie\Desktop\symfonia-mistrzow-game\Assets\Scripts\UI\ResultWindow\ResultWindowPresenter.cs                   | C#       |         54 |          0 |         11 |         65 |
+| c:\Users\danie\Desktop\symfonia-mistrzow-game\Assets\Scripts\UI\ResultWindow\ResultWindowView.cs                        | C#       |         49 |          0 |          9 |         58 |
+| c:\Users\danie\Desktop\symfonia-mistrzow-game\Assets\Scripts\UI\ResultWindow\ResultWindowViewModel.cs                   | C#       |         12 |          0 |          2 |         14 |
+| c:\Users\danie\Desktop\symfonia-mistrzow-game\Assets\Scripts\UI\SettingsWindow\SettingsWindowPresenter.cs               | C#       |         62 |          0 |         13 |         75 |
+| c:\Users\danie\Desktop\symfonia-mistrzow-game\Assets\Scripts\UI\SettingsWindow\SettingsWindowView.cs                    | C#       |         34 |          0 |          8 |         42 |
+| c:\Users\danie\Desktop\symfonia-mistrzow-game\Assets\Scripts\UI\StartPageWindow\StartPagePresenter.cs                   | C#       |          1 |          0 |          1 |          2 |
+| Total                                                                                                                   |          |        740 |          3 |        164 |        907 |
++-------------------------------------------------------------------------------------------------------------------------+----------+------------+------------+------------+------------+
