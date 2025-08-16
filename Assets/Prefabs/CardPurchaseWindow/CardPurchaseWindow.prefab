@@ -1624,7 +1624,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 71.8
+  m_fontSize: 72
   m_fontSizeBase: 108.4
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -6668,6 +6668,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 471054319979245269}
     m_Modifications:
+    - target: {fileID: 1288898588580209617, guid: 82b59a7c9117e024fb838a83154a72e2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5749563576893715217, guid: 82b59a7c9117e024fb838a83154a72e2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7445036976620358580, guid: 82b59a7c9117e024fb838a83154a72e2, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -40.699997
+      objectReference: {fileID: 0}
+    - target: {fileID: 7445036976620358580, guid: 82b59a7c9117e024fb838a83154a72e2, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7813895439394592654, guid: 82b59a7c9117e024fb838a83154a72e2, type: 3}
       propertyPath: m_Name
       value: PurchaseCardTokenWithOptionPrefab (5)
