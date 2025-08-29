@@ -3,6 +3,7 @@ using Command;
 using R3;
 using UI.CreateGameWindow;
 using UI.CreatePlayerWindow;
+using UI.InstructionWindow;
 using UI.StartPageWindow;
 
 namespace UI.MenuWindow
@@ -15,6 +16,7 @@ namespace UI.MenuWindow
         private StartPageWindowPresenter startPageWindowPresenter;
         private CreateGameWindowPresenter createGameWindowPresenter;
         private CreatePlayerWindowPresenter createPlayerWindowPresenter;
+        private InstructionWindowPresenter instructionWindowPresenter;
         private IDisposable disposable;
 
         public MenuWindowPresenter(MenuWindowView view, CommandFactory commandFactory)
@@ -32,6 +34,7 @@ namespace UI.MenuWindow
             startPageWindowPresenter = new StartPageWindowPresenter(view.StartPageWindowView, commandFactory);
             createGameWindowPresenter = new CreateGameWindowPresenter(view.CreateGameWindowView, commandFactory);
             createPlayerWindowPresenter = new CreatePlayerWindowPresenter(view.CreatePlayerWindowView, commandFactory);
+            instructionWindowPresenter = new InstructionWindowPresenter(view.InstructionWindowView, commandFactory);
         }
 
         private void InitializeMVP()

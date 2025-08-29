@@ -614,4 +614,20 @@ namespace Events
         {
         }
     }
+
+    // Instruction Window Events
+
+    public class InstructionWindowOpenedEvent : GameEvent
+    {
+        public InstructionWindowOpenedEvent()
+        {
+        }
+    }
+
+    public class InstructionWindowClosedEvent : GameEvent
+    {
+        public InstructionWindowClosedEvent()
+        {
+        }
+    }
 }

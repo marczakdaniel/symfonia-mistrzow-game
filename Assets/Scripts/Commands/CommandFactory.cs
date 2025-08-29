@@ -279,5 +279,17 @@ namespace Command
         {
             return new MusicButtonClickedCommand();
         }
+
+        // Instruction Window Commands
+
+        public OpenInstructionWindowCommand CreateOpenInstructionWindowCommand()
+        {
+            return new OpenInstructionWindowCommand();
+        }
+
+        public CloseInstructionWindowCommand CreateCloseInstructionWindowCommand()
+        {
+            return new CloseInstructionWindowCommand();
+        }
     }
 }

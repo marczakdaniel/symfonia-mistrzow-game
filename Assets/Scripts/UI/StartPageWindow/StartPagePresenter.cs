@@ -49,7 +49,8 @@ namespace UI.StartPageWindow
 
         private async UniTask HandleManualButtonClicked()
         {
-            
+            var command = commandFactory.CreateOpenInstructionWindowCommand();
+            await CommandService.Instance.ExecuteCommandAsync(command);
         }
 
         private void SubscribeToEvents()

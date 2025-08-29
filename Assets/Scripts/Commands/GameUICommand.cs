@@ -689,4 +689,38 @@ namespace Command
             return true;
         }
     }
+
+    // Instruction Window
+
+    public class OpenInstructionWindowCommand : BaseUICommand
+    {
+        public override string CommandType => "OpenInstructionWindow";
+
+        public override async UniTask<bool> Validate()
+        {
+            return true;
+        }
+
+        public override async UniTask<bool> Execute()
+        {
+            await AsyncEventBus.Instance.PublishAndWaitAsync(new InstructionWindowOpenedEvent());
+            return true;
+        }
+    }
+
+    public class CloseInstructionWindowCommand : BaseUICommand
+    {
+        public override string CommandType => "CloseInstructionWindow";
+
+        public override async UniTask<bool> Validate()
+        {
+            return true;
+        }
+
+        public override async UniTask<bool> Execute()
+        {
+            await AsyncEventBus.Instance.PublishAndWaitAsync(new InstructionWindowClosedEvent());
+            return true;
+        }
+    }
 }
