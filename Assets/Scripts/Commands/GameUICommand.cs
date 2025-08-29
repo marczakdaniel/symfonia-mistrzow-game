@@ -445,6 +445,10 @@ namespace Command
 
         public override async UniTask<bool> Execute()
         {
+            if (!MusicManager.Instance.IsPlaying())
+            {
+                MusicManager.Instance.PlayMusic();
+            }
             await AsyncEventBus.Instance.PublishAndWaitAsync(new GameCreationWindowOpenedEvent());
             return true;
         }

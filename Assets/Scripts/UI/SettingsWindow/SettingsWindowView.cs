@@ -10,12 +10,15 @@ namespace UI.SettingsWindow
     {
         public Subject<Unit> OnCloseButtonClicked = new Subject<Unit>();
         public Subject<Unit> OnRestartButtonClicked = new Subject<Unit>();
-
+        public Subject<Unit> OnMusicButtonClicked = new Subject<Unit>();
         [SerializeField]
         private ButtonElement closeButton;
         
         [SerializeField]
         private ButtonElement restartButton;
+
+        [SerializeField]
+        private ButtonElement musicButton;
 
         [SerializeField]
         private AnimationSequencerController openedAnimation;
@@ -27,6 +30,7 @@ namespace UI.SettingsWindow
         {
             closeButton.OnClick.Subscribe(_ => OnCloseButtonClicked.OnNext(Unit.Default)).AddTo(this);
             restartButton.OnClick.Subscribe(_ => OnRestartButtonClicked.OnNext(Unit.Default)).AddTo(this);
+            musicButton.OnClick.Subscribe(_ => OnMusicButtonClicked.OnNext(Unit.Default)).AddTo(this);
         }
 
         public async UniTask PlayOpenedAnimation()

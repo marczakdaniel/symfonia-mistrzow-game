@@ -691,4 +691,27 @@ namespace Command
             return true;
         }
     }
+
+    public class MusicButtonClickedCommand : BaseUICommand
+    {
+        public override string CommandType => "MusicButtonClicked";
+
+        public override async UniTask<bool> Validate()
+        {
+            return true;
+        }
+
+        public override async UniTask<bool> Execute()
+        {
+            if (MusicManager.Instance.IsPlaying())
+            {
+                MusicManager.Instance.StopMusic();
+            }
+            else
+            {
+                MusicManager.Instance.PlayMusic();
+            }
+            return true;
+        }
+    }
 }

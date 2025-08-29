@@ -37,6 +37,7 @@ namespace UI.SettingsWindow
         {
             view.OnCloseButtonClicked.Subscribe(_ => HandleCloseButtonClicked().ToObservable()).AddTo(ref d);
             view.OnRestartButtonClicked.Subscribe(_ => HandleRestartButtonClicked().ToObservable()).AddTo(ref d);
+            view.OnMusicButtonClicked.Subscribe(_ => HandleMusicButtonClicked().ToObservable()).AddTo(ref d);
         }
 
         private async UniTask HandleCloseButtonClicked()
@@ -47,7 +48,13 @@ namespace UI.SettingsWindow
 
         private async UniTask HandleRestartButtonClicked()
         {
-            var command = commandFactory.CreateRestartGameCommand();
+            var command = commandFactory.CreateRestartGameCommand();    
+            await CommandService.Instance.ExecuteCommandAsync(command);
+        }
+
+        private async UniTask HandleMusicButtonClicked()
+        {
+            var command = commandFactory.CreateMusicButtonClickedCommand();
             await CommandService.Instance.ExecuteCommandAsync(command);
         }
 

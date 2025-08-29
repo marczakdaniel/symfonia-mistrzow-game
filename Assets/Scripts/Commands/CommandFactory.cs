@@ -274,5 +274,10 @@ namespace Command
         {
             return new RestartGameCommand();
         }
+
+        public MusicButtonClickedCommand CreateMusicButtonClickedCommand()
+        {
+            return new MusicButtonClickedCommand();
+        }
     }
 }
